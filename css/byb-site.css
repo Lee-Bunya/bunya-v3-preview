@@ -1,0 +1,25 @@
+/* Build your Bunya on the site (11 Nov 2026). Loaded by build.html (tools/v3/import_build.py) after Daniel's own styles.
+   The site's menu sits on top; Daniel's top bar becomes a slim "Build your Bunya" bar under it (like a product bar on
+   Apple's buy pages), keeping Start again, the phone number and Book a demo. The studio itself stays light. */
+body.bb.byb-site{--site-h:60px;--sub-h:52px;--bb-top:calc(var(--site-h) + var(--sub-h))}
+@media (max-width:900px){ body.bb.byb-site{--site-h:56px;--sub-h:48px} }
+
+.byb-site .bb-top{top:var(--site-h);height:var(--sub-h);border-bottom:1px solid var(--bb-line);background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px)}
+.byb-title{font-size:19px;font-weight:600;letter-spacing:-.02em;color:var(--bb-ink);text-decoration:none;white-space:nowrap}
+.byb-title span{background:linear-gradient(90deg,#0A7D79,#2563EB);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media (max-width:900px){ .byb-title{font-size:17px} }
+
+/* The site's menu above a light page: keep it dark, as on every other page */
+.byb-site .n3{z-index:80}
+
+/* 11 Nov 2026 (Lee): one Book a demo at the top, the site menu's */
+.byb-site #demo-0{display:none}
+
+/* 11 Nov 2026: screen-only mode (?stage=1), shown in the left screen of bunya.ai's Build your Bunya page */
+html.bb-stage-only body.bb{overflow:hidden;background:#fff}
+html.bb-stage-only #nav3,html.bb-stage-only .bb-top,html.bb-stage-only .bb-panel,html.bb-stage-only .bb-bar,
+html.bb-stage-only .bb-chat,html.bb-stage-only .bb-agent,html.bb-stage-only .bb-car,html.bb-stage-only .bb-cap,html.bb-stage-only .bb-modal{display:none!important}
+html.bb-stage-only .bb-main{position:fixed!important;inset:0!important;display:block!important;padding:0!important}
+html.bb-stage-only .bb-stage{position:absolute!important;inset:0!important;top:0!important;height:auto!important;border:0!important}
+html.bb-stage-only .bb-stage-in{position:absolute!important;inset:0!important;padding:3% 4%!important;display:flex!important;align-items:center;justify-content:center}

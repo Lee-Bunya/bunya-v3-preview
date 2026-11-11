@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Book a Demo or Contact Us | Bunya AI</title>
+<meta name="description" content="One free meeting: see Bunya Command Centre with example data and talk through how your firm works. Or email info@bunya.ai or call 1300 286 922.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://bunya.ai/booking/">
+<link rel="icon" type="image/svg+xml" href="assets/8b9c16f32c12.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/fe5a358201b0.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/7498f300d81b.png">
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/nav3.css?v=20261110j">
+<link rel="stylesheet" href="css/sx.css?v=20261112k">
+<link rel="stylesheet" href="css/ct.css?v=20261110a">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://bunya.ai/booking/#webpage","url":"https://bunya.ai/booking/","name":"Book a demo"},{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is the demo free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The demo is one free meeting with no obligation."}},
+{"@type":"Question","name":"What happens in the meeting?","acceptedAnswer":{"@type":"Answer","text":"We show you the advice journey in Command Centre with example data, and you tell us how your firm works today and where advice waits. It covers the demo and discovery in one meeting."}},
+{"@type":"Question","name":"Who should attend?","acceptedAnswer":{"@type":"Answer","text":"The principal, and anyone else you would like there, such as an adviser, paraplanner or practice manager."}},
+{"@type":"Question","name":"What should we bring?","acceptedAnswer":{"@type":"Answer","text":"One workflow that slows your advice down, the systems it touches and the outcome you want to change. There is no need to bring client records."}},
+{"@type":"Question","name":"What happens after the demo?","acceptedAnswer":{"@type":"Answer","text":"If it looks like a fit, you settle your build and we start setup in your firm’s own Microsoft 365."}},
+{"@type":"Question","name":"How do existing clients get support?","acceptedAnswer":{"@type":"Answer","text":"Use the support channel from your handover, or email info@bunya.ai, and include the affected workflow and what you need help with."}},
+{"@type":"Question","name":"Is Bunya AI an Australian company?","acceptedAnswer":{"@type":"Answer","text":"Yes. Bunya AI Pty Ltd (ABN 39 700 067 545) is an Australian company with an Australian team."}}]}]}</script>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<!-- Book a demo, rebuilt 8 Nov 2026 in the v3 style. Wording = the LIVE v2 page, minus the old proposal/Blueprint path.
+     THE FORM DOES NOT SEND (v3 is local-only): submit shows a "preview, nothing sent" note. At launch, swap it for the live
+     forms-v2 demo launcher (Production adds the tags + config). Never port forms-v2-preview.js. Old page: booking-old.html.
+     10 Nov 2026 (Lee's page plan): Contact is folded in here ("Or just ask", #contact). contact.html is retired; the menu,
+     footer and search send Contact to booking.html#contact. Its enquiry form became email links. -->
+<body class="sx">
+
+<header id="nav3" class="n3"></header>
+
+<main>
+  <section class="sx-hero ct-hero">
+    <span class="sx-pill"><i></i>Book a demo · or just ask</span>
+    <h1>See Command Centre. <span class="sx-grad">Talk through your firm.</span></h1>
+    <p>One meeting covers the demo and discovery. Tell us a little about your practice so we can focus on where advice is backed up for you.</p>
+    <ul class="ct-chips"><li>Free</li><li>One meeting</li><li>No obligation</li></ul>
+  </section>
+
+  <section class="ct-grid" aria-label="Request a demo">
+    <form class="ct-form sx-rv" id="demo-form" novalidate>
+      <h2>Book your demo.</h2>
+      <p class="ct-sub">About 3 minutes. We’ll come back to you with a time.</p>
+      <div class="ct-build" id="ct-build" hidden><span>Your build</span><b id="ct-build-t"></b><a href="build.html">Change</a></div>
+      <div class="ct-fields">
+        <label class="ct-f"><span>Name</span><input name="name" type="text" autocomplete="name" maxlength="150" required></label>
+        <label class="ct-f"><span>Work email</span><input name="email" type="email" autocomplete="email" maxlength="254" required></label>
+        <label class="ct-f"><span>Firm</span><input name="firm" type="text" autocomplete="organization" maxlength="150" required></label>
+        <label class="ct-f"><span>Client households <small>(roughly)</small></span><input name="households" type="number" inputmode="numeric" min="0" max="100000" placeholder="e.g. 800"></label>
+      </div>
+      <fieldset class="ct-pick"><legend>What would you like to see?</legend>
+        <label><input type="checkbox" name="see" value="Meeting Notes"><span>Meeting Notes</span></label>
+        <label><input type="checkbox" name="see" value="Advice Engine"><span>Advice Engine</span></label>
+        <label><input type="checkbox" name="see" value="Review Packs"><span>Review Packs</span></label>
+        <label><input type="checkbox" name="see" value="Client Portal"><span>Client Portal</span></label>
+        <label><input type="checkbox" name="see" value="Broadcast HQ"><span>Broadcast HQ</span></label>
+        <label><input type="checkbox" name="see" value="Field Notes"><span>Field Notes</span></label>
+      </fieldset>
+      <label class="ct-f wide"><span>Where does advice wait in your firm today? <small>(optional)</small></span><textarea name="message" rows="4" maxlength="2000" placeholder="The workflow that slows your advice down, and the systems it touches"></textarea></label>
+      <p class="ct-fine">Please leave out client records, passwords and confidential documents. We use these details only to reply to you.</p>
+      <button class="sx-btn ct-submit" type="submit">Request a demo</button>
+      <div class="ct-done" id="demo-done" hidden role="status"><b>Thanks. We’ll be in touch to set a time.</b><p>Preview build: nothing was sent. On the live site this goes to our team, and you can choose a time straight after.</p></div>
+    </form>
+
+    <aside class="ct-side">
+      <ol class="ct-steps sx-rv">
+        <li><b>About you and your firm</b><p>Your email, your firm and what you’d like to see.</p></li>
+        <li><b>Choose a time</b><p>Pick a time with our team, in your own time zone.</p></li>
+        <li><b>One meeting</b><p>See Command Centre with example data, and talk through how your firm works today.</p></li>
+      </ol>
+      <figure class="ct-quote sx-rv"><blockquote>“The attraction was a practical approach tailored to financial advice, rather than automation for its own sake.”</blockquote>
+        <figcaption><img src="assets/86d67cfaaa2c.webp" alt="" width="96" height="96"><span><b>Kane Leersen</b>Regional Prosperity Financial Advice · <a href="case-study-regional-prosperity.html">Read their story</a></span></figcaption></figure>
+      <div class="ct-talk sx-rv"><b>Prefer to talk first?</b><p>Email <a href="mailto:info@bunya.ai">info@bunya.ai</a> or call <a href="tel:1300286922">1300 286 922</a> (1300 BUNYA AI), and we’ll arrange the demo with you.</p></div>
+    </aside>
+  </section>
+
+  <section class="sx-sec" id="contact" aria-labelledby="h-ask">
+    <div class="sx-head sx-rv"><span class="sx-k">Contact</span><h2 id="h-ask">Not ready for a demo? <span>Just ask.</span></h2></div>
+    <div class="ct-routes three">
+      <a class="ct-route sx-rv" href="mailto:info@bunya.ai"><span class="k">Start a conversation</span><b>Ask a question</b><p>For general questions or a potential partnership, email the team with a little about your firm.</p><span class="go">info@bunya.ai</span></a>
+      <a class="ct-route sx-rv" href="tel:1300286922"><span class="k">Talk to a person</span><b>Call us</b><p>An Australian team, Monday to Friday. Ask anything, or arrange your demo over the phone.</p><span class="go">1300 286 922</span></a>
+      <a class="ct-route sx-rv" href="mailto:info@bunya.ai?subject=Support"><span class="k">Already a client?</span><b>Get support</b><p>Use the support channel in your Bunya Portal, or email us with the workflow and what you need help with.</p><span class="go">Email support</span></a>
+    </div>
+    <p class="ct-co sx-rv">Bunya AI Pty Ltd · ABN 39 700 067 545 · <a href="mailto:info@bunya.ai">info@bunya.ai</a> · <a href="tel:1300286922">1300 286 922</a> (1300 BUNYA AI)</p>
+  </section>
+
+  <section class="sx-sec" aria-labelledby="h-faq">
+    <div class="sx-head sx-rv"><span class="sx-k">Questions</span><h2 id="h-faq">Straight answers.</h2></div>
+    <div class="sx-faq sx-rv">
+      <details><summary>Is the demo free?<i></i></summary><p>Yes. The demo is one free meeting with no obligation.</p></details>
+      <details><summary>What happens in the meeting?<i></i></summary><p>We show you the advice journey in Command Centre with example data, and you tell us how your firm works today and where advice waits. It covers the demo and discovery in one meeting.</p></details>
+      <details><summary>Who should attend?<i></i></summary><p>The principal, and anyone else you would like there, such as an adviser, paraplanner or practice manager.</p></details>
+      <details><summary>What should we bring?<i></i></summary><p>One workflow that slows your advice down, the systems it touches and the outcome you want to change. There is no need to bring client records.</p></details>
+      <details><summary>What happens after the demo?<i></i></summary><p>If it looks like a fit, you settle your build and we start setup in your firm’s own Microsoft 365. <a href="getting-started.html">How getting started works</a></p></details>
+      <details><summary>How do existing clients get support?<i></i></summary><p>Use the support channel in your Bunya Portal, or email <a href="mailto:info@bunya.ai">info@bunya.ai</a>, and include the affected workflow and what you need help with.</p></details>
+      <details><summary>Is Bunya AI an Australian company?<i></i></summary><p>Yes. Bunya AI Pty Ltd (ABN 39 700 067 545) is an Australian company with an Australian team.</p></details>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+(function(){
+  /* The build a visitor brings from the cart (nav3 passes ?build=Command Centre · Client Portal …) */
+  var b = new URLSearchParams(location.search).get('build');
+  if (b) { document.getElementById('ct-build').hidden = false; document.getElementById('ct-build-t').textContent = b; }
+  /* Preview only: never sends. */
+  var f = document.getElementById('demo-form');
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!f.checkValidity()) { f.reportValidity(); return; }
+    f.querySelector('.ct-submit').hidden = true;
+    document.getElementById('demo-done').hidden = false;
+  });
+  var els = document.querySelectorAll('.sx-rv');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) { [].forEach.call(els, function(e){ e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+  [].forEach.call(els, function(e){ io.observe(e); });
+})();
+</script>
+<script src="js/nav3.js?v=20261112a"></script>
+<script src="js/footer.js?v=20261112a"></script>
+</body>
+</html>

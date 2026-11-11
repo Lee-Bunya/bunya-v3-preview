@@ -1,0 +1,49 @@
+/* Compare builds page (8 Nov 2026). Builds on sx.css. cm- prefix.
+   Balanced layout (Lee, 8 Nov): three equal columns centred under the headline; each feature name sits on its own line
+   with the ticks directly under each build. Nothing sticky. */
+.cm-wrap{width:min(1040px,calc(100% - 48px));margin:0 auto}
+.cm-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding-top:12px}
+.cm-col{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;border-radius:24px;padding:28px 24px 26px;background:var(--sx-card-2)}
+.cm-col.pick{box-shadow:inset 0 0 0 2px #5EEAD4}
+.cm-col .tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);height:24px;padding:0 12px;display:inline-flex;align-items:center;border-radius:999px;background:#5EEAD4;color:#000;font-size:12.5px;font-weight:600;white-space:nowrap}
+.cm-col h2{font-size:28px;letter-spacing:-.03em}
+.cm-col .for{margin:10px 0 0;font-size:15px;line-height:1.4;color:var(--sx-grey);min-height:4.2em}
+.cm-col .pr{margin:16px 0 0;font-size:15px;color:#E8E8ED;min-height:3.4em}
+.cm-col .pr b{display:block;font-size:40px;font-weight:600;letter-spacing:-.03em;line-height:1.1}
+.cm-col .pr span{display:block;font-size:13.5px;color:var(--sx-grey);margin-top:2px}
+.cm-col .eg{margin:8px 0 20px;font-size:13.5px;color:var(--sx-dim)}
+.cm-col .sx-btn{margin-top:auto;height:42px;padding:0 22px;font-size:15px}
+
+.cm-table{margin-top:28px}
+.cm-grp{padding:34px 0 8px;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#5EEAD4;text-align:center}
+.cm-r{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:center;padding:14px 0 16px;border-top:1px solid var(--sx-line)}
+.cm-r>a,.cm-r>span:first-child{grid-column:1/-1;justify-self:center;text-align:center;font-size:16px;color:#fff;text-decoration:none;margin-bottom:6px}
+.cm-r>a:hover{color:#67E8F9}
+.cm-r small{display:inline;font-size:13px;color:var(--sx-grey);margin-left:6px}
+.cm-r>i,.cm-key i{justify-self:center;width:22px;height:22px;border-radius:50%;position:relative}
+.cm-r.txt>span[role=cell]{justify-self:center;font-size:15px;color:#E8E8ED;text-align:center}
+i.y{background:#5EEAD4}
+i.y::after{content:"";position:absolute;left:7px;top:5px;width:6px;height:10px;border-right:2px solid #000;border-bottom:2px solid #000;transform:rotate(45deg)}
+i.o{box-shadow:inset 0 0 0 2px #5EEAD4}
+i.o::after{content:"+";position:absolute;inset:0;display:grid;place-items:center;color:#5EEAD4;font-size:16px;font-weight:600;font-style:normal;line-height:1}
+i.n::after{content:"";position:absolute;left:6px;right:6px;top:10px;height:2px;background:#48484A}
+.cm-key{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 22px;margin:26px 0 0;font-size:14px;color:var(--sx-grey)}
+.cm-key span{display:inline-flex;align-items:center;gap:8px}
+.cm-key i{display:inline-block}
+.cm-fine{margin:16px auto 0;max-width:760px;text-align:center;font-size:14px;line-height:1.5;color:var(--sx-grey)}
+.cm-fine a{color:#67E8F9;text-decoration:none}
+
+@media (max-width:860px){
+  .cm-wrap{width:calc(100% - 32px)}
+  .cm-cols,.cm-r{gap:8px}
+  .cm-col{padding:20px 10px 16px;border-radius:16px}
+  .cm-col h2{font-size:17px}
+  .cm-col .for,.cm-col .eg,.cm-col .pr span{display:none}
+  .cm-col .pr{margin-top:8px;font-size:11.5px;min-height:0}
+  .cm-col .pr b{font-size:24px}
+  .cm-col .sx-btn{height:34px;padding:0 12px;font-size:13px;margin-top:12px}
+  .cm-col .tag{font-size:10px;padding:0 7px;height:20px;top:-10px}
+  .cm-r>a,.cm-r>span:first-child{font-size:15px}
+  .cm-r small{display:block;margin:2px 0 0}
+  .cm-r.txt>span[role=cell]{font-size:13px}
+}

@@ -1,0 +1,115 @@
+/* =====================================================================
+   Homepage concept · Command Centre focus (6 Oct 2026)
+   Built on Dana's Design v2: flat framed system, Mist hairlines, 3px cards /
+   6px frames, Saira labels, one Signal per frame. Structure follows the
+   UI/UX Pro Max "Product demo + feature showcase + role gateway" pattern.
+   ===================================================================== */
+
+/* ---------- Hero: centred message, wide live product frame ---------- */
+.hc-hero{position:relative;overflow:hidden;background:var(--pale);border-bottom:var(--hair)}
+.hc-hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(45deg,rgba(10,125,121,.08) 1px,transparent 1px),linear-gradient(-45deg,rgba(10,125,121,.08) 1px,transparent 1px);background-size:92px 92px;-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 70%);mask-image:linear-gradient(180deg,#000 0%,transparent 70%);pointer-events:none}
+.hc-hero-copy{position:relative;text-align:center;max-width:900px;margin:auto;padding:clamp(56px,7vw,104px) 0 0}
+.hc-hero h1{font-size:clamp(38px,4.6vw,64px)}
+.hc-hero h1 em{display:block}
+.hc-hero .lead{margin:24px auto 0;max-width:640px}
+.hc-hero .actions{justify-content:center}
+.hc-proof{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 28px;list-style:none;padding:0;margin:26px 0 0}
+.hc-proof li{display:flex;align-items:center;gap:9px;font-size:15px;color:var(--focus)}
+.hc-proof li::before{content:"";width:7px;height:7px;background:var(--pulse);transform:rotate(45deg);flex:none}
+.hc-stage{position:relative;width:min(1180px,calc(100% - var(--gutter)*2));margin:clamp(40px,5vw,64px) auto 0;padding:var(--frame-w,4px) var(--frame-w,4px) 0}
+.hc-stage .frame{border-bottom-left-radius:0;border-bottom-right-radius:0}
+.hc-stage .frame::after{bottom:-1px;border-bottom:0;border-bottom-left-radius:0;border-bottom-right-radius:0}
+.hc-stage .screen{height:clamp(280px,40vw,560px);border-radius:0}
+.hc-stage .frame-bar span:last-child{color:var(--pulse)}
+
+/* ---------- Section heads ---------- */
+.hc-section{padding:clamp(64px,7vw,104px) 0}
+.hc-section.pale{background:var(--pale);border-top:var(--hair);border-bottom:var(--hair)}
+.hc-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:24px clamp(32px,5vw,80px);align-items:end;margin-bottom:clamp(32px,4vw,48px)}
+.hc-head h2 em{display:block}
+.hc-head>p{font-size:18px;color:var(--body);max-width:44ch}
+@media(max-width:860px){.hc-head{grid-template-columns:1fr}}
+
+/* ---------- Bento: what Command Centre does ---------- */
+.hc-bento{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:calc(20px + var(--frame-w,4px));padding:var(--frame-w,4px)}
+.hc-card{position:relative;display:flex;flex-direction:column;gap:12px;padding:26px 26px 24px;background:#fff;border:1px solid rgba(1,59,67,.22);outline:var(--frame-w,4px) solid #fff;border-radius:var(--r-frame);min-width:0;transition:border-color .2s}
+.hc-section.pale .hc-card{outline-color:var(--pale)}
+.hc-card:hover{border-color:var(--focus)}
+.hc-card.wide{grid-column:span 2}
+.hc-card.full{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px;align-items:center}
+.hc-card .k{display:flex;align-items:center;gap:10px;font-family:var(--process);font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--grid)}
+.hc-card .k svg{width:20px;height:20px;fill:none;stroke:var(--grid);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.hc-card h3{font-size:clamp(21px,1.7vw,25px)}
+.hc-card p{font-size:16px;line-height:1.5;color:var(--body)}
+.hc-card .text-link{margin-top:auto;font-size:15px}
+.hc-card.gate{border-color:var(--signal)}
+.hc-card.gate .k,.hc-card.gate .k svg{color:var(--focus);stroke:var(--focus)}
+@media(max-width:980px){.hc-bento{grid-template-columns:1fr 1fr}.hc-card.wide{grid-column:1/-1}.hc-card.full{grid-template-columns:1fr}}
+@media(max-width:640px){.hc-bento{grid-template-columns:1fr}.hc-card.wide{grid-column:auto}}
+
+/* mini visuals inside cards (pure HTML, illustrative) */
+.mini{margin-top:6px;padding:16px;background:var(--pale);border:var(--hair);border-radius:var(--r-card);display:grid;gap:8px;font-size:14px;color:var(--focus)}
+.mini-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:9px 12px;background:#fff;border:var(--hair);border-radius:var(--r-card)}
+.mini-row b{font-weight:600;color:var(--ink)}
+.mini-row small{font-family:var(--process);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--grid);white-space:nowrap}
+.mini-chips{display:flex;flex-wrap:wrap;gap:8px}
+.mini-chips span{padding:7px 12px;background:#fff;border:var(--hair);border-radius:var(--r-card);font-weight:500}
+.mini-chips span.on{background:var(--focus);border-color:var(--focus);color:#fff}
+.mini-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.mini-steps span{display:grid;gap:2px;padding:10px;background:#fff;border:var(--hair);border-radius:var(--r-card);font-size:13px}
+.mini-steps span b{font-family:var(--process);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--grid);font-weight:600}
+.mini-steps span.signal{border-color:var(--signal);background:#FFFBF0}
+.mini-steps span.signal b{color:var(--focus)}
+.mini-bars{display:flex;align-items:flex-end;gap:10px;height:120px;padding:14px 16px 0;background:#fff;border:var(--hair);border-radius:var(--r-card)}
+.mini-bars i{flex:1;background:var(--mist);border-radius:2px 2px 0 0}
+.mini-bars i.hi{background:var(--grid)}
+.mini-legend{display:flex;justify-content:space-between;font-family:var(--process);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--grid)}
+
+/* ---------- Product tour: Dana's showcase (reuses .showcase/.tabs/.feature-*) ---------- */
+.hc-tour .feature-screen .screen{height:clamp(320px,38vw,540px)}
+.feature-points{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:10px}
+.feature-points li{position:relative;padding-left:18px;font-size:15px;line-height:1.5;color:var(--body)}
+.feature-points li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;background:var(--pulse);transform:rotate(45deg)}
+
+/* ---------- Mid-page CTA strip ---------- */
+.hc-cta{display:flex;justify-content:space-between;align-items:center;gap:20px 40px;flex-wrap:wrap;margin-top:clamp(40px,5vw,56px);padding:24px 28px;background:#fff;border:1px solid rgba(1,59,67,.22);outline:var(--frame-w,4px) solid #fff;border-radius:var(--r-frame)}
+.hc-section.pale .hc-cta{outline-color:var(--pale)}
+.hc-cta p{font-size:20px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+.hc-cta p span{display:block;font-size:16px;font-weight:400;color:var(--body);letter-spacing:0;margin-top:4px}
+.hc-cta .actions{margin:0}
+
+/* ---------- Roles: better days for every seat ---------- */
+.hc-roles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--focus)}
+.hc-role{display:flex;flex-direction:column;gap:10px;padding:24px clamp(14px,1.6vw,22px) 26px;border-right:var(--hair);border-bottom:var(--hair);color:var(--ink);min-width:0}
+.hc-role:first-child{padding-left:0}
+.hc-role:last-child{border-right:0}
+.hc-role:hover{background:var(--pale)}
+.hc-role:first-child:hover{padding-left:12px}
+.hc-role .k{font-family:var(--process);font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--grid)}
+.hc-role h3{font-size:20px;line-height:1.2}
+.hc-role p{font-size:15px;line-height:1.5;color:var(--body)}
+.hc-role .text-link{margin-top:auto;font-size:14px}
+@media(max-width:1080px){.hc-roles{grid-template-columns:repeat(3,minmax(0,1fr))}.hc-role:nth-child(3n){border-right:0}.hc-role:nth-child(4){padding-left:0}}
+@media(max-width:700px){.hc-roles{grid-template-columns:1fr}.hc-role{border-right:0;padding-left:0}.hc-role:hover{padding-left:12px}}
+
+/* ---------- Ownership band list ---------- */
+.hc-facts{list-style:none;padding:0;margin:0 0 26px;display:grid;gap:12px}
+.hc-facts li{display:flex;gap:12px;color:rgba(255,255,255,.86)}
+.hc-facts li::before{content:"";width:7px;height:7px;margin-top:9px;background:var(--pulse);transform:rotate(45deg);flex:none}
+
+/* ---------- Proof ---------- */
+.hc-quote{display:grid;grid-template-columns:minmax(0,.28fr) minmax(0,.72fr);gap:clamp(24px,5vw,72px);align-items:start}
+.hc-quote blockquote{margin:0;font-size:clamp(26px,2.6vw,38px);line-height:1.3;letter-spacing:-.012em;font-weight:500;color:var(--ink)}
+.hc-quote blockquote em{font-weight:600}
+.hc-quote .side{border-top:2px solid var(--focus);padding-top:16px;display:grid;gap:14px}
+.hc-quote .side img{max-width:170px;height:auto}
+@media(max-width:860px){.hc-quote{grid-template-columns:1fr}}
+
+/* ---------- Add-ons: one quiet line ---------- */
+.hc-addons{display:flex;align-items:baseline;gap:14px 28px;flex-wrap:wrap;padding:20px 0;border-top:var(--hair);border-bottom:var(--hair)}
+.hc-addons .eyebrow{margin:0}
+.hc-addons a{color:var(--ink);font-weight:600}
+.hc-addons a span{font-weight:400;color:var(--grid)}
+.hc-addons a:hover{color:var(--grid)}
+.hc-addons small{font-size:14px;color:var(--grid);margin-left:auto}
+@media(max-width:860px){.hc-addons small{margin-left:0;width:100%}}

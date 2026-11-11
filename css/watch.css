@@ -1,0 +1,38 @@
+/* Watch (11 Nov 2026): our latest ad and every product film. tools/v3/build_watch.py; with css/sx.css and css/film.css. */
+.wt-hero{padding-bottom:clamp(24px,4vh,48px)}
+.wt-ad{width:min(1180px,calc(100% - 48px));margin:0 auto;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,.85fr);gap:clamp(24px,4vw,56px);align-items:center}
+.wt-ad-shot{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;border:0;border-radius:24px;overflow:hidden;background:#111;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 50px 100px -40px rgba(0,0,0,.9)}
+.wt-ad-shot video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.wt-ad-shot:hover video{transform:scale(1.03)}
+.wt-ad-shot:hover .pam-btn{transform:scale(1.08)}
+.wt-k{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#5EEAD4}
+.wt-ad h2{margin:12px 0 0;font-size:clamp(32px,4vw,52px);font-weight:600;letter-spacing:-.04em;line-height:1.04;text-wrap:balance}
+.wt-ad p{margin:14px 0 0;font-size:17px;line-height:1.55;color:var(--sx-grey)}
+
+.wt-sec{width:min(1180px,calc(100% - 48px));margin:clamp(72px,10vh,120px) auto 0}
+.wt-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding-bottom:18px;border-bottom:1px solid var(--sx-line)}
+.wt-head h2{margin:0;font-size:clamp(26px,3vw,36px);font-weight:600;letter-spacing:-.03em}
+.wt-head p{margin:0;font-size:16px;color:var(--sx-grey)}
+.wt-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 22px;margin-top:26px}
+.wt-card h3{margin:14px 0 0;font-size:18px;font-weight:600;letter-spacing:-.01em}
+.wt-card p{margin:6px 0 0;font-size:15px;line-height:1.5;color:var(--sx-grey)}
+.wt-card a{display:inline-block;margin-top:8px;font-size:14.5px;color:#67E8F9;text-decoration:none}
+.wt-card a:hover{text-decoration:underline;text-underline-offset:3px}
+.wt-card a::after{content:" ›"}
+.wt-shot{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;border:0;border-radius:16px;overflow:hidden;background:#EEF3F3;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.wt-shot img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.wt-shot:hover img{transform:scale(1.04)}
+.wt-play{position:absolute;left:14px;bottom:14px;width:44px;height:44px;display:grid;place-items:center;border-radius:50%;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.wt-play svg{width:18px;height:18px;margin-left:2px;fill:#fff}
+.wt-len{position:absolute;right:12px;bottom:14px;padding:3px 8px;border-radius:999px;background:rgba(0,0,0,.72);color:#fff;font-size:12.5px;font-weight:600;font-variant-numeric:tabular-nums}
+.wt-shot:focus-visible{outline:2px solid #67E8F9;outline-offset:3px}
+
+@media (max-width:1000px){ .wt-ad{grid-template-columns:1fr} .wt-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:620px){
+  .wt-ad,.wt-sec{width:calc(100% - 32px)}
+  .wt-head{flex-direction:column;gap:4px}
+  .wt-grid{grid-template-columns:1fr;gap:26px}
+}
+
+/* 12 Nov 2026 (Lee): a little more room in cards, site-wide: more padding, more space between title and text, looser lines */
+.wt-card p{margin-top:8px;line-height:1.6}

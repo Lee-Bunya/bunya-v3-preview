@@ -1,0 +1,242 @@
+/* Insights: article pages and the index (11 Nov 2026). Builds on sx.css. ar- prefix.
+   A dark header like the rest of the site, then a light reading page: long reads and the light cover illustrations sit
+   better on paper than on black. */
+:root{--ar-paper:#FBFBFD;--ar-ink:#1D1D1F;--ar-body:#3A3A3C;--ar-mute:#6E6E73;--ar-line:#E5E5EA;--ar-teal:#0E7C77;--ar-tint:#EAF6F4}
+
+/* progress */
+.ar-progress{position:fixed;left:0;right:0;top:0;height:3px;z-index:95;pointer-events:none}
+.ar-progress i{display:block;height:100%;background:linear-gradient(90deg,#5EEAD4,#67E8F9 50%,#A5B4FC);transform:scaleX(0);transform-origin:0 50%}
+
+/* header */
+.ar-top{width:min(860px,calc(100% - 48px));margin:0 auto;padding:clamp(56px,10vh,110px) 0 0;text-align:center}
+.ar-crumb{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;font-size:14px;color:var(--sx-dim)}
+.ar-crumb a{color:#A1A1A6;text-decoration:none}.ar-crumb a:hover{color:#fff}
+.ar-crumb a:last-child{color:#5EEAD4}
+.ar-top h1{margin-top:22px;font-size:clamp(36px,5.2vw,64px);line-height:1.04;letter-spacing:-.04em}
+.ar-lead{max-width:640px;margin:20px auto 0;font-size:clamp(19px,1.8vw,23px);line-height:1.4;color:var(--sx-grey)}
+.ar-meta{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 18px;margin:22px 0 0;font-size:14px;color:var(--sx-dim)}
+.ar-meta span+span::before{content:"·";margin-right:18px;color:#48484A}
+.ar-cover{position:relative;z-index:2;width:min(1100px,calc(100% - 48px));margin:clamp(36px,6vh,56px) auto calc(-1 * clamp(80px,14vw,200px))}
+.ar-cover img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:24px;box-shadow:0 50px 100px -40px rgba(0,0,0,.9)}
+
+/* the reading page */
+.ar-page{position:relative;background:var(--ar-paper);color:var(--ar-ink);padding:calc(clamp(80px,14vw,200px) + clamp(40px,6vh,72px)) 24px clamp(64px,10vh,110px);
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,690px) minmax(0,1fr);column-gap:clamp(24px,4vw,56px)}
+.ar-toc{grid-column:1;justify-self:end;width:min(230px,100%)}
+.ar-toc details{position:sticky;top:96px}
+.ar-toc summary{list-style:none;cursor:pointer;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ar-mute)}
+.ar-toc summary::-webkit-details-marker{display:none}
+@media (min-width:1001px){.ar-toc summary{pointer-events:none;cursor:default}}
+.ar-toc div{display:flex;flex-direction:column;margin-top:12px;border-left:1px solid var(--ar-line)}
+.ar-toc a{padding:6px 0 6px 14px;margin-left:-1px;border-left:2px solid transparent;font-size:14px;line-height:1.35;color:var(--ar-mute);text-decoration:none;transition:color .2s,border-color .2s}
+.ar-toc a:hover{color:var(--ar-ink)}
+.ar-toc a.on{color:var(--ar-ink);border-left-color:var(--ar-teal);font-weight:500}
+.ar-body{grid-column:2;min-width:0;font-size:18.5px;line-height:1.65;color:var(--ar-body)}
+.ar-body > section{scroll-margin-top:90px}
+.ar-body h2{margin:64px 0 0;font-size:clamp(26px,2.6vw,32px);line-height:1.15;letter-spacing:-.025em;color:var(--ar-ink)}
+.ar-body h3{margin:32px 0 0;font-size:21px;line-height:1.25;letter-spacing:-.015em;color:var(--ar-ink)}
+.ar-body p{margin:18px 0 0}
+.ar-body a{color:var(--ar-teal);text-decoration:underline;text-decoration-color:rgba(14,124,119,.35);text-underline-offset:3px}
+.ar-body a:hover{text-decoration-color:var(--ar-teal)}
+.ar-body strong{color:var(--ar-ink);font-weight:600}
+.ar-body ul,.ar-body ol{margin:18px 0 0;padding-left:0;list-style:none;counter-reset:ar}
+.ar-body li{position:relative;margin-top:12px;padding-left:34px}
+.ar-body ul > li::before{content:"";position:absolute;left:10px;top:.72em;width:7px;height:7px;border-radius:50%;background:var(--ar-teal)}
+.ar-body ol > li{counter-increment:ar}
+.ar-body ol > li::before{content:counter(ar);position:absolute;left:0;top:.15em;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--ar-ink);color:#fff;font-size:13px;font-weight:600;line-height:1}
+/* the short answer */
+.ar-answer{padding:26px 28px;border-radius:20px;background:var(--ar-tint);box-shadow:inset 3px 0 0 var(--ar-teal)}
+.ar-answer .k{display:block;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ar-teal)}
+.ar-answer p{margin:8px 0 0;font-size:20px;line-height:1.55;color:var(--ar-ink)}
+/* diagrams, tables */
+.ar-body figure{margin:40px 0 0}
+.ar-body figure img{display:block;width:100%;height:auto;border-radius:16px;background:#fff;box-shadow:0 0 0 1px var(--ar-line)}
+.ar-body figcaption{margin-top:10px;font-size:14px;color:var(--ar-mute)}
+.ar-body figcaption a{color:var(--ar-mute)}
+.ar-table-wrap{margin:28px 0 0;overflow-x:auto;border-radius:16px;box-shadow:0 0 0 1px var(--ar-line);background:#fff}
+.ar-body table{width:100%;border-collapse:collapse;font-size:15.5px;line-height:1.45}
+.ar-body th{padding:14px 16px;text-align:left;font-weight:600;color:var(--ar-ink);background:#F5F5F7;border-bottom:1px solid var(--ar-line)}
+.ar-body td{padding:14px 16px;vertical-align:top;border-top:1px solid var(--ar-line)}
+.ar-body tr:first-child td{border-top:0}
+/* where Bunya fits */
+.ar-body section[id*="bunya"]:not(.ar-bunya){margin-top:64px;padding:8px 30px 30px;border-radius:24px;background:#000;color:#D2D2D7}
+.ar-body section[id*="bunya"]:not(.ar-bunya) h2{margin-top:24px;color:#fff}
+.ar-body section[id*="bunya"]:not(.ar-bunya) a{color:#67E8F9;text-decoration-color:rgba(103,232,249,.4)}
+.ar-body section[id*="bunya"]:not(.ar-bunya) strong{color:#fff}
+/* questions, sources */
+.ar-faq details{border-bottom:1px solid var(--ar-line)}
+.ar-faq details:first-of-type{margin-top:18px;border-top:1px solid var(--ar-line)}
+.ar-faq summary{position:relative;list-style:none;cursor:pointer;padding:20px 40px 20px 0;font-size:19px;font-weight:600;line-height:1.3;color:var(--ar-ink)}
+.ar-faq summary::-webkit-details-marker{display:none}
+.ar-faq summary i{position:absolute;right:4px;top:50%;width:14px;height:14px;transform:translateY(-50%)}
+.ar-faq summary i::before,.ar-faq summary i::after{content:"";position:absolute;left:0;right:0;top:6px;height:2px;border-radius:2px;background:var(--ar-mute);transition:transform .3s}
+.ar-faq summary i::after{transform:rotate(90deg)}
+.ar-faq details[open] summary i::after{transform:rotate(0)}
+.ar-faq details p{margin:0 0 22px}
+.ar-sources{margin-top:56px;padding-top:24px;border-top:1px solid var(--ar-line);font-size:15px;color:var(--ar-mute)}
+.ar-sources h2{margin:0;font-size:15px;letter-spacing:0;color:var(--ar-ink)}
+.ar-sources a{color:var(--ar-mute)}
+
+/* cards: keep reading, and the index */
+.ar-wrap{width:min(1100px,calc(100% - 48px));margin:0 auto}
+.ar-more{padding:clamp(64px,10vh,110px) 0 0}
+.ar-more-h,.ar-lib-h{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:24px}
+.ar-more-h h2,.ar-lib-h h2{font-size:clamp(28px,3.4vw,44px);letter-spacing:-.035em}
+.ar-more-h a{color:#67E8F9;text-decoration:none;font-size:17px}.ar-more-h a::after{content:" \203A"}
+.ar-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.ar-card{display:flex;flex-direction:column;overflow:hidden;border-radius:22px;background:#161618;color:#fff;text-decoration:none;transition:transform .45s var(--sx-ease),box-shadow .3s}
+.ar-card[hidden]{display:none}
+.ar-card:hover{transform:translateY(-4px);box-shadow:0 0 0 1px rgba(255,255,255,.14)}
+.ar-card .im{display:block;aspect-ratio:3/2;overflow:hidden;background:#EAF6F4}
+.ar-card img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--sx-ease)}
+.ar-card:hover img{transform:scale(1.04)}
+.ar-card .tx{display:flex;flex-direction:column;flex:1;padding:20px 22px 22px}
+.ar-card .tp{font-size:12.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#5EEAD4}
+.ar-card b{margin-top:10px;font-size:19px;line-height:1.25;letter-spacing:-.015em}
+.ar-card .ld{margin-top:8px;font-size:15px;line-height:1.45;color:var(--sx-grey)}
+.ar-card .mt{margin-top:auto;padding-top:16px;font-size:13.5px;color:var(--sx-dim)}
+.ar-card.big{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}
+.ar-card.big .im{aspect-ratio:auto;min-height:100%}
+.ar-card.big .tx{justify-content:center;padding:clamp(24px,4vw,48px)}
+.ar-card.big b{font-size:clamp(26px,3vw,38px);line-height:1.1;letter-spacing:-.03em}
+.ar-card.big .ld{font-size:17px}
+.ar-card.big .mt{margin-top:18px;padding-top:0}
+
+/* the index */
+.ar-ihero{padding-bottom:0}
+.ar-feat{margin-top:clamp(40px,6vh,64px)}
+.ar-lib{margin-top:clamp(56px,9vh,96px)}
+.ar-chips{display:flex;flex-wrap:wrap;gap:8px}
+.ar-chips button{height:38px;padding:0 15px;border:0;border-radius:999px;background:rgba(255,255,255,.08);color:#D2D2D7;font:inherit;font-size:14.5px;cursor:pointer;transition:background .2s,color .2s}
+.ar-chips button small{margin-left:4px;font-size:12.5px;color:var(--sx-dim)}
+.ar-chips button:hover{background:rgba(255,255,255,.14)}
+.ar-chips button.on{background:#fff;color:#000}
+.ar-chips button.on small{color:#6E6E73}
+
+@media (max-width:1000px){
+  .ar-page{grid-template-columns:minmax(0,1fr);padding-left:24px;padding-right:24px}
+  .ar-toc{grid-column:1;justify-self:center;width:100%;max-width:690px;margin:0 auto 8px;position:sticky;top:64px;z-index:5}
+  .ar-toc details{position:static;padding:14px 18px;border-radius:16px;background:#fff;box-shadow:0 0 0 1px var(--ar-line),0 10px 30px -18px rgba(0,0,0,.3)}
+  .ar-toc summary::after{content:"+";float:right;font-size:18px;line-height:1;color:var(--ar-mute)}
+  .ar-toc details[open] summary::after{content:"\2013"}
+  .ar-body{grid-column:1;justify-self:center;width:100%;max-width:690px}
+  .ar-cards{grid-template-columns:1fr 1fr}
+  .ar-card.big{grid-template-columns:1fr}
+  .ar-card.big .im{aspect-ratio:3/2}
+}
+@media (max-width:620px){
+  .ar-body{font-size:17.5px}
+  .ar-answer{padding:22px 20px}
+  .ar-answer p{font-size:18.5px}
+  .ar-body section[id*="bunya"]:not(.ar-bunya){padding:4px 20px 24px;border-radius:20px}
+  .ar-cards{grid-template-columns:1fr}
+  .ar-cover img{border-radius:18px}
+}
+@media (prefers-reduced-motion:reduce){.ar-card,.ar-card img{transition:none}}
+
+/* ── 11 Nov 2026, the redesign: topic colour, product-scene covers, takeaways, the Bunya card with its film ── */
+.ar .ar-top{position:relative}
+.ar .ar-top::before{content:"";position:absolute;left:50%;top:-40px;width:min(1100px,100vw);height:520px;transform:translateX(-50%);pointer-events:none;z-index:-1;
+  background:radial-gradient(50% 60% at 50% 30%,var(--g1,rgba(96,165,250,.45)),transparent 70%),radial-gradient(40% 50% at 75% 60%,var(--g2,rgba(45,212,191,.25)),transparent 70%);opacity:.55;filter:blur(20px)}
+.ar .ar-crumb a:last-child{color:var(--k,#5EEAD4)}
+/* covers: the subject inside Bunya, on the topic gradient */
+.ar-scene{position:relative;display:grid;place-items:center;overflow:hidden;border-radius:24px;aspect-ratio:16/9;
+  background:radial-gradient(70% 90% at 15% 10%,var(--g1),transparent 60%),radial-gradient(70% 90% at 90% 100%,var(--g2),transparent 60%),#0E0E10;box-shadow:0 50px 100px -40px rgba(0,0,0,.9),inset 0 0 0 1px rgba(255,255,255,.08)}
+.ar-scene img{display:block;width:86%;height:auto;max-height:84%;object-fit:contain;border-radius:14px;box-shadow:0 40px 80px -30px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.14);transform:translateY(4%)}
+.ar-scene.flat img{width:100%;height:100%;max-height:none;object-fit:cover;border-radius:0;box-shadow:none;transform:none}
+.ar-cover .ar-scene{display:grid}
+.ar-cover img{aspect-ratio:auto}
+/* the question and answer */
+.ar-answer h2.q{margin:8px 0 0;font-size:clamp(21px,2vw,24px);line-height:1.25;letter-spacing:-.02em;color:var(--ar-ink)}
+.ar-answer h2.q + p{margin-top:10px}
+/* key takeaways */
+.ar-take{margin-top:20px;padding:22px 26px;border-radius:20px;background:#fff;box-shadow:0 0 0 1px var(--ar-line)}
+.ar-take .k{display:block;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ar-mute)}
+.ar-take ul{margin-top:6px}
+.ar-take li{margin-top:10px;font-size:17px;line-height:1.5;color:var(--ar-ink)}
+.ar-take li::before{content:"";position:absolute;left:4px;top:.42em;width:16px;height:9px;border-left:2.4px solid var(--ar-teal);border-bottom:2.4px solid var(--ar-teal);border-radius:0;background:none;transform:rotate(-45deg)}
+/* callouts */
+.ar-body .ar-note,.ar-body .ar-example{display:block;margin:28px 0 0;padding:20px 24px;border-radius:18px}
+.ar-body .ar-note{background:#FFF8E6;box-shadow:inset 3px 0 0 #F5A623}
+.ar-body .ar-example{background:#F2F0FA;box-shadow:inset 3px 0 0 #8B7FD6}
+.ar-body .ar-note b,.ar-body .ar-example b{display:block;font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ar-mute)}
+.ar-body .ar-note p,.ar-body .ar-example p{margin-top:8px;font-size:17px}
+.ar-body blockquote{margin:30px 0 0;padding:4px 0 4px 22px;border-left:3px solid var(--ar-teal);font-size:21px;line-height:1.45;color:var(--ar-ink)}
+/* the Bunya card */
+.ar-body .ar-bunya{margin-top:64px;padding:30px 30px 32px;border-radius:28px;color:#D2D2D7;
+  background:radial-gradient(80% 70% at 100% 0%,var(--g1),transparent 60%),radial-gradient(60% 60% at 0% 100%,var(--g2),transparent 60%),#000}
+.ar-body .ar-bunya .k{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#fff}
+.ar-body .ar-bunya .k::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--k,#5EEAD4);box-shadow:0 0 10px var(--k,#5EEAD4)}
+.ar-body .ar-bunya h2{margin-top:12px;color:#fff}
+.ar-body .ar-bunya p{color:#D2D2D7}
+.ar-body .ar-bunya a:not(.sx-btn){color:#67E8F9}
+.ar-body .ar-bunya strong{color:#fff}
+.ar-film{margin:24px 0 0!important}
+.ar-film video,.ar-film img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:16px!important;background:#EEF5F4;box-shadow:0 0 0 1px rgba(255,255,255,.12)!important}
+.ar-bunya-go{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.ar-bunya-go .sx-btn{height:46px;padding:0 22px;font-size:16px;text-decoration:none}
+.ar-bunya-go .sx-btn.ghost{color:#fff!important}
+/* sources list */
+.ar-sources ul{margin-top:10px}
+.ar-sources li{margin-top:6px;padding-left:0;font-size:15px}
+.ar-sources li::before{display:none}
+.ar-sources li span{color:#8E8E93}
+/* cards: the cover is a scene too */
+.ar-card .im.ar-scene,.ar-card span.im{border-radius:0;box-shadow:none}
+.ar-card span.im{display:grid;place-items:center;aspect-ratio:16/10;overflow:hidden;
+  background:radial-gradient(70% 90% at 15% 10%,var(--g1),transparent 60%),radial-gradient(70% 90% at 90% 100%,var(--g2),transparent 60%),#0E0E10}
+.ar-card span.im img{width:84%;height:auto;max-height:80%;object-fit:contain;border-radius:8px;box-shadow:0 20px 40px -18px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.12);transform:translateY(6%)}
+.ar-card span.im.flat img{width:100%;height:100%;max-height:none;object-fit:cover;border-radius:0;box-shadow:none;transform:none}
+.ar-card:hover span.im img{transform:translateY(3%) scale(1.03)}
+.ar-card:hover span.im.flat img{transform:scale(1.04)}
+.ar-card .tp{color:var(--k,#5EEAD4)}
+.ar-card.big span.im{aspect-ratio:auto;min-height:340px}
+.ar-chips button i{display:inline-block;width:8px;height:8px;margin-right:7px;border-radius:50%;background:var(--k,#fff);vertical-align:1px}
+@media (max-width:1000px){.ar-card.big span.im{aspect-ratio:16/10;min-height:0}}
+@media (max-width:620px){.ar-body .ar-bunya{padding:24px 20px 26px;border-radius:22px}.ar-take{padding:18px 20px}.ar-scene{border-radius:18px}}
+/* 11 Nov 2026: an Aynub document that opens in the reader */
+.ar-body .ar-doc{display:grid;grid-template-columns:150px minmax(0,1fr);gap:22px;align-items:center;margin:36px 0 0;padding:20px;border-radius:22px;background:#F7F5F0;box-shadow:0 0 0 1px #E7E2D6}
+.ar-doc .im{padding:0;border:0;background:#fff;cursor:pointer;border-radius:8px;overflow:hidden;box-shadow:0 18px 30px -16px rgba(42,34,48,.55);transition:transform .4s var(--sx-ease)}
+.ar-doc .im:hover{transform:translateY(-4px) rotate(-1deg)}
+.ar-doc .im img{display:block;width:100%;height:auto;aspect-ratio:794/1123;object-fit:cover;object-position:top}
+.ar-doc .k{font-size:12.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#772A53}
+.ar-doc b{display:block;margin-top:6px;font-size:20px;line-height:1.25;color:var(--ar-ink)}
+.ar-doc p{margin:8px 0 0;font-size:16px;line-height:1.5}
+.ar-doc .sx-btn{margin-top:14px;height:42px;padding:0 20px;font-size:15px;background:#2A2230;color:#fff!important}
+@media (max-width:620px){.ar-body .ar-doc{grid-template-columns:96px minmax(0,1fr);gap:14px;padding:14px}.ar-doc b{font-size:17px}}
+
+/* 12 Nov 2026 (Lee): carry the home page's rhythm and polish into Insights and the articles */
+/* Headings break evenly, no single word left on a line */
+.ar-top h1,.ar-top p,.ar-ihero h1,.ar-ihero p,.ar-card b,.ar-body h2,.ar-body h3{text-wrap:balance}
+/* Reading: regular weight, a touch darker and looser, more room between parts */
+.ar-body{font-weight:400;line-height:1.72;color:#2C2C2E}
+.ar-body p{margin-top:20px}
+.ar-body h2{margin-top:clamp(80px,10vh,104px);line-height:1.18}
+.ar-body h2 + p,.ar-body h2 + ul,.ar-body h2 + ol{margin-top:16px}
+.ar-body h3{margin-top:44px}
+.ar-body h3 + p{margin-top:10px}
+.ar-body li{margin-top:14px;line-height:1.65}
+.ar-body figure{margin-top:48px}
+.ar-body table{font-size:16px;line-height:1.55}
+.ar-body th,.ar-body td{padding:16px 18px}
+.ar-toc a{padding:7px 0 7px 14px;font-size:14.5px;line-height:1.4}
+.ar-sources{margin-top:72px}
+/* Cards: the same room as the rest of the site */
+.ar-card .tx{padding:24px 26px 26px}
+.ar-card b{margin-top:12px;line-height:1.28}
+.ar-card .ld{margin-top:12px;line-height:1.6}
+.ar-card .mt{padding-top:20px}
+.ar-cards{gap:22px}
+/* Section rhythm: about 150px between sections, as on the home page */
+.ar-lib{margin-top:clamp(120px,17vh,190px)}
+.ar-more{padding-top:clamp(120px,17vh,190px)}
+.ar-more-h,.ar-lib-h{margin-bottom:32px}
+main > .sx-end{margin-top:clamp(120px,17vh,190px)}
+/* The last card, when it's alone in its row, lies across the full width */
+@media (min-width:901px){
+  .ar-card.wide{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}
+  .ar-card.wide .im{aspect-ratio:auto;min-height:100%}
+  .ar-card.wide .tx{justify-content:center;padding:clamp(28px,3vw,44px)}
+  .ar-card.wide b{font-size:clamp(22px,2.2vw,28px)}
+}
+@media (max-width:640px){ .ar-body table{font-size:14.5px;line-height:1.45} .ar-body th,.ar-body td{padding:12px 10px} }

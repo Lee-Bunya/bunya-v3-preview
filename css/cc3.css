@@ -1,0 +1,167 @@
+/* Command Centre, take 2 (6 Nov 2026). Built straight from Tesla's model page and Apple's product page:
+   - Apple: a sticky section bar that names every part of the page.
+   - Tesla: each screen = one picture, one short headline, a few spec labels, rectangular buttons.
+   Rule for copy: every headline says the point on its own; no paragraphs; captions are three to six words.
+   Classes start t-. Uses the new nav (nav2) and the shared dark footer (footer.js). */
+:root{
+  --t-ink:#06222A; --t-text:#33474B; --t-slate:#5B7173; --t-quiet:#8A9C9E; --t-line:#E2ECEB;
+  --t-grey:#F4F6F6; --t-grey-2:#EAEFEF; --t-teal:#0A7D79; --t-teal-h:#086A67; --t-pulse:#11B8B1;
+  --t-night:#05121A; --t-gold:#F4B528; --t-ease:cubic-bezier(.2,.7,.1,1);
+  --t-top:112px; /* nav 60 + section bar 52 */
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:var(--t-top)}
+body.t{margin:0;padding-top:60px;background:#fff;color:var(--t-text);font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.45;-webkit-font-smoothing:antialiased;overflow-x:clip}
+.t a{color:inherit}
+.t img{display:block;max-width:100%}
+.t h1,.t h2,.t h3{margin:0;color:var(--t-ink);letter-spacing:-.02em}
+.t-wrap{width:min(1200px,calc(100% - 48px));margin:0 auto}
+
+/* Buttons, Tesla style: rectangles, one teal, one light grey */
+.t-btns{display:flex;justify-content:center;flex-wrap:wrap;gap:16px}
+.t-btn{display:inline-flex;align-items:center;justify-content:center;min-width:220px;height:42px;padding:0 24px;border-radius:4px;background:var(--t-teal);
+  color:#fff!important;font-size:15px;font-weight:500;text-decoration:none;transition:background .2s}
+.t-btn:hover{background:var(--t-teal-h)}
+.t-btn.alt{background:rgba(255,255,255,.85);color:var(--t-ink)!important;box-shadow:inset 0 0 0 1px rgba(6,34,42,.08)}
+.t-btn.alt:hover{background:#fff}
+.t-on-dark .t-btn.alt{background:rgba(255,255,255,.12);color:#fff!important;box-shadow:none}
+
+/* Small topic label above every headline, so each section says what it's about */
+.t-label{display:block;margin:0 0 12px;font-size:14px;font-weight:600;letter-spacing:.02em;color:var(--t-teal);text-transform:uppercase}
+.t-on-dark .t-label{color:#7FE0D8}
+
+/* Reveal */
+.t-rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--t-ease),transform .8s var(--t-ease)}
+.t-rv.in{opacity:1;transform:none}
+
+/* ── Apple section bar ───────────────────────────────────────────────────── */
+.t-bar{position:sticky;top:60px;z-index:40;height:52px;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.6) blur(18px);-webkit-backdrop-filter:saturate(1.6) blur(18px);
+  border-bottom:1px solid rgba(6,34,42,.08)}
+.t-bar .t-wrap{height:100%;display:flex;align-items:center;gap:24px}
+.t-bar b{font-size:20px;font-weight:600;color:var(--t-ink);letter-spacing:-.01em;white-space:nowrap}
+.t-bar nav{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.t-bar nav::-webkit-scrollbar{display:none}
+.t-bar nav a{padding:6px 12px;border-radius:4px;font-size:14px;color:var(--t-slate);text-decoration:none;white-space:nowrap;transition:color .2s,background .2s}
+.t-bar nav a:hover{color:var(--t-ink)}
+.t-bar nav a.on{color:var(--t-ink);background:rgba(6,34,42,.06)}
+.t-bar .t-btn{min-width:0;height:30px;padding:0 14px;font-size:13px}
+
+/* ── Hero (Tesla model page) ─────────────────────────────────────────────── */
+.t-hero{position:relative;min-height:calc(100vh - var(--t-top));min-height:calc(100svh - var(--t-top));display:flex;flex-direction:column;align-items:center;
+  padding:clamp(40px,6vh,72px) 0 clamp(32px,5vh,56px);background:linear-gradient(180deg,#FFFFFF 0%,#F2F6F6 60%,#E6EEEE 100%);overflow:hidden;text-align:center}
+.t-hero h1{font-size:clamp(44px,5.6vw,72px);font-weight:500;line-height:1}
+.t-hero .sub{margin:14px 0 0;font-size:clamp(18px,1.6vw,22px);color:var(--t-text)}
+.t-hero-pic{flex:1;display:flex;align-items:center;justify-content:center;width:100%;padding:clamp(20px,3vh,40px) 24px}
+.t-hero-pic img{width:auto;max-width:min(1040px,100%);max-height:max(240px,calc(100vh - 112px - 360px));max-height:max(240px,calc(100svh - 112px - 360px));border-radius:14px;box-shadow:0 2px 4px rgba(4,15,29,.05),0 50px 100px -40px rgba(1,59,67,.45),0 0 0 1px rgba(6,34,42,.06)}
+.t-specs{display:flex;justify-content:center;gap:clamp(24px,5vw,72px);margin:0 0 28px;padding:0 24px}
+.t-spec b{display:block;font-size:clamp(22px,2.2vw,30px);font-weight:500;line-height:1.1;color:var(--t-ink)}
+.t-spec span{display:block;margin-top:4px;font-size:13px;color:var(--t-slate)}
+
+/* ── What you get: four cards ────────────────────────────────────────────── */
+.t-sec{padding:clamp(80px,10vw,128px) 0}
+.t-head{text-align:center;margin-bottom:clamp(40px,5vw,64px)}
+.t-head h2{font-size:clamp(34px,4.4vw,56px);font-weight:600;line-height:1.05}
+.t-head .sub{margin:14px 0 0;font-size:clamp(17px,1.4vw,20px);color:var(--t-slate)}
+.t-get{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.t-card{border-radius:12px;background:var(--t-grey);overflow:hidden;display:flex;flex-direction:column}
+.t-card .pic{aspect-ratio:4/3;overflow:hidden;background:var(--t-grey-2);position:relative}
+.t-card .pic img{width:100%;height:100%;object-fit:cover;object-position:0 0}
+.t-card .pic.icon{display:grid;place-items:center;background:linear-gradient(180deg,#F5FAFA,#E4F1F0)}
+.t-card .pic.icon svg{width:34%;height:auto;fill:none;stroke:var(--t-teal);stroke-width:1.2}
+.t-card .txt{padding:20px 22px 24px}
+.t-card h3{font-size:20px;font-weight:600}
+.t-card p{margin:6px 0 0;font-size:15px;color:var(--t-slate)}
+.t-price-strip{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:16px 28px;margin-top:40px;font-size:17px;color:var(--t-text)}
+.t-price-strip b{font-size:24px;font-weight:600;color:var(--t-ink)}
+
+/* ── What it does: full-screen slides (Tesla) ────────────────────────────── */
+.t-slide{min-height:calc(100vh - var(--t-top));min-height:calc(100svh - var(--t-top));display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:clamp(56px,8vh,96px) 24px;text-align:center;background:var(--t-grey)}
+.t-slide.white{background:#fff}
+.t-slide.dark{background:var(--t-night)}
+.t-slide h2{font-size:clamp(36px,4.6vw,60px);font-weight:600;line-height:1.04}
+.t-slide.dark h2{color:#fff}
+.t-chips{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:20px}
+.t-chips span{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 14px;border-radius:999px;background:#fff;font-size:14px;font-weight:500;color:var(--t-ink);
+  box-shadow:inset 0 0 0 1px rgba(6,34,42,.08)}
+.t-slide.white .t-chips span{background:var(--t-grey);box-shadow:none}
+.t-slide.dark .t-chips span{background:rgba(255,255,255,.08);color:#E6F4F2;box-shadow:none}
+.t-chips span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--t-pulse)}
+.t-slide .pic{margin-top:clamp(28px,4vh,48px);width:min(1080px,100%,max(320px,calc((100vh - 112px - 300px) * 1.6)));border-radius:14px;overflow:hidden;
+  box-shadow:0 2px 4px rgba(4,15,29,.05),0 50px 100px -50px rgba(1,59,67,.45),0 0 0 1px rgba(6,34,42,.06)}
+.t-slide.dark .pic{box-shadow:0 0 0 1px rgba(255,255,255,.08),0 60px 120px -50px rgba(0,0,0,.8)}
+.t-slide .pic img{width:100%;height:auto}
+.t-slide .pic.zoom{aspect-ratio:16/10;position:relative}
+.t-slide .pic.zoom img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.6);transform-origin:4% 26%}
+
+/* ── How it works: three big steps on the one dark stage ─────────────────── */
+.t-how{background:var(--t-night)}
+.t-how .t-head h2{color:#fff}
+.t-how .t-head .sub{color:#9FB4B8}
+.t-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.t-step{border-radius:12px;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);padding:36px 32px 40px;text-align:left}
+.t-step .n{display:block;font-size:clamp(56px,6vw,88px);font-weight:500;line-height:1;color:#2A4650;letter-spacing:-.03em;transition:color .8s}
+.t-step h3{margin-top:22px;font-size:26px;font-weight:600;color:#fff}
+.t-step p{margin:8px 0 0;font-size:16px;color:#9FB4B8}
+.t-how .in .t-step:nth-child(1) .n,.t-how .in .t-step:nth-child(2) .n{color:var(--t-pulse)}
+.t-how .in .t-step:nth-child(2) .n{transition-delay:.5s}
+/* Gold only means a person approved it */
+.t-how .in .t-step.gold .n{color:var(--t-gold);transition-delay:1s}
+.t-step.gold{box-shadow:inset 0 0 0 1px rgba(244,181,40,.25)}
+
+/* ── Pricing: Tesla trim cards ───────────────────────────────────────────── */
+.t-trims{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;max-width:1000px;margin:0 auto}
+.t-trim{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:190px;padding:24px;border-radius:8px;background:#fff;
+  box-shadow:inset 0 0 0 1px rgba(6,34,42,.16);text-decoration:none;transition:box-shadow .2s}
+.t-trim:hover{box-shadow:inset 0 0 0 2px var(--t-ink)}
+.t-trim.pick{box-shadow:inset 0 0 0 2px var(--t-ink)}
+.t-trim b{display:block;font-size:18px;font-weight:600;color:var(--t-ink)}
+.t-trim small{display:block;margin-top:4px;font-size:14px;color:var(--t-slate)}
+.t-trim .p{font-size:30px;font-weight:600;line-height:1;color:var(--t-ink);letter-spacing:-.02em}
+.t-trim .p em{font-style:normal;font-size:14px;font-weight:400;color:var(--t-slate);margin-left:4px;letter-spacing:0}
+.t-trim .tag{position:absolute;top:16px;right:16px;padding:2px 8px;border-radius:4px;background:#E3F4F2;color:var(--t-teal);font-size:12px;font-weight:600}
+.t-incl{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:32px 0 36px}
+.t-incl span{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 14px;border-radius:999px;background:var(--t-grey);font-size:14px;font-weight:500;color:var(--t-ink)}
+.t-incl span::before{content:"";width:12px;height:7px;border-left:2px solid var(--t-teal);border-bottom:2px solid var(--t-teal);transform:rotate(-45deg) translateY(-2px)}
+
+/* ── End (Tesla's last full screen) ──────────────────────────────────────── */
+.t-end{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:96px 24px;text-align:center;
+  background:linear-gradient(180deg,#fff,#E6EEEE)}
+.t-end h2{font-size:clamp(36px,4.6vw,60px);font-weight:600;line-height:1.05}
+
+/* Shared dark footer (markup from js/footer.js) */
+.t footer.site{background:var(--t-night);color:#9FB4B8;padding:64px 0 36px;font-size:14px}
+.t footer.site .container{width:min(1200px,calc(100% - 48px));margin:0 auto}
+.t footer.site .fcols{display:grid;grid-template-columns:1.6fr repeat(4,1fr);gap:32px}
+.t footer.site .logo-img{height:26px;width:auto;filter:brightness(0) invert(1);opacity:.9}
+.t footer.site .tagline{margin:16px 0;max-width:320px;line-height:1.5}
+.t footer.site h4{margin:0 0 14px;font-size:13px;font-weight:600;color:#fff}
+.t footer.site a{display:block;margin:0 0 9px;color:#9FB4B8;text-decoration:none}
+.t footer.site a:hover{color:#fff}
+.t footer.site .fine{grid-column:1/-1;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 24px;margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);font-size:12px;color:#6F8A90}
+
+/* ── Smaller screens ─────────────────────────────────────────────────────── */
+@media (max-width:1000px){
+  .t-get{grid-template-columns:1fr 1fr}
+  .t footer.site .fcols{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  body.t{padding-top:56px}
+  :root{--t-top:108px}
+  .t-bar{top:56px}
+  .t-bar nav{margin-left:0}
+  .t-bar .t-btn{display:none}
+  .t-specs{display:grid;grid-template-columns:1fr 1fr;gap:20px 32px}
+  .t-steps,.t-trims{grid-template-columns:1fr}
+  .t-btn{min-width:0;flex:1 1 200px}
+  .t-slide{min-height:0;padding:72px 20px}
+  .t-trim{min-height:0;gap:18px}
+  .t-bar nav a{padding:6px 8px}
+}
+@media (max-width:560px){
+  .t-get{grid-template-columns:1fr}
+  .t-bar b{display:none}
+  .t footer.site .fcols{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.t-rv{opacity:1;transform:none;transition:none}.t-step .n{transition:none}}

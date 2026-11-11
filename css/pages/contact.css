@@ -1,0 +1,86 @@
+/* ======================================================================
+   12 Contact (2 Oct 2026) — the contact page on the bunya.ai system:
+   hero, three numbered routes on hairlines, the enquiry section with
+   a framed "new message" device, the answers band in Pale Mist.
+   ====================================================================== */
+.hp-skip{position:absolute;left:-999px;top:0;background:var(--focus);color:#fff;padding:10px 14px;z-index:10}
+.hp-skip:focus{left:12px;top:12px}
+main section[id]{scroll-margin-top:96px}
+.ar-crumb{font-family:var(--process);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--grid)}
+.ar-crumb a{color:var(--grid)}.ar-crumb a:hover{color:var(--ink)}
+.ct-hero{border-bottom:0}
+.ct-hero>.wrap{position:relative;padding:clamp(40px,5vw,64px) 0 clamp(48px,6vw,80px)}
+.ct-hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,5vw,80px);align-items:end;margin-top:22px}
+.ct-hero h1{font-size:clamp(40px,5.2vw,72px)}
+.ct-hero-copy p{font-size:17px;line-height:1.6;color:var(--body);max-width:46ch}
+.ct-hero-copy p:first-child{font-size:clamp(19px,1.7vw,22px);color:var(--ink);font-weight:500;line-height:1.5}
+.ct-hero-copy p+p{margin-top:12px}
+
+.ct-routes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(56px,7vw,96px);margin-bottom:clamp(56px,7vw,96px);border-top:1px solid var(--focus)}
+.ct-routes article{display:flex;flex-direction:column;padding:26px clamp(16px,2.5vw,40px) 30px 0;border-bottom:var(--hair)}
+.ct-routes article+article{padding-left:clamp(16px,2.5vw,40px);border-left:var(--hair)}
+.ct-num{font-family:var(--process);font-weight:600;font-size:12px;letter-spacing:.12em;color:var(--grid);margin-bottom:18px}
+.ct-routes h2{font-size:clamp(22px,2.2vw,30px);margin-top:10px;letter-spacing:-.02em}
+.ct-routes article>p:not(.eyebrow){font-size:16px;line-height:1.55;color:var(--body);margin:12px 0 22px;max-width:36ch}
+.ct-route-links{margin-top:auto;display:grid;gap:8px;justify-items:start}
+
+.ct-enquiry{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:start;padding:clamp(56px,7vw,96px) 0}
+.ct-enquiry-copy>p:not(.eyebrow){font-size:17px;line-height:1.6;color:var(--body);margin-top:16px;max-width:44ch}
+.ct-direct{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:22px;font-size:18px;font-weight:600}
+.ct-direct a{color:var(--focus);border-bottom:1px solid rgba(1,59,67,.3)}
+.ct-direct a:hover{color:var(--grid);border-bottom-color:var(--grid)}
+.ct-prep{margin-top:32px;padding:clamp(20px,2.4vw,28px);background:var(--pale);border:var(--hair);border-left:3px solid var(--pulse);border-radius:var(--r-card)}
+.ct-prep h3{font-size:18px}
+.ct-prep ul{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}
+.ct-prep li{position:relative;padding-left:18px;font-size:15.5px;line-height:1.5;color:var(--body)}
+.ct-prep li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;background:var(--grid);transform:rotate(45deg)}
+.ct-prep p{font-size:14px;line-height:1.5;color:var(--grid);margin-top:14px}
+.ct-send{padding:var(--frame-w);position:sticky;top:96px}
+.ct-send-body{background:#fff;border-radius:0 0 calc(var(--r-frame) - 1px) calc(var(--r-frame) - 1px);padding:clamp(20px,2.6vw,36px)}
+.ct-mail{background:var(--pale);border:var(--hair);border-radius:var(--r-card);padding:16px 18px;margin-bottom:24px}
+.ct-mail-row{display:grid;grid-template-columns:64px minmax(0,1fr);gap:10px;align-items:center;padding:8px 0;border-bottom:var(--hair)}
+.ct-mail-row span{font-family:var(--process);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--grid)}
+.ct-mail-row i{display:block;height:10px;width:46%;border-radius:5px;background:rgba(1,59,67,.14)}
+.ct-mail-row b{font-size:14px;color:var(--ink);font-weight:600}
+.ct-mail-lines{padding-top:12px;display:grid;gap:9px}
+.ct-mail-lines span{font-size:14px;color:var(--ink)}
+.ct-mail-lines i{display:block;height:10px;width:var(--w);border-radius:5px;background:rgba(1,59,67,.14)}
+.ct-send h2{font-size:clamp(22px,2.2vw,28px)}
+.ct-send-body>p{font-size:16px;line-height:1.55;color:var(--body);margin:10px 0 20px}
+
+.ct-band{background:var(--pale);padding:clamp(48px,6vw,72px) 0 clamp(56px,7vw,96px)}
+.ct-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px);margin-top:18px;padding:var(--frame-w)}
+.ct-links a{display:block;background:#fff;border:var(--hair);border-radius:var(--r-frame);padding:clamp(20px,2.4vw,28px);color:var(--ink);outline:var(--frame-w) solid #fff;transition:border-color .2s}
+.ct-links a:hover{border-color:var(--grid)}
+.ct-links h2{font-size:20px;letter-spacing:-.01em}
+.ct-links p{font-size:15px;line-height:1.5;color:var(--body);margin-top:8px}
+
+@media(max-width:1000px){
+  .ct-hero-grid{grid-template-columns:1fr;gap:20px;align-items:start}
+  .ct-routes{grid-template-columns:1fr}
+  .ct-routes article,.ct-routes article+article{padding-left:0;border-left:0}
+  .ct-enquiry{grid-template-columns:1fr}
+  .ct-send{position:static}
+  .ct-links{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .ct-hero h1{font-size:clamp(36px,10vw,46px)}
+  .ct-mail-row{grid-template-columns:1fr;gap:4px}
+}
+
+/* ---- v2 additions ---- */
+/* Contact (5 Oct 2026): enquiry form inside Dana's "new message" frame (preview only, never submits). */
+.ct-routes .confirm{display:inline-block;margin-top:16px;font-size:13px}
+.ct-form{display:grid;grid-template-columns:1fr 1fr;gap:16px 18px}
+.ct-wide{grid-column:1/-1}
+.ct-field{display:grid;gap:7px;min-width:0}
+.ct-field label{font-size:15px;font-weight:500;color:var(--ink)}
+.ct-field input,.ct-field select,.ct-field textarea{width:100%;min-height:48px;padding:11px 14px;font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1px solid rgba(1,59,67,.3);border-radius:var(--r-card);appearance:none}
+.ct-field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%230A7D79' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:12px;padding-right:38px}
+.ct-field textarea{min-height:120px;resize:vertical}
+.ct-field input:focus,.ct-field select:focus,.ct-field textarea:focus{outline:2px solid var(--pulse);outline-offset:1px;border-color:var(--focus)}
+.ct-form .button{justify-self:start}
+.ct-form-note{font-size:15px;line-height:1.5;color:var(--focus);padding:12px 14px;background:var(--pale);border:var(--hair);border-left:3px solid var(--pulse);border-radius:var(--r-card)}
+.ct-privacy{font-size:13px;color:var(--grid)}
+.ct-privacy a{color:var(--grid);border-bottom:1px solid rgba(10,125,121,.35)}
+@media(max-width:760px){.ct-form{grid-template-columns:1fr}.ct-form .button{justify-self:stretch}}

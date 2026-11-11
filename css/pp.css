@@ -1,0 +1,146 @@
+/* Product pages (meeting-notes.html, bunya-vault.html, ...), 8 Nov 2026. Built on sx.css; the detail sections reuse the
+   home-page sheet classes from hb.css (hb-d, hb-how, hb-tabs, hb-view, hb-vs, hb-faq, hb-menus). pp- prefix. */
+
+/* Sticky product bar (Apple-style local nav) */
+.pp-local{position:sticky;top:60px;z-index:40;background:rgba(0,0,0,.74);backdrop-filter:saturate(1.8) blur(20px);-webkit-backdrop-filter:saturate(1.8) blur(20px);border-bottom:1px solid rgba(255,255,255,.08)}
+.pp-local .in{width:min(1100px,calc(100% - 48px));margin:0 auto;height:52px;display:flex;align-items:center;gap:24px}
+.pp-local b{font-size:19px;font-weight:600;letter-spacing:-.02em;white-space:nowrap}
+.pp-local .lk{display:flex;gap:22px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.pp-local .lk::-webkit-scrollbar{display:none}
+.pp-local .lk a{font-size:13.5px;color:#C7C7CC;text-decoration:none;white-space:nowrap}
+.pp-local .lk a:hover{color:#fff}
+.sx-btn.sm{height:34px;padding:0 16px;font-size:14px}
+
+/* Hero */
+.pp-hero{position:relative;overflow:hidden;text-align:center;padding:clamp(56px,9vh,104px) 24px 0}
+.pp-hero::before{content:"";position:absolute;left:50%;top:0;width:1100px;height:520px;transform:translateX(-50%);pointer-events:none;
+  background:radial-gradient(closest-side,var(--g2),transparent 75%);opacity:.7;filter:blur(10px)}
+.pp-hero>*{position:relative}
+.pp-hero h1{font-size:clamp(44px,7vw,92px);line-height:1.02;letter-spacing:-.045em}
+.pp-name{display:block;font-size:clamp(20px,2.2vw,28px);letter-spacing:-.02em;color:var(--k);margin-bottom:16px}
+.pp-hero p{max-width:680px;margin:22px auto 0;font-size:clamp(19px,1.8vw,24px);line-height:1.35;color:var(--sx-grey)}
+.pp-hero small{display:block;margin-top:20px;font-size:14px;color:var(--sx-dim)}
+.pp-hero .sx-pill i{background:var(--k);box-shadow:0 0 12px var(--k)}
+
+.pp-wrap{width:min(1100px,calc(100% - 48px));margin:0 auto}
+.pp-shot{margin:clamp(40px,6vh,64px) 0 0}
+.pp-shot img{display:block;width:100%;height:auto;border-radius:22px;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 60px 120px -30px rgba(0,0,0,.9),0 40px 120px -50px var(--g1)}
+.pp .hb-pvis.pp-vis{margin:clamp(40px,6vh,64px) 0 0}
+
+/* Three points */
+.pp-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:clamp(40px,6vh,64px)}
+.pp-points div{border-radius:20px;padding:24px 22px;background:var(--sx-card)}
+.pp-points .n{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--k);color:#000;font-size:14px;font-weight:700}
+.pp-points p{margin:14px 0 0;font-size:17px;line-height:1.4;color:#E8E8ED}
+
+/* Detail sections (sheet classes, page spacing) */
+.pp-detail{padding-bottom:clamp(40px,6vh,72px)}
+.pp .hb-d{padding:clamp(56px,8vh,88px) 0 0;scroll-margin-top:80px}
+.pp h2.hb-dl{margin:0 0 20px;font-size:14px;letter-spacing:.02em;font-weight:600}
+.pp .hb-how .n{box-shadow:0 0 0 6px #000}
+.pp-incl{display:flex;flex-wrap:wrap;gap:8px}
+.pp-incl span{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 16px;border-radius:999px;background:var(--sx-card-2);font-size:15px;color:#fff}
+.pp-incl span::before{content:"";width:10px;height:6px;border-left:2px solid var(--k);border-bottom:2px solid var(--k);transform:rotate(-45deg) translateY(-2px)}
+.pp-pairs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.pp-pairs a{display:flex;flex-direction:column;gap:6px;border-radius:20px;padding:22px;background:var(--sx-card-2);text-decoration:none;box-shadow:inset 0 3px 0 var(--k);transition:transform .3s var(--sx-ease)}
+.pp-pairs a:hover{transform:translateY(-3px)}
+.pp-pairs b{font-size:18px}
+.pp-pairs span{font-size:15px;color:var(--sx-grey)}
+.pp-pairs em{font-style:normal;font-size:13.5px;color:#C7C7CC;margin-top:6px}
+.pp-pairs b::after{content:" ›";color:#67E8F9}
+
+@media (max-width:760px){
+  .pp-local .lk{display:none}
+  .pp-local b{margin-right:auto}
+  .pp-points,.pp-pairs{grid-template-columns:1fr}
+}
+
+/* Feature films shared with the configurator (9 Nov) */
+.pp-film video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:22px;background:#EEF5F4;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 60px 120px -30px rgba(0,0,0,.9),0 40px 120px -50px var(--g1)}
+
+/* Advice Engine features (10 Nov): one row per feature, words beside its film */
+.pp-lead{max-width:720px;margin:0 0 8px;font-size:18px;line-height:1.45;color:var(--sx-grey)}
+.pp-feat{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(20px,4vw,48px);align-items:center;padding:clamp(28px,5vh,48px) 0;border-top:1px solid var(--sx-line);scroll-margin-top:80px}
+.pp-feat:first-of-type{border-top:0}
+.pp-fk{font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#93C5FD}
+.pp-feat h3{margin:8px 0 0;font-size:clamp(26px,3vw,36px);line-height:1.08;letter-spacing:-.03em}
+.pp-feat h3 em{font-style:normal;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;background:rgba(255,255,255,.12);color:#D1D1D6;vertical-align:middle;letter-spacing:0}
+.pp-feat p{margin:12px 0 0;font-size:17px;line-height:1.5;color:#D2D2D7}
+.pp-feat .pp-fn{font-size:14px;color:var(--sx-grey)}
+.pp-fp{display:block;margin-top:16px;font-size:20px;font-weight:600;color:#93C5FD}.pp-fp small{font-size:14px;font-weight:400;color:var(--sx-grey)}
+.pp-feat figure{margin:0}
+.pp-feat .pp-film video,.pp-feat .pp-still img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:18px;background:#EEF5F4;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 40px 80px -30px rgba(0,0,0,.9)}
+.pick{font-style:normal;display:inline-flex;align-items:center;height:20px;padding:0 9px;border-radius:999px;background:#11B8B1;color:#fff;font-size:11px;font-weight:600;letter-spacing:.02em;vertical-align:middle}
+.pp-all{margin-top:clamp(28px,5vh,48px);border-radius:24px;padding:clamp(24px,4vw,40px);background:linear-gradient(150deg,rgba(17,184,177,.22),rgba(96,165,250,.12));box-shadow:inset 0 0 0 1px rgba(94,234,212,.4);text-align:center}
+.pp-all b{display:block;margin-top:12px;font-size:clamp(24px,3vw,34px);line-height:1.1;letter-spacing:-.03em}
+.pp-all p{max-width:620px;margin:12px auto 0;font-size:17px;color:#D2D2D7}
+@media (max-width:860px){.pp-feat{grid-template-columns:1fr}.pp-feat figure{order:-1}}
+
+/* 10 Nov 2026: tick as you go on the product pages ("Add to your Bunya"; the list is in js/nav3.js) */
+.pp-tk{gap:8px}
+.pp-tk svg{width:16px;height:16px}
+.pp-tk.on{color:var(--k,#5EEAD4)!important;box-shadow:inset 0 0 0 1.5px var(--k,#5EEAD4)}
+.pp-tk.solid{background:#fff;color:#000!important;box-shadow:none}
+.pp-tk.solid.on{background:#5EEAD4;color:#000!important}
+.pp-fa{display:flex;align-items:center;flex-wrap:wrap;gap:12px 16px;margin-top:16px}
+.pp-fa .pp-fp{margin-top:0}
+.pp-feat .pp-tk.sm.on{color:#93C5FD!important;box-shadow:inset 0 0 0 1.5px #93C5FD}
+
+/* 10 Nov 2026: "Works inside your Microsoft 365" under the hero price (the apps each product uses; names only) */
+.pp-hero .pp-ms{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;max-width:none;margin:18px auto 0;font-size:14px;color:var(--sx-grey)}
+.pp-ms span{margin-right:4px}
+.pp-ms i{font-style:normal;font-size:13.5px;font-weight:500;color:#F5F5F7;padding:5px 13px;border-radius:999px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+
+/* 10 Nov 2026: Advice Engine feature pages, and the links to them */
+.pp-more{font-size:15px;color:#93C5FD;text-decoration:none}
+.pp-more::after{content:" \203A"}
+.pp-more:hover{text-decoration:underline;text-underline-offset:3px}
+.pp-pairs a b small{font-size:11px;font-weight:600;padding:2px 7px;border-radius:999px;background:rgba(255,255,255,.12);color:#D1D1D6;vertical-align:middle;margin-left:4px}
+
+/* 10 Nov 2026: the Aynub Financial worked example on Make it yours */
+.pp-show-h{margin:6px 0 0;font-size:clamp(28px,3.4vw,44px);line-height:1.05;letter-spacing:-.035em}
+.pp-kit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:16px;margin-top:28px;padding:16px;border-radius:24px;background:#F7F5F0;color:#2A2230}
+.pp-kit .lg{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:14px;padding:clamp(18px,3vw,32px);border-radius:16px;background:#fff}
+.pp-kit .lg img{display:block;width:min(260px,100%);height:auto}
+.pp-kit .lg span{font-size:15px;color:#5E5260}
+.pp-kit .sw{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;align-items:stretch}
+.pp-kit .sw span{display:flex;flex-direction:column;justify-content:flex-end;min-height:120px;padding:10px;border-radius:14px;background:var(--c);box-shadow:inset 0 0 0 1px rgba(42,34,48,.08)}
+.pp-kit .sw b{font-size:14px;color:#fff}
+.pp-kit .sw small{font-size:11.5px;color:rgba(255,255,255,.8)}
+.pp-kit .sw span[style*="F7F5F0"] b,.pp-kit .sw span[style*="F7F5F0"] small{color:#2A2230}
+.pp-kit .ty{grid-column:1/-1;margin:0;padding:2px 6px;font-size:14.5px;color:#5E5260}
+.pp-docs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-flow:dense;gap:18px;margin-top:22px}
+.pp-doc{display:flex;flex-direction:column;color:inherit;text-decoration:none}
+.pp-doc.l{grid-column:span 2}
+.pp-doc .im{display:block;overflow:hidden;border-radius:12px;background:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.1),0 30px 60px -30px rgba(0,0,0,.9);transition:transform .45s var(--sx-ease)}
+.pp-doc:hover .im{transform:translateY(-4px)}
+.pp-doc img{display:block;width:100%;height:auto}
+.pp-doc.p img{aspect-ratio:794/1123;object-fit:cover;object-position:top}
+.pp-doc.l img{aspect-ratio:1552/873;object-fit:cover}
+.pp-doc b{margin-top:10px;font-size:15px;font-weight:500}
+.pp-doc small{font-size:13px;color:var(--sx-grey)}
+.pp-show-note{margin:22px 0 0;font-size:13px;color:var(--sx-dim)}
+@media (max-width:860px){.pp-kit{grid-template-columns:1fr}.pp-docs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.pp-kit .sw{grid-template-columns:repeat(3,minmax(0,1fr))}.pp-kit .sw span{min-height:84px}}
+.pp-show-note .pp-more{color:#67E8F9;font-size:14px}
+
+/* 10 Nov 2026: Aynub covers in a row; each opens the reader (css/reader.css) */
+.pp-covers{display:flex;gap:18px;margin:26px calc(-1 * clamp(0px,2vw,0px)) 0;padding:6px 2px 18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.pp-cover{flex:0 0 clamp(160px,17vw,200px);scroll-snap-align:start;display:flex;flex-direction:column;align-items:flex-start;padding:0;border:0;background:none;color:#fff;font:inherit;text-align:left;cursor:pointer}
+.pp-cover .im{display:grid;place-items:center;width:100%;aspect-ratio:794/1123;overflow:hidden;border-radius:10px;background:#EFEBE1;box-shadow:0 0 0 1px rgba(255,255,255,.1),0 30px 50px -24px rgba(0,0,0,.9);transition:transform .45s var(--sx-ease),box-shadow .3s}
+.pp-cover img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.pp-cover.k-annual img,.pp-cover.k-portfolio img,.pp-cover.k-sustainable img{width:92%;height:auto;object-fit:contain;box-shadow:0 10px 24px -10px rgba(42,34,48,.45);border-radius:3px}
+.pp-cover:hover .im,.pp-cover:focus-visible .im{transform:translateY(-6px) rotate(-1deg);box-shadow:0 0 0 1.5px #A5B4FC,0 40px 60px -24px rgba(0,0,0,.9)}
+.pp-cover:focus-visible{outline:none}
+.pp-cover b{margin-top:12px;font-size:15px;font-weight:500;line-height:1.25}
+.pp-cover small{margin-top:2px;font-size:13px;color:var(--sx-grey)}
+.pp-cover em{margin-top:6px;font-style:normal;font-size:13.5px;font-weight:500;color:#67E8F9}
+.pp-cover em::after{content:" \203A"}
+button.pp-doc{padding:0;border:0;background:none;color:#fff;font:inherit;text-align:left;cursor:pointer}
+@media (min-width:900px){.pp-covers{overflow:visible;gap:14px}.pp-cover{flex:1 1 0;min-width:0}}
+@media (max-width:899px){.pp-covers{scrollbar-width:none}.pp-covers::-webkit-scrollbar{display:none}}
+.hb-works-line a{color:#67E8F9;text-decoration:none}.hb-works-line a::after{content:" \203A"}
+
+/* 11 Nov 2026 (Lee): the curved coloured top edge is retired; a short straight tab instead, as on the landing pages. */
+.pp-pairs a{position:relative;box-shadow:none}
+.pp-pairs a::before{content:"";position:absolute;top:0;left:22px;width:28px;height:3px;border-radius:0 0 3px 3px;background:var(--k)}

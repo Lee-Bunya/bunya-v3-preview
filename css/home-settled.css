@@ -1,0 +1,60 @@
+/* Concept 3, "From scattered to settled" (home-settled.html). Classes start st-. --x (0–100%) is where the divider sits. */
+.st-hero{padding:0 0 clamp(36px,5vw,64px);background:#fff;margin-top:-56px}
+.st-frame{position:relative;height:100vh;min-height:620px;overflow:hidden;background:#04161D;user-select:none;-webkit-user-select:none;touch-action:pan-y;cursor:ew-resize}
+.st-calm,.st-mess{position:absolute;inset:0}
+/* The calm side */
+.st-calm{display:flex;align-items:flex-start;justify-content:center;padding-top:clamp(300px,37vh,340px);background:radial-gradient(70% 70% at 60% 55%,#0E5A5E 0%,#04202A 60%,#02101A 100%)}
+.st-calm-glow{position:absolute;left:50%;top:62%;width:70%;height:50%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(17,184,177,.35),rgba(17,184,177,0));pointer-events:none}
+.st-window{position:relative;margin:0;width:min(820px,60%,calc((100vh - 420px) * 1.6));border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 60px 120px -30px rgba(0,0,0,.65)}
+.st-bar{display:flex;gap:7px;padding:11px 15px;background:#F3F6F5;border-bottom:1px solid #E4ECEA}
+.st-bar i{width:10px;height:10px;border-radius:50%;background:#D5E0DE}
+.st-window img{display:block;width:100%;height:auto}
+/* The messy side, clipped at the divider */
+.st-mess{clip-path:inset(0 calc(100% - var(--x)) 0 0)}
+.st-mess img{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.75) contrast(.95) brightness(.82)}
+.st-mess::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,10,16,.55) 0%,rgba(2,10,16,.1) 40%,rgba(2,10,16,.35) 100%)}
+.st-tag{position:absolute;z-index:2;bottom:clamp(24px,5vh,48px);margin:0;display:flex;flex-direction:column;gap:4px;padding:14px 18px;border-radius:16px;
+  background:rgba(4,22,29,.6);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:#fff;border:1px solid rgba(255,255,255,.12)}
+.st-tag b{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#FFD48A}
+.st-tag span{font-size:16px;font-weight:600;letter-spacing:-.01em}
+.st-tag-l{left:clamp(20px,4vw,56px)}
+.st-tag-r{right:clamp(20px,4vw,56px)}
+.st-tag-r b{color:#7FE0D8}
+/* The divider */
+.st-handle{position:absolute;z-index:3;top:0;bottom:0;left:var(--x);width:2px;margin-left:-1px;background:linear-gradient(180deg,rgba(127,224,216,0),#7FE0D8 20%,#7FE0D8 80%,rgba(127,224,216,0));
+  box-shadow:0 0 22px rgba(127,224,216,.8);outline:none}
+.st-grip{position:absolute;left:50%;top:58%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(255,255,255,.95);color:#04161D;font-size:18px;font-weight:700;letter-spacing:4px;box-shadow:0 10px 30px rgba(0,0,0,.4),0 0 0 6px rgba(127,224,216,.25);transition:transform .2s}
+.st-handle:hover .st-grip,.st-handle:focus-visible .st-grip,.st-dragging .st-grip{transform:scale(1.1)}
+.st-hint .st-handle,.st-hint .st-mess{transition:left 1.6s cubic-bezier(.2,.7,.1,1),clip-path 1.6s cubic-bezier(.2,.7,.1,1)}
+/* Headline over both sides */
+.st-copy{position:absolute;z-index:2;left:0;right:0;top:calc(56px + clamp(30px,5vh,56px));text-align:center;padding:0 22px;pointer-events:none;color:#fff;text-shadow:0 2px 30px rgba(0,0,0,.5)}
+.st-eye{margin:0 0 10px;font-size:clamp(16px,1.5vw,19px);font-weight:600;color:#7FE0D8}
+.st-copy h1{margin:0;font-size:clamp(46px,7vw,96px);font-weight:700;letter-spacing:-.05em;line-height:.95;color:#fff}
+.st-copy h1 span{background:linear-gradient(100deg,#9FF2EA,#11B8B1 50%,#F4D27A);-webkit-background-clip:text;background-clip:text;color:transparent}
+.st-sub{margin:16px auto 0;max-width:620px;font-size:clamp(17px,1.6vw,21px);line-height:1.4;color:rgba(255,255,255,.82);font-weight:500}
+.st-ctas{display:flex;justify-content:center;align-items:center;gap:28px;flex-wrap:wrap;margin:clamp(28px,4vw,44px) 0 0}
+
+/* What changes: each row strikes through as it settles (class .on from home-settled.js) */
+.st-pairs{padding:clamp(90px,11vw,150px) 0}
+.st-list{list-style:none;margin:clamp(36px,4vw,56px) 0 0;padding:0}
+.st-row{display:grid;grid-template-columns:minmax(0,1fr) 60px minmax(0,1fr);align-items:center;gap:20px;padding:clamp(20px,2.4vw,30px) 0;border-top:1px solid #E1EAE8}
+.st-row:last-child{border-bottom:1px solid #E1EAE8}
+.st-row .was{position:relative;font-size:clamp(20px,2.2vw,30px);font-weight:600;letter-spacing:-.02em;color:#8A9C9E;width:max-content;max-width:100%}
+.st-row .was::after{content:"";position:absolute;left:0;top:52%;height:2px;width:0;background:#E07A5F;transition:width .7s cubic-bezier(.2,.7,.1,1)}
+.st-row .arrow{font-size:26px;color:#C9D6D4;text-align:center;transition:color .5s,transform .5s}
+.st-row .now{font-size:clamp(20px,2.2vw,30px);font-weight:700;letter-spacing:-.025em;color:#06222A;opacity:.25;transform:translateX(-12px);transition:opacity .6s ease .25s,transform .6s ease .25s}
+.st-row.on .was::after{width:100%}
+.st-row.on .arrow{color:#0A7D79;transform:translateX(4px)}
+.st-row.on .now{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .st-frame{height:78vh;min-height:520px}
+  .st-calm{padding-top:250px}.st-window{width:90%}
+  .st-copy h1{font-size:36px}.st-sub{font-size:15px;margin-top:10px}
+  .st-tag span{display:none}.st-tag{padding:8px 12px}
+  .st-tag{bottom:16px;padding:10px 12px}.st-tag span{font-size:13px}.st-tag b{font-size:11px}
+  .st-tag-r{right:12px}.st-tag-l{left:12px}
+  .st-row{grid-template-columns:1fr;gap:6px}.st-row .arrow{display:none}
+}
+@media (prefers-reduced-motion:reduce){.st-row .was::after,.st-row .now,.st-row .arrow,.st-hint .st-handle,.st-hint .st-mess{transition:none}}

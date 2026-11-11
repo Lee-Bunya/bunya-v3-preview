@@ -1,0 +1,94 @@
+/* ======================================================================
+   15 Cost & capacity calculator (3 Oct 2026) — on the bunya.ai system:
+   hero, the scenario form in a white frame beside a sticky Focus Green
+   results panel, the method in two columns, closing.
+   ====================================================================== */
+.hp-skip{position:absolute;left:-999px;top:0;background:var(--focus);color:#fff;padding:10px 14px;z-index:10}
+.hp-skip:focus{left:12px;top:12px}
+main section[id]{scroll-margin-top:96px}
+.ar-crumb{font-family:var(--process);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--grid)}
+.ar-crumb a{color:var(--grid)}.ar-crumb a:hover{color:var(--ink)}
+.cl-hero{border-bottom:0}
+.cl-hero>.wrap{position:relative;padding:clamp(40px,5vw,64px) 0 clamp(40px,5vw,64px)}
+.cl-hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,5vw,80px);align-items:end;margin-top:22px}
+.cl-hero h1{font-size:clamp(40px,5.2vw,72px)}
+.cl-hero-copy p{font-size:17px;line-height:1.6;color:var(--body);max-width:46ch}
+.cl-hero-copy p:first-child{font-size:clamp(19px,1.7vw,22px);color:var(--ink);font-weight:500;line-height:1.5}
+.cl-hero-copy p+p{margin-top:12px}
+.cl-note{font-family:var(--process);font-size:12px;letter-spacing:.06em;line-height:1.5;color:var(--grid)}
+.cl-hero-copy .cl-note{margin-top:16px;max-width:none}
+
+.cl-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,56px);align-items:start;padding:clamp(48px,6vw,80px) 0 clamp(56px,7vw,96px)}
+.cl-form-wrap{padding:var(--frame-w);min-width:0}
+.cl-form-body{background:#fff;border-radius:0 0 calc(var(--r-frame) - 1px) calc(var(--r-frame) - 1px);padding:clamp(22px,3vw,40px)}
+.cl-controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.cl-controls button{font-family:var(--process);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--focus);background:var(--pale);border:1px solid rgba(1,59,67,.22);border-radius:var(--r-card);padding:9px 14px;min-height:40px;cursor:pointer}
+.cl-controls button:hover{border-color:var(--focus)}
+.cl-controls button:focus-visible{outline:2px solid var(--pulse);outline-offset:2px}
+.cl-form-body fieldset{border:0;margin:0;padding:clamp(22px,2.6vw,30px) 0 clamp(14px,2vw,20px);border-top:1px solid var(--focus);min-width:0}
+.cl-form-body fieldset:first-of-type{margin-top:14px}
+.cl-form-body legend{padding:0;float:left;width:100%;margin-bottom:14px;font-size:clamp(21px,2vw,26px);font-weight:700;letter-spacing:-.02em;color:var(--ink);line-height:1.15}
+.cl-form-body legend span{display:block;font-family:var(--process);font-weight:600;font-size:12px;letter-spacing:.12em;color:var(--grid);margin-bottom:8px}
+.cl-form-body fieldset>p{clear:both;font-size:15px;line-height:1.5;color:var(--body);margin-bottom:18px}
+.cl-field{clear:both;display:grid;gap:6px;margin-top:16px}
+.cl-field label{font-size:15px;color:var(--ink);font-weight:500}
+.cl-field input,.cl-field select{width:100%;min-height:48px;padding:11px 14px;font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1px solid rgba(1,59,67,.3);border-radius:10px;appearance:none}
+.cl-field select{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%230A7D79' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'><path d='M2 4l4 4 4-4'/></svg>");background-repeat:no-repeat;background-position:right 14px center;background-size:12px;padding-right:38px}
+.cl-field input:focus,.cl-field select:focus{outline:2px solid var(--pulse);outline-offset:1px;border-color:var(--focus)}
+.cl-field small{font-size:13px;line-height:1.45;color:var(--grid)}
+.cl-form-body>form>.cl-note{margin:22px 0 18px;padding-top:18px;border-top:1px solid var(--focus)}
+.cl-form-body .button{min-height:48px;padding:0 24px;font-size:16px}
+.cl-form-body noscript p{font-size:14px;color:var(--grid);margin-top:12px}
+
+.cl-results{position:sticky;top:96px;background:var(--focus);color:#fff;border-radius:var(--r-frame);padding:clamp(24px,3vw,40px)}
+.cl-results .eyebrow{color:var(--pulse)}
+.cl-results h2{font-size:clamp(24px,2.4vw,32px);color:#fff;margin-top:8px}
+#status{font-family:var(--process);font-size:12px;letter-spacing:.06em;line-height:1.5;color:var(--mist);margin-top:14px;padding:10px 12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:var(--r-card)}
+#results{margin-top:18px}
+#results[hidden]{display:none}
+.cl-result{padding:18px 0;border-top:1px solid rgba(255,255,255,.22)}
+.cl-result span{display:block;font-family:var(--process);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--pulse)}
+.cl-result strong{display:block;font-size:clamp(34px,3.6vw,52px);line-height:1;letter-spacing:-.02em;color:#fff;margin:10px 0 8px;font-variant-numeric:tabular-nums}
+.cl-result small{font-size:13.5px;color:var(--mist);line-height:1.45}
+#results dl{margin:0;padding:6px 0 4px;border-top:1px solid rgba(255,255,255,.22)}
+#results dl div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+#results dt{font-size:14px;color:var(--mist)}
+#results dd{margin:0;font-size:16px;font-weight:600;color:#fff;font-variant-numeric:tabular-nums;white-space:nowrap}
+#payback{margin-top:12px;color:var(--mist)}
+.cl-capacity{margin-top:14px;border-top:1px solid rgba(255,255,255,.22)}
+.cl-capacity strong{color:var(--signal)}
+#results>.cl-note:last-child{margin-top:10px;color:var(--mist)}
+.cl-method-link{display:inline-block;margin-top:20px;color:#fff;border-bottom:1px solid rgba(255,255,255,.4)}
+.cl-method-link:hover{color:var(--pulse);border-bottom-color:var(--pulse)}
+
+.cl-method-section{padding:clamp(56px,7vw,96px) 0}
+.cl-method-head h2{font-size:clamp(30px,3.6vw,52px);margin-top:8px}
+.cl-method{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(28px,4vw,64px);margin-top:clamp(28px,4vw,44px);border-top:1px solid var(--focus)}
+.cl-method article{padding:26px 0 30px;border-bottom:var(--hair)}
+.cl-m-num{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--pale);border:1px solid rgba(1,59,67,.22);font-family:var(--process);font-weight:600;font-size:12px;letter-spacing:.1em;color:var(--focus);margin-bottom:14px}
+.cl-method h3{font-size:22px;letter-spacing:-.01em}
+.cl-method p{font-size:16px;line-height:1.6;color:var(--body);margin-top:12px}
+
+.cl-closing{display:block;text-align:left;padding:clamp(44px,5.5vw,72px) clamp(24px,5vw,64px)}
+.cl-closing-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,72px);align-items:center}
+.cl-closing h2{font-size:clamp(34px,3.8vw,54px)}
+.cl-closing-grid>div>p{font-size:17px;line-height:1.55;color:rgba(255,255,255,.85);max-width:40ch}
+.cl-closing .actions{justify-content:flex-start;margin-top:22px}
+
+@media(max-width:1000px){
+  .cl-hero-grid{grid-template-columns:1fr;gap:20px;align-items:start}
+  .cl-layout{grid-template-columns:1fr;gap:28px}
+  .cl-results{position:static}
+  .cl-method,.cl-closing-grid{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .cl-hero h1{font-size:clamp(36px,10vw,46px)}
+  .cl-form-body{padding:20px 18px}
+  .cl-form-body .button{width:100%;justify-content:center}
+  #results dl div{flex-direction:column;align-items:flex-start;gap:4px}
+  .cl-closing{padding:36px 22px}
+}
+
+/* ---- v2 additions ---- */
+/* Scenario disclaimer under the method */
+.cl-method-section .cl-disclaimer{margin-top:24px;max-width:72ch}

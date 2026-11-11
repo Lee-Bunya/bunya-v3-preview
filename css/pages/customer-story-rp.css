@@ -1,0 +1,99 @@
+/* ======================================================================
+   18 Case study · Regional Prosperity (3 Oct 2026) — the published
+   customer story on the bunya.ai system: hero with the team photograph
+   full width, story at a glance with the client logo and summary,
+   sticky six-section rail, the story with pull quotes, award photo,
+   before/with workflow, featured quote with portrait, evidence note
+   and sources; keep exploring; closing.
+   ====================================================================== */
+main section[id]{scroll-margin-top:96px}
+.ar-crumb{font-family:var(--process);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--grid)}
+.ar-crumb a{color:var(--grid)}.ar-crumb a:hover{color:var(--ink)}
+.rp-hero{border-bottom:0}
+.rp-hero>.wrap{position:relative;padding:clamp(40px,5vw,64px) 0 clamp(40px,5vw,64px)}
+.rp-hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,5vw,80px);align-items:end;margin-top:22px}
+.rp-hero h1{font-size:clamp(36px,4.6vw,62px)}
+.rp-hero-aside .lead{margin-top:0;max-width:32em}
+.rp-byline{font-family:var(--process);font-size:12px;letter-spacing:.06em;line-height:1.5;color:var(--grid);margin-top:16px}
+.rp-team{margin:clamp(32px,4vw,48px) 0 0;padding:var(--frame-w)}
+.rp-team img{display:block;width:100%;height:auto;border-radius:0 0 calc(var(--r-frame) - 1px) calc(var(--r-frame) - 1px)}
+.rp-team figcaption{font-family:var(--process);font-size:12px;letter-spacing:.06em;color:var(--grid);margin-top:14px}
+
+.rp-overview{padding:clamp(56px,7vw,96px) 0}
+.rp-overview-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,80px);align-items:start}
+.rp-client-logo{width:150px;height:auto;display:block;margin-bottom:22px}
+.rp-overview h2{font-size:clamp(30px,3.4vw,48px);margin-top:8px}
+.rp-overview-copy>p:not(.eyebrow){font-size:17px;line-height:1.6;color:var(--body);margin-top:18px;max-width:52ch}
+.rp-summary{margin:0;display:grid;border-top:1px solid var(--focus)}
+.rp-summary div{padding:18px 0 20px;border-bottom:var(--hair)}
+.rp-summary dt{font-family:var(--process);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--grid)}
+.rp-summary dd{margin:6px 0 0;font-size:18px;font-weight:600;color:var(--ink);line-height:1.3}
+.rp-summary dd span{display:block;font-size:14.5px;font-weight:400;color:var(--body);margin-top:4px}
+
+.rp-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:clamp(32px,5vw,88px);align-items:start;padding:clamp(56px,7vw,88px) 0 clamp(56px,7vw,96px)}
+.rp-rail{position:sticky;top:96px}
+.rp-rail h2{font-size:clamp(26px,2.6vw,34px);margin-top:8px}
+.rp-path ol{list-style:none;margin:22px 0 0;padding:0;border-top:1px solid var(--focus)}
+.rp-path a{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:center;padding:12px 0;border-bottom:var(--hair);color:var(--ink);font-size:15px;font-weight:600}
+.rp-path a span{font-family:var(--process);font-size:12px;letter-spacing:.12em;color:var(--grid)}
+.rp-path a:hover{color:var(--grid)}
+.rp-rail .text-link{display:inline-block;margin-top:22px}
+.cs-story{max-width:72ch;min-width:0}
+.cs-sec{padding:clamp(28px,3.4vw,44px) 0;border-top:1px solid var(--focus)}
+.cs-sec:first-child{padding-top:0;border-top:0}
+.cs-sec h2{font-size:clamp(26px,2.8vw,38px);margin-top:8px;letter-spacing:-.02em;text-wrap:balance}
+
+.cs-p,.rp-source p{font-size:17px;line-height:1.65;color:var(--body);margin-top:14px}
+.cs-p a,.rp-source a{color:var(--grid);font-weight:600;border-bottom:1px solid rgba(10,125,121,.35)}
+.cs-p a:hover,.rp-source a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.rp-quote{margin:26px 0 0;padding:22px 0 22px 24px;border-left:3px solid var(--pulse)}
+.rp-quote blockquote{margin:0;font-size:clamp(20px,1.9vw,25px);line-height:1.35;letter-spacing:-.01em;color:var(--ink);font-weight:500;text-wrap:pretty}
+.rp-quote figcaption{font-family:var(--process);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--grid);margin-top:12px}
+.rp-quote-feature{padding:clamp(24px,3vw,36px);border:0;background:var(--focus);border-radius:var(--r-card)}
+.rp-quote-feature blockquote{color:#fff;font-size:clamp(22px,2.2vw,30px)}
+.rp-quote .rp-quote-person{display:flex;align-items:center;gap:16px;margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.22);text-transform:none;letter-spacing:0;font-family:var(--brand);font-size:14px;line-height:1.45;color:var(--mist)}
+.rp-quote .rp-quote-person img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex:none}
+.rp-quote .rp-quote-person strong{color:#fff;font-size:16px}
+.rp-award-photo{margin:26px 0 0;padding:var(--frame-w)}
+.rp-award-photo a{display:block;outline:var(--frame-w) solid #fff;border:var(--hair);border-radius:var(--r-frame);overflow:hidden}
+.rp-award-photo img{display:block;width:100%;height:auto}
+.rp-award-photo figcaption{display:grid;gap:2px;margin-top:14px;font-size:14px;color:var(--body)}
+.rp-award-photo figcaption span{font-family:var(--process);font-weight:600;font-size:11px;letter-spacing:.12em;color:var(--grid)}
+.rp-award-photo figcaption strong{font-size:16px;color:var(--ink)}
+.rp-workflow{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.rp-workflow>div{padding:20px 22px;border:var(--hair);border-radius:var(--r-card);background:var(--pale)}
+.rp-workflow>div+div{background:#fff;border-color:var(--grid)}
+.rp-workflow span{font-family:var(--process);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--grid)}
+.rp-workflow h3{font-size:19px;margin-top:10px;line-height:1.25}
+.rp-workflow p{font-size:15px;line-height:1.5;color:var(--body);margin-top:8px}
+.rp-evidence{margin-top:24px;padding:16px 18px;background:var(--pale);border:var(--hair);border-left:3px solid var(--signal);border-radius:var(--r-card);font-size:15px;line-height:1.55;color:var(--body)}
+.rp-evidence strong{color:var(--ink)}
+.rp-source h2{font-size:22px}
+.rp-source p{font-size:15px;color:var(--grid)}
+
+.rp-more{display:flex;justify-content:space-between;align-items:center;gap:16px 32px;flex-wrap:wrap;padding:clamp(32px,4vw,48px) 0}
+.rp-more h2{font-size:clamp(24px,2.4vw,32px);margin-top:6px}
+
+.rp-closing{display:block;text-align:left;padding:clamp(44px,5.5vw,72px) clamp(24px,5vw,64px)}
+.rp-closing-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,72px);align-items:center}
+.rp-closing h2{font-size:clamp(34px,3.8vw,54px)}
+.rp-closing-grid>div>p{font-size:17px;line-height:1.55;color:rgba(255,255,255,.85);max-width:40ch}
+.rp-closing .actions{justify-content:flex-start;margin-top:22px}
+
+@media(max-width:1000px){
+  .rp-hero-grid,.rp-overview-grid,.rp-closing-grid{grid-template-columns:1fr;gap:20px;align-items:start}
+  .rp-layout{grid-template-columns:1fr;gap:32px}
+  .rp-rail{position:static}
+  .rp-path ol{display:grid;grid-template-columns:1fr 1fr;gap:8px;border-top:0}
+  .rp-path a{padding:10px 12px;border:var(--hair);border-radius:var(--r-card);background:var(--pale)}
+}
+@media(max-width:760px){
+  .rp-hero h1{font-size:clamp(32px,9vw,42px)}
+  .rp-path ol{grid-template-columns:1fr}
+  .rp-workflow{grid-template-columns:1fr}
+  .rp-quote{padding-left:18px}
+  .rp-closing{padding:36px 22px}
+}
+
+/* ---- v2 additions ---- */
+.rp-more-links{display:flex;gap:12px 24px;flex-wrap:wrap}

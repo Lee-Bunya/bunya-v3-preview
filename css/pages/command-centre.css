@@ -1,0 +1,198 @@
+/* ======================================================================
+   02 Command Centre (2 Oct 2026) — product page on the bunya.ai system.
+   Shares site.css and the framed system with 01; its own hierarchy:
+   editorial hero over a full-width stage, record-family map, working-day
+   tabs, client-record timeline, advice-journey, AI, connected tools,
+   ownership, closing. No shadows; white mounts with Mist hairlines.
+   ====================================================================== */
+
+/* ---- hero: copy across the top, the product full width beneath ---- */
+.cc-hero{border-bottom:0}
+.cc-hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,80px);align-items:end;padding:clamp(56px,6vw,96px) 0 clamp(32px,4vw,48px)}
+.cc-hero h1{font-size:clamp(44px,5.4vw,76px)}
+.cc-hero-aside .lead{margin-top:0;max-width:30em}
+.cc-hero-aside .hero-note{margin-top:18px}
+.cc-index{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-top:1px solid var(--focus);margin-bottom:clamp(40px,5vw,64px)}
+.cc-index a{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:baseline;padding:18px clamp(12px,1.5vw,24px) 20px 0;border-bottom:var(--hair);color:var(--ink)}
+.cc-index a+a{padding-left:clamp(12px,1.5vw,24px);border-left:var(--hair)}
+.cc-index a:hover strong{color:var(--grid)}
+.cc-index span{font-family:var(--process);font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--grid)}
+.cc-index strong{font-size:16px;font-weight:600;line-height:1.25}
+main section[id]{scroll-margin-top:96px}
+
+/* ---- what it is ---- */
+.cc-define{padding:clamp(64px,7vw,104px) 0 clamp(56px,6vw,88px)}
+.cc-define-grid{display:grid;grid-template-columns:minmax(0,.38fr) minmax(0,.62fr);gap:clamp(28px,5vw,80px);align-items:start}
+.cc-statement{font-size:clamp(22px,2.1vw,30px);line-height:1.35;letter-spacing:-.012em;color:var(--ink);font-weight:500;text-wrap:pretty}
+.cc-define-copy>p:not(.cc-statement){margin-top:24px;max-width:60ch}
+.cc-roles{margin-top:40px;padding-top:24px;border-top:1px solid var(--focus)}
+.cc-roles ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:20px clamp(20px,3vw,40px)}
+.cc-roles li{display:grid;gap:4px}
+.cc-roles strong{font-size:17px;color:var(--ink)}
+.cc-roles span{font-size:15px;line-height:1.5;color:var(--body)}
+.cc-map{margin-top:clamp(48px,6vw,80px)}
+.cc-map ul{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--focus);border-left:var(--hair)}
+.cc-map li{display:grid;align-content:start;gap:6px;padding:20px clamp(14px,1.6vw,24px) 24px;border-right:var(--hair);border-bottom:var(--hair);min-width:0}
+.cc-map strong{font-size:17px;color:var(--ink)}
+.cc-map span{font-size:14px;line-height:1.5;color:var(--grid)}
+.cc-page .scope-note{font-family:var(--process);font-size:12px;letter-spacing:.06em;line-height:1.5;color:var(--grid);margin:18px 0 0;padding:0;max-width:none;text-align:left}
+
+/* ---- a day in the Command Centre (tabs) ---- */
+.cc-day{background:var(--pale);border-bottom:0}
+.cc-day .section-heading{align-items:start}
+.cc-day .section-heading>p{max-width:420px;font-size:18px;line-height:1.6;margin-top:36px;padding-left:clamp(0px,3vw,32px);border-left:1px solid var(--grid)}
+.tabs{border-bottom-color:rgba(1,59,67,.22)}
+.feature-panel{align-items:start;grid-template-columns:minmax(0,.58fr) minmax(0,1.42fr)}
+.feature-screen.frame{margin:var(--frame-w)}
+.feature-screen .screen{height:clamp(340px,40vw,600px)}
+.feature-points{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:10px}
+.feature-points li{position:relative;padding-left:18px;font-size:15px;line-height:1.5;color:var(--body)}
+.feature-points li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;background:var(--pulse);transform:rotate(45deg)}
+
+/* ---- the record does the remembering: copy beside a timeline ---- */
+.cc-record{padding:clamp(64px,7vw,104px) 0}
+.cc-record-grid{display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,.58fr);gap:clamp(32px,6vw,96px);align-items:start}
+.cc-record-copy{position:sticky;top:96px}
+.cc-record-copy p{margin-top:22px;max-width:46ch}
+.cc-record-copy .text-link{display:inline-block;margin-top:26px}
+.cc-timeline{list-style:none;margin:0;padding:0;border-top:1px solid var(--focus)}
+.cc-timeline li{display:grid;grid-template-columns:72px minmax(0,1fr);gap:0 clamp(16px,2vw,28px);padding:22px 0;border-bottom:var(--hair);position:relative}
+.cc-timeline li::before{content:"";position:absolute;left:72px;top:0;bottom:0;border-left:1px solid var(--mist);margin-left:calc(clamp(16px,2vw,28px)/2 - 1px)}
+.cc-tl-when{font-family:var(--process);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--grid);padding-top:3px}
+.cc-timeline strong{display:block;font-size:18px;color:var(--ink);line-height:1.25}
+.cc-timeline p{font-size:15.5px;line-height:1.5;color:var(--body);margin:8px 0 10px}
+.cc-timeline em{font-family:var(--process);font-style:normal;font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--grid);display:inline-block;padding:4px 8px;border:1px solid rgba(1,59,67,.22);border-radius:var(--r-card)}
+
+/* ---- advice workflows ---- */
+.cc-workflow{background:var(--pale);padding:clamp(64px,7vw,96px) 0}
+.cc-workflow .section-heading{align-items:start}
+.cc-workflow .section-heading>p{max-width:460px;font-size:18px;line-height:1.6;margin-top:36px;padding-left:clamp(0px,3vw,32px);border-left:1px solid var(--grid)}
+.cc-workflow-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,72px);align-items:start;margin-top:clamp(40px,5vw,64px)}
+.cc-workflow-visual{padding:var(--frame-w);position:sticky;top:96px}
+.cc-workflow-visual .screen{height:clamp(420px,48vw,760px)}
+.cc-workflow-copy h3{font-size:clamp(24px,2.1vw,30px)}
+.cc-workflow-copy>p{margin-top:16px;font-size:17px;color:var(--body)}
+.cc-phases{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid var(--focus)}
+.cc-phases li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 14px;padding:18px 0;border-bottom:var(--hair)}
+.cc-phases span{grid-row:1/3;font-family:var(--process);font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--grid);padding-top:4px}
+.cc-phases strong{font-size:18px;color:var(--ink)}
+.cc-phases small{font-size:15px;line-height:1.5;color:var(--body)}
+.cc-facts{display:grid;gap:16px;margin:28px 0 0}
+.cc-facts div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;align-items:start}
+.cc-facts dt{font-family:var(--process);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--grid);padding-top:3px}
+.cc-facts dd{margin:0;font-size:15.5px;line-height:1.5;color:var(--body)}
+
+/* ---- AI ---- */
+.cc-ai{padding:clamp(64px,7vw,104px) 0}
+.cc-ai-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);align-items:start}
+.cc-ai-copy>p{margin-top:22px;font-size:17px;color:var(--body);max-width:46ch}
+.cc-ai-points{list-style:none;margin:30px 0 0;padding:0;border-top:1px solid var(--focus)}
+.cc-ai-points li{display:grid;gap:6px;padding:18px 0;border-bottom:var(--hair)}
+.cc-ai-points strong{font-size:18px;color:var(--ink)}
+.cc-ai-points span{font-size:15.5px;line-height:1.5;color:var(--body)}
+.cc-flow{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:26px}
+.cc-flow span{font-family:var(--process);font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--focus);background:var(--pale);border:1px solid rgba(1,59,67,.22);border-radius:var(--r-card);padding:9px 14px}
+.cc-flow i{font-style:normal;color:var(--grid)}
+.cc-ai-visual{padding:var(--frame-w);position:sticky;top:96px}
+.cc-ai-visual .screen{height:clamp(420px,46vw,720px)}
+
+/* ---- connected tools ---- */
+.cc-connected{background:var(--pale);padding:clamp(64px,7vw,96px) 0}
+.cc-connected .center-heading>p:last-child{max-width:620px;margin:22px auto 0;color:var(--body)}
+.cc-connected-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(24px + var(--frame-w)*2);margin-top:clamp(36px,4vw,56px);padding:var(--frame-w)}
+.cc-connected-visual .screen{height:clamp(300px,30vw,440px)}
+.cc-ledger{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(24px,3vw,48px);margin:clamp(32px,4vw,48px) 0 0;border-top:1px solid var(--focus)}
+.cc-ledger div{padding:20px 0 22px;border-bottom:var(--hair)}
+.cc-ledger dt{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.cc-ledger dd{margin:0;font-size:15.5px;line-height:1.5;color:var(--body)}
+
+/* ---- ownership ---- */
+.cc-ownership .ownership-inner>div .button{margin-right:20px}
+.cc-own-link{color:#fff;display:inline-block;margin-top:14px}
+.cc-own-link:hover{color:var(--pulse);border-bottom-color:var(--pulse)}
+
+/* ---- closing: Midnight panel, copy beside what the test drive includes ---- */
+.cc-closing{display:block;background:var(--midnight);border-color:var(--midnight);text-align:left;padding:clamp(44px,5.5vw,72px) clamp(24px,5vw,64px)}
+.cc-closing-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,5vw,72px);align-items:center}
+.cc-closing h2{font-size:clamp(34px,3.8vw,54px)}
+.cc-closing-grid>div>p:not(.eyebrow){font-size:17px;line-height:1.55;color:rgba(255,255,255,.8);margin-top:20px;max-width:46ch}
+.cc-closing .actions{justify-content:flex-start}
+.cc-closing-list{list-style:none;margin:0;padding:0;border-top:1px solid rgba(255,255,255,.22)}
+.cc-closing-list li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 14px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.cc-closing-list span{grid-row:1/3;font-family:var(--process);font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--pulse);padding-top:4px}
+.cc-closing-list strong{font-size:18px;color:#fff}
+.cc-closing-list small{font-size:15px;line-height:1.5;color:rgba(255,255,255,.72)}
+
+/* ---- responsive ---- */
+@media(max-width:1000px){
+  .cc-hero-grid{grid-template-columns:1fr;gap:24px;align-items:start}
+  .cc-index{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .cc-index a:nth-child(4){padding-left:0;border-left:0}
+  .cc-define-grid,.cc-record-grid,.cc-workflow-grid,.cc-ai-grid{grid-template-columns:1fr;gap:28px}
+  .cc-record-copy,.cc-workflow-visual,.cc-ai-visual{position:static}
+  .cc-ai-visual{order:2}
+  .cc-map ul{grid-template-columns:1fr 1fr}
+  .feature-panel{grid-template-columns:1fr}
+  .feature-screen .screen{height:clamp(340px,56vw,600px)}
+  .cc-workflow-visual .screen,.cc-ai-visual .screen{height:clamp(380px,60vw,640px)}
+  .cc-connected-grid{grid-template-columns:1fr}
+  .cc-connected-visual .screen{height:clamp(300px,48vw,480px)}
+  .cc-ledger{grid-template-columns:1fr 1fr}
+  .cc-closing-grid{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .cc-hero h1{font-size:clamp(38px,11vw,48px)}
+  .cc-index{grid-template-columns:1fr}
+  .cc-index a,.cc-index a+a{padding-left:0;border-left:0}
+  .cc-roles ul,.cc-map ul,.cc-ledger{grid-template-columns:1fr}
+  .cc-day .section-heading>p,.cc-workflow .section-heading>p{margin-top:18px;padding-left:0;border-left:0}
+  .feature-screen .screen,.cc-workflow-visual .screen,.cc-ai-visual .screen{height:max(340px,74vw)}
+  .cc-connected-visual .screen{height:max(300px,66vw)}
+  .cc-timeline li{grid-template-columns:1fr;gap:6px}
+  .cc-timeline li::before{display:none}
+  .cc-facts div{grid-template-columns:1fr;gap:4px}
+  .cc-closing{padding:36px 22px}
+}
+
+/* ---- v2 additions (5 Oct 2026, page rebuild around the approved structure) ---- */
+/* Keep Dana's hero size: site.css's homepage rule (.home .hero h1) would otherwise shrink it */
+body.cc-page .cc-hero h1{font-size:clamp(44px,5.4vw,76px)}
+@media(max-width:760px){body.cc-page .cc-hero h1{font-size:clamp(38px,11vw,48px)}}
+.cc-hero-aside .actions{margin-top:26px}
+
+/* three jobs: site card-grid under the define grid */
+.cc-define .card-grid{margin-top:clamp(40px,5vw,64px)}
+.cc-page .card-grid .eyebrow{margin-bottom:0}
+.cc-page .card-grid .text-link{justify-self:start;margin-top:6px}
+.cc-page .card-grid .who-row{margin:6px 0 0}
+
+/* human approval: the trail inside one frame */
+.cc-approval{padding:clamp(64px,7vw,96px) 0}
+.cc-approval .section-heading{align-items:start}
+.cc-approval .section-heading>p{max-width:440px;font-size:18px;line-height:1.6;margin-top:36px;padding-left:clamp(0px,3vw,32px);border-left:1px solid var(--grid)}
+.cc-trail-wrap{padding:var(--frame-w);margin-top:clamp(36px,4vw,56px)}
+.cc-approval .trail{margin:0;padding:6px clamp(16px,2vw,24px) 8px;background:#fff;border-radius:0 0 calc(var(--r-frame) - 1px) calc(var(--r-frame) - 1px)}
+.cc-approval .trail li{padding-top:20px;padding-bottom:22px}
+.cc-approval .trail li.gate{padding-left:clamp(14px,1.8vw,22px);border-radius:var(--r-card);margin:8px 0}
+.cc-approval .trail .who{font-size:11px}
+.cc-approval .cc-ledger{margin-top:clamp(36px,4vw,48px)}
+.cc-approval .cc-ledger dt{font-size:18px}
+
+/* AI workflows teaser: one workflow card in a frame (Uses / Bunya prepares / Checked by) */
+.cc-ai-copy .text-link{margin-top:26px}
+.wf-card{display:grid;gap:12px;padding:clamp(18px,2.4vw,28px);background:#fff;border-radius:0 0 calc(var(--r-frame) - 1px) calc(var(--r-frame) - 1px)}
+.wf-row{display:grid;gap:8px;padding:16px 18px;border:var(--hair);border-radius:var(--r-card);background:var(--pale)}
+.wf-row.prep{background:rgba(17,184,177,.07);border-color:rgba(17,184,177,.35)}
+.wf-row .k{font-family:var(--process);font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--grid)}
+.wf-row p{font-size:17px;line-height:1.5;color:var(--ink)}
+.wf-foot{font-family:var(--process);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--grid);margin-top:4px}
+
+/* integrations teaser: tool chips (dashed = connected by agreement) */
+.chip-list{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.chip-list li{font-family:var(--process);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--focus);background:#fff;border:1px solid rgba(1,59,67,.22);border-radius:var(--r-card);padding:8px 12px}
+.chip-list.agreed li{border-style:dashed;color:var(--grid)}
+.cc-more{margin-top:14px}
+
+/* as your firm grows */
+.cc-grows{padding:clamp(64px,7vw,96px) 0 0}
+@media(max-width:760px){.cc-approval .section-heading>p{margin-top:18px;padding-left:0;border-left:0}}

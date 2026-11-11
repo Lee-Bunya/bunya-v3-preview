@@ -1,0 +1,27 @@
+/* v3 site bar (12 Oct 2026): one bar on every page, styled like the product bar (.sc-bar):
+   full width, frosted, 56px, small links on the right and a small Book a demo pill.
+   It holds the main menu, and the dropdowns are the card-style panels (js/nav.js + .mega in site.css).
+   The per-page product bars are hidden, because this bar takes their place.
+   Selectors start at #site-nav so they win over the older pill styles in dana-base.css and symphony.css. */
+.sc-bar{display:none!important}
+
+body #site-nav{position:sticky!important;top:0!important;z-index:100!important;margin:0!important;padding:0!important;background:none!important}
+#site-nav header.nav{position:relative;background:rgba(244,249,249,.74);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+  border:0;border-bottom:1px solid rgba(4,15,29,.08);border-radius:0}
+#site-nav .nav-inner{width:auto;max-width:none;height:56px;margin:0;padding:0 max(22px,calc((100% - 1240px)/2));display:flex;align-items:center;gap:24px;
+  background:none;border:0;border-radius:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+#site-nav .logo{margin-right:auto;display:flex;align-items:center}
+#site-nav .logo-img{width:112px;height:auto}
+#site-nav .nav-links{display:flex;align-items:center;gap:22px}
+@media (max-width:1060px){#site-nav .nav-links{display:none}#site-nav .nav-inner{height:52px}}
+#site-nav .nav-links>.nav-trigger,#site-nav .nav-links>a:not(.nav-cta){display:inline-flex;align-items:center;gap:5px;padding:0;height:56px;border:0;border-radius:0;background:none;
+  font:inherit;font-size:13px;font-weight:400;color:#33494A;white-space:nowrap;cursor:pointer}
+#site-nav .nav-links>.nav-trigger:hover,#site-nav .nav-links>a:not(.nav-cta):hover,#site-nav .nav-trigger[aria-expanded="true"]{background:none;color:var(--grid)}
+#site-nav .nav-links>.active{background:none;color:var(--ink);font-weight:600}
+#site-nav .nav-trigger .caret{width:8px;height:8px}
+#site-nav .nav-links .nav-cta{margin-left:4px;padding:8px 15px!important;border-radius:999px;background:var(--deep);color:#fff;font-size:13px;font-weight:600;line-height:1;white-space:nowrap}
+#site-nav .nav-links .nav-cta:hover{background:var(--ink)}
+#site-nav .menu-btn{border-radius:999px;width:40px;height:40px;font-size:24px}
+/* The card panels float just under the bar */
+#site-nav .mega{top:calc(100% + 8px)}
+

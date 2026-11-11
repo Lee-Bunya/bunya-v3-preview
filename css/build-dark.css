@@ -1,0 +1,90 @@
+/* Build your Command Centre: dark theme (7 Nov 2026), so the build page matches the new home page
+   (home-build.html). Loaded after build.css; it re-points build.css's colour tokens and swaps every
+   white surface for the dark glass used on the home page. Remove this one file to get the light page back. */
+:root{
+  --bb-canvas:#000; --bb-pale:#0B0C0E; --bb-line:rgba(255,255,255,.1); --bb-line-2:rgba(255,255,255,.22);
+  --bb-ink:#F5F5F7; --bb-text:#D1D1D6; --bb-slate:#A1A1A6; --bb-quiet:#6E6E73;
+  --bb-grid:#2DD4BF; --bb-grid-hover:#5EEAD4; --bb-pulse:#2DD4BF; --bb-focus:#5EEAD4;
+  --bb-wash:rgba(255,255,255,.04); --bb-edge:rgba(255,255,255,.14); --bb-edge-hover:rgba(255,255,255,.32);
+  --bb-card:#161618; --bb-card-2:#1C1C1E; --bb-card-3:#2C2C2E;
+}
+html{background:#000}
+:focus-visible{outline-color:#fff}
+
+/* Nav: dark glass, same as the home page */
+.bb .nv{background:rgba(0,0,0,.72);backdrop-filter:saturate(1.8) blur(20px);-webkit-backdrop-filter:saturate(1.8) blur(20px);color:#fff;border-bottom:1px solid rgba(255,255,255,.06)}
+.bb .nv-main button,.bb .nv-main a,.bb .nv-right .nv-build{color:#E8E8ED}
+.bb .nv-main button:hover,.bb .nv-main button[aria-expanded="true"],.bb .nv-right .nv-build:hover{background:rgba(255,255,255,.1)}
+.bb .nv-right .nv-demo{background:#fff;color:#000}
+.bb .nv-right .nv-demo:hover{background:#E8E8ED}
+.bb .nv-menu-btn{background:rgba(255,255,255,.12);color:#fff}
+
+/* Stage */
+.bb-stage{background:radial-gradient(55% 50% at 50% 45%,rgba(45,212,191,.14),transparent 70%),radial-gradient(40% 40% at 70% 70%,rgba(129,140,248,.12),transparent 70%),#000}
+.bb-screen{background:#111;border-radius:16px;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 40px 100px -30px rgba(45,212,191,.3),0 60px 140px -40px rgba(99,102,241,.3)}
+.bb-hs-l button{background:var(--bb-card-2);border-color:var(--bb-line-2);color:#fff}
+.bb-hs-l button:hover,.bb-hs-l button[aria-expanded="true"]{background:#fff;border-color:#fff;color:#000}
+.bb-pop{background:var(--bb-card-2);box-shadow:0 0 0 1px var(--bb-line),0 24px 50px -20px rgba(0,0,0,.9)}
+.bb-arrow,.bb-dots,.bb-chat{background:rgba(255,255,255,.08);border-radius:999px}
+.bb-arrow:hover,.bb-chat:hover{background:rgba(255,255,255,.16)}
+.bb-dots button{background:#48484A}
+.bb-dots button.on{background:#fff}
+.bb-ill.pale{background:radial-gradient(80% 80% at 50% 30%,#14161A,#0A0B0D)}
+.bb-sheet{background:var(--bb-card-2);border-radius:18px;box-shadow:0 0 0 1px var(--bb-line),0 30px 60px -30px rgba(0,0,0,.9)}
+.bb-sheet li .t{background:rgba(45,212,191,.16)}
+
+/* Panel */
+.bb-head h1{font-weight:600;letter-spacing:-.03em;background:linear-gradient(180deg,#fff,#C7C7CC);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bb-draft{background:rgba(255,255,255,.08)}
+.bb-tabs button[aria-selected="true"]::after{background:#fff}
+.bb-sec{border-radius:16px}
+.bb-bill{background:rgba(255,255,255,.06);border-radius:999px}
+.bb-bill button{border-radius:999px}
+.bb-bill button[aria-pressed="true"]{background:var(--bb-card-3);color:#fff;box-shadow:none}
+.bb-opt,.bb-compare,.bb-step,.bb-add,.bb-tick,.bb-adapt-tot{background:var(--bb-card);border-radius:12px}
+.bb-opt[aria-checked="true"],.bb-add[aria-checked="true"]{box-shadow:inset 0 0 0 2px #fff}
+.bb-step button{background:rgba(255,255,255,.08);border-radius:999px}
+.bb-step button:hover{background:rgba(255,255,255,.16)}
+.bb-sw button{background:var(--bb-card)}
+.bb-sw button[aria-pressed="true"]{box-shadow:0 0 0 3px #000,0 0 0 5px #fff}
+.bb-add .th{background:var(--bb-card-2);border-radius:8px}
+.bb-add .ck{background:var(--bb-card-2)}
+.bb-add[aria-checked="true"] .ck{background:#fff}
+.bb-add .ck svg{stroke:#000}
+.bb-add .soon{background:rgba(45,212,191,.14)}
+.bb-range{accent-color:#fff}
+.bb-tick input{accent-color:#2DD4BF}
+
+/* Buttons: white pill and outline pill, as on the home page */
+.bb-btn{background:#fff;color:#000!important;border-radius:999px;transition:transform .3s cubic-bezier(.2,.7,.1,1),box-shadow .3s}
+.bb-btn:hover{background:#fff;transform:scale(1.02);box-shadow:0 0 0 6px rgba(255,255,255,.08)}
+.bb-btn.ghost{background:transparent;color:#fff!important;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4)}
+.bb-btn.ghost:hover{background:transparent;box-shadow:inset 0 0 0 1.5px #fff}
+
+/* Running total: dark glass */
+.bb-bar{background:rgba(18,18,20,.82);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);box-shadow:0 -1px 0 rgba(255,255,255,.08)}
+
+/* Modals */
+.bb-modal{background:rgba(0,0,0,.6);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.bb-modal-c{background:var(--bb-card-2);border-radius:24px;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 60px 140px -40px rgba(0,0,0,.9)}
+.bb-x:hover{background:rgba(255,255,255,.1)}
+.bb-form input{background:var(--bb-card-3);color:#fff;box-shadow:none;border-radius:10px}
+
+@media (max-width:900px){.bb-stage{border-bottom-color:rgba(255,255,255,.08)}}
+
+/* ── Stripped back (7 Nov): firm size first, then ready-made builds ─────── */
+.bb-firm{margin:28px 0 20px;padding:20px 22px 18px;border-radius:16px;background:var(--bb-card);box-shadow:inset 0 0 0 1px var(--bb-edge)}
+.bb-firm label{font-size:16px;font-weight:600;color:#fff}
+.bb-firm output{font-size:16px;font-weight:600;color:var(--bb-grid)}
+.bb-firm .bb-note{margin:0}
+.bb-ready-l{margin:0 0 10px}
+.bb-ready{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:24px}
+.bb-rb{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:14px 14px 12px;border:0;border-radius:14px;background:var(--bb-card);box-shadow:inset 0 0 0 1px var(--bb-edge);text-align:left;cursor:pointer;transition:box-shadow .2s}
+.bb-rb:hover{box-shadow:inset 0 0 0 1px var(--bb-edge-hover)}
+.bb-rb[aria-pressed="true"]{box-shadow:inset 0 0 0 2px #fff}
+.bb-rb b{font-size:14px;font-weight:600;color:#fff}
+.bb-rb small{font-size:12px;line-height:16px;color:var(--bb-slate)}
+.bb-rb span{margin-top:8px;font-size:15px;font-weight:600;color:#fff;font-variant-numeric:tabular-nums}
+.bb-rb span i{font-style:normal;font-size:12px;font-weight:400;color:var(--bb-slate);margin-left:2px}
+@media (max-width:420px){.bb-ready{grid-template-columns:1fr}}
+.bb-stats[hidden]{display:none}

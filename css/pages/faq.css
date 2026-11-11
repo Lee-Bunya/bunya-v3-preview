@@ -1,0 +1,83 @@
+/* ======================================================================
+   09 FAQ (2 Oct 2026) — the answers page on the bunya.ai system:
+   hero with a framed search, sticky topic rail with counts, each
+   topic opened by a large numeral, accordions with +/– markers,
+   next-step strip, closing.
+   ====================================================================== */
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+main section[id]{scroll-margin-top:96px}
+.fq-hero{border-bottom:0}
+.fq-hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,5vw,80px);align-items:center;padding:clamp(48px,6vw,88px) 0 clamp(48px,6vw,80px)}
+.fq-hero h1{font-size:clamp(40px,5.2vw,72px)}
+.fq-hero .lead{max-width:30em}
+.fq-search-frame{margin:var(--frame-w)}
+.fq-search-body{background:#fff;border-radius:0 0 calc(var(--r-frame) - 1px) calc(var(--r-frame) - 1px);padding:clamp(20px,2.6vw,36px)}
+.faq-search{position:relative}
+.faq-search svg{position:absolute;left:18px;top:50%;width:22px;height:22px;transform:translateY(-50%);fill:none;stroke:var(--grid);stroke-width:1.8;stroke-linecap:round}
+.faq-search input{width:100%;min-height:60px;padding:14px 18px 14px 54px;font:inherit;font-size:18px;color:var(--ink);background:var(--pale);border:1px solid rgba(1,59,67,.3);border-radius:var(--r-card)}
+.faq-search input:focus{outline:2px solid var(--pulse);outline-offset:1px;border-color:var(--focus);background:#fff}
+.search-hint{font-family:var(--process);font-size:12px;letter-spacing:.06em;color:var(--grid);margin-top:12px}
+.faq-status{font-family:var(--process);font-size:12px;letter-spacing:.06em;color:var(--focus);margin-top:8px;min-height:1.2em}
+
+.faq-shell{display:grid;grid-template-columns:280px minmax(0,1fr);gap:clamp(32px,5vw,88px);align-items:start;padding:clamp(56px,7vw,88px) 0 clamp(56px,7vw,96px)}
+.faq-topics{position:sticky;top:96px}
+.faq-topics nav{display:grid;margin-top:12px;border-top:1px solid var(--focus)}
+.faq-topics nav a{display:grid;grid-template-columns:34px minmax(0,1fr);gap:2px 10px;align-items:center;padding:14px 0 14px 12px;border-bottom:var(--hair);border-left:2px solid transparent;color:var(--ink);margin-left:-14px}
+.faq-topics nav a span{grid-row:1/3;font-family:var(--process);font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--grid)}
+.faq-topics nav a b{font-size:16px;font-weight:600;line-height:1.2}
+.faq-topics nav a small{font-size:12.5px;color:var(--grid)}
+.faq-topics nav a:hover{border-left-color:var(--grid)}
+.faq-topics nav a[aria-current="true"]{border-left-color:var(--pulse);background:var(--pale);padding-right:12px}
+.faq-topics nav a[aria-current="true"] b{color:var(--focus)}
+.faq-help{margin-top:24px;padding:18px 20px;background:var(--pale);border:var(--hair);border-radius:var(--r-card)}
+.faq-help p{font-size:15px;color:var(--ink);font-weight:600}
+.faq-help .text-link{display:inline-block;margin-top:8px}
+
+.faq-answers{min-width:0}
+.fq-group[hidden]{display:none}
+.fq-head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(16px,2vw,28px);align-items:end;padding-bottom:22px;border-bottom:1px solid var(--focus)}
+.fq-num{font-family:var(--process);font-weight:600;font-size:clamp(44px,5vw,72px);line-height:.9;letter-spacing:-.02em;color:var(--pulse)}
+.fq-head h2{font-size:clamp(28px,3.2vw,42px);margin-top:6px;letter-spacing:-.02em}
+.fq-group details{border-bottom:var(--hair)}
+.fq-group details[hidden]{display:none}
+.fq-group summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) 32px;gap:16px;align-items:center;padding:20px 0;font-size:19px;font-weight:700;color:var(--ink);line-height:1.3}
+.fq-group summary::-webkit-details-marker{display:none}
+.fq-group summary::after{content:"+";font-family:var(--process);font-size:18px;color:var(--grid);width:32px;height:32px;border:1px solid rgba(1,59,67,.22);border-radius:50%;display:grid;place-items:center;background:#fff;transition:transform .2s,background .2s}
+.fq-group details[open] summary::after{content:"–";background:var(--signal);border-color:var(--signal);color:var(--ink)}
+.fq-group summary:hover{color:var(--grid)}
+.fq-group summary:focus-visible{outline:2px solid var(--pulse);outline-offset:4px;border-radius:4px}
+.fq-answer{padding:0 0 22px;max-width:68ch}
+.fq-answer p{font-size:17px;line-height:1.65;color:var(--body)}
+.fq-answer a{color:var(--grid);font-weight:600;border-bottom:1px solid rgba(10,125,121,.35)}
+.fq-answer a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+
+.faq-next{display:flex;justify-content:space-between;align-items:center;gap:16px 32px;flex-wrap:wrap;padding:clamp(32px,4vw,48px) 0}
+.faq-next h3{font-size:clamp(24px,2.4vw,32px);margin-top:6px}
+.faq-next-links{display:flex;gap:24px;flex-wrap:wrap}
+
+.fq-closing{display:block;text-align:left;padding:clamp(44px,5.5vw,72px) clamp(24px,5vw,64px)}
+.fq-closing-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,72px);align-items:center}
+.fq-closing h2{font-size:clamp(34px,3.8vw,54px)}
+.fq-closing-grid>div>p{font-size:17px;line-height:1.55;color:rgba(255,255,255,.85);max-width:40ch}
+.fq-closing .actions{justify-content:flex-start;margin-top:22px}
+
+@media(max-width:1000px){
+  .fq-hero-grid{grid-template-columns:1fr;gap:28px;align-items:start}
+  .faq-shell{grid-template-columns:1fr;gap:28px}
+  .faq-topics{position:static}
+  .faq-topics nav{grid-template-columns:1fr 1fr;border-top:0;gap:8px;margin-top:12px}
+  .faq-topics nav a,.faq-topics nav a[aria-current="true"]{margin:0;padding:12px 14px;border:1px solid rgba(1,59,67,.22);border-radius:var(--r-card);border-left-width:1px}
+  .faq-topics nav a[aria-current="true"]{border-color:var(--focus);background:var(--focus)}
+  .faq-topics nav a[aria-current="true"] b,.faq-topics nav a[aria-current="true"] span,.faq-topics nav a[aria-current="true"] small{color:#fff}
+  .faq-help{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .faq-help .text-link{margin:0}
+  .fq-closing-grid{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .fq-hero h1{font-size:clamp(36px,10vw,46px)}
+  .faq-topics nav{grid-template-columns:1fr}
+  .faq-search input{min-height:54px;font-size:16px}
+  .fq-head{grid-template-columns:1fr;gap:6px;align-items:start}
+  .fq-group summary{font-size:17px}
+  .fq-closing{padding:36px 22px}
+}

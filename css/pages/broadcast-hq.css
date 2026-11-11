@@ -1,0 +1,133 @@
+/* ======================================================================
+   03 Broadcast HQ (2 Oct 2026) — product page on the bunya.ai system.
+   Shares site.css and the framed system with 01 and 02; its own order:
+   hero with four ways to start, why, the three-view tour (screenshots),
+   write-once cockpit beside the live demo build, approval gate, after
+   the post, channels + assistant, ownership, delivery, closing.
+   ====================================================================== */
+
+/* ---- hero ---- */
+.bhq-hero{border-bottom:0}
+.bhq-hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,80px);align-items:end;padding:clamp(56px,6vw,96px) 0 clamp(32px,4vw,48px)}
+.bhq-hero h1{font-size:clamp(44px,5.4vw,76px)}
+.bhq-hero-aside .lead{margin-top:0;max-width:30em}
+.bhq-hero-aside .hero-note{margin-top:18px}
+.bhq-starts{position:relative;padding-bottom:clamp(40px,5vw,64px)}
+.bhq-starts ul{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--focus)}
+.bhq-starts li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;padding:18px clamp(12px,1.5vw,24px) 20px 0;border-bottom:var(--hair)}
+.bhq-starts li+li{padding-left:clamp(12px,1.5vw,24px);border-left:var(--hair)}
+.bhq-starts span{grid-row:1/3;font-family:var(--process);font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--grid);padding-top:4px}
+.bhq-starts strong{font-size:17px;color:var(--ink)}
+.bhq-starts small{font-size:14.5px;line-height:1.5;color:var(--body)}
+main section[id]{scroll-margin-top:96px}
+
+/* ---- why ---- */
+.bhq-why{padding:clamp(64px,7vw,104px) 0}
+.bhq-why-grid{display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,.58fr);gap:clamp(28px,5vw,80px);align-items:start}
+.bhq-why-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--focus)}
+.bhq-why-list li{display:grid;grid-template-columns:130px minmax(0,1fr);gap:6px 20px;padding:22px 0;border-bottom:var(--hair)}
+.bhq-why-list span{grid-row:1/3;font-family:var(--process);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--grid);padding-top:6px}
+.bhq-why-list h3{font-size:22px}
+.bhq-why-list p{font-size:16.5px;line-height:1.5;color:var(--body)}
+
+/* ---- tour (screenshots) ---- */
+.bhq-tour{background:var(--pale);border-bottom:0}
+.bhq-tour .section-heading{align-items:start}
+.bhq-tour .section-heading>p{max-width:420px;font-size:18px;line-height:1.6;margin-top:36px;padding-left:clamp(0px,3vw,32px);border-left:1px solid var(--grid)}
+.tabs{border-bottom-color:rgba(1,59,67,.22)}
+.feature-panel{align-items:start;grid-template-columns:minmax(0,.58fr) minmax(0,1.42fr)}
+.feature-screen.frame{margin:var(--frame-w)}
+.bhq-shot{background:#fff;border-radius:0 0 calc(var(--r-frame) - 1px) calc(var(--r-frame) - 1px);overflow:hidden}
+.bhq-shot img{width:100%;height:auto;display:block}
+.feature-points{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:10px}
+.feature-points li{position:relative;padding-left:18px;font-size:15px;line-height:1.5;color:var(--body)}
+.feature-points li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;background:var(--pulse);transform:rotate(45deg)}
+.feature-copy .screen-note{display:block;margin-top:4px;color:var(--grid)}
+
+/* ---- write once: anatomy beside the live build ---- */
+.bhq-cockpit{padding:clamp(64px,7vw,104px) 0}
+.bhq-cockpit-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,5vw,72px);align-items:start}
+.bhq-cockpit-copy>p{margin-top:22px;font-size:17px;color:var(--body);max-width:46ch}
+.bhq-anatomy{display:grid;gap:0;margin:28px 0 0;border-top:1px solid var(--focus)}
+.bhq-anatomy div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;padding:14px 0;border-bottom:var(--hair)}
+.bhq-anatomy dt{font-family:var(--process);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--grid);padding-top:3px}
+.bhq-anatomy dd{margin:0;font-size:15.5px;line-height:1.5;color:var(--body)}
+.bhq-cockpit-visual{padding:var(--frame-w);position:sticky;top:96px}
+.bhq-cockpit-visual .screen{height:clamp(420px,46vw,720px)}
+.bhq-page .scope-note{font-family:var(--process);font-size:12px;letter-spacing:.06em;line-height:1.5;color:var(--grid);margin:18px 0 0;padding:0;max-width:none;text-align:left}
+
+/* ---- approval gate: a quiet statement band ---- */
+.bhq-gate{background:var(--pale);border-top:var(--hair);border-bottom:var(--hair)}
+.bhq-gate-inner{display:grid;grid-template-columns:minmax(0,.48fr) minmax(0,.52fr);gap:clamp(24px,5vw,80px);align-items:start;padding:clamp(56px,6vw,88px) 0}
+.bhq-gate-inner .eyebrow{grid-column:1/-1;margin-bottom:0}
+.bhq-gate h2{font-size:clamp(34px,4vw,56px)}
+.bhq-gate-copy p{font-size:17px;line-height:1.6;color:var(--body);max-width:48ch}
+.bhq-gate-copy p+p{margin-top:16px}
+
+/* ---- after the post ---- */
+.bhq-after{padding:clamp(56px,7vw,88px) 0 clamp(48px,6vw,72px)}
+.bhq-after-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(24px,3vw,48px);margin-top:40px;border-top:1px solid var(--focus)}
+.bhq-after article{padding:24px 0 28px;border-bottom:var(--hair);display:flex;flex-direction:column}
+.bhq-after article .eyebrow{font-size:11px;margin-bottom:14px}
+.bhq-after h3{font-size:22px}
+.bhq-after article p:not(.eyebrow){font-size:16px;line-height:1.5;color:var(--body);margin:12px 0 18px}
+.bhq-tag{margin-top:auto;font-family:var(--process);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--grid)}
+
+/* ---- channels + assistant ---- */
+.bhq-channels{background:var(--pale);padding:clamp(56px,7vw,88px) 0}
+.bhq-channels-grid{display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,.58fr);gap:clamp(28px,5vw,80px);align-items:start}
+.bhq-channels-copy>p{font-size:17px;line-height:1.6;color:var(--body);max-width:52ch}
+.bhq-channel-list{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.bhq-channel-list li{font-family:var(--process);font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--focus);background:#fff;border:1px solid rgba(1,59,67,.22);border-radius:var(--r-card);padding:9px 14px}
+.bhq-assistant{margin-top:32px;padding-top:22px;border-top:1px solid var(--focus)}
+.bhq-assistant p:not(.eyebrow){font-size:16px;line-height:1.55;color:var(--body);max-width:52ch}
+
+/* ---- delivery: page-specific copy, same shape as the site ---- */
+.bhq-delivery{padding-bottom:clamp(48px,5vw,64px)}
+
+/* ---- closing: Focus panel, copy beside the three questions ---- */
+.bhq-closing{display:block;text-align:left;padding:clamp(44px,5.5vw,72px) clamp(24px,5vw,64px)}
+.bhq-closing-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,5vw,72px);align-items:center}
+.bhq-closing h2{font-size:clamp(34px,3.8vw,54px)}
+.bhq-closing-grid>div>p:not(.eyebrow){font-size:17px;line-height:1.55;color:rgba(255,255,255,.82);margin-top:20px;max-width:46ch}
+.bhq-closing .actions{justify-content:flex-start;align-items:center}
+.bhq-closing-link{color:#fff}
+.bhq-closing-link:hover{color:var(--pulse);border-bottom-color:var(--pulse)}
+.bhq-closing-list{list-style:none;margin:0;padding:0;border-top:1px solid rgba(255,255,255,.26)}
+.bhq-closing-list li{display:grid;gap:4px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.16)}
+.bhq-closing-list strong{font-size:18px;color:#fff}
+.bhq-closing-list small{font-size:15px;line-height:1.5;color:rgba(255,255,255,.76)}
+
+/* ---- responsive ---- */
+@media(max-width:1000px){
+  .bhq-hero-grid{grid-template-columns:1fr;gap:24px;align-items:start}
+  .bhq-starts ul{grid-template-columns:1fr 1fr}
+  .bhq-starts li:nth-child(3){padding-left:0;border-left:0}
+  .bhq-why-grid,.bhq-cockpit-grid,.bhq-channels-grid,.bhq-gate-inner{grid-template-columns:1fr;gap:28px}
+  .bhq-cockpit-visual{position:static}
+  .feature-panel{grid-template-columns:1fr}
+  .bhq-cockpit-visual .screen{height:clamp(380px,60vw,640px)}
+  .bhq-after-grid{grid-template-columns:1fr}
+  .bhq-closing-grid{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .bhq-hero h1{font-size:clamp(38px,11vw,48px)}
+  .bhq-starts ul{grid-template-columns:1fr}
+  .bhq-starts li,.bhq-starts li+li{padding-left:0;border-left:0}
+  .bhq-why-list li{grid-template-columns:1fr;gap:6px}
+  .bhq-why-list span{grid-row:auto}
+  .bhq-tour .section-heading>p{margin-top:18px;padding-left:0;border-left:0}
+  .bhq-cockpit-visual .screen{height:max(340px,74vw)}
+  .bhq-anatomy div{grid-template-columns:1fr;gap:4px}
+  .bhq-closing{padding:36px 22px}
+}
+
+/* ---- v2 additions (5 Oct 2026: Broadcast HQ as an optional add-on) ---- */
+/* Keep Dana's hero size: site.css's homepage rule (.home .hero h1) would otherwise shrink it */
+body.bhq-page .bhq-hero h1{font-size:clamp(44px,5.4vw,76px)}
+@media(max-width:760px){body.bhq-page .bhq-hero h1{font-size:clamp(38px,11vw,48px)}}
+.bhq-hero-aside .actions{margin-top:26px}
+/* tour: the board tab shows the live demo build at the screenshots' proportions */
+.bhq-tour .feature-screen .screen{height:auto;aspect-ratio:1685/933}
+/* approval gate: who prepares / who decides under the copy */
+.bhq-gate-copy .bhq-who{margin:22px 0 0}

@@ -1,0 +1,259 @@
+/* Sample home page, from scratch (12 Nov 2026). tools/v3/build_home5.py, with css/sx.css. Phone first. */
+.v5 main{overflow:hidden}
+.v5 .sx-hide{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.v5-fine{margin:12px 0 0;font-size:12.5px;color:#6E6E73}
+.v5-fine.c{text-align:center}
+
+/* 1. Hero */
+.v5-hero{position:relative;width:min(1200px,calc(100% - 32px));margin:0 auto;padding:clamp(40px,7vh,88px) 0 0;display:grid;gap:36px}
+.v5-hero::before{content:"";position:absolute;left:50%;top:-80px;width:1300px;height:760px;transform:translateX(-50%);pointer-events:none;z-index:-1;
+  background:radial-gradient(45% 45% at 30% 30%,rgba(45,212,191,.16),transparent 70%),radial-gradient(40% 40% at 75% 45%,rgba(165,180,252,.13),transparent 70%)}
+.v5-hero-t{text-align:center}
+.v5-hero h1{margin:20px 0 0;font-size:clamp(46px,8vw,92px);font-weight:600;letter-spacing:-.055em;line-height:.98}
+.v5-hero h1 .sx-grad{display:inline-block;padding-bottom:.06em}
+.v5-hero-t p{max-width:560px;margin:20px auto 0;font-size:clamp(18px,1.8vw,21px);line-height:1.5;color:#A1A1A6;text-wrap:balance}
+.v5-hero .sx-ctas{justify-content:center;margin-top:28px}
+
+/* The interactive moment */
+.v5-demo{position:relative}
+.v5-app{border-radius:22px;overflow:hidden;background:#F4F7F7;color:#1F2A2E;box-shadow:0 0 0 1px rgba(255,255,255,.1),0 60px 120px -50px rgba(45,212,191,.35),0 40px 90px -40px rgba(0,0,0,.9)}
+.v5-bar{display:flex;align-items:center;gap:6px;height:36px;padding:0 14px;background:#E6ECEC;font-size:12px;color:#5B6B70}
+.v5-bar i{width:10px;height:10px;border-radius:50%;background:#C9D3D3}
+.v5-bar span{margin-left:8px}
+.v5-meet{margin:14px;padding:16px;border-radius:16px;background:#14181A;color:#E8E8ED;transition:opacity .4s,transform .4s,max-height .5s;max-height:420px;overflow:hidden}
+.v5-mh{display:flex;justify-content:space-between;font-size:12px;color:#A1A1A6}
+.rec{display:flex;align-items:center;gap:7px}
+.rec b{width:8px;height:8px;border-radius:50%;background:#F87171;box-shadow:0 0 8px #F87171;animation:v5blink 1.4s infinite}
+@keyframes v5blink{50%{opacity:.3}}
+.clock{font-variant-numeric:tabular-nums}
+.v5-mt{display:block;margin-top:10px;font-size:16px}
+.v5-people{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.v5-people span{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;height:84px;border-radius:12px;background:#1E2427;font-weight:600;font-size:15px;color:var(--c)}
+.v5-people small{font-weight:400;font-size:11px;color:#A1A1A6}
+.v5-said{margin:12px 0 0;font-size:13.5px;line-height:1.45;color:#D2D2D7;font-style:italic}
+.v5-end{display:block;width:100%;height:46px;margin-top:14px;border:0;border-radius:999px;background:#F87171;color:#fff;font:inherit;font-size:16px;font-weight:600;cursor:pointer;transition:transform .2s}
+.v5-end:hover{transform:scale(1.02)}
+.v5-demo.nudge[data-state="meeting"] .v5-end{animation:v5pulse 1.6s ease-in-out infinite}
+@keyframes v5pulse{0%,100%{box-shadow:0 0 0 0 rgba(248,113,113,.6)}50%{box-shadow:0 0 0 10px rgba(248,113,113,0)}}
+
+.v5-prep{margin:0 14px 14px;padding:14px 16px 16px;border-radius:16px;background:#fff;box-shadow:0 1px 0 rgba(0,0,0,.04),0 10px 30px -18px rgba(20,40,40,.4)}
+.v5-ph{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.v5-ph b{font-size:15px}
+.v5-ph small{margin-left:auto;font-size:12px;color:#5B6B70}
+.v5-dia{display:grid;place-items:center;width:24px;height:24px;border-radius:7px;background:#0A7D79}
+.v5-dia svg{width:12px;height:12px;fill:#FCD34D}
+.v5-item{display:flex;gap:10px;margin-top:10px;padding:10px 12px;border-radius:12px;background:#F4F7F7;opacity:.35;transform:translateY(4px);transition:opacity .45s,transform .45s,background .3s}
+.v5-item.on{opacity:1;transform:none}
+.v5-item .ok{flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#E1E8E8}
+.v5-item .ok svg{width:12px;height:12px;fill:none;stroke:#9AA8AA;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.v5-item.on .ok{background:#0A7D79}
+.v5-item.on .ok svg{stroke:#fff}
+.v5-item b{font-size:14px}
+.v5-item p{margin:3px 0 0;font-size:13px;line-height:1.45;color:#3A4A4E}
+.v5-item:not(.on) p{color:transparent;background:linear-gradient(90deg,#E1E8E8 0 70%,transparent 70%);border-radius:4px}
+.v5-approve{display:flex;align-items:center;justify-content:center;min-height:52px;margin-top:12px}
+.v5-ok{display:none;align-items:center;gap:8px;height:46px;padding:0 22px;border:0;border-radius:999px;background:#FCD34D;color:#1F2A2E;font:inherit;font-size:16px;font-weight:600;cursor:pointer;animation:v5gold 1.6s ease-in-out infinite}
+.v5-ok svg{width:14px;height:14px;fill:#1F2A2E}
+@keyframes v5gold{0%,100%{box-shadow:0 0 0 0 rgba(252,211,77,.7)}50%{box-shadow:0 0 0 10px rgba(252,211,77,0)}}
+.v5-done{display:none;align-items:center;gap:8px;font-size:14.5px;font-weight:600;color:#0A7D79}
+.v5-done svg{width:16px;height:16px;fill:none;stroke:#0A7D79;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.v5-demo[data-state="meeting"] .v5-prep .v5-ph small::after{content:""}
+.v5-demo:not([data-state="meeting"]) .v5-meet{max-height:44px;padding:12px 16px;opacity:.75}
+.v5-demo:not([data-state="meeting"]) .v5-meet > :not(.v5-mh){display:none}
+.v5-demo:not([data-state="meeting"]) .rec b{animation:none;background:#6E6E73;box-shadow:none}
+.v5-demo:not([data-state="meeting"]) .rec::after{content:" · ended";}
+.v5-demo[data-state="ready"] .v5-ok{display:inline-flex}
+.v5-demo[data-state="approved"] .v5-done{display:inline-flex}
+.v5-demo[data-state="approved"] .v5-item .ok{background:#FCD34D}
+.v5-demo[data-state="approved"] .v5-item .ok svg{stroke:#1F2A2E}
+.v5-hint{margin:14px 0 0;text-align:center;font-size:14.5px;color:#A1A1A6}
+.v5-hint b{color:#F87171}
+.v5-demo:not([data-state="meeting"]) .v5-hint{visibility:hidden}
+.v5-replay{display:none;margin:10px auto 0;padding:6px 14px;border:0;border-radius:999px;background:rgba(255,255,255,.08);color:#E8E8ED;font:inherit;font-size:14px;cursor:pointer}
+.v5-demo[data-state="approved"] .v5-replay{display:block}
+.v5-demo .v5-fine{text-align:center}
+
+/* Sections */
+.v5-sec{width:min(1100px,calc(100% - 32px));margin:0 auto;padding:clamp(88px,13vh,150px) 0 0}
+.v5-sec h2{margin:0;font-size:clamp(34px,5vw,60px);font-weight:600;letter-spacing:-.045em;line-height:1.04;text-align:center;text-wrap:balance}
+
+/* 2. The same Tuesday */
+.v5-days{display:grid;gap:14px;margin-top:36px}
+.v5-day{padding:24px 22px;border-radius:22px;background:var(--sx-card-2,#161618);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.v5-day .k{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#F87171}
+.v5-day.after{background:radial-gradient(120% 100% at 0% 0%,rgba(45,212,191,.14),transparent 60%),var(--sx-card-2,#161618)}
+.v5-day.after .k{color:#5EEAD4}
+.v5-day ol{list-style:none;margin:14px 0 0;padding:0}
+.v5-day li{display:flex;gap:16px;padding:10px 0;border-top:1px solid rgba(255,255,255,.07);font-size:16px;color:#D2D2D7}
+.v5-day li b{flex:none;width:44px;font-variant-numeric:tabular-nums;color:#fff}
+.v5-day.before li:nth-last-child(-n+2){color:#FCA5A5}
+.v5-day.after li:nth-last-child(-n+3){color:#99F6E4}
+
+/* 3. Three steps */
+.v5-steps{display:grid;gap:14px;margin-top:36px}
+.v5-step{padding:24px 22px;border-radius:22px;background:var(--sx-card-2,#161618);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.v5-n{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#fff;color:#000;font-weight:600}
+.v5-step h3{margin:16px 0 0;font-size:clamp(26px,3vw,34px);font-weight:600;letter-spacing:-.03em}
+.v5-step > p{margin:8px 0 0;font-size:16px;line-height:1.5;color:#A1A1A6}
+.v5-step figure{margin:16px 0 0}
+.v5-step video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;background:#EEF3F3}
+.v5-step details{margin-top:14px}
+.v5-step summary{cursor:pointer;font-size:15px;color:#67E8F9}
+.v5-step ul{margin:10px 0 0;padding:0 0 0 18px;font-size:15px;line-height:1.7;color:#D2D2D7}
+.v5-more{margin:24px 0 0;text-align:center;font-size:16px;color:#A1A1A6}
+.v5-more a,.v5-link,.v5-quote a{color:#67E8F9;text-decoration:none}
+
+/* 4. Proof */
+.v5-quote{margin:0;padding:clamp(28px,4vw,56px);border-radius:28px;background:radial-gradient(100% 120% at 0% 0%,rgba(45,212,191,.16),transparent 60%),var(--sx-card-2,#161618);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.v5-quote blockquote{margin:0;font-size:clamp(24px,3.2vw,40px);font-weight:500;letter-spacing:-.025em;line-height:1.25}
+.v5-quote figcaption{display:flex;flex-wrap:wrap;align-items:center;gap:12px 14px;margin-top:26px}
+.v5-quote img{border-radius:50%;object-fit:cover}
+.v5-quote figcaption span{font-size:14.5px;color:#A1A1A6}
+.v5-quote figcaption span b{display:block;color:#fff;font-size:16px}
+.v5-quote figcaption a{margin-left:auto;font-size:15px}
+.v5-firms{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px 28px;margin:28px 0 0;font-size:14px;color:#6E6E73}
+.v5-firms span{width:100%;text-align:center}
+.v5-firms b{font-size:18px;font-weight:600;color:#D2D2D7;letter-spacing:-.01em}
+
+/* 5. Price */
+.v5-price{text-align:center}
+.v5-price p{max-width:560px;margin:16px auto 0;font-size:clamp(17px,1.6vw,20px);line-height:1.5;color:#A1A1A6}
+.v5-link{display:inline-block;margin-top:18px;font-size:18px;font-weight:500}
+.v5-close{margin-top:clamp(88px,13vh,150px)}
+
+/* Wider screens */
+@media (min-width:900px){
+  .v5-hero{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:center;gap:56px}
+  .v5-hero-t{text-align:left}
+  .v5-hero-t p{margin-left:0}
+  .v5-hero .sx-ctas{justify-content:flex-start}
+  .v5-days{grid-template-columns:1fr 1fr}
+  .v5-steps{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){ .v5-item,.v5-meet{transition:none} .rec b,.v5-ok,.v5-end{animation:none!important} }
+
+/* Before the meeting ends, the prepared panel is one quiet line, so the hero fits on one screen */
+.v5-demo[data-state="meeting"] .v5-item,.v5-demo[data-state="meeting"] .v5-approve{display:none}
+.v5-demo[data-state="meeting"] .v5-prep{opacity:.7}
+.v5-demo[data-state="meeting"] .v5-ph small{display:none}
+.v5-demo[data-state="meeting"] .v5-ph::after{content:"Waiting for the meeting to end";margin-left:auto;font-size:12px;color:#5B6B70}
+
+/* 12 Nov 2026: the Shahs' year in the hero, and the roles section */
+.v5-track{display:flex;gap:6px;margin:12px 14px 0;padding:0;list-style:none;overflow-x:auto;scrollbar-width:none}
+.v5-track li{flex:none;padding:5px 10px;border-radius:999px;background:#E6ECEC;font-size:12px;font-weight:500;color:#5B6B70}
+.v5-track li.on{background:#14181A;color:#fff}
+.v5-track li.done{background:#D5EFEC;color:#0A7D79}
+.v5-track li.done::before{content:"✓ "}
+.v5-item small{display:block;margin-top:4px;font-size:11.5px;font-weight:600;color:#0A7D79}
+.v5-item:not(.on) small{visibility:hidden}
+.v5-next{display:none;margin:12px auto 0;height:44px;padding:0 20px;border:0;border-radius:999px;background:#fff;color:#000;font:inherit;font-size:15.5px;font-weight:600;cursor:pointer}
+.v5-demo[data-state="approved"]:not(.last) .v5-next{display:block}
+.v5-demo[data-state="approved"]:not(.last) .v5-replay{display:none}
+.v5-demo[data-state="approved"].last .v5-replay{display:block}
+
+.v5-lead{max-width:640px;margin:16px auto 0;text-align:center;font-size:clamp(17px,1.6vw,20px);line-height:1.5;color:#A1A1A6}
+.v5-roles{margin-top:32px}
+.v5-tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;justify-content:flex-start}
+.v5-tabs button{flex:none;height:42px;padding:0 18px;border:0;border-radius:999px;background:rgba(255,255,255,.06);color:#D2D2D7;font:inherit;font-size:15px;font-weight:500;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.v5-tabs button[aria-selected="true"]{background:#fff;color:#000;box-shadow:none}
+.v5-role{display:grid;gap:20px;margin-top:16px;padding:24px 22px;border-radius:24px;background:var(--sx-card-2,#161618);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.v5-role[hidden]{display:none}
+.v5-role h3{margin:0;font-size:clamp(24px,2.6vw,32px);font-weight:600;letter-spacing:-.03em}
+.v5-role ul{list-style:none;margin:16px 0 0;padding:0}
+.v5-role li{position:relative;padding:9px 0 9px 28px;border-top:1px solid rgba(255,255,255,.07);font-size:16px;line-height:1.45;color:#D2D2D7}
+.v5-role li::before{content:"";position:absolute;left:2px;top:15px;width:12px;height:7px;border-left:2px solid #5EEAD4;border-bottom:2px solid #5EEAD4;transform:rotate(-45deg)}
+.v5-role figure{margin:0}
+.v5-role video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:16px;background:#EEF3F3}
+.v5-apps{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin:22px 0 0;font-size:14.5px;color:#86868B}
+.v5-apps span{width:100%;text-align:center;margin-bottom:4px}
+.v5-apps a{padding:6px 14px;border-radius:999px;color:#E8E8ED;text-decoration:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.v5-apps a:hover{box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
+@media (min-width:900px){
+  .v5-tabs{justify-content:center}
+  .v5-role{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;padding:32px}
+}
+
+/* Past the meeting, the meeting bar steps aside */
+.v5-demo[data-scene]:not([data-scene="0"]) .v5-meet{display:none}
+.v5-track{scroll-behavior:smooth}
+
+/* 12 Nov 2026: merged home (tools/v3/build_home6.py): the problem, trust, price cards, getting live */
+.v5-probs{display:grid;gap:14px;margin-top:36px}
+.v5-prob,.v5-tcard{position:relative;padding:24px 22px;border-radius:20px;background:var(--sx-card-2,#161618);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.v5-prob::before,.v5-tcard::before{content:"";position:absolute;top:0;left:22px;width:28px;height:3px;border-radius:0 0 3px 3px;background:var(--c)}
+.v5-prob b,.v5-tcard b{font-size:18px;letter-spacing:-.01em}
+.v5-prob p,.v5-tcard p{margin:8px 0 0;font-size:15px;line-height:1.5;color:#A1A1A6}
+.v5-trust{display:grid;gap:14px;margin-top:36px}
+.v5-tcards{display:grid;gap:14px}
+.v5-quote2{margin:14px 0 0;padding:22px 24px;border-radius:20px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);display:flex;flex-direction:column;gap:14px}
+.v5-quote2 blockquote{margin:0;font-size:17px;line-height:1.45;color:#E8E8ED}
+.v5-quote2 figcaption{display:flex;align-items:center;gap:12px}
+.v5-quote2 img{border-radius:50%;object-fit:cover}
+.v5-quote2 span{font-size:14px;color:#A1A1A6}
+.v5-quote2 span b{display:block;color:#fff;font-size:15px}
+.v5-pcards{display:grid;gap:14px;margin-top:32px;text-align:left}
+.v5-pcard{display:flex;flex-direction:column;padding:24px 22px;border-radius:22px;background:var(--sx-card-2,#161618);color:inherit;text-decoration:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.v5-pcard:hover{transform:translateY(-3px);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.22)}
+.v5-pcard .nm{font-size:15px;font-weight:600;color:#5EEAD4}
+.v5-pcard .pr{margin-top:12px;font-size:15px;color:#A1A1A6}
+.v5-pcard .pr b{font-size:34px;font-weight:600;letter-spacing:-.04em;color:#fff;margin-right:4px}
+.v5-pcard p{margin:10px 0 0;font-size:15px;line-height:1.5;color:#A1A1A6}
+.v5-pnote{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 20px;margin:16px 0 0;font-size:14px;color:#86868B}
+.v5-pnote span::before{content:"✓";margin-right:7px;color:#5EEAD4}
+.v5-pctas{justify-content:center;margin-top:24px}
+.v5-live{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:14px}
+.v5-live li{padding:24px 22px;border-radius:20px;background:var(--sx-card-2,#161618);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.v5-ln{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#fff;color:#000;font-size:14px;font-weight:600}
+.v5-live b{display:block;margin-top:14px;font-size:17px}
+.v5-live p{margin:8px 0 0;font-size:14.5px;line-height:1.5;color:#A1A1A6}
+.v5-then{max-width:760px;margin:24px auto 0;text-align:center;font-size:17px;line-height:1.55;color:#A1A1A6}
+.v5-then b{color:#fff}
+.v5-then a{color:#67E8F9;text-decoration:none}
+.v5-close .v5-more{margin-top:18px}
+@media (min-width:700px){ .v5-probs,.v5-tcards,.v5-live{grid-template-columns:1fr 1fr} }
+@media (min-width:900px){
+  .v5-trust{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+  .v5-quote2{flex-direction:row;align-items:center;justify-content:space-between}
+  .v5-pcards{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .v5-live{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media (min-width:1100px){ .v5-probs{grid-template-columns:repeat(4,minmax(0,1fr))} }
+
+/* 12 Nov 2026: hero balance, merged problem section, common questions */
+.v5-proof{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;margin:20px 0 0;font-size:14.5px;color:#86868B}
+.v5-proof a{color:#E8E8ED;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25)}
+.v5-proof span + span::before{content:"·";margin-right:18px;color:#48484A}
+.v5-dfoot{min-height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.v5-dfoot .v5-hint{margin:0}
+.v5-dfoot .v5-next,.v5-dfoot .v5-replay{margin:0}
+.v5-demo > .v5-fine{margin-top:4px}
+.v5-sub{margin:clamp(48px,7vh,72px) 0 0;text-align:center;font-size:clamp(22px,2.4vw,30px);font-weight:600;letter-spacing:-.03em}
+.v5-faq .sx-faq{max-width:860px;margin:32px auto 0}
+.v5-faq .v5-more{margin-top:20px}
+@media (min-width:900px){
+  .v5-hero{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,5vw,80px);align-items:center;min-height:calc(100vh - 140px);padding-bottom:24px}
+  .v5-hero-t{max-width:540px}
+  .v5-proof{justify-content:flex-start}
+  .v5-demo{width:100%;max-width:560px;justify-self:end}
+  .v5-app{display:flex;flex-direction:column;min-height:500px}
+  .v5-demo[data-state="meeting"] .v5-meet{flex:1;display:flex;flex-direction:column;max-height:none}
+  .v5-demo[data-state="meeting"] .v5-meet .v5-end{margin-top:auto}
+  .v5-prep{flex:1}
+  .v5-demo[data-state="meeting"] .v5-prep{flex:none}
+}
+
+.v5-hero-t .v5-proof{max-width:none;margin:22px 0 0;font-size:14.5px;line-height:1.4;color:#86868B}
+
+/* 12 Nov 2026 (Lee): a little more air above the Tuesday line */
+#problem .v5-sub{margin-top:clamp(72px,10vh,112px)}
+
+/* 12 Nov 2026 (Lee): bigger gaps between sections than inside them (90px inside, about 150px between) */
+.v5 .v5-sec{padding-top:clamp(120px,17vh,190px)}
+.v5 .v5-close{margin-top:clamp(120px,17vh,190px)}
+
+/* 12 Nov 2026 (Lee): a little more room in cards, site-wide: more padding, more space between title and text, looser lines */
+.v5-prob,.v5-tcard,.v5-pcard,.v5-live li{padding:30px 28px}
+.v5-prob::before,.v5-tcard::before{left:28px}
+.v5-prob b,.v5-tcard b{display:block;line-height:1.3}
+.v5-prob p,.v5-tcard p,.v5-pcard p,.v5-live p{margin-top:12px;line-height:1.6}
+.v5-role li{padding-top:11px;padding-bottom:11px}

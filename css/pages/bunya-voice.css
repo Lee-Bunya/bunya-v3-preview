@@ -1,0 +1,158 @@
+/* ======================================================================
+   04 Bunya Voice (2 Oct 2026) — product page on the bunya.ai system.
+   Own order: hero with the three stages, what the team receives, the
+   three-step workflow (tabs on the note card), the agent on the call
+   beside the live Teams screen, the two controls, access band,
+   delivery, closing with the scope list.
+   ====================================================================== */
+
+/* ---- hero ---- */
+.vc-hero{border-bottom:0}
+.vc-hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,80px);align-items:end;padding:clamp(56px,6vw,96px) 0 clamp(32px,4vw,48px)}
+.vc-hero h1{font-size:clamp(44px,5.4vw,76px)}
+.vc-hero-aside .lead{margin-top:0;max-width:30em}
+.vc-hero-aside .hero-note{margin-top:18px}
+.vc-stages{position:relative;padding-bottom:clamp(40px,5vw,64px)}
+.vc-stages ol{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--focus)}
+.vc-stages li{display:grid;gap:6px;padding:20px clamp(16px,2vw,32px) 24px 0;border-bottom:var(--hair)}
+.vc-stages li+li{padding-left:clamp(16px,2vw,32px);border-left:var(--hair)}
+.vc-stages span{font-family:var(--process);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--grid)}
+.vc-stages strong{font-size:19px;color:var(--ink);line-height:1.25}
+.vc-stages small{font-size:15px;line-height:1.5;color:var(--body)}
+main section[id]{scroll-margin-top:96px}
+
+/* ---- what it is ---- */
+.vc-define{padding:clamp(64px,7vw,104px) 0}
+.vc-define-grid{display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,.58fr);gap:clamp(28px,5vw,80px);align-items:start}
+.vc-statement{font-size:clamp(22px,2.1vw,30px);line-height:1.35;letter-spacing:-.012em;color:var(--ink);font-weight:500;text-wrap:pretty}
+.vc-receive{margin-top:36px;padding-top:24px;border-top:1px solid var(--focus)}
+.vc-receive ul{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.vc-receive li{display:grid;grid-template-columns:230px minmax(0,1fr);gap:12px;padding:14px 0;border-bottom:var(--hair)}
+.vc-receive strong{font-size:17px;color:var(--ink)}
+.vc-receive span{font-size:15.5px;line-height:1.5;color:var(--body)}
+.voice-page .scope-note{font-family:var(--process);font-size:12px;letter-spacing:.06em;line-height:1.5;color:var(--grid);margin:18px 0 0;padding:0;max-width:none;text-align:left}
+
+/* ---- workflow tabs on the note card ---- */
+.vc-tour{background:var(--pale);border-bottom:0}
+.vc-tour .section-heading{align-items:start}
+.vc-tour .section-heading>p{max-width:420px;font-size:18px;line-height:1.6;margin-top:36px;padding-left:clamp(0px,3vw,32px);border-left:1px solid var(--grid)}
+.tabs{border-bottom-color:rgba(1,59,67,.22)}
+.feature-panel{align-items:start;grid-template-columns:minmax(0,.58fr) minmax(0,1.42fr)}
+.feature-copy .screen-note{display:block;margin-top:4px;color:var(--grid)}
+.vc-frame{margin:var(--frame-w)}
+.vc-art{background:#fff;border-radius:0 0 calc(var(--r-frame) - 1px) calc(var(--r-frame) - 1px);padding:clamp(20px,2.4vw,32px) clamp(20px,2.6vw,36px) clamp(18px,2vw,26px)}
+.vc-mock{border:var(--hair);border-radius:var(--r-card);background:var(--pale);padding:clamp(16px,1.8vw,22px) clamp(16px,2vw,24px)}
+.vc-mock-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.vc-mock-head strong{display:block;font-size:17px;color:var(--ink);margin:8px 0 4px;line-height:1.25}
+.vc-mock-head small{font-family:var(--process);font-size:11px;letter-spacing:.06em;color:var(--grid)}
+.vc-chip{display:inline-block;font-family:var(--process);font-weight:600;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:var(--r-card);background:#fff;border:1px solid rgba(1,59,67,.22);color:var(--focus)}
+.vc-chip.teams::before,.vc-chip.sp::before{content:"";display:inline-block;width:7px;height:7px;background:var(--pulse);transform:rotate(45deg);margin-right:7px;vertical-align:1px}
+.vc-chip.draft{background:var(--signal);border-color:var(--signal);color:var(--ink)}
+.vc-rec{font-family:var(--process);font-weight:600;font-size:11px;letter-spacing:.1em;color:var(--focus);white-space:nowrap;display:inline-flex;align-items:center;gap:7px;padding-top:4px}
+.vc-rec i{width:9px;height:9px;border-radius:50%;background:var(--signal);animation:vcblink 1.6s infinite}
+@keyframes vcblink{50%{opacity:.25}}
+@media(prefers-reduced-motion:reduce){.vc-rec i{animation:none}}
+.vc-mock .voice-wave{height:72px;margin:18px 0 14px;gap:7px;justify-content:flex-start}
+.vc-mock .voice-wave i{background:var(--pulse);width:6px;max-width:none}
+.vc-transcript{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.vc-transcript li{display:flex;align-items:center;gap:10px}
+.vc-transcript b{width:24px;height:24px;border-radius:50%;font-family:var(--process);font-size:9.5px;font-weight:600;display:grid;place-items:center;color:#fff;background:var(--grid);flex:none}
+.vc-transcript b.ss{background:var(--focus)}.vc-transcript b.ps{background:var(--midnight)}
+.vc-transcript span{display:block;height:10px;border-radius:5px;background:rgba(1,59,67,.14)}
+.vc-mock-foot{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;padding-top:14px;border-top:var(--hair)}
+.vc-tag{font-family:var(--process);font-weight:600;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--grid);background:#fff;border:var(--hair);border-radius:var(--r-card);padding:5px 9px}
+.vc-tag.amber{color:var(--ink);border-color:var(--signal)}
+.vc-match{font-family:var(--process);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--grid);border-radius:var(--r-card);padding:5px 10px;white-space:nowrap}
+.vc-record{display:grid;gap:0;margin-top:14px;background:#fff;border:var(--hair);border-radius:var(--r-card);overflow:hidden}
+.vc-record-row{display:grid;grid-template-columns:120px minmax(0,1fr);gap:10px;padding:10px 14px;border-bottom:var(--hair);align-items:center}
+.vc-record-row:last-child{border-bottom:0}
+.vc-record-row span{font-family:var(--process);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--grid)}
+.vc-record-row strong{font-size:14px;color:var(--ink);font-weight:500}
+.vc-outputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+.vc-outputs div{background:#fff;border:var(--hair);border-radius:var(--r-card);padding:12px 14px;display:grid;gap:4px}
+.vc-outputs span{font-family:var(--process);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--grid)}
+.vc-outputs strong{font-size:15px;color:var(--ink)}
+.vc-outputs small{font-size:12.5px;line-height:1.4;color:var(--body)}
+.vc-btn{font-family:var(--process);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:7px 12px;border-radius:var(--r-card);background:var(--focus);color:#fff}
+.vc-btn.ghost{background:#fff;color:var(--focus);border:1px solid rgba(1,59,67,.3)}
+.vc-caption{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 20px;align-items:center;margin-top:18px;padding-top:16px;border-top:var(--hair)}
+.vc-caption small{grid-column:1;font-family:var(--process);font-weight:600;font-size:11px;letter-spacing:.12em;color:var(--grid)}
+.vc-caption b{grid-column:1;font-size:18px;color:var(--ink);font-weight:700}
+.vc-caption p{grid-column:1;font-size:14.5px;color:var(--body);line-height:1.45;margin:0}
+.vc-caption .review-pill{grid-column:2;grid-row:1/4;font-family:var(--process);font-weight:600;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--focus);background:var(--pale);border:1px solid rgba(1,59,67,.22);margin:0;white-space:nowrap}
+
+/* ---- the agent on the call ---- */
+.vc-call{padding:clamp(64px,7vw,104px) 0}
+.vc-call-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);align-items:start}
+.vc-call-copy>p{margin-top:22px;font-size:17px;color:var(--body);max-width:46ch}
+.vc-steps{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid var(--focus)}
+.vc-steps li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:4px 14px;padding:14px 0;border-bottom:var(--hair)}
+.vc-steps span{grid-row:1/3;width:26px;height:26px;border-radius:50%;background:var(--focus);color:#fff;font-family:var(--process);font-size:12px;font-weight:600;display:grid;place-items:center;margin-top:2px}
+.vc-steps strong{font-size:17px;color:var(--ink)}
+.vc-steps small{font-size:15px;line-height:1.5;color:var(--body)}
+.vc-after{display:grid;gap:14px;margin:26px 0 0}
+.vc-after div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px}
+.vc-after dt{font-family:var(--process);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--grid);padding-top:3px}
+.vc-after dd{margin:0;font-size:15.5px;line-height:1.5;color:var(--body)}
+.vc-call-visual{padding:var(--frame-w);position:sticky;top:96px}
+.vc-call-visual .screen{height:clamp(420px,42vw,640px)}
+
+/* ---- the two controls ---- */
+.vc-controls{padding:clamp(56px,7vw,88px) 0 clamp(64px,7vw,96px)}
+.vc-controls .center-heading>p:last-child{max-width:620px;margin:22px auto 0;color:var(--body)}
+.vc-controls-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(32px,4vw,64px);margin-top:clamp(36px,4vw,56px);border-top:1px solid var(--focus)}
+.vc-controls-grid article{padding:28px 0 32px;border-bottom:var(--hair);display:flex;flex-direction:column}
+.vc-controls-grid article .eyebrow{font-size:11px;margin-bottom:14px}
+.vc-controls-grid h3{font-size:clamp(22px,2vw,26px)}
+.vc-controls-grid article>p:not(.eyebrow){font-size:16px;line-height:1.55;color:var(--body);margin:12px 0 22px;max-width:48ch}
+.vc-controls-grid .voice-note{margin-top:auto;border-color:rgba(1,59,67,.22);background:var(--pale)}
+
+/* ---- delivery ---- */
+.vc-delivery{padding-bottom:clamp(48px,5vw,64px)}
+
+/* ---- closing: Midnight panel, copy beside the scope list ---- */
+.vc-closing{display:block;background:var(--midnight);border-color:var(--midnight);text-align:left;padding:clamp(44px,5.5vw,72px) clamp(24px,5vw,64px)}
+.vc-closing-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,5vw,72px);align-items:center}
+.vc-closing h2{font-size:clamp(34px,3.8vw,54px)}
+.vc-closing-grid>div>p:not(.eyebrow){font-size:17px;line-height:1.55;color:rgba(255,255,255,.8);margin-top:20px;max-width:46ch}
+.vc-closing .actions{justify-content:flex-start;align-items:center}
+.vc-closing-link{color:#fff}
+.vc-closing-link:hover{color:var(--pulse);border-bottom-color:var(--pulse)}
+.vc-scope .eyebrow{color:var(--pulse)}
+.vc-scope ul{list-style:none;margin:10px 0 0;padding:0;border-top:1px solid rgba(255,255,255,.22)}
+.vc-scope li{font-size:16px;color:#fff;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.vc-scope>p{font-family:var(--process);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:14px}
+
+/* ---- responsive ---- */
+@media(max-width:1000px){
+  .vc-hero-grid{grid-template-columns:1fr;gap:24px;align-items:start}
+  .vc-stages ol{grid-template-columns:1fr}
+  .vc-stages li,.vc-stages li+li{padding-left:0;border-left:0}
+  .vc-define-grid,.vc-call-grid,.vc-closing-grid,.vc-controls-grid{grid-template-columns:1fr;gap:28px}
+  .vc-controls-grid{gap:0}
+  .vc-call-visual{position:static;order:2}
+  .feature-panel{grid-template-columns:1fr}
+  .vc-call-visual .screen{height:clamp(380px,60vw,640px)}
+}
+@media(max-width:760px){
+  .vc-hero h1{font-size:clamp(38px,11vw,48px)}
+  .vc-receive li,.vc-after div{grid-template-columns:1fr;gap:4px}
+  .vc-tour .section-heading>p{margin-top:18px;padding-left:0;border-left:0}
+  .vc-art{padding:16px}
+  .vc-outputs{grid-template-columns:1fr}
+  .vc-record-row{grid-template-columns:1fr;gap:2px}
+  .vc-caption{grid-template-columns:1fr}
+  .vc-caption .review-pill{grid-column:1;grid-row:auto;justify-self:start;white-space:normal}
+  .vc-call-visual .screen{height:max(340px,80vw)}
+  .vc-closing{padding:36px 22px}
+}
+
+/* ---- v2 additions (5 Oct 2026: Voice as an optional add-on, linked to the advice journey) ---- */
+/* Keep Dana's hero size: site.css's homepage rule (.home .hero h1) would otherwise shrink it */
+body.voice-page .vc-hero h1{font-size:clamp(44px,5.4vw,76px)}
+@media(max-width:760px){body.voice-page .vc-hero h1{font-size:clamp(38px,11vw,48px)}}
+.vc-hero-aside .actions{margin-top:26px}
+/* where the advice journey starts: the second call section on Pale Mist, then the journey strip */
+.vc-journey .vc-call-copy>p+p{margin-top:16px}
+.vc-journey-link{margin-top:24px}
+.voice-page .vc-journey .journey-strip{margin-top:clamp(44px,5vw,64px)}

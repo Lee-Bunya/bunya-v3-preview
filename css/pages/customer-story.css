@@ -1,0 +1,72 @@
+/* ======================================================================
+   17 Case study (3 Oct 2026) — the case-study template on the bunya.ai
+   system: hero with the client cover, status strip, sticky rail with
+   the five-section index, the story with "in preparation" notes,
+   related links, closing.
+   ====================================================================== */
+.ins-draft{font-family:var(--process);font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:10px 16px;background:var(--pale);color:var(--grid);border-bottom:var(--hair)}
+.hp-skip{position:absolute;left:-999px;top:0;background:var(--focus);color:#fff;padding:10px 14px;z-index:10}
+.hp-skip:focus{left:12px;top:12px}
+main section[id]{scroll-margin-top:96px}
+.ar-crumb{font-family:var(--process);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--grid)}
+.ar-crumb a{color:var(--grid)}.ar-crumb a:hover{color:var(--ink)}
+.cst-hero{border-bottom:0}
+.cst-hero>.wrap{position:relative;padding:clamp(40px,5vw,64px) 0 clamp(40px,5vw,56px)}
+.cst-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center;margin-top:22px}
+.cst-hero h1{font-size:clamp(36px,4.6vw,62px)}
+.cst-hero .lead{max-width:30em}
+.cs-notice{font-size:14.5px;line-height:1.55;color:var(--grid);padding:14px 18px;background:#fff;border:var(--hair);border-left:3px solid var(--signal);border-radius:var(--r-card);margin-top:20px;max-width:52ch}
+.cst-cover-wrap{padding:var(--frame-w);min-width:0;margin:0}
+.cst-cover-wrap figcaption{font-family:var(--process);font-size:12px;letter-spacing:.06em;color:var(--grid);margin-top:14px}
+.cst-cover img{display:block;width:100%;height:auto;border-radius:0 0 calc(var(--r-frame) - 1px) calc(var(--r-frame) - 1px)}
+.cst-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:clamp(32px,4vw,48px) 0 0;padding-top:4px;border-top:1px solid var(--focus)}
+.cst-summary div{padding:18px clamp(16px,2vw,32px) 20px 0;border-bottom:var(--hair)}
+.cst-summary div+div{padding-left:clamp(16px,2vw,32px);border-left:var(--hair)}
+.cst-summary dt{font-family:var(--process);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--grid)}
+.cst-summary dd{margin:6px 0 0;font-size:18px;font-weight:600;color:var(--ink)}
+
+.cst-layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:clamp(32px,5vw,88px);align-items:start;padding:clamp(56px,7vw,88px) 0 clamp(56px,7vw,96px)}
+.cst-rail{position:sticky;top:96px}
+.cst-rail h2{font-size:clamp(26px,2.6vw,34px);margin-top:8px}
+.cst-rail>p:not(.eyebrow){font-size:16px;line-height:1.55;color:var(--body);margin-top:12px}
+.cst-jump{display:grid;margin-top:22px;border-top:1px solid var(--focus)}
+.cst-jump a{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:center;padding:12px 0;border-bottom:var(--hair);color:var(--ink);font-size:15px;font-weight:600}
+.cst-jump a span{font-family:var(--process);font-size:12px;letter-spacing:.12em;color:var(--grid)}
+.cst-jump a:hover{color:var(--grid)}
+.cst-rail .text-link{display:inline-block;margin-top:22px}
+.cst-story{max-width:72ch;min-width:0}
+.cst-story section{padding:clamp(28px,3.4vw,44px) 0;border-top:1px solid var(--focus)}
+.cst-story section:first-child{padding-top:0;border-top:0}
+.cst-story h2{font-size:clamp(26px,2.8vw,38px);margin-top:8px;letter-spacing:-.02em}
+.cst-story p:not(.eyebrow){font-size:17px;line-height:1.65;color:var(--body);margin-top:14px}
+.cs-pending{margin-top:20px;padding:18px 20px;background:var(--pale);border:1px dashed rgba(1,59,67,.35);border-radius:var(--r-card);font-size:15.5px;line-height:1.55;color:var(--body)}
+.cs-pending span{display:block;font-family:var(--process);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--grid);margin-bottom:6px}
+
+.cst-related{display:flex;justify-content:space-between;align-items:center;gap:16px 32px;flex-wrap:wrap;padding:clamp(32px,4vw,48px) 0}
+.cst-related h2{font-size:clamp(24px,2.4vw,32px);margin-top:6px}
+.cst-related-links{display:flex;gap:24px;flex-wrap:wrap}
+
+.cst-closing{display:block;text-align:left;padding:clamp(44px,5.5vw,72px) clamp(24px,5vw,64px)}
+.cst-closing-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,72px);align-items:center}
+.cst-closing h2{font-size:clamp(34px,3.8vw,54px)}
+.cst-closing-grid>div>p{font-size:17px;line-height:1.55;color:rgba(255,255,255,.85);max-width:40ch}
+.cst-closing .actions{justify-content:flex-start;margin-top:22px}
+
+@media(max-width:1000px){
+  .cst-hero-grid{grid-template-columns:1fr;gap:24px}
+  .cst-layout{grid-template-columns:1fr;gap:32px}
+  .cst-rail{position:static}
+  .cst-jump{grid-template-columns:1fr 1fr;border-top:0;gap:8px}
+  .cst-jump a{padding:10px 12px;border:var(--hair);border-radius:var(--r-card);background:var(--pale)}
+  .cst-closing-grid{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .cst-hero h1{font-size:clamp(32px,9vw,42px)}
+  .cst-summary{grid-template-columns:1fr}
+  .cst-summary div,.cst-summary div+div{padding-left:0;border-left:0}
+  .cst-jump{grid-template-columns:1fr}
+  .cst-closing{padding:36px 22px}
+}
+
+/* ---- v2 additions ---- */
+.cst-held{margin:0 0 22px}

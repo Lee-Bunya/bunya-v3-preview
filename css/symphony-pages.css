@@ -1,0 +1,38 @@
+/* =====================================================================
+   Page polish on the Symphony-inspired design (8 Oct 2026).
+   Loads after symphony.css. Each block is scoped to one page's body
+   class and only tunes what the shared bridge can't reach.
+   ===================================================================== */
+
+/* ---------- Command Centre (body.cc-page) ---------- */
+.sym.cc-page .cc-hero h1{font-size:clamp(46px,5.8vw,92px);line-height:.96}
+.sym.cc-page .cc-hero-grid{padding-bottom:clamp(28px,3vw,40px)}
+.sym .cc-index{display:flex;flex-wrap:wrap;gap:8px;border:0;margin-bottom:clamp(48px,6vw,88px)}
+.sym .cc-index a,.sym .cc-index a+a{display:inline-flex;align-items:center;gap:10px;padding:10px 18px 10px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;transition:background .2s,color .2s}
+.sym .cc-index a:hover{background:var(--ink);border-color:var(--ink)}
+.sym .cc-index a:hover strong,.sym .cc-index a:hover span{color:#fff}
+.sym .cc-index span{display:grid;place-items:center;min-width:28px;height:28px;border-radius:999px;background:var(--canvas);font-size:11px;letter-spacing:.06em}
+.sym .cc-index a:hover span{background:rgba(255,255,255,.14)}
+.sym .cc-index strong{font-size:15px}
+.sym .cc-statement{font-family:var(--serif);font-weight:400;font-size:clamp(28px,2.8vw,44px);line-height:1.12;letter-spacing:-.015em}
+.sym .cc-roles{border-top:0;margin-top:36px;padding:28px 30px;border-radius:var(--r-lg);background:#fff}
+.sym .cc-day,.sym .cc-connected{background:#E7EEEC}
+.sym .cc-day .section-heading>p,.sym .cc-approval .section-heading>p{margin-top:0}
+.sym .cc-approval .trail{border-radius:14px}
+.sym .cc-approval .trail li.gate{margin:8px 0}
+.sym .cc-ledger{border-top:0;gap:12px}
+.sym .cc-ledger div{background:#fff;border:0;border-radius:var(--r-md);padding:24px 26px}
+.sym .cc-ai-points{border-top:1px solid rgba(4,15,29,.2)}
+.sym .cc-ai-points li{border-bottom:1px solid var(--line)}
+.sym .cc-flow span{border-radius:999px;background:#fff}
+.sym .cc-flow span:nth-of-type(2){background:var(--soft);border-color:var(--soft)}
+.sym .cc-flow span:nth-of-type(3){background:var(--signal);border-color:var(--signal);color:var(--ink)}
+.sym .wf-card{border-radius:14px}
+.sym .wf-row{border:0;border-radius:var(--r-md)}
+.sym .wf-row.prep{background:#E3F4F2}
+.sym .cc-connected-grid{gap:20px;padding:0}
+.sym .cc-grows{padding-bottom:clamp(40px,5vw,72px)}
+.sym .cc-closing{background:var(--deep)}
+.sym .cc-closing-list{border-top-color:rgba(255,255,255,.22)}
+.sym .cc-closing-list li{grid-template-columns:44px minmax(0,1fr)}
+.sym .cc-closing-list span{display:grid;place-items:center;width:32px;height:32px;border-radius:999px;background:rgba(255,255,255,.1);padding:0}

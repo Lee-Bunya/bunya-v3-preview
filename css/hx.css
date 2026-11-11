@@ -1,0 +1,171 @@
+/* Prototype hero (10 Nov 2026, Lee): "Build the practice system your advice firm needs." The old way: a made-up grey CRM, one for
+   everyone. It shatters, the label flips to "The new way", and your Bunya snaps together from blocks like Lego: the
+   base (Command Centre), the features, the apps, then your brand. Then it starts working and a person approves.
+   Used by index-hero.html, driven by js/hx.js. Without JS the page shows the finished hero. */
+
+.hx{position:relative}
+.hx-pin{position:relative;overflow:hidden;text-align:center}
+.hx-pin::before{content:"";position:absolute;left:50%;top:44%;width:1400px;height:900px;transform:translateX(-50%);pointer-events:none;
+  background:radial-gradient(closest-side,rgba(45,212,191,.18),rgba(99,102,241,.1) 45%,transparent 75%);filter:blur(20px)}
+.hx-copy{position:relative;padding:clamp(30px,5vh,64px) 16px 0;z-index:4}
+.hx-pill{display:inline-grid!important;margin-bottom:22px}
+.hx-pill>span{grid-area:1/1;display:inline-flex;align-items:center;gap:8px;justify-content:center}
+.hx-pill .o{opacity:0}
+.hx-pill .o i{background:#8E8E93;box-shadow:none}
+.hx-pill i{width:7px;height:7px;border-radius:50%;background:var(--hb-teal);box-shadow:0 0 12px var(--hb-teal)}
+.hx h1{position:relative;font-size:clamp(40px,5.8vw,86px);line-height:1;letter-spacing:-.045em}
+.hx h1 span{display:block;padding-bottom:.04em}
+.hx .sub{position:relative;margin:20px auto 0;max-width:620px;font-size:clamp(18px,1.7vw,22px);line-height:1.38;color:var(--hb-grey)}
+.hx .hb-btns{position:relative;margin-top:26px}
+.hx .from{position:relative;margin:16px 0 0;font-size:14px;color:var(--hb-dim)}
+.hx-stage{position:relative;margin:44px auto 60px;width:min(1000px,calc(100% - 32px));aspect-ratio:16/10;font-size:13px}
+.hx-oldwrap,.hx-ai,.hx-replay{display:none}
+
+/* With JS: a pinned stage that plays once, then lets go */
+html.js .hx{height:260vh}
+html.js .hx-pin{position:sticky;top:60px;height:calc(100vh - 60px);min-height:600px}
+html.js .hx.hx-done{height:auto}
+html.js .hx.hx-done .hx-pin{position:relative;top:0}
+html.js .hx-copy{position:absolute;left:0;right:0;top:0}
+html.js .hx-pill .o{opacity:1}
+html.js .hx-pill .n,html.js .hx h1 .l2,html.js .hx .sub,html.js .hx .hb-btns,html.js .hx .from{opacity:0}
+html.js .hx-stage{position:absolute;left:50%;top:0;margin:0;aspect-ratio:auto;width:800px;height:500px;transform-origin:50% 0;perspective:1800px;z-index:2}
+html.js .hx-oldwrap{display:block;position:absolute;inset:0;transform-origin:50% 100%}
+html.js .hx-ai{display:flex;opacity:0;visibility:hidden}
+html.js .hx-plate{opacity:0}
+html.js .hx-blk{opacity:0}
+html.js .hx-replay{display:inline-flex}
+.hx-tag{position:absolute;right:3%;top:-15px;z-index:4;height:30px;display:inline-flex;align-items:center;gap:8px;padding:0 14px;border-radius:999px;
+  background:#3A3A3E;color:#E5E5EA;font-size:13px;box-shadow:0 10px 30px -8px rgba(0,0,0,.7)}
+.hx-tag b{color:#FFD60A;font-weight:600}
+
+/* The old CRM (made up), drawn at 1280 x 800 and scaled to fit */
+.hx-old{position:absolute;inset:0;border-radius:8px;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 40px 100px -20px rgba(0,0,0,.9)}
+.hx-crm{position:absolute;left:0;top:0;width:1280px;height:800px;transform-origin:0 0;font:11px/1.3 Tahoma,"Segoe UI",Arial,sans-serif;color:#2B2B2B;text-align:left;letter-spacing:0}
+.hx-crm .pc{position:absolute;overflow:hidden;background:#ECEEF1;box-sizing:border-box;will-change:transform,opacity}
+.hx-crm .ttl{background:linear-gradient(#61799A,#43597A);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 0 0 12px;font-size:12px;border-radius:8px 8px 0 0}
+.hx-crm .ttl i{display:inline-block;width:40px;text-align:center;font-style:normal;font-size:13px}
+.hx-crm .menu{background:#F3F4F6;border-bottom:1px solid #C9CDD3;display:flex;gap:20px;align-items:center;padding:0 12px;font-size:12px}
+.hx-crm .tool{background:linear-gradient(#F7F8FA,#E1E4E8);border-bottom:1px solid #C3C8CF;display:flex;align-items:center;gap:4px;padding:0 8px}
+.hx-crm .tool b{width:24px;height:24px;border:1px solid #B9BEC6;border-radius:3px;background:linear-gradient(#fff,#D9DDE2);flex:0 0 auto}
+.hx-crm .tool b:nth-child(4n){margin-right:8px}
+.hx-crm .tool s{text-decoration:none;border:1px solid #AEB4BC;background:#fff;height:24px;padding:0 8px;display:flex;align-items:center;color:#777;margin-left:auto;min-width:200px}
+.hx-crm .tool s+s{margin-left:6px;min-width:150px}
+.hx-crm .ban{background:#FFF1B8;border-bottom:1px solid #DDBF55;color:#5A4700;display:flex;align-items:center;gap:12px;padding:0 14px;font-size:12.5px}
+.hx-crm .ban strong{font-weight:bold}
+.hx-crm .ban span{margin-left:auto;display:flex;gap:8px}
+.hx-crm .ban span u{text-decoration:none;font-size:11px;padding:3px 12px;border:1px solid #B79B3A;background:#FFFBEA;border-radius:2px}
+.hx-crm .tree{background:#F7F8FA;border-right:1px solid #C9CDD3;padding:8px 8px;line-height:2}
+.hx-crm .tree span{display:block;white-space:nowrap}
+.hx-crm .tree .s{padding-left:18px;color:#555}
+.hx-crm .tree .on{background:#CFE0F5;outline:1px dotted #557}
+.hx-crm .tabs{background:#E2E5E9;border-bottom:1px solid #B9BEC6;display:flex;align-items:flex-end;padding:0 4px;gap:2px}
+.hx-crm .tabs span{padding:5px 8px;border:1px solid #BFC4CB;border-bottom:0;background:#EDEFF2;font-size:10.5px;white-space:nowrap}
+.hx-crm .tabs .on{background:#fff;padding-bottom:7px}
+.hx-crm .form{background:#fff;padding:12px 14px;display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;align-content:start}
+.hx-crm .form+.form{border-left:1px solid #DDE0E4}
+.hx-crm .form label{display:flex;align-items:center;gap:6px;font-size:10.5px;color:#444;white-space:nowrap;min-width:0}
+.hx-crm .form label em{font-style:normal;width:86px;flex:0 0 86px;text-align:right;overflow:hidden}
+.hx-crm .form label u{flex:1;min-width:0;height:18px;border:1px solid #AEB4BC;background:#FDFDFD;text-decoration:none;padding:0 4px;line-height:16px;color:#222;overflow:hidden}
+.hx-crm .form label u.dd{background:linear-gradient(90deg,#FDFDFD calc(100% - 16px),#E4E7EB 0)}
+.hx-crm .form .req em::after{content:" *";color:#C00}
+.hx-crm .form .ck{grid-column:span 2;display:flex;flex-wrap:wrap;gap:4px 14px;padding-top:4px;color:#444;font-size:10.5px}
+.hx-crm .form .ck span::before{content:"";display:inline-block;width:10px;height:10px;border:1px solid #888;background:#fff;margin-right:4px;vertical-align:-1px}
+.hx-crm .grid{background:#fff;border-top:1px solid #B9BEC6}
+.hx-crm .grid table{width:100%;border-collapse:collapse;font-size:10.5px}
+.hx-crm .grid th{background:linear-gradient(#F4F5F7,#DCDFE3);border:1px solid #C3C8CF;padding:4px 6px;text-align:left;font-weight:normal;white-space:nowrap}
+.hx-crm .grid td{border:1px solid #E1E4E8;padding:4px 6px;white-space:nowrap}
+.hx-crm .grid tr:nth-child(even) td{background:#F5F7FA}
+.hx-crm .btns{border-top:1px solid #C9CDD3;display:flex;justify-content:flex-end;align-items:center;gap:8px;padding:0 14px}
+.hx-crm .btns span,.hx-crm .mf span{border:1px solid #9EA5AE;background:linear-gradient(#fff,#E0E3E7);padding:4px 18px;border-radius:2px}
+.hx-crm .btns em{margin-right:auto;font-style:normal;color:#777}
+.hx-crm .stat{background:#D8DBE0;border-top:1px solid #B9BEC6;display:flex;gap:28px;align-items:center;padding:0 12px;color:#444;font-size:10.5px;border-radius:0 0 8px 8px}
+.hx-crm .modal{background:#F0F0F0;border:1px solid #6F7C8C;box-shadow:0 14px 44px rgba(0,0,0,.45);overflow:hidden;z-index:3}
+.hx-crm .modal .mt{background:linear-gradient(#61799A,#43597A);color:#fff;padding:6px 10px;font-size:12px}
+.hx-crm .modal .mb{padding:16px 18px 12px;display:flex;gap:14px;font-size:12px;line-height:1.5}
+.hx-crm .modal .mb b{flex:0 0 auto;font-size:30px;line-height:1;color:#D9A200}
+.hx-crm .modal .mf{display:flex;justify-content:flex-end;gap:8px;padding:2px 14px 14px}
+.hx-crm .spin{background:rgba(255,255,255,.95);border:1px solid #AEB4BC;display:flex;align-items:center;gap:10px;padding:0 16px;box-shadow:0 6px 20px rgba(0,0,0,.18);z-index:3;font-size:12px}
+.hx-crm .spin b{width:16px;height:16px;border:3px solid #C9CDD3;border-top-color:#4A6A90;border-radius:50%;animation:hx-spin 1s linear infinite}
+@keyframes hx-spin{to{transform:rotate(360deg)}}
+.hx-crm .form label u.f{animation:hx-focus 4.8s steps(1) infinite;animation-delay:calc(var(--i) * .4s)}
+@keyframes hx-focus{0%{outline:2px solid #3B82F6;outline-offset:0;background:#FFFDE7}9%{outline:0;background:#FDFDFD}}
+
+/* The new way: a baseplate, and blocks that snap onto it */
+.hx-plate{position:absolute;inset:0;border-radius:1.4em;background-color:#0C0D10;
+  background-image:radial-gradient(circle,rgba(255,255,255,.07) .16em,transparent .2em);background-size:1.7em 1.7em;background-position:.85em .85em;
+  box-shadow:0 0 0 1px rgba(255,255,255,.12),0 40px 120px -30px rgba(0,0,0,.9);transition:box-shadow 1s var(--hb-ease)}
+.hx-plate.branded{box-shadow:0 0 0 1px rgba(94,234,212,.45),0 40px 120px -20px rgba(45,212,191,.38),0 80px 200px -40px rgba(99,102,241,.32)}
+.hx-head{position:absolute;left:2.5%;right:2.5%;top:3.2%;height:8.5%;display:flex;align-items:center;gap:.7em;text-align:left}
+.hx-head .lg{width:1.9em;height:1.9em;border-radius:.55em;background:#2DD4BF;display:grid;place-items:center;flex:0 0 auto}
+.hx-head .lg svg{width:1.1em;height:1.1em;fill:none;stroke:#000;stroke-width:2.2}
+.hx-head b{font-size:1.15em;font-weight:600;color:#fff}
+.hx-head small{font-size:.85em;color:var(--hb-dim)}
+.hx-head .firm{margin-left:auto;height:2.2em;padding:0 1em;border-radius:999px;display:inline-flex;align-items:center;gap:.5em;font-size:.88em;color:var(--hb-dim);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);border:1px dashed transparent;transition:background .6s,color .6s,box-shadow .6s}
+.hx-head .firm i{width:.8em;height:.8em;border-radius:.25em;background:#3A3A3E;transition:background .6s}
+.hx-plate.branded .firm{background:rgba(45,212,191,.14);color:#5EEAD4;box-shadow:inset 0 0 0 1px rgba(94,234,212,.5)}
+.hx-plate.branded .firm i{background:linear-gradient(135deg,#5EEAD4,#A5B4FC)}
+.hx-blk{position:absolute;width:22.6%;height:37%;border-radius:.9em;background:#18191D;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),0 1.2em 2.4em -1em rgba(0,0,0,.9);
+  padding:1em 1em .9em;display:flex;flex-direction:column;align-items:flex-start;text-align:left;color:#fff;will-change:transform,opacity}
+.hx-blk::before,.hx-blk::after{content:"";position:absolute;top:-.42em;width:16%;height:.55em;border-radius:.25em .25em 0 0;background:#18191D;box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+.hx-blk::before{left:20%}.hx-blk::after{left:64%}
+.hx-blk .ic{width:2.3em;height:2.3em;border-radius:.65em;display:grid;place-items:center;background:var(--c);flex:0 0 auto}
+.hx-blk .ic svg{width:1.25em;height:1.25em;fill:none;stroke:#000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.hx-blk b{margin-top:.75em;font-size:1.08em;font-weight:600;line-height:1.15}
+.hx-blk small{margin-top:.25em;font-size:.82em;color:var(--hb-grey)}
+.hx-blk small em{font-style:normal;color:var(--c)}
+.hx-blk .ln{margin-top:auto;width:100%;display:grid;gap:.4em}
+.hx-blk .ln i{display:block;height:.42em;border-radius:1em;background:rgba(255,255,255,.08);overflow:hidden;position:relative}
+.hx-blk .ln i:nth-child(2){width:70%}
+.hx-blk .ln i::after{content:"";position:absolute;inset:0;width:0;background:linear-gradient(90deg,var(--c),rgba(255,255,255,.5));opacity:.7}
+.hx.live .hx-blk .ln i::after{animation:hx-work 1.6s var(--hb-ease) forwards;animation-delay:calc(var(--d,0) * .12s)}
+@keyframes hx-work{0%{width:0;left:0}60%{width:100%;left:0}100%{width:0;left:100%}}
+.hx-blk.brand{background:linear-gradient(160deg,#1C2A2A,#1D1B2B)}
+.hx-blk.brand::before,.hx-blk.brand::after{background:#1C2626}
+.hx-blk.brand .ic{background:transparent;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4);border:0;color:#fff;font-size:.62em;font-weight:700;letter-spacing:.06em;width:3.7em;height:3.7em}
+.hx-blk .kind{position:absolute;right:.9em;top:.95em;font-size:.68em;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--hb-dim)}
+
+/* It starts working: one piece of prepared work, approved by a person */
+.hx-ai{position:absolute;right:-3%;top:21%;z-index:6;width:min(330px,42%);flex-direction:column;align-items:stretch;gap:10px;padding:14px 14px 12px;border-radius:18px;text-align:left;
+  background:rgba(22,23,26,.92);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6);
+  box-shadow:0 0 0 1px rgba(255,255,255,.16),0 30px 60px -20px rgba(0,0,0,.85);color:#fff;font-size:14px}
+.hx-ai .row{display:flex;align-items:center;gap:12px}
+.hx-ai .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:0 0 auto;background:#FCD34D}
+.hx-ai .ic svg{width:18px;height:18px;fill:none;stroke:#000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.hx-ai small{display:block;margin-top:2px;font-size:12px;color:var(--hb-grey)}
+.hx-ai .act{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.08)}
+.hx-ai .tag{font-size:11px;font-weight:600;background:linear-gradient(100deg,#5EEAD4,#A5B4FC 60%,#F0ABFC);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hx-ai u{text-decoration:none;height:30px;padding:0 14px;border-radius:999px;background:#fff;color:#000;font-size:12px;font-weight:600;display:inline-flex;align-items:center;transition:background .3s,color .3s}
+.hx-ai u b{display:none;font-weight:600}
+.hx-ai.ok u{background:rgba(45,212,191,.16);color:#5EEAD4}
+.hx-ai.ok u b{display:inline}.hx-ai.ok u i{display:none}
+.hx-replay{position:absolute;right:20px;top:18px;z-index:7;height:32px;align-items:center;gap:6px;padding:0 14px;border-radius:999px;border:0;cursor:pointer;
+  background:rgba(255,255,255,.08);color:var(--hb-grey);font:inherit;font-size:13px;opacity:0;pointer-events:none;transition:opacity .4s}
+.hx-replay.on{opacity:1;pointer-events:auto}
+.hx-replay:hover{color:#fff;background:rgba(255,255,255,.14)}
+.hx-replay svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
+
+@media (max-width:700px){
+  html.js .hx-pin{top:56px;height:calc(100vh - 56px);min-height:620px}
+  .hx-tag{font-size:11px;height:24px;padding:0 10px;top:-12px}
+  .hx-blk{padding:.8em .8em .7em}
+  .hx-blk small,.hx-blk .ln,.hx-blk .kind,.hx-head small{display:none}
+  .hx-blk b{font-size:1em}
+  .hx-ai{width:84%;right:-3%;top:34%;padding:10px 10px 9px;gap:7px;font-size:12px}
+  .hx-ai .ic{width:26px;height:26px;border-radius:8px}
+  .hx-ai .ic svg{width:14px;height:14px}
+  .hx-ai small{font-size:10.5px}
+  .hx-ai .act{padding-top:7px}
+  .hx-ai u{height:24px;font-size:11px;padding:0 10px}
+  .hx-replay{right:12px;top:12px}
+}
+
+.hx-ai .tag,.hx-ai u{white-space:nowrap}
+@media (max-width:700px){.hx-ai .tag{font-size:10px}}
+
+/* Option A (10 Nov, Lee): one headline, one line under it */
+.hx .sub{max-width:760px;font-size:clamp(20px,2.1vw,28px);line-height:1.3;color:#C7C7CC;margin-top:18px}
+/* Option 1 (10 Nov, Lee): a normal headline and subheadline, customisation first */
+.hx .sub{max-width:700px;font-size:clamp(18px,1.7vw,22px);line-height:1.4;color:var(--hb-grey)}
+.hx h1 span,.hx .sub{text-wrap:balance}

@@ -1,0 +1,35 @@
+/* Website and marketing (10 Nov 2026). Builds on sx.css. wm- prefix. */
+.wm-hero{padding-bottom:0}
+.wm-mock{width:min(760px,calc(100% - 48px));margin:clamp(40px,6vh,64px) auto 0;display:flex;flex-direction:column;gap:12px}
+.wm-mock .q{align-self:flex-end;max-width:80%;padding:14px 18px;border-radius:20px 20px 6px 20px;background:#2C2C2E;font-size:16px}
+.wm-mock .a{max-width:88%;padding:18px 20px;border-radius:20px 20px 20px 6px;background:#161618;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.wm-mock .k{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#5EEAD4}
+.wm-mock .a p{margin:8px 0 0;font-size:16.5px;line-height:1.5;color:#E8E8ED}
+.wm-mock .src{display:inline-flex;margin-top:12px;padding:6px 12px;border-radius:999px;background:rgba(94,234,212,.12);font-size:13px;color:#5EEAD4}
+.wm-mock small{align-self:center;font-size:12.5px;color:var(--sx-dim)}
+.wm-prices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.wm-card{border-radius:24px;padding:clamp(24px,3vw,36px);background:var(--sx-card-2,#161618)}
+.wm-card.pick{background:linear-gradient(150deg,rgba(17,184,177,.2),rgba(96,165,250,.1));box-shadow:inset 0 0 0 1px rgba(94,234,212,.35)}
+.wm-card .k{font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--sx-dim)}
+.wm-card.pick .k{color:#5EEAD4}
+.wm-card h3{margin-top:10px;font-size:clamp(24px,2.6vw,32px);letter-spacing:-.03em}
+.wm-card .pr{margin:10px 0 0;font-size:16px;color:var(--sx-grey)}
+.wm-card .pr b{font-size:clamp(40px,5vw,56px);font-weight:600;letter-spacing:-.04em;color:#fff}
+.wm-card ul{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:10px}
+.wm-card li{display:flex;gap:10px;font-size:15.5px;line-height:1.45;color:#D2D2D7}
+.wm-card li svg{flex:none;width:18px;height:18px;margin-top:2px;fill:none;stroke:#5EEAD4;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.wm-card .sm{margin:18px 0 0;font-size:14px;color:var(--sx-grey)}
+.wm-fine{margin:18px 0 0;font-size:13.5px;color:var(--sx-dim)}
+.wm-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.wm-steps li{border-radius:20px;padding:22px 20px;background:var(--sx-card-2,#161618)}
+.wm-steps .n{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#fff;color:#000;font-size:14px;font-weight:600}
+.wm-steps b{display:block;margin-top:14px;font-size:17px}
+.wm-steps p{margin:8px 0 0;font-size:14.5px;line-height:1.45;color:var(--sx-grey)}
+.wm-more{margin:18px 0 0;font-size:17px}
+.wm-more a{color:#67E8F9;text-decoration:none}
+.wm-more a::after{content:" \203A"}
+@media (max-width:900px){.wm-prices{grid-template-columns:1fr}.wm-steps{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.wm-steps{grid-template-columns:1fr}.wm-mock .q,.wm-mock .a{max-width:100%}}
+
+/* 12 Nov 2026 (Lee): a little more room in cards, site-wide: more padding, more space between title and text, looser lines */
+.wm-steps p{margin-top:12px;line-height:1.6}

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="aWarm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC53A"/><stop offset=".45" stop-color="#FC7D23"/><stop offset="1" stop-color="#FA3C08"/></linearGradient>
+    <linearGradient id="aCool" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A9C79A"/><stop offset=".5" stop-color="#678D6C"/><stop offset="1" stop-color="#15706B"/></linearGradient>
+    <clipPath id="aClipL"><ellipse cx="0" cy="0" rx="26" ry="50" transform="translate(44 58) rotate(-24)"/></clipPath>
+  </defs>
+  <ellipse cx="0" cy="0" rx="26" ry="50" transform="translate(44 58) rotate(-24)" fill="url(#aWarm)"/>
+  <ellipse cx="0" cy="0" rx="26" ry="50" transform="translate(76 58) rotate(24)" fill="url(#aCool)"/>
+  <g clip-path="url(#aClipL)"><ellipse cx="0" cy="0" rx="26" ry="50" transform="translate(76 58) rotate(24)" fill="#772A53"/></g>
+  <circle cx="60" cy="13" r="7" fill="#FFC53A"/>
+</svg>

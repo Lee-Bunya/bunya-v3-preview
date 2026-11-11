@@ -1,0 +1,101 @@
+/* Pricing (10 Nov 2026). Builds on sx.css. pr- prefix. The price list is the calculator. */
+.pr-hero{padding-bottom:0}
+.pr-starts{width:min(1100px,calc(100% - 48px));margin:clamp(40px,6vh,64px) auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.pr-start{display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:24px 22px;border:0;border-radius:22px;background:var(--sx-card-2,#161618);color:#fff;font:inherit;cursor:pointer;transition:transform .4s var(--sx-ease),box-shadow .3s}
+.pr-start:hover{transform:translateY(-3px);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.25)}
+.pr-start.pick{background:linear-gradient(150deg,rgba(17,184,177,.22),rgba(96,165,250,.12));box-shadow:inset 0 0 0 1px rgba(94,234,212,.4)}
+.pr-start .k{font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--sx-dim)}
+.pr-start.pick .k{color:#5EEAD4}
+.pr-start b{margin-top:10px;font-size:20px;letter-spacing:-.02em}
+.pr-big{margin-top:12px;font-size:44px;font-weight:600;line-height:1;letter-spacing:-.04em}
+.pr-start small{margin-top:8px;font-size:14.5px;line-height:1.45;color:var(--sx-grey)}
+.pr-start .go{margin-top:auto;padding-top:18px;font-size:15px;font-weight:500;color:#67E8F9}
+.pr-start .go::after{content:" ›"}
+
+.pr-wrap{width:min(1100px,calc(100% - 48px));margin:clamp(48px,7vh,80px) auto 0;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,1fr);gap:clamp(20px,3vw,40px);align-items:start;scroll-margin-top:80px}
+.pr-grp{padding:26px 0;border-top:1px solid var(--sx-line)}
+.pr-grp:first-child{border-top:0;padding-top:0}
+.pr-gh{display:flex;align-items:flex-start;gap:14px}
+.pr-gh .n{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#fff;color:#000;font-size:14px;font-weight:600}
+.pr-gh h2{font-size:clamp(22px,2.2vw,28px);letter-spacing:-.03em;line-height:1.1}
+.pr-gh p{margin:4px 0 0;font-size:15px;color:var(--sx-grey)}
+.pr-gh .pc{margin-left:auto;white-space:nowrap}
+.pc{font-size:14px;color:var(--sx-grey);text-align:right}
+.pc b{font-size:17px;color:#fff;font-weight:600}
+.pr-incl{list-style:none;margin:16px 0 0 44px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px}
+.pr-incl li{position:relative;padding-left:24px;font-size:15px}
+.pr-incl li::before{content:"";position:absolute;left:0;top:4px;width:14px;height:8px;border-left:2px solid #5EEAD4;border-bottom:2px solid #5EEAD4;transform:rotate(-45deg)}
+.pr-incl a{color:#E8E8ED;text-decoration:none}
+.pr-incl a:hover{text-decoration:underline;text-underline-offset:3px}
+.pr-rows{margin:14px 0 0 44px}
+.pr-row{display:flex;align-items:center;gap:14px;padding:12px 14px;margin-top:6px;border-radius:14px;background:rgba(255,255,255,.04);transition:background .25s,box-shadow .25s}
+.pr-row.on{background:rgba(147,197,253,.1);box-shadow:inset 0 0 0 1px rgba(147,197,253,.4)}
+.pr-row.inc .pc{opacity:.45;text-decoration:line-through}
+.pr-row .nm{flex:1;min-width:0}
+.pr-row .nm a,.pr-row .nm b{font-size:16px;font-weight:500;color:#fff;text-decoration:none}
+.pr-row .nm a:hover{text-decoration:underline;text-underline-offset:3px}
+.pr-row .nm small{display:block;margin-top:2px;font-size:13px;color:var(--sx-grey)}
+.pr-ae{margin:10px 0 0 44px;background:linear-gradient(150deg,rgba(17,184,177,.16),rgba(96,165,250,.08));box-shadow:inset 0 0 0 1px rgba(94,234,212,.3)}
+.pr-tk{flex:none;display:grid;place-items:center;width:32px;height:32px;padding:0;border:0;border-radius:50%;cursor:pointer;background:rgba(255,255,255,.1);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.2);transition:transform .25s,background .2s}
+.pr-tk:hover{transform:scale(1.08)}
+.pr-tk svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.pr-tk .i-tick,.pr-tk.on .i-plus{display:none}
+.pr-tk.on .i-tick{display:block}
+.pr-tk.on{background:#93C5FD;color:#000;box-shadow:none}
+.pr-tk:disabled{cursor:default;transform:none}
+.pr-note{margin:12px 0 0 44px;font-size:14px;color:var(--sx-grey)}
+.pr-note a{color:#67E8F9}
+
+.pr-sum{position:sticky;top:84px;border-radius:24px;padding:24px;background:#161618;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),0 40px 80px -30px rgba(0,0,0,.8)}
+.pr-sum .k{font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#5EEAD4}
+.pr-rate{display:flex;align-items:baseline;gap:10px;margin-top:8px}
+.pr-rate b{font-size:52px;font-weight:600;letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums}
+.pr-rate small{font-size:15px;color:var(--sx-grey)}
+.pr-n{display:block;margin-top:20px;font-size:15px;color:#D2D2D7}
+.pr-n b{color:#fff;font-variant-numeric:tabular-nums}
+.pr-n input{display:block;width:100%;margin-top:10px;accent-color:#5EEAD4}
+.pr-lines{margin:18px 0 0;padding:14px 0 0;border-top:1px solid var(--sx-line)}
+.pr-lines div{display:flex;justify-content:space-between;padding:4px 0;font-size:15px;color:#D2D2D7}
+.pr-lines div[hidden]{display:none}
+.pr-lines dd{margin:0;font-variant-numeric:tabular-nums;color:#fff}
+.pr-lines .tot{margin-top:6px;padding-top:10px;border-top:1px solid var(--sx-line);font-size:18px;font-weight:600}
+.pr-sn{min-height:20px;margin:10px 0 0;font-size:13.5px;color:var(--sx-grey)}
+.pr-sum .sx-btn{width:100%;margin-top:16px}
+.pr-clear{display:block;margin:12px auto 0;border:0;background:none;font:inherit;font-size:14px;color:var(--sx-grey);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.pr-clear[hidden]{display:none}
+.pr-fine{display:block;margin-top:12px;font-size:12.5px;color:var(--sx-dim);text-align:center}
+
+.pr-every{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.pr-every div{border-radius:20px;padding:22px 20px;background:var(--sx-card-2,#161618)}
+.pr-every b{font-size:17px}
+.pr-every p{margin:8px 0 0;font-size:14.5px;line-height:1.45;color:var(--sx-grey)}
+
+@media (max-width:960px){
+  .pr-starts{grid-template-columns:1fr}
+  .pr-wrap{grid-template-columns:1fr}
+  .pr-sum{position:static;order:-1}
+  .pr-every{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  .pr-incl{grid-template-columns:1fr;margin-left:0}
+  .pr-rows,.pr-ae,.pr-note{margin-left:0}
+  .pr-row{padding:12px}
+  .pr-every{grid-template-columns:1fr}
+  .pr-gh .pc{display:none}
+}
+/* 10 Nov 2026: services rows have no tick */
+.pr-svc .pr-row{padding-left:18px}
+
+/* 11 Nov 2026: price list only (no ticks, no calculator) */
+a.pr-start{text-decoration:none}
+.pr-list .pr-row{padding-left:18px}
+.pr-how{margin:10px 0 0;font-size:15px;line-height:1.5;color:#D2D2D7}
+.pr-ex div{gap:16px}
+.pr-ex dt{color:var(--sx-grey)}
+/* 11 Nov 2026 (Lee): balance the heading, "Only what you need." on its own line */
+.pr-hero h1 .sx-grad{display:block}
+.pr-hero h1,.pr-hero p{text-wrap:balance}
+
+/* 12 Nov 2026 (Lee): a little more room in cards, site-wide: more padding, more space between title and text, looser lines */
+.pr-every div{padding:26px 24px}
+.pr-every p{margin-top:12px;line-height:1.6}

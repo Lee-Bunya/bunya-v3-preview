@@ -1,0 +1,269 @@
+/* ======================================================================
+   Solutions pages (v2 rebuild, 5 Oct 2026) — shared sheet for
+   client-onboarding, soa-preparation, advice-implementation,
+   reviews-fee-consent and compliance-evidence.
+   There is no Dana design for these pages: everything here is built from
+   her system (Mist hairlines, 3px cards / 6px frames, Saira labels,
+   no shadows, one Signal per frame). Spots that need her finish carry a
+   .dana-note in the page.
+   ====================================================================== */
+
+/* ---- v2 additions ---- */
+main section[id]{scroll-margin-top:96px}
+
+/* ---------- Hero ---------- */
+.sol-page .hero h1{font-size:clamp(36px,3.5vw,54px)}
+.sol-page .hero .lead{max-width:34em}
+.sol-page .hero-note{display:flex;gap:10px;align-items:flex-start}
+.sol-page .hero-note::before{content:"";flex:none;width:8px;height:8px;margin-top:7px;background:var(--signal);transform:rotate(45deg)}
+.sol-page .hero-note.plain::before{display:none}
+
+/* illustrative panel inside Dana's hero-product (instead of a live screen) */
+.sol-device{background:#fff;padding:clamp(16px,2vw,24px)}
+.sol-device-label{font-family:var(--process);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--grid);margin:0 0 10px}
+.sol-device-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;padding-bottom:14px;margin-bottom:6px;border-bottom:var(--hair)}
+.sol-device-head strong{font-size:19px;color:var(--ink);line-height:1.25}
+.sol-device-head span{font-size:14px;color:var(--grid)}
+
+/* client rows: name + stage, status on the right */
+.sol-list{list-style:none;margin:0;padding:0}
+.sol-list li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;align-items:center;padding:14px 0;border-bottom:var(--hair)}
+.sol-list li:last-child{border-bottom:0}
+.sol-list strong{display:block;font-size:16px;color:var(--ink);line-height:1.3}
+.sol-list small{display:block;font-size:14px;color:var(--grid);line-height:1.4}
+@media(max-width:560px){.sol-list li{grid-template-columns:1fr}}
+
+/* status label: Saira, square-cornered, with Dana's diamond.
+   Pulse = Bunya preparing · Signal = waiting on a person (one per frame) · Grid = done / neutral */
+.sol-status{display:inline-flex;align-items:center;gap:8px;justify-self:start;font-family:var(--process);font-weight:600;font-size:11px;line-height:1.3;letter-spacing:.1em;text-transform:uppercase;color:var(--focus);
+  padding:6px 10px;border:1px solid var(--mist);border-radius:var(--r-card);background:#fff}
+.sol-status::before{content:"";width:7px;height:7px;flex:none;transform:rotate(45deg);background:var(--mist)}
+.sol-status.bunya{background:rgba(17,184,177,.07);border-color:rgba(17,184,177,.4)}
+.sol-status.bunya::before{background:var(--pulse)}
+.sol-status.team{background:#FFFBF0;border-color:var(--signal)}
+.sol-status.team::before{background:var(--signal)}
+.sol-status.done::before{background:var(--grid)}
+
+/* checklist (SoA request pack) */
+.sol-checks{list-style:none;margin:8px 0 14px;padding:0;display:grid;gap:8px}
+.sol-checks li>div{min-width:0}
+.sol-checks li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;align-items:start;padding:11px 14px;background:var(--pale);border:var(--hair);border-radius:var(--r-card)}
+.sol-checks li::before{content:"";width:18px;height:18px;margin-top:2px;border-radius:2px;background:var(--grid) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/12px no-repeat}
+.sol-checks strong{display:block;font-size:15px;color:var(--ink);line-height:1.3}
+.sol-checks span{display:block;font-size:14px;color:var(--body);line-height:1.4}
+.sol-device .gate{border-radius:var(--r-card);padding:14px 16px;display:grid;gap:10px}
+.sol-device .gate .who{font-size:11px}
+.sol-device .gate strong{font-size:17px;color:var(--ink)}
+.sol-fake-actions{display:flex;flex-wrap:wrap;gap:8px}
+.sol-fake-actions span{display:inline-flex;align-items:center;min-height:38px;padding:8px 14px;border-radius:var(--r-card);border:1px solid var(--focus);font-weight:600;font-size:14px;color:var(--focus);background:#fff}
+.sol-fake-actions span:first-child{background:var(--focus);color:#fff}
+
+/* dated evidence trail (Compliance hero) */
+.sol-dated{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.sol-dated li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:14px;align-items:start;padding:12px 14px;background:var(--pale);border:var(--hair);border-radius:var(--r-card)}
+.sol-dated li>span{font-family:var(--process);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--grid);padding-top:2px}
+.sol-dated strong{display:block;font-size:15px;color:var(--ink);line-height:1.3}
+.sol-dated small{display:block;font-size:14px;color:var(--body);line-height:1.4}
+.sol-dated li.gate>span{color:var(--focus)}
+
+/* ---------- Place in the journey (Dana's index strip, current item marked) ---------- */
+.sol-place{padding:clamp(40px,5vw,64px) 0;border-bottom:var(--hair)}
+.sol-place .eyebrow{margin-bottom:14px}
+.sol-place .journey-strip{margin-top:0}
+.sol-place .across-line{margin-top:0;border-top:0}
+.journey-strip a{position:relative}
+.journey-strip a[aria-current="page"]{background:var(--pale)}
+.journey-strip a[aria-current="page"]::before{content:"";position:absolute;left:0;right:0;top:-2px;height:3px;background:var(--pulse)}
+.across-line[aria-current="page"]{background:var(--pale);padding-left:16px;padding-right:16px;position:relative}
+.across-line[aria-current="page"]::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--pulse)}
+
+/* ---------- Section headings with a control on the right ---------- */
+.sol-page .section-heading h2{max-width:16em}
+.sol-page .section-heading>p{max-width:420px}
+.sol-note{font-size:14px;color:var(--grid);margin-top:18px;max-width:60em}
+
+/* segmented toggle: real buttons with aria-pressed */
+.sol-toggle{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;border:var(--hair);border-radius:var(--r-card);background:#fff;flex:none}
+.sol-toggle button{border:0;background:transparent;color:var(--focus);font:600 15px/1.2 var(--font);padding:11px 16px;border-radius:2px;min-height:44px}
+.sol-toggle button:hover{background:var(--pale);color:var(--ink)}
+.sol-toggle button[aria-pressed="true"]{background:var(--focus);color:#fff}
+.sol-toggle-status{font-family:var(--process);font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--grid);margin-top:10px}
+@media(max-width:760px){.section-heading>.sol-toggle,.section-heading>.sol-toggle-wrap{margin-top:22px}.sol-toggle{display:flex}.sol-toggle button{flex:1 1 auto}}
+
+/* ---------- The journey: phases of .stages rows, with a "who acts" lens ---------- */
+.sol-phase{margin-top:clamp(36px,4vw,52px)}
+.sol-phase-head{display:flex;align-items:baseline;gap:8px 16px;flex-wrap:wrap}
+.sol-phase-head b{font-family:var(--process);font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--focus)}
+.sol-phase-head span{font-size:15px;color:var(--grid)}
+.sol-phase .stages{margin-top:12px}
+.stage .eyebrow{margin:0}
+.stage .who{font-size:11px}
+.stage>div:first-child p{font-size:15px;color:var(--grid)}
+.stage .col-bunya,.stage .col-team{transition:opacity .2s}
+[data-lens="bunya"] .stage .col-team,[data-lens="team"] .stage .col-bunya{opacity:.3}
+[data-lens="bunya"] .stage .col-bunya p,[data-lens="team"] .stage .col-team p{color:var(--ink)}
+
+/* ---------- Handoff card (inside Dana's dark ownership band) ---------- */
+.sol-handoff{margin:var(--frame-w);background:#fff;color:var(--ink);border:1px solid var(--mist);outline:var(--frame-w) solid rgba(255,255,255,.08);border-radius:var(--r-frame);overflow:hidden}
+.sol-handoff .frame-bar{border-radius:calc(var(--r-frame) - 1px) calc(var(--r-frame) - 1px) 0 0}
+.sol-handoff dl{margin:0;padding:clamp(18px,2vw,26px);display:grid;grid-template-columns:120px minmax(0,1fr);gap:0}
+.sol-handoff dt,.sol-handoff dd{margin:0;padding:12px 0;border-bottom:var(--hair);font-size:16px;line-height:1.45}
+.sol-handoff dt{font-family:var(--process);font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--grid);padding-top:15px}
+.sol-handoff dd{color:var(--ink)}
+.sol-handoff dt:last-of-type,.sol-handoff dd:last-of-type{border-bottom:0}
+@media(max-width:480px){.sol-handoff dl{grid-template-columns:1fr}.sol-handoff dt{border-bottom:0;padding-bottom:0}}
+
+/* rows inside the dark band (fee consent, gaps) */
+.sol-dark-rows{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.sol-dark-rows li{display:flex;justify-content:space-between;align-items:center;gap:10px 16px;flex-wrap:wrap;padding:16px 20px;border:var(--hair-dark);border-radius:var(--r-card);background:rgba(255,255,255,.04)}
+.sol-dark-rows strong{display:block;color:#fff;font-size:17px;line-height:1.3}
+.sol-dark-rows small{display:block;color:rgba(255,255,255,.72);font-size:14px;line-height:1.45}
+.sol-dark-rows .k{display:inline-flex;align-items:center;gap:8px;font-family:var(--process);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--pulse);white-space:nowrap}
+.sol-dark-rows .k::before{content:"";width:7px;height:7px;transform:rotate(45deg);background:currentColor}
+.sol-dark-rows .k.team{color:var(--signal)}
+.sol-dark-rows .k.record{color:rgba(255,255,255,.7)}
+.sol-dark-rows li.is-gate{border-color:var(--signal);background:rgba(244,181,40,.08)}
+.sol-dark-note{font-size:14px!important;color:rgba(255,255,255,.62)!important;margin:4px 0 0!important}
+
+/* ---------- What we measure (placeholders live inside a .dana-note) ---------- */
+.sol-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:12px}
+.sol-metrics.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.sol-metrics div{background:#fff;border:var(--hair);border-radius:var(--r-card);padding:18px 18px 20px;display:grid;gap:6px}
+.sol-metrics b{font:700 28px/1.1 var(--font);color:var(--grid);letter-spacing:-.01em}
+.sol-metrics span{font:600 15px/1.35 var(--font);color:var(--ink)}
+.dana-note.sol-metrics-note{margin-top:clamp(24px,3vw,36px);padding:14px 16px 16px}
+@media(max-width:900px){.sol-metrics,.sol-metrics.three{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.sol-metrics,.sol-metrics.three{grid-template-columns:1fr}}
+
+/* ---------- Framed panels in sections ---------- */
+.sol-mount{padding:var(--frame-w);min-width:0}
+.sol-body{padding:clamp(18px,2.2vw,28px)}
+.sol-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,4vw,56px);align-items:start}
+.sol-two>div>h2{font-size:clamp(28px,2.6vw,38px)}
+.sol-two .sol-mount{margin-top:clamp(22px,2.4vw,30px)}
+@media(max-width:900px){.sol-two{grid-template-columns:1fr}}
+
+/* diamond bullet list (Dana's how-points) */
+.sol-bullets{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.sol-bullets li{position:relative;padding:12px 14px 12px 34px;background:var(--pale);border:var(--hair);border-radius:var(--r-card);font-size:16px;line-height:1.45;color:var(--ink)}
+.sol-bullets li::before{content:"";position:absolute;left:14px;top:20px;width:7px;height:7px;background:var(--pulse);transform:rotate(45deg)}
+.sol-body-foot{display:flex;justify-content:space-between;align-items:center;gap:8px 16px;flex-wrap:wrap;margin-top:16px;padding-top:14px;border-top:var(--hair);font-size:14px;color:var(--grid)}
+
+/* ---------- SoA: Today / With Bunya ---------- */
+.sol-gap{margin-top:clamp(28px,3vw,40px)}
+.sol-rows{list-style:none;margin:0;padding:0 clamp(18px,2.2vw,28px)}
+.sol-rows li{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:10px clamp(20px,3vw,40px);align-items:start;padding:20px 0;border-bottom:var(--hair)}
+.sol-rows li:last-child{border-bottom:0}
+.sol-rows h3{font-size:20px}
+.sol-rows .side{display:grid;gap:6px}
+.sol-rows .side p{font-size:17px;line-height:1.5;color:var(--body)}
+.sol-rows .who{font-size:11px}
+.sol-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--process);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--grid)}
+.sol-tag::before{content:"";width:8px;height:8px;transform:rotate(45deg);background:var(--mist);flex:none}
+[data-mode="bunya"] .side.today,[data-mode="today"] .side.with{display:none}
+@media(max-width:760px){.sol-rows li{grid-template-columns:1fr}}
+
+/* five steps (step 4 is the one .gate) */
+.card-grid.five{grid-template-columns:repeat(5,minmax(0,1fr));gap:calc(16px + var(--frame-w))}
+.card-grid.five>article{padding:22px 20px 24px}
+.card-grid.five h3{font-size:20px}
+.card-grid.five p:not(.eyebrow){font-size:16px}
+.card-grid .eyebrow{margin:0 0 4px}
+.card-grid>article.gate{background:#FFFBF0}
+@media(max-width:1100px){.card-grid.five{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.card-grid.five{grid-template-columns:1fr}}
+
+/* claim block wrapped in a [CONFIRM] marker */
+.confirm.sol-confirm-block{display:block;padding:clamp(20px,3vw,32px);border-radius:var(--r-frame);font-weight:400}
+.sol-confirm-lead{font:600 14px/1.45 var(--font);color:var(--midnight);margin-bottom:clamp(18px,2vw,26px)}
+html.hide-notes .sol-confirm-lead{display:none}
+html.hide-notes .confirm.sol-confirm-block{padding:0}
+
+/* "straight answers" block */
+.sol-straight{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,4vw,64px);align-items:start}
+.sol-straight>div>p:not(.eyebrow){font-size:18px;line-height:1.55;color:var(--body);margin-top:20px;max-width:30em}
+.sol-proof-line{font-size:18px;line-height:1.55;color:var(--body);margin-top:18px;max-width:40em}
+.sol-bullets strong{display:block;color:var(--ink);font-size:17px;margin-bottom:2px}
+.sol-bullets.plain li{background:#fff}
+.sol-straight ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.sol-straight li{background:#fff;border:var(--hair);border-radius:var(--r-card);padding:18px 20px 20px;display:grid;gap:4px}
+.sol-straight li strong{font-size:18px;color:var(--ink);line-height:1.3}
+.sol-straight li span{font-size:16px;color:var(--body);line-height:1.5}
+@media(max-width:900px){.sol-straight{grid-template-columns:1fr}}
+
+/* ---------- Reviews: one cycle as six points ---------- */
+.sol-points{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin-top:clamp(28px,3vw,40px)}
+.sol-points button{display:grid;gap:6px;align-content:start;text-align:left;min-height:96px;padding:14px 14px 16px;border:1px solid var(--mist);border-radius:var(--r-card);background:#fff;color:var(--ink);position:relative}
+.sol-points button:hover{border-color:var(--grid)}
+.sol-points .when{font-family:var(--process);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--grid)}
+.sol-points strong{font-size:16px;line-height:1.3}
+.sol-points button[aria-pressed="true"]{background:var(--focus);border-color:var(--focus);color:#fff}
+.sol-points button[aria-pressed="true"] .when{color:var(--pulse)}
+.sol-points button+button::before{content:"";position:absolute;left:-9px;top:50%;width:9px;height:1px;background:var(--grid)}
+@media(max-width:1000px){.sol-points{grid-template-columns:repeat(3,minmax(0,1fr))}.sol-points button:nth-child(3n+1)::before{display:none}}
+@media(max-width:480px){.sol-points{grid-template-columns:1fr 1fr}.sol-points button::before{display:none}}
+.sol-detail{margin-top:clamp(18px,2vw,26px)}
+.sol-detail-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.sol-detail-grid>div{padding:18px 18px 20px;border:var(--hair);border-radius:var(--r-card);background:var(--pale);display:grid;gap:8px;align-content:start}
+.sol-detail-grid>div.gate{background:#FFFBF0}
+.sol-detail-grid .who,.sol-detail-grid .eyebrow{font-size:11px;margin:0}
+.sol-detail-grid p:not(.eyebrow){font-size:16px;line-height:1.5;color:var(--ink)}
+.sol-detail h3{font-size:clamp(22px,2vw,28px);margin-bottom:16px}
+@media(max-width:760px){.sol-detail-grid{grid-template-columns:1fr}}
+
+/* year-ahead capacity grid (illustrative). Overloaded months use a muted Signal tint, never full Signal. */
+.sol-capacity-wrap{overflow-x:auto}
+.sol-capacity{width:100%;min-width:280px;border-collapse:separate;border-spacing:4px;font-size:15px}
+.sol-capacity caption{text-align:left;font-family:var(--process);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--grid);padding:0 5px 6px}
+.sol-capacity th{font-weight:600;color:var(--grid);font-size:13px;text-align:center;padding:2px 0}
+.sol-capacity th[scope="row"]{text-align:left;color:var(--ink);font-size:15px;padding-right:6px;white-space:nowrap}
+.sol-capacity td{text-align:center;font-weight:600;color:var(--ink);padding:10px 0;border-radius:var(--r-card);background:rgba(17,184,177,.08);border:1px solid transparent}
+.sol-capacity thead td{background:none}
+.sol-capacity td.mid{background:rgba(17,184,177,.18)}
+.sol-capacity td.hi{background:rgba(244,181,40,.2);border-color:rgba(244,181,40,.45)}
+.sol-legend{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--grid)}
+.sol-legend i{width:12px;height:12px;flex:none;border-radius:2px;background:rgba(244,181,40,.2);border:1px solid rgba(244,181,40,.45)}
+
+/* ---------- Compliance: ask the file ---------- */
+.sol-ask{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,3vw,40px);align-items:start;margin-top:clamp(28px,3vw,40px)}
+.sol-questions{display:grid;gap:8px}
+.sol-questions button{display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:left;min-height:56px;padding:14px 18px;border:1px solid var(--mist);border-radius:var(--r-card);background:#fff;color:var(--ink);font:600 16px/1.35 var(--font)}
+.sol-questions button::after{content:"→";color:var(--grid);flex:none}
+.sol-questions button:hover{border-color:var(--grid)}
+.sol-questions button[aria-pressed="true"]{background:var(--focus);border-color:var(--focus);color:#fff}
+.sol-questions button[aria-pressed="true"]::after{color:var(--pulse)}
+.sol-answer h3{font-size:22px;margin-bottom:14px}
+.sol-evidence{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.sol-evidence li{display:grid;gap:4px;padding:14px 16px;border:var(--hair);border-radius:var(--r-card);background:var(--pale)}
+.sol-evidence li.gate{background:#FFFBF0}
+.sol-evidence .who,.sol-evidence .sol-tag{font-size:11px}
+.sol-evidence strong{font-size:16px;color:var(--ink);line-height:1.3}
+.sol-evidence small{font-size:14px;color:var(--body);line-height:1.45}
+.sol-answer .sol-body-foot{color:var(--focus)}
+@media(max-width:900px){.sol-ask{grid-template-columns:1fr}}
+
+/* four kinds of evidence: small line icon in a Mist square */
+.sol-icon{width:44px;height:44px;display:grid;place-items:center;border:var(--hair);border-radius:var(--r-card);background:var(--pale);margin-bottom:6px}
+.sol-icon svg{width:22px;height:22px;fill:none;stroke:var(--grid);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- Approval trail inside a frame (Implementation) ---------- */
+.frame .trail{margin:0;padding:6px clamp(18px,2.2vw,28px) 10px}
+.frame .trail li{gap:8px}
+.frame .trail .who{font-size:11px}
+.frame .trail small{line-height:1.45}
+@media(max-width:760px){.frame .trail li:first-child{border-top:0}}
+
+/* ---------- Related solutions ---------- */
+.sol-related .card-grid>article{align-content:space-between}
+.sol-related .card-grid h3{font-size:21px}
+.sol-related .card-grid p:not(.eyebrow){font-size:16px}
+.sol-related .text-link{margin-top:6px;justify-self:start}
+
+/* product-row reused outside Dana's .products band */
+.sol-page .section .product-list{margin-top:clamp(28px,3vw,40px)}
+.sol-page .section-heading+.product-list{margin-top:clamp(36px,4vw,52px)}
+
+/* FAQ sits in Dana's product-questions block */
+.statement+.product-questions{border-top:0}
+.sol-page .product-questions h2{max-width:12em}
+.sol-page .product-questions details p .confirm{font-weight:500}

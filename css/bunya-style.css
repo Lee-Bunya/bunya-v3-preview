@@ -1,0 +1,229 @@
+/* The Bunya style (18 Oct 2026). Shared by home-bunya-style.html (concept 7) and bunya-style.html (the style sheet).
+   Calm white space and product-first restraint (from Zeely), big confident type and one staged moment (from Apple),
+   and three things that are only ours: teal as the one accent, the bunya diamond as the pattern, and gold that
+   only ever means "a person approved this". Classes start bs-. Selectors start .bs so they outrank .sym h1/h2. */
+.bs{
+  --bs-canvas:#FFFFFF; --bs-pale:#F2F8F8; --bs-mist:#D9E6E6; --bs-line:#E2ECEB;
+  --bs-ink:#06222A; --bs-slate:#5B7173; --bs-quiet:#8A9C9E;
+  --bs-grid:#0A7D79; --bs-pulse:#11B8B1; --bs-focus:#013B43; --bs-midnight:#040F1D;
+  --bs-signal:#F4B528; --bs-signal-ink:#8A5A00; --bs-signal-wash:#FFF6DF;
+  --bs-settle:cubic-bezier(.2,.7,.1,1); --bs-quick:.24s; --bs-move:.6s; --bs-slow:.9s;
+  --bs-radius:28px; --bs-radius-s:18px;
+  --bs-shadow:0 1px 2px rgba(4,15,29,.04),0 30px 60px -38px rgba(1,59,67,.38);
+  --bs-diamonds:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Cpath d='M14 11.2l2.8 2.8-2.8 2.8-2.8-2.8z' fill='%230A7D79' fill-opacity='.16'/%3E%3C/svg%3E");
+  background:var(--bs-canvas);color:var(--bs-ink)}
+.bs main{overflow-x:clip}
+.bs-wrap{width:min(1180px,calc(100% - 44px));margin:0 auto}
+.bs-narrow{width:min(860px,calc(100% - 44px));margin:0 auto}
+.bs-centre{text-align:center}
+.bs-sec{padding:clamp(80px,11vw,150px) 0}
+.bs-sec.pale{background:var(--bs-pale)}
+.bs-dots{background-image:var(--bs-diamonds);background-position:center top}
+
+/* ── Type ───────────────────────────────────────────────────────────────── */
+.bs .bs-display{margin:0;font-size:clamp(46px,7.6vw,104px);font-weight:700;letter-spacing:-.05em;line-height:.97;color:var(--bs-ink)}
+.bs .bs-h2{margin:0;font-size:clamp(36px,5.2vw,68px);font-weight:700;letter-spacing:-.045em;line-height:1.02;color:var(--bs-ink)}
+.bs .bs-h3{margin:0;font-size:clamp(26px,2.6vw,36px);font-weight:700;letter-spacing:-.035em;line-height:1.08;color:var(--bs-ink)}
+.bs .bs-display em,.bs .bs-h2 em,.bs .bs-h3 em{font-style:normal;font-family:inherit;font-size:1em;font-weight:inherit;letter-spacing:inherit;color:var(--bs-grid)}
+.bs .bs-display .soft,.bs .bs-h2 .soft{color:var(--bs-quiet)}
+.bs-lede{font-size:clamp(18px,1.75vw,22px);line-height:1.5;color:var(--bs-slate);font-weight:400;margin:22px 0 0;max-width:680px}
+.bs-centre .bs-lede{margin-inline:auto}
+.bs-body{font-size:17px;line-height:1.55;color:var(--bs-slate);margin:12px 0 0}
+.bs-fine{font-size:13px;color:var(--bs-quiet);margin:18px 0 0}
+
+/* The pill label above every section: a small diamond and a few words. */
+.bs-label{display:inline-flex;align-items:center;gap:9px;height:34px;padding:0 15px 0 12px;border-radius:999px;border:1px solid var(--bs-line);
+  background:rgba(255,255,255,.8);font-size:14px;font-weight:600;color:var(--bs-ink);letter-spacing:-.005em;margin:0 0 22px}
+.bs-label .bs-dia{width:11px;height:12px;color:var(--bs-grid)}
+.bs-label.on-dark{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:#E6F4F2}
+.bs-label.on-dark .bs-dia{color:var(--bs-pulse)}
+
+/* The diamond: one of the 13 official pieces of the mark. */
+.bs-dia{display:inline-block;width:1em;height:1.1em;flex:0 0 auto;color:var(--bs-grid)}
+.bs-dia svg,svg.bs-dia{display:block;width:100%;height:100%;fill:currentColor}
+.bs-dia.gold{color:var(--bs-signal)}
+
+/* ── Actions ────────────────────────────────────────────────────────────── */
+.bs-ctas{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin:34px 0 0}
+.bs-centre .bs-ctas{justify-content:center}
+.bs .bs-btn{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 28px;border-radius:999px;background:var(--bs-ink);color:#fff;
+  font-size:17px;font-weight:600;letter-spacing:-.01em;transition:transform var(--bs-quick) var(--bs-settle),background var(--bs-quick)}
+.bs .bs-btn:hover{background:var(--bs-focus);color:#fff;transform:translateY(-1px)}
+.bs .bs-btn.white{background:#fff;color:var(--bs-ink)}
+.bs .bs-btn.white:hover{background:#E9FBF9}
+.bs .bs-link{font-size:17px;font-weight:600;color:var(--bs-grid)}
+.bs .bs-link::after{content:" ›"}
+.bs .bs-link:hover{text-decoration:underline}
+.bs .bs-link.on-dark{color:#7FE0D8}
+
+/* ── Cards ──────────────────────────────────────────────────────────────── */
+.bs-card{background:#fff;border:1px solid var(--bs-line);border-radius:var(--bs-radius);padding:clamp(24px,2.6vw,34px);box-shadow:var(--bs-shadow)}
+.bs-card.flat{box-shadow:none}
+.bs-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:clamp(40px,5vw,64px)}
+.bs-step{position:relative}
+.bs-step .bs-num{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--bs-grid);letter-spacing:.04em;margin-bottom:16px}
+.bs-step .bs-num .bs-dia{width:12px;height:13px}
+.bs-step:last-child .bs-num .bs-dia{color:var(--bs-signal)}
+.bs-step b{display:block;font-size:24px;font-weight:700;letter-spacing:-.03em;color:var(--bs-ink)}
+
+/* Small floating chips around a product panel. */
+.bs-chip{display:inline-flex;align-items:center;gap:10px;padding:10px 16px 10px 12px;border-radius:16px;background:rgba(255,255,255,.94);
+  border:1px solid var(--bs-line);box-shadow:0 18px 40px -22px rgba(1,59,67,.45);font-size:14px;font-weight:600;color:var(--bs-ink);white-space:nowrap;
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.bs-chip small{display:block;font-size:12px;font-weight:500;color:var(--bs-slate)}
+.bs-chip .ic{display:grid;place-items:center;width:30px;height:30px;border-radius:10px;background:#E3F4F2;color:var(--bs-grid)}
+.bs-chip .ic svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* The approval chip: the only place gold appears. */
+.bs-ok{display:inline-flex;align-items:center;gap:9px;padding:8px 14px 8px 10px;border-radius:999px;background:var(--bs-signal-wash);
+  border:1px solid #F6DFA0;font-size:14px;font-weight:600;color:var(--bs-signal-ink);white-space:nowrap}
+.bs-ok .bs-dia{width:13px;height:14px;color:var(--bs-signal)}
+.bs-wait{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:#E9F5F4;font-size:14px;font-weight:600;color:var(--bs-grid);white-space:nowrap}
+.bs-wait::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--bs-pulse)}
+
+/* ── The prompt box ─────────────────────────────────────────────────────── */
+.bs-ask{width:min(760px,100%);margin:40px auto 0;text-align:left}
+.bs-ask-box{display:flex;align-items:center;gap:14px;min-height:72px;padding:10px 10px 10px 22px;border-radius:24px;background:#fff;
+  border:1px solid var(--bs-line);box-shadow:0 1px 2px rgba(4,15,29,.05),0 24px 60px -30px rgba(1,59,67,.4)}
+.bs-ask-box>.bs-dia{width:16px;height:18px}
+.bs-ask-text{flex:1;min-width:0;font-size:clamp(16px,1.6vw,19px);color:var(--bs-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bs-ask-text .ph{color:var(--bs-quiet)}
+.bs-ask-text .caret{display:inline-block;width:2px;height:1.1em;margin-left:2px;vertical-align:-.18em;background:var(--bs-grid);animation:bsBlink 1s steps(1) infinite}
+@keyframes bsBlink{50%{opacity:0}}
+.bs-ask-go{display:grid;place-items:center;width:52px;height:52px;border-radius:16px;background:var(--bs-ink);color:#fff;flex:0 0 auto}
+.bs-ask-go svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.bs-ask-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
+.bs-ask-chips span{padding:7px 14px;border-radius:999px;background:var(--bs-pale);border:1px solid var(--bs-line);font-size:14px;font-weight:500;color:var(--bs-slate);
+  transition:background var(--bs-quick),color var(--bs-quick),border-color var(--bs-quick)}
+.bs-ask-chips span.on{background:#fff;border-color:#BFE3DF;color:var(--bs-grid)}
+
+/* ── Product panel: a stand-in screen on the diamond grid, with chips floating round it ── */
+.bs-stage{position:relative;margin:clamp(48px,6vw,80px) auto 0;width:min(1180px,calc(100% - 44px));padding:clamp(28px,5vw,70px) clamp(16px,5vw,80px) 0;
+  border-radius:36px;background:var(--bs-pale) var(--bs-diamonds);overflow:hidden}
+.bs-stage::after{content:"";position:absolute;inset:auto 0 0;height:30%;background:linear-gradient(180deg,rgba(242,248,248,0),var(--bs-pale));pointer-events:none}
+.bs-window{position:relative;border-radius:18px 18px 0 0;overflow:hidden;background:#fff;border:1px solid var(--bs-line);border-bottom:0;
+  box-shadow:0 40px 90px -40px rgba(1,59,67,.5)}
+.bs-window::before{content:"";display:block;height:30px;background:#F7FAFA radial-gradient(circle at 18px 15px,#DCE5E4 4px,transparent 4.5px),
+  radial-gradient(circle at 34px 15px,#DCE5E4 4px,transparent 4.5px),radial-gradient(circle at 50px 15px,#DCE5E4 4px,transparent 4.5px);border-bottom:1px solid var(--bs-line)}
+.bs-window img{display:block;width:100%;height:auto}
+.bs-float{position:absolute;z-index:2;width:max-content;opacity:0;transform:translateY(18px) scale(.97);transition:opacity var(--bs-move) ease,transform var(--bs-slow) var(--bs-settle)}
+.bs-float.in{opacity:1;transform:none}
+.bs-stage.small{padding:clamp(22px,3.4vw,44px) clamp(16px,3.4vw,44px) 0;border-radius:30px;margin:0;width:auto}
+
+/* ── The signature: draft → checked → approved ──────────────────────────── */
+.bs-sig{position:relative;width:min(440px,100%);background:#fff;border:1px solid var(--bs-line);border-radius:24px;padding:22px 22px 20px;
+  box-shadow:0 1px 2px rgba(4,15,29,.05),0 34px 70px -36px rgba(1,59,67,.45);text-align:left}
+.bs-sig-top{display:flex;align-items:center;gap:12px}
+.bs-sig-top .glyph{width:38px;height:38px;border-radius:30%}
+.bs-sig-top b{display:block;font-size:16px;font-weight:700;letter-spacing:-.02em;color:var(--bs-ink)}
+.bs-sig-top small{display:block;font-size:13px;color:var(--bs-slate)}
+.bs-sig-state{margin-left:auto;position:relative;height:34px;min-width:150px;display:flex;justify-content:flex-end}
+.bs-sig-state>span{position:absolute;right:0;top:0;opacity:0;transform:translateY(6px);transition:opacity .35s ease,transform .45s var(--bs-settle)}
+.bs-sig[data-state="draft"] .s-draft,.bs-sig[data-state="ready"] .s-ready,.bs-sig[data-state="checked"] .s-ready,.bs-sig[data-state="approved"] .s-ok{opacity:1;transform:none}
+.bs-sig .s-draft{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:var(--bs-pale);font-size:14px;font-weight:600;color:var(--bs-slate);white-space:nowrap}
+.bs-sig-lines{margin:20px 0 0;display:grid;gap:10px}
+.bs-sig-lines i{display:block;height:9px;border-radius:9px;background:#EEF4F3;position:relative;overflow:hidden}
+.bs-sig-lines i::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(90deg,#BFE3DF,#D8EEEB);transform:scaleX(0);transform-origin:left;
+  transition:transform .7s var(--bs-settle)}
+.bs-sig-lines i:nth-child(1){width:92%}.bs-sig-lines i:nth-child(2){width:78%}.bs-sig-lines i:nth-child(3){width:86%}.bs-sig-lines i:nth-child(4){width:54%}
+.bs-sig-lines i:nth-child(2)::after{transition-delay:.25s}.bs-sig-lines i:nth-child(3)::after{transition-delay:.5s}.bs-sig-lines i:nth-child(4)::after{transition-delay:.75s}
+.bs-sig:not([data-state="idle"]) .bs-sig-lines i::after{transform:scaleX(1)}
+.bs-sig-check{display:flex;align-items:center;gap:10px;margin:18px 0 0;padding:12px 14px;border-radius:14px;background:var(--bs-pale);font-size:14px;color:var(--bs-slate);
+  opacity:0;transform:translateY(8px);transition:opacity .4s ease,transform .6s var(--bs-settle)}
+.bs-sig-check .tick{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--bs-grid);color:#fff}
+.bs-sig-check .tick svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.bs-sig-check b{color:var(--bs-ink);font-weight:600}
+.bs-sig[data-state="checked"] .bs-sig-check,.bs-sig[data-state="approved"] .bs-sig-check{opacity:1;transform:none}
+/* The gold diamond lands: it drops in large, settles, and leaves one soft ring. */
+.bs-sig-stamp{position:absolute;right:-18px;top:-22px;width:58px;height:64px;color:var(--bs-signal);opacity:0;transform:scale(1.9) rotate(-8deg);
+  filter:drop-shadow(0 10px 18px rgba(201,143,12,.35));transition:opacity .25s ease,transform .7s cubic-bezier(.3,1.5,.5,1)}
+.bs-sig-stamp svg{width:100%;height:100%;fill:currentColor}
+.bs-sig-stamp::after{content:"";position:absolute;left:50%;top:50%;width:100%;height:100%;margin:-50% 0 0 -50%;border-radius:50%;border:2px solid var(--bs-signal);opacity:0}
+.bs-sig[data-state="approved"] .bs-sig-stamp{opacity:1;transform:none}
+.bs-sig[data-state="approved"] .bs-sig-stamp::after{animation:bsRing 1.1s .35s ease-out}
+@keyframes bsRing{0%{opacity:.7;transform:scale(.6)}100%{opacity:0;transform:scale(1.9)}}
+.bs-replay{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:0;border:0;background:none;font:inherit;font-size:14px;font-weight:600;color:var(--bs-grid);cursor:pointer}
+.bs-replay svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── Result cards (documents the agents prepare) ────────────────────────── */
+.bs-res{flex:0 0 auto;width:300px;text-align:left;background:#fff;border:1px solid var(--bs-line);border-radius:22px;padding:20px;box-shadow:0 22px 44px -34px rgba(1,59,67,.45)}
+.bs-res-k{display:inline-block;padding:5px 11px;border-radius:999px;background:#E9F5F4;font-size:12px;font-weight:700;color:var(--bs-grid);letter-spacing:.02em}
+.bs-res b{display:block;margin:14px 0 4px;font-size:18px;font-weight:700;letter-spacing:-.02em;color:var(--bs-ink)}
+.bs-res small{display:block;font-size:13px;color:var(--bs-slate)}
+.bs-res .bs-sig-lines{margin-top:16px}
+.bs-res .bs-sig-lines i::after{transform:scaleX(1)}
+.bs-res-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:18px;padding-top:14px;border-top:1px solid var(--bs-line);font-size:12px;color:var(--bs-quiet)}
+.bs-res-foot .bs-ok,.bs-res-foot .bs-wait{font-size:12px;padding:6px 11px 6px 9px}
+.bs-rail{position:relative;margin-top:clamp(40px,5vw,64px);overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.bs-rail-track{display:flex;gap:18px;width:max-content;padding:10px 0 40px;animation:bsRail 60s linear infinite}
+.bs-rail:hover .bs-rail-track{animation-play-state:paused}
+@keyframes bsRail{to{transform:translateX(calc(-50% - 9px))}}
+
+/* ── Job panels ─────────────────────────────────────────────────────────── */
+.bs-job{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(30px,5vw,80px);align-items:center;margin-top:clamp(64px,8vw,120px)}
+.bs-job:first-of-type{margin-top:clamp(40px,5vw,64px)}
+.bs-job.flip .bs-job-copy{order:2}
+.bs-job .bs-stage.small .bs-float{right:clamp(12px,3vw,28px);bottom:clamp(14px,3vw,30px)}
+.bs-job .bs-stage.small .bs-float.left{right:auto;left:clamp(12px,3vw,28px)}
+.bs-job ul{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:12px}
+.bs-job li{display:flex;gap:12px;font-size:16px;line-height:1.5;color:var(--bs-slate)}
+.bs-job li .bs-dia{width:10px;height:11px;margin-top:6px}
+.bs-agent{display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:7px 16px 7px 7px;border-radius:999px;background:var(--bs-pale);border:1px solid var(--bs-line);
+  font-size:15px;font-weight:600;color:var(--bs-ink);transition:background var(--bs-quick)}
+.bs-agent:hover{background:#E3F4F2;color:var(--bs-ink)}
+.bs-agent .glyph{width:32px;height:32px;border-radius:30%}
+
+/* ── The one dark stage per page ────────────────────────────────────────── */
+.bs-dark{position:relative;background:var(--bs-midnight);color:#fff;overflow:hidden;isolation:isolate}
+.bs-dark video,.bs-dark .bs-dark-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.42}
+.bs-dark::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(70% 60% at 50% 40%,rgba(4,15,29,.3),rgba(4,15,29,.92) 80%),linear-gradient(180deg,rgba(4,15,29,.2),var(--bs-midnight))}
+.bs .bs-dark .bs-h2,.bs .bs-dark .bs-display{color:#fff}
+.bs .bs-dark .bs-h2 em,.bs .bs-dark .bs-display em{color:#7FE0D8}
+.bs-dark .bs-lede{color:#AFC6C7}
+.bs-crew{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(12px,2vw,22px);margin-top:clamp(44px,6vw,72px)}
+.bs-crew a{display:flex;flex-direction:column;align-items:center;gap:12px;padding:20px 10px 18px;border-radius:22px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  color:#DCEBEA;font-size:14px;font-weight:600;text-align:center;line-height:1.25;transition:background var(--bs-quick),transform var(--bs-move) var(--bs-settle)}
+.bs-crew a:hover{background:rgba(255,255,255,.09);transform:translateY(-4px);color:#fff}
+.bs-crew .glyph{width:54px;height:54px}
+
+/* ── Quote ──────────────────────────────────────────────────────────────── */
+.bs-quote{margin:0}
+.bs-quote blockquote{margin:0;font-size:clamp(28px,3.6vw,48px);font-weight:600;letter-spacing:-.035em;line-height:1.14;color:var(--bs-ink)}
+.bs-quote blockquote b{font-weight:600;color:var(--bs-grid)}
+.bs-quote figcaption{margin-top:26px;font-size:16px;color:var(--bs-slate)}
+.bs-quote figcaption strong{color:var(--bs-ink)}
+.bs-quote figcaption a{color:var(--bs-grid);font-weight:600}
+
+/* ── Close ──────────────────────────────────────────────────────────────── */
+.bs-close{background:var(--bs-pale) var(--bs-diamonds);text-align:center;padding:clamp(90px,12vw,170px) 0}
+.bs-close .bs-dia.big{width:34px;height:38px;color:var(--bs-grid);margin-bottom:26px}
+.bs-close .bs-lede{margin-inline:auto}
+.bs-close .bs-ctas{justify-content:center}
+
+/* ── Loading: three diamonds ────────────────────────────────────────────── */
+.bs-load{display:inline-flex;gap:7px}
+.bs-load .bs-dia{width:12px;height:13px;animation:bsLoad 1.2s var(--bs-settle) infinite}
+.bs-load .bs-dia:nth-child(2){animation-delay:.15s}.bs-load .bs-dia:nth-child(3){animation-delay:.3s}
+@keyframes bsLoad{0%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-4px)}}
+
+@media (max-width:980px){
+  .bs-grid3{grid-template-columns:1fr}
+  .bs-job,.bs-job.flip{grid-template-columns:1fr}
+  .bs-job.flip .bs-job-copy{order:0}
+  .bs-crew{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:640px){
+  .bs-float.hide-s{display:none}
+  .bs-crew{grid-template-columns:repeat(2,1fr)}
+  .bs-sig-top{flex-wrap:wrap}
+  .bs-sig-state{min-width:0;width:100%;margin:6px 0 0 50px;justify-content:flex-start}
+  .bs-sig-state>span{left:0;right:auto}
+  .bs-sig-stamp{right:-8px;top:-18px;width:44px;height:48px}
+  .bs-ask-chips span:nth-child(n+4){display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .bs-rail-track{animation:none;flex-wrap:wrap;width:auto;justify-content:center}
+  .bs-float{transition:none;opacity:1;transform:none}
+  .bs-ask-text .caret{animation:none}
+}

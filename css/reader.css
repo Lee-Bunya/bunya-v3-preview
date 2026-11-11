@@ -1,0 +1,60 @@
+/* Document reader (10 Nov 2026). Goes with js/reader.js. rd- prefix. */
+html.rd-open{overflow:hidden}
+.rd{position:fixed;inset:0;z-index:2147483000;display:flex;flex-direction:column;background:rgba(10,10,12,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);opacity:0;transition:opacity .25s ease;color:#F5F5F7}
+.rd[hidden]{display:none}
+.rd.on{opacity:1}
+.rd-top{display:flex;align-items:center;gap:16px;padding:14px clamp(16px,3vw,32px)}
+.rd-tt{display:flex;flex-direction:column;min-width:0}
+.rd-tt b{font-size:17px;font-weight:600}
+.rd-tt small{font-size:12.5px;color:#86868B}
+.rd-count{margin-left:auto;font-size:14px;color:#D2D2D7;font-variant-numeric:tabular-nums;white-space:nowrap}
+.rd button{border:0;font:inherit;cursor:pointer}
+.rd-x{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff}
+.rd-x:hover{background:rgba(255,255,255,.18)}
+.rd svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.rd-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;gap:clamp(8px,2vw,24px);padding:0 clamp(8px,2vw,24px)}
+.rd-nav{flex:none;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;transition:background .2s,opacity .2s}
+.rd-nav:hover{background:rgba(255,255,255,.2)}
+.rd-nav:disabled{opacity:.25;cursor:default}
+.rd-book{position:relative;display:flex;perspective:2400px;aspect-ratio:var(--ar);width:min(calc(100vw - 160px),calc((100vh - 170px) * var(--ar)))}
+.rd-pg{position:relative;flex:1;min-width:0;background:#fff;box-shadow:0 30px 80px -20px rgba(0,0,0,.7)}
+.rd-pg img,.rd-leaf img{display:block;width:100%;height:100%;object-fit:contain;background:#fff}
+.rd-pg.blank{background:transparent;box-shadow:none}
+.rd-pg.blank img{display:none}
+.rd.single .rd-pg.l{display:none}
+/* the spine */
+.rd.spread .rd-pg.l::after{content:"";position:absolute;inset:0 0 0 auto;width:28px;background:linear-gradient(90deg,transparent,rgba(0,0,0,.12));pointer-events:none}
+.rd.spread .rd-pg.r::after{content:"";position:absolute;inset:0 auto 0 0;width:28px;background:linear-gradient(270deg,transparent,rgba(0,0,0,.12));pointer-events:none}
+/* the page turn */
+.rd-leaf{position:absolute;top:0;bottom:0;width:50%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.45,.05,.25,1);z-index:3}
+.rd-leaf.fw{left:50%;transform-origin:left center}
+.rd-leaf.bk{left:0;transform-origin:right center}
+.rd-leaf.fw.go{transform:rotateY(-180deg)}
+.rd-leaf.bk.go{transform:rotateY(180deg)}
+.rd-leaf .f,.rd-leaf .b{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#fff;box-shadow:0 20px 50px -20px rgba(0,0,0,.6)}
+.rd-leaf .b{transform:rotateY(180deg)}
+.rd-leaf .blank{background:transparent;box-shadow:none}
+.rd-leaf .blank img{display:none}
+/* one page at a time */
+.rd-book.in-r .rd-pg.r{animation:rdInR .35s ease}
+.rd-book.in-l .rd-pg.r{animation:rdInL .35s ease}
+@keyframes rdInR{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+@keyframes rdInL{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+/* the email scrolls instead */
+.rd.email .rd-book{aspect-ratio:auto;width:min(600px,calc(100vw - 160px));height:calc(100vh - 170px);overflow:auto;border-radius:8px;background:#fff}
+.rd.email .rd-pg{flex:none;width:100%;height:auto;box-shadow:none}
+.rd.email .rd-pg img{height:auto}
+.rd-foot{padding:12px clamp(16px,3vw,32px) 16px;text-align:center}
+.rd-foot input{width:min(520px,100%);accent-color:#5EEAD4}
+.rd-foot input[hidden]{display:none}
+.rd-foot p{margin:8px 0 0;font-size:12px;color:#86868B}
+@media (max-width:640px){
+  .rd-stage{position:relative;padding:0 10px}
+  .rd-nav{position:absolute;bottom:-58px;width:42px;height:42px}
+  .rd-nav.prev{left:16px}.rd-nav.next{right:16px}
+  .rd-book{width:min(calc(100vw - 20px),calc((100vh - 200px) * var(--ar)))}
+  .rd.email .rd-book{width:calc(100vw - 20px);height:calc(100vh - 200px)}
+  .rd-foot{padding-top:58px}
+  .rd-foot input{width:calc(100% - 120px)}
+}
+@media (prefers-reduced-motion:reduce){.rd,.rd-leaf{transition:none}.rd-book.in-r .rd-pg.r,.rd-book.in-l .rd-pg.r{animation:none}}

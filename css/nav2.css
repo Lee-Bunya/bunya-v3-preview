@@ -1,0 +1,89 @@
+/* New Bunya nav (6 Nov 2026), Tesla x Apple: a thin white bar with five words, picture dropdowns
+   (each product has two small links, Learn · Build), a plain text list under the pictures, and a
+   full-screen drill-down menu on phones. Classes start nv-. Mounted by js/nav2.js into <header id="nav2">. */
+.nv{--nv-h:60px;--nv-ink:#06222A;--nv-text:#33474B;--nv-slate:#5B7173;--nv-line:#E2ECEB;--nv-grid:#0A7D79;--nv-wash:rgba(6,34,42,.05);
+  position:fixed;inset:0 0 auto 0;height:var(--nv-h);z-index:45;background:#fff;font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased;color:var(--nv-ink)}
+.nv *{box-sizing:border-box}
+.nv button{font:inherit;color:inherit;cursor:pointer}
+.nv a{color:inherit;text-decoration:none}
+.nv-bar{height:100%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 24px}
+.nv-logo{display:flex;align-items:center;padding:0 12px}
+.nv-logo img{height:26px;width:auto;display:block}
+.nv-main{display:flex;gap:2px}
+.nv-main button,.nv-main a{height:32px;padding:0 14px;border:0;border-radius:4px;background:none;font-size:14px;font-weight:500;line-height:32px;color:var(--nv-ink);transition:background .2s}
+.nv-main button:hover,.nv-main button[aria-expanded="true"],.nv-main a:hover{background:var(--nv-wash)}
+.nv-right{display:flex;justify-content:flex-end;align-items:center;gap:6px}
+.nv-right .nv-build{height:32px;padding:0 14px;border-radius:4px;font-size:14px;font-weight:500;line-height:32px}
+.nv-right .nv-build:hover{background:var(--nv-wash)}
+.nv-right .nv-demo{height:32px;padding:0 16px;border-radius:4px;background:var(--nv-grid);color:#fff;font-size:14px;font-weight:500;line-height:32px;margin-left:4px}
+.nv-right .nv-demo:hover{background:#086A67}
+.nv-menu-btn{display:none;height:32px;padding:0 14px;border:0;border-radius:4px;background:var(--nv-wash);font-size:14px;font-weight:500}
+
+/* Desktop dropdown: full width, white, pictures then words */
+.nv-drop{position:fixed;left:0;right:0;top:0;padding:calc(var(--nv-h) + 24px) 48px 44px;background:#fff;z-index:-1;
+  opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .22s ease,transform .32s cubic-bezier(.2,.7,.1,1),visibility 0s .32s;
+  box-shadow:0 20px 40px -30px rgba(6,34,42,.35)}
+.nv-drop.on{opacity:1;visibility:visible;transform:none;transition:opacity .22s ease,transform .32s cubic-bezier(.2,.7,.1,1)}
+.nv-sec{display:none;max-width:1180px;margin:0 auto}
+.nv-sec.on{display:block}
+.nv-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.nv-tile{text-align:center}
+.nv-pic{display:block;aspect-ratio:16/10;border-radius:8px;overflow:hidden;background:#F2F6F6;position:relative;transition:transform .5s cubic-bezier(.2,.7,.1,1)}
+.nv-tile:hover .nv-pic{transform:translateY(-3px)}
+.nv-pic img{width:100%;height:100%;object-fit:cover;display:block}
+.nv-pic.dark{background:linear-gradient(160deg,#0B3A41,#04161E);display:grid;place-items:center}
+.nv-pic.dark i{width:22%;aspect-ratio:9/16;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:#071C24}
+.nv-pic.glyph{display:grid;place-items:center;background:linear-gradient(180deg,#F5FAFA,#E9F3F2)}
+.nv-pic.glyph svg{width:30%;height:auto;fill:none;stroke:var(--nv-grid);stroke-width:1.3}
+.nv-name{display:block;margin-top:12px;font-size:16px;font-weight:500;line-height:22px;color:var(--nv-ink)}
+.nv-name small{display:inline-block;margin-left:6px;padding:0 6px;border-radius:4px;background:#E3F4F2;color:var(--nv-grid);font-size:11px;font-weight:500;line-height:17px;vertical-align:2px}
+.nv-acts{display:flex;justify-content:center;gap:14px;margin-top:4px;font-size:13px;color:var(--nv-slate)}
+.nv-acts a{text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(6,34,42,.25)}
+.nv-acts a:hover{color:var(--nv-ink);text-decoration-color:currentColor}
+.nv-list{display:flex;flex-wrap:wrap;gap:4px 8px;margin-top:28px;padding-top:20px;border-top:1px solid var(--nv-line)}
+.nv-list a{padding:6px 12px;border-radius:4px;font-size:14px;font-weight:500;color:var(--nv-text)}
+.nv-list a:hover{background:var(--nv-wash);color:var(--nv-ink)}
+.nv-sec.words .nv-list{margin-top:0;padding-top:0;border-top:0;flex-direction:column;align-items:flex-start}
+.nv-sec.words .nv-list a{font-size:20px;line-height:28px;padding:6px 12px}
+.nv-veil{position:fixed;inset:var(--nv-h) 0 0 0;z-index:-2;background:rgba(255,255,255,.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s}
+.nv-veil.on{opacity:1;visibility:visible;transition:opacity .25s}
+
+/* Phones: Tesla-style full-screen menu with a back arrow */
+.nv-phone{position:fixed;inset:0;z-index:60;background:#fff;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.7,.1,1);visibility:hidden}
+.nv-phone.on{transform:none;visibility:visible}
+.nv-ph-top{height:56px;flex:0 0 auto;display:grid;grid-template-columns:48px 1fr 48px;align-items:center;padding:0 8px}
+.nv-ph-top b{text-align:center;font-size:14px;font-weight:500}
+.nv-ph-top button{width:40px;height:40px;border:0;background:none;border-radius:4px;display:grid;place-items:center}
+.nv-ph-top button:hover{background:var(--nv-wash)}
+.nv-ph-top button[hidden]{visibility:hidden}
+.nv-ph-top svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8}
+.nv-ph-body{flex:1;overflow-y:auto;padding:8px 16px 24px}
+.nv-ph-row{display:flex;justify-content:space-between;align-items:center;width:100%;height:52px;padding:0 8px;border:0;background:none;border-radius:4px;font-size:17px;font-weight:500;text-align:left}
+.nv-ph-row:hover{background:var(--nv-wash)}
+.nv-ph-row svg{width:16px;height:16px;fill:none;stroke:var(--nv-slate);stroke-width:1.8}
+.nv-ph-body .nv-tiles{grid-template-columns:1fr 1fr;gap:20px 14px;margin-bottom:8px}
+.nv-ph-body .nv-name{font-size:14px;margin-top:8px}
+.nv-ph-body .nv-list{margin-top:20px;flex-direction:column;align-items:stretch}
+.nv-ph-body .nv-list a{font-size:16px;padding:12px 8px}
+.nv-ph-foot{flex:0 0 auto;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px 16px 20px;border-top:1px solid var(--nv-line)}
+.nv-ph-foot a{height:44px;border-radius:4px;display:grid;place-items:center;font-size:14px;font-weight:500;background:var(--nv-wash)}
+.nv-ph-foot a.nv-demo{background:var(--nv-grid);color:#fff}
+
+@media (max-width:1100px){.nv-main button,.nv-main a{padding:0 10px}.nv-right .nv-build{display:none}}
+@media (max-width:900px){
+  .nv{--nv-h:56px}
+  .nv-bar{grid-template-columns:1fr auto;padding:0 12px}
+  .nv-main,.nv-right .nv-build,.nv-right .nv-demo,.nv-drop,.nv-veil{display:none}
+  .nv-menu-btn{display:block}
+}
+@media (prefers-reduced-motion:reduce){.nv *,.nv-drop,.nv-phone,.nv-veil{transition:none!important}}
+
+.nv-count{display:inline-grid;place-items:center;min-width:20px;height:20px;margin-left:8px;padding:0 6px;border-radius:999px;background:#2DD4BF;color:#000;font-size:12px;font-weight:700;vertical-align:1px;animation:nv-pop .4s cubic-bezier(.3,1.3,.5,1)}
+@keyframes nv-pop{from{transform:scale(.4)}to{transform:none}}
+
+.nv-right .nv-build{display:inline-flex;align-items:center}
+.nv-count{vertical-align:0;margin-left:6px}
+.nv-count{line-height:20px;font-variant-numeric:tabular-nums}
+@media (max-width:900px){.nv-right .nv-build{display:inline-flex;height:32px;padding:0 6px;font-size:14px}.nv-right .nv-build:not(:has(.nv-count)){display:none}}

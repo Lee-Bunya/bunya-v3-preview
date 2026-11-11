@@ -1,0 +1,38 @@
+/* Brand films (11 Nov 2026): the "Let Pam go to Bali" section and the full-film pop-up. With js/film.js. */
+.pam{padding:clamp(64px,10vh,120px) 24px}
+.pam-in{width:min(1180px,100%);margin:0 auto;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.4fr);gap:clamp(28px,5vw,72px);align-items:center}
+.pam-k{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#5EEAD4}
+.pam h2{text-wrap:balance;margin:12px 0 0;font-size:clamp(36px,5vw,64px);font-weight:600;letter-spacing:-.045em;line-height:1.02;color:#F5F5F7}
+.pam p{margin:16px 0 0;max-width:440px;font-size:clamp(17px,1.5vw,20px);line-height:1.5;color:#A1A1A6}
+.pam-play{display:inline-flex;align-items:center;gap:10px;height:50px;margin-top:26px;padding:0 24px 0 18px;border:0;border-radius:999px;background:#fff;color:#000;font:inherit;font-size:17px;font-weight:500;cursor:pointer;transition:transform .3s}
+.pam-play:hover{transform:scale(1.03)}
+.pam-play svg{width:22px;height:22px}
+.pam-play small{font-size:14px;color:#6E6E73}
+.pam-frame{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;border:0;border-radius:24px;overflow:hidden;background:#111;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 50px 100px -40px rgba(0,0,0,.9)}
+.pam-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.pam-frame:hover video{transform:scale(1.03)}
+.pam-btn{position:absolute;left:50%;top:50%;width:84px;height:84px;margin:-42px 0 0 -42px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 20px 40px -12px rgba(0,0,0,.6);transition:transform .3s}
+.pam-frame:hover .pam-btn{transform:scale(1.08)}
+.pam-btn svg{width:30px;height:30px;margin-left:4px;fill:#000}
+.pam-frame:focus-visible,.pam-play:focus-visible{outline:2px solid #67E8F9;outline-offset:4px}
+@media (max-width:900px){
+  .pam-in{grid-template-columns:1fr}
+  .pam-frame{order:-1;border-radius:18px}
+  .pam-btn{width:64px;height:64px;margin:-32px 0 0 -32px}
+}
+
+html.film-lock{overflow:hidden}
+.film-pop{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:clamp(12px,4vw,56px);background:rgba(0,0,0,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.film-pop[hidden]{display:none}
+.film-pop-c{position:relative;width:min(1280px,100%)}
+.film-pop video{display:block;width:100%;aspect-ratio:16/9;border-radius:16px;background:#000;box-shadow:0 40px 120px -20px rgba(0,0,0,.9)}
+.film-x{position:absolute;right:0;top:-52px;width:40px;height:40px;display:grid;place-items:center;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;cursor:pointer}
+.film-x svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
+@media (max-width:700px){ .film-x{top:auto;bottom:-56px;right:50%;margin-right:-20px} }
+
+/* Home hero: a quiet "Watch the film" link on the "From $3" line (11 Nov 2026) */
+.hb-film{display:inline-flex;align-items:center;gap:7px;margin-left:14px;padding:4px 12px 4px 5px;border:0;border-radius:999px;background:rgba(255,255,255,.07);color:#E8E8ED;font:inherit;font-size:14px;font-weight:500;cursor:pointer;vertical-align:middle;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);transition:background .2s}
+.hb-film:hover{background:rgba(255,255,255,.13)}
+.hb-film svg{width:20px;height:20px;padding:5px;border-radius:50%;background:#fff;fill:#000}
+.hb-film small{font-size:12.5px;color:#A1A1A6}
+@media (max-width:520px){ .hb-film{display:flex;width:max-content;margin:10px auto 0} }

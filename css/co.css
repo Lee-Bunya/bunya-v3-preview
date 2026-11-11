@@ -1,0 +1,78 @@
+/* Command Centre product page, v3 (8 Nov 2026). Builds on sx.css. co- prefix. */
+.co-hero{padding-bottom:0}
+.co-facts{list-style:none;margin:28px 0 0;padding:0;display:flex;justify-content:center;flex-wrap:wrap;gap:10px 28px;font-size:15px;color:var(--sx-grey)}
+.co-facts b{color:#fff;font-weight:600}
+.co-hero-shot{width:min(1100px,100%);margin:clamp(40px,7vh,72px) auto 0;perspective:1600px}
+.co-hero-shot img{display:block;width:100%;height:auto;border-radius:22px;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 60px 120px -30px rgba(0,0,0,.9),0 40px 120px -40px rgba(45,212,191,.45);
+  transform:rotateX(10deg);transform-origin:50% 0;transition:transform 1.2s var(--sx-ease)}
+.co-hero-shot:hover img{transform:none}
+
+/* The story: sticky screen + scrolling acts */
+.co-story{width:min(1240px,calc(100% - 48px));margin:0 auto;padding-top:clamp(80px,12vh,140px)}
+.co-story-h{width:min(1100px,100%);margin:0 auto clamp(20px,3vh,32px)}
+.co-scroll{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.9fr);gap:clamp(28px,4vw,64px)}
+.co-stage{position:sticky;top:90px;height:calc(100vh - 120px);max-height:720px;display:flex;align-items:center}
+.co-frame{position:relative;width:100%;aspect-ratio:16/10;border-radius:20px;overflow:hidden;background:#F3F6F5;
+  box-shadow:0 0 0 1px rgba(255,255,255,.12),0 50px 100px -30px rgba(0,0,0,.9),0 30px 100px -40px rgba(45,212,191,.4)}
+.co-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:0 0;opacity:0;transform:scale(1.02);transition:opacity .6s var(--sx-ease),transform .9s var(--sx-ease)}
+.co-frame img.on{opacity:1;transform:none}
+.co-acts{list-style:none;margin:0;padding:0}
+.co-acts li{min-height:70vh;display:flex;flex-direction:column;justify-content:center;padding:24px 0;opacity:.35;transition:opacity .5s var(--sx-ease)}
+.co-acts li.on{opacity:1}
+.co-acts .tag{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 13px;border-radius:999px;background:rgba(255,255,255,.07);font-size:13.5px;font-weight:500;color:#E8E8ED}
+.co-acts .tag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c)}
+.co-acts h3{margin-top:18px;font-size:clamp(28px,3vw,40px);line-height:1.06;letter-spacing:-.035em}
+.co-acts h3 span{display:block;color:var(--sx-dim)}
+.co-acts p{margin:14px 0 0;font-size:17.5px;line-height:1.55;color:#D2D2D7}
+.co-acts a{align-self:flex-start;margin-top:18px;font-size:16px;font-weight:500;color:#67E8F9;text-decoration:none}
+.co-acts a::after{content:" ›"}
+.co-acts img.m{display:none}
+
+/* What every firm gets */
+.co-gets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.co-get{display:block;border-radius:22px;padding:24px 22px;background:var(--sx-card-2);color:inherit;text-decoration:none;box-shadow:inset 0 3px 0 var(--c);transition:transform .4s var(--sx-ease)}
+.co-get:hover{transform:translateY(-3px)}
+.co-get b{font-size:18px}
+.co-get p{margin:8px 0 0;font-size:15px;line-height:1.45;color:var(--sx-grey)}
+.co-get.add{background:transparent;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.25)}
+.co-get.add b::after{content:" ›";color:#67E8F9}
+.co-more{margin:18px 0 0;font-size:17px}
+.co-more a{color:#67E8F9;text-decoration:none}
+.co-more a::after{content:" ›"}
+.co-draft{display:block;margin-top:18px;font-size:13px;color:var(--sx-dim)}
+
+@media (max-width:960px){
+  .co-scroll{grid-template-columns:1fr}
+  .co-stage{display:none}
+  .co-acts li{min-height:0;opacity:1;padding:28px 0;border-top:1px solid var(--sx-line)}
+  .co-acts li:first-child{border-top:0}
+  .co-acts img.m{display:block;order:3;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:0 0;margin-top:18px;border-radius:16px;box-shadow:0 0 0 1px rgba(255,255,255,.1)}
+  .co-acts a{order:4}
+  .co-gets{grid-template-columns:1fr 1fr}
+  .co-hero-shot img{transform:none}
+}
+@media (max-width:560px){
+  .co-gets{grid-template-columns:1fr}
+  .co-facts{gap:6px 18px;font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){.co-frame img,.co-acts li,.co-hero-shot img{transition:none}}
+
+/* 10 Nov 2026: the story moved to How it works; this card points there */
+.co-teaser{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:center;gap:clamp(20px,3vw,40px);border-radius:24px;padding:clamp(16px,2vw,24px);background:var(--sx-card-2);color:inherit;text-decoration:none;transition:transform .4s var(--sx-ease)}
+.co-teaser:hover{transform:translateY(-3px)}
+.co-teaser img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:16px;background:#EEF5F4}
+.co-teaser b{font-size:clamp(22px,2.4vw,30px);letter-spacing:-.03em}
+.co-teaser p{margin:10px 0 0;font-size:16.5px;line-height:1.5;color:#D2D2D7}
+.co-teaser em{display:inline-block;margin-top:16px;font-style:normal;font-weight:500;color:#67E8F9}
+.co-teaser em::after{content:" ›"}
+@media (max-width:760px){.co-teaser{grid-template-columns:1fr}}
+
+/* 11 Nov 2026 (Lee): the curved coloured top edge is retired; a short straight tab instead, as on the landing pages. */
+.co-get{position:relative;box-shadow:none}
+.co-get::before{content:"";position:absolute;top:0;left:22px;width:28px;height:3px;border-radius:0 0 3px 3px;background:var(--c)}
+.co-get.add::before{display:none}
+
+/* 12 Nov 2026 (Lee): a little more room in cards, site-wide: more padding, more space between title and text, looser lines */
+.co-get{padding:28px 26px}
+.co-get::before{left:26px}
+.co-get p{margin-top:12px;line-height:1.6}

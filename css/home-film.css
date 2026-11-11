@@ -1,0 +1,33 @@
+/* Concept 5, "A brand film" (home-film.html). Classes start fm-. */
+.fm{position:relative;height:100vh;min-height:600px;margin-top:-56px;overflow:hidden;background:#03080C;color:#fff;isolation:isolate}
+.fm-vids{position:absolute;inset:0;z-index:-2}
+.fm-v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity 1.4s ease,transform 8s linear}
+.fm-v.on{opacity:1;transform:scale(1)}
+.fm-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(2,8,12,.86) 0%,rgba(2,8,12,.62) 36%,rgba(2,8,12,.18) 58%,rgba(2,8,12,0) 76%),linear-gradient(180deg,rgba(2,8,12,.35) 0%,rgba(2,8,12,0) 25%,rgba(2,8,12,0) 70%,rgba(2,8,12,.55) 100%)}
+.fm-copy{position:absolute;left:max(22px,calc((100% - 1240px)/2));bottom:clamp(110px,18vh,190px);width:min(780px,calc(100% - 44px))}
+.fm-eye{margin:0 0 16px;font-size:clamp(16px,1.5vw,19px);font-weight:600;color:#7FE0D8;letter-spacing:.01em}
+.fm .fm-lines{position:relative;margin:0;min-height:3.05em;filter:drop-shadow(0 2px 24px rgba(0,0,0,.55));font-size:clamp(46px,6.2vw,92px);font-weight:700;letter-spacing:-.05em;line-height:1;color:#fff}
+.fm-line{position:absolute;left:0;right:0;bottom:0;margin:0;opacity:0;transform:translateY(28px);filter:blur(8px);transition:opacity 1s ease,transform 1.1s cubic-bezier(.2,.7,.1,1),filter 1s ease}
+.fm-line.on{opacity:1;transform:none;filter:none}
+.fm-line span{display:block;background:linear-gradient(100deg,#9FF2EA,#11B8B1 45%,#F4D27A);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.06em}
+.fm-ctas{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin:clamp(26px,4vh,40px) 0 0}
+.fm-bar{position:absolute;left:max(22px,calc((100% - 1240px)/2));right:max(22px,calc((100% - 1240px)/2));bottom:clamp(28px,5vh,48px);display:flex;align-items:center;justify-content:space-between}
+.fm-dots{display:flex;gap:10px}
+.fm-dot{width:56px;height:24px;padding:0;border:0;background:none;cursor:pointer;display:flex;align-items:center}
+.fm-dot i{position:relative;display:block;width:100%;height:3px;border-radius:2px;background:rgba(255,255,255,.28);overflow:hidden}
+.fm-dot i::after{content:"";position:absolute;inset:0;width:var(--p,0%);background:#fff;border-radius:2px}
+.fm-dot.done i::after{width:100%}
+.fm-pause{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);cursor:pointer;display:grid;place-items:center}
+.fm-pause span{width:10px;height:12px;border-left:3px solid #fff;border-right:3px solid #fff}
+.fm-pause.paused span{width:0;height:0;border:0;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
+
+.fm-values{padding:clamp(100px,12vw,160px) 0}
+.fm-list{list-style:none;margin:clamp(36px,4vw,56px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px)}
+.fm-list b{display:block;font-size:clamp(24px,2.4vw,32px);font-weight:700;letter-spacing:-.035em;color:#06222A;line-height:1.1}
+.fm-list p{font-size:17px;line-height:1.5;color:#5B7173;margin:12px 0 0}
+@media (max-width:900px){
+  .fm-shade{background:linear-gradient(180deg,rgba(2,8,12,.3) 0%,rgba(2,8,12,.2) 40%,rgba(2,8,12,.8) 100%)}
+  .fm-copy{bottom:96px}.fm .fm-lines{font-size:40px}
+  .fm-list{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.fm-v,.fm-line{transition:none}}

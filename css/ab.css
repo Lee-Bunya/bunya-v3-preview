@@ -1,0 +1,82 @@
+/* About and Team pages, v3 (8 Nov 2026). Builds on sx.css. ab- (About) and tm- (Team) prefixes. */
+
+/* About: who does what */
+.ab-split{width:min(1100px,calc(100% - 48px));margin:clamp(24px,4vh,40px) auto 0;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ab-col{border-radius:26px;padding:28px 30px;background:var(--sx-card-2)}
+.ab-col.keep{background:linear-gradient(160deg,rgba(45,212,191,.14),rgba(99,102,241,.07) 70%),var(--sx-card-2)}
+.ab-col ul{list-style:none;margin:6px 0 0;padding:0}
+.ab-col li{padding:11px 0;border-top:1px solid var(--sx-line);font-size:19px;font-weight:500;color:#E8E8ED}
+.ab-col li:first-child{border-top:0}
+.ab-tag{grid-column:1/-1;margin:12px 0 0;text-align:center;font-size:clamp(26px,3vw,38px);font-weight:600;letter-spacing:-.03em}
+.ab-tag span{color:var(--sx-dim)}
+.sx-head p+p{margin-top:12px}
+
+/* About: what we build */
+.ab-build{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.ab-card{display:flex;flex-direction:column;border-radius:24px;padding:26px 24px;background:var(--sx-card-2);color:inherit;text-decoration:none;transition:transform .4s var(--sx-ease),box-shadow .4s}
+.ab-card:hover{transform:translateY(-3px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.ab-card.main{grid-column:1/-1;padding:clamp(28px,3.5vw,40px);background:radial-gradient(closest-side at 100% 0%,rgba(45,212,191,.18),transparent 80%),var(--sx-card-2)}
+.ab-card .lbl{font-size:13px;font-weight:600;color:var(--sx-dim);text-transform:uppercase;letter-spacing:.04em}
+.ab-card b{display:block;margin-top:10px;font-size:20px;line-height:1.2;letter-spacing:-.015em}
+.ab-card.main b{font-size:clamp(26px,3vw,36px);letter-spacing:-.03em}
+.ab-card p{margin:10px 0 0;font-size:15.5px;line-height:1.45;color:var(--sx-grey);max-width:640px}
+.ab-card .go{margin-top:auto;padding-top:18px;font-size:16px;font-weight:500;color:#67E8F9}
+.ab-card .go::after{content:" ›"}
+
+/* About: fit */
+.ab-fit{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ab-fitcol{border-radius:24px;padding:26px 28px;background:var(--sx-card-2)}
+.ab-fitcol b{font-size:19px}
+.ab-fitcol ul{list-style:none;margin:14px 0 0;padding:0}
+.ab-fitcol li{position:relative;padding:9px 0 9px 30px;font-size:16px;line-height:1.45;color:#D2D2D7}
+.ab-fitcol li::before{position:absolute;left:0;top:9px;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700}
+.ab-fitcol.yes li::before{content:"✓";background:rgba(45,212,191,.2);color:#5EEAD4}
+.ab-fitcol.no li::before{content:"✕";background:rgba(255,255,255,.08);color:var(--sx-grey)}
+
+/* About: team strip, logos, company details */
+.ab-team{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.ab-team a{display:block;color:inherit;text-decoration:none}
+.ab-team img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-position:50% 20%;object-fit:cover;border-radius:22px;filter:saturate(.95);transition:transform .5s var(--sx-ease)}
+.ab-team a:hover img{transform:scale(1.02)}
+.ab-team b{display:block;margin-top:12px;font-size:17px}
+.ab-team span{font-size:14px;color:var(--sx-grey)}
+.ab-more{margin:20px 0 0;font-size:17px}
+.ab-more a{color:#67E8F9;text-decoration:none}
+.ab-more a::after{content:" ›"}
+.ab-logos{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:18px}
+.ab-logos img{height:64px;width:auto;max-width:200px;object-fit:contain;padding:12px 18px;border-radius:16px;background:#fff}
+.ab-co{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin:0;border-radius:24px;overflow:hidden;background:var(--sx-line)}
+.ab-co>div{padding:20px 22px;background:var(--sx-card-2)}
+.ab-co dt{font-size:13px;color:var(--sx-dim)}
+.ab-co dd{margin:4px 0 0;font-size:16.5px;color:#fff}
+.ab-co a{color:#fff;text-decoration:none}
+
+/* Team page */
+.tm-people{width:min(1100px,calc(100% - 48px));margin:0 auto;display:grid;gap:20px}
+.tm-person{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:clamp(24px,4vw,56px);align-items:center;border-radius:30px;padding:clamp(20px,2.5vw,28px);background:var(--sx-card-2);scroll-margin-top:90px}
+.tm-person:nth-child(even){grid-template-columns:minmax(0,1.38fr) minmax(0,.62fr)}
+.tm-person:nth-child(even) .ph{order:2}
+.tm-person .ph img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border-radius:22px}
+.tm-person .tx{padding:8px 8px 8px 0}
+.tm-person:nth-child(even) .tx{padding:8px 0 8px 12px}
+.tm-person h2{font-size:clamp(32px,3.8vw,48px);line-height:1.04;letter-spacing:-.035em}
+.tm-person .role{margin:8px 0 0;font-size:15px;color:var(--sx-grey)}
+.tm-person .lead{display:block;margin-top:22px;font-size:clamp(19px,1.8vw,23px);line-height:1.3;letter-spacing:-.015em;color:#fff}
+.tm-person p:not(.role){margin:10px 0 0;font-size:16.5px;line-height:1.55;color:#D2D2D7}
+.tm-person .tags{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.tm-person .tags li{height:30px;padding:0 12px;display:inline-flex;align-items:center;border-radius:999px;background:rgba(255,255,255,.07);font-size:13.5px;color:#E8E8ED}
+
+@media (max-width:860px){
+  .ab-split,.ab-fit{grid-template-columns:1fr}
+  .ab-build{grid-template-columns:1fr}
+  .ab-team{grid-template-columns:1fr 1fr}
+  .ab-co{grid-template-columns:1fr 1fr}
+  .tm-person,.tm-person:nth-child(even){grid-template-columns:1fr}
+  .tm-person:nth-child(even) .ph{order:0}
+  .tm-person .tx,.tm-person:nth-child(even) .tx{padding:4px 6px 10px}
+  .tm-person .ph img{aspect-ratio:1/1;object-position:50% 25%}
+}
+@media (max-width:520px){
+  .ab-co{grid-template-columns:1fr}
+  .ab-logos img{height:52px}
+}

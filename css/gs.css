@@ -1,0 +1,67 @@
+/* Getting started, v3 (8 Nov 2026). Builds on sx.css. gs- prefix. */
+.gs-path{width:min(1100px,calc(100% - 48px));margin:clamp(16px,3vh,32px) auto 0}
+.gs-path ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;position:relative}
+.gs-path ol::before{content:"";position:absolute;left:24px;right:24px;top:41px;height:2px;background:linear-gradient(90deg,#5EEAD4,#67E8F9 40%,#A5B4FC 75%,#F0ABFC)}
+.gs-path li{position:relative;display:flex;flex-direction:column;border-radius:22px;padding:22px 18px 20px;background:var(--sx-card-2)}
+.gs-path .n{position:relative;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#fff;color:#000;font-size:15px;font-weight:700;box-shadow:0 0 0 6px var(--sx-card-2)}
+.gs-path b{display:block;margin-top:16px;font-size:18px;letter-spacing:-.01em}
+.gs-path p{margin:6px 0 0;font-size:14.5px;line-height:1.45;color:var(--sx-grey)}
+.gs-path em{margin-top:auto;padding-top:14px;font-style:normal;font-size:13px;font-weight:600;color:var(--sx-teal)}
+
+.gs-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.gs-step{border-radius:22px;padding:24px 22px;background:var(--sx-card-2)}
+.gs-step b{font-size:13px;font-weight:600;color:var(--sx-dim);text-transform:uppercase;letter-spacing:.04em}
+.gs-step p{margin:10px 0 0;font-size:16px;line-height:1.45;color:#E8E8ED}
+
+.gs-split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.gs-card{border-radius:24px;padding:28px;background:var(--sx-card-2)}
+.gs-card .lbl{font-size:19px;font-weight:600}
+.gs-card p{margin:10px 0 0;font-size:16.5px;line-height:1.5;color:var(--sx-grey)}
+
+.gs-quote{margin:14px 0 0;border-radius:28px;padding:clamp(28px,3.5vw,44px);background:radial-gradient(closest-side at 0% 0%,rgba(45,212,191,.12),transparent 80%),var(--sx-card)}
+.gs-quote blockquote{margin:0;max-width:900px;font-size:clamp(21px,2.2vw,28px);line-height:1.3;letter-spacing:-.02em;font-weight:500;color:#E8E8ED}
+.gs-quote figcaption{display:flex;align-items:center;gap:14px;margin-top:22px}
+.gs-quote img{width:52px;height:52px;border-radius:50%;object-fit:cover;flex:none}
+.gs-quote span{font-size:14px;line-height:1.4;color:var(--sx-grey)}
+.gs-quote b{display:block;font-size:16px;color:#fff}
+.gs-quote a{color:#67E8F9;text-decoration:none}
+
+.gs-cost{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;border-radius:24px;overflow:hidden;background:var(--sx-line)}
+.gs-cost>div{padding:26px 24px;background:var(--sx-card-2)}
+.gs-cost span{display:block;font-size:14px;color:var(--sx-dim)}
+.gs-cost b{display:block;margin-top:6px;font-size:clamp(28px,3vw,38px);letter-spacing:-.03em}
+.gs-cost small{display:block;margin-top:6px;font-size:14px;line-height:1.4;color:var(--sx-grey)}
+.gs-note{margin:16px 0 0;font-size:15px;color:var(--sx-grey)}
+.gs-note a{color:#67E8F9;text-decoration:none}
+.gs-note a::after{content:" ›"}
+
+@media (max-width:1000px){
+  .gs-path ol{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .gs-path ol::before{display:none}
+  .gs-steps{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .gs-path ol{grid-template-columns:1fr;gap:10px}
+  .gs-path li{display:grid;grid-template-columns:38px minmax(0,1fr);column-gap:14px;padding:18px}
+  .gs-path .n{grid-row:1/4}
+  .gs-path b{margin-top:6px}
+  .gs-path em{padding-top:8px}
+  .gs-steps,.gs-split,.gs-cost{grid-template-columns:1fr}
+}
+
+/* 10 Nov: the six launch inclusions, three across */
+.gs-steps.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.gs-step b a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:900px){.gs-steps.three{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.gs-steps.three{grid-template-columns:1fr}}
+
+/* 10 Nov 2026: two link tiles to Care and Pricing */
+.gs-two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.gs-link{display:block;color:inherit;text-decoration:none;transition:transform .4s var(--sx-ease)}
+.gs-link:hover{transform:translateY(-3px)}
+.gs-link em{display:inline-block;margin-top:14px;font-style:normal;font-weight:500;color:#67E8F9}
+.gs-link em::after{content:" A"}
+@media (max-width:760px){.gs-two{grid-template-columns:1fr}}
+
+/* 12 Nov 2026 (Lee): a little more room in cards, site-wide: more padding, more space between title and text, looser lines */
+.gs-path p{margin-top:10px;line-height:1.6}
