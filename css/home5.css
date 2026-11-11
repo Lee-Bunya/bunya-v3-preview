@@ -257,3 +257,14 @@
 .v5-prob b,.v5-tcard b{display:block;line-height:1.3}
 .v5-prob p,.v5-tcard p,.v5-pcard p,.v5-live p{margin-top:12px;line-height:1.6}
 .v5-role li{padding-top:11px;padding-bottom:11px}
+
+/* 12 Nov 2026 (Lee: "Go with A"): two sentences, two lines; the proof line stacks on phones */
+.v5-hero h1 .sx-grad{display:block}
+@media (min-width:900px){
+  .v5-hero-t{max-width:600px}
+  .v5-hero h1{font-size:clamp(50px,4.9vw,76px)}
+}
+@media (max-width:899px){
+  .v5-proof{flex-direction:column;align-items:center;gap:4px}
+  .v5-proof span + span::before{display:none}
+}

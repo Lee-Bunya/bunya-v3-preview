@@ -7,7 +7,7 @@
   var F = function (k, t) { return '<a href="' + ((window.BUNYA_FEATURE_PAGES || {})[k] || 'advice-engine.html#' + k) + '">' + t + '</a>'; };
   var FOOTER = '<footer class="site"><div class="container"><div class="fcols">' +
     '<div><div class="logo"><img src="assets/84374dbcdaa8.svg" alt="Bunya AI" class="logo-img"></div>' +
-      '<p class="tagline">Less admin, more advice. Bunya AI builds Bunya Command Centre, the practice operating system for Australian financial advice firms. Your team approves every step.</p>' +
+      '<p class="tagline">Every meeting, followed through. Bunya AI builds Bunya Command Centre, the practice operating system for Australian financial advice firms. Your team approves every step.</p>' +
       '<a href="mailto:info@bunya.ai">info@bunya.ai</a><a href="tel:1300286922">1300 286 922</a></div>' +
     '<div><h4>Command Centre</h4><a href="command-centre.html">Overview</a>' + P('notes', 'Meeting Notes') + P('reviews', 'Review Packs') + P('care', 'Care') + P('shape', 'Bunya Shape') + '</div>' +
     '<div><h4>Advice Engine</h4><a href="advice-engine.html">Overview</a>' + F('ff', 'Fact find') + F('pf', 'Portfolio') + F('ins', 'Insurance needs') + F('mod', 'Strategy and modelling') + F('cmp', 'Platform comparisons') + F('soa', 'SOA generator') + F('aud', 'File Audit') + '</div>' +
