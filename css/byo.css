@@ -276,7 +276,7 @@ html.byo-lock{overflow:hidden}
 .byo-own:focus-visible{outline:2px solid #67E8F9;outline-offset:4px;border-radius:6px}
 .byo-needs .byo-dim{margin-top:8px}
 
-/* Tools from other providers (12 Nov 2026, Daniel): which tool each feature uses, and what the provider bills */
+/* Partner tools (12 Nov 2026, Daniel): which tool each feature uses, and what the provider bills */
 .byo-pt{margin:12px 0 0 44px;padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px var(--sx-line)}
 .byo-pt-h{margin:0;font-size:14.5px;line-height:1.5;color:var(--sx-grey)}
 .byo-pt-h b{display:block;margin-bottom:2px;font-size:15px;color:#fff}

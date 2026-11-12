@@ -11,10 +11,10 @@
   var rate = function(v){ v = Math.round(v * 100) / 100; return '$' + (v % 1 ? v.toFixed(2) : v); };
   var cents = function(v){ var c = Math.round(v * 100); return c < 100 ? c + 'c' : rate(c / 100); };
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var MIN = 500, BAND = 1000, OFF = .16, YEAR = .1, SETUP = 7249, PREM = 1997, BUILD = 12000, FC = 1500, WEB = 8500, DOCS = 7441, COLL = 4500, SOA = 153, REVIEW = .97;
+  var MIN = 500, BAND = 1000, OFF = .16, YEAR = .1, SETUP = 7249, PREM = 1997, BUILD = 12000, FC = 1500, FCP = 3500, WEB = 14882, DOCS = 7441, COLL = 4500, SOA = 153, REVIEW = .97;
   var BRAND = { kit: ['Brand kit, set up by our designer', 1800], guide: ['Brand guidelines', 4500], refresh: ['Brand refresh', 7500] };
   var APPN = {}; L.APPS.forEach(function(a){ APPN[a[0]] = a; });
-  // 12 Nov 2026 (Daniel): some features use another provider's tool, which the provider bills the practice for directly.
+  // 12 Nov 2026 (Daniel, "partner tools"): some features use a partner's tool, which the provider bills the practice for directly.
   // Ask which tool and show its cost up front, kept out of our price per household. Three totals: to Bunya, to other
   // providers (about) and all in (about). Each choice has "We already have one", which adds nothing.
   var PT = {
@@ -62,6 +62,7 @@
     if (q.get('coll') === '1') X.coll = true;
     if (q.get('web') || q.get('mkt') || q.get('wm') === '1') X.web = true;
     if (q.get('pay') === 'own') X.own = true;
+    if (q.get('fc') === '1') { X.fc = true; X.fcp = false; } else if (q.get('fc') === 'plus') { X.fcp = true; X.fc = false; }
     saveX();
     history.replaceState(null, '', location.pathname + location.hash);
   })();
@@ -69,7 +70,7 @@
   function banded(r){ return r * (Math.min(n, BAND) + Math.max(0, n - BAND) * (1 - OFF)); }
   function calc(){
     var s = L.read(), r = L.rate(s) * (X.year ? 1 - YEAR : 1), raw = banded(r), fee = Math.max(MIN, raw), apps = L.apps(s);
-    var extra = (X.prem ? PREM : 0) + (X.build ? BUILD : 0) + (X.fc ? FC : 0);
+    var extra = (X.prem ? PREM : 0) + (X.build ? BUILD : 0) + (X.fc ? FC : 0) + (X.fcp ? FCP : 0);
     var once = SETUP + (X.brand ? BRAND[X.brand][1] : 0) + (X.docs ? DOCS : 0) + (X.coll ? COLL : 0) + (X.web ? WEB : 0);
     return { s: s, r: r, raw: raw, fee: fee, atMin: raw < MIN, apps: apps, extra: extra, monthly: fee + apps + extra, once: once, pt: ptCost(s), ptOn: ptKeys(s).length > 0 };
   }
@@ -109,7 +110,7 @@
   var stage = null, keyNow = 'base', pushT = 0;
   function stageState(view){
     var s = L.read(), o = { n: sized ? n : 500, ae: s.ae, feat: Object.keys(s.feat), add: Object.keys(s.add).filter(function(k){ return k !== 'voice'; }),
-      voice: !!s.add.voice, brand: X.brand || '', docs: !!(X.docs || X.coll), web: !!(X.web || X.fc), site: window.byoBrand ? window.byoBrand.site : '' };
+      voice: !!s.add.voice, brand: X.brand || '', docs: !!(X.docs || X.coll), web: !!(X.web || X.fc || X.fcp), site: window.byoBrand ? window.byoBrand.site : '' };
     if (view) o.view = view;
     return o;
   }
@@ -192,12 +193,13 @@
     if (X.prem) L1.push(line('Care Premium', money(PREM)));
     if (X.build) L1.push(line('Bunya Build', money(BUILD)));
     if (X.fc) L1.push(line('Found &amp; Cited', money(FC)));
+    if (X.fcp) L1.push(line('Found &amp; Cited Plus', money(FCP)));
     var per = function(v){ return sized ? money(X.year ? v * 12 : v) : '—'; };
     L1.push(line(c.ptOn ? (X.year ? 'Paid to Bunya, a year' : 'Paid to Bunya, a month') : (X.year ? 'A year' : 'A month'), per(c.monthly), 'tot'));
     var L3 = [];
     if (c.ptOn) {
       ptLines(s).forEach(function(l){ L3.push(line(l[0] + (l[2] ? ' <small>' + l[2] + (l[1] ? ', billed by them' : '') + '</small>' : ''), l[1] ? 'about ' + money(X.year ? l[1] * 12 : l[1]) : '$0')); });
-      L3.push(line('Paid to other providers, about', money(X.year ? c.pt * 12 : c.pt)));
+      L3.push(line('Paid to partners, about', money(X.year ? c.pt * 12 : c.pt)));
       L3.push(line('All in, about', sized ? per(c.monthly + c.pt) + (X.year ? ' a year' : ' a month') : '—', 'tot'));
     }
     L2.push(line('Standard setup', money(SETUP)));
@@ -220,7 +222,8 @@
     if (X.prem) bits.push('+ ' + money(PREM) + ' Care Premium');
     if (X.build) bits.push('+ ' + money(BUILD) + ' Bunya Build');
     if (X.fc) bits.push('+ ' + money(FC) + ' Found & Cited');
-    if (c.pt) bits.push('+ about ' + money(X.year ? c.pt * 12 : c.pt) + ' to other providers');
+    if (X.fcp) bits.push('+ ' + money(FCP) + ' Found & Cited Plus');
+    if (c.pt) bits.push('+ about ' + money(X.year ? c.pt * 12 : c.pt) + ' to partners');
     var svc = c.once - SETUP;
     if (svc) bits.push('+ ' + money(svc) + ' once');
     $('byo-m-d').textContent = (sized ? n.toLocaleString('en-AU') + ' households × ' + rate(c.r) + (c.atMin ? ' (the $500 minimum)' : ' = ' + money(c.fee)) : 'Choose your number of client households') + (bits.length ? ' · ' + bits.join(' · ') : '');
@@ -232,12 +235,12 @@
     if (note) { var ch = $('byo-chg'); ch.textContent = note; ch.classList.add('on'); clearTimeout(chgT); chgT = setTimeout(function(){ ch.classList.remove('on'); }, 2200); }
   }
 
-  // Tools from other providers: ask which one, under the features that need it
+  // Partner tools: ask which one, under the features that need it
   function paintPT(s, c){
     var el = $('byo-pt'), ks = ptKeys(s);
     el.hidden = !ks.length && !s.feat.pf;
     if (el.hidden) { el.innerHTML = ''; return; }
-    var h = '<p class="byo-pt-h"><b>Tools from other providers</b>Some features use another provider’s tool. They bill your practice directly, so their cost isn’t in your price per household.</p>';
+    var h = '<p class="byo-pt-h"><b>Partner tools</b>Some features use a partner’s tool. Our partners bill your practice directly, so their cost isn’t in your price per household.</p>';
     ks.forEach(function(k){
       var d = PT[k], pick = ptPick(k);
       h += '<div class="byo-pt-r"><p class="byo-pt-n">' + d[0] + '<span>Which tool will you use?</span></p><div class="byo-pt-o" role="radiogroup" aria-label="' + d[0] + ': which tool">' +
@@ -252,7 +255,7 @@
       h += '</div>';
     });
     if (s.feat.pf) h += '<div class="byo-pt-r"><p class="byo-pt-n">Portfolio<span>Reads your clients’ accounts from CFS Edge and HUB24. No extra cost to show yet.</span></p></div>';
-    if (ks.length) h += '<p class="byo-pt-t">Paid to other providers: <b>' + (c.pt ? 'about ' + money(c.pt) + ' a month' : 'nothing extra') + '</b></p>';
+    if (ks.length) h += '<p class="byo-pt-t">Paid to partners: <b>' + (c.pt ? 'about ' + money(c.pt) + ' a month' : 'nothing extra') + '</b></p>';
     el.innerHTML = h;
   }
 
@@ -266,6 +269,7 @@
     if (X.coll) yours.push('Client Collateral ' + money(COLL) + ' once');
     if (X.web) yours.push('Website design ' + money(WEB) + ' once');
     if (X.fc) yours.push('Found & Cited ' + money(FC) + ' a month');
+    if (X.fcp) yours.push('Found & Cited Plus ' + money(FCP) + ' a month');
     if ((X.docs || X.coll || X.web) && !X.brand) yours.push(X.ownbrand ? 'Has its own brand guidelines (to check)' : 'Needs a brand kit, guidelines or refresh first');
     var others = ptLines(s).map(function(l){ return l[0] + (l[1] ? ', about ' + money(l[1]) + ' a month' : ''); });
     if (s.feat.pf) others.push('Portfolio reads from CFS Edge and HUB24');
@@ -278,10 +282,10 @@
              ['Command Centre', '$3 a household a month'],
              ['Advice Engine', feats.length ? feats.join(', ') : 'None yet'],
              ['Apps', apps.length ? apps.join(', ') : 'None'],
-             ['Make it yours', yours.join(', ')]]).concat(others.length ? [['Other providers (they bill you)', others.join(', ')]] : []).concat(more.length ? [['Customise', more.join(', ')]] : []),
+             ['Make it yours', yours.join(', ')]]).concat(others.length ? [['Partner tools (they bill you)', others.join(', ')]] : []).concat(more.length ? [['Customise', more.join(', ')]] : []),
       totals: [['Price per household', rate(c.r) + ' a month' + (X.year ? ', paying yearly' : '')],
                [(c.ptOn ? 'Paid to Bunya, ' : '') + (X.year ? 'a year' : 'a month').replace(/^a/, c.ptOn ? 'a' : 'A'), sized ? (X.year ? money(c.monthly * 12) : money(c.monthly)) : 'Depends on your households']]
-               .concat(c.ptOn ? [['Paid to other providers, about', money(X.year ? c.pt * 12 : c.pt)], ['All in, about', sized ? money((c.monthly + c.pt) * (X.year ? 12 : 1)) : 'Depends on your households']] : []).concat([
+               .concat(c.ptOn ? [['Paid to partners, about', money(X.year ? c.pt * 12 : c.pt)], ['All in, about', sized ? money((c.monthly + c.pt) * (X.year ? 12 : 1)) : 'Depends on your households']] : []).concat([
                ['Once', money(c.once) + ' (setup ' + money(SETUP) + (c.once > SETUP ? ' and extras' : '') + ')']]),
       usage: s.ae ? 'Every SOA and client review included.' : 'Client reviews 97c each' + (s.feat.soa ? '.' : '; SOAs we draft for you $153 each.')
     };
@@ -309,7 +313,7 @@
     CF.forEach(function(k){ if (!f.elements[k].value && ct[k]) f.elements[k].value = ct[k]; });
     if (!f.elements.firm.value && window.byoBrand && window.byoBrand.found) f.elements.firm.value = window.byoBrand.firm;
     if (f === DF) {
-      var s = L.read(), on = { cc: true, ae: s.ae || Object.keys(s.feat).length > 0, brand: !!(X.brand || X.docs || X.coll || X.web || X.fc || window.byoBrand) };
+      var s = L.read(), on = { cc: true, ae: s.ae || Object.keys(s.feat).length > 0, brand: !!(X.brand || X.docs || X.coll || X.web || X.fc || X.fcp || window.byoBrand) };
       L.APPS.forEach(function(a){ if (s.add[a[0]]) on[a[0]] = true; });
       if (!f.dataset.touched) [].forEach.call(f.querySelectorAll('[name=show]'), function(c){ c.checked = !!on[c.value]; });
       if (!f.elements.households.value && sized) f.elements.households.value = n;
@@ -383,7 +387,7 @@
     if (t[0] === 'feat' || t[0] === 'add') { if (L.toggle(t[0], k)) film(k); return; }
     if (t[0] === 'ae') { if (L.toggle('ae', '')) film('ae'); return; }
     if (t[0] === 'brand') X.brand = k === 'none' ? '' : k;
-    else X[k] = !X[k];
+    else { X[k] = !X[k]; if (X[k] && k === 'fc') X.fcp = false; if (X[k] && k === 'fcp') X.fc = false; }
     if (t[0] === 'brand' || X[k]) film(b.closest('.pr-row').dataset.film || 'yours');
     if (t[0] === 'brand' && k !== 'none') push('brand');
     saveX(); paint();

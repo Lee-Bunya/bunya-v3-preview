@@ -399,8 +399,9 @@
         /* 10 Nov 2026 (Lee: "happy with all that"): two prices replace the tiers and the quote. Website design $8,500 once (up to 12 pages,
            12 months of hosting included); Found & Cited $1,500 a month (hosting and upkeep folded in). Its own page: website-marketing.html. */
         { h: 'Website and marketing', when: 'Once, then monthly', items: [
-          ['Website design', 'Up to 12 pages in your brand, with adviser profiles and online booking, built so Google and AI answers can read every page. 12 months of hosting included. Needs your brand guidelines, or a brand kit, guidelines or refresh.', '$8,500'],
-          ['Found & Cited', 'Hosting and updates, two new answer pages a month, your Google Business Profile, and a monthly report on where you appear in Google and AI answers.', '$1,500 a month'] ] }
+          ['Website design', 'Up to 12 pages in your brand, with adviser profiles and online booking, built so Google and AI answers can read every page. 12 months of hosting included. Needs your brand guidelines, or a brand kit, guidelines or refresh.', '$14,882'],
+          ['Found & Cited', 'Hosting and updates, two new answer pages a month, your Google Business Profile, and a monthly report on where you appear in Google and AI answers.', '$1,500 a month'],
+          ['Found & Cited Plus', 'Everything in Found & Cited, with four new answer pages or articles a month, social posts from each one, and your Google Ads managed (ad spend billed at cost).', '$3,500 a month'] ] }
       ],
         after: 'Choose them when you build yours, or talk them through with us first. <a href="website-marketing.html">See Website and marketing</a>' },
       vs: { name: 'With Bunya', rows: [
