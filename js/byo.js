@@ -11,7 +11,7 @@
   var rate = function(v){ v = Math.round(v * 100) / 100; return '$' + (v % 1 ? v.toFixed(2) : v); };
   var cents = function(v){ var c = Math.round(v * 100); return c < 100 ? c + 'c' : rate(c / 100); };
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var MIN = 500, BAND = 1000, OFF = .16, YEAR = .1, SETUP = 7249, PREM = 1997, BUILD = 12000, FC = 1500, WEB = 8500, DOCS = 12500, DOCS_AE = 4500, SOA = 153, REVIEW = .97;
+  var MIN = 500, BAND = 1000, OFF = .16, YEAR = .1, SETUP = 7249, PREM = 1997, BUILD = 12000, FC = 1500, WEB = 8500, DOCS = 8000, COLL = 4500, SOA = 153, REVIEW = .97;
   var BRAND = { kit: ['Brand kit, set up by our designer', 1800], guide: ['Brand guidelines', 4500], refresh: ['Brand refresh', 7500] };
   var APPN = {}; L.APPS.forEach(function(a){ APPN[a[0]] = a; });
 
@@ -39,6 +39,7 @@
     if (q.get('bill') === 'year') X.year = true;
     if (BRAND[q.get('brand')]) X.brand = q.get('brand');
     if (q.get('docs') === '1') X.docs = true;
+    if (q.get('coll') === '1') X.coll = true;
     if (q.get('web') || q.get('mkt') || q.get('wm') === '1') X.web = true;
     if (q.get('pay') === 'own') X.own = true;
     saveX();
@@ -49,7 +50,7 @@
   function calc(){
     var s = L.read(), r = L.rate(s) * (X.year ? 1 - YEAR : 1), raw = banded(r), fee = Math.max(MIN, raw), apps = L.apps(s);
     var extra = (X.prem ? PREM : 0) + (X.build ? BUILD : 0) + (X.fc ? FC : 0);
-    var once = SETUP + (X.brand ? BRAND[X.brand][1] : 0) + (X.docs ? (s.ae ? DOCS_AE : DOCS) : 0) + (X.web ? WEB : 0);
+    var once = SETUP + (X.brand ? BRAND[X.brand][1] : 0) + (X.docs && !s.ae ? DOCS : 0) + (X.coll ? COLL : 0) + (X.web ? WEB : 0);
     return { s: s, r: r, raw: raw, fee: fee, atMin: raw < MIN, apps: apps, extra: extra, monthly: fee + apps + extra, once: once };
   }
 
@@ -88,7 +89,7 @@
   var stage = null, keyNow = 'base', pushT = 0;
   function stageState(view){
     var s = L.read(), o = { n: sized ? n : 500, ae: s.ae, feat: Object.keys(s.feat), add: Object.keys(s.add).filter(function(k){ return k !== 'voice'; }),
-      voice: !!s.add.voice, brand: X.brand || '', docs: !!X.docs, web: !!(X.web || X.fc), site: window.byoBrand ? window.byoBrand.site : '' };
+      voice: !!s.add.voice, brand: X.brand || '', docs: !!(X.docs || X.coll), web: !!(X.web || X.fc), site: window.byoBrand ? window.byoBrand.site : '' };
     if (view) o.view = view;
     return o;
   }
@@ -147,11 +148,11 @@
     });
     [].forEach.call(document.querySelectorAll('[data-bill]'), function(b){ var sel = (b.dataset.bill === 'year') === !!X.year; b.setAttribute('aria-checked', String(sel)); b.classList.toggle('on', sel); });
     if ((X.build || X.own) && !$('byo-more').open) $('byo-more').open = true;
-    $('byo-docs-p').textContent = s.ae ? money(DOCS_AE) : money(DOCS);
+    $('byo-docs-p').closest('.pc').innerHTML = s.ae ? '<b id="byo-docs-p">Included</b> with the Advice Engine' : '<b id="byo-docs-p">' + money(DOCS) + '</b> once';
     // 12 Nov 2026 (Lee): the pack and the website are designed from the firm's brand. No brand tier? Ask.
-    var nb = $('byo-needs'), needBrand = (X.docs || X.web) && !X.brand;
+    var picks = [X.docs, X.coll, X.web].filter(Boolean).length, nb = $('byo-needs'), needBrand = picks > 0 && !X.brand;
     nb.hidden = !needBrand;
-    if (needBrand) nb.innerHTML = '<p><b>' + (X.docs && X.web ? 'These need' : 'This needs') + ' your brand.</b> ' + (X.docs && X.web ? 'They’re' : 'It’s') + ' designed from your brand guidelines: logo files, fonts and colours. If you don’t have them, pick a brand kit, guidelines or refresh above.</p>' +
+    if (needBrand) nb.innerHTML = '<p><b>' + (picks > 1 ? 'These need' : 'This needs') + ' your brand.</b> ' + (picks > 1 ? 'They’re' : 'It’s') + ' designed from your brand guidelines: logo files, fonts and colours. If you don’t have them, pick a brand kit, guidelines or refresh above.</p>' +
       '<button type="button" class="byo-own' + (X.ownbrand ? ' on' : '') + '" data-ownbrand aria-pressed="' + !!X.ownbrand + '"><i></i>We already have brand guidelines</button>' +
       (X.ownbrand ? '<p class="byo-dim">Thanks. We’ll check your brand files before we start.</p>' : '');
     // Command Centre usage
@@ -174,9 +175,10 @@
     L1.push(line(X.year ? 'A year' : 'A month', sized ? (X.year ? money(c.monthly * 12) : money(c.monthly)) : '—', 'tot'));
     L2.push(line('Standard setup', money(SETUP)));
     if (X.brand) L2.push(line(BRAND[X.brand][0], money(BRAND[X.brand][1])));
-    if (X.docs) L2.push(line('Marketing bundle pack', money(s.ae ? DOCS_AE : DOCS)));
+    if (X.docs) L2.push(line('Brand Document Pack', s.ae ? 'Included' : money(DOCS)));
+    if (X.coll) L2.push(line('Client Collateral', money(COLL)));
     if (X.web) L2.push(line('Website design', money(WEB)));
-    if ((X.docs || X.web) && !X.brand && !X.ownbrand) L2.push(line('<small>Needs a brand kit, guidelines or refresh</small>', ''));
+    if ((X.docs || X.coll || X.web) && !X.brand && !X.ownbrand) L2.push(line('<small>Needs a brand kit, guidelines or refresh</small>', ''));
     L2.push(line('Once', money(c.once), 'tot'));
     var use = s.ae ? '' : '<p class="byo-dim">As you use them: client reviews 97c each' + (s.feat.soa ? '.' : ', and SOAs we draft for you $153 each.') + '</p>';
     $('byo-lines').innerHTML = '<dl class="byo-dl">' + L1.join('') + '</dl><dl class="byo-dl">' + L2.join('') + '</dl>' + use;
@@ -207,10 +209,11 @@
     var apps = L.APPS.filter(function(a){ return s.add[a[0]]; }).map(function(a){ return a[1] + (L.inAE(s, a[0]) ? ' (included)' : ' ' + money(a[2]) + ' a month'); });
     var yours = [];
     if (X.brand) yours.push(BRAND[X.brand][0] + ' ' + money(BRAND[X.brand][1]) + ' once'); else yours.push('Standard look (included)');
-    if (X.docs) yours.push('Marketing bundle pack ' + money(s.ae ? DOCS_AE : DOCS) + ' once');
+    if (X.docs) yours.push('Brand Document Pack ' + (s.ae ? '(included with the Advice Engine)' : money(DOCS) + ' once'));
+    if (X.coll) yours.push('Client Collateral ' + money(COLL) + ' once');
     if (X.web) yours.push('Website design ' + money(WEB) + ' once');
     if (X.fc) yours.push('Found & Cited ' + money(FC) + ' a month');
-    if ((X.docs || X.web) && !X.brand) yours.push(X.ownbrand ? 'Has its own brand guidelines (to check)' : 'Needs a brand kit, guidelines or refresh first');
+    if ((X.docs || X.coll || X.web) && !X.brand) yours.push(X.ownbrand ? 'Has its own brand guidelines (to check)' : 'Needs a brand kit, guidelines or refresh first');
     var more = [];
     if (X.prem) more.push('Care Premium ' + money(PREM) + ' a month');
     if (X.build) more.push('More Bunya Build ' + money(BUILD) + ' a month');
@@ -250,7 +253,7 @@
     CF.forEach(function(k){ if (!f.elements[k].value && ct[k]) f.elements[k].value = ct[k]; });
     if (!f.elements.firm.value && window.byoBrand && window.byoBrand.found) f.elements.firm.value = window.byoBrand.firm;
     if (f === DF) {
-      var s = L.read(), on = { cc: true, ae: s.ae || Object.keys(s.feat).length > 0, brand: !!(X.brand || X.docs || X.web || X.fc || window.byoBrand) };
+      var s = L.read(), on = { cc: true, ae: s.ae || Object.keys(s.feat).length > 0, brand: !!(X.brand || X.docs || X.coll || X.web || X.fc || window.byoBrand) };
       L.APPS.forEach(function(a){ if (s.add[a[0]]) on[a[0]] = true; });
       if (!f.dataset.touched) [].forEach.call(f.querySelectorAll('[name=show]'), function(c){ c.checked = !!on[c.value]; });
       if (!f.elements.households.value && sized) f.elements.households.value = n;

@@ -375,7 +375,7 @@
          purpose: any page naming real platforms, funds, banks or portals (HUB24, Hostplus, AustralianSuper, CFS, Westpac, ANZ,
          myprosperity) and the team page (stock models; one is 'Priya', which clashes with the films' Priya Shah). */
       showcase: { id: 'example', label: 'See it on a firm', title: 'One firm. One look. Every document.',
-        lead: 'Meet Aynub Financial, a made-up advice practice we branded to show what this looks like. Its name is Bunya, turned around. Every page here is a fictional example.',
+        lead: 'Meet Aynub Financial, a made-up advice practice we branded to show what this looks like. Its name is Bunya, turned around. These pages are from its Brand Document Pack, and every one is a fictional example.',
         kit: { logo: 'assets/aynub/aynub-lockup-financial-on-light.png', line: 'Plan backwards. Live forwards.', type: 'Words in Geologica. Numbers in Gloock.',
           colours: [['Plum', '#772A53'], ['Sage', '#678D6C'], ['Ivory', '#F7F5F0'], ['Ink', '#2A2230'], ['Afterglow', '#FC7D23']] },
         /* 10 Nov 2026 (Lee): a row of covers; each opens every page in the reader (js/reader.js). 11 Nov 2026: recaptured from Dana's
@@ -393,9 +393,9 @@
           ['Brand guidelines', 'Voice, tone and layout rules for everything your firm sends.', '$4,500'],
           ['Brand refresh', 'A refreshed brand, with your Client Portal themed to match.', '$7,500'] ] },
         { h: 'Documents', when: 'Once', items: [
-          /* 10 Nov 2026 (Lee: "go back to Daniel's price"): Daniel's bundle stays, not the locked $8,000 pack. */
-          ['Marketing bundle pack', 'Your Brand Document Pack and client collateral, designed as one set. Needs your brand guidelines, or a brand kit, guidelines or refresh.', '$12,500'],
-          ['With the Advice Engine', 'The Brand Document Pack is already included, so you pay for the collateral only.', '$4,500'] ] },
+          /* 12 Nov 2026 (Lee): Daniel's Marketing bundle pack split into its two parts, each bought on its own. */
+          ['Brand Document Pack', 'Your SOAs, review packs and client documents in your brand. Included with the whole Advice Engine. Needs your brand guidelines, or a brand kit, guidelines or refresh.', '$8,000'],
+          ['Client Collateral', 'Your Financial Services Guide, fee guide and service brochure, designed as a set. Needs your brand guidelines, or a brand kit, guidelines or refresh.', '$4,500'] ] },
         /* 10 Nov 2026 (Lee: "happy with all that"): two prices replace the tiers and the quote. Website design $8,500 once (up to 12 pages,
            12 months of hosting included); Found & Cited $1,500 a month (hosting and upkeep folded in). Its own page: website-marketing.html. */
         { h: 'Website and marketing', when: 'Once, then monthly', items: [
@@ -410,7 +410,7 @@
       ] },
       faq: [
         ['Do we need these to use Command Centre?', 'No. They’re optional. Command Centre and its apps work without them.'],
-        ['Do we need branding first?', 'For the Marketing bundle pack and a website, yes. Both are designed from your brand guidelines: logo files, fonts and colours. If you don’t have them, add a brand kit, guidelines or refresh. Everything else works with the standard look.'],
+        ['Do we need branding first?', 'For the Brand Document Pack, Client Collateral and a website, yes. They’re designed from your brand guidelines: logo files, fonts and colours. If you don’t have them, add a brand kit, guidelines or refresh. Everything else works with the standard look.'],
         ['How do they fit with Client Portal?', 'A brand kit or refresh carries your full brand theme and colours into Client Portal, so clients see one look everywhere.']
       ]
     },
