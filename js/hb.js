@@ -40,11 +40,12 @@
       price: 'Included', per: 'with Command Centre', build: 'build.html' },
     /* 10 Nov (Lee: "add it"): Bunya Shape, from Daniel's configurator (4 Nov catchup). Included with every Bunya, part of Care.
        NOTE: the 8 Nov portal note says firms editing their own system wasn't in the portal yet (Lee, 29 Oct); Lee asked
-       for Shape on the site on 10 Nov. Film: Daniel's bunya-shape.mp4. */
-    { key: 'shape', k: 'Included', name: 'Bunya Shape', head: 'Change it yourself.', one: 'Ask in plain English to change your forms, reports and screens. Nothing goes live until you approve it.',
+       for Shape on the site on 10 Nov. Film: Daniel's bunya-shape.mp4.
+       12 Nov (Lee): firms can build their own apps and agents now, branded Bunya Shape. */
+    { key: 'shape', k: 'Included', name: 'Bunya Shape', head: 'Build it yourself.', one: 'Change your forms and reports, or describe a new app or agent, in plain English. Bunya Shape builds it on your own client record, and nothing goes live until you approve it.',
       img: 'assets/films/posters/bunya-shape.webp', g1: 'rgba(240,171,252,.5)', g2: 'rgba(45,212,191,.25)', kc: '#F0ABFC',
-      points: ['Ask for the change in plain English.', 'See it on your screen before it goes live.', 'Approve it, and your team has it.'],
-      incl: ['Forms', 'Reports', 'Screens', 'Community library'],
+      points: ['Describe what you need in plain English.', 'Try it on your own screen before it goes live.', 'Approve it, and your team has it.'],
+      incl: ['Forms', 'Reports', 'Screens', 'Your own apps', 'Your own agents', 'Community library'],
       price: 'Included', per: 'with Command Centre', build: 'build.html' },
     /* 9 Nov: Daniel's pricing. The Advice Engine is the second model ($5 a household), not an add-on; key stays 'soa'. */
     { key: 'soa', k: 'Upgrade', name: 'Advice Engine', head: 'Every SOA, drafted.', one: 'Fact find, insurance needs, modelling and every SOA drafted in your template, on top of everything in Command Centre.',
@@ -447,15 +448,26 @@
     },
     shape: {
       how: [
-        { t: 'Ask', d: 'Say what you want in plain English, like “add the client’s preferred contact time to the client form”.' },
-        { t: 'See it', d: 'Bunya Shape makes the change as a draft, on your own screen.' },
+        { t: 'Ask', d: 'Say what you need in plain English, like “add the client’s preferred contact time to the client form”, or “an agent that chases missing documents before each review”.' },
+        { t: 'See it', d: 'Bunya Shape builds it as a draft, on your own client record, for you to try.' },
         { t: 'Approve', d: 'Nothing goes live until someone on your team approves it. Or ask for it to be changed.' },
         { t: 'Share', d: 'Use forms and reports other practices have shared in the community library.' }
       ],
-      works: 'Included with every Bunya, as part of Care. For bigger changes, our build team does it with you, and your first month of Bunya Build is included.',
+      works: 'Included with every Bunya, as part of Care. For bigger builds, our build team does it with you, and your first month of Bunya Build is included.',
+      extra: [{ id: 'foundation', title: 'Built on your own record', lead: 'Anyone can make an app now. What makes one useful in an advice firm is what sits underneath it.', how: [
+        { t: 'One client record', d: 'Your apps and agents work from the same households, documents and meetings as the rest of Command Centre. Nothing is copied into another system.' },
+        { t: 'Your Microsoft 365', d: 'What you build runs in your firm’s own Microsoft 365, alongside everything else in Bunya.' },
+        { t: 'The same approvals', d: 'Nothing goes live until someone on your team approves it. Agents prepare work for a person to check, like the rest of Bunya.' }] }],
+      faq: [
+        ['What can we build with Bunya Shape?', 'Changes to your forms, reports and screens, and new apps and agents of your own. You describe what you need in plain English. For bigger builds, our build team does it with you.'],
+        ['Do we need a developer?', 'No. You describe it, try it as a draft and approve it. Our build team is there for the bigger jobs.'],
+        ['What does it cost?', 'Bunya Shape is included with every Bunya, as part of Care. Your first month of Bunya Build is included too.']
+      ],
       vs: { name: 'With Bunya Shape', rows: [
         ['Adding a field to a form', 'A ticket, a quote and a wait.', 'Ask in plain English, approve it, done.'],
         ['A new report', 'Exported to Excel and rebuilt each month.', 'Asked for once, there whenever you need it.'],
+        ['A tool nobody sells', 'Another subscription, another login, and client details copied across.', 'Described in plain English, built on your own client record.'],
+        ['A job your team repeats every week', 'Done by hand, or not at all.', 'An agent prepares it, and your team approves it.'],
         ['What other firms use', 'Built from scratch.', 'Picked from the community library.']
       ] }
     },
@@ -678,7 +690,7 @@
     var cc = PRODUCTS[pIndex('cc')];
     var feats = ['notes', 'reviews'].map(function(k){ var x = PRODUCTS[pIndex(k)]; return { i: pIndex(k), name: x.name, head: x.head, kc: x.kc, icon: ICONS[k] }; })
       .concat([{ i: pIndex('care'), name: 'Care', head: 'Support, updates and your Bunya Portal.', kc: '#5EEAD4', icon: ICONS.care },
-              { i: pIndex('shape'), name: 'Bunya Shape', head: 'Change it yourself, in plain English.', kc: '#F0ABFC', icon: ICONS.shape }]);
+              { i: pIndex('shape'), name: 'Bunya Shape', head: 'Build your own, in plain English.', kc: '#F0ABFC', icon: ICONS.shape }]);
     $('ccp').setAttribute('style', style(cc));
     $('ccp').innerHTML =
       '<div class="txt"><span class="k">Command Centre · what every firm gets</span><h3>' + cc.head + '</h3><p>' + cc.one + '</p>' +

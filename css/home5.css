@@ -268,3 +268,8 @@
   .v5-proof{flex-direction:column;align-items:center;gap:4px}
   .v5-proof span + span::before{display:none}
 }
+
+/* 12 Nov 2026: Built for what comes next (Bunya Shape: your own apps and agents) */
+.v5-ahead .v5-ahead-g{max-width:1100px;margin:36px auto 0}
+.v5-ahead .sx-tile{text-align:left}
+@media (max-width:899px){ .v5-ahead .v5-ahead-g{grid-template-columns:1fr} }

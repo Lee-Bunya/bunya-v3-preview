@@ -179,7 +179,7 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
         '<div class="n3-col st" style="--d:0"><h4>1 · The base, in every firm</h4><div class="n3-big">' +
           '<button type="button" data-n3-open="cc" style="--c:' + P.cc.c + '">Command Centre</button>' +
           ['notes', 'reviews'].map(function(k){ return '<button type="button" data-n3-open="' + k + '" style="--c:' + P[k].c + '">' + P[k].name + '</button>'; }).join('') +
-          '<button type="button" data-n3-open="care" style="--c:#5EEAD4">Care <small>support, updates, your portal</small></button><button type="button" data-n3-open="shape" style="--c:#F0ABFC">Bunya Shape <small>change it yourself</small></button></div></div>' +
+          '<button type="button" data-n3-open="care" style="--c:#5EEAD4">Care <small>support, updates, your portal</small></button><button type="button" data-n3-open="shape" style="--c:#F0ABFC">Bunya Shape <small>build it yourself</small></button></div></div>' +
         '<div class="n3-col st" style="--d:2"><h4>Find out more</h4><div class="n3-small"><a href="how-it-works.html">How it works</a><a href="security-your-data.html">Security and your data</a><a href="getting-started.html">Getting started</a><a href="faq.html">Questions</a></div></div>' +
         '<div class="n3-feature st" style="--d:3;--c:#5EEAD4;--g:rgba(45,212,191,.5)"><div><span class="k">From $3 per household</span><b>Every client. One place.</b><a class="n3-cc-link" href="command-centre.html">See Command Centre</a></div>' +
           '<div class="sc"><img src="assets/cc/today.webp" alt="" loading="lazy"></div><div class="acts" data-n3-cc></div></div></div>';
