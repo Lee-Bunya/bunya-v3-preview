@@ -11,7 +11,7 @@
   var rate = function(v){ v = Math.round(v * 100) / 100; return '$' + (v % 1 ? v.toFixed(2) : v); };
   var cents = function(v){ var c = Math.round(v * 100); return c < 100 ? c + 'c' : rate(c / 100); };
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var MIN = 500, BAND = 1000, OFF = .16, YEAR = .1, SETUP = 7249, PREM = 1997, BUILD = 12000, FC = 1500, FCP = 3500, WEB = 14882, DOCS = 7441, COLL = 4500, SOA = 153, REVIEW = .97;
+  var MIN = 500, BAND = 1000, OFF = .16, YEAR = .1, SETUP = 7249, PREM = 1997, BUILD = 12000, FC = 1950, FCP = 3950, ADS = 790, WEB = 14882, DOCS = 7441, COLL = 4500, SOA = 153, REVIEW = .97;
   var BRAND = { kit: ['Brand kit, set up by our designer', 1800], guide: ['Brand guidelines', 4500], refresh: ['Brand refresh', 7500] };
   var APPN = {}; L.APPS.forEach(function(a){ APPN[a[0]] = a; });
   // 12 Nov 2026 (Daniel, "partner tools"): some features use a partner's tool, which the provider bills the practice for directly.
@@ -70,7 +70,7 @@
   function banded(r){ return r * (Math.min(n, BAND) + Math.max(0, n - BAND) * (1 - OFF)); }
   function calc(){
     var s = L.read(), r = L.rate(s) * (X.year ? 1 - YEAR : 1), raw = banded(r), fee = Math.max(MIN, raw), apps = L.apps(s);
-    var extra = (X.prem ? PREM : 0) + (X.build ? BUILD : 0) + (X.fc ? FC : 0) + (X.fcp ? FCP : 0);
+    var extra = (X.prem ? PREM : 0) + (X.build ? BUILD : 0) + (X.fc ? FC : 0) + (X.fcp ? FCP : 0) + (X.ads ? ADS : 0);
     var once = SETUP + (X.brand ? BRAND[X.brand][1] : 0) + (X.docs ? DOCS : 0) + (X.coll ? COLL : 0) + (X.web ? WEB : 0);
     return { s: s, r: r, raw: raw, fee: fee, atMin: raw < MIN, apps: apps, extra: extra, monthly: fee + apps + extra, once: once, pt: ptCost(s), ptOn: ptKeys(s).length > 0 };
   }
@@ -110,7 +110,7 @@
   var stage = null, keyNow = 'base', pushT = 0;
   function stageState(view){
     var s = L.read(), o = { n: sized ? n : 500, ae: s.ae, feat: Object.keys(s.feat), add: Object.keys(s.add).filter(function(k){ return k !== 'voice'; }),
-      voice: !!s.add.voice, brand: X.brand || '', docs: !!(X.docs || X.coll), web: !!(X.web || X.fc || X.fcp), site: window.byoBrand ? window.byoBrand.site : '' };
+      voice: !!s.add.voice, brand: X.brand || '', docs: !!(X.docs || X.coll), web: !!(X.web || X.fc || X.fcp || X.ads), site: window.byoBrand ? window.byoBrand.site : '' };
     if (view) o.view = view;
     return o;
   }
@@ -194,6 +194,7 @@
     if (X.build) L1.push(line('Bunya Build', money(BUILD)));
     if (X.fc) L1.push(line('Found &amp; Cited', money(FC)));
     if (X.fcp) L1.push(line('Found &amp; Cited Plus', money(FCP)));
+    if (X.ads) L1.push(line('Google Ads, managed <small>ad spend billed at cost</small>', money(ADS)));
     var per = function(v){ return sized ? money(X.year ? v * 12 : v) : '—'; };
     L1.push(line(c.ptOn ? (X.year ? 'Paid to Bunya, a year' : 'Paid to Bunya, a month') : (X.year ? 'A year' : 'A month'), per(c.monthly), 'tot'));
     var L3 = [];
@@ -223,6 +224,7 @@
     if (X.build) bits.push('+ ' + money(BUILD) + ' Bunya Build');
     if (X.fc) bits.push('+ ' + money(FC) + ' Found & Cited');
     if (X.fcp) bits.push('+ ' + money(FCP) + ' Found & Cited Plus');
+    if (X.ads) bits.push('+ ' + money(ADS) + ' Google Ads');
     if (c.pt) bits.push('+ about ' + money(X.year ? c.pt * 12 : c.pt) + ' to partners');
     var svc = c.once - SETUP;
     if (svc) bits.push('+ ' + money(svc) + ' once');
@@ -270,6 +272,7 @@
     if (X.web) yours.push('Website design ' + money(WEB) + ' once');
     if (X.fc) yours.push('Found & Cited ' + money(FC) + ' a month');
     if (X.fcp) yours.push('Found & Cited Plus ' + money(FCP) + ' a month');
+    if (X.ads) yours.push('Google Ads managed ' + money(ADS) + ' a month, plus ad spend at cost');
     if ((X.docs || X.coll || X.web) && !X.brand) yours.push(X.ownbrand ? 'Has its own brand guidelines (to check)' : 'Needs a brand kit, guidelines or refresh first');
     var others = ptLines(s).map(function(l){ return l[0] + (l[1] ? ', about ' + money(l[1]) + ' a month' : ''); });
     if (s.feat.pf) others.push('Portfolio reads from CFS Edge and HUB24');

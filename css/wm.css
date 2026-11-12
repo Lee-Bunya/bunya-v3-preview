@@ -33,3 +33,7 @@
 
 /* 12 Nov 2026 (Lee): a little more room in cards, site-wide: more padding, more space between title and text, looser lines */
 .wm-steps p{margin-top:12px;line-height:1.6}
+
+/* Google Ads add-on line under the plans (12 Nov 2026) */
+.wm-ads{margin:16px 0 0;padding:16px 20px;border-radius:18px;background:var(--sx-card-2,#161618);font-size:15px;line-height:1.5;color:var(--sx-grey)}
+.wm-ads b{color:#fff;margin-right:6px}

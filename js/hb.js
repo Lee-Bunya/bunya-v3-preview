@@ -400,8 +400,9 @@
            12 months of hosting included); Found & Cited $1,500 a month (hosting and upkeep folded in). Its own page: website-marketing.html. */
         { h: 'Website and marketing', when: 'Once, then monthly', items: [
           ['Website design', 'Up to 12 pages in your brand, with adviser profiles and online booking, built so Google and AI answers can read every page. 12 months of hosting included. Needs your brand guidelines, or a brand kit, guidelines or refresh.', '$14,882'],
-          ['Found & Cited', 'Hosting and updates, two new answer pages a month, your Google Business Profile, and a monthly report on where you appear in Google and AI answers.', '$1,500 a month'],
-          ['Found & Cited Plus', 'Everything in Found & Cited, with four new answer pages or articles a month, social posts from each one, and your Google Ads managed (ad spend billed at cost).', '$3,500 a month'] ] }
+          ['Found & Cited', 'Hosting and updates, two new answer pages a month, your Google Business Profile, enquiries landing in Command Centre as leads, and a monthly report on where you appear in Google and AI answers.', '$1,950 a month'],
+          ['Found & Cited Plus', 'Everything in Found & Cited, with four new answer pages a month, a new local or service page each month, LinkedIn posts for each adviser and a quarterly test of the questions your clients ask AI tools.', '$3,950 a month'],
+          ['Google Ads, managed', 'Your Google Ads set up and managed, with either plan. Ad spend is billed at cost.', '$790 a month'] ] }
       ],
         after: 'Choose them when you build yours, or talk them through with us first. <a href="website-marketing.html">See Website and marketing</a>' },
       vs: { name: 'With Bunya', rows: [
