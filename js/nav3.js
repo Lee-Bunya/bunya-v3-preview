@@ -199,13 +199,13 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
     { key: 'cust', label: 'Customers', html: function(){
       return '<div class="n3-grid" style="grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr)">' +
         '<figure class="n3-quote st" style="--d:0;margin:0"><q>This is a game changer for a role like mine.</q><figcaption class="who"><img src="assets/falcon-charlotte-omeara.webp" alt="" loading="lazy"><span><b>Charlotte O’Meara</b>Falcon Financial Advisers</span></figcaption></figure>' +
-        '<div class="n3-col st" style="--d:1"><h4>Customers</h4><div class="n3-big"><a href="case-studies.html">Customer stories</a><a href="watch.html">Watch Bunya</a><a href="blog.html">Insights</a><a href="security-your-data.html">Security and your data</a></div></div>' +
+        '<div class="n3-col st" style="--d:1"><h4>Customers</h4><div class="n3-big"><a href="case-studies.html">Customer stories</a><a href="watch.html">Watch Bunya</a><a href="blog.html">Insights</a><a href="glossary.html">Advice glossary</a><a href="security-your-data.html">Security and your data</a></div></div>' +
         '<div class="n3-col st" style="--d:2"><h4>Company</h4><div class="n3-small"><a href="about.html">About Bunya</a><a href="booking.html#contact">Contact</a><a href="tel:1300286922">1300 286 922</a></div></div></div>';
     } },
     { key: 'price', label: 'Pricing', html: function(){
       return '<div class="n3-grid">' +
         '<div class="n3-col st" style="--d:0"><h4>Pricing</h4><div class="n3-big"><a href="build.html" style="--c:#5EEAD4">Build yours</a><a href="pricing.html">Pricing</a><button type="button" data-n3-open="svc" style="--c:#A5B4FC">Make it yours <small>brand and documents</small></button><a href="website-marketing.html" style="--c:#F9A8D4">Website and marketing <small>$8,500, then $1,500 a month</small></a></div></div>' +
-        '<div class="n3-col st" style="--d:2"><h4>Before you start</h4><div class="n3-small"><a href="how-it-works.html">How it works</a><a href="getting-started.html">Getting started</a><a href="faq.html">Questions</a><a href="booking.html">Book a demo</a></div></div>' +
+        '<div class="n3-col st" style="--d:2"><h4>Before you start</h4><div class="n3-small"><a href="is-bunya-right.html">Is Bunya right for you?</a><a href="how-it-works.html">How it works</a><a href="getting-started.html">Getting started</a><a href="faq.html">Questions</a><a href="booking.html">Book a demo</a></div></div>' +
         '<div class="n3-feature st" style="--d:3;--c:#5EEAD4;--g:rgba(45,212,191,.5)"><div><span class="k">From $3 per household a month</span><b>Pay only for what your firm uses.</b><a class="n3-cc-link" href="build.html">See your price</a></div>' +
           '<div class="sc"><img src="assets/concept/home.webp" alt="" loading="lazy"></div><div class="acts"><a class="n3-pill" href="build.html">Build yours</a><a class="n3-pill ghost" href="booking.html">Book a demo</a></div></div></div>';
     } }
@@ -328,6 +328,8 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
     ['How it works', 'One household, from first meeting to annual review', 'how-it-works.html', 'page', '#93C5FD', 'how it works journey story process'],
     ['Website and marketing', 'A website in your brand, then Found & Cited every month', 'website-marketing.html', 'page', '#F9A8D4', 'website seo aeo search google ai answers marketing found cited'],
     ['Insights', 'Guides for advice firms: meeting notes, SOAs, reviews, evidence', 'blog.html', 'page', '#67E8F9', 'insights blog articles guides checklist meeting notes soa review migration'],
+    ['Is Bunya right for you?', 'An honest fit check, before you book anything', 'is-bunya-right.html', 'page', '#6EE7B7', 'fit right suitable small firm licensee microsoft 365 requirements'],
+    ['Advice glossary', 'SOA, ROA, OFA, best interests duty and more, in plain English', 'glossary.html', 'page', '#A5B4FC', 'glossary terms definitions soa roa ofa fds dbfo best interests duty ddo tmd afsl'],
     ['Contact', 'info@bunya.ai · 1300 286 922', 'booking.html#contact', 'page', '#FDE68A', 'contact phone email support']
   ];
   var QS = [
@@ -377,8 +379,8 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
       '<div class="n3-acc" style="--d:1"><button type="button" aria-expanded="false">Advice Engine' + svg('plus') + '</button><div class="in"><div><div class="links">' +
         '<a href="advice-engine.html">The whole Advice Engine</a>' + FEATS.map(function(f){ return '<a href="' + (window.BUNYA_FEATURE_PAGES[f[0]] || 'advice-engine.html#' + f[0]) + '">' + f[1] + '</a>'; }).join('') + '</div></div></div></div>' +
       group('Apps', ['portal', 'bhq', 'field', 'rev', 'voice', 'vault'], null, 2) +
-      '<div class="n3-acc" style="--d:3"><button type="button" aria-expanded="false">Customers' + svg('plus') + '</button><div class="in"><div><div class="links"><a href="case-studies.html">Customer stories</a><a href="watch.html">Watch Bunya</a><a href="blog.html">Insights</a><a href="security-your-data.html">Security and your data</a><a href="about.html">About Bunya</a><a href="booking.html#contact">Contact</a></div></div></div></div>' +
-      '<div class="n3-acc" style="--d:4"><button type="button" aria-expanded="false">Pricing' + svg('plus') + '</button><div class="in"><div><div class="links"><a href="build.html">Build yours</a><a href="pricing.html">Pricing</a><a href="brand-website-marketing.html">Make it yours</a><a href="website-marketing.html">Website and marketing</a><a href="getting-started.html">Getting started</a><a href="faq.html">Questions</a></div></div></div></div>';
+      '<div class="n3-acc" style="--d:3"><button type="button" aria-expanded="false">Customers' + svg('plus') + '</button><div class="in"><div><div class="links"><a href="case-studies.html">Customer stories</a><a href="watch.html">Watch Bunya</a><a href="blog.html">Insights</a><a href="glossary.html">Advice glossary</a><a href="security-your-data.html">Security and your data</a><a href="about.html">About Bunya</a><a href="booking.html#contact">Contact</a></div></div></div></div>' +
+      '<div class="n3-acc" style="--d:4"><button type="button" aria-expanded="false">Pricing' + svg('plus') + '</button><div class="in"><div><div class="links"><a href="build.html">Build yours</a><a href="pricing.html">Pricing</a><a href="brand-website-marketing.html">Make it yours</a><a href="website-marketing.html">Website and marketing</a><a href="is-bunya-right.html">Is Bunya right for you?</a><a href="getting-started.html">Getting started</a><a href="faq.html">Questions</a></div></div></div></div>';
   }
   function openPhone(){ $('n3-ph-body').innerHTML = phoneHTML(); phone.classList.add('on'); menuBtn.setAttribute('aria-expanded', 'true'); document.documentElement.style.overflow = 'hidden'; }
   function closePhone(){ if (!phone.classList.contains('on')) return; phone.classList.remove('on'); menuBtn.setAttribute('aria-expanded', 'false'); document.documentElement.style.overflow = ''; }

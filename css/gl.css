@@ -1,0 +1,20 @@
+/* Glossary, v3 (12 Nov 2026). Builds on sx.css and fq.css (search, chips, two-column sections). gl- prefix. */
+.gl-chips a{min-width:40px;justify-content:center;padding:0 12px}
+.gl-sec .fq-side h2{font-size:clamp(44px,5vw,72px);line-height:1;background:linear-gradient(120deg,#5EEAD4,#A5B4FC);-webkit-background-clip:text;background-clip:text;color:transparent}
+.gl-list{display:grid;gap:12px}
+.gl-term{padding:22px 24px;border-radius:20px;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.07);scroll-margin-top:96px}
+.gl-term[hidden]{display:none}
+.gl-term:target{box-shadow:inset 0 0 0 1.5px #67E8F9}
+.sx .gl-term h3{font-size:20px;line-height:1.25;letter-spacing:-.02em}
+.gl-term p{margin:8px 0 0;font-size:16px;line-height:1.6;color:var(--sx-grey)}
+.gl-term .gl-meta{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:12px;font-size:14px}
+.gl-meta a{color:#67E8F9;text-decoration:none}
+.gl-meta a::after{content:" ›"}
+.gl-meta a:hover{text-decoration:underline;text-underline-offset:3px}
+.gl-meta a.src{color:var(--sx-dim)}
+.gl-meta a.src::after{content:" ↗"}
+.gl-scope{width:min(860px,calc(100% - 48px));margin:clamp(48px,7vh,72px) auto 0;font-size:14px;line-height:1.6;color:var(--sx-dim);text-align:center}
+@media (max-width:860px){
+  .gl-sec .fq-side h2{font-size:44px}
+  .gl-term{padding:18px 18px}
+}

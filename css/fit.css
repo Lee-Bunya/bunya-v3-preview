@@ -1,0 +1,48 @@
+/* Is Bunya right for your firm? v3 (12 Nov 2026). Builds on sx.css. fit- prefix. */
+.fit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:0;padding:0;list-style:none}
+.fit-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.fit-card{position:relative;display:flex;flex-direction:column;gap:10px;padding:26px 26px 28px 26px;border-radius:24px;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+.fit-card b{display:flex;align-items:flex-start;gap:12px;font-size:19px;line-height:1.3;font-weight:600;letter-spacing:-.015em;color:#F5F5F7}
+.fit-card b::before{content:"";flex:none;width:22px;height:22px;margin-top:1px;border-radius:50%;background:center/12px no-repeat}
+.fit-card.good b::before{background-color:rgba(94,234,212,.16);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2 5 8.5l4.5-5' fill='none' stroke='%235EEAD4' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.fit-card.not b::before{background-color:rgba(253,186,116,.14);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M6 2.5v4.2M6 9.2v.1' fill='none' stroke='%23FDBA74' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E")}
+.fit-card.need b::before{background-color:rgba(165,180,252,.16);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Ccircle cx='6' cy='6' r='2' fill='%23A5B4FC'/%3E%3C/svg%3E")}
+.fit-card span{font-size:16px;line-height:1.6;color:var(--sx-grey)}
+.fit-card span a{color:#67E8F9;text-decoration:none}
+
+.fit-quiz{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px;align-items:start}
+.fit-qs{margin:0;padding:0;list-style:none;counter-reset:q}
+.fit-qs li{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0;border-top:1px solid var(--sx-line)}
+.fit-qs li:last-child{border-bottom:1px solid var(--sx-line)}
+.fit-qs p{margin:0;font-size:17px;line-height:1.45;color:#E8E8ED}
+.fit-yn{flex:none;display:flex;padding:4px;border-radius:999px;background:rgba(255,255,255,.06)}
+.fit-yn button{height:36px;min-width:58px;padding:0 14px;border:0;border-radius:999px;background:none;color:var(--sx-grey);font:inherit;font-size:15px;font-weight:600;cursor:pointer}
+.fit-yn button[aria-pressed="true"]{background:#F5F5F7;color:#000}
+.fit-yn button:focus-visible{outline:2px solid #67E8F9;outline-offset:2px}
+.fit-result{position:sticky;top:96px;display:flex;flex-direction:column;gap:8px;padding:28px;border-radius:24px;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);transition:box-shadow .3s}
+.fit-result b{font-size:24px;letter-spacing:-.02em;color:#F5F5F7}
+.fit-result span{font-size:16px;line-height:1.55;color:var(--sx-grey)}
+.fit-result.good{box-shadow:inset 0 0 0 1.5px #5EEAD4}
+.fit-result.maybe{box-shadow:inset 0 0 0 1.5px #A5B4FC}
+.fit-result.not{box-shadow:inset 0 0 0 1.5px #FDBA74}
+
+.fit-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:0;padding:0;list-style:none;counter-reset:s}
+.fit-steps li{counter-increment:s;display:flex;flex-direction:column;gap:10px;padding:26px;border-radius:24px;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+.fit-steps li::before{content:counter(s);width:32px;height:32px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.1);font-size:15px;font-weight:600;color:#fff}
+.fit-steps b{font-size:19px;color:#F5F5F7}
+.fit-steps span{flex:1;font-size:16px;line-height:1.6;color:var(--sx-grey)}
+.fit-steps a{color:#67E8F9;text-decoration:none;font-size:15.5px}
+.fit-steps a::after{content:" ›"}
+.fit-fine{margin:14px 0 0;font-size:14px;color:var(--sx-dim)}
+.fit-more{margin:22px 0 0;font-size:16px;color:var(--sx-grey)}
+.fit-more a{color:#67E8F9;text-decoration:none}
+
+@media (max-width:1000px){ .fit-grid{grid-template-columns:repeat(2,minmax(0,1fr))} .fit-steps{grid-template-columns:1fr} .fit-quiz{grid-template-columns:1fr} .fit-result{position:static} }
+@media (max-width:620px){
+  .fit-grid,.fit-grid.two{grid-template-columns:1fr}
+  .fit-card,.fit-steps li,.fit-result{padding:22px}
+  .fit-qs li{flex-direction:column;align-items:flex-start;gap:12px}
+}
+/* A lone last card fills the row */
+@media (min-width:1001px){ .fit-grid:not(.two) > li:last-child:nth-child(3n+2){grid-column:span 2} }
+@media (min-width:621px) and (max-width:1000px){ .fit-grid > li:last-child:nth-child(odd){grid-column:span 2} }

@@ -12,9 +12,9 @@
     '<div><h4>Command Centre</h4><a href="command-centre.html">Overview</a>' + P('notes', 'Meeting Notes') + P('reviews', 'Review Packs') + P('care', 'Care') + P('shape', 'Bunya Shape') + '</div>' +
     '<div><h4>Advice Engine</h4><a href="advice-engine.html">Overview</a>' + F('ff', 'Fact find') + F('pf', 'Portfolio') + F('ins', 'Insurance needs') + F('mod', 'Strategy and modelling') + F('cmp', 'Platform comparisons') + F('soa', 'SOA generator') + F('aud', 'File Audit') + '</div>' +
     '<div><h4>Apps</h4>' + P('portal', 'Client Portal') + P('bhq', 'Broadcast HQ') + P('field', 'Field Notes') + P('rev', 'Revenue Import') + P('voice', 'Bunya Voice') + P('vault', 'Bunya Vault') + '</div>' +
-    '<div><h4>Pricing and getting started</h4><a href="build.html">Build yours</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How it works</a>' + P('svc', 'Make it yours') + '<a href="website-marketing.html">Website and marketing</a><a href="getting-started.html">Getting started</a><a href="case-studies.html">Customer stories</a><a href="blog.html">Insights</a><a href="booking.html">Book a demo</a></div>' +
+    '<div><h4>Pricing and getting started</h4><a href="build.html">Build yours</a><a href="pricing.html">Pricing</a><a href="how-it-works.html">How it works</a>' + P('svc', 'Make it yours') + '<a href="website-marketing.html">Website and marketing</a><a href="is-bunya-right.html">Is Bunya right for you?</a><a href="getting-started.html">Getting started</a><a href="case-studies.html">Customer stories</a><a href="blog.html">Insights</a><a href="booking.html">Book a demo</a></div>' +
     '<div class="fine"><span>&copy; 2026 Bunya AI Pty Ltd · ABN 39 700 067 545</span>' +
-      '<span><a href="about.html">About</a> · <a href="security-your-data.html">Security &amp; your data</a> · <a href="faq.html">FAQs</a> · <a href="booking.html#contact">Contact</a></span></div>' +
+      '<span><a href="about.html">About</a> · <a href="security-your-data.html">Security &amp; your data</a> · <a href="faq.html">FAQs</a> · <a href="glossary.html">Glossary</a> · <a href="booking.html#contact">Contact</a></span></div>' +
   '</div></div></footer>';
 
   function mount() {
