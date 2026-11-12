@@ -148,7 +148,7 @@
     });
     [].forEach.call(document.querySelectorAll('[data-bill]'), function(b){ var sel = (b.dataset.bill === 'year') === !!X.year; b.setAttribute('aria-checked', String(sel)); b.classList.toggle('on', sel); });
     if ((X.build || X.own) && !$('byo-more').open) $('byo-more').open = true;
-    $('byo-docs-p').closest('.pc').innerHTML = s.ae ? '<b id="byo-docs-p">Included</b> with the Advice Engine' : '<b id="byo-docs-p">' + money(DOCS) + '</b> once';
+    $('byo-docs-p').closest('.pc').innerHTML = s.ae ? '<b id="byo-docs-p">Included</b>' : '<b id="byo-docs-p">' + money(DOCS) + '</b> once';
     // 12 Nov 2026 (Lee): the pack and the website are designed from the firm's brand. No brand tier? Ask.
     var picks = [X.docs, X.coll, X.web].filter(Boolean).length, nb = $('byo-needs'), needBrand = picks > 0 && !X.brand;
     nb.hidden = !needBrand;
