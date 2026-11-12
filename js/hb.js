@@ -87,7 +87,7 @@
       type: true, g1: 'rgba(129,140,248,.6)', g2: 'rgba(244,114,182,.3)', kc: '#A5B4FC',
       points: ['A brand kit, guidelines or a full refresh.', 'Your Brand Document Pack for SOAs and client documents.', 'A website and monthly marketing that get you found.'],
       incl: ['Brand', 'Your Brand Document Pack', 'Website', 'Marketing'],
-      price: 'From $1,800', per: 'once, with a free AI brand kit', build: 'build.html' }
+      price: 'From $1,800', per: 'once. A standard look with your logo is included', build: 'build.html' }
   ];
   /* What "Add to your build" does for each product. The build is kept in the browser in the same
      format as the build page's address (n, pay, soa, add, web …), so both pages share one build. */
@@ -387,8 +387,9 @@
       /* 9 Nov: Daniel's configurator. Brand prices unchanged; documents as one Marketing bundle pack; website and marketing quoted. */
       menu: { title: 'What you can add', note: 'Pick any, or none. Draft prices, A$ ex GST.', groups: [
         { h: 'Brand', when: 'Once', items: [
-          ['AI brand kit', 'Made from your website in minutes. Your logo and colours across Bunya, and you can change them any time.', 'Included'],
-          ['Brand kit, checked by our designer', 'Our designer checks your brand kit, tidies your logo files and sets your colours across Bunya.', '$1,800'],
+          /* 12 Nov (Lee): no free AI brand kit; the standard look makes the $1,800 kit a clear upgrade. */
+          ['Standard look', 'Your logo and main colour on Bunya’s standard layouts. Clean, and the same for every firm.', 'Included'],
+          ['Brand kit, set up by our designer', 'Your fonts, colours and layouts across Bunya, so every document looks like your firm made it.', '$1,800'],
           ['Brand guidelines', 'Voice, tone and layout rules for everything your firm sends.', '$4,500'],
           ['Brand refresh', 'A refreshed brand, with your Client Portal themed to match.', '$7,500'] ] },
         { h: 'Documents', when: 'Once', items: [

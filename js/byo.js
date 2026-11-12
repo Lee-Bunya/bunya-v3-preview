@@ -12,7 +12,7 @@
   var cents = function(v){ var c = Math.round(v * 100); return c < 100 ? c + 'c' : rate(c / 100); };
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var MIN = 500, BAND = 1000, OFF = .16, YEAR = .1, SETUP = 7249, PREM = 1997, BUILD = 12000, FC = 1500, WEB = 8500, DOCS = 12500, DOCS_AE = 4500, SOA = 153, REVIEW = .97;
-  var BRAND = { kit: ['Brand kit, checked by our designer', 1800], guide: ['Brand guidelines', 4500], refresh: ['Brand refresh', 7500] };
+  var BRAND = { kit: ['Brand kit, set up by our designer', 1800], guide: ['Brand guidelines', 4500], refresh: ['Brand refresh', 7500] };
   var APPN = {}; L.APPS.forEach(function(a){ APPN[a[0]] = a; });
 
   // State
@@ -199,7 +199,7 @@
     var s = c.s, feats = s.ae ? ['The whole Advice Engine (all seven features)'] : L.FEAT.filter(function(f){ return s.feat[f[0]]; }).map(function(f){ return f[1] + ' +' + cents(f[2]); });
     var apps = L.APPS.filter(function(a){ return s.add[a[0]]; }).map(function(a){ return a[1] + (L.inAE(s, a[0]) ? ' (included)' : ' ' + money(a[2]) + ' a month'); });
     var yours = [];
-    if (X.brand) yours.push(BRAND[X.brand][0] + ' ' + money(BRAND[X.brand][1]) + ' once'); else yours.push('AI brand kit (included)');
+    if (X.brand) yours.push(BRAND[X.brand][0] + ' ' + money(BRAND[X.brand][1]) + ' once'); else yours.push('Standard look (included)');
     if (X.docs) yours.push('Marketing bundle pack ' + money(s.ae ? DOCS_AE : DOCS) + ' once');
     if (X.web) yours.push('Website design ' + money(WEB) + ' once');
     if (X.fc) yours.push('Found & Cited ' + money(FC) + ' a month');
