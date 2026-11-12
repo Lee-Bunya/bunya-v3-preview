@@ -273,3 +273,11 @@
 .v5-ahead .v5-ahead-g{max-width:1100px;margin:36px auto 0}
 .v5-ahead .sx-tile{text-align:left}
 @media (max-width:899px){ .v5-ahead .v5-ahead-g{grid-template-columns:1fr} }
+
+/* Watch Bunya in 40 seconds, under the hero buttons (13 Nov 2026) */
+.v5-watch{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:0;border:0;background:none;color:#E8E8ED;font:inherit;font-size:15.5px;cursor:pointer}
+.v5-watch-i{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);transition:background .2s,transform .2s}
+.v5-watch-i svg{width:13px;height:13px;margin-left:2px;fill:#fff}
+.v5-watch:hover .v5-watch-i{background:rgba(255,255,255,.2);transform:scale(1.06)}
+.v5-watch:hover{color:#fff}
+.v5-watch:focus-visible{outline:2px solid #67E8F9;outline-offset:4px;border-radius:20px}

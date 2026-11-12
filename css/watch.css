@@ -36,3 +36,9 @@
 
 /* 12 Nov 2026 (Lee): a little more room in cards, site-wide: more padding, more space between title and text, looser lines */
 .wt-card p{margin-top:8px;line-height:1.6}
+
+/* Bunya in 40 seconds (13 Nov 2026): a still poster, not a loop, above the Pam ad */
+.wt-ad-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.wt-ad-shot:hover img{transform:scale(1.03)}
+.wt-ad + .wt-ad{margin-top:clamp(56px,8vw,104px)}
+@media (prefers-reduced-motion: reduce){.wt-ad-shot img{transition:none}}

@@ -4,7 +4,9 @@
    in a pop-up, 1080p on wide screens and 720p on phones. dataLayer: film_play, film_25/50/75, film_complete. */
 (function(){
   'use strict';
-  var FILMS = { pam: { title: 'Let Pam go to Bali', hd: 'assets/films/pam/pam-1080.mp4', sd: 'assets/films/pam/pam-720.mp4', poster: 'assets/films/pam/pam-poster.webp' } };
+  var FILMS = { pam: { title: 'Let Pam go to Bali', hd: 'assets/films/pam/pam-1080.mp4', sd: 'assets/films/pam/pam-720.mp4', poster: 'assets/films/pam/pam-poster.webp' },
+    // 13 Nov 2026: the 40-second intro (832x464 for now; swap in a 1080p export when there is one)
+    intro: { title: 'Bunya in 40 seconds', hd: 'assets/films/bunya-intro.mp4', sd: 'assets/films/bunya-intro.mp4', poster: 'assets/films/posters/bunya-intro-open.webp', len: '0:40' } };
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, dl = window.dataLayer = window.dataLayer || [];
   var loops = document.querySelectorAll('.pam-loop');
   [].forEach.call(loops, function(v){ v.removeAttribute('autoplay'); if (reduce) v.pause(); });
