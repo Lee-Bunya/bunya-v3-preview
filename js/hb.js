@@ -47,12 +47,12 @@
       points: ['Describe what you need in plain English.', 'Try it on your own screen before it goes live.', 'Approve it, and your team has it.'],
       incl: ['Forms', 'Reports', 'Screens', 'Your own apps', 'Your own agents', 'Community library'],
       price: 'Included', per: 'with Command Centre', build: 'build.html' },
-    /* 9 Nov: Daniel's pricing. The Advice Engine is the second model ($5 a household), not an add-on; key stays 'soa'. */
+    /* 9 Nov: Daniel's pricing. The Advice Engine is the second model ($5.01 a household), not an add-on; key stays 'soa'. */
     { key: 'soa', k: 'Upgrade', name: 'Advice Engine', head: 'Every SOA, drafted.', one: 'Fact find, insurance needs, modelling and every SOA drafted in your template, on top of everything in Command Centre.',
       img: 'assets/soa/ready.webp', g1: 'rgba(96,165,250,.6)', g2: 'rgba(59,130,246,.25)', kc: '#93C5FD',
       points: ['The fact find filled from the meeting, the documents and the client portal.', 'Insurance needs, strategy and modelling, ready for advice.', 'Every SOA drafted in your template. Your adviser approves it.'],
-      incl: ['Fact find', 'Insurance needs and quotes', 'Strategy and modelling', 'SOA generator', 'File Audit', 'Client Portal', 'Brand Document Pack'],
-      price: '$5', per: 'per household a month, with everything in Command Centre', build: 'build.html?soa=all' },
+      incl: ['Fact find', 'Insurance needs and quotes', 'Strategy and modelling', 'SOA generator', 'File Audit', 'Client Portal', 'AI-made document pack'],
+      price: '$5.01', per: 'per household a month, with everything in Command Centre', build: 'build.html?soa=all' },
     { key: 'portal', k: 'App', name: 'Client Portal', head: 'Your clients’ own space.', one: 'Documents, meetings, messages and signing, in one place for them.',
       img: 'assets/portal/home.webp', g1: 'rgba(244,114,182,.55)', g2: 'rgba(236,72,153,.25)', kc: '#F9A8D4',
       points: ['Documents, meetings and messages in one place.', 'Clients read their advice and sign it.', 'They can see where their advice is up to.'],
@@ -87,7 +87,7 @@
       type: true, g1: 'rgba(129,140,248,.6)', g2: 'rgba(244,114,182,.3)', kc: '#A5B4FC',
       points: ['A brand kit, guidelines or a full refresh.', 'Your Brand Document Pack for SOAs and client documents.', 'A website and monthly marketing that get you found.'],
       incl: ['Brand', 'Your Brand Document Pack', 'Website', 'Marketing'],
-      price: 'From $1,800', per: 'once. A standard look with your logo is included', build: 'build.html' }
+      price: 'From $1,800', per: 'once, with a free AI brand kit', build: 'build.html' }
   ];
   /* What "Add to your build" does for each product. The build is kept in the browser in the same
      format as the build page's address (n, pay, soa, add, web …), so both pages share one build. */
@@ -136,7 +136,7 @@
     var n = +q.get('n') || 0; if (!n) return null;
     var soa = q.get('soa'), own = q.get('pay') === 'own', yr = q.get('bill') === 'year';
     var mo = adds(q).reduce(function(t, k){ return t + (MONTHLY[k] || 0); }, 0) + (MKT[q.get('mkt')] || 0);
-    var once = (ONCE[q.get('brand')] || 0) + (ONCE[q.get('web')] || 0) + (q.get('docs') === '1' ? 8000 : 0) + (soa === 'packs' ? (+q.get('packs') || 2) * 1530 : 0);
+    var once = (ONCE[q.get('brand')] || 0) + (ONCE[q.get('web')] || 0) + (q.get('docs') === '1' ? 7441 : 0) + (soa === 'packs' ? (+q.get('packs') || 2) * 1530 : 0);
     if (own) {
       var b3 = banded(n, 3);
       return { n: n, own: true, once: Math.max(120000, b3 * 36) + once, monthly: Math.max(1497, b3 * .3) + (soa === 'all' ? banded(n, 2) : 0) + mo };
@@ -161,13 +161,13 @@
      local Build your Bunya branch; not agreed. Words from Daniel's configurator. Films from his repo, in assets/films/.
      tools/v3/build_products.mjs reads this list for the Advice Engine page. */
   var FEATS = [
-    { k: 'ff',  name: 'Fact find', p: '40c', film: 'fact-find', rec: 'Start here', text: 'Gathered from the meeting, the documents and the client portal. Each answer shows where it came from, and anything that doesn’t match is flagged before your adviser locks it.' },
-    { k: 'pf',  name: 'Portfolio', p: '30c', film: 'portfolio', text: 'Their investments and super pulled together, ready for advice.' },
-    { k: 'ins', name: 'Insurance needs and quotes', p: '40c', film: 'insurance-needs', needs: 'the fact find', text: 'Cover needs worked out from the fact find, with comparison quotes.' },
-    { k: 'mod', name: 'Strategy and modelling', p: '50c', film: 'strategy-and-modelling', needs: 'the fact find', text: 'Retirement, cash flow and super scenarios, prepared for paraplanning.' },
-    { k: 'cmp', name: 'Platform comparisons', p: '30c', film: 'platform-comparison', needs: 'the portfolio', text: 'Platforms and products compared side by side.' },
-    { k: 'soa', name: 'SOA generator', p: '$1', film: 'soa-generator', needs: 'the fact find and modelling', tag: 'Pilot', text: 'The draft SOA in your template, with every recommendation linked to its reasons.' },
-    { k: 'aud', name: 'File Audit', p: '30c', film: 'file-audit', needs: 'the SOA generator', tag: 'Pilot', text: 'Every file checked against your licensee’s standards before it goes out.' }
+    { k: 'ff',  name: 'Fact find', p: '39c', film: 'fact-find', rec: 'Start here', text: 'Gathered from the meeting, the documents and the client portal. Each answer shows where it came from, and anything that doesn’t match is flagged before your adviser locks it.' },
+    { k: 'pf',  name: 'Portfolio', p: '27c', film: 'portfolio', text: 'Their investments and super pulled together, ready for advice.' },
+    { k: 'ins', name: 'Insurance needs and quotes', p: '39c', film: 'insurance-needs', needs: 'the fact find', text: 'Cover needs worked out from the fact find, with comparison quotes.' },
+    { k: 'mod', name: 'Strategy and modelling', p: '49c', film: 'strategy-and-modelling', needs: 'the fact find', text: 'Retirement, cash flow and super scenarios, prepared for paraplanning.' },
+    { k: 'cmp', name: 'Platform comparisons', p: '27c', film: 'platform-comparison', needs: 'the portfolio', text: 'Platforms and products compared side by side.' },
+    { k: 'soa', name: 'SOA generator', p: '93c', film: 'soa-generator', needs: 'the fact find and modelling', tag: 'Pilot', text: 'The draft SOA in your template, with every recommendation linked to its reasons.' },
+    { k: 'aud', name: 'File Audit', p: '45c', film: 'file-audit', needs: 'the SOA generator', tag: 'Pilot', text: 'Every file checked against your licensee’s standards before it goes out.' }
   ];
   var MN = 'assets/meeting-notes/';
   var DETAIL = {
@@ -387,14 +387,14 @@
       /* 9 Nov: Daniel's configurator. Brand prices unchanged; documents as one Marketing bundle pack; website and marketing quoted. */
       menu: { title: 'What you can add', note: 'Pick any, or none. Draft prices, A$ ex GST.', groups: [
         { h: 'Brand', when: 'Once', items: [
-          /* 12 Nov (Lee): no free AI brand kit; the standard look makes the $1,800 kit a clear upgrade. */
-          ['Standard look', 'Your logo and main colour on Bunya’s standard layouts. Clean, and the same for every firm.', 'Included'],
+          /* 12 Nov (Daniel): keep the free AI brand kit, made from the firm's website; the $1,800 designer kit is the upgrade. */
+          ['AI brand kit', 'Made from your website in minutes. Your logo and colours across Bunya, and you can change them any time.', 'Included'],
           ['Brand kit, set up by our designer', 'Your fonts, colours and layouts across Bunya, so every document looks like your firm made it.', '$1,800'],
           ['Brand guidelines', 'Voice, tone and layout rules for everything your firm sends.', '$4,500'],
           ['Brand refresh', 'A refreshed brand, with your Client Portal themed to match.', '$7,500'] ] },
         { h: 'Documents', when: 'Once', items: [
           /* 12 Nov 2026 (Lee): Daniel's Marketing bundle pack split into its two parts, each bought on its own. */
-          ['Brand Document Pack', 'Your SOAs, review packs and client documents in your brand. Included with the whole Advice Engine. Needs your brand guidelines, or a brand kit, guidelines or refresh.', '$8,000'],
+          ['Brand Document Pack', 'Your SOAs, review packs and client documents, designed by our designer in your brand. The whole Advice Engine includes an AI-made pack. Needs your brand guidelines, or a brand kit, guidelines or refresh.', '$7,441'],
           ['Client Collateral', 'Your Financial Services Guide, fee guide and service brochure, designed as a set. Needs your brand guidelines, or a brand kit, guidelines or refresh.', '$4,500'] ] },
         /* 10 Nov 2026 (Lee: "happy with all that"): two prices replace the tiers and the quote. Website design $8,500 once (up to 12 pages,
            12 months of hosting included); Found & Cited $1,500 a month (hosting and upkeep folded in). Its own page: website-marketing.html. */
@@ -707,7 +707,7 @@
       return '<div class="hb-ftw"><a class="hb-ft" href="' + ((window.BUNYA_FEATURE_PAGES || {})[f.k] || 'advice-engine.html#' + f.k) + '"><span class="n">' + f.name + (f.tag ? ' <em>' + f.tag + '</em>' : '') + (f.rec ? ' <i class="pick">' + f.rec + '</i>' : '') + '</span>' +
         '<span class="t">' + f.text.split('. ')[0].replace(/\.$/, '') + '.</span><span class="p">+' + f.p + ' <small>a household a month</small></span></a>' + tk('feat', f.k, f.name) + '</div>';
     }).join('') +
-    '<div class="hb-ftall"><i class="pick">Best value</i><b>Or take the whole Advice Engine for $2 a household.</b><p>Every feature, plus Client Portal and the Brand Document Pack, included.</p>' +
+    '<div class="hb-ftall"><i class="pick">Best value</i><b>Or take the whole Advice Engine for $2.01 a household.</b><p>Every feature, plus Client Portal and an AI-made document pack, included.</p>' +
     '<span class="hb-btns"><button type="button" class="hb-btn sm hb-tkb" data-tk="ae:" data-name="the whole Advice Engine" data-off="Add it to your Bunya" data-on="In your Bunya" aria-pressed="false">' + PLUS + TICK + '<span class="tx">Add it to your Bunya</span></button><a class="hb-link" href="advice-engine.html">See every feature</a></span></div>';
   syncTicks();
   if ($('pilot')) $('pilot').innerHTML = PRODUCTS.filter(function(p){ return p.k === 'Pilot'; }).map(function(p){ /* none since 10 Nov */

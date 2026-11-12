@@ -24,9 +24,9 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
    Store: localStorage 'bunya.build' = v=2&feat=ff,pf&add=portal,bhq (or ae=1 for the whole Advice Engine). */
 (function(){
   'use strict';
-  var KEY = 'bunya.build', BASE = 3, AE = 2, ALL_APPS = 1150, ALL_APPS_AE = 548;
-  var FEAT = [['ff', 'Fact find', .4, []], ['pf', 'Portfolio', .3, []], ['ins', 'Insurance needs and quotes', .4, ['ff']], ['mod', 'Strategy and modelling', .5, ['ff']],
-              ['cmp', 'Platform comparisons', .3, ['pf']], ['soa', 'SOA generator', 1, ['ff', 'mod']], ['aud', 'File Audit', .3, ['soa']]];
+  var KEY = 'bunya.build', BASE = 3, AE = 2.01, ALL_APPS = 1484, ALL_APPS_AE = 548;
+  var FEAT = [['ff', 'Fact find', .39, []], ['pf', 'Portfolio', .27, []], ['ins', 'Insurance needs and quotes', .39, ['ff']], ['mod', 'Strategy and modelling', .49, ['ff']],
+              ['cmp', 'Platform comparisons', .27, ['pf']], ['soa', 'SOA generator', .93, ['ff', 'mod']], ['aud', 'File Audit', .45, ['soa']]];
   var APPS = [['portal', 'Client Portal', 790], ['bhq', 'Broadcast HQ', 390], ['field', 'Field Notes', 19], ['rev', 'Revenue Import', 119], ['voice', 'Bunya Voice', 370]];
   var MEM = '';
   function f(k){ return FEAT.filter(function(x){ return x[0] === k; })[0]; }
@@ -110,7 +110,7 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
     notes:   { name: 'Meeting Notes', head: 'Every meeting, written up.', c: '#C4B5FD', incl: true },
     reviews: { name: 'Review Packs', head: 'Every review, ready.', c: '#FCD34D', incl: true },
     fee:     { name: 'Fee consent', head: 'Renewals, on time.', c: '#6EE7B7', incl: true },
-    soa:     { name: 'Advice Engine', head: 'Every SOA, drafted.', img: 'factfind.webp', price: '$5 per household', c: '#93C5FD', g: 'rgba(96,165,250,.55)', param: 'soa', val: 'all' },
+    soa:     { name: 'Advice Engine', head: 'Every SOA, drafted.', img: 'factfind.webp', price: '$5.01 per household', c: '#93C5FD', g: 'rgba(96,165,250,.55)', param: 'soa', val: 'all' },
     portal:  { name: 'Client Portal', head: 'Your clients’ own space.', img: 'portal.webp', price: '$790 a month', c: '#F9A8D4', g: 'rgba(244,114,182,.5)', add: 'portal' },
     bhq:     { name: 'Broadcast HQ', head: 'One idea. Every channel.', img: 'bhq_cockpit.webp', price: '$390 a month', c: '#FDBA74', g: 'rgba(251,146,60,.55)', add: 'bhq' },
     field:   { name: 'Field Notes', head: 'Meetings anywhere, noted.', phone: true, price: '$19 a month', c: '#FCA5A5', g: 'rgba(248,113,113,.55)', add: 'field' },
@@ -189,7 +189,7 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
         '<div class="n3-col st" style="--d:0"><h4>2 · The features, pick what you need</h4><div class="n3-big n3-mid">' +
           FEATS.map(function(f){ return '<a href="' + (window.BUNYA_FEATURE_PAGES[f[0]] || 'advice-engine.html#' + f[0]) + '" style="--c:#93C5FD">' + f[1] + '</a>'; }).join('') + '</div></div>' +
         '<div class="n3-col st" style="--d:2"><h4>Or take it all</h4><div class="n3-small"><a href="advice-engine.html">The whole Advice Engine</a><a href="build.html?soa=all">Build yours with it</a><a href="pricing.html">Pricing</a></div></div>' +
-        '<div class="n3-feature st" style="--d:3;--c:#93C5FD;--g:rgba(96,165,250,.5)"><div><span class="k">Every feature, $2 a household</span><b>Every SOA, drafted.</b><a class="n3-cc-link" href="advice-engine.html">See the Advice Engine</a></div>' +
+        '<div class="n3-feature st" style="--d:3;--c:#93C5FD;--g:rgba(96,165,250,.5)"><div><span class="k">Every feature, $2.01 a household</span><b>Every SOA, drafted.</b><a class="n3-cc-link" href="advice-engine.html">See the Advice Engine</a></div>' +
           '<div class="sc"><img src="assets/soa/ready.webp" alt="" loading="lazy"></div><div class="acts"><a class="n3-pill" href="build.html?soa=all">Build yours</a></div></div></div>';
     } },
     { key: 'apps', label: 'Apps', html: function(){
@@ -268,9 +268,9 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
       (x ? '<button type="button" class="x" data-yb-x="' + x + '" aria-label="Remove ' + name + '">' + svg('x') + '</button>' : '<span class="x"></span>') + '</div>';
   }
   function popHTML(s){
-    var feats = s.ae ? row('The whole Advice Engine', 'Every feature, with Client Portal and the Brand Document Pack', plusTxt(L.AE), 'ae:')
+    var feats = s.ae ? row('The whole Advice Engine', 'Every feature, with Client Portal and an AI-made document pack', plusTxt(L.AE), 'ae:')
       : L.FEAT.filter(function(x){ return s.feat[x[0]]; }).map(function(x){ return row(x[1], '', plusTxt(x[2]), 'feat:' + x[0]); }).join('');
-    var nudge = !s.ae && L.featSum(s) >= L.AE ? '<div class="nudge"><p><b>The whole Advice Engine is $2 a household.</b> Every feature, plus Client Portal, for less than your picks.</p>' +
+    var nudge = !s.ae && L.featSum(s) >= L.AE ? '<div class="nudge"><p><b>The whole Advice Engine is $2.01 a household.</b> Every feature, plus Client Portal, for less than your picks.</p>' +
       '<button type="button" data-yb-ae>Switch to it</button></div>' : '';
     var picked = L.APPS.filter(function(x){ return s.add[x[0]]; }), all = picked.length && L.every(s);
     var apps = picked.length ? '<div class="grp"><p class="lbl">Apps <span>a month, for your firm</span></p>' +

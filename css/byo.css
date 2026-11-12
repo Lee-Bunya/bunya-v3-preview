@@ -275,3 +275,28 @@ html.byo-lock{overflow:hidden}
 .byo-own.on i::after{content:"";width:9px;height:5px;border:2px solid #000;border-top:0;border-right:0;transform:translateY(-1px) rotate(-45deg)}
 .byo-own:focus-visible{outline:2px solid #67E8F9;outline-offset:4px;border-radius:6px}
 .byo-needs .byo-dim{margin-top:8px}
+
+/* Tools from other providers (12 Nov 2026, Daniel): which tool each feature uses, and what the provider bills */
+.byo-pt{margin:12px 0 0 44px;padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px var(--sx-line)}
+.byo-pt-h{margin:0;font-size:14.5px;line-height:1.5;color:var(--sx-grey)}
+.byo-pt-h b{display:block;margin-bottom:2px;font-size:15px;color:#fff}
+.byo-pt-r{margin-top:14px;padding-top:14px;border-top:1px solid var(--sx-line)}
+.byo-pt-n{margin:0 0 10px;font-size:15px;font-weight:600;color:#fff}
+.byo-pt-n span{display:block;margin-top:2px;font-weight:400;font-size:13.5px;line-height:1.45;color:var(--sx-grey)}
+.byo-pt-r > .byo-pt-n:only-child{margin-bottom:0}
+.byo-pt-o{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.byo-pt-b{display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:10px 12px;border:0;border-radius:12px;background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px var(--sx-line);color:#fff;font:inherit;text-align:left;cursor:pointer}
+.byo-pt-b b{font-size:14.5px;font-weight:600}
+.byo-pt-b small{font-size:12.5px;line-height:1.4;color:var(--sx-grey)}
+.byo-pt-b.on{background:rgba(94,234,212,.12);box-shadow:inset 0 0 0 1.5px #5EEAD4}
+.byo-pt-b:disabled{opacity:.45;cursor:default}
+.byo-pt-b:focus-visible,.byo-pt-step button:focus-visible{outline:2px solid #67E8F9;outline-offset:2px}
+.byo-pt-u{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:12px;font-size:14px;color:#D2D2D7}
+.byo-pt-u em{font-style:normal;color:var(--sx-grey);font-variant-numeric:tabular-nums}
+.byo-pt-step{display:inline-flex;align-items:center;border-radius:10px;box-shadow:inset 0 0 0 1px var(--sx-line)}
+.byo-pt-step button{width:36px;height:34px;border:0;border-radius:10px;background:none;color:#fff;font:inherit;font-size:18px;cursor:pointer}
+.byo-pt-step button:disabled{opacity:.35;cursor:default}
+.byo-pt-step output{min-width:24px;text-align:center;font-variant-numeric:tabular-nums;color:#fff}
+.byo-pt-t{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--sx-line);font-size:14.5px;color:#D2D2D7}
+.byo-pt-t b{color:#fff}
+@media (max-width:700px){ .byo-pt{margin-left:0} }
