@@ -99,3 +99,23 @@ a.pr-start{text-decoration:none}
 /* 12 Nov 2026 (Lee): a little more room in cards, site-wide: more padding, more space between title and text, looser lines */
 .pr-every div{padding:26px 24px}
 .pr-every p{margin-top:12px;line-height:1.6}
+
+/* Pricing dropdowns (13 Nov 2026, Lee): every row opens to say what it is and what's included */
+.pr-list details.pr-dd{display:block;padding:0}
+.pr-dd > summary{display:flex;align-items:center;gap:14px;padding:12px 14px 12px 18px;border-radius:14px;list-style:none;cursor:pointer}
+.pr-dd > summary::-webkit-details-marker{display:none}
+.pr-dd > summary:hover{background:rgba(255,255,255,.03)}
+.pr-dd > summary:focus-visible{outline:2px solid #67E8F9;outline-offset:2px}
+.pr-dd[open]{background:rgba(255,255,255,.07)}
+.pr-chev{flex:none;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.08);display:grid;place-items:center;transition:transform .25s}
+.pr-chev::before{content:"";width:7px;height:7px;border-right:2px solid #D2D2D7;border-bottom:2px solid #D2D2D7;transform:translateY(-2px) rotate(45deg)}
+.pr-dd[open] .pr-chev{transform:rotate(180deg)}
+.pr-dd-b{padding:0 18px 16px}
+.pr-dd-b p{margin:0;font-size:15px;line-height:1.5;color:#D2D2D7}
+.pr-dd-b ul{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:7px}
+.pr-dd-b li{position:relative;padding-left:24px;font-size:14.5px;line-height:1.45;color:#D2D2D7}
+.pr-dd-b li::before{content:"";position:absolute;left:1px;top:5px;width:12px;height:7px;border-left:2px solid #5EEAD4;border-bottom:2px solid #5EEAD4;transform:rotate(-45deg)}
+.pr-dd-a{display:inline-block;margin-top:12px;font-size:14.5px;color:#67E8F9;text-decoration:none}
+.pr-dd-a::after{content:" \2192"}
+.pr-dd-a:hover{text-decoration:underline;text-underline-offset:3px}
+@media (prefers-reduced-motion: reduce){.pr-chev{transition:none}}
