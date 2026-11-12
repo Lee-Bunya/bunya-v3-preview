@@ -148,6 +148,12 @@
     [].forEach.call(document.querySelectorAll('[data-bill]'), function(b){ var sel = (b.dataset.bill === 'year') === !!X.year; b.setAttribute('aria-checked', String(sel)); b.classList.toggle('on', sel); });
     if ((X.build || X.own) && !$('byo-more').open) $('byo-more').open = true;
     $('byo-docs-p').textContent = s.ae ? money(DOCS_AE) : money(DOCS);
+    // 12 Nov 2026 (Lee): the pack and the website are designed from the firm's brand. No brand tier? Ask.
+    var nb = $('byo-needs'), needBrand = (X.docs || X.web) && !X.brand;
+    nb.hidden = !needBrand;
+    if (needBrand) nb.innerHTML = '<p><b>' + (X.docs && X.web ? 'These need' : 'This needs') + ' your brand.</b> ' + (X.docs && X.web ? 'They’re' : 'It’s') + ' designed from your brand guidelines: logo files, fonts and colours. If you don’t have them, pick a brand kit, guidelines or refresh above.</p>' +
+      '<button type="button" class="byo-own' + (X.ownbrand ? ' on' : '') + '" data-ownbrand aria-pressed="' + !!X.ownbrand + '"><i></i>We already have brand guidelines</button>' +
+      (X.ownbrand ? '<p class="byo-dim">Thanks. We’ll check your brand files before we start.</p>' : '');
     // Command Centre usage
     $('byo-usage').innerHTML = s.ae ? 'With the whole Advice Engine, every SOA and client review is included.'
       : 'Client reviews are <b>97c</b> each. ' + (s.feat.soa ? 'Your SOAs are drafted by the SOA generator.' : 'Each SOA we draft for you is <b>$153</b>, or add the SOA generator.');
@@ -170,6 +176,7 @@
     if (X.brand) L2.push(line(BRAND[X.brand][0], money(BRAND[X.brand][1])));
     if (X.docs) L2.push(line('Marketing bundle pack', money(s.ae ? DOCS_AE : DOCS)));
     if (X.web) L2.push(line('Website design', money(WEB)));
+    if ((X.docs || X.web) && !X.brand && !X.ownbrand) L2.push(line('<small>Needs a brand kit, guidelines or refresh</small>', ''));
     L2.push(line('Once', money(c.once), 'tot'));
     var use = s.ae ? '' : '<p class="byo-dim">As you use them: client reviews 97c each' + (s.feat.soa ? '.' : ', and SOAs we draft for you $153 each.') + '</p>';
     $('byo-lines').innerHTML = '<dl class="byo-dl">' + L1.join('') + '</dl><dl class="byo-dl">' + L2.join('') + '</dl>' + use;
@@ -203,6 +210,7 @@
     if (X.docs) yours.push('Marketing bundle pack ' + money(s.ae ? DOCS_AE : DOCS) + ' once');
     if (X.web) yours.push('Website design ' + money(WEB) + ' once');
     if (X.fc) yours.push('Found & Cited ' + money(FC) + ' a month');
+    if ((X.docs || X.web) && !X.brand) yours.push(X.ownbrand ? 'Has its own brand guidelines (to check)' : 'Needs a brand kit, guidelines or refresh first');
     var more = [];
     if (X.prem) more.push('Care Premium ' + money(PREM) + ' a month');
     if (X.build) more.push('More Bunya Build ' + money(BUILD) + ' a month');
@@ -300,6 +308,7 @@
     if (e.target.closest('[data-quote]')) { e.preventDefault(); openModal('byo-mq'); return; }
     // Book a demo on this page (our buttons, the menu's, and any link to booking.html) opens the pop-up, prefilled
     if (e.target.closest('[data-demo], a[href="booking.html"], a.n3-demo')) { e.preventDefault(); openModal('byo-md'); return; }
+    if (e.target.closest('[data-ownbrand]')) { X.ownbrand = !X.ownbrand; saveX(); paint(); return; }
     var bl = e.target.closest('[data-bill]');
     if (bl) { X.year = bl.dataset.bill === 'year'; saveX(); paint(); return; }
     var b = e.target.closest('[data-hh]');

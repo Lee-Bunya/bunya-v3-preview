@@ -394,12 +394,12 @@
           ['Brand refresh', 'A refreshed brand, with your Client Portal themed to match.', '$7,500'] ] },
         { h: 'Documents', when: 'Once', items: [
           /* 10 Nov 2026 (Lee: "go back to Daniel's price"): Daniel's bundle stays, not the locked $8,000 pack. */
-          ['Marketing bundle pack', 'Your Brand Document Pack and client collateral, designed as one set.', '$12,500'],
+          ['Marketing bundle pack', 'Your Brand Document Pack and client collateral, designed as one set. Needs your brand guidelines, or a brand kit, guidelines or refresh.', '$12,500'],
           ['With the Advice Engine', 'The Brand Document Pack is already included, so you pay for the collateral only.', '$4,500'] ] },
         /* 10 Nov 2026 (Lee: "happy with all that"): two prices replace the tiers and the quote. Website design $8,500 once (up to 12 pages,
            12 months of hosting included); Found & Cited $1,500 a month (hosting and upkeep folded in). Its own page: website-marketing.html. */
         { h: 'Website and marketing', when: 'Once, then monthly', items: [
-          ['Website design', 'Up to 12 pages in your brand, with adviser profiles and online booking, built so Google and AI answers can read every page. 12 months of hosting included.', '$8,500'],
+          ['Website design', 'Up to 12 pages in your brand, with adviser profiles and online booking, built so Google and AI answers can read every page. 12 months of hosting included. Needs your brand guidelines, or a brand kit, guidelines or refresh.', '$8,500'],
           ['Found & Cited', 'Hosting and updates, two new answer pages a month, your Google Business Profile, and a monthly report on where you appear in Google and AI answers.', '$1,500 a month'] ] }
       ],
         after: 'Choose them when you build yours, or talk them through with us first. <a href="website-marketing.html">See Website and marketing</a>' },
@@ -410,6 +410,7 @@
       ] },
       faq: [
         ['Do we need these to use Command Centre?', 'No. They’re optional. Command Centre and its apps work without them.'],
+        ['Do we need branding first?', 'For the Marketing bundle pack and a website, yes. Both are designed from your brand guidelines: logo files, fonts and colours. If you don’t have them, add a brand kit, guidelines or refresh. Everything else works with the standard look.'],
         ['How do they fit with Client Portal?', 'A brand kit or refresh carries your full brand theme and colours into Client Portal, so clients see one look everywhere.']
       ]
     },
