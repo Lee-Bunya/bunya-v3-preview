@@ -204,7 +204,7 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
     } },
     { key: 'price', label: 'Pricing', html: function(){
       return '<div class="n3-grid">' +
-        '<div class="n3-col st" style="--d:0"><h4>Pricing</h4><div class="n3-big"><a href="build.html" style="--c:#5EEAD4">Build yours</a><a href="pricing.html">Pricing</a><button type="button" data-n3-open="svc" style="--c:#A5B4FC">Make it yours <small>brand and documents</small></button><a href="website-marketing.html" style="--c:#F9A8D4">Website and marketing <small>$14,882, then from $1,950 a month</small></a></div></div>' +
+        '<div class="n3-col st" style="--d:0"><h4>Pricing</h4><div class="n3-big"><a href="build.html" style="--c:#5EEAD4">Build yours</a><a href="pricing.html">Pricing</a><button type="button" data-n3-open="svc" style="--c:#A5B4FC">Make it yours <small>brand and documents</small></button><a href="website-marketing.html" style="--c:#F9A8D4">Website and marketing <small>$14,882, then from $2,243 a month</small></a></div></div>' +
         '<div class="n3-col st" style="--d:2"><h4>Before you start</h4><div class="n3-small"><a href="is-bunya-right.html">Is Bunya right for you?</a><a href="how-it-works.html">How it works</a><a href="getting-started.html">Getting started</a><a href="faq.html">Questions</a><a href="booking.html">Book a demo</a></div></div>' +
         '<div class="n3-feature st" style="--d:3;--c:#5EEAD4;--g:rgba(45,212,191,.5)"><div><span class="k">From $3 per household a month</span><b>Pay only for what your firm uses.</b><a class="n3-cc-link" href="build.html">See your price</a></div>' +
           '<div class="sc"><img src="assets/concept/home.webp" alt="" loading="lazy"></div><div class="acts"><a class="n3-pill" href="build.html">Build yours</a><a class="n3-pill ghost" href="booking.html">Book a demo</a></div></div></div>';
@@ -268,7 +268,7 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
       (x ? '<button type="button" class="x" data-yb-x="' + x + '" aria-label="Remove ' + name + '">' + svg('x') + '</button>' : '<span class="x"></span>') + '</div>';
   }
   function popHTML(s){
-    var feats = s.ae ? row('The whole Advice Engine', 'Every feature, with Client Portal and an AI-made document pack', plusTxt(L.AE), 'ae:')
+    var feats = s.ae ? row('The whole Advice Engine', 'Every feature, with Client Portal', plusTxt(L.AE), 'ae:')
       : L.FEAT.filter(function(x){ return s.feat[x[0]]; }).map(function(x){ return row(x[1], '', plusTxt(x[2]), 'feat:' + x[0]); }).join('');
     var nudge = !s.ae && L.featSum(s) >= L.AE ? '<div class="nudge"><p><b>The whole Advice Engine is $2.01 a household.</b> Every feature, plus Client Portal, for less than your picks.</p>' +
       '<button type="button" data-yb-ae>Switch to it</button></div>' : '';

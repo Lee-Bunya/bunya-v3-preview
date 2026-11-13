@@ -51,7 +51,7 @@
     { key: 'soa', k: 'Upgrade', name: 'Advice Engine', head: 'Every SOA, drafted.', one: 'Fact find, insurance needs, modelling and every SOA drafted in your template, on top of everything in Command Centre.',
       img: 'assets/soa/ready.webp', g1: 'rgba(96,165,250,.6)', g2: 'rgba(59,130,246,.25)', kc: '#93C5FD',
       points: ['The fact find filled from the meeting, the documents and the client portal.', 'Insurance needs, strategy and modelling, ready for advice.', 'Every SOA drafted in your template. Your adviser approves it.'],
-      incl: ['Fact find', 'Insurance needs and quotes', 'Strategy and modelling', 'SOA generator', 'File Audit', 'Client Portal', 'AI-made document pack'],
+      incl: ['Fact find', 'Insurance needs and quotes', 'Strategy and modelling', 'SOA generator', 'File Audit', 'Client Portal'],
       price: '$5.01', per: 'per household a month, with everything in Command Centre', build: 'build.html?soa=all' },
     { key: 'portal', k: 'App', name: 'Client Portal', head: 'Your clients’ own space.', one: 'Documents, meetings, messages and signing, in one place for them.',
       img: 'assets/portal/home.webp', g1: 'rgba(244,114,182,.55)', g2: 'rgba(236,72,153,.25)', kc: '#F9A8D4',
@@ -393,16 +393,18 @@
           ['Brand guidelines', 'Voice, tone and layout rules for everything your firm sends.', '$4,500'],
           ['Brand refresh', 'A refreshed brand, with your Client Portal themed to match.', '$7,500'] ] },
         { h: 'Documents', when: 'Once', items: [
+          /* 13 Nov 2026 (Daniel): the AI-made pack is free for every firm, like the AI brand kit */
+          ['AI-made document pack', 'Your client documents set up in your brand by AI, from your AI brand kit. Included with every Bunya.', 'Included'],
           /* 12 Nov 2026 (Lee): Daniel's Marketing bundle pack split into its two parts, each bought on its own. */
-          ['Brand Document Pack', 'Your SOAs, review packs and client documents, designed by our designer in your brand. The whole Advice Engine includes an AI-made pack. Needs your brand guidelines, or a brand kit, guidelines or refresh.', '$7,441'],
+          ['Brand Document Pack', 'Your SOAs, review packs and client documents, designed by our designer in your brand. Every Bunya includes an AI-made pack. Needs your brand guidelines, or a brand kit, guidelines or refresh.', '$7,441'],
           ['Client Collateral', 'Your Financial Services Guide, fee guide and service brochure, designed as a set. Needs your brand guidelines, or a brand kit, guidelines or refresh.', '$4,500'] ] },
         /* 10 Nov 2026 (Lee: "happy with all that"): two prices replace the tiers and the quote. Website design $8,500 once (up to 12 pages,
            12 months of hosting included); Found & Cited $1,500 a month (hosting and upkeep folded in). Its own page: website-marketing.html. */
         { h: 'Website and marketing', when: 'Once, then monthly', items: [
           ['Website design', 'Up to 12 pages in your brand, with adviser profiles and online booking, built so Google and AI answers can read every page. 12 months of hosting included. Needs your brand guidelines, or a brand kit, guidelines or refresh.', '$14,882'],
-          ['Found & Cited', 'Hosting and updates, two new answer pages a month, your Google Business Profile, enquiries landing in Command Centre as leads, and a monthly report on where you appear in Google and AI answers.', '$1,950 a month'],
-          ['Found & Cited Plus', 'Everything in Found & Cited, with four new answer pages a month, a new local or service page each month, monthly technical upkeep for Google and AI search (structured data, speed, links and indexing), adviser profiles built for trust, and a quarterly test of the questions your clients ask AI tools.', '$3,950 a month'],
-          ['Google Ads, managed', 'Your Google Ads set up and managed, with either plan. Ad spend is billed at cost.', '$790 a month'] ] }
+          ['Found & Cited', 'Hosting and updates, two new answer pages a month, your Google Business Profile, enquiries landing in Command Centre as leads, and a monthly report on where you appear in Google and AI answers.', '$2,243 a month'],
+          ['Found & Cited Plus', 'Everything in Found & Cited, with four new answer pages a month, a new local or service page each month, monthly technical upkeep for Google and AI search (structured data, speed, links and indexing), adviser profiles built for trust, and a quarterly test of the questions your clients ask AI tools.', '$3,734 a month'],
+          ['Google Ads, managed', 'Your Google Ads set up and managed, with either plan. Ad spend is billed at cost.', '$744 a month'] ] }
       ],
         after: 'Choose them when you build yours, or talk them through with us first. <a href="website-marketing.html">See Website and marketing</a>' },
       vs: { name: 'With Bunya', rows: [
@@ -709,7 +711,7 @@
       return '<div class="hb-ftw"><a class="hb-ft" href="' + ((window.BUNYA_FEATURE_PAGES || {})[f.k] || 'advice-engine.html#' + f.k) + '"><span class="n">' + f.name + (f.tag ? ' <em>' + f.tag + '</em>' : '') + (f.rec ? ' <i class="pick">' + f.rec + '</i>' : '') + '</span>' +
         '<span class="t">' + f.text.split('. ')[0].replace(/\.$/, '') + '.</span><span class="p">+' + f.p + ' <small>a household a month</small></span></a>' + tk('feat', f.k, f.name) + '</div>';
     }).join('') +
-    '<div class="hb-ftall"><i class="pick">Best value</i><b>Or take the whole Advice Engine for $2.01 a household.</b><p>Every feature, plus Client Portal and an AI-made document pack, included.</p>' +
+    '<div class="hb-ftall"><i class="pick">Best value</i><b>Or take the whole Advice Engine for $2.01 a household.</b><p>Every feature, plus Client Portal, included.</p>' +
     '<span class="hb-btns"><button type="button" class="hb-btn sm hb-tkb" data-tk="ae:" data-name="the whole Advice Engine" data-off="Add it to your Bunya" data-on="In your Bunya" aria-pressed="false">' + PLUS + TICK + '<span class="tx">Add it to your Bunya</span></button><a class="hb-link" href="advice-engine.html">See every feature</a></span></div>';
   syncTicks();
   if ($('pilot')) $('pilot').innerHTML = PRODUCTS.filter(function(p){ return p.k === 'Pilot'; }).map(function(p){ /* none since 10 Nov */

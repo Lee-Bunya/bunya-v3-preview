@@ -297,6 +297,9 @@ html.byo-lock{overflow:hidden}
 .byo-pt-step button{width:36px;height:34px;border:0;border-radius:10px;background:none;color:#fff;font:inherit;font-size:18px;cursor:pointer}
 .byo-pt-step button:disabled{opacity:.35;cursor:default}
 .byo-pt-step output{min-width:24px;text-align:center;font-variant-numeric:tabular-nums;color:#fff}
+.byo-pt-in{width:46px;height:34px;padding:0;border:0;background:none;color:#fff;font:inherit;font-size:16px;text-align:center;font-variant-numeric:tabular-nums;-moz-appearance:textfield;appearance:textfield}
+.byo-pt-in::-webkit-inner-spin-button,.byo-pt-in::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.byo-pt-in:focus-visible{outline:2px solid #67E8F9;outline-offset:-2px;border-radius:8px}
 .byo-pt-t{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--sx-line);font-size:14.5px;color:#D2D2D7}
 .byo-pt-t b{color:#fff}
 @media (max-width:700px){ .byo-pt{margin-left:0} }

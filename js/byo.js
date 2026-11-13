@@ -11,7 +11,7 @@
   var rate = function(v){ v = Math.round(v * 100) / 100; return '$' + (v % 1 ? v.toFixed(2) : v); };
   var cents = function(v){ var c = Math.round(v * 100); return c < 100 ? c + 'c' : rate(c / 100); };
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var MIN = 500, BAND = 1000, OFF = .16, YEAR = .1, SETUP = 7249, PREM = 1997, BUILD = 12000, FC = 1950, FCP = 3950, ADS = 790, WEB = 14882, DOCS = 7441, COLL = 4500, SOA = 153, REVIEW = .97;
+  var MIN = 500, BAND = 1000, OFF = .16, YEAR = .1, SETUP = 7249, PREM = 1997, BUILD = 12000, FC = 2243, FCP = 3734, ADS = 744, WEB = 14882, DOCS = 7441, COLL = 4500, SOA = 153, REVIEW = .97;
   var BRAND = { kit: ['Brand kit, set up by our designer', 1800], guide: ['Brand guidelines', 4500], refresh: ['Brand refresh', 7500] };
   var APPN = {}; L.APPS.forEach(function(a){ APPN[a[0]] = a; });
   // 12 Nov 2026 (Daniel, "partner tools"): some features use a partner's tool, which the provider bills the practice for directly.
@@ -182,9 +182,9 @@
     // Advice Engine nudge
     var fs = L.featSum(s), alc = L.FEAT.reduce(function(t, f){ return t + f[2]; }, 0);
     $('byo-nudge').innerHTML = s.ae
-      ? '<p><b>You have the whole Advice Engine.</b> $2.01 a household instead of ' + rate(alc) + ', with every SOA and client review, Client Portal and an AI-made document pack included.</p><button type="button" class="byo-link" data-tk="ae:">Pick features one by one instead</button>'
-      : fs >= 2 ? '<p><b>The whole Advice Engine costs less.</b> Your features add ' + rate(fs) + ' a household; all seven are $2.01, with every SOA and client review, Client Portal and an AI-made document pack included.' + (sized ? ' That saves about ' + money(banded(fs - L.AE) * (X.year ? 1 - YEAR : 1)) + ' a month.' : '') + '</p><button type="button" class="sx-btn" data-tk="ae:">Take it all</button>'
-      : '<p><b>Or take the whole Advice Engine for $2.01 a household.</b> All seven features, plus every SOA and client review, Client Portal and an AI-made document pack.</p><button type="button" class="sx-btn ghost" data-tk="ae:">Take it all</button>';
+      ? '<p><b>You have the whole Advice Engine.</b> $2.01 a household instead of ' + rate(alc) + ', with every SOA and client review and Client Portal included.</p><button type="button" class="byo-link" data-tk="ae:">Pick features one by one instead</button>'
+      : fs >= 2 ? '<p><b>The whole Advice Engine costs less.</b> Your features add ' + rate(fs) + ' a household; all seven are $2.01, with every SOA and client review and Client Portal included.' + (sized ? ' That saves about ' + money(banded(fs - L.AE) * (X.year ? 1 - YEAR : 1)) + ' a month.' : '') + '</p><button type="button" class="sx-btn" data-tk="ae:">Take it all</button>'
+      : '<p><b>Or take the whole Advice Engine for $2.01 a household.</b> All seven features, plus every SOA and client review and Client Portal.</p><button type="button" class="sx-btn ghost" data-tk="ae:">Take it all</button>';
     // Your Bunya
     var L1 = [], L2 = [], line = function(a, b, cls){ return '<div class="' + (cls || '') + '"><dt>' + a + '</dt><dd>' + b + '</dd></div>'; };
     L1.push(line('Bunya fee <small>' + (sized ? n.toLocaleString('en-AU') + ' households × ' + rate(c.r) + (c.atMin ? ', the $500 minimum' : '') : 'choose your households') + '</small>', sized ? money(c.fee) : rate(c.r) + ' a household'));
@@ -206,7 +206,7 @@
     L2.push(line('Standard setup', money(SETUP)));
     if (X.brand) L2.push(line(BRAND[X.brand][0], money(BRAND[X.brand][1])));
     if (X.docs) L2.push(line('Brand Document Pack, by our designer', money(DOCS)));
-    else if (s.ae) L2.push(line('AI-made document pack', 'Included'));
+    else L2.push(line('AI-made document pack', 'Included'));
     if (X.coll) L2.push(line('Client Collateral', money(COLL)));
     if (X.web) L2.push(line('Website design', money(WEB)));
     if ((X.docs || X.coll || X.web) && !X.brand && !X.ownbrand) L2.push(line('<small>Needs a brand kit, guidelines or refresh</small>', ''));
@@ -252,7 +252,7 @@
         }).join('') + '</div>';
       if (k === 'mod' && pick === 'rm') {
         var u = ptUsers();
-        h += '<div class="byo-pt-u"><span>How many RetireMap users?</span><span class="byo-pt-step"><button type="button" data-ptu="-1" aria-label="One fewer user"' + (u <= 1 ? ' disabled' : '') + '>−</button><output aria-live="polite">' + u + '</output><button type="button" data-ptu="1" aria-label="One more user">+</button></span><em>' + u + ' × ' + money(rmRate(u)) + ' = about ' + money(u * rmRate(u)) + ' a month</em></div>';
+        h += '<div class="byo-pt-u"><span>How many RetireMap users?</span><span class="byo-pt-step"><button type="button" data-ptu="-1" aria-label="One fewer user"' + (u <= 1 ? ' disabled' : '') + '>−</button><input type="number" class="byo-pt-in" min="1" max="50" inputmode="numeric" value="' + u + '" aria-label="RetireMap users"><button type="button" data-ptu="1" aria-label="One more user">+</button></span><em>' + u + ' × ' + money(rmRate(u)) + ' = about ' + money(u * rmRate(u)) + ' a month</em></div>';
       }
       h += '</div>';
     });
@@ -267,7 +267,7 @@
     var apps = L.APPS.filter(function(a){ return s.add[a[0]]; }).map(function(a){ return a[1] + (L.inAE(s, a[0]) ? ' (included)' : ' ' + money(a[2]) + ' a month'); });
     var yours = [];
     if (X.brand) yours.push(BRAND[X.brand][0] + ' ' + money(BRAND[X.brand][1]) + ' once'); else yours.push('AI brand kit, from your website (included)');
-    if (X.docs) yours.push('Brand Document Pack, by our designer ' + money(DOCS) + ' once'); else if (s.ae) yours.push('AI-made document pack (included with the Advice Engine)');
+    if (X.docs) yours.push('Brand Document Pack, by our designer ' + money(DOCS) + ' once'); else yours.push('AI-made document pack (included)');
     if (X.coll) yours.push('Client Collateral ' + money(COLL) + ' once');
     if (X.web) yours.push('Website design ' + money(WEB) + ' once');
     if (X.fc) yours.push('Found & Cited ' + money(FC) + ' a month');
@@ -394,6 +394,11 @@
     if (t[0] === 'brand' || X[k]) film(b.closest('.pr-row').dataset.film || 'yours');
     if (t[0] === 'brand' && k !== 'none') push('brand');
     saveX(); paint();
+  });
+  document.addEventListener('change', function(e){
+    if (!e.target.classList.contains('byo-pt-in')) return;
+    var u = Math.round(+e.target.value); X.pt = X.pt || {}; X.pt.users = Math.max(1, Math.min(50, u || 1)); saveX(); paint();
+    var el = document.querySelector('.byo-pt-in'); if (el && document.activeElement === document.body) el.focus();
   });
   $('byo-hh').addEventListener('input', function(){ n = +this.value; sized = true; saveN(); paint(); });
   document.addEventListener('bunya:build', paint);
