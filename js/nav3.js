@@ -179,7 +179,7 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
         '<div class="n3-col st" style="--d:0"><h4>1 · The base, in every firm</h4><div class="n3-big">' +
           '<button type="button" data-n3-open="cc" style="--c:' + P.cc.c + '">Command Centre</button>' +
           ['notes', 'reviews'].map(function(k){ return '<button type="button" data-n3-open="' + k + '" style="--c:' + P[k].c + '">' + P[k].name + '</button>'; }).join('') +
-          '<button type="button" data-n3-open="care" style="--c:#5EEAD4">Care <small>support, updates, your portal</small></button><button type="button" data-n3-open="shape" style="--c:#F0ABFC">Bunya Shape <small>build it yourself</small></button></div></div>' +
+          '<button type="button" data-n3-open="care" style="--c:#5EEAD4">Support <small>email support and updates</small></button><button type="button" data-n3-open="shape" style="--c:#F0ABFC">Bunya Shape <small>build it yourself</small></button></div></div>' +
         '<div class="n3-col st" style="--d:2"><h4>Find out more</h4><div class="n3-small"><a href="how-it-works.html">How it works</a><a href="security-your-data.html">Security and your data</a><a href="getting-started.html">Getting started</a><a href="faq.html">Questions</a></div></div>' +
         '<div class="n3-feature st" style="--d:3;--c:#5EEAD4;--g:rgba(45,212,191,.5)"><div><span class="k">From $3 per household</span><b>Every client. One place.</b><a class="n3-cc-link" href="command-centre.html">See Command Centre</a></div>' +
           '<div class="sc"><img src="assets/cc/today.webp" alt="" loading="lazy"></div><div class="acts" data-n3-cc></div></div></div>';
@@ -278,7 +278,7 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
       (all ? '<div class="r tot"><span><b>Every app, together</b></span><em>' + moneyTxt(L.apps(s)) + '</em><span class="x"></span></div>'
            : picked.length > 1 ? '<div class="r tot"><span><b>Apps</b></span><em>' + moneyTxt(L.apps(s)) + '</em><span class="x"></span></div>' : '') + '</div>' : '';
     return '<div class="hd"><b>Your Bunya</b><button type="button" class="clr" data-yb-clear>Clear</button></div>' +
-      '<div class="grp">' + row('Command Centre', 'The base: Meeting Notes, Review Packs with fee consent (97c a client review), Care and Bunya Shape', '$3', '') + feats + '</div>' +
+      '<div class="grp">' + row('Command Centre', 'The base: Meeting Notes, Review Packs with fee consent (97c a client review), Premium support and Bunya Shape', '$3', '') + feats + '</div>' +
       '<div class="sum"><span>Per household, a month</span><strong>' + rateTxt(L.rate(s)) + '</strong></div>' + nudge + apps +
       '<a class="go" href="build.html">Build yours' + svg('arrow') + '</a>' +
       '<p class="fine">Set your number of households in Build your Bunya to see your monthly total. Draft prices, A$ ex GST, with a $500 monthly minimum.</p>';
@@ -326,7 +326,7 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
     ['Getting started', 'Setup, moving in and training', 'getting-started.html', 'page', '#6EE7B7', 'setup onboarding migration training start'],
     ['Pricing', 'From $3 per household a month, and what each piece costs', 'pricing.html', 'page', '#5EEAD4', 'pricing price cost compare models household'],
     ['How it works', 'One household, from first meeting to annual review', 'how-it-works.html', 'page', '#93C5FD', 'how it works journey story process'],
-    ['Website and marketing', 'A website in your brand, then Found & Cited every month', 'website-marketing.html', 'page', '#F9A8D4', 'website seo aeo search google ai answers marketing found cited'],
+    ['Website and marketing', 'A website in your brand, then SEO & AI Search every month', 'website-marketing.html', 'page', '#F9A8D4', 'website seo aeo search google ai answers marketing found cited'],
     ['Insights', 'Guides for advice firms: meeting notes, SOAs, reviews, evidence', 'blog.html', 'page', '#67E8F9', 'insights blog articles guides checklist meeting notes soa review migration'],
     ['Is Bunya right for you?', 'An honest fit check, before you book anything', 'is-bunya-right.html', 'page', '#6EE7B7', 'fit right suitable small firm licensee microsoft 365 requirements'],
     ['Advice glossary', 'SOA, ROA, OFA, best interests duty and more, in plain English', 'glossary.html', 'page', '#A5B4FC', 'glossary terms definitions soa roa ofa fds dbfo best interests duty ddo tmd afsl'],
@@ -375,7 +375,7 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
         (links ? '<div class="links">' + links + '</div>' : '') + '</div></div></div>';
     };
     return '<button type="button" class="n3-ph-search" data-n3-search>' + svg('search') + 'Search products, pages and questions</button>' +
-      group('Command Centre', ['cc', 'notes', 'reviews'], '<a href="how-it-works.html">How it works</a><a href="care.html">Care</a><a href="bunya-shape.html">Bunya Shape</a>', 0) +
+      group('Command Centre', ['cc', 'notes', 'reviews'], '<a href="how-it-works.html">How it works</a><a href="care.html">Support</a><a href="bunya-shape.html">Bunya Shape</a>', 0) +
       '<div class="n3-acc" style="--d:1"><button type="button" aria-expanded="false">Advice Engine' + svg('plus') + '</button><div class="in"><div><div class="links">' +
         '<a href="advice-engine.html">The whole Advice Engine</a>' + FEATS.map(function(f){ return '<a href="' + (window.BUNYA_FEATURE_PAGES[f[0]] || 'advice-engine.html#' + f[0]) + '">' + f[1] + '</a>'; }).join('') + '</div></div></div></div>' +
       group('Apps', ['portal', 'bhq', 'field', 'rev', 'voice', 'vault'], null, 2) +

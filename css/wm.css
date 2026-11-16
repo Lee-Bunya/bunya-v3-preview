@@ -37,3 +37,10 @@
 /* Google Ads add-on line under the plans (12 Nov 2026) */
 .wm-ads{margin:16px 0 0;padding:16px 20px;border-radius:18px;background:var(--sx-card-2,#161618);font-size:15px;line-height:1.5;color:var(--sx-grey)}
 .wm-ads b{color:#fff;margin-right:6px}
+
+/* 16 Nov 2026: cards on Client Collateral and Why Bunya */
+.wm-card .wm-what{margin:12px 0 0;font-size:15.5px;line-height:1.5;color:#D2D2D7}
+.wm-prices.wm-two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.wm-why .wm-card h3{font-size:clamp(20px,2vw,24px)}
+.wm-why .wm-card .k{color:#5EEAD4}
+@media (max-width:900px){.wm-prices.wm-two{grid-template-columns:1fr}}

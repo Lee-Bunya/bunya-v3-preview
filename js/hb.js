@@ -10,7 +10,7 @@
     { key: 'cc', k: 'The base', name: 'Command Centre', head: 'Every client. One place.', one: 'The client record, the advice work and every next step, together.',
       img: 'assets/cc/today.webp', g1: 'rgba(45,212,191,.55)', g2: 'rgba(56,189,248,.25)', kc: '#5EEAD4',
       points: ['Every household’s record, documents and meetings in one view.', 'See what’s waiting for approval and who owns the next step.', 'Runs inside your firm’s own Microsoft 365.'],
-      incl: ['Client record', 'Advice pipeline', 'Practice reports', 'Care: support and updates'],
+      incl: ['Client record', 'Advice pipeline', 'Practice reports', 'Premium support and updates'],
       price: 'From $3', per: 'per household a month', build: 'build.html' },
     { key: 'notes', k: 'Included', name: 'Meeting Notes', head: 'Every meeting, written up.', one: 'Bunya drafts the notes so your adviser can stay in the conversation.',
       img: 'assets/meeting-notes/ready.webp', g1: 'rgba(167,139,250,.6)', g2: 'rgba(99,102,241,.3)', kc: '#C4B5FD',
@@ -28,7 +28,7 @@
       points: ['See when each consent is due.', 'Prepare the renewal or send a reminder.', 'Every consent kept on the client’s record.'],
       incl: ['Due dates', 'Renewal ready', 'Reminders', 'On the record'],
       price: 'Included', per: 'with Command Centre', build: 'build.html' },
-    { key: 'care', k: 'Included', name: 'Care', head: 'Help when your team needs it.', one: 'Help when your team needs it, a Command Centre that keeps improving, and your own Bunya Portal to follow it all.',
+    { key: 'care', k: 'Included', name: 'Support', head: 'Help when your team needs it.', one: 'Premium support comes with every Bunya: email support with a reply within 24 to 48 hours, and a Command Centre that keeps improving. Priority support has a 1 to 3 hour turnaround.',
       care: true, g1: 'rgba(45,212,191,.55)', g2: 'rgba(56,189,248,.25)', kc: '#5EEAD4',
       points: ['Video tutorials for each role, and a team to ask.', 'Your own Bunya Portal: ask questions, request changes and follow every project.', 'A regular session to choose the next improvement.'],
       incl: ['Help with daily use', 'Connections kept healthy', 'Updates', 'Improvement sessions', 'Bunya Portal', 'Ask Bunya'],
@@ -147,7 +147,7 @@
   /* Amazon-style: what goes well with what, and ready-made builds */
   var PAIRS = { cc: ['soa', 'portal'], notes: ['field'], reviews: ['portal'], fee: ['portal'], soa: ['portal'], portal: ['soa', 'bhq'], bhq: ['svc'], field: ['soa'], rev: ['portal'], voice: ['notes'], vault: ['bhq'], svc: ['bhq'] };
   var READY = [
-    { key: 'ess', name: 'Essentials', line: 'Command Centre with Meeting Notes, Review Packs, fee consent and Care.', q: 'cc=1&soa=none' },
+    { key: 'ess', name: 'Essentials', line: 'Command Centre with Meeting Notes, Review Packs, fee consent and Premium support.', q: 'cc=1&soa=none' },
     { key: 'adv', name: 'Advice', line: 'Essentials plus every statement of advice your firm writes.', q: 'cc=1&soa=all', tag: 'A good place to start' },
     { key: 'full', name: 'Full practice', line: 'Advice plus Client Portal and Broadcast HQ.', q: 'cc=1&soa=all&add=portal,bhq' }
   ];
@@ -391,7 +391,7 @@
           ['AI brand kit', 'Made from your website in minutes. Your logo and colours across Bunya, and you can change them any time.', 'Included'],
           ['Brand kit, set up by our designer', 'Your fonts, colours and layouts across Bunya, so every document looks like your firm made it.', '$1,800'],
           ['Brand guidelines', 'Voice, tone and layout rules for everything your firm sends.', '$4,500'],
-          ['Brand refresh', 'A refreshed brand, with your Client Portal themed to match.', '$7,500'] ] },
+          ['Brand refresh', 'Logo redesign, a new colour palette and fonts, brand guidelines to match, and your Client Portal themed to match.', '$7,500'] ] },
         { h: 'Documents', when: 'Once', items: [
           /* 13 Nov 2026 (Daniel): the AI-made pack is free for every firm, like the AI brand kit */
           ['AI-made document pack', 'Your client documents set up in your brand by AI, from your AI brand kit. Included with every Bunya.', 'Included'],
@@ -402,8 +402,8 @@
            12 months of hosting included); Found & Cited $1,500 a month (hosting and upkeep folded in). Its own page: website-marketing.html. */
         { h: 'Website and marketing', when: 'Once, then monthly', items: [
           ['Website design', 'Up to 12 pages in your brand, with adviser profiles and online booking, built so Google and AI answers can read every page. 12 months of hosting included. Needs your brand guidelines, or a brand kit, guidelines or refresh.', '$14,882'],
-          ['Found & Cited', 'Hosting and updates, two new answer pages a month, your Google Business Profile, enquiries landing in Command Centre as leads, and a monthly report on where you appear in Google and AI answers.', '$2,243 a month'],
-          ['Found & Cited Plus', 'Everything in Found & Cited, with four new answer pages a month, a new local or service page each month, monthly technical upkeep for Google and AI search (structured data, speed, links and indexing), adviser profiles built for trust, and a quarterly test of the questions your clients ask AI tools.', '$3,734 a month'],
+          ['SEO & AI Search', 'SEO, AEO and AIO every month: hosting and updates, two new answer pages a month, your Google Business Profile, enquiries landing in Command Centre as leads, and a monthly report on where you appear in Google and AI answers.', '$2,243 a month'],
+          ['SEO & AI Search Plus', 'Everything in SEO & AI Search, with four new answer pages a month, a new local or service page each month, monthly technical upkeep for Google and AI search (structured data, speed, links and indexing), adviser profiles built for trust, and a quarterly test of the questions your clients ask AI tools.', '$3,734 a month'],
           ['Google Ads, managed', 'Your Google Ads set up and managed, with either plan. Ad spend is billed at cost.', '$744 a month'] ] }
       ],
         after: 'Choose them when you build yours, or talk them through with us first. <a href="website-marketing.html">See Website and marketing</a>' },
@@ -445,7 +445,7 @@
         ['What was agreed', 'Search old emails and notes.', 'Ask Bunya, answered from your records.']
       ] },
       faq: [
-        ['What does Care cost?', 'It’s included when you subscribe. If you buy Command Centre outright, Care is 30% of your base fee, from $1,497 a month. Care Premium adds a named engineer and a one-hour response, for $1,997 a month. Draft prices, A$ ex GST.'],
+        ['What does support cost?', 'Premium support is included when you subscribe: email support with a reply within 24 to 48 hours. If you buy Command Centre outright, support and updates are 30% of your base fee, from $1,497 a month. Priority support has a 1 to 3 hour turnaround, for $1,997 a month. Draft prices, A$ ex GST.'],
         ['How do we get help?', 'Use the support channel from your handover, or email info@bunya.ai, and include the workflow and what you need help with.'],
         ['What is Bunya Portal?', 'Your firm’s own space with Bunya. Everyone you invite sees chat, the library, meetings, the roadmap, requests and support. Invoices and balances are only for the people you choose.'],
         ['Does Ask Bunya change anything?', 'No. It answers questions from your records. Changes go through a request, and are scoped and quoted before any build starts.'],
@@ -459,7 +459,7 @@
         { t: 'Approve', d: 'Nothing goes live until someone on your team approves it. Or ask for it to be changed.' },
         { t: 'Share', d: 'Use forms and reports other practices have shared in the community library.' }
       ],
-      works: 'Included with every Bunya, as part of Care. For bigger builds, our build team does it with you, and your first month of Bunya Build is included.',
+      works: 'Included with every Bunya. For bigger builds, our build team does it with you, and your first month of Bunya Build is included.',
       extra: [{ id: 'foundation', title: 'Built on your own record', lead: 'Anyone can make an app now. What makes one useful in an advice firm is what sits underneath it.', how: [
         { t: 'One client record', d: 'Your apps and agents work from the same households, documents and meetings as the rest of Command Centre. Nothing is copied into another system.' },
         { t: 'Your Microsoft 365', d: 'What you build runs in your firm’s own Microsoft 365, alongside everything else in Bunya.' },
@@ -467,7 +467,7 @@
       faq: [
         ['What can we build with Bunya Shape?', 'Changes to your forms, reports and screens, and new apps and agents of your own. You describe what you need in plain English. For bigger builds, our build team does it with you.'],
         ['Do we need a developer?', 'No. You describe it, try it as a draft and approve it. Our build team is there for the bigger jobs.'],
-        ['What does it cost?', 'Bunya Shape is included with every Bunya, as part of Care. Your first month of Bunya Build is included too.']
+        ['What does it cost?', 'Bunya Shape is included with every Bunya. Your first month of Bunya Build is included too.']
       ],
       vs: { name: 'With Bunya Shape', rows: [
         ['Adding a field to a form', 'A ticket, a quote and a wait.', 'Ask in plain English, approve it, done.'],
@@ -604,7 +604,7 @@
       faq: [
         ['Where does our data live?', 'In your firm’s own Microsoft 365. Client records, documents and approvals stay in your tenancy.'],
         ['Does anything happen without a person?', 'No. Bunya prepares the work, and nothing is used or sent until someone on your team checks it.'],
-        ['What’s Care?', 'Support and updates. It’s included when you subscribe, and priced separately if you buy Command Centre outright.']
+        ['What support is included?', 'Premium support: email, with a reply within 24 to 48 hours, and updates. It’s included when you subscribe, and priced separately if you buy Command Centre outright.']
       ]
     }
   };
@@ -695,7 +695,7 @@
   (function(){
     var cc = PRODUCTS[pIndex('cc')];
     var feats = ['notes', 'reviews'].map(function(k){ var x = PRODUCTS[pIndex(k)]; return { i: pIndex(k), name: x.name, head: x.head, kc: x.kc, icon: ICONS[k] }; })
-      .concat([{ i: pIndex('care'), name: 'Care', head: 'Support, updates and your Bunya Portal.', kc: '#5EEAD4', icon: ICONS.care },
+      .concat([{ i: pIndex('care'), name: 'Support', head: 'Email support and updates, included.', kc: '#5EEAD4', icon: ICONS.care },
               { i: pIndex('shape'), name: 'Bunya Shape', head: 'Build your own, in plain English.', kc: '#F0ABFC', icon: ICONS.shape }]);
     $('ccp').setAttribute('style', style(cc));
     $('ccp').innerHTML =

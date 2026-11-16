@@ -1,6 +1,6 @@
 /* Build your Bunya, the site's own page (11 Nov 2026). Markup from tools/v3/build_byo.py; needs js/nav3.js first
    (window.bunyaList = the site's shortlist of features and apps). Households: localStorage 'bunya.hh'.
-   Extras (brand, documents, website, Found & Cited, Care Premium, Bunya Build, pay yearly): sessionStorage 'bunya.byo'.
+   Extras (brand, documents, website, SEO & AI Search, Priority support, social media done for you, Bunya Build, pay yearly): sessionStorage 'bunya.byo'.
    Prices: Daniel's configurator and his 12 Nov 2026 reply (draft, A$ ex GST): $500 a month minimum, households above 1,000 16% less, paying yearly
    takes 10% off the Bunya fee, setup $7,249, client reviews 97c each and SOAs drafted for you $153 each on Command Centre. */
 (function(){
@@ -11,7 +11,7 @@
   var rate = function(v){ v = Math.round(v * 100) / 100; return '$' + (v % 1 ? v.toFixed(2) : v); };
   var cents = function(v){ var c = Math.round(v * 100); return c < 100 ? c + 'c' : rate(c / 100); };
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var MIN = 500, BAND = 1000, OFF = .16, YEAR = .1, SETUP = 7249, PREM = 1997, BUILD = 12000, FC = 2243, FCP = 3734, ADS = 744, WEB = 14882, DOCS = 7441, COLL = 4500, SOA = 153, REVIEW = .97;
+  var MIN = 500, BAND = 1000, OFF = .16, YEAR = .1, SETUP = 7249, PREM = 1997, BUILD = 12000, FC = 2243, FCP = 3734, ADS = 744, SMM = 5000, WEB = 14882, DOCS = 7441, COLL = 4500, SOA = 153, REVIEW = .97;
   var BRAND = { kit: ['Brand kit, set up by our designer', 1800], guide: ['Brand guidelines', 4500], refresh: ['Brand refresh', 7500] };
   var APPN = {}; L.APPS.forEach(function(a){ APPN[a[0]] = a; });
   // 12 Nov 2026 (Daniel, "partner tools"): some features use a partner's tool, which the provider bills the practice for directly.
@@ -20,17 +20,19 @@
   var PT = {
     ins: ['Insurance needs and quotes', [['omni', 'OmniLife', 'From $500 a month, covering 50 clients']]],
     mod: ['Strategy and modelling', [['rm', 'RetireMap', 'Per user a month: $325 for 1 to 2 users, $275 for 3 to 5, $245 for 6 to 9, $225 for 10 or more']]],
-    cmp: ['Platform comparisons', [['hub', 'HUB24 Platform Research', 'No charge so far'], ['cw', 'Chant West', 'Coming soon', true]]]
+    cmp: ['Platform comparisons', [['hub', 'HUB24 Platform Research', 'Coming soon', true], ['cw', 'Chant West', 'Coming soon', true]]]
   };
   function rmRate(u){ return u >= 10 ? 225 : u >= 6 ? 245 : u >= 3 ? 275 : 325; }
-  function ptPick(k){ return (X.pt || {})[k] || PT[k][1][0][0]; }
+  function ptPick(k){ var p = (X.pt || {})[k], live = PT[k][1].filter(function(o){ return !o[3]; });
+    if (p && (p === 'have' || live.some(function(o){ return o[0] === p; }))) return p;
+    return live.length ? live[0][0] : 'have'; }
   function ptUsers(){ return Math.max(1, Math.min(50, +((X.pt || {}).users) || 2)); }
   function ptKeys(s){ return ['ins', 'mod', 'cmp'].filter(function(k){ return s.feat[k]; }); }
   function ptLines(s){
     var out = [];
     if (s.feat.ins) out.push(ptPick('ins') === 'omni' ? ['OmniLife', 500, 'from $500 a month'] : ['Insurance tool: you already have one', 0, '']);
     if (s.feat.mod) { var u = ptUsers(); out.push(ptPick('mod') === 'rm' ? ['RetireMap, ' + u + ' user' + (u > 1 ? 's' : ''), u * rmRate(u), u + ' × ' + money(rmRate(u)) + ' a month'] : ['Modelling tool: you already have one', 0, '']); }
-    if (s.feat.cmp) out.push(ptPick('cmp') === 'hub' ? ['HUB24 Platform Research', 0, 'no charge so far'] : ['Comparison tool: you already have one', 0, '']);
+    if (s.feat.cmp) out.push(['Comparison tool: you already have one (HUB24 and Chant West coming soon)', 0, '']);
     return out;
   }
   function ptCost(s){ return ptLines(s).reduce(function(t, l){ return t + l[1]; }, 0); }
@@ -70,7 +72,7 @@
   function banded(r){ return r * (Math.min(n, BAND) + Math.max(0, n - BAND) * (1 - OFF)); }
   function calc(){
     var s = L.read(), r = L.rate(s) * (X.year ? 1 - YEAR : 1), raw = banded(r), fee = Math.max(MIN, raw), apps = L.apps(s);
-    var extra = (X.prem ? PREM : 0) + (X.build ? BUILD : 0) + (X.fc ? FC : 0) + (X.fcp ? FCP : 0) + (X.ads ? ADS : 0);
+    var extra = (X.prem ? PREM : 0) + (X.build ? BUILD : 0) + (X.fc ? FC : 0) + (X.fcp ? FCP : 0) + (X.ads ? ADS : 0) + (X.smm ? SMM : 0);
     var once = SETUP + (X.brand ? BRAND[X.brand][1] : 0) + (X.docs ? DOCS : 0) + (X.coll ? COLL : 0) + (X.web ? WEB : 0);
     return { s: s, r: r, raw: raw, fee: fee, atMin: raw < MIN, apps: apps, extra: extra, monthly: fee + apps + extra, once: once, pt: ptCost(s), ptOn: ptKeys(s).length > 0 };
   }
@@ -98,7 +100,7 @@
     yours: ['', 'Your brand', 'Your logo and colours across Command Centre and your Client Portal.'],
     docs: ['', 'Your documents', 'Your advice documents and client collateral, in your brand.'],
     web: ['website-to-lead', 'Your website', 'A website in your brand, with enquiries landing as leads.'],
-    support: ['bunya-care', 'Care', 'Help when your team needs it, and a Bunya that keeps improving.'],
+    support: ['bunya-care', 'Support', 'Help when your team needs it, and a Bunya that keeps improving.'],
     build: ['bunya-shape', 'Bunya Build', 'Your roadmap of bigger changes, made with you.'],
     sum: ['meetings-and-tasks', 'Your Bunya', 'Ready for your team, in your Microsoft 365.']
   };
@@ -190,10 +192,11 @@
     L1.push(line('Bunya fee <small>' + (sized ? n.toLocaleString('en-AU') + ' households × ' + rate(c.r) + (c.atMin ? ', the $500 minimum' : '') : 'choose your households') + '</small>', sized ? money(c.fee) : rate(c.r) + ' a household'));
     if (L.every(s) && Object.keys(s.add).length) L1.push(line('Every app', money(c.apps)));
     else L.APPS.forEach(function(a){ if (s.add[a[0]]) L1.push(line(a[1], L.inAE(s, a[0]) ? 'Included' : money(a[2]))); });
-    if (X.prem) L1.push(line('Care Premium', money(PREM)));
+    if (X.prem) L1.push(line('Priority support', money(PREM)));
+    if (X.smm) L1.push(line('Social media, done for you', money(SMM)));
     if (X.build) L1.push(line('Bunya Build', money(BUILD)));
-    if (X.fc) L1.push(line('Found &amp; Cited', money(FC)));
-    if (X.fcp) L1.push(line('Found &amp; Cited Plus', money(FCP)));
+    if (X.fc) L1.push(line('SEO &amp; AI Search', money(FC)));
+    if (X.fcp) L1.push(line('SEO &amp; AI Search Plus', money(FCP)));
     if (X.ads) L1.push(line('Google Ads, managed <small>ad spend billed at cost</small>', money(ADS)));
     var per = function(v){ return sized ? money(X.year ? v * 12 : v) : '—'; };
     L1.push(line(c.ptOn ? (X.year ? 'Paid to Bunya, a year' : 'Paid to Bunya, a month') : (X.year ? 'A year' : 'A month'), per(c.monthly), 'tot'));
@@ -220,10 +223,11 @@
     $('byo-m').innerHTML = sized ? (X.year ? money(c.monthly * 12) + '<em> a year</em>' : money(c.monthly) + '<em> a month</em>') : 'Your month';
     var bits = [];
     if (c.apps) bits.push('+ ' + money(c.apps) + ' apps');
-    if (X.prem) bits.push('+ ' + money(PREM) + ' Care Premium');
+    if (X.prem) bits.push('+ ' + money(PREM) + ' Priority support');
+    if (X.smm) bits.push('+ ' + money(SMM) + ' social media');
     if (X.build) bits.push('+ ' + money(BUILD) + ' Bunya Build');
-    if (X.fc) bits.push('+ ' + money(FC) + ' Found & Cited');
-    if (X.fcp) bits.push('+ ' + money(FCP) + ' Found & Cited Plus');
+    if (X.fc) bits.push('+ ' + money(FC) + ' SEO & AI Search');
+    if (X.fcp) bits.push('+ ' + money(FCP) + ' SEO & AI Search Plus');
     if (X.ads) bits.push('+ ' + money(ADS) + ' Google Ads');
     if (c.pt) bits.push('+ about ' + money(X.year ? c.pt * 12 : c.pt) + ' to partners');
     var svc = c.once - SETUP;
@@ -270,14 +274,15 @@
     if (X.docs) yours.push('Brand Document Pack, by our designer ' + money(DOCS) + ' once'); else yours.push('AI-made document pack (included)');
     if (X.coll) yours.push('Client Collateral ' + money(COLL) + ' once');
     if (X.web) yours.push('Website design ' + money(WEB) + ' once');
-    if (X.fc) yours.push('Found & Cited ' + money(FC) + ' a month');
-    if (X.fcp) yours.push('Found & Cited Plus ' + money(FCP) + ' a month');
+    if (X.fc) yours.push('SEO & AI Search ' + money(FC) + ' a month');
+    if (X.fcp) yours.push('SEO & AI Search Plus ' + money(FCP) + ' a month');
+    if (X.smm) yours.push('Social media marketing, done for you ' + money(SMM) + ' a month');
     if (X.ads) yours.push('Google Ads managed ' + money(ADS) + ' a month, plus ad spend at cost');
     if ((X.docs || X.coll || X.web) && !X.brand) yours.push(X.ownbrand ? 'Has its own brand guidelines (to check)' : 'Needs a brand kit, guidelines or refresh first');
     var others = ptLines(s).map(function(l){ return l[0] + (l[1] ? ', about ' + money(l[1]) + ' a month' : ''); });
     if (s.feat.pf) others.push('Portfolio reads from CFS Edge and HUB24');
     var more = [];
-    if (X.prem) more.push('Care Premium ' + money(PREM) + ' a month');
+    if (X.prem) more.push('Priority support ' + money(PREM) + ' a month');
     if (X.build) more.push('More Bunya Build ' + money(BUILD) + ' a month');
     return {
       households: sized ? n : null, pay: X.year ? 'yearly' : 'monthly',
