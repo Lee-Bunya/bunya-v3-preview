@@ -179,8 +179,13 @@
       (X.ownbrand ? '<p class="byo-dim">Thanks. We’ll check your brand files before we start.</p>' : '');
     paintPT(s, c);
     // Command Centre usage
-    $('byo-usage').innerHTML = s.ae ? 'With the whole Advice Engine, every SOA and client review is included.'
-      : 'Client reviews are <b>97c</b> each. ' + (s.feat.soa ? 'Your SOAs are drafted by the SOA generator.' : 'Each SOA we draft for you is <b>$153</b>, or add the SOA generator.');
+    // Pay as you go: 97c a review and $153 an SOA on Command Centre; each shows Free once a plan covers it
+    var freeRev = s.ae, freeSoa = s.ae || !!s.feat.soa;
+    $('byo-pg-rev-p').innerHTML = freeRev ? '<b>Free</b>' : '<b>97c</b> a review';
+    $('byo-pg-rev-s').textContent = freeRev ? 'Every client review is included with the whole Advice Engine.' : 'Each time Bunya prepares a client review. Free with the whole Advice Engine.';
+    $('byo-pg-soa-p').innerHTML = freeSoa ? '<b>Free</b>' : '<b>$153</b> an SOA';
+    $('byo-pg-soa-s').textContent = freeSoa ? 'Your SOAs are drafted by the SOA generator, so there’s no charge.' : 'Each SOA we draft for you. Free with the SOA generator or the whole Advice Engine.';
+    $('byo-pg-rev').classList.toggle('inc', freeRev); $('byo-pg-soa').classList.toggle('inc', freeSoa);
     // Advice Engine nudge
     var fs = L.featSum(s), alc = L.FEAT.reduce(function(t, f){ return t + f[2]; }, 0);
     $('byo-nudge').innerHTML = s.ae

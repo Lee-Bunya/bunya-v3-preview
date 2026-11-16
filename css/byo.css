@@ -315,3 +315,8 @@ html.byo-lock{overflow:hidden}
 /* "Prefer to own it?": title above the text, never side by side (16 Nov 2026) */
 .byo-card.byo-ownit{display:block}
 .byo-ownit > b{display:block;font-size:16px;color:#fff}
+
+/* Pay as you go in the Command Centre step (16 Nov 2026): plain rows, no tick; "Free" in teal once a plan covers it */
+.byo-pg .pr-row{padding-left:18px}
+.byo-pg .pr-row.inc .pc{opacity:1;text-decoration:none}
+.byo-pg .pr-row.inc .pc b{color:#5EEAD4}
