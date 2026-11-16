@@ -409,7 +409,7 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
   .bb-form .two{grid-template-columns:1fr}
 }
 
-/* First-visit popup: households and team size, like Tesla's Confirm Location */
+/* First-visit popup: accounts and team size, like Tesla's Confirm Location */
 .bb-where .bb-form{gap:20px}
 .bb-where .bb-form input{height:44px;background:#F4F4F4;box-shadow:none}
 .bb-where .bb-form input:focus{box-shadow:inset 0 0 0 2px var(--bb-ink);outline:0}
@@ -1642,7 +1642,7 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
 .bb-nudge p>span{display:block}
 .bb-chk b .bb-pick{font-style:normal}
 .bb-pick{flex:0 0 auto;padding-top:1px}
-/* 11 Nov 2026: step 2 leads with the whole Advice Engine; each price per household also shows dollars a month;
+/* 11 Nov 2026: step 2 leads with the whole Advice Engine; each price per account also shows dollars a month;
    a feature that uses a partner's tool carries the partner's price under it; the base card's films */
 .bb-feat .pr em,.bb-basecard .pr em{display:block;font-style:normal;font-size:12px;line-height:17px;font-weight:500;color:var(--bb-grid);font-variant-numeric:tabular-nums}
 .bb-feat.pack{background:rgba(17,184,177,.08);box-shadow:inset 0 0 0 1.5px #11B8B1}
@@ -1697,7 +1697,7 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
   .bb-chg{left:16px;top:-28px}
 }
 
-/* Site copy, 11 Nov 2026: the change note sits above the price per household, on the right */
+/* Site copy, 11 Nov 2026: the change note sits above the price per account, on the right */
 .bb-bar-r{position:relative}
 .bb-bar-r .bb-chg{left:var(--bb-gutter);top:-30px}
 @media (max-width:900px){ .bb-bar-r .bb-chg{left:16px;top:-24px} }
@@ -1816,12 +1816,12 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
     </nav>
 
     <section class="bb-stp" data-view="home" id="sec-base" data-step="1">
-      <header class="bb-step-h"><i>1</i><div><p>Step 1 of 3</p><h2>Start with your size</h2><span>Every firm starts with Command Centre. It’s priced per client household.</span></div></header>
+      <header class="bb-step-h"><i>1</i><div><p>Step 1 of 3</p><h2>Start with your size</h2><span>Every firm starts with Command Centre. It’s priced per client account.</span></div></header>
       <div class="bb-stats" id="stats"></div>
-      <div class="bb-sizeq" id="sizeq" role="group" aria-label="How many client households?"><p>How many client households?</p><div>
+      <div class="bb-sizeq" id="sizeq" role="group" aria-label="How many client accounts?"><p>How many client accounts?</p><div>
         <button type="button" data-hh="200">About 200</button><button type="button" data-hh="500">About 500</button><button type="button" data-hh="1000">About 1,000</button><button type="button" data-hh="1500">1,500 or more</button></div></div>
       <div id="hh-wrap">
-          <div class="bb-size"><label for="hh">Client households</label><output id="hh-out" for="hh"></output></div>
+          <div class="bb-size"><label for="hh">Client accounts</label><output id="hh-out" for="hh"></output></div>
           <input class="bb-range" type="range" id="hh" min="100" max="1500" step="10" value="880">
           <p class="bb-note">A couple counts as one, with the trusts, SMSFs and companies they own. More than 1,500? <a href="#" class="bb-demo">We'll price it with you</a>.</p>
         </div>
@@ -1832,7 +1832,7 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
 
     <!-- Site copy (11 Nov 2026, Lee: features picked one by one, as on bunya.ai's Pricing page). Own it keeps the two models. -->
     <section class="bb-stp" data-view="ae" id="sec-features" data-step="2">
-      <header class="bb-step-h"><i>2</i><div><p>Step 2 of 3</p><h2>Choose your features</h2><span id="feat-sub">Pick only what your firm needs. Each one adds to your price per household.</span></div></header>
+      <header class="bb-step-h"><i>2</i><div><p>Step 2 of 3</p><h2>Choose your features</h2><span id="feat-sub">Pick only what your firm needs. Each one adds to your price per account.</span></div></header>
       <div class="bb-feats" id="feats"></div>
       <div class="bb-nudge" id="nudge"></div>
       <div class="bb-opts" id="models" role="radiogroup" aria-label="Choose your Bunya"></div>
@@ -1991,13 +1991,13 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
 </div></div>
 
 <script>/* Build your Bunya, v2 (6 Nov 2026). Lee's 6 Nov configurator with the rest of the range added.
-   Lee's prices are unchanged: $3 per household, +$2 for every SOA, SOAs on the Command Centre at $153 each (Lee's $1,530 pack of 10, paid per SOA as used), households above
+   Lee's prices are unchanged: $3 per account, +$2 for every SOA, SOAs on the Command Centre at $153 each (Lee's $1,530 pack of 10, paid per SOA as used), accounts above
    1,000 at 16% less, $500 a month minimum, setup $7,249, own it = three years of the $3 fee (min $120,000),
    then Care at 30% of the base fee (min $1,497 a month), and his add-on, brand, website, marketing and Adapt prices.
    Added from the 30 Oct packages page: Bunya Build $12,000 and Priority $19,000 a month, Care Premium $7,497 a month (9 Nov: $1,997),
    Client Collateral $4,500, Bunya Voice (priced at release), VIP launch support of 30, 45 or 90 days.
    Added from the 4 Nov catchup: Document Pack, Bunya Shape and a Made-For-You Month with the Advice Engine.
-   7 Nov: Own it is one flat price per model, whatever the firm's size up to 1,500 households: $120,000 and $200,000
+   7 Nov: Own it is one flat price per model, whatever the firm's size up to 1,500 accounts: $120,000 and $200,000
    (the second a placeholder), paid in full or over 12, 24 or 36 months (no charge for spreading it yet). Then Care, $1,497 a month.
    Owning either model includes every SOA; the Advice Engine adds strategy and modelling, comparisons and File Audit.
    7 Nov: two models, pay per SOA or every SOA included. Unlimited ($7.50) became the Every app bundle; its $1,150 is a placeholder.
@@ -2006,7 +2006,7 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
    and Bunya Vault under Apps (in pilot, not priced). Field Notes is $19 a month and Revenue Import $119: they were
    the other way round.
    11 Nov: on Lee's three-step layout (base, features, add-ons). Step 2 offers the whole Advice Engine first, shows what
-   each price per household adds a month at their size, and puts each partner's price on the feature that uses it.
+   each price per account adds a month at their size, and puts each partner's price on the feature that uses it.
    Care Premium stays a choice at $1,997. Lee's per-feature prices are his suggestions, not agreed.
    11 Nov, combo A: Lee's numbered steps, rail and Next buttons, with our two models in place of features one by one.
    Three steps: choose your Bunya, add your apps, review and order. Everything optional is under Customise.
@@ -2034,8 +2034,8 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
   // Site copy (11 Nov 2026, Lee: redo the 97c like Daniel had): client reviews are 97c each on Command Centre;
   // included with the whole Advice Engine, or when you own it.
   function revUse(m){ return m.key === 'cc' && st.pay !== 'own'; }
-  // 10 Nov 2026 (Lee): the Advice Engine's features, picked one by one, each a price per household a month on top of
-  // the $3 base. Lee's suggested prices for Daniel, not agreed. Picking every one is the Advice Engine: $2 a household,
+  // 10 Nov 2026 (Lee): the Advice Engine's features, picked one by one, each a price per account a month on top of
+  // the $3 base. Lee's suggested prices for Daniel, not agreed. Picking every one is the Advice Engine: $2 an account,
   // with the Client Portal and the Brand Document Pack included. Some features need others; picking one picks what it needs.
   var FEATS = [
     { k: 'ff',  name: 'Fact find',                  p: .40, req: [],           text: 'Filled from the meeting, the documents and the client portal. Most features build on it.', rec: 'Start here' },
@@ -2463,8 +2463,8 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
   }
   function brandVars(){ var b = brand(); return '--c1:' + b.c1 + ';--c2:' + b.c2 + ';--c3:' + b.c3; }
   function rate(v){ v = Math.round(v * 100) / 100; return '$' + (v % 1 ? v.toFixed(2) : v); }
-  // What a price per household adds to their monthly price at their size, on top of the rate they'd pay without it.
-  // It counts the monthly minimum and the lower rate above 1,000 households, so the rows add up to the total.
+  // What a price per account adds to their monthly price at their size, on top of the rate they'd pay without it.
+  // It counts the monthly minimum and the lower rate above 1,000 accounts, so the rows add up to the total.
   function feeAt(rt){ return Math.max(MODELS[0].min, banded(st.n, rt * disc())); }
   function addsMo(from, p){ var d = Math.round(feeAt(from + p) - feeAt(from)); return d > 0 ? money(d) + '/mo' : 'No extra'; }
   function REC(t){ return '<span class="bb-pick">' + t + '</span>'; }
@@ -2479,7 +2479,7 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
     var c = calc(), m = c.m, own = st.pay === 'own';
 
     $('hh').value = st.n;
-    $('hh-out').textContent = !st.sized ? 'Or set it exactly' : st.n <= 100 ? '100 or fewer households' : st.n >= 1500 ? '1,500 or more households' : st.n.toLocaleString('en-AU') + ' households';
+    $('hh-out').textContent = !st.sized ? 'Or set it exactly' : st.n <= 100 ? '100 or fewer accounts' : st.n >= 1500 ? '1,500 or more accounts' : st.n.toLocaleString('en-AU') + ' accounts';
     [].forEach.call($('sizeq').querySelectorAll('[data-hh]'), function(b){ b.setAttribute('aria-pressed', String(st.sized && st.n === +b.dataset.hh)); });
     $('sizeq').hidden = st.pay === 'own';
     $('brand-ask').hidden = !!st.site;
@@ -2487,7 +2487,7 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
 
     // Like the car's range and top speed: what each model gives you, not more prices
     $('stats').hidden = !own;
-    $('stats').innerHTML = (own ? (c.term ? stat(money(c.instal) + '<small>/mo</small>', 'For ' + c.term + ' months') : stat(money(c.own), 'Once, to own it')) : stat(rate(c.rt * disc()), 'Per household a month')) +
+    $('stats').innerHTML = (own ? (c.term ? stat(money(c.instal) + '<small>/mo</small>', 'For ' + c.term + ' months') : stat(money(c.own), 'Once, to own it')) : stat(rate(c.rt * disc()), 'Per account a month')) +
       (perUse(m) ? stat('As you go', 'SOAs drafted for you') : stat('Unlimited', 'SOAs drafted for you')) +
       (revUse(m) ? stat(Math.round(P.review * 100) + 'c', 'Per client review') : stat('Unlimited', 'Client reviews'));
 
@@ -2498,37 +2498,37 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
     $('terms').innerHTML = P.terms.map(function(t){ return '<button type="button" data-term="' + t + '" aria-pressed="' + (st.term === t) + '">' + (t ? t + ' months' : 'Pay in full') + '</button>'; }).join('');
     $('hh-wrap').hidden = own;
     $('own-note').hidden = !own;
-    $('own-note').textContent = 'One price, whatever your size, for firms up to 1,500 client households. Standard setup included' + (st.term ? ', spread over ' + st.term + ' monthly payments' : ', paid once') +
+    $('own-note').textContent = 'One price, whatever your size, for firms up to 1,500 client accounts. Standard setup included' + (st.term ? ', spread over ' + st.term + ' monthly payments' : ', paid once') +
       '. Then Care, for support and updates, at ' + money(c.care) + ' a month.';
 
     $('models').innerHTML = MODELS.map(function(x){
       var cx = calc(x.key);
       var price = own ? (st.term ? money(cx.instal) + '<small>a month for ' + st.term + ' months</small>' : money(cx.own) + '<small>once, to own it</small>')
-                      : rate(x.rate * disc()) + '<small>per household a month</small><em>' + money(cx.fee) + '/mo at your size</em>';
+                      : rate(x.rate * disc()) + '<small>per account a month</small><em>' + money(cx.fee) + '/mo at your size</em>';
       return card('data-model="' + x.key + '"', st.model === x.key, x.name + (x.extras ? REC('Best value') : ''), own ? x.ownLine : x.line, price, '', 'radio');
     }).join('');
 
 
     // Site copy (11 Nov 2026): step 1 the base, step 2 features one by one (subscribe), or the two models (own it).
     var INCL = ['Client record and pipeline', 'Meeting Notes', 'Review Packs, ' + (own ? 'every review included' : Math.round(P.review * 100) + 'c a client review'), 'Fee consent', 'Care', 'Bunya Portal', 'Bunya Shape'];
-    $('base-card').innerHTML = '<div class="top"><b>Command Centre</b><span class="pr">' + (own ? 'Own it<small>priced in step 2</small>' : rate(3 * disc()) + '<small>per household a month</small>') + '</span></div>' +
+    $('base-card').innerHTML = '<div class="top"><b>Command Centre</b><span class="pr">' + (own ? 'Own it<small>priced in step 2</small>' : rate(3 * disc()) + '<small>per account a month</small>') + '</span></div>' +
       '<details class="bb-incl"><summary>What’s included</summary><ul>' + INCL.map(function(t){ return '<li>' + TICK + t + '</li>'; }).join('') + '</ul></details>' +
       '<p class="bb-note">Standard setup ' + (own ? 'included' : money(P.setup) + ', once') + ': installed in your Microsoft 365, your clients moved in, your team trained.</p>';
     $('feats').hidden = own; $('nudge').hidden = own; $('models').hidden = !own;
-    $('feat-sub').textContent = own ? 'When you own it, choose Command Centre on its own or with the whole Advice Engine.' : 'Pick only what your firm needs. Each one adds to your price per household.';
+    $('feat-sub').textContent = own ? 'When you own it, choose Command Centre on its own or with the whole Advice Engine.' : 'Pick only what your firm needs. Each one adds to your price per account.';
     $('feats').innerHTML = FEATS.map(function(f){
       var on = !!st.feat[f.k], req = f.req.length ? ' Needs ' + f.req.map(function(r){ return featNamed(r).name.toLowerCase(); }).join(' and ') + '.' : '';
       var pt = featPartners(f.k);
       return '<button type="button" class="bb-feat" role="checkbox" data-fe="' + f.k + '" aria-checked="' + on + '"><i class="box">' + TICK + '</i>' +
-        '<span><b>' + f.name + tag(f.tag) + (f.rec && !featAll() ? REC(f.rec) : '') + '</b><small>' + f.text + req + (pt ? ' Works with ' + pt + '.' : '') + '</small></span><span class="pr">+' + rate(f.p) + '<small>a household</small></span></button>';
+        '<span><b>' + f.name + tag(f.tag) + (f.rec && !featAll() ? REC(f.rec) : '') + '</b><small>' + f.text + req + (pt ? ' Works with ' + pt + '.' : '') + '</small></span><span class="pr">+' + rate(f.p) + '<small>an account</small></span></button>';
     }).join('');
     var alc = FEATS.reduce(function(t, f){ return t + f.p; }, 0);
     $('nudge').className = 'bb-nudge' + (featAll() ? ' have' : '');
     $('nudge').innerHTML = featAll()
-      ? '<p>' + TICK + '<span><b>You have the whole Advice Engine.</b> $2 a household instead of ' + rate(alc) + ', with every SOA and client review, the Client Portal and the Brand Document Pack included.</span></p>'
+      ? '<p>' + TICK + '<span><b>You have the whole Advice Engine.</b> $2 an account instead of ' + rate(alc) + ', with every SOA and client review, the Client Portal and the Brand Document Pack included.</span></p>'
       : featRate() >= 2
-        ? '<p><span>' + REC('Best value') + '<b>The whole Advice Engine costs less.</b> Your features add ' + rate(featRate()) + ' a household; every feature is $2, with every SOA and client review, the Client Portal and the Brand Document Pack included. That saves about ' + money(banded(st.n, featRate() - 2)) + ' a month.</span></p><button type="button" class="bb-btn" data-feat-all>Take it all</button>'
-        : '<p><span>' + REC('Best value') + '<b>Or take the whole Advice Engine for $2 a household.</b> Every feature above, plus every SOA and client review, the Client Portal and the Brand Document Pack, included.</span></p><button type="button" class="bb-btn" data-feat-all>Take it all</button>';
+        ? '<p><span>' + REC('Best value') + '<b>The whole Advice Engine costs less.</b> Your features add ' + rate(featRate()) + ' an account; every feature is $2, with every SOA and client review, the Client Portal and the Brand Document Pack included. That saves about ' + money(banded(st.n, featRate() - 2)) + ' a month.</span></p><button type="button" class="bb-btn" data-feat-all>Take it all</button>'
+        : '<p><span>' + REC('Best value') + '<b>Or take the whole Advice Engine for $2 an account.</b> Every feature above, plus every SOA and client review, the Client Portal and the Brand Document Pack, included.</span></p><button type="button" class="bb-btn" data-feat-all>Take it all</button>';
     $('partners-top').hidden = !m.extras;
     $('partners-top-t').textContent = list(partnerNames()) + ' connect to the Advice Engine. Each has its own price.';
 
@@ -2614,12 +2614,12 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
     $('totals').innerHTML = due;
     $('order-due').innerHTML = due;
     $('order-go').textContent = 'Pay ' + money(DEPOSIT) + ' deposit and book my kick-off';
-    $('order-sub').textContent = 'Bunya ' + m.name + ' · ' + (own ? 'Own it' : st.n.toLocaleString('en-AU') + ' client households · Subscribe') + (st.bm > 1 ? ' · Bunya Build, ' + st.bm + ' months' : '');
+    $('order-sub').textContent = 'Bunya ' + m.name + ' · ' + (own ? 'Own it' : st.n.toLocaleString('en-AU') + ' client accounts · Subscribe') + (st.bm > 1 ? ' · Bunya Build, ' + st.bm + ' months' : '');
     $('fine').textContent = 'A$, ex GST. ' + msft() + (partnerGroups(m).length ? ' ' + partnerNote(partnerGroups(m)) : '') + ' Apps marked pilot aren’t generally available yet. Draft prices, shown for discussion and not yet final.';
-    $('m-details-sub').textContent = (own ? 'Own it' : st.n.toLocaleString('en-AU') + ' client households · Subscribe') + ' · ' + m.name;
+    $('m-details-sub').textContent = (own ? 'Own it' : st.n.toLocaleString('en-AU') + ' client accounts · Subscribe') + ' · ' + m.name;
 
     $('bar-name').innerHTML = 'Bunya<em>' + m.name + '</em>';
-    var sum = own ? ['Own it'] : [st.n.toLocaleString('en-AU') + ' households', 'Subscribe'];
+    var sum = own ? ['Own it'] : [st.n.toLocaleString('en-AU') + ' accounts', 'Subscribe'];
     if (st.xplan && m.key === 'ae') sum.push('Keeping Xplan');
     if (st.all) sum.push(EVERY.name); else ADDONS.forEach(function(a){ if (st.on[a.key]) sum.push(a.name); });
     if (st.care === 'premium') sum.push('Care Premium');
@@ -2631,21 +2631,21 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
     $('bar-sum').textContent = sum.join(' · ');
     var full = own && !c.term;
     if (!own) {
-      // Site copy: the price per household is the big number (right); the month and how it's made sit on the left
+      // Site copy: the price per account is the big number (right); the month and how it's made sit on the left
       var r1 = c.rt * disc(), extra = [], yr = st.bill === 'year';
       if (c.adds) extra.push('+ ' + money(c.adds) + ' apps');
       if (c.premium) extra.push('+ ' + money(c.premium) + ' Care Premium');
       if (c.build) extra.push('+ ' + money(c.build) + ' Bunya Build');
       $('bar-name').innerHTML = st.sized ? (yr ? money(c.monthly * 12) + '<em>a year</em>' : money(c.monthly) + '<em>a month</em>') : 'Bunya<em>' + m.name + '</em>';
-      $('bar-sum').textContent = !st.sized ? 'Choose your number of client households to see your month'
-        : st.n.toLocaleString('en-AU') + ' households × ' + rate(r1) + (c.atMin ? ' (the $500 minimum)' : ' = ' + money(c.fee)) + (extra.length ? ' · ' + extra.join(' · ') : '');
+      $('bar-sum').textContent = !st.sized ? 'Choose your number of client accounts to see your month'
+        : st.n.toLocaleString('en-AU') + ' accounts × ' + rate(r1) + (c.atMin ? ' (the $500 minimum)' : ' = ' + money(c.fee)) + (extra.length ? ' · ' + extra.join(' · ') : '');
       var was = barWas, now = { r: r1, a: c.adds + c.premium + c.build }, note = '';
-      if (was && Math.abs(now.r - was.r) > .001) note = (now.r > was.r ? '+' : '−') + cents(Math.abs(now.r - was.r)) + ' a household';
+      if (was && Math.abs(now.r - was.r) > .001) note = (now.r > was.r ? '+' : '−') + cents(Math.abs(now.r - was.r)) + ' an account';
       else if (was && now.a !== was.a) note = (now.a > was.a ? '+' : '−') + money(Math.abs(now.a - was.a)) + ' a month';
       barWas = now;
       if (note) { $('bar-chg').textContent = note; $('bar-chg').className = 'bb-chg on'; clearTimeout(barT); barT = setTimeout(function(){ $('bar-chg').className = 'bb-chg'; }, 2200); }
     }
-    $('bar-price').innerHTML = (!own ? rate(c.rt * disc()) + '<small>a household<span class="bb-hm"> a month</span></small>' : full ? money(c.once) + '<small> to own it</small>' : st.bill === 'year' && !own ? money(c.monthly * 12) + '<small>/yr</small>' : money(c.monthly) + '<small>/mo</small>') + '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg>';
+    $('bar-price').innerHTML = (!own ? rate(c.rt * disc()) + '<small>an account<span class="bb-hm"> a month</span></small>' : full ? money(c.once) + '<small> to own it</small>' : st.bill === 'year' && !own ? money(c.monthly * 12) + '<small>/yr</small>' : money(c.monthly) + '<small>/mo</small>') + '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg>';
     $('bar-price-n').textContent = !own ? (st.sized ? (st.bill === 'year' ? money(c.monthly * 12) + ' a year' : money(c.monthly) + ' a month') + ' · ' + money(DEPOSIT) + ' deposit today' : 'Plus apps, a flat price a month') : money(DEPOSIT) + ' deposit today' + (full ? ' · then ' + money(c.monthly) + '/mo' : own ? ' · ' + c.term + ' monthly payments' : ' · billed ' + (st.bill === 'year' ? 'annually' : 'monthly'));
 
     var demo = '#build=' + encodeURIComponent(sum.join(' · ') + ' · ' + money(c.monthly) + ' a month');
@@ -2683,7 +2683,7 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
     if (m.extras) svcLines += line(DOCS.name, 'Included');
     else if (st.docs) svcLines += line(DOCS.name, money(DOCS.price));
     if (st.coll) svcLines += line(COLL.name, money(COLL.price));
-    var bandNote = st.n > P.bandAt ? line('Households above ' + P.bandAt.toLocaleString('en-AU') + ' are ' + Math.round(P.bandOff * 100) + '% less', 'Applied') : '';
+    var bandNote = st.n > P.bandAt ? line('Accounts above ' + P.bandAt.toLocaleString('en-AU') + ' are ' + Math.round(P.bandOff * 100) + '% less', 'Applied') : '';
     var launch = line('Your brand kit, from your website', 'Included') + line('VIP launch support', m.vip + ' days') + line('Your first month of Bunya Build', 'Included');
     if (own) {
       h += line('Once', '', 'h');
@@ -2704,7 +2704,7 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
       h += svcLines;
       h += line('Total once', money(c.once), 'h') + line('Order deposit, today', money(DEPOSIT)) + line('The rest, at kick-off', money(c.once - DEPOSIT));
       h += line('Each month', '', 'h');
-      h += line('Bunya ' + m.name + ', ' + st.n.toLocaleString('en-AU') + ' households', money(c.list));
+      h += line('Bunya ' + m.name + ', ' + st.n.toLocaleString('en-AU') + ' accounts', money(c.list));
       if (m.extras) h += line('Client Portal', 'Included');
       if (c.saving > 0) h += line('Paid annually, 10% off', '−' + money(c.saving));
       if (c.atMin) h += line('Minimum for ' + m.name, money(m.min) + ' a month');
@@ -2744,7 +2744,7 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
       ['Win new clients', [
         ['Website enquiries land as leads', Y, Y],
         ['Lead tracking, from first contact to client', Y, Y],
-        ['Advice pipeline for every household', Y, Y]]],
+        ['Advice pipeline for every account', Y, Y]]],
       ['Clients and accounts', [
         ['Households, with partners and dependants', Y, Y],
         ['SMSFs', Y, Y],
@@ -2797,7 +2797,7 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
     var head = '<tr><th scope="col"></th>' + MODELS.map(function(x){
       var cx = calc(x.key);
       var price = own ? (st.term ? '<b>' + money(cx.instal) + '</b><small>a month for ' + st.term + ' months</small>' : '<b>' + money(cx.own) + '</b><small>once, to own it</small>')
-                      : '<b>' + rate(x.rate * disc()) + '</b><small>per household a month</small>';
+                      : '<b>' + rate(x.rate * disc()) + '</b><small>per account a month</small>';
       return '<th scope="col"><span>' + x.name + '</span>' + price +
         (st.model === x.key ? '<p class="bb-have">' + TICK + 'Your choice</p>' : '<button type="button" class="bb-btn ghost" data-pick="' + x.key + '">Choose</button>') + '</th>';
     }).join('') + '</tr>';
@@ -2806,8 +2806,8 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
         g[1].map(function(r){ return '<tr><th scope="row">' + r[0] + '</th>' + cell(r[1]) + cell(r[2]) + '</tr>'; }).join('');
     }).join('');
     $('compare').innerHTML = '<table class="bb-ct"><colgroup><col class="f"><col><col></colgroup><thead>' + head + '</thead><tbody>' + body + '</tbody></table>' +
-      '<p class="bb-fine">' + (own ? 'One price, whatever your size, for firms up to 1,500 client households, ' + (st.term ? 'over ' + st.term + ' monthly payments' : 'paid once') + ', with standard setup included. Then Care, monthly.'
-                                       : 'Per household a month, ex GST' + (st.bill === 'year' ? ', paid annually (10% off)' : '') + '.') +
+      '<p class="bb-fine">' + (own ? 'One price, whatever your size, for firms up to 1,500 client accounts, ' + (st.term ? 'over ' + st.term + ' monthly payments' : 'paid once') + ', with standard setup included. Then Care, monthly.'
+                                       : 'Per account a month, ex GST' + (st.bill === 'year' ? ', paid annually (10% off)' : '') + '.') +
       ' Pilot: in use with early firms.</p>';
   }
 
@@ -2874,7 +2874,7 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
   /* ── Features, Tesla style ──────────────────────────────────────────── */
   // The first box shows the Command Centre, or the Advice Engine once it's chosen, with points to click around it.
   // Each opens a short film of the feature in the firm's own brand, with what it does beside it.
-  // One made-up household, the Shahs, runs through all of them.
+  // One made-up account, the Shahs, runs through all of them.
   // Each feature's film, or for some a still picture, shown in place of the animated screen. Keyed by feature, app or view.
   var VIDEOS = {
     enquiry: 'assets/films/website-to-lead.mp4', lead: 'assets/films/lead-tracking.mp4', client: 'assets/films/clients-and-accounts.mp4', pipeline: 'assets/films/advice-pipeline.mp4',
@@ -2893,10 +2893,10 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
         b: ['Website enquiries land as leads in seconds', 'What they asked, and how they found you', 'Assigned to an adviser, with the team told'] },
       { k: 'lead', t: 'Lead tracking', toast: 'Priya and Arjun booked a discovery meeting',
         b: ['Every lead on one board, from first contact to client', 'The next step and who owns it', 'Becomes a client in one click'] },
-      { k: 'client', t: 'Clients and accounts', short: 'Clients', toast: 'Shah Super Fund linked to the household',
+      { k: 'client', t: 'Clients and accounts', short: 'Clients', toast: 'Shah Super Fund linked to the account',
         b: ['Households with partners and dependants', 'Their SMSF, trusts and companies in one place', 'Email and documents filed from Outlook and SharePoint'] },
       { k: 'pipeline', t: 'Advice pipeline', short: 'Pipeline', toast: 'Shah Family moved to Fact find',
-        b: ['Every household from discovery to implementation', 'An owner and a due date on each stage', 'See what’s stuck at a glance'] },
+        b: ['Every account from discovery to implementation', 'An owner and a due date on each stage', 'See what’s stuck at a glance'] },
       { k: 'meeting', t: 'Meetings and tasks', short: 'Meetings', toast: 'File note, email and 3 tasks ready to review',
         b: ['Teams meetings recorded with the client’s consent', 'File note, follow-up email and tasks drafted for you', 'Nothing goes until your team approves it'] },
       { k: 'reviews', t: 'Reviews and fees', toast: 'Fee renewal sent to the Calder Family',
@@ -3137,7 +3137,7 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
   function summaryScreen(c){
     var m = c.m, own = st.pay === 'own', full = own && !c.term, buy = own && !st.rent, b = brand(), firm = esc(b.firm);
     var rows = [];
-    if (!own) rows.push([st.n.toLocaleString('en-AU') + ' client households', money(c.list) + '/mo']);
+    if (!own) rows.push([st.n.toLocaleString('en-AU') + ' client accounts', money(c.list) + '/mo']);
     else rows.push(['Own ' + m.name, money(c.own)]);
     if (c.term) rows.push(['Paid over ' + c.term + ' months', money(c.instal) + '/mo']);
     rows.push(['Standard setup', own ? 'Included' : money(P.setup)]);
@@ -3185,9 +3185,9 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
                   ['Okafor Family', 'Strategy meeting at 2:00', 'JS', 'Strategy', 'Today', ''],
                   ['Morgan Family', 'SoA approved by Jess', 'AR', 'Implementation', 'Approved', 'on'],
                   ['Lin Household', 'Super consolidation', 'JS', 'Discovery', 'Booked', '']];
-      return head(1, 'Command Centre · Clients', 'Clients', hh + ' households · 38 reviews due this quarter') +
+      return head(1, 'Command Centre · Clients', 'Clients', hh + ' accounts · 38 reviews due this quarter') +
         '<div class="gf">' + ['All ' + hh, 'Reviews due 38', 'New this month 6', 'Consent to renew 3'].map(function(x, i){ return '<span' + (i ? '' : ' class="on"') + '>' + x + '</span>'; }).join('') + '</div>' +
-        '<section class="card gtab" data-feat="cc:client"><div class="gh"><span>Household</span><span>Adviser</span><span>Stage</span><span>Status</span></div>' +
+        '<section class="card gtab" data-feat="cc:client"><div class="gh"><span>Account</span><span>Adviser</span><span>Stage</span><span>Status</span></div>' +
         rows.map(function(r, i){ return '<div class="gr"><span><b>' + r[0] + '</b><small>' + r[1] + '</small></span>' + av(r[2], i) + '<span>' + r[3] + '</span><span>' + tag(r[4], r[5]) + '</span></div>'; }).join('') +
         '</section>' + end;
     }
@@ -3209,7 +3209,7 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
       var kp = function(l, val, d){ return '<div class="kp"><small>' + l + '</small><b>' + val + '</b><em>' + d + '</em></div>'; };
       var bar = function(l, w){ return '<div class="hb"><span>' + l + '</span><i style="--w:' + w + '%"></i><b>' + w + '%</b></div>'; };
       return head(4, 'Command Centre · Reports', 'Practice report', 'November · from your own data, in Power BI') +
-        '<div class="kps">' + kp('Revenue this month', '$186,400', '+8% on last November') + kp('Households', hh, '6 new this month') +
+        '<div class="kps">' + kp('Revenue this month', '$186,400', '+8% on last November') + kp('Accounts', hh, '6 new this month') +
           kp('Reviews done', '92%', 'Of those due this year') + kp('Fee consents', '3 to renew', 'None lapsed') + '</div>' +
         '<div class="cols"><section class="card" data-feat="cc:reviews"><div class="ch"><b>Revenue by month</b><small>Ongoing and initial advice fees</small></div><div class="vb">' +
           mo.map(function(h, i){ return '<i style="height:' + h + '%"><small>' + 'DJFMAMJJASON'.charAt(i) + '</small></i>'; }).join('') + '</div></section>' +
@@ -3221,7 +3221,7 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
       ['Nguyen Household', 'Super consolidation', 0, 'JS', '5 Dec'], ['Okafor Family', 'Insurance review', 4, 'JS', '2 Dec'],
       ['Morgan Family', 'Retirement income', 6, 'AR', '19 Nov'], ['Calder Family', 'Estate and super', 7, 'AR', 'Today']];
     return head(2, 'Advice Engine', 'Advice files', '6 files · each one checked before it goes to the client') +
-      '<section class="card gtab files"><div class="gh"><span>Household</span><span>Where it’s up to</span><span>Adviser</span><span>Due</span></div>' +
+      '<section class="card gtab files"><div class="gh"><span>Account</span><span>Where it’s up to</span><span>Adviser</span><span>Due</span></div>' +
       files.map(function(f, i){
         var x = A[f[2]];
         return '<div class="gr" data-feat="ae:' + x.k + '"><span><b>' + f[0] + '</b><small>' + f[1] + '</small></span><span class="pr"><b>' + (x.short || x.t) + '</b><i style="--w:' +
@@ -3314,7 +3314,7 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
           row('bank', 'AustralianSuper', 'Priya · accumulation account', st_('Super', 'on')), 'hl') + '</div><div>' +
         card('People', '', row('user', 'Priya Shah', '58 · practice manager') + row('user', 'Arjun Shah', '61 · consultant')) +
         card('Documents', 'In SharePoint', row('mail', 'Super statements, 2', 'Filed from email · 9:03') + row('doc', 'SMSF trust deed', 'Uploaded by Priya')) + '</div></div>'],
-      pipeline: ['Advice', 'Advice pipeline', '17 households in progress',
+      pipeline: ['Advice', 'Advice pipeline', '17 accounts in progress',
         '<div class="kb" style="--n:6">' + kc('Discovery', 3, kd('Lee', 'Tuesday')) + kc('Fact find', 4, kd('Shah Family', 'Started today · Alex', 'hl') + kd('Brooks', 'Waiting on docs')) +
           kc('Strategy', 3, kd('Okafor', 'Meeting 2:00')) + kc('SoA request', 2, kd('Nguyen', 'Pack ready')) + kc('Paraplanning', 3, kd('Morgan', 'Draft in review')) + kc('Implementation', 2, kd('Calder', 'Forms out')) + '</div>' +
         '<div class="cols" style="margin-top:1.1em">' + card('Stuck for more than a week', '', row('task', 'Brooks · fact find', 'Waiting on super statements · reminder sent', st_('8 days', 'warn'))) +
@@ -3455,7 +3455,7 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
               row('<path d="M4 20l4-1 11-11-3-3L5 16z"/>', 'File note · Harper Family', 'Discovery meeting this morning, prepared by Bunya from the recording') +
               row('<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/>', 'SoA request pack · Nguyen Household', 'Fact find, documents and strategy notes in one pack') +
               row('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>', 'Follow-up email · Calder Family', 'Draft on your letterhead, with the three agreed actions') + '</section>' +
-            '<section class="card"' + F('pipeline') + '><div class="ch"><b>Advice in progress</b><small>17 households</small></div><div class="stages">' +
+            '<section class="card"' + F('pipeline') + '><div class="ch"><b>Advice in progress</b><small>17 accounts</small></div><div class="stages">' +
               stg('Discovery', 3, 70) + stg('Fact find', 4, 85) + stg('Strategy', 3, 70) + stg('SoA request', 2, 50) + stg('Paraplanning', 3, 70) + stg('Implementing', 2, 50) + '</div></section>' +
             '<section class="card"' + F('client') + '><div class="ch"><b>Recent activity</b><small>Kept with each client</small></div>' +
               '<div class="row"><i class="ic">' + TICK + '</i><span><b>Jess approved the Morgan Family SoA request</b><small>10 min ago</small></span></div></section>' +
@@ -3747,7 +3747,7 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
   };
   function agBuild(){
     var c = calc(), m = c.m, own = st.pay === 'own';
-    return m.name + (own ? ', to own it' + (c.term ? ' over ' + c.term + ' months' : '') : ', ' + st.n.toLocaleString('en-AU') + ' households') + ': ' + money(c.monthly) + ' a month' +
+    return m.name + (own ? ', to own it' + (c.term ? ' over ' + c.term + ' months' : '') : ', ' + st.n.toLocaleString('en-AU') + ' accounts') + ': ' + money(c.monthly) + ' a month' +
       (st.bill === 'year' && !own ? ', billed annually' : '') + ', and a ' + money(DEPOSIT) + ' deposit to order';
   }
   // [what they asked, matched in order] → [answer, actions]
@@ -3799,18 +3799,18 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
           'If you’d like the Advice Engine alongside Xplan, we’ll confirm how they fit together on a call.', ['call']]; }],
       [/\d[\d,]*\s*(client )?(households|clients|families)/, function(){
         var n = +x.match(/(\d[\d,]*)\s*(client )?(households|clients|families)/)[1].replace(/,/g, '');
-        if (n > 1500) return ['For more than 1,500 households we’ll price it with you. Call us on <b>1300 286 922</b>.', ['call']];
-        return ['For ' + n.toLocaleString('en-AU') + ' households, ' + m.name + ' is <b>' + money(Math.max(m.min, banded(n, m.rate * disc()))) + ' a month</b>' + (st.bill === 'year' && !own ? ', billed annually' : '') +
-          ', before any apps' + (n > P.bandAt ? ', with households above ' + P.bandAt.toLocaleString('en-AU') + ' ' + Math.round(P.bandOff * 100) + '% less' : '') + '. Move the slider at the top to see it in your build.', []]; }],
+        if (n > 1500) return ['For more than 1,500 accounts we’ll price it with you. Call us on <b>1300 286 922</b>.', ['call']];
+        return ['For ' + n.toLocaleString('en-AU') + ' accounts, ' + m.name + ' is <b>' + money(Math.max(m.min, banded(n, m.rate * disc()))) + ' a month</b>' + (st.bill === 'year' && !own ? ', billed annually' : '') +
+          ', before any apps' + (n > P.bandAt ? ', with accounts above ' + P.bandAt.toLocaleString('en-AU') + ' ' + Math.round(P.bandOff * 100) + '% less' : '') + '. Move the slider at the top to see it in your build.', []]; }],
       [/household|how many clients|band|discount|1,?500|annual/, function(){
-        return ['It’s priced per client household: $' + m.rate + ' a household a month for ' + m.name + ', with a minimum of ' + money(m.min) + '. A couple counts as one, with the trusts, SMSFs and companies they own. ' +
-          'Households above ' + P.bandAt.toLocaleString('en-AU') + ' are ' + Math.round(P.bandOff * 100) + '% less, and paying annually takes 10% off. More than 1,500? We’ll price it with you.', []]; }],
+        return ['It’s priced per client account: $' + m.rate + ' an account a month for ' + m.name + ', with a minimum of ' + money(m.min) + '. A couple counts as one, with the trusts, SMSFs and companies they own. ' +
+          'Accounts above ' + P.bandAt.toLocaleString('en-AU') + ' are ' + Math.round(P.bandOff * 100) + '% less, and paying annually takes 10% off. More than 1,500? We’ll price it with you.', []]; }],
       [/price|cost|how much|monthly|a month|per month|expensive|cheap|afford|fees?\b|soa/, function(){
         var t = own
           ? 'To own ' + m.name + ' it’s <b>' + money(c.once) + '</b> to start' + (c.term ? ', then ' + money(c.monthly) + ' a month for ' + (c.term - 1) + ' more months, then ' +
             money(c.monthly - c.instal) + ' a month once you own it.' : ', then ' + money(c.monthly) + ' a month for Care.') + ' You order with a ' + money(DEPOSIT) + ' deposit.' +
             ' Every SOA and client review is included.'
-          : m.name + ' for ' + st.n.toLocaleString('en-AU') + ' households is <b>' + money(c.monthly) + ' a month</b>' + (st.bill === 'year' ? ', billed annually' : '') +
+          : m.name + ' for ' + st.n.toLocaleString('en-AU') + ' accounts is <b>' + money(c.monthly) + ' a month</b>' + (st.bill === 'year' ? ', billed annually' : '') +
             ', with support and updates included. Setup is ' + money(P.setup) + ' once, and you order with a ' + money(DEPOSIT) + ' deposit.' +
             (m.key === 'cc' ? ' Each SOA we draft for you is ' + money(P.soa) + ', and each client review ' + Math.round(P.review * 100) + 'c.' : ' Every SOA and client review is included.');
         return [t + ' Microsoft bills Power Apps Premium directly, about ' + money(PA_SEAT * st.staff) + ' a month for ' + people() + '.', ['order']]; }],
@@ -3886,6 +3886,6 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
   }
 })();
 </script>
-<script src="js/nav3.js?v=20261116b"></script>
+<script src="js/nav3.js?v=20261116c"></script>
 </body>
 </html>

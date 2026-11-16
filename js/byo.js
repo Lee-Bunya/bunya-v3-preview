@@ -1,7 +1,7 @@
 /* Build your Bunya, the site's own page (11 Nov 2026). Markup from tools/v3/build_byo.py; needs js/nav3.js first
-   (window.bunyaList = the site's shortlist of features and apps). Households: localStorage 'bunya.hh'.
+   (window.bunyaList = the site's shortlist of features and apps). Accounts: localStorage 'bunya.hh'.
    Extras (brand, documents, website, SEO & AI Search, Priority support, social media done for you, Bunya Build, pay yearly): sessionStorage 'bunya.byo'.
-   Prices: Daniel's configurator and his 12 Nov 2026 reply (draft, A$ ex GST): $500 a month minimum, households above 1,000 16% less, paying yearly
+   Prices: Daniel's configurator and his 12 Nov 2026 reply (draft, A$ ex GST): $500 a month minimum, accounts above 1,000 16% less, paying yearly
    takes 10% off the Bunya fee, setup $7,249, client reviews 97c each and SOAs drafted for you $153 each on Command Centre. */
 (function(){
   'use strict';
@@ -15,7 +15,7 @@
   var BRAND = { kit: ['Brand kit, set up by our designer', 1800], guide: ['Brand guidelines', 4500], refresh: ['Brand refresh', 7500] };
   var APPN = {}; L.APPS.forEach(function(a){ APPN[a[0]] = a; });
   // 12 Nov 2026 (Daniel, "partner tools"): some features use a partner's tool, which the provider bills the practice for directly.
-  // Ask which tool and show its cost up front, kept out of our price per household. Three totals: to Bunya, to other
+  // Ask which tool and show its cost up front, kept out of our price per account. Three totals: to Bunya, to other
   // providers (about) and all in (about). Each choice has "We already have one", which adds nothing.
   var PT = {
     ins: ['Insurance needs and quotes', [['omni', 'OmniLife', 'From $500 a month, covering 50 clients']]],
@@ -82,7 +82,7 @@
   // firm's brand once they add their website. "Watch the film" plays the matching film over it.
   // FILM: [film, caption, line]; VIEW: the screen on Daniel's stage.
   var FILM = {
-    size: ['clients-and-accounts', 'Command Centre', 'Every household, with the trusts, SMSFs and companies they own.'],
+    size: ['clients-and-accounts', 'Command Centre', 'Every account, with the trusts, SMSFs and companies they own.'],
     base: ['advice-pipeline', 'Command Centre', 'Every client, every meeting and every piece of advice in one place.'],
     ae: ['soa-generator', 'The Advice Engine', 'From the meeting to the draft SOA, each step prepared for your team to check.'],
     ff: ['fact-find', 'Fact find', 'Filled from the meeting, the documents and the client portal.'],
@@ -189,12 +189,12 @@
     // Advice Engine nudge
     var fs = L.featSum(s), alc = L.FEAT.reduce(function(t, f){ return t + f[2]; }, 0);
     $('byo-nudge').innerHTML = s.ae
-      ? '<p><b>You have the whole Advice Engine.</b> ' + rate(L.AE) + ' a household instead of ' + rate(alc) + ', with every SOA and client review and Client Portal included.</p><button type="button" class="byo-link" data-tk="ae:">Pick features one by one instead</button>'
-      : fs >= 2 ? '<p><b>The whole Advice Engine costs less.</b> Your features add ' + rate(fs) + ' a household; all eight are $2.51, with every SOA and client review and Client Portal included.' + (sized ? ' That saves about ' + money(banded(fs - L.AE) * (X.year ? 1 - YEAR : 1)) + ' a month.' : '') + '</p><button type="button" class="sx-btn" data-tk="ae:">Take it all</button>'
-      : '<p><b>Or take the whole Advice Engine for $2.51 a household.</b> All eight features, plus every SOA and client review and Client Portal.</p><button type="button" class="sx-btn ghost" data-tk="ae:">Take it all</button>';
+      ? '<p><b>You have the whole Advice Engine.</b> ' + rate(L.AE) + ' an account instead of ' + rate(alc) + ', with every SOA and client review and Client Portal included.</p><button type="button" class="byo-link" data-tk="ae:">Pick features one by one instead</button>'
+      : fs >= 2 ? '<p><b>The whole Advice Engine costs less.</b> Your features add ' + rate(fs) + ' an account; all eight are $2.51, with every SOA and client review and Client Portal included.' + (sized ? ' That saves about ' + money(banded(fs - L.AE) * (X.year ? 1 - YEAR : 1)) + ' a month.' : '') + '</p><button type="button" class="sx-btn" data-tk="ae:">Take it all</button>'
+      : '<p><b>Or take the whole Advice Engine for $2.51 an account.</b> All eight features, plus every SOA and client review and Client Portal.</p><button type="button" class="sx-btn ghost" data-tk="ae:">Take it all</button>';
     // Your Bunya
     var L1 = [], L2 = [], line = function(a, b, cls){ return '<div class="' + (cls || '') + '"><dt>' + a + '</dt><dd>' + b + '</dd></div>'; };
-    L1.push(line('Bunya fee <small>' + (sized ? n.toLocaleString('en-AU') + ' households × ' + rate(c.r) + (c.atMin ? ', the $500 minimum' : '') : 'choose your households') + '</small>', sized ? money(c.fee) : rate(c.r) + ' a household'));
+    L1.push(line('Bunya fee <small>' + (sized ? n.toLocaleString('en-AU') + ' accounts × ' + rate(c.r) + (c.atMin ? ', the $500 minimum' : '') : 'choose your accounts') + '</small>', sized ? money(c.fee) : rate(c.r) + ' an account'));
     if (L.every(s) && Object.keys(s.add).length) L1.push(line('Every app', money(c.apps)));
     else L.APPS.forEach(function(a){ if (s.add[a[0]]) L1.push(line(a[1], L.inAE(s, a[0]) ? 'Included' : money(a[2]))); });
     if (X.prem) L1.push(line('Priority support', money(PREM)));
@@ -237,9 +237,9 @@
     if (c.pt) bits.push('+ about ' + money(X.year ? c.pt * 12 : c.pt) + ' to partners');
     var svc = c.once - SETUP;
     if (svc) bits.push('+ ' + money(svc) + ' once');
-    $('byo-m-d').textContent = (sized ? n.toLocaleString('en-AU') + ' households × ' + rate(c.r) + (c.atMin ? ' (the $500 minimum)' : ' = ' + money(c.fee)) : 'Choose your number of client households') + (bits.length ? ' · ' + bits.join(' · ') : '');
+    $('byo-m-d').textContent = (sized ? n.toLocaleString('en-AU') + ' accounts × ' + rate(c.r) + (c.atMin ? ' (the $500 minimum)' : ' = ' + money(c.fee)) : 'Choose your number of client accounts') + (bits.length ? ' · ' + bits.join(' · ') : '');
     var now = { r: c.r, m: c.apps + c.extra, o: svc }, note = '';
-    if (was && Math.abs(now.r - was.r) > .001) note = (now.r > was.r ? '+' : '−') + cents(Math.abs(now.r - was.r)) + ' a household';
+    if (was && Math.abs(now.r - was.r) > .001) note = (now.r > was.r ? '+' : '−') + cents(Math.abs(now.r - was.r)) + ' an account';
     else if (was && now.m !== was.m) note = (now.m > was.m ? '+' : '−') + money(Math.abs(now.m - was.m)) + ' a month';
     else if (was && now.o !== was.o) note = (now.o > was.o ? '+' : '−') + money(Math.abs(now.o - was.o)) + ' once';
     was = now;
@@ -251,7 +251,7 @@
     var el = $('byo-pt'), ks = ptKeys(s);
     el.hidden = !ks.length && !s.feat.pf;
     if (el.hidden) { el.innerHTML = ''; return; }
-    var h = '<p class="byo-pt-h"><b>Partner tools</b>Some features use a partner’s tool. Our partners bill your practice directly, so their cost isn’t in your price per household.</p>';
+    var h = '<p class="byo-pt-h"><b>Partner tools</b>Some features use a partner’s tool. Our partners bill your practice directly, so their cost isn’t in your price per account.</p>';
     ks.forEach(function(k){
       var d = PT[k], pick = ptPick(k);
       h += '<div class="byo-pt-r"><p class="byo-pt-n">' + d[0] + '<span>Which tool will you use?</span></p><div class="byo-pt-o" role="radiogroup" aria-label="' + d[0] + ': which tool">' +
@@ -291,14 +291,14 @@
     if (X.build) more.push('More Bunya Build ' + money(BUILD) + ' a month');
     return {
       households: sized ? n : null, pay: X.year ? 'yearly' : 'monthly',
-      rows: (window.byoBrand ? [['Firm website', window.byoBrand.site]] : []).concat([['Households', sized ? n.toLocaleString('en-AU') + ' client households' : 'Not chosen yet'],
-             ['Command Centre', '$3 a household a month'],
+      rows: (window.byoBrand ? [['Firm website', window.byoBrand.site]] : []).concat([['Accounts', sized ? n.toLocaleString('en-AU') + ' client accounts' : 'Not chosen yet'],
+             ['Command Centre', '$3 an account a month'],
              ['Advice Engine', feats.length ? feats.join(', ') : 'None yet'],
              ['Apps', apps.length ? apps.join(', ') : 'None'],
              ['Make it yours', yours.join(', ')]]).concat(others.length ? [['Partner tools (they bill you)', others.join(', ')]] : []).concat(more.length ? [['Customise', more.join(', ')]] : []),
-      totals: [['Price per household', rate(c.r) + ' a month' + (X.year ? ', paying yearly' : '')],
-               [(c.ptOn ? 'Paid to Bunya, ' : '') + (X.year ? 'a year' : 'a month').replace(/^a/, c.ptOn ? 'a' : 'A'), sized ? (X.year ? money(c.monthly * 12) : money(c.monthly)) : 'Depends on your households']]
-               .concat(c.ptOn ? [['Paid to partners, about', money(X.year ? c.pt * 12 : c.pt)], ['All in, about', sized ? money((c.monthly + c.pt) * (X.year ? 12 : 1)) : 'Depends on your households']] : []).concat([
+      totals: [['Price per account', rate(c.r) + ' a month' + (X.year ? ', paying yearly' : '')],
+               [(c.ptOn ? 'Paid to Bunya, ' : '') + (X.year ? 'a year' : 'a month').replace(/^a/, c.ptOn ? 'a' : 'A'), sized ? (X.year ? money(c.monthly * 12) : money(c.monthly)) : 'Depends on your accounts']]
+               .concat(c.ptOn ? [['Paid to partners, about', money(X.year ? c.pt * 12 : c.pt)], ['All in, about', sized ? money((c.monthly + c.pt) * (X.year ? 12 : 1)) : 'Depends on your accounts']] : []).concat([
                ['Once', money(c.once) + ' (setup ' + money(SETUP) + (c.once > SETUP ? ' and extras' : '') + ')']]),
       usage: s.ae ? 'Every SOA and client review included.' : 'Client reviews 97c each' + (s.feat.soa ? '.' : '; SOAs we draft for you $153 each.')
     };
@@ -310,13 +310,13 @@
     var d = $('byo-demo'); if (d) d.elements.build.value = JSON.stringify(qt);
     var s = c.s, picks = s.ae ? ['the whole Advice Engine'] : L.FEAT.filter(function(x){ return s.feat[x[0]]; }).map(function(x){ return x[1]; });
     L.APPS.forEach(function(a){ if (s.add[a[0]]) picks.push(a[1]); });
-    var line = (sized ? n.toLocaleString('en-AU') + ' households · ' : '') + 'Command Centre' + (picks.length ? ', ' + picks.join(', ') : '') + ' · ' + rate(c.r) + ' a household a month' + (sized ? ' · ' + money(c.monthly) + ' a month' : '');
-    $('byo-q-line').textContent = '· ' + rate(c.r) + ' a household' + (sized ? ', ' + money(c.monthly) + ' a month' : '');
+    var line = (sized ? n.toLocaleString('en-AU') + ' accounts · ' : '') + 'Command Centre' + (picks.length ? ', ' + picks.join(', ') : '') + ' · ' + rate(c.r) + ' an account a month' + (sized ? ' · ' + money(c.monthly) + ' a month' : '');
+    $('byo-q-line').textContent = '· ' + rate(c.r) + ' an account' + (sized ? ', ' + money(c.monthly) + ' a month' : '');
     $('byo-d-line').textContent = 'Your build: ' + line;
   }
 
   // Pop-ups: Email me this quote, and Book a demo. Contact details typed in one fill the other (sessionStorage
-  // 'bunya.contact'); the firm comes from the website lookup when there is one; the demo's households and "what should
+  // 'bunya.contact'); the firm comes from the website lookup when there is one; the demo's accounts and "what should
   // we show you" come from the build. Not connected yet: on the live site each sends to the team (and the quote emails the visitor).
   var QF = $('byo-quote'), DF = $('byo-demo'), lastFocus = null, CF = ['name', 'email', 'phone', 'firm'];
   [QF, DF].forEach(function(f){ TAGS.forEach(function(k){ if (tags[k]) f.elements[k].value = tags[k]; }); });

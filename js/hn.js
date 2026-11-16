@@ -1,8 +1,8 @@
 /* index-new.html only (10 Nov 2026). Runs after hb.js, which still draws the Command Centre panel,
    the apps rail, the product sheets and the sentence that lights up. This file adds:
-   the household story (sticky screen), the three-layer switcher and the brand colour swatches. */
+   the account story (sticky screen), the three-layer switcher and the brand colour swatches. */
 (function(){
-  /* One household: the screen on the left follows the act being read */
+  /* One account: the screen on the left follows the act being read */
   var acts = [].slice.call(document.querySelectorAll('#hn-acts li')),
       shots = [].slice.call(document.querySelectorAll('#hn-frame img'));
   function act(i){

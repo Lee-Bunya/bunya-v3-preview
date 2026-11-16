@@ -9,9 +9,9 @@
   var PRODUCTS = [
     { key: 'cc', k: 'The base', name: 'Command Centre', head: 'Every client. One place.', one: 'The client record, the advice work and every next step, together.',
       img: 'assets/cc/today.webp', g1: 'rgba(45,212,191,.55)', g2: 'rgba(56,189,248,.25)', kc: '#5EEAD4',
-      points: ['Every household’s record, documents and meetings in one view.', 'See what’s waiting for approval and who owns the next step.', 'Runs inside your firm’s own Microsoft 365.'],
+      points: ['Every account’s record, documents and meetings in one view.', 'See what’s waiting for approval and who owns the next step.', 'Runs inside your firm’s own Microsoft 365.'],
       incl: ['Client record', 'Advice pipeline', 'Practice reports', 'Premium support and updates'],
-      price: 'From $3', per: 'per household a month', build: 'build.html' },
+      price: 'From $3', per: 'per account a month', build: 'build.html' },
     { key: 'notes', k: 'Included', name: 'Meeting Notes', head: 'Every meeting, written up.', one: 'Bunya drafts the notes so your adviser can stay in the conversation.',
       img: 'assets/meeting-notes/ready.webp', g1: 'rgba(167,139,250,.6)', g2: 'rgba(99,102,241,.3)', kc: '#C4B5FD',
       points: ['Captured with the client’s consent.', 'File note, actions and follow-up email drafted after the call.', 'Your adviser checks it before anything is filed or sent.'],
@@ -47,12 +47,12 @@
       points: ['Describe what you need in plain English.', 'Try it on your own screen before it goes live.', 'Approve it, and your team has it.'],
       incl: ['Forms', 'Reports', 'Screens', 'Your own apps', 'Your own agents', 'Community library'],
       price: 'Included', per: 'with Command Centre', build: 'build.html' },
-    /* 9 Nov: Daniel's pricing. The Advice Engine is the second model ($5.51 a household), not an add-on; key stays 'soa'. */
+    /* 9 Nov: Daniel's pricing. The Advice Engine is the second model ($5.51 an account), not an add-on; key stays 'soa'. */
     { key: 'soa', k: 'Upgrade', name: 'Advice Engine', head: 'Every SOA, drafted.', one: 'Fact find, insurance needs, modelling and every SOA drafted in your template, on top of everything in Command Centre.',
       img: 'assets/soa/ready.webp', g1: 'rgba(96,165,250,.6)', g2: 'rgba(59,130,246,.25)', kc: '#93C5FD',
       points: ['The fact find filled from the meeting, the documents and the client portal.', 'Insurance needs, strategy and modelling, ready for advice.', 'Every SOA drafted in your template. Your adviser approves it.'],
       incl: ['Fact find', 'Insurance needs and quotes', 'Strategy and modelling', 'SOA generator', 'File Audit', 'Revenue Import', 'Client Portal'],
-      price: '$5.51', per: 'per household a month, with everything in Command Centre', build: 'build.html?soa=all' },
+      price: '$5.51', per: 'per account a month, with everything in Command Centre', build: 'build.html?soa=all' },
     { key: 'portal', k: 'App', name: 'Client Portal', head: 'Your clients’ own space.', one: 'Documents, meetings, messages and signing, in one place for them.',
       img: 'assets/portal/home.webp', g1: 'rgba(244,114,182,.55)', g2: 'rgba(236,72,153,.25)', kc: '#F9A8D4',
       points: ['Documents, meetings and messages in one place.', 'Clients read their advice and sign it.', 'They can see where their advice is up to.'],
@@ -72,7 +72,7 @@
       img: 'reports.webp', op: '0 100%', g1: 'rgba(163,230,53,.5)', g2: 'rgba(132,204,22,.22)', kc: '#BEF264',
       points: ['Bring in your Xplan revenue export.', 'Each line matched to the client by Xplan ID.', 'See revenue alongside your practice reports.'],
       incl: ['Xplan export', 'Matched by ID', 'Practice reports'],
-      price: '+50c', per: 'a household a month, or included with the whole Advice Engine', build: 'build.html?feat=rev' },
+      price: '+50c', per: 'an account a month, or included with the whole Advice Engine', build: 'build.html?feat=rev' },
     { key: 'voice', k: 'App', name: 'Bunya Voice', head: 'Every call, on the client’s file.', one: 'Your phones on Microsoft Teams. Every call matched to the client, recorded with consent and noted on their file.',
       img: 'assets/voice/voice.webp', g1: 'rgba(103,232,249,.55)', g2: 'rgba(14,165,233,.25)', kc: '#67E8F9',
       points: ['Your firm’s phones, on Microsoft Teams.', 'The client’s record on screen as the phone rings.', 'Calls recorded with consent and noted on the client’s file.'],
@@ -463,7 +463,7 @@
       ],
       works: 'Included with every Bunya. For bigger builds, our build team does it with you, and your first month of Bunya Build is included.',
       extra: [{ id: 'foundation', title: 'Built on your own record', lead: 'Anyone can make an app now. What makes one useful in an advice firm is what sits underneath it.', how: [
-        { t: 'One client record', d: 'Your apps and agents work from the same households, documents and meetings as the rest of Command Centre. Nothing is copied into another system.' },
+        { t: 'One client record', d: 'Your apps and agents work from the same accounts, documents and meetings as the rest of Command Centre. Nothing is copied into another system.' },
         { t: 'Your Microsoft 365', d: 'What you build runs in your firm’s own Microsoft 365, alongside everything else in Bunya.' },
         { t: 'The same approvals', d: 'Nothing goes live until someone on your team approves it. Agents prepare work for a person to check, like the rest of Bunya.' }] }],
       faq: [
@@ -591,13 +591,13 @@
       ],
       works: 'Runs inside your firm’s own Microsoft 365, with Outlook, Teams and SharePoint.',
       shots: [
-        { tab: 'Client record', img: 'assets/cc/record.webp', t: 'Every household, one record.', d: 'Meetings, documents, advice and next steps together, with an owner on every step.' },
-        { tab: 'Pipeline', img: 'assets/cc/pipeline.webp', t: 'Where all the advice is up to.', d: 'Every household from first meeting to implemented advice, and what’s waiting on a check.' },
+        { tab: 'Client record', img: 'assets/cc/record.webp', t: 'Every account, one record.', d: 'Meetings, documents, advice and next steps together, with an owner on every step.' },
+        { tab: 'Pipeline', img: 'assets/cc/pipeline.webp', t: 'Where all the advice is up to.', d: 'Every account from first meeting to implemented advice, and what’s waiting on a check.' },
         { tab: 'Email', img: 'assets/cc/email.webp', t: 'Email, filed for you.', d: 'Client emails and attachments land on the right record in Outlook, with a suggested next step to accept or dismiss.' },
         { tab: 'Reports', img: 'assets/cc/reports.webp', t: 'The practice, at a glance.', d: 'Advice in progress, reviews held on time and where work is waiting, across every adviser.' }
       ],
       vs: { name: 'With Command Centre', rows: [
-        ['The client record', 'Spread across inboxes, drives and a CRM.', 'One record per household, with everything on it.'],
+        ['The client record', 'Spread across inboxes, drives and a CRM.', 'One record per account, with everything on it.'],
         ['Email', 'Attachments saved by hand, if at all.', 'Filed to the client as it arrives.'],
         ['What’s next', 'In people’s heads and on sticky notes.', 'Every next step has an owner.'],
         ['Where advice is up to', 'Asked around the office.', 'One pipeline, from first meeting to implemented.'],
@@ -658,7 +658,7 @@
   /* Cards */
   var GROUP_IN = ['cc', 'notes', 'reviews', 'fee', 'care', 'bp'];
   /* 10 Nov 2026 (Lee): tick as you go. Each feature and app has a tick that adds it to Your Bunya (window.bunyaList, js/nav3.js);
-     the menu pill keeps the running price per household. Vault is Talk to us, so it has no tick. */
+     the menu pill keeps the running price per account. Vault is Talk to us, so it has no tick. */
   function tk(kind, k, name, cls){
     return '<button type="button" class="' + (cls || 'hb-tk') + '" data-tk="' + kind + ':' + (k || '') + '" data-name="' + name + '" aria-pressed="false" aria-label="Add ' + name + ' to your Bunya">' + PLUS + TICK + '</button>';
   }
@@ -691,7 +691,7 @@
     care: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M5.6 5.6l3.6 3.6M14.8 14.8l3.6 3.6M18.4 5.6l-3.6 3.6M9.2 14.8l-3.6 3.6"/>'
   };
   function ccpBuy(){
-    return '<span class="pr"><b>From $3</b> per household a month</span><a class="hb-btn" href="build.html">Build yours</a>' +
+    return '<span class="pr"><b>From $3</b> per account a month</span><a class="hb-btn" href="build.html">Build yours</a>' +
       '<button type="button" class="hb-link" data-open-i="' + pIndex('cc') + '">Learn more</button>';
   }
   (function(){
@@ -711,9 +711,9 @@
   $('rail-add').innerHTML = PRODUCTS.map(function(p, i){ return p.k === 'App' ? cardHTML(p, i) : ''; }).join('');
   if ($('feats-home')) $('feats-home').innerHTML = FEATS.map(function(f){
       return '<div class="hb-ftw"><a class="hb-ft" href="' + ((window.BUNYA_FEATURE_PAGES || {})[f.k] || 'advice-engine.html#' + f.k) + '"><span class="n">' + f.name + (f.tag ? ' <em>' + f.tag + '</em>' : '') + (f.rec ? ' <i class="pick">' + f.rec + '</i>' : '') + '</span>' +
-        '<span class="t">' + f.text.split('. ')[0].replace(/\.$/, '') + '.</span><span class="p">+' + f.p + ' <small>a household a month</small></span></a>' + tk('feat', f.k, f.name) + '</div>';
+        '<span class="t">' + f.text.split('. ')[0].replace(/\.$/, '') + '.</span><span class="p">+' + f.p + ' <small>an account a month</small></span></a>' + tk('feat', f.k, f.name) + '</div>';
     }).join('') +
-    '<div class="hb-ftall"><i class="pick">Best value</i><b>Or take the whole Advice Engine for $2.51 a household.</b><p>Every feature, plus Client Portal, included.</p>' +
+    '<div class="hb-ftall"><i class="pick">Best value</i><b>Or take the whole Advice Engine for $2.51 an account.</b><p>Every feature, plus Client Portal, included.</p>' +
     '<span class="hb-btns"><button type="button" class="hb-btn sm hb-tkb" data-tk="ae:" data-name="the whole Advice Engine" data-off="Add it to your Bunya" data-on="In your Bunya" aria-pressed="false">' + PLUS + TICK + '<span class="tx">Add it to your Bunya</span></button><a class="hb-link" href="advice-engine.html">See every feature</a></span></div>';
   syncTicks();
   if ($('pilot')) $('pilot').innerHTML = PRODUCTS.filter(function(p){ return p.k === 'Pilot'; }).map(function(p){ /* none since 10 Nov */
