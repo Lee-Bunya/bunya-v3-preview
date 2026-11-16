@@ -2426,17 +2426,30 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
     var acc = tone([logo.color, logo.alternative_color].concat(logo.palette || [], img.palette || []), 35).filter(function(x){
       var c = hexHsl(x), dh = Math.abs(c.h - m.h); return c.l >= 30 && c.l <= 70 && Math.min(dh, 360 - dh) > 25; })[0];
     var hex = hslHex;
+    // 16 Nov 2026: Microlink's "logo" is often the browser-tab icon (Strategy First's "sf"). Use the logo in the site's
+    // header when there is one, and keep the tab icon for the small square in the side menu.
+    var head = [].concat(d.hlogo || []).filter(function(u){ return typeof u === 'string' && /^https:\/\/[^"'<>\s]+$/.test(u) && !/\.gif(\?|$)|pixel|tracking|spacer|badge|award/i.test(u); });
+    var hl = head.filter(function(u){ return /logo/i.test(u); })[0] || head[0] || '';
+    var fav = LOGO_OK.test(logo.url || '') ? logo.url : '';
     return { c1: hex({ h: m.h, s: m.s, l: Math.max(18, Math.min(m.l, 42)) }), c2: acc || hex({ h: m.h, s: Math.min(m.s + 10, 90), l: Math.min(Math.max(m.l, 30) + 18, 60) }),
-             logo: LOGO_OK.test(logo.url || '') ? logo.url : '', icon: '', name: String(d.publisher || '').slice(0, 40),
+             logo: hl || fav, icon: hl ? fav : '', name: String(d.publisher || '').slice(0, 40),
              pal: [].concat(logo.palette || [], img.palette || []).filter(ok).slice(0, 8) };
   }
+  // 16 Nov 2026: firms we're meeting, so their brand shows even when the free lookup is out of calls for the day.
+  // Same shape as Microlink's answer (header logo, tab icon and palette from their own site).
+  var KNOWN = {
+    'strategyfirst.com.au': { publisher: 'Strategy First', hlogo: ['https://www.strategyfirst.com.au/hs-fs/hubfs/lzsk3cui.png?width=400&height=104&name=lzsk3cui.png'],
+      logo: { url: 'https://www.strategyfirst.com.au/hubfs/Favicon%203.png', palette: ['#848484', '#B5B6B6', '#6CB444', '#B3DBA2', '#8EC671', '#939696'], background_color: '#848484', color: '#FFFFFF', alternative_color: '#FFFFFF' },
+      image: { palette: ['#B9A9A3', '#3A424F', '#95A8BC', '#68798A', '#8898B2', '#7D755D'] } }
+  };
   function findKit(){
-    var site = st.site, key = 'bb-kit3:' + site, hit = null;
+    var site = st.site, key = 'bb-kit4:' + site, hit = null;
     if (!site) return;
     try { hit = JSON.parse(localStorage.getItem(key) || 'null'); } catch (e) {}
     if (hit) { kit = hit; kitState = 'found'; return; }
+    if (KNOWN[site]) { kit = pickKit(KNOWN[site]); kitState = 'found'; return; }
     kit = null; kitState = 'looking';
-    fetch(BRAND_API ? BRAND_API + '?site=' + encodeURIComponent(site) : 'https://api.microlink.io/?url=' + encodeURIComponent('https://' + site) + '&palette=true')
+    fetch(BRAND_API ? BRAND_API + '?site=' + encodeURIComponent(site) : 'https://api.microlink.io/?url=' + encodeURIComponent('https://' + site) + '&palette=true&meta=true&data.hlogo.attr=src&data.hlogo.type=url&data.hlogo.selectorAll=' + encodeURIComponent('header img, [class*=header] img, [class*=logo] img, img[class*=logo], img[alt*=logo i]'))
       .then(function(r){ return r.json(); })
       .then(function(j){
         if (site !== st.site) return;

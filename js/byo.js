@@ -193,7 +193,7 @@
     if (L.every(s) && Object.keys(s.add).length) L1.push(line('Every app', money(c.apps)));
     else L.APPS.forEach(function(a){ if (s.add[a[0]]) L1.push(line(a[1], L.inAE(s, a[0]) ? 'Included' : money(a[2]))); });
     if (X.prem) L1.push(line('Priority support', money(PREM)));
-    if (X.smm) L1.push(line('Social media, done for you', money(SMM)));
+    if (X.smm) L1.push(line('Broadcast HQ + social media, done for you', money(SMM)));
     if (X.build) L1.push(line('Bunya Build', money(BUILD)));
     if (X.fc) L1.push(line('SEO &amp; AI Search', money(FC)));
     if (X.fcp) L1.push(line('SEO &amp; AI Search Plus', money(FCP)));
@@ -224,7 +224,7 @@
     var bits = [];
     if (c.apps) bits.push('+ ' + money(c.apps) + ' apps');
     if (X.prem) bits.push('+ ' + money(PREM) + ' Priority support');
-    if (X.smm) bits.push('+ ' + money(SMM) + ' social media');
+    if (X.smm) bits.push('+ ' + money(SMM) + ' Broadcast HQ + social media');
     if (X.build) bits.push('+ ' + money(BUILD) + ' Bunya Build');
     if (X.fc) bits.push('+ ' + money(FC) + ' SEO & AI Search');
     if (X.fcp) bits.push('+ ' + money(FCP) + ' SEO & AI Search Plus');
@@ -276,7 +276,7 @@
     if (X.web) yours.push('Website design ' + money(WEB) + ' once');
     if (X.fc) yours.push('SEO & AI Search ' + money(FC) + ' a month');
     if (X.fcp) yours.push('SEO & AI Search Plus ' + money(FCP) + ' a month');
-    if (X.smm) yours.push('Social media marketing, done for you ' + money(SMM) + ' a month');
+    if (X.smm) yours.push('Broadcast HQ + social media marketing, done for you ' + money(SMM) + ' a month');
     if (X.ads) yours.push('Google Ads managed ' + money(ADS) + ' a month, plus ad spend at cost');
     if ((X.docs || X.coll || X.web) && !X.brand) yours.push(X.ownbrand ? 'Has its own brand guidelines (to check)' : 'Needs a brand kit, guidelines or refresh first');
     var others = ptLines(s).map(function(l){ return l[0] + (l[1] ? ', about ' + money(l[1]) + ' a month' : ''); });
