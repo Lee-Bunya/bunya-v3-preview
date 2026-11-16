@@ -312,3 +312,6 @@ html.byo-lock{overflow:hidden}
 .byo-why li::before{content:"";position:absolute;left:1px;top:6px;width:11px;height:6px;border-left:2px solid #5EEAD4;border-bottom:2px solid #5EEAD4;transform:rotate(-45deg)}
 .byo-why a{display:inline-block;margin-top:12px;font-size:14.5px;color:#67E8F9;text-decoration:none}
 .byo-fine a{color:#67E8F9}
+/* "Prefer to own it?": title above the text, never side by side (16 Nov 2026) */
+.byo-card.byo-ownit{display:block}
+.byo-ownit > b{display:block;font-size:16px;color:#fff}
