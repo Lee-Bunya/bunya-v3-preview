@@ -131,3 +131,8 @@ a.pr-start{text-decoration:none}
 .pr-whylink{display:block;margin-top:12px;font-size:14.5px;color:#67E8F9;text-decoration:none}
 .pr-whylink:hover{text-decoration:underline;text-underline-offset:3px}
 @media (max-width:700px){.pr-vs{grid-template-columns:1fr;margin-left:0}}
+
+/* Pay as you go, under Command Centre (16 Nov 2026) */
+.pr-sub{display:flex;align-items:baseline;gap:10px;margin:22px 0 0 44px;font-size:15px;font-weight:600;color:#fff}
+.pr-sub span{font-size:13px;font-weight:400;color:var(--sx-grey)}
+@media (max-width:700px){.pr-sub{margin-left:0;flex-wrap:wrap}}
