@@ -9,7 +9,7 @@ window.BUNYA_PAGES = { cc: 'command-centre.html', notes: 'meeting-notes.html', r
   bp: 'care.html#portal', shape: 'bunya-shape.html', soa: 'advice-engine.html', portal: 'client-portal.html', bhq: 'broadcast-hq.html', field: 'field-notes.html',
   rev: 'revenue-import.html', voice: 'bunya-voice.html', vault: 'bunya-vault.html', svc: 'brand-website-marketing.html' };
 /* 10 Nov 2026: each Advice Engine feature has its own page (built by tools/v3/build_products.mjs). */
-window.BUNYA_FEATURE_PAGES = { ff: 'fact-find.html', pf: 'portfolio.html', ins: 'insurance-needs.html', mod: 'strategy-modelling.html', cmp: 'platform-comparisons.html', soa: 'soa-generator.html', aud: 'file-audit.html' };
+window.BUNYA_FEATURE_PAGES = { ff: 'fact-find.html', pf: 'portfolio.html', ins: 'insurance-needs.html', mod: 'strategy-modelling.html', cmp: 'platform-comparisons.html', soa: 'soa-generator.html', aud: 'file-audit.html', rev: 'revenue-import.html' };
 /* 9 Nov 2026: Daniel's Build your Bunya is where firms build and buy. One address; build.html hands over to it. */
 window.BUNYA_BUILD = 'https://build-your-bunya-376bd3.netlify.app/';
 /* Local preview: use the local build of the configurator (Lee's branch, preview "build-your-bunya" on port 8795). */
@@ -24,10 +24,10 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
    Store: localStorage 'bunya.build' = v=2&feat=ff,pf&add=portal,bhq (or ae=1 for the whole Advice Engine). */
 (function(){
   'use strict';
-  var KEY = 'bunya.build', BASE = 3, AE = 2.01, ALL_APPS = 1484, ALL_APPS_AE = 548;
+  var KEY = 'bunya.build', BASE = 3, AE = 2.51, ALL_APPS = 1484, ALL_APPS_AE = 548;
   var FEAT = [['ff', 'Fact find', .39, []], ['pf', 'Portfolio', .27, []], ['ins', 'Insurance needs and quotes', .39, ['ff']], ['mod', 'Strategy and modelling', .49, ['ff']],
-              ['cmp', 'Platform comparisons', .27, ['pf']], ['soa', 'SOA generator', .93, ['ff', 'mod']], ['aud', 'File Audit', .45, ['soa']]];
-  var APPS = [['portal', 'Client Portal', 790], ['bhq', 'Broadcast HQ', 390], ['field', 'Field Notes', 19], ['rev', 'Revenue Import', 119], ['voice', 'Bunya Voice', 370]];
+              ['cmp', 'Platform comparisons', .27, ['pf']], ['soa', 'SOA generator', .93, ['ff', 'mod']], ['aud', 'File Audit', .45, ['soa']], ['rev', 'Revenue Import', .5, []]];
+  var APPS = [['portal', 'Client Portal', 790], ['bhq', 'Broadcast HQ', 390], ['field', 'Field Notes', 19], ['voice', 'Bunya Voice', 370]];
   var MEM = '';
   function f(k){ return FEAT.filter(function(x){ return x[0] === k; })[0]; }
   function a(k){ return APPS.filter(function(x){ return x[0] === k; })[0]; }
@@ -81,7 +81,7 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
     handover: function(){
       var s = read(), q = new URLSearchParams();
       if (s.ae) q.set('model', 'ae'); else if (Object.keys(s.feat).length) q.set('feat', FEAT.filter(function(x){ return s.feat[x[0]]; }).map(function(x){ return x[0]; }).join(','));
-      var ad = ['portal', 'bhq', 'field', 'rev'].filter(function(k){ return s.add[k]; });
+      var ad = ['portal', 'bhq', 'field'].filter(function(k){ return s.add[k]; });
       if (ad.length) q.set('add', ad.join(','));
       if (s.add.voice) q.set('voice', '1');
       if (Object.keys(s.add).length && every(s)) q.set('all', '1');
@@ -110,11 +110,11 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
     notes:   { name: 'Meeting Notes', head: 'Every meeting, written up.', c: '#C4B5FD', incl: true },
     reviews: { name: 'Review Packs', head: 'Every review, ready.', c: '#FCD34D', incl: true },
     fee:     { name: 'Fee consent', head: 'Renewals, on time.', c: '#6EE7B7', incl: true },
-    soa:     { name: 'Advice Engine', head: 'Every SOA, drafted.', img: 'factfind.webp', price: '$5.01 per household', c: '#93C5FD', g: 'rgba(96,165,250,.55)', param: 'soa', val: 'all' },
+    soa:     { name: 'Advice Engine', head: 'Every SOA, drafted.', img: 'factfind.webp', price: '$5.51 per household', c: '#93C5FD', g: 'rgba(96,165,250,.55)', param: 'soa', val: 'all' },
     portal:  { name: 'Client Portal', head: 'Your clients’ own space.', img: 'portal.webp', price: '$790 a month', c: '#F9A8D4', g: 'rgba(244,114,182,.5)', add: 'portal' },
     bhq:     { name: 'Broadcast HQ', head: 'One idea. Every channel.', img: 'bhq_cockpit.webp', price: '$390 a month', c: '#FDBA74', g: 'rgba(251,146,60,.55)', add: 'bhq' },
     field:   { name: 'Field Notes', head: 'Meetings anywhere, noted.', phone: true, price: '$19 a month', c: '#FCA5A5', g: 'rgba(248,113,113,.55)', add: 'field' },
-    rev:     { name: 'Revenue Import', head: 'Revenue, matched.', img: 'reports.webp', price: '$119 a month', c: '#BEF264', g: 'rgba(163,230,53,.45)', add: 'rev' },
+    rev:     { name: 'Revenue Import', head: 'Revenue, matched.', img: 'reports.webp', price: '+50c a household', c: '#BEF264', g: 'rgba(163,230,53,.45)' },
     voice:   { name: 'Bunya Voice', head: 'Every call, on the client’s file.', img: 'assets/voice/voice.webp', price: '$370 a month', c: '#67E8F9', g: 'rgba(103,232,249,.45)', add: 'voice' },
     vault:   { name: 'Bunya Vault', head: 'Team credentials, together.', img: 'assets/vault/list.webp', price: 'Talk to us', c: '#FDE68A', g: 'rgba(250,204,21,.45)', talk: true },
     brand:   { name: 'Brand', head: 'A kit, guidelines or a refresh.', glyph: 'brand', price: 'AI kit included', c: '#A5B4FC', g: 'rgba(129,140,248,.5)', param: 'brand', val: 'kit', sheet: 'svc' },
@@ -172,7 +172,7 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
       '<button type="button" class="open" data-n3-open="' + k + '"><b>' + p.name + '</b><small>' + p.head + '</small><em>' + p.price + '</em></button></div>';
   }
   /* 10 Nov 2026 (Lee): the menu follows Build your Bunya: the base, the features, the add-ons, then proof and pricing. */
-  var FEATS = [['ff', 'Fact find'], ['pf', 'Portfolio'], ['ins', 'Insurance needs'], ['mod', 'Strategy and modelling'], ['cmp', 'Platform comparisons'], ['soa', 'SOA generator'], ['aud', 'File Audit']];
+  var FEATS = [['ff', 'Fact find'], ['pf', 'Portfolio'], ['ins', 'Insurance needs'], ['mod', 'Strategy and modelling'], ['cmp', 'Platform comparisons'], ['soa', 'SOA generator'], ['aud', 'File Audit'], ['rev', 'Revenue Import']];
   var SECS = [
     { key: 'cc', label: 'Command Centre', html: function(){
       return '<div class="n3-grid">' +
@@ -189,11 +189,11 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
         '<div class="n3-col st" style="--d:0"><h4>2 · The features, pick what you need</h4><div class="n3-big n3-mid">' +
           FEATS.map(function(f){ return '<a href="' + (window.BUNYA_FEATURE_PAGES[f[0]] || 'advice-engine.html#' + f[0]) + '" style="--c:#93C5FD">' + f[1] + '</a>'; }).join('') + '</div></div>' +
         '<div class="n3-col st" style="--d:2"><h4>Or take it all</h4><div class="n3-small"><a href="advice-engine.html">The whole Advice Engine</a><a href="build.html?soa=all">Build yours with it</a><a href="pricing.html">Pricing</a></div></div>' +
-        '<div class="n3-feature st" style="--d:3;--c:#93C5FD;--g:rgba(96,165,250,.5)"><div><span class="k">Every feature, $2.01 a household</span><b>Every SOA, drafted.</b><a class="n3-cc-link" href="advice-engine.html">See the Advice Engine</a></div>' +
+        '<div class="n3-feature st" style="--d:3;--c:#93C5FD;--g:rgba(96,165,250,.5)"><div><span class="k">Every feature, $2.51 a household</span><b>Every SOA, drafted.</b><a class="n3-cc-link" href="advice-engine.html">See the Advice Engine</a></div>' +
           '<div class="sc"><img src="assets/soa/ready.webp" alt="" loading="lazy"></div><div class="acts"><a class="n3-pill" href="build.html?soa=all">Build yours</a></div></div></div>';
     } },
     { key: 'apps', label: 'Apps', html: function(){
-      return '<div class="n3-tiles" style="--cols:6">' + ['portal', 'bhq', 'field', 'rev', 'voice', 'vault'].map(tile).join('') + '</div>' +
+      return '<div class="n3-tiles" style="--cols:6">' + ['portal', 'bhq', 'field', 'voice', 'vault'].map(tile).join('') + '</div>' +
         '<div class="n3-foot st" style="--d:6"><span>3 · The add-ons. Add them now or later.</span><a href="build.html">Build yours</a></div>';
     } },
     { key: 'cust', label: 'Customers', html: function(){
@@ -270,7 +270,7 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
   function popHTML(s){
     var feats = s.ae ? row('The whole Advice Engine', 'Every feature, with Client Portal', plusTxt(L.AE), 'ae:')
       : L.FEAT.filter(function(x){ return s.feat[x[0]]; }).map(function(x){ return row(x[1], '', plusTxt(x[2]), 'feat:' + x[0]); }).join('');
-    var nudge = !s.ae && L.featSum(s) >= L.AE ? '<div class="nudge"><p><b>The whole Advice Engine is $2.01 a household.</b> Every feature, plus Client Portal, for less than your picks.</p>' +
+    var nudge = !s.ae && L.featSum(s) >= L.AE ? '<div class="nudge"><p><b>The whole Advice Engine is $2.51 a household.</b> Every feature, plus Client Portal, for less than your picks.</p>' +
       '<button type="button" data-yb-ae>Switch to it</button></div>' : '';
     var picked = L.APPS.filter(function(x){ return s.add[x[0]]; }), all = picked.length && L.every(s);
     var apps = picked.length ? '<div class="grp"><p class="lbl">Apps <span>a month, for your firm</span></p>' +
@@ -378,7 +378,7 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
       group('Command Centre', ['cc', 'notes', 'reviews'], '<a href="how-it-works.html">How it works</a><a href="care.html">Support</a><a href="bunya-shape.html">Bunya Shape</a>', 0) +
       '<div class="n3-acc" style="--d:1"><button type="button" aria-expanded="false">Advice Engine' + svg('plus') + '</button><div class="in"><div><div class="links">' +
         '<a href="advice-engine.html">The whole Advice Engine</a>' + FEATS.map(function(f){ return '<a href="' + (window.BUNYA_FEATURE_PAGES[f[0]] || 'advice-engine.html#' + f[0]) + '">' + f[1] + '</a>'; }).join('') + '</div></div></div></div>' +
-      group('Apps', ['portal', 'bhq', 'field', 'rev', 'voice', 'vault'], null, 2) +
+      group('Apps', ['portal', 'bhq', 'field', 'voice', 'vault'], null, 2) +
       '<div class="n3-acc" style="--d:3"><button type="button" aria-expanded="false">Customers' + svg('plus') + '</button><div class="in"><div><div class="links"><a href="case-studies.html">Customer stories</a><a href="watch.html">Watch Bunya</a><a href="blog.html">Insights</a><a href="glossary.html">Advice glossary</a><a href="security-your-data.html">Security and your data</a><a href="about.html">About Bunya</a><a href="booking.html#contact">Contact</a></div></div></div></div>' +
       '<div class="n3-acc" style="--d:4"><button type="button" aria-expanded="false">Pricing' + svg('plus') + '</button><div class="in"><div><div class="links"><a href="build.html">Build yours</a><a href="pricing.html">Pricing</a><a href="brand-website-marketing.html">Make it yours</a><a href="website-marketing.html">Website and marketing</a><a href="is-bunya-right.html">Is Bunya right for you?</a><a href="getting-started.html">Getting started</a><a href="faq.html">Questions</a></div></div></div></div>';
   }

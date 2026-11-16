@@ -47,12 +47,12 @@
       points: ['Describe what you need in plain English.', 'Try it on your own screen before it goes live.', 'Approve it, and your team has it.'],
       incl: ['Forms', 'Reports', 'Screens', 'Your own apps', 'Your own agents', 'Community library'],
       price: 'Included', per: 'with Command Centre', build: 'build.html' },
-    /* 9 Nov: Daniel's pricing. The Advice Engine is the second model ($5.01 a household), not an add-on; key stays 'soa'. */
+    /* 9 Nov: Daniel's pricing. The Advice Engine is the second model ($5.51 a household), not an add-on; key stays 'soa'. */
     { key: 'soa', k: 'Upgrade', name: 'Advice Engine', head: 'Every SOA, drafted.', one: 'Fact find, insurance needs, modelling and every SOA drafted in your template, on top of everything in Command Centre.',
       img: 'assets/soa/ready.webp', g1: 'rgba(96,165,250,.6)', g2: 'rgba(59,130,246,.25)', kc: '#93C5FD',
       points: ['The fact find filled from the meeting, the documents and the client portal.', 'Insurance needs, strategy and modelling, ready for advice.', 'Every SOA drafted in your template. Your adviser approves it.'],
-      incl: ['Fact find', 'Insurance needs and quotes', 'Strategy and modelling', 'SOA generator', 'File Audit', 'Client Portal'],
-      price: '$5.01', per: 'per household a month, with everything in Command Centre', build: 'build.html?soa=all' },
+      incl: ['Fact find', 'Insurance needs and quotes', 'Strategy and modelling', 'SOA generator', 'File Audit', 'Revenue Import', 'Client Portal'],
+      price: '$5.51', per: 'per household a month, with everything in Command Centre', build: 'build.html?soa=all' },
     { key: 'portal', k: 'App', name: 'Client Portal', head: 'Your clients’ own space.', one: 'Documents, meetings, messages and signing, in one place for them.',
       img: 'assets/portal/home.webp', g1: 'rgba(244,114,182,.55)', g2: 'rgba(236,72,153,.25)', kc: '#F9A8D4',
       points: ['Documents, meetings and messages in one place.', 'Clients read their advice and sign it.', 'They can see where their advice is up to.'],
@@ -68,11 +68,11 @@
       points: ['Record meetings at the client’s home or business, right in Command Centre.', 'Captured with the client’s consent.', 'Stored in SharePoint and filed to the client like any other meeting.'],
       incl: ['Onsite recording', 'Consent captured', 'File note drafted', 'Filed to the client'],
       price: '$19', per: 'a month', build: 'build.html?add=field' },
-    { key: 'rev', k: 'App', name: 'Revenue Import', head: 'Revenue, matched.', one: 'Your Xplan revenue export, matched to each client.',
+    { key: 'rev', fk: 'rev', k: 'Advice Engine', name: 'Revenue Import', head: 'Revenue, matched.', one: 'Your Xplan revenue export, matched to each client.',
       img: 'reports.webp', op: '0 100%', g1: 'rgba(163,230,53,.5)', g2: 'rgba(132,204,22,.22)', kc: '#BEF264',
       points: ['Bring in your Xplan revenue export.', 'Each line matched to the client by Xplan ID.', 'See revenue alongside your practice reports.'],
       incl: ['Xplan export', 'Matched by ID', 'Practice reports'],
-      price: '$119', per: 'a month', build: 'build.html?add=rev' },
+      price: '+50c', per: 'a household a month, or included with the whole Advice Engine', build: 'build.html?feat=rev' },
     { key: 'voice', k: 'App', name: 'Bunya Voice', head: 'Every call, on the client’s file.', one: 'Your phones on Microsoft Teams. Every call matched to the client, recorded with consent and noted on their file.',
       img: 'assets/voice/voice.webp', g1: 'rgba(103,232,249,.55)', g2: 'rgba(14,165,233,.25)', kc: '#67E8F9',
       points: ['Your firm’s phones, on Microsoft Teams.', 'The client’s record on screen as the phone rings.', 'Calls recorded with consent and noted on the client’s file.'],
@@ -94,7 +94,7 @@
   var ADD = {
     cc: { base: true }, notes: { incl: true }, reviews: { incl: true }, fee: { incl: true }, care: { incl: true }, bp: { incl: true }, shape: { incl: true },
     soa: { param: 'soa', val: 'all', label: 'All SOAs included', note: 'Change to packs or none in your build' },
-    portal: { add: 'portal' }, bhq: { add: 'bhq' }, field: { add: 'field' }, rev: { add: 'rev' }, voice: { add: 'voice' }, vault: { talk: true },
+    portal: { add: 'portal' }, bhq: { add: 'bhq' }, field: { add: 'field' }, voice: { add: 'voice' }, vault: { talk: true },
     svc: { param: 'web', val: 'w5', label: 'Website, up to 5 pages', note: 'Choose brand, website and marketing in your build' }
   };
   var MONTHLY = { portal: 790, bhq: 390, field: 19, rev: 119 }, MKT = { upkeep: 290, found: 1500, cited: 3500 };
@@ -167,7 +167,9 @@
     { k: 'mod', name: 'Strategy and modelling', p: '49c', film: 'strategy-and-modelling', needs: 'the fact find', text: 'Retirement, cash flow and super scenarios, prepared for paraplanning.' },
     { k: 'cmp', name: 'Platform comparisons', p: '27c', film: 'platform-comparison', needs: 'the portfolio', text: 'Platforms and products compared side by side.' },
     { k: 'soa', name: 'SOA generator', p: '93c', film: 'soa-generator', needs: 'the fact find and modelling', tag: 'Pilot', text: 'The draft SOA in your template, with every recommendation linked to its reasons.' },
-    { k: 'aud', name: 'File Audit', p: '45c', film: 'file-audit', needs: 'the SOA generator', tag: 'Pilot', text: 'Every file checked against your licensee’s standards before it goes out.' }
+    { k: 'aud', name: 'File Audit', p: '45c', film: 'file-audit', needs: 'the SOA generator', tag: 'Pilot', text: 'Every file checked against your licensee’s standards before it goes out.' },
+    /* 16 Nov 2026 (Lee, from Kane): Revenue Import joins the Advice Engine at 50c; its page stays revenue-import.html */
+    { k: 'rev', name: 'Revenue Import', p: '50c', film: 'revenue-import', text: 'Your Xplan revenue export, matched to each client, with revenue beside your practice reports.' }
   ];
   var MN = 'assets/meeting-notes/';
   var DETAIL = {
@@ -711,7 +713,7 @@
       return '<div class="hb-ftw"><a class="hb-ft" href="' + ((window.BUNYA_FEATURE_PAGES || {})[f.k] || 'advice-engine.html#' + f.k) + '"><span class="n">' + f.name + (f.tag ? ' <em>' + f.tag + '</em>' : '') + (f.rec ? ' <i class="pick">' + f.rec + '</i>' : '') + '</span>' +
         '<span class="t">' + f.text.split('. ')[0].replace(/\.$/, '') + '.</span><span class="p">+' + f.p + ' <small>a household a month</small></span></a>' + tk('feat', f.k, f.name) + '</div>';
     }).join('') +
-    '<div class="hb-ftall"><i class="pick">Best value</i><b>Or take the whole Advice Engine for $2.01 a household.</b><p>Every feature, plus Client Portal, included.</p>' +
+    '<div class="hb-ftall"><i class="pick">Best value</i><b>Or take the whole Advice Engine for $2.51 a household.</b><p>Every feature, plus Client Portal, included.</p>' +
     '<span class="hb-btns"><button type="button" class="hb-btn sm hb-tkb" data-tk="ae:" data-name="the whole Advice Engine" data-off="Add it to your Bunya" data-on="In your Bunya" aria-pressed="false">' + PLUS + TICK + '<span class="tx">Add it to your Bunya</span></button><a class="hb-link" href="advice-engine.html">See every feature</a></span></div>';
   syncTicks();
   if ($('pilot')) $('pilot').innerHTML = PRODUCTS.filter(function(p){ return p.k === 'Pilot'; }).map(function(p){ /* none since 10 Nov */
@@ -754,8 +756,8 @@
   // 9 Nov: no cart on the site. Building and buying happen in Build your Bunya; build.html hands over with this product chosen.
   function buyHTML(p, compact){
     var talk = p.key === 'vault', href = talk ? 'booking.html' : p.build || 'build.html';
-    var kind = p.key === 'soa' ? 'ae' : p.k === 'App' && !talk ? 'add' : '';
-    var btns = (kind ? '<button type="button" class="hb-btn sm ghost hb-tkb" data-tk="' + kind + ':' + (kind === 'add' ? p.key : '') + '" data-name="' + (kind === 'ae' ? 'the whole Advice Engine' : p.name) + '" data-off="Add to your Bunya" data-on="In your Bunya" aria-pressed="false">' + PLUS + TICK + '<span class="tx">Add to your Bunya</span></button>' : '') +
+    var kind = p.fk ? 'feat' : p.key === 'soa' ? 'ae' : p.k === 'App' && !talk ? 'add' : '';
+    var btns = (kind ? '<button type="button" class="hb-btn sm ghost hb-tkb" data-tk="' + kind + ':' + (kind === 'add' ? p.key : kind === 'feat' ? p.fk : '') + '" data-name="' + (kind === 'ae' ? 'the whole Advice Engine' : p.name) + '" data-off="Add to your Bunya" data-on="In your Bunya" aria-pressed="false">' + PLUS + TICK + '<span class="tx">Add to your Bunya</span></button>' : '') +
       '<a class="hb-btn sm" href="' + href + '">' + (talk ? 'Talk to us' : 'Build yours') + '</a>';
     if (compact) return btns;
     return '<span class="pr"><b>' + p.price + '</b>' + p.per + '</span><span class="hb-btns" style="justify-content:flex-end">' + btns + '</span>';

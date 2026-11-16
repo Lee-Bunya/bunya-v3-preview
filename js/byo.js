@@ -107,7 +107,7 @@
   // Daniel's per-feature and per-app screens are his films (in Bunya's colours), so ticks keep his branded overview
   // screens on show and the feature's own film sits behind "Watch the film".
   var VIEW = { size: 'cc', base: 'cc', ae: 'ae', ff: 'ae', pf: 'ae', ins: 'ae', mod: 'ae', cmp: 'ae', soa: 'ae', aud: 'ae',
-    portal: 'apps', bhq: 'apps', field: 'field', rev: 'apps', voice: 'voice', yours: 'brand', docs: 'docs', web: 'services', support: 'support', build: 'build', sum: 'summary' };
+    portal: 'apps', bhq: 'apps', field: 'field', rev: 'ae', voice: 'voice', yours: 'brand', docs: 'docs', web: 'services', support: 'support', build: 'build', sum: 'summary' };
   var vid = $('byo-v'), img = $('byo-i'), screen = $('byo-screen'), frameEl = $('byo-stage'), watch = $('byo-watch');
   var stage = null, keyNow = 'base', pushT = 0;
   function stageState(view){
@@ -189,9 +189,9 @@
     // Advice Engine nudge
     var fs = L.featSum(s), alc = L.FEAT.reduce(function(t, f){ return t + f[2]; }, 0);
     $('byo-nudge').innerHTML = s.ae
-      ? '<p><b>You have the whole Advice Engine.</b> $2.01 a household instead of ' + rate(alc) + ', with every SOA and client review and Client Portal included.</p><button type="button" class="byo-link" data-tk="ae:">Pick features one by one instead</button>'
-      : fs >= 2 ? '<p><b>The whole Advice Engine costs less.</b> Your features add ' + rate(fs) + ' a household; all seven are $2.01, with every SOA and client review and Client Portal included.' + (sized ? ' That saves about ' + money(banded(fs - L.AE) * (X.year ? 1 - YEAR : 1)) + ' a month.' : '') + '</p><button type="button" class="sx-btn" data-tk="ae:">Take it all</button>'
-      : '<p><b>Or take the whole Advice Engine for $2.01 a household.</b> All seven features, plus every SOA and client review and Client Portal.</p><button type="button" class="sx-btn ghost" data-tk="ae:">Take it all</button>';
+      ? '<p><b>You have the whole Advice Engine.</b> ' + rate(L.AE) + ' a household instead of ' + rate(alc) + ', with every SOA and client review and Client Portal included.</p><button type="button" class="byo-link" data-tk="ae:">Pick features one by one instead</button>'
+      : fs >= 2 ? '<p><b>The whole Advice Engine costs less.</b> Your features add ' + rate(fs) + ' a household; all eight are $2.51, with every SOA and client review and Client Portal included.' + (sized ? ' That saves about ' + money(banded(fs - L.AE) * (X.year ? 1 - YEAR : 1)) + ' a month.' : '') + '</p><button type="button" class="sx-btn" data-tk="ae:">Take it all</button>'
+      : '<p><b>Or take the whole Advice Engine for $2.51 a household.</b> All eight features, plus every SOA and client review and Client Portal.</p><button type="button" class="sx-btn ghost" data-tk="ae:">Take it all</button>';
     // Your Bunya
     var L1 = [], L2 = [], line = function(a, b, cls){ return '<div class="' + (cls || '') + '"><dt>' + a + '</dt><dd>' + b + '</dd></div>'; };
     L1.push(line('Bunya fee <small>' + (sized ? n.toLocaleString('en-AU') + ' households × ' + rate(c.r) + (c.atMin ? ', the $500 minimum' : '') : 'choose your households') + '</small>', sized ? money(c.fee) : rate(c.r) + ' a household'));
@@ -272,7 +272,7 @@
 
   // Email me this quote: everything in the build, prefilled
   function quoteOf(c){
-    var s = c.s, feats = s.ae ? ['The whole Advice Engine (all seven features)'] : L.FEAT.filter(function(f){ return s.feat[f[0]]; }).map(function(f){ return f[1] + ' +' + cents(f[2]); });
+    var s = c.s, feats = s.ae ? ['The whole Advice Engine (all eight features)'] : L.FEAT.filter(function(f){ return s.feat[f[0]]; }).map(function(f){ return f[1] + ' +' + cents(f[2]); });
     var apps = L.APPS.filter(function(a){ return s.add[a[0]]; }).map(function(a){ return a[1] + (L.inAE(s, a[0]) ? ' (included)' : ' ' + money(a[2]) + ' a month'); });
     var yours = [];
     if (X.brand) yours.push(BRAND[X.brand][0] + ' ' + money(BRAND[X.brand][1]) + ' once'); else yours.push('AI brand kit, from your website (included)');
