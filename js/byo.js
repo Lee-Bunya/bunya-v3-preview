@@ -57,7 +57,7 @@
   // State
   var X = {}, n = 500, sized = false;
   try { X = JSON.parse(sessionStorage.getItem('bunya.byo') || '{}') || {}; } catch (e) { X = {}; }
-  try { var h = +localStorage.getItem('bunya.hh'); if (h >= 100 && h <= 1500) { n = Math.round(h / 10) * 10; sized = true; } } catch (e) {}
+  try { var h = +localStorage.getItem('bunya.hh'); if (h >= 100 && h <= 5000) { n = Math.round(h / 10) * 10; sized = true; } } catch (e) {}
   function YR(){ return !!X.year && !X.own; }
   function bm(){ return Math.max(1, Math.min(12, +X.bm || 1)); }
   /* 17 Nov 2026 (Lee): Microsoft costs in their own section. Billed by Microsoft, estimates from the pricing page: Power
@@ -88,7 +88,7 @@
     else if ((soa === 'none' || model === 'cc') && s.ae) L.toggle('ae', '');
     (q.get('feat') || '').split(',').forEach(function(k){ if (k && L.FEAT.some(function(f){ return f[0] === k; }) && !L.has('feat', k)) L.toggle('feat', k); });
     (q.get('add') || '').split(',').concat(q.get('voice') === '1' ? ['voice'] : []).forEach(function(k){ if (APPN[k] && !L.has('add', k)) L.toggle('add', k); });
-    if (q.get('n')) { n = Math.max(100, Math.min(1500, Math.round(+q.get('n') / 10) * 10 || 500)); sized = true; saveN(); }
+    if (q.get('n')) { n = Math.max(100, Math.min(5000, Math.round(+q.get('n') / 10) * 10 || 500)); sized = true; saveN(); }
     if (q.get('bill') === 'year') X.year = true;
     if (BRAND[q.get('brand')]) X.brand = q.get('brand');
     if (q.get('docs') === '1') X.docs = true;
@@ -226,7 +226,7 @@
     var c = calc(), s = c.s;
     pushSoon();
     // Size
-    $('byo-hh').value = n; $('byo-n').textContent = n >= 1500 ? '1,500 or more' : n.toLocaleString('en-AU');
+    $('byo-hh').value = n; $('byo-n').textContent = n >= 5000 ? '5,000 or more' : n.toLocaleString('en-AU');
     [].forEach.call(document.querySelectorAll('[data-hh]'), function(b){ b.setAttribute('aria-pressed', String(sized && +b.dataset.hh === n)); });
     // Ticks
     setTimeout(function(){ paintPicks(s); }, 0);
@@ -274,7 +274,7 @@
     if (X.own) {
       if (c.term) L1.push(line('Bunya, to own <small>' + what + ', ' + money(c.own) + ' over ' + c.term + ' months</small>', money(c.instal)));
       L1.push(line('Support and updates <small>email support</small>', money(c.care)));
-    } else L1.push(line('Bunya fee <small>' + (sized ? n.toLocaleString('en-AU') + ' accounts × ' + rate(c.r) + (c.atMin ? ', the $500 minimum' : '') : 'choose your accounts') + '</small>', sized ? money(c.fee) : rate(c.r) + ' an account'));
+    } else L1.push(line('Bunya fee <small>' + (sized ? n.toLocaleString('en-AU') + ' accounts × ' + rate(c.r) + (n > BAND ? ', 16% off above 1,000' : '') + (c.atMin ? ', the $500 minimum' : '') : 'choose your accounts') + '</small>', sized ? money(c.fee) : rate(c.r) + ' an account'));
     if (L.every(s) && Object.keys(s.add).length) L1.push(line('Every app', money(c.apps)));
     else L.APPS.forEach(function(a){ if (s.add[a[0]]) L1.push(line(a[1], L.inAE(s, a[0]) ? 'Included' : money(a[2]))); });
     if (X.smm) L1.push(line('Broadcast HQ + social media, done for you', money(SMM)));
@@ -292,6 +292,8 @@
       L3.push(line('Paid to partners, about', money(YR() ? c.pt * 12 : c.pt)));
     }
     if (X.own && !c.term) L2.push(line('Bunya, to own <small>' + what + ', any size up to 1,500 accounts</small>', money(c.own)));
+    // 17 Nov 2026 (Lee): sizes go to 5,000 now; owning is priced up to 1,500
+    if (X.own && sized && n > 1500) L1.push(line('<small>Over 1,500 accounts? <a href="booking.html">We’ll price owning it with you</a>.</small>', ''));
     L2.push(line('Standard setup', X.own ? 'Included' : money(SETUP)));
     if (X.brand) L2.push(line(BRAND[X.brand][0], money(BRAND[X.brand][1])));
     if (X.docs) L2.push(line('Brand Document Pack, by our designer', money(DOCS)));
@@ -334,7 +336,7 @@
     if (c.pt) bits.push('+ about ' + money(YR() ? c.pt * 12 : c.pt) + ' to partners');
     var svc = c.svc;
     if (svc) bits.push('+ ' + money(svc) + ' once');
-    $('byo-m-d').textContent = X.own ? (c.term ? money(c.instal) + ' a month for ' + c.term + ' months, then ' + money(c.after) + ' a month' : money(c.own) + ' once') + ' · ' + bits.join(' · ') : (sized ? n.toLocaleString('en-AU') + ' accounts × ' + rate(c.r) + (c.atMin ? ' (the $500 minimum)' : ' = ' + money(c.fee)) : 'Choose your number of client accounts') + (bits.length ? ' · ' + bits.join(' · ') : '');
+    $('byo-m-d').textContent = X.own ? (c.term ? money(c.instal) + ' a month for ' + c.term + ' months, then ' + money(c.after) + ' a month' : money(c.own) + ' once') + ' · ' + bits.join(' · ') : (sized ? n.toLocaleString('en-AU') + ' accounts × ' + rate(c.r) + (n > BAND ? ', 16% off above 1,000' : '') + (c.atMin ? ' (the $500 minimum)' : ' = ' + money(c.fee)) : 'Choose your number of client accounts') + (bits.length ? ' · ' + bits.join(' · ') : '');
     var now = { r: X.own ? 0 : c.r, m: c.monthly - (X.own ? 0 : c.fee), o: c.once, own: !!X.own }, note = '';
     if (was && was.own !== now.own) was = null;
     if (was && Math.abs(now.r - was.r) > .001) note = (now.r > was.r ? '+' : '−') + cents(Math.abs(now.r - was.r)) + ' an account';
