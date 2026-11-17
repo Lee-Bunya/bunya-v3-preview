@@ -57,6 +57,11 @@
   try { var h = +localStorage.getItem('bunya.hh'); if (h >= 100 && h <= 1500) { n = Math.round(h / 10) * 10; sized = true; } } catch (e) {}
   function YR(){ return !!X.year && !X.own; }
   function bm(){ return Math.max(1, Math.min(12, +X.bm || 1)); }
+  /* 17 Nov 2026 (Lee): Microsoft costs in their own section. Billed by Microsoft, estimates from the pricing page: Power
+     Apps Premium about $29.90 a person a month, AI credits from about $50 a month, Teams Phone about $12 a person a month
+     with Bunya Voice. Microsoft 365 licences the firm already has. X.msu = people using Bunya (default 5). */
+  function msu(){ return Math.max(1, Math.min(200, +X.msu || 5)); }
+  function msCost(s){ var p = msu(), pa = p * 29.9, ai = 50, tp = s.add.voice ? p * 12 : 0; return { p: p, pa: pa, ai: ai, tp: tp, total: pa + ai + tp }; }
   function lvl(){ return X.lvl === 'build' || X.lvl === 'team' ? X.lvl : 'shape'; }
   function lvlP(){ return LV[lvl()]; }
   function lvlName(){ return LVN[lvl()] + (FREE[lvl()] ? ' <small>your first month is included</small>' : '') + (lvl() === 'team' ? ' <small>for ' + bm() + (bm() === 1 ? ' month' : ' months') + ', ' + money(bm() * LV.team) + ' in all</small>' : ''); }
@@ -277,7 +282,6 @@
     if (c.ptOn) {
       ptLines(s).forEach(function(l){ L3.push(line(l[0] + (l[2] ? ' <small>' + l[2] + (l[1] ? ', billed by them' : '') + '</small>' : ''), l[1] ? 'about ' + money(YR() ? l[1] * 12 : l[1]) : '$0')); });
       L3.push(line('Paid to partners, about', money(YR() ? c.pt * 12 : c.pt)));
-      L3.push(line('All in, about', known ? per(c.monthly + c.pt) + (YR() ? ' a year' : ' a month') : '—', 'tot'));
     }
     if (X.own && !c.term) L2.push(line('Bunya, to own <small>' + what + ', any size up to 1,500 accounts</small>', money(c.own)));
     L2.push(line('Standard setup', X.own ? 'Included' : money(SETUP)));
@@ -289,6 +293,16 @@
     if ((X.docs || X.coll || X.web) && !X.brand && !X.ownbrand) L2.push(line('<small>Needs a brand kit, guidelines or refresh</small>', ''));
     L2.push(line('Once', money(c.once), 'tot us'));
     var use = s.ae ? '' : '<p class="byo-dim">As you use them: client reviews 97c each' + (s.feat.soa ? '.' : ', and SOAs we draft for you $153 each.') + '</p>';
+    var ms = msCost(s), M = [];
+    M.push(line('Microsoft 365 licences <small>Business Standard or Premium, the plan your firm has today</small>', 'As today'));
+    M.push(line('Power Apps Premium <small>' + ms.p + (ms.p === 1 ? ' person' : ' people') + ' × about $29.90</small>', 'about ' + money(ms.pa)));
+    M.push(line('AI credits <small>pay as you go, in your own tenant</small>', 'from about ' + money(ms.ai)));
+    if (s.add.voice) M.push(line('Teams Phone <small>for Bunya Voice, ' + ms.p + (ms.p === 1 ? ' person' : ' people') + ' × about $12</small>', 'about ' + money(ms.tp)));
+    M.push(line('Paid to Microsoft, about', money(ms.total) + ' a month'));
+    M.push(line('All in, about <small>Bunya' + (c.ptOn ? ', partners' : '') + ' and Microsoft</small>', known ? money(YR() ? (c.monthly + (c.pt || 0) + ms.total) * 12 : c.monthly + (c.pt || 0) + ms.total) + (YR() ? ' a year' : ' a month') : '—', 'tot'));
+    $('byo-ms').innerHTML = '<b>Paid to Microsoft</b><p class="byo-dim">Billed by Microsoft, not Bunya. Bunya runs in your own Microsoft 365, so these go on your Microsoft bill.</p>' +
+      '<div class="byo-pt-u"><span>How many people will use Bunya?</span><span class="byo-pt-step"><button type="button" data-msu="-1" aria-label="One person fewer"' + (ms.p <= 1 ? ' disabled' : '') + '>−</button><output aria-live="polite">' + ms.p + '</output><button type="button" data-msu="1" aria-label="One person more"' + (ms.p >= 200 ? ' disabled' : '') + '>+</button></span></div>' +
+      '<dl class="byo-dl">' + M.join('') + '</dl>';
     $('byo-lines').innerHTML = '<dl class="byo-dl">' + L1.join('') + '</dl>' + (L3.length ? '<dl class="byo-dl">' + L3.join('') + '</dl>' : '') + '<dl class="byo-dl">' + L2.join('') + '</dl>' + use;
     $('byo-live').innerHTML = ['Launch support: a named engineer for ' + (s.ae ? 45 : 30) + ' days', 'Licensee Green-Light Pack', 'Team Quick-Start Kit', 'Email support and every update', 'Shape for your first month'].map(function(t){ return '<li>' + t + '</li>'; }).join('');
     paintQuote(c);
@@ -370,10 +384,10 @@
       totals: (X.own ? [['Bunya, to own', money(c.own) + (c.term ? ', as ' + money(c.instal) + ' a month for ' + c.term + ' months' : ' once')],
                ['Support and updates (email support)', money(c.care) + ' a month'],
                [(c.ptOn ? 'Paid to Bunya, a month' : 'A month') + (c.term ? ' for ' + c.term + ' months' : ''), money(c.monthly)]].concat(c.term ? [['Then, a month', money(c.after)]] : [])
-               .concat(c.ptOn ? [['Paid to partners, about', money(c.pt)], ['All in, about', money(c.monthly + c.pt)]] : [])
+               .concat(c.ptOn ? [['Paid to partners, about', money(c.pt)]] : []).concat([['Paid to Microsoft, about', money(msCost(c.s).total) + ' a month, ' + msu() + ' people'], ['All in, about', money(c.monthly + (c.pt || 0) + msCost(c.s).total) + ' a month']])
                .concat([['Once', money(c.once) + (c.term ? ' (setup included)' : ' (Bunya to own, setup included' + (c.svc ? ', and extras' : '') + ')')]]) : null) || [['Price per account', rate(c.r) + ' a month' + (YR() ? ', paying yearly' : '')],
                [(c.ptOn ? 'Paid to Bunya, ' : '') + (X.year ? 'a year' : 'a month').replace(/^a/, c.ptOn ? 'a' : 'A'), sized ? (X.year ? money(c.monthly * 12) : money(c.monthly)) : 'Depends on your accounts']]
-               .concat(c.ptOn ? [['Paid to partners, about', money(X.year ? c.pt * 12 : c.pt)], ['All in, about', sized ? money((c.monthly + c.pt) * (X.year ? 12 : 1)) : 'Depends on your accounts']] : []).concat([
+               .concat(c.ptOn ? [['Paid to partners, about', money(X.year ? c.pt * 12 : c.pt)]] : []).concat([['Paid to Microsoft, about', money(msCost(c.s).total) + ' a month, ' + msu() + ' people'], ['All in, about', sized ? money((c.monthly + (c.pt || 0) + msCost(c.s).total) * (X.year ? 12 : 1)) : 'Depends on your accounts']]).concat([
                ['Once', money(c.once) + ' (setup ' + money(SETUP) + (c.once > SETUP ? ' and extras' : '') + ')']]),
       usage: s.ae ? 'Every SOA and client review included.' : 'Client reviews 97c each' + (s.feat.soa ? '.' : '; SOAs we draft for you $153 each.')
     };
@@ -466,6 +480,8 @@
     var refocus = function(sel){ var el = document.querySelector(sel); if (el && !el.disabled) el.focus(); };
     var pt = e.target.closest('[data-pt]');
     if (pt) { var pp = pt.dataset.pt.split(':'); X.pt = X.pt || {}; X.pt[pp[0]] = pp[1]; saveX(); paint(); refocus('[data-pt="' + pt.dataset.pt + '"]'); return; }
+    var mu = e.target.closest('[data-msu]');
+    if (mu && !mu.disabled) { X.msu = Math.max(1, Math.min(200, msu() + +mu.dataset.msu)); saveX(); paint(); refocus('[data-msu="' + mu.dataset.msu + '"]'); return; }
     var bb = e.target.closest('[data-bm]');
     if (bb && !bb.disabled) { X.bm = Math.max(1, Math.min(12, bm() + +bb.dataset.bm)); saveX(); paint(); refocus('[data-bm="' + bb.dataset.bm + '"]'); return; }
     var pu = e.target.closest('[data-ptu]');

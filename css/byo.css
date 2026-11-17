@@ -368,3 +368,8 @@ html.byo-lock{overflow:hidden}
 /* 17 Nov 2026 (Lee): price first, "Included for 1 month" under it; Bunya's own totals stand out from partner prices */
 .pc .byo-pc-note{display:block;margin-top:2px;font-size:12.5px;font-weight:500;color:#5EEAD4;text-align:right;white-space:nowrap}
 .byo-dl .tot.us dt,.byo-dl .tot.us dd{color:#5EEAD4}
+
+/* 17 Nov 2026 (Lee): Microsoft costs, their own section in Your Bunya */
+.byo-ms > b{display:block;font-size:16px;color:#fff}
+.byo-ms > p{margin:4px 0 0}
+.byo-ms .byo-pt-u{margin:12px 0 10px}
