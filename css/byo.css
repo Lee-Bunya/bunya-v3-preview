@@ -351,3 +351,16 @@ html.byo-lock{overflow:hidden}
 /* 17 Nov 2026: months of More Bunya Build */
 .byo-bm{margin:12px 0 4px 16px}
 @media (max-width:700px){ .byo-bm{margin-left:0} }
+
+/* 17 Nov 2026 (Lee): steps 2 to 7 open and close; 1 and 8 stay open */
+.byo-col > .pr-gh{cursor:pointer;border-radius:14px}
+.byo-col > .pr-gh:focus-visible{outline:2px solid #67E8F9;outline-offset:6px}
+.byo-col > .pr-gh .pr-chev{margin:2px 0 0 auto;transform:rotate(0)}
+.byo-col > .pr-gh .pc + .pr-chev{margin-left:14px}
+.byo-col.open > .pr-gh .pr-chev{transform:rotate(180deg)}
+.byo-col > .pr-gh:hover .pr-chev{background:rgba(255,255,255,.16)}
+.byo-col:not(.open) > :not(.pr-gh){display:none!important}
+.byo-col:not(.open){padding:22px 0}
+.byo-pick{display:none;margin-top:5px;font-size:14.5px;color:#5EEAD4}
+.byo-col:not(.open) > .pr-gh p{display:none}
+.byo-col:not(.open) .byo-pick{display:block}

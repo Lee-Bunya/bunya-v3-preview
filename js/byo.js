@@ -179,6 +179,34 @@
   // Paint
   var was = null, chgT = 0;
   function on(el, v, inc){ el.setAttribute('aria-pressed', String(v || !!inc)); el.classList.toggle('on', v || !!inc); el.disabled = !!inc; var r = el.closest('.pr-row'); if (r) { r.classList.toggle('on', v || !!inc); r.classList.toggle('inc', !!inc); } }
+  /* 17 Nov 2026 (Lee: "too long now"): steps 2 to 7 open and close from their heading; 1 (size) and 8 (Your Bunya) stay
+     open. A closed step shows what's picked in it, in one line. */
+  var COL = ['byo-base', 'byo-feats', 'byo-apps', 'byo-mkt', 'byo-yours', 'byo-support'];
+  COL.forEach(function(id){
+    var sec = $(id), gh = sec && sec.querySelector('.pr-gh'); if (!gh) return;
+    sec.classList.add('byo-col'); gh.setAttribute('role', 'button'); gh.tabIndex = 0; gh.setAttribute('aria-expanded', 'false');
+    var pk = document.createElement('span'); pk.className = 'byo-pick'; gh.querySelector('div').appendChild(pk);
+    var ch = document.createElement('i'); ch.className = 'pr-chev'; ch.setAttribute('aria-hidden', 'true'); gh.appendChild(ch);
+  });
+  function openStep(id, open){
+    var sec = $(id); if (!sec || !sec.classList.contains('byo-col')) return;
+    var o = open === undefined ? !sec.classList.contains('open') : open;
+    sec.classList.toggle('open', o); sec.querySelector('.pr-gh').setAttribute('aria-expanded', String(o));
+  }
+  function picked(sec){
+    var mode = X.own ? '.byo-sub-only' : '.byo-own-only';
+    return [].filter.call(sec.querySelectorAll('[data-tk][aria-pressed="true"],[data-tk][aria-checked="true"]'), function(b){ return !b.closest(mode); })
+      .map(function(b){ return b.dataset.name; }).filter(Boolean);
+  }
+  function short(names){ return !names.length ? 'None yet' : names.length > 3 ? names.slice(0, 2).join(', ') + ' and ' + (names.length - 2) + ' more' : names.join(', '); }
+  function paintPicks(s){
+    var t = {
+      'byo-base': X.own ? 'Yours to own, with support and updates' : '$3 an account, with email support',
+      'byo-feats': X.own ? (s.ae ? 'Command Centre and the whole Advice Engine' : 'Command Centre on its own') : s.ae ? 'The whole Advice Engine, ' + rate(L.AE) + ' an account' : short(picked($('byo-feats'))),
+      'byo-support': LVN[lvl()] + (lvl() === 'shape' ? ', included for your first month' : lvl() === 'team' ? ', for ' + bm() + (bm() === 1 ? ' month' : ' months') : '')
+    };
+    COL.forEach(function(id){ var pk = $(id) && $(id).querySelector('.byo-pick'); if (pk) pk.textContent = t[id] || short(picked($(id))); });
+  }
   function paint(){
     var c = calc(), s = c.s;
     pushSoon();
@@ -186,6 +214,7 @@
     $('byo-hh').value = n; $('byo-n').textContent = n >= 1500 ? '1,500 or more' : n.toLocaleString('en-AU');
     [].forEach.call(document.querySelectorAll('[data-hh]'), function(b){ b.setAttribute('aria-pressed', String(sized && +b.dataset.hh === n)); });
     // Ticks
+    setTimeout(function(){ paintPicks(s); }, 0);
     [].forEach.call(document.querySelectorAll('[data-tk]'), function(b){
       var t = b.dataset.tk.split(':'), k = t[1];
       if (t[0] === 'feat') on(b, !!s.feat[k]);
@@ -425,6 +454,8 @@
 
   // Input
   document.addEventListener('click', function(e){
+    var gh = e.target.closest('.byo-col > .pr-gh');
+    if (gh && !e.target.closest('a')) { openStep(gh.parentNode.id); return; }
     if (e.target.closest('[data-quote]')) { e.preventDefault(); openModal('byo-mq'); return; }
     // Book a demo on this page (our buttons, the menu's, and any link to booking.html) opens the pop-up, prefilled
     if (e.target.closest('[data-demo], a[href="booking.html"], a.n3-demo')) { e.preventDefault(); openModal('byo-md'); return; }
@@ -470,6 +501,7 @@
     var el = document.querySelector('.byo-pt-in'); if (el && document.activeElement === document.body) el.focus();
   });
   $('byo-hh').addEventListener('input', function(){ n = +this.value; sized = true; saveN(); paint(); });
+  document.addEventListener('keydown', function(e){ var gh = e.target.closest && e.target.closest('.byo-col > .pr-gh'); if (gh && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openStep(gh.parentNode.id); } });
   document.addEventListener('bunya:build', function(e){ var d = e.detail || {}; if (d.key === 'bhq' && d.on && X.smm) { X.smm = false; saveX(); } paint(); });
   document.addEventListener('bunya:brand', function(){ if (window.byoBrand && window.byoBrandAsked) { keyNow = ''; film('yours'); } push(); paintQuote(calc()); var f = $('byo-quote'); if (window.byoBrand && f && !f.elements.firm.value && window.byoBrand.found) f.elements.firm.value = window.byoBrand.firm; });
   addEventListener('storage', paint);
