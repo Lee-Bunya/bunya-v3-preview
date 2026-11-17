@@ -373,3 +373,10 @@ html.byo-lock{overflow:hidden}
 .byo-ms > b{display:block;font-size:16px;color:#fff}
 .byo-ms > p{margin:4px 0 0}
 .byo-ms .byo-pt-u{margin:12px 0 10px}
+
+/* 17 Nov 2026: Microsoft is step 8 now */
+.byo-ms .byo-pt-u{margin:0 0 10px}
+.byo-ms .byo-dim{margin:-4px 0 10px}
+/* 17 Nov 2026 (Lee): Your Bunya broken up by who you pay */
+.byo-dl-h{margin:18px 0 6px;padding-top:16px;border-top:1px solid var(--sx-line);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--sx-grey)}
+#byo-lines > .byo-dl-h:first-child{margin-top:0;padding-top:0;border-top:0}

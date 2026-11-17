@@ -64,7 +64,11 @@
      Apps Premium about $29.90 a person a month, AI credits from about $50 a month, Teams Phone about $12 a person a month
      with Bunya Voice. Microsoft 365 licences the firm already has. X.msu = people using Bunya (default 5). */
   function msu(){ return Math.max(1, Math.min(200, +X.msu || 5)); }
-  function msCost(s){ var p = msu(), pa = p * 29.9, ai = 50, tp = s.add.voice ? p * 12 : 0; return { p: p, pa: pa, ai: ai, tp: tp, total: pa + ai + tp }; }
+  /* Client Portal runs on Power Pages, pay as you go: about A$5.50 for each client who signs in that month (Microsoft's
+     authenticated-user meter, US$4; Australian price from a local Microsoft partner, 17 Nov 2026). X.mcu, default 50. */
+  function mcu(){ return Math.max(0, Math.min(5000, X.mcu === undefined ? 50 : +X.mcu || 0)); }
+  function msCost(s){ var p = msu(), pa = p * 29.9, ai = 50, tp = s.add.voice ? p * 12 : 0, portal = !!s.add.portal || L.inAE(s, 'portal'), cu = mcu(), pp = portal ? cu * 5.5 : 0;
+    return { p: p, pa: pa, ai: ai, tp: tp, portal: portal, cu: cu, pp: pp, total: pa + ai + tp + pp }; }
   function lvl(){ return X.lvl === 'build' || X.lvl === 'team' ? X.lvl : 'shape'; }
   function lvlP(){ return shapeIn() ? 0 : LV[lvl()]; }
   function lvlName(){ return LVN[lvl()] + (shapeIn() ? ' <small>included with your subscription</small>' : freeMonth() ? ' <small>your first month is included</small>' : '') + (lvl() === 'team' ? ' <small>for ' + bm() + (bm() === 1 ? ' month' : ' months') + ', ' + money(bm() * LV.team) + ' in all</small>' : ''); }
@@ -191,7 +195,7 @@
   function on(el, v, inc){ el.setAttribute('aria-pressed', String(v || !!inc)); el.classList.toggle('on', v || !!inc); el.disabled = !!inc; var r = el.closest('.pr-row'); if (r) { r.classList.toggle('on', v || !!inc); r.classList.toggle('inc', !!inc); } }
   /* 17 Nov 2026 (Lee: "too long now"): steps 2 to 7 open and close from their heading; 1 (size) and 8 (Your Bunya) stay
      open. A closed step shows what's picked in it, in one line. */
-  var COL = ['byo-base', 'byo-feats', 'byo-apps', 'byo-mkt', 'byo-yours', 'byo-support'];
+  var COL = ['byo-base', 'byo-feats', 'byo-apps', 'byo-mkt', 'byo-yours', 'byo-support', 'byo-micro'];
   COL.forEach(function(id){
     var sec = $(id), gh = sec && sec.querySelector('.pr-gh'); if (!gh) return;
     sec.classList.add('byo-col'); gh.setAttribute('role', 'button'); gh.tabIndex = 0; gh.setAttribute('aria-expanded', 'false');
@@ -213,6 +217,7 @@
     var t = {
       'byo-base': X.own ? 'Yours to own, with support and updates' : '$3 an account, with email support',
       'byo-feats': X.own ? (s.ae ? 'Command Centre and the whole Advice Engine' : 'Command Centre on its own') : s.ae ? 'The whole Advice Engine, ' + rate(L.AE) + ' an account' : short(picked($('byo-feats'))),
+      'byo-micro': 'About ' + money(msCost(s).total) + ' a month, ' + msu() + (msu() === 1 ? ' person' : ' people'),
       'byo-support': shapeIn() ? 'Shape, included with your subscription' : LVN[lvl()] + ', ' + money(lvlP()) + ' a month' + (freeMonth() ? ', first month included' : lvl() === 'team' ? ', for ' + bm() + (bm() === 1 ? ' month' : ' months') : '')
     };
     COL.forEach(function(id){ var pk = $(id) && $(id).querySelector('.byo-pick'); if (pk) pk.textContent = t[id] || short(picked($(id))); });
@@ -296,17 +301,22 @@
     if ((X.docs || X.coll || X.web) && !X.brand && !X.ownbrand) L2.push(line('<small>Needs a brand kit, guidelines or refresh</small>', ''));
     L2.push(line('Once', money(c.once), 'tot us'));
     var use = s.ae ? '' : '<p class="byo-dim">As you use them: client reviews 97c each' + (s.feat.soa ? '.' : ', and SOAs we draft for you $153 each.') + '</p>';
-    var ms = msCost(s), M = [];
+    var ms = msCost(s), M = [], ppl = function(v){ return v + (v === 1 ? ' person' : ' people'); };
+    var step = function(label, key, v, lo, hi, by){ return '<div class="byo-pt-u"><span>' + label + '</span><span class="byo-pt-step"><button type="button" data-' + key + '="-' + by + '" aria-label="Fewer"' + (v <= lo ? ' disabled' : '') + '>−</button><output aria-live="polite">' + v + '</output><button type="button" data-' + key + '="' + by + '" aria-label="More"' + (v >= hi ? ' disabled' : '') + '>+</button></span></div>'; };
     M.push(line('Microsoft 365 licences <small>Business Standard or Premium, the plan your firm has today</small>', 'As today'));
-    M.push(line('Power Apps Premium <small>' + ms.p + (ms.p === 1 ? ' person' : ' people') + ' × about $29.90</small>', 'about ' + money(ms.pa)));
+    M.push(line('Power Apps Premium <small>' + ppl(ms.p) + ' × about $29.90</small>', 'about ' + money(ms.pa)));
     M.push(line('AI credits <small>pay as you go, in your own tenant</small>', 'from about ' + money(ms.ai)));
-    if (s.add.voice) M.push(line('Teams Phone <small>for Bunya Voice, ' + ms.p + (ms.p === 1 ? ' person' : ' people') + ' × about $12</small>', 'about ' + money(ms.tp)));
-    M.push(line('Paid to Microsoft, about', money(ms.total) + ' a month'));
-    M.push(line('All in, about <small>Bunya' + (c.ptOn ? ', partners' : '') + ' and Microsoft</small>', known ? money(YR() ? (c.monthly + (c.pt || 0) + ms.total) * 12 : c.monthly + (c.pt || 0) + ms.total) + (YR() ? ' a year' : ' a month') : '—', 'tot'));
-    $('byo-ms').innerHTML = '<b>Paid to Microsoft</b><p class="byo-dim">Billed by Microsoft, not Bunya. Bunya runs in your own Microsoft 365, so these go on your Microsoft bill.</p>' +
-      '<div class="byo-pt-u"><span>How many people will use Bunya?</span><span class="byo-pt-step"><button type="button" data-msu="-1" aria-label="One person fewer"' + (ms.p <= 1 ? ' disabled' : '') + '>−</button><output aria-live="polite">' + ms.p + '</output><button type="button" data-msu="1" aria-label="One person more"' + (ms.p >= 200 ? ' disabled' : '') + '>+</button></span></div>' +
+    if (ms.portal) M.push(line('Client Portal on Power Pages <small>pay as you go: ' + ms.cu + ' clients signing in × about $5.50</small>', 'about ' + money(ms.pp)));
+    if (s.add.voice) M.push(line('Teams Phone <small>for Bunya Voice, ' + ppl(ms.p) + ' × about $12</small>', 'about ' + money(ms.tp)));
+    M.push(line('Paid to Microsoft, about', money(ms.total) + ' a month', 'tot'));
+    $('byo-ms').innerHTML = step('How many people will use Bunya?', 'msu', ms.p, 1, 200, 1) +
+      (ms.portal ? step('Clients signing in to the portal each month?', 'mcu', ms.cu, 0, 5000, 10) + '<p class="byo-dim">Microsoft charges the portal only for each client who signs in that month.</p>' : '') +
       '<dl class="byo-dl">' + M.join('') + '</dl>';
-    $('byo-lines').innerHTML = '<dl class="byo-dl">' + L1.join('') + '</dl>' + (L3.length ? '<dl class="byo-dl">' + L3.join('') + '</dl>' : '') + '<dl class="byo-dl">' + L2.join('') + '</dl>' + use;
+    // 17 Nov 2026 (Lee): a cleaner Your Bunya, broken up by who you pay
+    var H = function(t){ return '<p class="byo-dl-h">' + t + '</p>'; }, DL = function(a){ return '<dl class="byo-dl">' + a.join('') + '</dl>'; };
+    var LM = [line('Microsoft licences and usage <small>' + ppl(ms.p) + (ms.portal ? ', client portal' : '') + ' · see step 8</small>', 'about ' + money(YR() ? ms.total * 12 : ms.total))];
+    var LA = [line('All in, about <small>Bunya' + (c.ptOn ? ', partners' : '') + ' and Microsoft</small>', known ? money(YR() ? (c.monthly + (c.pt || 0) + ms.total) * 12 : c.monthly + (c.pt || 0) + ms.total) + (YR() ? ' a year' : ' a month') : '—', 'tot')];
+    $('byo-lines').innerHTML = H('Paid to Bunya') + DL(L1) + (L3.length ? H('Paid to partners') + DL(L3) : '') + H('Paid to Microsoft') + DL(LM) + DL(LA) + H('Once') + DL(L2) + use;
     $('byo-live').innerHTML = ['Launch support: a named engineer for ' + (s.ae ? 45 : 30) + ' days', 'Licensee Green-Light Pack', 'Team Quick-Start Kit', 'Email support and every update', X.own ? 'Shape for your first month' : 'Bunya Shape, included'].map(function(t){ return '<li>' + t + '</li>'; }).join('');
     paintQuote(c);
     // Bottom bar
@@ -483,6 +493,8 @@
     var refocus = function(sel){ var el = document.querySelector(sel); if (el && !el.disabled) el.focus(); };
     var pt = e.target.closest('[data-pt]');
     if (pt) { var pp = pt.dataset.pt.split(':'); X.pt = X.pt || {}; X.pt[pp[0]] = pp[1]; saveX(); paint(); refocus('[data-pt="' + pt.dataset.pt + '"]'); return; }
+    var cu = e.target.closest('[data-mcu]');
+    if (cu && !cu.disabled) { X.mcu = Math.max(0, Math.min(5000, mcu() + +cu.dataset.mcu)); saveX(); paint(); refocus('[data-mcu="' + cu.dataset.mcu + '"]'); return; }
     var mu = e.target.closest('[data-msu]');
     if (mu && !mu.disabled) { X.msu = Math.max(1, Math.min(200, msu() + +mu.dataset.msu)); saveX(); paint(); refocus('[data-msu="' + mu.dataset.msu + '"]'); return; }
     var bb = e.target.closest('[data-bm]');
