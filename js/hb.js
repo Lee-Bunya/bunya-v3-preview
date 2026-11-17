@@ -10,7 +10,7 @@
     { key: 'cc', k: 'The base', name: 'Command Centre', head: 'Every client. One place.', one: 'The client record, the advice work and every next step, together.',
       img: 'assets/cc/today.webp', g1: 'rgba(45,212,191,.55)', g2: 'rgba(56,189,248,.25)', kc: '#5EEAD4',
       points: ['Every account’s record, documents and meetings in one view.', 'See what’s waiting for approval and who owns the next step.', 'Runs inside your firm’s own Microsoft 365.'],
-      incl: ['Client record', 'Advice pipeline', 'Practice reports', 'Standard support and updates'],
+      incl: ['Client record', 'Advice pipeline', 'Practice reports', 'Email support and updates'],
       price: 'From $3', per: 'per account a month', build: 'build.html' },
     { key: 'notes', k: 'Included', name: 'Meeting Notes', head: 'Every meeting, written up.', one: 'Bunya drafts the notes so your adviser can stay in the conversation.',
       img: 'assets/meeting-notes/ready.webp', g1: 'rgba(167,139,250,.6)', g2: 'rgba(99,102,241,.3)', kc: '#C4B5FD',
@@ -28,7 +28,7 @@
       points: ['See when each consent is due.', 'Prepare the renewal or send a reminder.', 'Every consent kept on the client’s record.'],
       incl: ['Due dates', 'Renewal ready', 'Reminders', 'On the record'],
       price: 'Included', per: 'with Command Centre', build: 'build.html' },
-    { key: 'care', k: 'Included', name: 'Support', head: 'Help when your team needs it.', one: 'Standard support comes with every Bunya: email support with a reply within 36 business hours, and every update. Add Shape, Build or Build Team when you want your system changed.',
+    { key: 'care', k: 'Included', name: 'Support', head: 'Help when your team needs it.', one: 'Email support comes with every Bunya, with a reply within 36 business hours, and every update. Then choose your level: Shape is included for your first 3 months, or Build and Build Team for our team to build with you.',
       care: true, g1: 'rgba(45,212,191,.55)', g2: 'rgba(56,189,248,.25)', kc: '#5EEAD4',
       points: ['Video tutorials for each role, and a team to ask.', 'Your own Bunya Portal: ask questions, request changes and follow every project.', 'A regular session to choose the next improvement.'],
       incl: ['Help with daily use', 'Connections kept healthy', 'Updates', 'Improvement sessions', 'Bunya Portal', 'Ask Bunya'],
@@ -43,11 +43,11 @@
        for Shape on the site on 10 Nov. Film: Daniel's bunya-shape.mp4.
        12 Nov (Lee): firms can build their own apps and agents now, branded Bunya Shape.
        17 Nov (Daniel, Lee): no longer included. Shape is the first paid support level, $1,503 a month. */
-    { key: 'shape', k: 'Shape level', name: 'Bunya Shape', head: 'Build it yourself.', one: 'Change your forms and reports, or describe a new app or agent, in plain English. Bunya Shape builds it on your own client record, and nothing goes live until you approve it.',
+    { key: 'shape', k: 'Included 3 months', name: 'Bunya Shape', head: 'Build it yourself.', one: 'Change your forms and reports, or describe a new app or agent, in plain English. Bunya Shape builds it on your own client record, and nothing goes live until you approve it.',
       img: 'assets/films/posters/bunya-shape.webp', g1: 'rgba(240,171,252,.5)', g2: 'rgba(45,212,191,.25)', kc: '#F0ABFC',
       points: ['Describe what you need in plain English.', 'Try it on your own screen before it goes live.', 'Approve it, and your team has it.'],
       incl: ['Forms', 'Reports', 'Screens', 'Your own apps', 'Your own agents', 'Community library'],
-      price: '$1,503', per: 'a month, with chat and email support', build: 'build.html' },
+      price: 'Included', per: 'for your first 3 months, then $1,503 a month', build: 'build.html' },
     /* 9 Nov: Daniel's pricing. The Advice Engine is the second model ($5.51 an account), not an add-on; key stays 'soa'. */
     { key: 'soa', k: 'Upgrade', name: 'Advice Engine', head: 'Every SOA, drafted.', one: 'Fact find, insurance needs, modelling and every SOA drafted in your template, on top of everything in Command Centre.',
       img: 'assets/soa/ready.webp', g1: 'rgba(96,165,250,.6)', g2: 'rgba(59,130,246,.25)', kc: '#93C5FD',
@@ -148,7 +148,7 @@
   /* Amazon-style: what goes well with what, and ready-made builds */
   var PAIRS = { cc: ['soa', 'portal'], notes: ['field'], reviews: ['portal'], fee: ['portal'], soa: ['portal'], portal: ['soa', 'bhq'], bhq: ['svc'], field: ['soa'], rev: ['portal'], voice: ['notes'], vault: ['bhq'], svc: ['bhq'] };
   var READY = [
-    { key: 'ess', name: 'Essentials', line: 'Command Centre with Meeting Notes, Review Packs, fee consent and Standard support.', q: 'cc=1&soa=none' },
+    { key: 'ess', name: 'Essentials', line: 'Command Centre with Meeting Notes, Review Packs, fee consent and email support.', q: 'cc=1&soa=none' },
     { key: 'adv', name: 'Advice', line: 'Essentials plus every statement of advice your firm writes.', q: 'cc=1&soa=all', tag: 'A good place to start' },
     { key: 'full', name: 'Full practice', line: 'Advice plus Client Portal and Broadcast HQ.', q: 'cc=1&soa=all&add=portal,bhq' }
   ];
@@ -441,9 +441,8 @@
         { tab: 'Requests', img: 'assets/bunya-portal/requests.webp', t: 'From question to delivered.', d: 'Every change, file and answer, tracked. Changes are scoped and quoted before any build starts.' }
       ],
       /* 17 Nov 2026 (Daniel, Lee: "go ahead"): support and Bunya Build are one ladder. */
-      extra: [{ id: 'levels', title: 'Four levels of support', lead: 'Standard support comes with every Bunya. Add a level when you want your system changed. Switch level at the start of any month: just tell us before that month begins.', how: [
-        { t: 'Standard · included', d: 'Email support, with a reply within 36 business hours, and every update. Changes to your system aren’t included. If you own Bunya, this is your $1,497 a month support and updates.' },
-        { t: 'Shape · $1,503 a month', d: 'Change your system yourself with AI, in plain English, through our portal: forms, reports, your own apps and agents. Chat and email support, with a reply within 24 business hours.' },
+      extra: [{ id: 'levels', title: 'Three levels of support', lead: 'Email support, with a reply within 36 business hours, and every update come with every Bunya. On top, choose your level. Switch level at the start of any month: just tell us before that month begins.', how: [
+        { t: 'Shape · included for 3 months', d: 'Change your system yourself with AI, in plain English, through our portal: forms, reports, your own apps and agents. Chat and email support, with a reply within 24 business hours. Included for your first 3 months, then $1,503 a month, or drop back to email support at no cost.' },
         { t: 'Build · $5,274 a month', d: 'Send us your ideas and we build them with you, over email: new reports, automations and agents, and changes to your Command Centre, scoped and tested with you. Chat, email and phone, with a reply within 6 business hours.' },
         { t: 'Build Team · $12,055 a month', d: 'Our team works alongside yours to customise your whole system: new processes automated, new agents and workflows, and a custom client portal. Most firms choose it for their first months, then move to another level.' }] }],
       vs: { name: 'With Care', rows: [
@@ -454,7 +453,7 @@
         ['What was agreed', 'Search old emails and notes.', 'Ask Bunya, answered from your records.']
       ] },
       faq: [
-        ['What does support cost?', 'Standard support is included when you subscribe: email support with a reply within 36 business hours, and every update. If you buy Command Centre outright, Standard support and updates are $1,497 a month. To have your system changed, add Shape ($1,503 a month), Build ($5,274) or Build Team ($12,055), the same whether you subscribe or own it. Switch level at the start of any month: just tell us before that month begins. Draft prices, A$ ex GST.'],
+        ['What does support cost?', 'Email support is included when you subscribe, with a reply within 36 business hours, and every update. If you buy Command Centre outright, support and updates are $1,497 a month. Shape is included for your first 3 months, then $1,503 a month. Build ($5,274 a month) and Build Team ($12,055) are the same whether you subscribe or own it. Switch level at the start of any month: just tell us before that month begins. Draft prices, A$ ex GST.'],
         ['How do we get help?', 'Use the support channel from your handover, or email info@bunya.ai, and include the workflow and what you need help with.'],
         ['What is Bunya Portal?', 'Your firm’s own space with Bunya. Everyone you invite sees chat, the library, meetings, the roadmap, requests and support. Invoices and balances are only for the people you choose.'],
         ['Does Ask Bunya change anything?', 'No. It answers questions from your records. Changes go through a request, and are scoped and quoted before any build starts.'],
@@ -468,7 +467,7 @@
         { t: 'Approve', d: 'Nothing goes live until someone on your team approves it. Or ask for it to be changed.' },
         { t: 'Share', d: 'Use forms and reports other practices have shared in the community library.' }
       ],
-      works: 'Part of the Shape level, $1,503 a month, with chat and email support. For bigger builds, our team does it with you on the Build ($5,274 a month) or Build Team ($12,055) levels.',
+      works: 'Included for your first 3 months, then $1,503 a month, with chat and email support. For bigger builds, our team does it with you on the Build ($5,274 a month) or Build Team ($12,055) levels.',
       extra: [{ id: 'foundation', title: 'Built on your own record', lead: 'Anyone can make an app now. What makes one useful in an advice firm is what sits underneath it.', how: [
         { t: 'One client record', d: 'Your apps and agents work from the same accounts, documents and meetings as the rest of Command Centre. Nothing is copied into another system.' },
         { t: 'Your Microsoft 365', d: 'What you build runs in your firm’s own Microsoft 365, alongside everything else in Bunya.' },
@@ -476,7 +475,7 @@
       faq: [
         ['What can we build with Bunya Shape?', 'Changes to your forms, reports and screens, and new apps and agents of your own. You describe what you need in plain English. For bigger builds, our build team does it with you.'],
         ['Do we need a developer?', 'No. You describe it, try it as a draft and approve it. Our build team is there for the bigger jobs.'],
-        ['What does it cost?', 'Bunya Shape is part of the Shape level, $1,503 a month, with chat and email support. For bigger changes made by our team, choose Build ($5,274 a month) or Build Team ($12,055).']
+        ['What does it cost?', 'Bunya Shape is included for your first 3 months, then $1,503 a month, with chat and email support. For bigger changes made by our team, choose Build ($5,274 a month) or Build Team ($12,055).']
       ],
       vs: { name: 'With Bunya Shape', rows: [
         ['Adding a field to a form', 'A ticket, a quote and a wait.', 'Ask in plain English, approve it, done.'],
@@ -613,7 +612,7 @@
       faq: [
         ['Where does our data live?', 'In your firm’s own Microsoft 365. Client records, documents and approvals stay in your tenancy.'],
         ['Does anything happen without a person?', 'No. Bunya prepares the work, and nothing is used or sent until someone on your team checks it.'],
-        ['What support is included?', 'Standard support: email, with a reply within 36 business hours, and every update. It’s included when you subscribe, and $1,497 a month if you buy Command Centre outright.']
+        ['What support is included?', 'Email support, with a reply within 36 business hours, and every update, plus Shape for your first 3 months. It’s included when you subscribe, and $1,497 a month if you buy Command Centre outright.']
       ]
     }
   };

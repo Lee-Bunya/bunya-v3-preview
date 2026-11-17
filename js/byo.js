@@ -5,7 +5,7 @@
    takes 10% off the Bunya fee, setup $7,249, client reviews 97c each and SOAs drafted for you $153 each on Command Centre.
    Own it (17 Nov 2026, Lee: bring it back with the payment terms): Command Centre $104,020, or $178,321 with the whole
    Advice Engine, any size up to 1,500 accounts, setup included, paid in full or over 12, 24 or 36 months at no extra
-   charge (Daniel's configurator), then Standard support and updates $1,497 a month (Shape, Build or Build Team on top, same as subscribers). Apps and
+   charge (Daniel's configurator), then support and updates $1,497 a month (email support; Shape, Build or Build Team on top, same as subscribers). Apps and
    marketing stay a price a month. X.own, X.term in sessionStorage 'bunya.byo'; ?pay=own&term=24 from other pages. */
 (function(){
   'use strict';
@@ -20,7 +20,9 @@
   /* 17 Nov 2026 (Daniel, Lee): support and Bunya Build are one ladder. Standard (email, 36 business hours) is included, and
      is the $1,497 support and updates when owning. Shape $1,503, Build $5,274 and Build Team $12,055 a month sit on top, the
      same for subscribers and owners. Build Team is chosen for 1 to 12 months. X.lvl: '' | shape | build | team. */
-  var LV = { shape: 1503, build: 5274, team: 12055 }, LVN = { shape: 'Shape', build: 'Build', team: 'Build Team' };
+  var LV = { shape: 1503, build: 5274, team: 12055 }, LVN = { shape: 'Shape', build: 'Build', team: 'Build Team' }, FREE_SHAPE = 3;
+  /* 17 Nov 2026 (Daniel, Lee: "3 months"): three levels, not four. Email support is included underneath; Shape is the
+     starting level and is included for the first 3 months, then $1,503 a month (or drop back to email support). */
   var BRAND = { kit: ['Brand kit, set up by our designer', 1800], guide: ['Brand guidelines', 4500], refresh: ['Brand refresh', 7500] };
   var APPN = {}; L.APPS.forEach(function(a){ APPN[a[0]] = a; });
   // 12 Nov 2026 (Daniel, "partner tools"): some features use a partner's tool, which the provider bills the practice for directly.
@@ -53,9 +55,9 @@
   try { var h = +localStorage.getItem('bunya.hh'); if (h >= 100 && h <= 1500) { n = Math.round(h / 10) * 10; sized = true; } } catch (e) {}
   function YR(){ return !!X.year && !X.own; }
   function bm(){ return Math.max(1, Math.min(12, +X.bm || 1)); }
-  function lvl(){ return LV[X.lvl] ? X.lvl : ''; }
-  function lvlP(){ return LV[lvl()] || 0; }
-  function lvlName(){ return LVN[lvl()] + (lvl() === 'team' ? ' <small>for ' + bm() + (bm() === 1 ? ' month' : ' months') + ', ' + money(bm() * LV.team) + ' in all</small>' : ''); }
+  function lvl(){ return X.lvl === 'build' || X.lvl === 'team' ? X.lvl : 'shape'; }
+  function lvlP(){ return lvl() === 'shape' ? 0 : LV[lvl()]; }
+  function lvlName(){ return LVN[lvl()] + (lvl() === 'shape' ? ' <small>included for your first ' + FREE_SHAPE + ' months, then ' + money(LV.shape) + ' a month</small>' : '') + (lvl() === 'team' ? ' <small>for ' + bm() + (bm() === 1 ? ' month' : ' months') + ', ' + money(bm() * LV.team) + ' in all</small>' : ''); }
   function saveX(){ try { sessionStorage.setItem('bunya.byo', JSON.stringify(X)); } catch (e) {} }
   function saveN(){ try { localStorage.setItem('bunya.hh', n); } catch (e) {} }
 
@@ -191,7 +193,7 @@
       else if (t[0] === 'add') { var inc = L.inAE(s, k); on(b, !!s.add[k] && !inc, inc); var pc = b.closest('.pr-row').querySelector('.pc'); pc.innerHTML = inc ? '<b>Included</b>' : '<b>' + money(APPN[k][2]) + '</b> a month'; }
       else if (t[0] === 'brand') { var sel = (X.brand || 'none') === k; b.setAttribute('aria-checked', String(sel)); b.classList.toggle('on', sel); b.closest('.pr-row').classList.toggle('on', sel); }
       else if (t[0] === 'x') on(b, !!X[k]);
-      else if (t[0] === 'lvl') { var sl = (k === 'std' ? '' : k) === lvl(); b.setAttribute('aria-checked', String(sl)); b.classList.toggle('on', sl); b.closest('.pr-row').classList.toggle('on', sl); }
+      else if (t[0] === 'lvl') { var sl = k === lvl(); b.setAttribute('aria-checked', String(sl)); b.classList.toggle('on', sl); b.closest('.pr-row').classList.toggle('on', sl); }
       else if (t[0] === 'own') { var so = (k === 'ae') === !!s.ae; b.setAttribute('aria-checked', String(so)); b.classList.toggle('on', so); b.closest('.pr-row').classList.toggle('on', so); }
     });
     document.body.classList.toggle('is-own', !!X.own);
@@ -227,12 +229,12 @@
     var what = s.ae ? 'Command Centre and the whole Advice Engine' : 'Command Centre', known = sized || X.own;
     if (X.own) {
       if (c.term) L1.push(line('Bunya, to own <small>' + what + ', ' + money(c.own) + ' over ' + c.term + ' months</small>', money(c.instal)));
-      L1.push(line('Standard support and updates', money(c.care)));
+      L1.push(line('Support and updates <small>email support</small>', money(c.care)));
     } else L1.push(line('Bunya fee <small>' + (sized ? n.toLocaleString('en-AU') + ' accounts × ' + rate(c.r) + (c.atMin ? ', the $500 minimum' : '') : 'choose your accounts') + '</small>', sized ? money(c.fee) : rate(c.r) + ' an account'));
     if (L.every(s) && Object.keys(s.add).length) L1.push(line('Every app', money(c.apps)));
     else L.APPS.forEach(function(a){ if (s.add[a[0]]) L1.push(line(a[1], L.inAE(s, a[0]) ? 'Included' : money(a[2]))); });
     if (X.smm) L1.push(line('Broadcast HQ + social media, done for you', money(SMM)));
-    if (lvl()) L1.push(line(lvlName(), money(lvlP())));
+    L1.push(line(lvlName(), lvl() === 'shape' ? 'Included' : money(lvlP())));
     if (X.fc) L1.push(line('SEO &amp; AI Search', money(FC)));
     if (X.fcp) L1.push(line('SEO &amp; AI Search Plus', money(FCP)));
     if (X.ads) L1.push(line('Google Ads, managed <small>ad spend billed at cost</small>', money(ADS)));
@@ -256,7 +258,7 @@
     L2.push(line('Once', money(c.once), 'tot'));
     var use = s.ae ? '' : '<p class="byo-dim">As you use them: client reviews 97c each' + (s.feat.soa ? '.' : ', and SOAs we draft for you $153 each.') + '</p>';
     $('byo-lines').innerHTML = '<dl class="byo-dl">' + L1.join('') + '</dl>' + (L3.length ? '<dl class="byo-dl">' + L3.join('') + '</dl>' : '') + '<dl class="byo-dl">' + L2.join('') + '</dl>' + use;
-    $('byo-live').innerHTML = ['Launch support: a named engineer for ' + (s.ae ? 45 : 30) + ' days', 'Licensee Green-Light Pack', 'Team Quick-Start Kit', 'Standard support and every update'].map(function(t){ return '<li>' + t + '</li>'; }).join('');
+    $('byo-live').innerHTML = ['Launch support: a named engineer for ' + (s.ae ? 45 : 30) + ' days', 'Licensee Green-Light Pack', 'Team Quick-Start Kit', 'Email support and every update', 'Shape for your first 3 months'].map(function(t){ return '<li>' + t + '</li>'; }).join('');
     paintQuote(c);
     // Bottom bar
     $('byo-r').textContent = X.own ? money(c.term ? c.instal : c.own) : rate(c.r);
@@ -266,7 +268,7 @@
     if (X.own) bits.push('Support and updates ' + money(CARE));
     if (c.apps) bits.push('+ ' + money(c.apps) + ' apps');
     if (X.smm) bits.push('+ ' + money(SMM) + ' Broadcast HQ + social media');
-    if (lvl()) bits.push('+ ' + money(lvlP()) + ' ' + LVN[lvl()] + (lvl() === 'team' ? ' for ' + bm() + (bm() === 1 ? ' month' : ' months') : ''));
+    if (lvl() !== 'shape') bits.push('+ ' + money(lvlP()) + ' ' + LVN[lvl()] + (lvl() === 'team' ? ' for ' + bm() + (bm() === 1 ? ' month' : ' months') : ''));
     if (X.fc) bits.push('+ ' + money(FC) + ' SEO & AI Search');
     if (X.fcp) bits.push('+ ' + money(FCP) + ' SEO & AI Search Plus');
     if (X.ads) bits.push('+ ' + money(ADS) + ' Google Ads');
@@ -324,7 +326,7 @@
     var others = ptLines(s).map(function(l){ return l[0] + (l[1] ? ', about ' + money(l[1]) + ' a month' : ''); });
     if (s.feat.pf) others.push('Portfolio reads from CFS Edge and HUB24');
     var more = [];
-    more.push(lvl() ? LVN[lvl()] + ' ' + money(lvlP()) + ' a month' + (lvl() === 'team' ? ' for ' + bm() + (bm() === 1 ? ' month' : ' months') + ' (' + money(bm() * LV.team) + ')' : '') : 'Standard support (included)');
+    more.push(lvl() !== 'shape' ? LVN[lvl()] + ' ' + money(lvlP()) + ' a month' + (lvl() === 'team' ? ' for ' + bm() + (bm() === 1 ? ' month' : ' months') + ' (' + money(bm() * LV.team) + ')' : '') : 'Shape, included for the first ' + FREE_SHAPE + ' months, then ' + money(LV.shape) + ' a month');
     return {
       households: sized ? n : null, pay: X.own ? 'own, ' + (c.term ? 'over ' + c.term + ' months' : 'in full') : YR() ? 'yearly' : 'monthly',
       rows: (window.byoBrand ? [['Firm website', window.byoBrand.site]] : []).concat([['Accounts', sized ? n.toLocaleString('en-AU') + ' client accounts' : 'Not chosen yet'],
@@ -334,7 +336,7 @@
              ['Apps', apps.length ? apps.join(', ') : 'None'],
              ['Make it yours', yours.join(', ')]]).concat(others.length ? [['Partner tools (they bill you)', others.join(', ')]] : []).concat(more.length ? [['Support and build', more.join(', ')]] : []),
       totals: (X.own ? [['Bunya, to own', money(c.own) + (c.term ? ', as ' + money(c.instal) + ' a month for ' + c.term + ' months' : ' once')],
-               ['Standard support and updates', money(c.care) + ' a month'],
+               ['Support and updates (email support)', money(c.care) + ' a month'],
                [(c.ptOn ? 'Paid to Bunya, a month' : 'A month') + (c.term ? ' for ' + c.term + ' months' : ''), money(c.monthly)]].concat(c.term ? [['Then, a month', money(c.after)]] : [])
                .concat(c.ptOn ? [['Paid to partners, about', money(c.pt)], ['All in, about', money(c.monthly + c.pt)]] : [])
                .concat([['Once', money(c.once) + (c.term ? ' (setup included)' : ' (Bunya to own, setup included' + (c.svc ? ', and extras' : '') + ')')]]) : null) || [['Price per account', rate(c.r) + ' a month' + (YR() ? ', paying yearly' : '')],
@@ -453,7 +455,7 @@
     var t = b.dataset.tk.split(':'), k = t[1];
     if (t[0] === 'feat' || t[0] === 'add') { if (L.toggle(t[0], k)) film(k); return; }
     if (t[0] === 'ae') { if (L.toggle('ae', '')) film('ae'); return; }
-    if (t[0] === 'lvl') { X.lvl = k === 'std' ? '' : k; saveX(); paint(); if (X.lvl) film(b.closest('.pr-row').dataset.film || 'support'); return; }
+    if (t[0] === 'lvl') { X.lvl = k; saveX(); paint(); if (X.lvl) film(b.closest('.pr-row').dataset.film || 'support'); return; }
     if (t[0] === 'brand') X.brand = k === 'none' ? '' : k;
     else { X[k] = !X[k]; if (X[k] && k === 'fc') X.fcp = false; if (X[k] && k === 'fcp') X.fc = false;
       // 17 Nov 2026 (Lee): the two Broadcast HQs are one or the other
