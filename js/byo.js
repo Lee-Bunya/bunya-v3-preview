@@ -48,6 +48,7 @@
   try { X = JSON.parse(sessionStorage.getItem('bunya.byo') || '{}') || {}; } catch (e) { X = {}; }
   try { var h = +localStorage.getItem('bunya.hh'); if (h >= 100 && h <= 1500) { n = Math.round(h / 10) * 10; sized = true; } } catch (e) {}
   function YR(){ return !!X.year && !X.own; }
+  function bm(){ return Math.max(1, Math.min(12, +X.bm || 1)); }
   function saveX(){ try { sessionStorage.setItem('bunya.byo', JSON.stringify(X)); } catch (e) {} }
   function saveN(){ try { localStorage.setItem('bunya.hh', n); } catch (e) {} }
 
@@ -192,6 +193,9 @@
     if (pr) pr.textContent = X.own ? 'Rapid help from our team, with a 1 to 3 hour turnaround. It takes the place of support and updates: $1,997 a month instead of $1,497.' : 'Rapid help from our team, with a 1 to 3 hour turnaround.';
     [].forEach.call(document.querySelectorAll('[data-bill]'), function(b){ var sel = (b.dataset.bill === 'year') === !!X.year; b.setAttribute('aria-checked', String(sel)); b.classList.toggle('on', sel); });
     if (X.build && !$('byo-more').open) $('byo-more').open = true;
+    // 17 Nov 2026 (Lee): choose how many months of More Bunya Build, 1 to 12
+    var bmEl = $('byo-bm');
+    if (bmEl) { bmEl.hidden = !X.build; var m = bm(); bmEl.innerHTML = X.build ? '<span>For how many months?</span><span class="byo-pt-step"><button type="button" data-bm="-1" aria-label="One month fewer"' + (m <= 1 ? ' disabled' : '') + '>−</button><output aria-live="polite">' + m + '</output><button type="button" data-bm="1" aria-label="One month more"' + (m >= 12 ? ' disabled' : '') + '>+</button></span><em>' + m + (m === 1 ? ' month' : ' months') + ' × ' + money(BUILD) + ' = ' + money(m * BUILD) + '</em>' : ''; }
     // 12 Nov 2026 (Lee): the pack and the website are designed from the firm's brand. No brand tier? Ask.
     var picks = [X.docs, X.coll, X.web].filter(Boolean).length, nb = $('byo-needs'), needBrand = picks > 0 && !X.brand;
     nb.hidden = !needBrand;
@@ -224,7 +228,7 @@
     else L.APPS.forEach(function(a){ if (s.add[a[0]]) L1.push(line(a[1], L.inAE(s, a[0]) ? 'Included' : money(a[2]))); });
     if (X.prem && !X.own) L1.push(line('Priority support', money(PREM)));
     if (X.smm) L1.push(line('Broadcast HQ + social media, done for you', money(SMM)));
-    if (X.build) L1.push(line('Bunya Build', money(BUILD)));
+    if (X.build) L1.push(line('Bunya Build <small>for ' + bm() + (bm() === 1 ? ' month' : ' months') + ', ' + money(bm() * BUILD) + ' in all</small>', money(BUILD)));
     if (X.fc) L1.push(line('SEO &amp; AI Search', money(FC)));
     if (X.fcp) L1.push(line('SEO &amp; AI Search Plus', money(FCP)));
     if (X.ads) L1.push(line('Google Ads, managed <small>ad spend billed at cost</small>', money(ADS)));
@@ -259,7 +263,7 @@
     if (c.apps) bits.push('+ ' + money(c.apps) + ' apps');
     if (X.prem && !X.own) bits.push('+ ' + money(PREM) + ' Priority support');
     if (X.smm) bits.push('+ ' + money(SMM) + ' Broadcast HQ + social media');
-    if (X.build) bits.push('+ ' + money(BUILD) + ' Bunya Build');
+    if (X.build) bits.push('+ ' + money(BUILD) + ' Bunya Build for ' + bm() + (bm() === 1 ? ' month' : ' months'));
     if (X.fc) bits.push('+ ' + money(FC) + ' SEO & AI Search');
     if (X.fcp) bits.push('+ ' + money(FCP) + ' SEO & AI Search Plus');
     if (X.ads) bits.push('+ ' + money(ADS) + ' Google Ads');
@@ -318,7 +322,7 @@
     if (s.feat.pf) others.push('Portfolio reads from CFS Edge and HUB24');
     var more = [];
     if (X.prem) more.push('Priority support ' + money(PREM) + ' a month');
-    if (X.build) more.push('More Bunya Build ' + money(BUILD) + ' a month');
+    if (X.build) more.push('More Bunya Build ' + money(BUILD) + ' a month for ' + bm() + (bm() === 1 ? ' month' : ' months') + ' (' + money(bm() * BUILD) + ')');
     return {
       households: sized ? n : null, pay: X.own ? 'own, ' + (c.term ? 'over ' + c.term + ' months' : 'in full') : YR() ? 'yearly' : 'monthly',
       rows: (window.byoBrand ? [['Firm website', window.byoBrand.site]] : []).concat([['Accounts', sized ? n.toLocaleString('en-AU') + ' client accounts' : 'Not chosen yet'],
@@ -424,6 +428,8 @@
     var refocus = function(sel){ var el = document.querySelector(sel); if (el && !el.disabled) el.focus(); };
     var pt = e.target.closest('[data-pt]');
     if (pt) { var pp = pt.dataset.pt.split(':'); X.pt = X.pt || {}; X.pt[pp[0]] = pp[1]; saveX(); paint(); refocus('[data-pt="' + pt.dataset.pt + '"]'); return; }
+    var bb = e.target.closest('[data-bm]');
+    if (bb && !bb.disabled) { X.bm = Math.max(1, Math.min(12, bm() + +bb.dataset.bm)); saveX(); paint(); refocus('[data-bm="' + bb.dataset.bm + '"]'); return; }
     var pu = e.target.closest('[data-ptu]');
     if (pu && !pu.disabled) { X.pt = X.pt || {}; X.pt.users = Math.max(1, Math.min(50, ptUsers() + +pu.dataset.ptu)); saveX(); paint(); refocus('[data-ptu="' + pu.dataset.ptu + '"]'); return; }
     var md = e.target.closest('[data-mode]');
