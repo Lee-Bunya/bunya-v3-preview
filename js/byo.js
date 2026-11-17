@@ -1,7 +1,7 @@
 /* Build your Bunya, the site's own page (11 Nov 2026). Markup from tools/v3/build_byo.py; needs js/nav3.js first
    (window.bunyaList = the site's shortlist of features and apps). Accounts: localStorage 'bunya.hh'.
    Extras (brand, documents, website, SEO & AI Search, support level X.lvl, social media done for you, pay yearly): sessionStorage 'bunya.byo'.
-   Prices: Daniel's configurator and his 12 Nov 2026 reply (draft, A$ ex GST): $500 a month minimum, accounts above 1,000 16% less, paying yearly
+   Prices: Daniel's configurator and his 12 Nov 2026 reply (draft, A$ ex GST): $500 a month minimum, each 1,000 accounts after the first 16% less than the 1,000 before it (Lee, 17 Nov: compounding), paying yearly
    takes 10% off the Bunya fee, setup $7,249, client reviews 97c each and SOAs drafted for you $153 each on Command Centre.
    Own it (17 Nov 2026, Lee: bring it back with the payment terms): Command Centre $104,020, or $178,321 with the whole
    Advice Engine, any size up to 1,500 accounts, setup included, paid in full or over 12, 24 or 36 months at no extra
@@ -101,7 +101,7 @@
     history.replaceState(null, '', location.pathname + location.hash);
   })();
 
-  function banded(r){ return r * (Math.min(n, BAND) + Math.max(0, n - BAND) * (1 - OFF)); }
+  function banded(r){ var u = 0, f = 1, x = n; while (x > 0) { u += Math.min(x, BAND) * f; x -= BAND; f *= 1 - OFF; } return r * u; }
   function calc(){
     var s = L.read(), r = L.rate(s) * (YR() ? 1 - YEAR : 1), raw = banded(r), fee = Math.max(MIN, raw), apps = L.apps(s);
     var mkt = lvlP() + (X.fc ? FC : 0) + (X.fcp ? FCP : 0) + (X.ads ? ADS : 0) + (X.smm ? SMM : 0);
@@ -274,7 +274,7 @@
     if (X.own) {
       if (c.term) L1.push(line('Bunya, to own <small>' + what + ', ' + money(c.own) + ' over ' + c.term + ' months</small>', money(c.instal)));
       L1.push(line('Support and updates <small>email support</small>', money(c.care)));
-    } else L1.push(line('Bunya fee <small>' + (sized ? n.toLocaleString('en-AU') + ' accounts × ' + rate(c.r) + (n > BAND ? ', 16% off above 1,000' : '') + (c.atMin ? ', the $500 minimum' : '') : 'choose your accounts') + '</small>', sized ? money(c.fee) : rate(c.r) + ' an account'));
+    } else L1.push(line('Bunya fee <small>' + (sized ? n.toLocaleString('en-AU') + ' accounts × ' + rate(c.r) + (n > BAND ? ', 16% less for each 1,000 after the first' : '') + (c.atMin ? ', the $500 minimum' : '') : 'choose your accounts') + '</small>', sized ? money(c.fee) : rate(c.r) + ' an account'));
     if (L.every(s) && Object.keys(s.add).length) L1.push(line('Every app', money(c.apps)));
     else L.APPS.forEach(function(a){ if (s.add[a[0]]) L1.push(line(a[1], L.inAE(s, a[0]) ? 'Included' : money(a[2]))); });
     if (X.smm) L1.push(line('Broadcast HQ + social media, done for you', money(SMM)));
@@ -336,7 +336,7 @@
     if (c.pt) bits.push('+ about ' + money(YR() ? c.pt * 12 : c.pt) + ' to partners');
     var svc = c.svc;
     if (svc) bits.push('+ ' + money(svc) + ' once');
-    $('byo-m-d').textContent = X.own ? (c.term ? money(c.instal) + ' a month for ' + c.term + ' months, then ' + money(c.after) + ' a month' : money(c.own) + ' once') + ' · ' + bits.join(' · ') : (sized ? n.toLocaleString('en-AU') + ' accounts × ' + rate(c.r) + (n > BAND ? ', 16% off above 1,000' : '') + (c.atMin ? ' (the $500 minimum)' : ' = ' + money(c.fee)) : 'Choose your number of client accounts') + (bits.length ? ' · ' + bits.join(' · ') : '');
+    $('byo-m-d').textContent = X.own ? (c.term ? money(c.instal) + ' a month for ' + c.term + ' months, then ' + money(c.after) + ' a month' : money(c.own) + ' once') + ' · ' + bits.join(' · ') : (sized ? n.toLocaleString('en-AU') + ' accounts × ' + rate(c.r) + (n > BAND ? ', 16% less for each 1,000 after the first' : '') + (c.atMin ? ' (the $500 minimum)' : ' = ' + money(c.fee)) : 'Choose your number of client accounts') + (bits.length ? ' · ' + bits.join(' · ') : '');
     var now = { r: X.own ? 0 : c.r, m: c.monthly - (X.own ? 0 : c.fee), o: c.once, own: !!X.own }, note = '';
     if (was && was.own !== now.own) was = null;
     if (was && Math.abs(now.r - was.r) > .001) note = (now.r > was.r ? '+' : '−') + cents(Math.abs(now.r - was.r)) + ' an account';

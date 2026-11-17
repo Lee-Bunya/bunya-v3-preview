@@ -132,7 +132,7 @@
   }
 
   /* Real prices once we know the firm size (same draft maths as the build page) */
-  function banded(n, r){ return r * (Math.min(n, 1000) + Math.max(0, n - 1000) * .84); }
+  function banded(n, r){ var u = 0, f = 1; while (n > 0) { u += Math.min(n, 1000) * f; n -= 1000; f *= .84; } return r * u; }
   function totals(q){
     var n = +q.get('n') || 0; if (!n) return null;
     var soa = q.get('soa'), own = q.get('pay') === 'own', yr = q.get('bill') === 'year';

@@ -168,7 +168,7 @@
   addEventListener('scroll', function(){ var h = document.documentElement, pc = Math.round((h.scrollTop + innerHeight) / h.scrollHeight * 100);
     marks.forEach(function(m){ if (pc >= m && !sent[m]) { sent[m] = 1; dl.push({ event: 'lp_scroll', lp_depth: m }); } }); }, { passive: true });
   var rate = 3, n = 500;
-  function paint(){ var fee = Math.max(500, rate * (Math.min(n, 1000) + Math.max(0, n - 1000) * .84)); $('lp-n').textContent = n.toLocaleString('en-AU'); $('lp-rate').textContent = '$' + rate; $('lp-tot').textContent = '$' + Math.round(fee).toLocaleString('en-AU'); }
+  function paint(){ var fee = Math.max(500, rate * (function(x){ var u = 0, f = 1; while (x > 0) { u += Math.min(x, 1000) * f; x -= 1000; f *= .84; } return u; })(n)); $('lp-n').textContent = n.toLocaleString('en-AU'); $('lp-rate').textContent = '$' + rate; $('lp-tot').textContent = '$' + Math.round(fee).toLocaleString('en-AU'); }
   $('lp-hh').addEventListener('input', function(){ n = +this.value; paint(); });
   [].forEach.call(document.querySelectorAll('.lp-tabs button'), function(b){ b.addEventListener('click', function(){ rate = +b.dataset.rate; [].forEach.call(document.querySelectorAll('.lp-tabs button'), function(x){ x.setAttribute('aria-selected', String(x === b)); }); paint(); dl.push({ event: 'lp_price', lp_rate: rate }); }); });
   paint();
