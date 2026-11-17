@@ -49,7 +49,7 @@
     if (X.own && !s.ae) return out;
     if (s.feat.ins) out.push(ptPick('ins') === 'omni' ? ['OmniLife', 500, 'from $500 a month'] : ['Insurance tool: you already have one', 0, '']);
     if (s.feat.mod) { var u = ptUsers(); out.push(ptPick('mod') === 'rm' ? ['RetireMap, ' + u + ' user' + (u > 1 ? 's' : ''), u * rmRate(u), u + ' × ' + money(rmRate(u)) + ' a month'] : ['Modelling tool: you already have one', 0, '']); }
-    if (s.feat.cmp) out.push(['Comparison tool: you already have one (HUB24 and Chant West coming soon)', 0, '']);
+    // 17 Nov 2026 (Lee): the comparison tool line is off the total price screen for now
     return out;
   }
   function ptCost(s){ return ptLines(s).reduce(function(t, l){ return t + l[1]; }, 0); }
@@ -106,7 +106,7 @@
     var s = L.read(), r = L.rate(s) * (YR() ? 1 - YEAR : 1), raw = banded(r), fee = Math.max(MIN, raw), apps = L.apps(s);
     var mkt = lvlP() + (X.fc ? FC : 0) + (X.fcp ? FCP : 0) + (X.ads ? ADS : 0) + (X.smm ? SMM : 0);
     var svc = (X.brand ? BRAND[X.brand][1] : 0) + (X.docs ? DOCS : 0) + (X.coll ? COLL : 0) + (X.web ? WEB : 0);
-    var base = { s: s, r: r, apps: apps, pt: ptCost(s), ptOn: ptKeys(s).length > 0, svc: svc };
+    var base = { s: s, r: r, apps: apps, pt: ptCost(s), ptOn: ptLines(s).length > 0, svc: svc };
     if (X.own) {
       var own = s.ae ? OWN_AE : OWN_CC, term = TERMS.indexOf(X.term) > 0 ? X.term : 0, instal = term ? own / term : 0, care = CARE;
       return Object.assign(base, { own: own, term: term, instal: instal, care: care, fee: 0, raw: 0, atMin: false, extra: care + mkt,
