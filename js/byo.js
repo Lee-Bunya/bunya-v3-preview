@@ -313,10 +313,23 @@
       (ms.portal ? step('Clients signing in to the portal each month?', 'mcu', ms.cu, 0, 5000, 10) + '<p class="byo-dim">Microsoft charges the portal only for each client who signs in that month.</p>' : '') +
       '<dl class="byo-dl">' + M.join('') + '</dl>';
     // 17 Nov 2026 (Lee): a cleaner Your Bunya, broken up by who you pay
-    var H = function(t){ return '<p class="byo-dl-h">' + t + '</p>'; }, DL = function(a){ return '<dl class="byo-dl">' + a.join('') + '</dl>'; };
+    /* 17 Nov 2026 (Lee: "see different prices at a glance, maybe using titles"): a row of totals up top, one per payee,
+       then each block under a clear title in the same colour. */
+    var H = function(t, k, note){ return '<div class="byo-sec-h ' + k + '"><i></i><b>' + t + '</b>' + (note ? '<span>' + note + '</span>' : '') + '</div>'; },
+        DL = function(a){ return '<dl class="byo-dl">' + a.join('') + '</dl>'; };
+    var unit = YR() ? 'a year' : X.own && c.term ? 'a month for ' + c.term + ' months' : 'a month', yv = function(v){ return YR() ? v * 12 : v; };
+    var tile = function(k, t, v, u){ return '<div class="byo-gl-t ' + k + '"><span><i></i>' + t + '</span><b>' + v + '</b><em>' + u + '</em></div>'; };
+    var allIn = c.monthly + (c.pt || 0) + ms.total;
+    var glance = '<div class="byo-glance">' +
+      tile('bunya', 'Bunya', known ? money(yv(c.monthly)) : '—', unit) +
+      (c.ptOn ? tile('partners', 'Partners', 'about ' + money(yv(c.pt)), YR() ? 'a year' : 'a month') : '') +
+      tile('ms', 'Microsoft', 'about ' + money(yv(ms.total)), YR() ? 'a year' : 'a month') +
+      tile('once', 'Once', money(c.once), X.own && !c.term ? 'Bunya to own, and setup' : 'setup' + (c.once > SETUP ? ' and extras' : '')) +
+      tile('all', 'All in', known ? 'about ' + money(yv(allIn)) : '—', (YR() ? 'a year' : 'a month') + ', Bunya' + (c.ptOn ? ', partners' : '') + ' and Microsoft') + '</div>';
     var LM = [line('Microsoft licences and usage <small>' + ppl(ms.p) + (ms.portal ? ', client portal' : '') + ' · see step 8</small>', 'about ' + money(YR() ? ms.total * 12 : ms.total))];
     var LA = [line('All in, about <small>Bunya' + (c.ptOn ? ', partners' : '') + ' and Microsoft</small>', known ? money(YR() ? (c.monthly + (c.pt || 0) + ms.total) * 12 : c.monthly + (c.pt || 0) + ms.total) + (YR() ? ' a year' : ' a month') : '—', 'tot')];
-    $('byo-lines').innerHTML = H('Paid to Bunya') + DL(L1) + (L3.length ? H('Paid to partners') + DL(L3) : '') + H('Paid to Microsoft') + DL(LM) + DL(LA) + H('Once') + DL(L2) + use;
+    $('byo-lines').innerHTML = glance + H('Paid to Bunya', 'bunya', 'Billed by Bunya') + DL(L1) + (L3.length ? H('Paid to partners', 'partners', 'Billed by them') + DL(L3) : '') +
+      H('Paid to Microsoft', 'ms', 'On your Microsoft bill') + DL(LM) + H('Once', 'once', 'Paid at the start') + DL(L2) + DL(LA) + use;
     $('byo-live').innerHTML = ['Launch support: a named engineer for ' + (s.ae ? 45 : 30) + ' days', 'Licensee Green-Light Pack', 'Team Quick-Start Kit', 'Email support and every update', X.own ? 'Shape for your first month' : 'Bunya Shape, included'].map(function(t){ return '<li>' + t + '</li>'; }).join('');
     paintQuote(c);
     // Bottom bar
