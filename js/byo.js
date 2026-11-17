@@ -20,9 +20,9 @@
   /* 17 Nov 2026 (Daniel, Lee): support and Bunya Build are one ladder. Standard (email, 36 business hours) is included, and
      is the $1,497 support and updates when owning. Shape $1,503, Build $5,274 and Build Team $12,055 a month sit on top, the
      same for subscribers and owners. Build Team is chosen for 1 to 12 months. X.lvl: '' | shape | build | team. */
-  var LV = { shape: 1503, build: 5274, team: 12055 }, LVN = { shape: 'Shape', build: 'Build', team: 'Build Team' }, FREE_SHAPE = 3;
-  /* 17 Nov 2026 (Daniel, Lee: "3 months"): three levels, not four. Email support is included underneath; Shape is the
-     starting level and is included for the first 3 months, then $1,503 a month (or drop back to email support). */
+  var LV = { shape: 1503, build: 5274, team: 12055 }, LVN = { shape: 'Shape', build: 'Build', team: 'Build Team' }, FREE_SHAPE = 1;
+  /* 17 Nov 2026 (Daniel, Lee: "3 months", then "1 month"): three levels, not four. Email support is included underneath; Shape is the
+     starting level and is included for the first month, then $1,503 a month (or drop back to email support). */
   var BRAND = { kit: ['Brand kit, set up by our designer', 1800], guide: ['Brand guidelines', 4500], refresh: ['Brand refresh', 7500] };
   var APPN = {}; L.APPS.forEach(function(a){ APPN[a[0]] = a; });
   // 12 Nov 2026 (Daniel, "partner tools"): some features use a partner's tool, which the provider bills the practice for directly.
@@ -57,7 +57,7 @@
   function bm(){ return Math.max(1, Math.min(12, +X.bm || 1)); }
   function lvl(){ return X.lvl === 'build' || X.lvl === 'team' ? X.lvl : 'shape'; }
   function lvlP(){ return lvl() === 'shape' ? 0 : LV[lvl()]; }
-  function lvlName(){ return LVN[lvl()] + (lvl() === 'shape' ? ' <small>included for your first ' + FREE_SHAPE + ' months, then ' + money(LV.shape) + ' a month</small>' : '') + (lvl() === 'team' ? ' <small>for ' + bm() + (bm() === 1 ? ' month' : ' months') + ', ' + money(bm() * LV.team) + ' in all</small>' : ''); }
+  function lvlName(){ return LVN[lvl()] + (lvl() === 'shape' ? ' <small>included for your first month, then ' + money(LV.shape) + ' a month</small>' : '') + (lvl() === 'team' ? ' <small>for ' + bm() + (bm() === 1 ? ' month' : ' months') + ', ' + money(bm() * LV.team) + ' in all</small>' : ''); }
   function saveX(){ try { sessionStorage.setItem('bunya.byo', JSON.stringify(X)); } catch (e) {} }
   function saveN(){ try { localStorage.setItem('bunya.hh', n); } catch (e) {} }
 
@@ -258,7 +258,7 @@
     L2.push(line('Once', money(c.once), 'tot'));
     var use = s.ae ? '' : '<p class="byo-dim">As you use them: client reviews 97c each' + (s.feat.soa ? '.' : ', and SOAs we draft for you $153 each.') + '</p>';
     $('byo-lines').innerHTML = '<dl class="byo-dl">' + L1.join('') + '</dl>' + (L3.length ? '<dl class="byo-dl">' + L3.join('') + '</dl>' : '') + '<dl class="byo-dl">' + L2.join('') + '</dl>' + use;
-    $('byo-live').innerHTML = ['Launch support: a named engineer for ' + (s.ae ? 45 : 30) + ' days', 'Licensee Green-Light Pack', 'Team Quick-Start Kit', 'Email support and every update', 'Shape for your first 3 months'].map(function(t){ return '<li>' + t + '</li>'; }).join('');
+    $('byo-live').innerHTML = ['Launch support: a named engineer for ' + (s.ae ? 45 : 30) + ' days', 'Licensee Green-Light Pack', 'Team Quick-Start Kit', 'Email support and every update', 'Shape for your first month'].map(function(t){ return '<li>' + t + '</li>'; }).join('');
     paintQuote(c);
     // Bottom bar
     $('byo-r').textContent = X.own ? money(c.term ? c.instal : c.own) : rate(c.r);
@@ -326,7 +326,7 @@
     var others = ptLines(s).map(function(l){ return l[0] + (l[1] ? ', about ' + money(l[1]) + ' a month' : ''); });
     if (s.feat.pf) others.push('Portfolio reads from CFS Edge and HUB24');
     var more = [];
-    more.push(lvl() !== 'shape' ? LVN[lvl()] + ' ' + money(lvlP()) + ' a month' + (lvl() === 'team' ? ' for ' + bm() + (bm() === 1 ? ' month' : ' months') + ' (' + money(bm() * LV.team) + ')' : '') : 'Shape, included for the first ' + FREE_SHAPE + ' months, then ' + money(LV.shape) + ' a month');
+    more.push(lvl() !== 'shape' ? LVN[lvl()] + ' ' + money(lvlP()) + ' a month' + (lvl() === 'team' ? ' for ' + bm() + (bm() === 1 ? ' month' : ' months') + ' (' + money(bm() * LV.team) + ')' : '') : 'Shape, included for the first month, then ' + money(LV.shape) + ' a month');
     return {
       households: sized ? n : null, pay: X.own ? 'own, ' + (c.term ? 'over ' + c.term + ' months' : 'in full') : YR() ? 'yearly' : 'monthly',
       rows: (window.byoBrand ? [['Firm website', window.byoBrand.site]] : []).concat([['Accounts', sized ? n.toLocaleString('en-AU') + ' client accounts' : 'Not chosen yet'],
