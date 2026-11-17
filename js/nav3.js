@@ -278,7 +278,7 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.BUNYA_BUILD = '
       (all ? '<div class="r tot"><span><b>Every app, together</b></span><em>' + moneyTxt(L.apps(s)) + '</em><span class="x"></span></div>'
            : picked.length > 1 ? '<div class="r tot"><span><b>Apps</b></span><em>' + moneyTxt(L.apps(s)) + '</em><span class="x"></span></div>' : '') + '</div>' : '';
     return '<div class="hd"><b>Your Bunya</b><button type="button" class="clr" data-yb-clear>Clear</button></div>' +
-      '<div class="grp">' + row('Command Centre', 'The base: Meeting Notes, Review Packs with fee consent (97c a client review), Premium support and Bunya Shape', '$3', '') + feats + '</div>' +
+      '<div class="grp">' + row('Command Centre', 'The base: Meeting Notes, Review Packs with fee consent (97c a client review), and Standard support', '$3', '') + feats + '</div>' +
       '<div class="sum"><span>Per account, a month</span><strong>' + rateTxt(L.rate(s)) + '</strong></div>' + nudge + apps +
       '<a class="go" href="build.html">Build yours' + svg('arrow') + '</a>' +
       '<p class="fine">Set your number of accounts in Build your Bunya to see your monthly total. Draft prices, A$ ex GST, with a $500 monthly minimum.</p>';

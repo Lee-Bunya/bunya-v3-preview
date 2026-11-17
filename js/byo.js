@@ -1,11 +1,11 @@
 /* Build your Bunya, the site's own page (11 Nov 2026). Markup from tools/v3/build_byo.py; needs js/nav3.js first
    (window.bunyaList = the site's shortlist of features and apps). Accounts: localStorage 'bunya.hh'.
-   Extras (brand, documents, website, SEO & AI Search, Priority support, social media done for you, Bunya Build, pay yearly): sessionStorage 'bunya.byo'.
+   Extras (brand, documents, website, SEO & AI Search, support level X.lvl, social media done for you, pay yearly): sessionStorage 'bunya.byo'.
    Prices: Daniel's configurator and his 12 Nov 2026 reply (draft, A$ ex GST): $500 a month minimum, accounts above 1,000 16% less, paying yearly
    takes 10% off the Bunya fee, setup $7,249, client reviews 97c each and SOAs drafted for you $153 each on Command Centre.
    Own it (17 Nov 2026, Lee: bring it back with the payment terms): Command Centre $104,020, or $178,321 with the whole
    Advice Engine, any size up to 1,500 accounts, setup included, paid in full or over 12, 24 or 36 months at no extra
-   charge (Daniel's configurator), then support and updates $1,497 a month (Priority support $1,997 instead). Apps and
+   charge (Daniel's configurator), then Standard support and updates $1,497 a month (Shape, Build or Build Team on top, same as subscribers). Apps and
    marketing stay a price a month. X.own, X.term in sessionStorage 'bunya.byo'; ?pay=own&term=24 from other pages. */
 (function(){
   'use strict';
@@ -15,8 +15,12 @@
   var rate = function(v){ v = Math.round(v * 100) / 100; return '$' + (v % 1 ? v.toFixed(2) : v); };
   var cents = function(v){ var c = Math.round(v * 100); return c < 100 ? c + 'c' : rate(c / 100); };
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var MIN = 500, BAND = 1000, OFF = .16, YEAR = .1, SETUP = 7249, PREM = 1997, BUILD = 12000, FC = 2243, FCP = 3734, ADS = 744, SMM = 4867, WEB = 14882, DOCS = 7441, COLL = 4500, SOA = 153, REVIEW = .97;
+  var MIN = 500, BAND = 1000, OFF = .16, YEAR = .1, SETUP = 7249, FC = 2243, FCP = 3734, ADS = 744, SMM = 4867, WEB = 14882, DOCS = 7441, COLL = 4500, SOA = 153, REVIEW = .97;
   var OWN_CC = 104020, OWN_AE = 178321, CARE = 1497, TERMS = [0, 12, 24, 36];
+  /* 17 Nov 2026 (Daniel, Lee): support and Bunya Build are one ladder. Standard (email, 36 business hours) is included, and
+     is the $1,497 support and updates when owning. Shape $1,503, Build $5,274 and Build Team $12,055 a month sit on top, the
+     same for subscribers and owners. Build Team is chosen for 1 to 12 months. X.lvl: '' | shape | build | team. */
+  var LV = { shape: 1503, build: 5274, team: 12055 }, LVN = { shape: 'Shape', build: 'Build', team: 'Build Team' };
   var BRAND = { kit: ['Brand kit, set up by our designer', 1800], guide: ['Brand guidelines', 4500], refresh: ['Brand refresh', 7500] };
   var APPN = {}; L.APPS.forEach(function(a){ APPN[a[0]] = a; });
   // 12 Nov 2026 (Daniel, "partner tools"): some features use a partner's tool, which the provider bills the practice for directly.
@@ -49,6 +53,9 @@
   try { var h = +localStorage.getItem('bunya.hh'); if (h >= 100 && h <= 1500) { n = Math.round(h / 10) * 10; sized = true; } } catch (e) {}
   function YR(){ return !!X.year && !X.own; }
   function bm(){ return Math.max(1, Math.min(12, +X.bm || 1)); }
+  function lvl(){ return LV[X.lvl] ? X.lvl : ''; }
+  function lvlP(){ return LV[lvl()] || 0; }
+  function lvlName(){ return LVN[lvl()] + (lvl() === 'team' ? ' <small>for ' + bm() + (bm() === 1 ? ' month' : ' months') + ', ' + money(bm() * LV.team) + ' in all</small>' : ''); }
   function saveX(){ try { sessionStorage.setItem('bunya.byo', JSON.stringify(X)); } catch (e) {} }
   function saveN(){ try { localStorage.setItem('bunya.hh', n); } catch (e) {} }
 
@@ -81,15 +88,15 @@
   function banded(r){ return r * (Math.min(n, BAND) + Math.max(0, n - BAND) * (1 - OFF)); }
   function calc(){
     var s = L.read(), r = L.rate(s) * (YR() ? 1 - YEAR : 1), raw = banded(r), fee = Math.max(MIN, raw), apps = L.apps(s);
-    var mkt = (X.build ? BUILD : 0) + (X.fc ? FC : 0) + (X.fcp ? FCP : 0) + (X.ads ? ADS : 0) + (X.smm ? SMM : 0);
+    var mkt = lvlP() + (X.fc ? FC : 0) + (X.fcp ? FCP : 0) + (X.ads ? ADS : 0) + (X.smm ? SMM : 0);
     var svc = (X.brand ? BRAND[X.brand][1] : 0) + (X.docs ? DOCS : 0) + (X.coll ? COLL : 0) + (X.web ? WEB : 0);
     var base = { s: s, r: r, apps: apps, pt: ptCost(s), ptOn: ptKeys(s).length > 0, svc: svc };
     if (X.own) {
-      var own = s.ae ? OWN_AE : OWN_CC, term = TERMS.indexOf(X.term) > 0 ? X.term : 0, instal = term ? own / term : 0, care = X.prem ? PREM : CARE;
+      var own = s.ae ? OWN_AE : OWN_CC, term = TERMS.indexOf(X.term) > 0 ? X.term : 0, instal = term ? own / term : 0, care = CARE;
       return Object.assign(base, { own: own, term: term, instal: instal, care: care, fee: 0, raw: 0, atMin: false, extra: care + mkt,
         monthly: instal + care + apps + mkt, after: care + apps + mkt, once: svc + (term ? 0 : own) });
     }
-    return Object.assign(base, { raw: raw, fee: fee, atMin: raw < MIN, extra: (X.prem ? PREM : 0) + mkt, monthly: fee + apps + (X.prem ? PREM : 0) + mkt, once: SETUP + svc });
+    return Object.assign(base, { raw: raw, fee: fee, atMin: raw < MIN, extra: mkt, monthly: fee + apps + mkt, once: SETUP + svc });
   }
 
 
@@ -117,7 +124,7 @@
     docs: ['', 'Your documents', 'Your advice documents and client collateral, in your brand.'],
     web: ['website-to-lead', 'Your website', 'A website in your brand, with enquiries landing as leads.'],
     support: ['bunya-care', 'Support', 'Help when your team needs it, and a Bunya that keeps improving.'],
-    build: ['bunya-shape', 'Bunya Build', 'Your roadmap of bigger changes, made with you.'],
+    build: ['bunya-shape', 'Build and Build Team', 'Your ideas, built into your system with you.'],
     sum: ['meetings-and-tasks', 'Your Bunya', 'Ready for your team, in your Microsoft 365.']
   };
   // Daniel's per-feature and per-app screens are his films (in Bunya's colours), so ticks keep his branded overview
@@ -184,18 +191,16 @@
       else if (t[0] === 'add') { var inc = L.inAE(s, k); on(b, !!s.add[k] && !inc, inc); var pc = b.closest('.pr-row').querySelector('.pc'); pc.innerHTML = inc ? '<b>Included</b>' : '<b>' + money(APPN[k][2]) + '</b> a month'; }
       else if (t[0] === 'brand') { var sel = (X.brand || 'none') === k; b.setAttribute('aria-checked', String(sel)); b.classList.toggle('on', sel); b.closest('.pr-row').classList.toggle('on', sel); }
       else if (t[0] === 'x') on(b, !!X[k]);
+      else if (t[0] === 'lvl') { var sl = (k === 'std' ? '' : k) === lvl(); b.setAttribute('aria-checked', String(sl)); b.classList.toggle('on', sl); b.closest('.pr-row').classList.toggle('on', sl); }
       else if (t[0] === 'own') { var so = (k === 'ae') === !!s.ae; b.setAttribute('aria-checked', String(so)); b.classList.toggle('on', so); b.closest('.pr-row').classList.toggle('on', so); }
     });
     document.body.classList.toggle('is-own', !!X.own);
     [].forEach.call(document.querySelectorAll('[data-mode]'), function(b){ if (b.getAttribute('role') !== 'radio') return; var sel = (b.dataset.mode === 'own') === !!X.own; b.setAttribute('aria-checked', String(sel)); b.classList.toggle('on', sel); });
     [].forEach.call(document.querySelectorAll('[data-term]'), function(b){ var sel = +b.dataset.term === (c.term || 0); b.setAttribute('aria-checked', String(sel)); b.classList.toggle('on', sel); });
-    var pr = document.querySelector('[data-row="x:prem"] small');
-    if (pr) pr.textContent = X.own ? 'Rapid help from our team, with a 1 to 3 hour turnaround. It takes the place of support and updates: $1,997 a month instead of $1,497.' : 'Rapid help from our team, with a 1 to 3 hour turnaround.';
     [].forEach.call(document.querySelectorAll('[data-bill]'), function(b){ var sel = (b.dataset.bill === 'year') === !!X.year; b.setAttribute('aria-checked', String(sel)); b.classList.toggle('on', sel); });
-    if (X.build && !$('byo-more').open) $('byo-more').open = true;
-    // 17 Nov 2026 (Lee): choose how many months of More Bunya Build, 1 to 12
+    // 17 Nov 2026 (Lee): choose how many months of Build Team, 1 to 12
     var bmEl = $('byo-bm');
-    if (bmEl) { bmEl.hidden = !X.build; var m = bm(); bmEl.innerHTML = X.build ? '<span>For how many months?</span><span class="byo-pt-step"><button type="button" data-bm="-1" aria-label="One month fewer"' + (m <= 1 ? ' disabled' : '') + '>−</button><output aria-live="polite">' + m + '</output><button type="button" data-bm="1" aria-label="One month more"' + (m >= 12 ? ' disabled' : '') + '>+</button></span><em>' + m + (m === 1 ? ' month' : ' months') + ' × ' + money(BUILD) + ' = ' + money(m * BUILD) + '</em>' : ''; }
+    if (bmEl) { bmEl.hidden = lvl() !== 'team'; var m = bm(); bmEl.innerHTML = lvl() === 'team' ? '<span>For how many months?</span><span class="byo-pt-step"><button type="button" data-bm="-1" aria-label="One month fewer"' + (m <= 1 ? ' disabled' : '') + '>−</button><output aria-live="polite">' + m + '</output><button type="button" data-bm="1" aria-label="One month more"' + (m >= 12 ? ' disabled' : '') + '>+</button></span><em>' + m + (m === 1 ? ' month' : ' months') + ' × ' + money(LV.team) + ' = ' + money(m * LV.team) + '. Then choose any level.</em>' : ''; }
     // 12 Nov 2026 (Lee): the pack and the website are designed from the firm's brand. No brand tier? Ask.
     var picks = [X.docs, X.coll, X.web].filter(Boolean).length, nb = $('byo-needs'), needBrand = picks > 0 && !X.brand;
     nb.hidden = !needBrand;
@@ -222,13 +227,12 @@
     var what = s.ae ? 'Command Centre and the whole Advice Engine' : 'Command Centre', known = sized || X.own;
     if (X.own) {
       if (c.term) L1.push(line('Bunya, to own <small>' + what + ', ' + money(c.own) + ' over ' + c.term + ' months</small>', money(c.instal)));
-      L1.push(line(X.prem ? 'Priority support <small>in place of support and updates</small>' : 'Support and updates', money(c.care)));
+      L1.push(line('Standard support and updates', money(c.care)));
     } else L1.push(line('Bunya fee <small>' + (sized ? n.toLocaleString('en-AU') + ' accounts × ' + rate(c.r) + (c.atMin ? ', the $500 minimum' : '') : 'choose your accounts') + '</small>', sized ? money(c.fee) : rate(c.r) + ' an account'));
     if (L.every(s) && Object.keys(s.add).length) L1.push(line('Every app', money(c.apps)));
     else L.APPS.forEach(function(a){ if (s.add[a[0]]) L1.push(line(a[1], L.inAE(s, a[0]) ? 'Included' : money(a[2]))); });
-    if (X.prem && !X.own) L1.push(line('Priority support', money(PREM)));
     if (X.smm) L1.push(line('Broadcast HQ + social media, done for you', money(SMM)));
-    if (X.build) L1.push(line('Bunya Build <small>for ' + bm() + (bm() === 1 ? ' month' : ' months') + ', ' + money(bm() * BUILD) + ' in all</small>', money(BUILD)));
+    if (lvl()) L1.push(line(lvlName(), money(lvlP())));
     if (X.fc) L1.push(line('SEO &amp; AI Search', money(FC)));
     if (X.fcp) L1.push(line('SEO &amp; AI Search Plus', money(FCP)));
     if (X.ads) L1.push(line('Google Ads, managed <small>ad spend billed at cost</small>', money(ADS)));
@@ -252,18 +256,17 @@
     L2.push(line('Once', money(c.once), 'tot'));
     var use = s.ae ? '' : '<p class="byo-dim">As you use them: client reviews 97c each' + (s.feat.soa ? '.' : ', and SOAs we draft for you $153 each.') + '</p>';
     $('byo-lines').innerHTML = '<dl class="byo-dl">' + L1.join('') + '</dl>' + (L3.length ? '<dl class="byo-dl">' + L3.join('') + '</dl>' : '') + '<dl class="byo-dl">' + L2.join('') + '</dl>' + use;
-    $('byo-live').innerHTML = ['Launch support: a named engineer for ' + (s.ae ? 45 : 30) + ' days', 'Licensee Green-Light Pack', 'Team Quick-Start Kit', 'Your first month of Bunya Build'].map(function(t){ return '<li>' + t + '</li>'; }).join('');
+    $('byo-live').innerHTML = ['Launch support: a named engineer for ' + (s.ae ? 45 : 30) + ' days', 'Licensee Green-Light Pack', 'Team Quick-Start Kit', 'Standard support and every update'].map(function(t){ return '<li>' + t + '</li>'; }).join('');
     paintQuote(c);
     // Bottom bar
     $('byo-r').textContent = X.own ? money(c.term ? c.instal : c.own) : rate(c.r);
     $('byo-r-u').textContent = X.own ? (c.term ? 'a month for ' + c.term + ' months, to own it' : 'once, to own it') : 'an account a month';
     $('byo-m').innerHTML = known ? (YR() ? money(c.monthly * 12) + '<em> a year</em>' : money(c.monthly) + '<em> a month</em>') : 'Your month';
     var bits = [];
-    if (X.own) bits.push(X.prem ? 'Priority support ' + money(PREM) : 'Support and updates ' + money(CARE));
+    if (X.own) bits.push('Support and updates ' + money(CARE));
     if (c.apps) bits.push('+ ' + money(c.apps) + ' apps');
-    if (X.prem && !X.own) bits.push('+ ' + money(PREM) + ' Priority support');
     if (X.smm) bits.push('+ ' + money(SMM) + ' Broadcast HQ + social media');
-    if (X.build) bits.push('+ ' + money(BUILD) + ' Bunya Build for ' + bm() + (bm() === 1 ? ' month' : ' months'));
+    if (lvl()) bits.push('+ ' + money(lvlP()) + ' ' + LVN[lvl()] + (lvl() === 'team' ? ' for ' + bm() + (bm() === 1 ? ' month' : ' months') : ''));
     if (X.fc) bits.push('+ ' + money(FC) + ' SEO & AI Search');
     if (X.fcp) bits.push('+ ' + money(FCP) + ' SEO & AI Search Plus');
     if (X.ads) bits.push('+ ' + money(ADS) + ' Google Ads');
@@ -321,8 +324,7 @@
     var others = ptLines(s).map(function(l){ return l[0] + (l[1] ? ', about ' + money(l[1]) + ' a month' : ''); });
     if (s.feat.pf) others.push('Portfolio reads from CFS Edge and HUB24');
     var more = [];
-    if (X.prem) more.push('Priority support ' + money(PREM) + ' a month');
-    if (X.build) more.push('More Bunya Build ' + money(BUILD) + ' a month for ' + bm() + (bm() === 1 ? ' month' : ' months') + ' (' + money(bm() * BUILD) + ')');
+    more.push(lvl() ? LVN[lvl()] + ' ' + money(lvlP()) + ' a month' + (lvl() === 'team' ? ' for ' + bm() + (bm() === 1 ? ' month' : ' months') + ' (' + money(bm() * LV.team) + ')' : '') : 'Standard support (included)');
     return {
       households: sized ? n : null, pay: X.own ? 'own, ' + (c.term ? 'over ' + c.term + ' months' : 'in full') : YR() ? 'yearly' : 'monthly',
       rows: (window.byoBrand ? [['Firm website', window.byoBrand.site]] : []).concat([['Accounts', sized ? n.toLocaleString('en-AU') + ' client accounts' : 'Not chosen yet'],
@@ -330,9 +332,9 @@
              ['Command Centre', X.own ? 'Yours to own' : '$3 an account a month'],
              ['Advice Engine', feats.length ? feats.join(', ') : 'None yet'],
              ['Apps', apps.length ? apps.join(', ') : 'None'],
-             ['Make it yours', yours.join(', ')]]).concat(others.length ? [['Partner tools (they bill you)', others.join(', ')]] : []).concat(more.length ? [['Customise', more.join(', ')]] : []),
+             ['Make it yours', yours.join(', ')]]).concat(others.length ? [['Partner tools (they bill you)', others.join(', ')]] : []).concat(more.length ? [['Support and build', more.join(', ')]] : []),
       totals: (X.own ? [['Bunya, to own', money(c.own) + (c.term ? ', as ' + money(c.instal) + ' a month for ' + c.term + ' months' : ' once')],
-               ['Support and updates', money(c.care) + ' a month' + (X.prem ? ' (Priority support)' : '')],
+               ['Standard support and updates', money(c.care) + ' a month'],
                [(c.ptOn ? 'Paid to Bunya, a month' : 'A month') + (c.term ? ' for ' + c.term + ' months' : ''), money(c.monthly)]].concat(c.term ? [['Then, a month', money(c.after)]] : [])
                .concat(c.ptOn ? [['Paid to partners, about', money(c.pt)], ['All in, about', money(c.monthly + c.pt)]] : [])
                .concat([['Once', money(c.once) + (c.term ? ' (setup included)' : ' (Bunya to own, setup included' + (c.svc ? ', and extras' : '') + ')')]]) : null) || [['Price per account', rate(c.r) + ' a month' + (YR() ? ', paying yearly' : '')],
@@ -451,6 +453,7 @@
     var t = b.dataset.tk.split(':'), k = t[1];
     if (t[0] === 'feat' || t[0] === 'add') { if (L.toggle(t[0], k)) film(k); return; }
     if (t[0] === 'ae') { if (L.toggle('ae', '')) film('ae'); return; }
+    if (t[0] === 'lvl') { X.lvl = k === 'std' ? '' : k; saveX(); paint(); if (X.lvl) film(b.closest('.pr-row').dataset.film || 'support'); return; }
     if (t[0] === 'brand') X.brand = k === 'none' ? '' : k;
     else { X[k] = !X[k]; if (X[k] && k === 'fc') X.fcp = false; if (X[k] && k === 'fcp') X.fc = false; }
     if (t[0] === 'brand' || X[k]) film(b.closest('.pr-row').dataset.film || 'yours');
