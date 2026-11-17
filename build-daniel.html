@@ -1730,7 +1730,7 @@ body.bb{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-ser
       else if (s.get('feat')) { out.set('model', 'cc'); out.set('feat', s.get('feat')); }
       if (s.get('add')) adds(s.get('add').split(','));
     }
-    if (!q.has('n')) { var n = +localStorage.getItem('bunya.hh'); if (n >= 100 && n <= 1500) out.set('n', Math.round(n / 10) * 10); }
+    if (!q.has('n')) { var n = +localStorage.getItem('bunya.hh'); if (n >= 100 && n <= 5000) out.set('n', Math.round(n / 10) * 10); }
     if (out.toString() !== q.toString()) history.replaceState(null, '', '?' + out.toString());
     // Write the configurator's choices back to the shortlist, so the menu and Pricing stay in step
     var rs = history.replaceState;
