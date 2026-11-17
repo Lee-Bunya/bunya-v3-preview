@@ -20,7 +20,10 @@
   /* 17 Nov 2026 (Daniel, Lee): support and Bunya Build are one ladder. Standard (email, 36 business hours) is included, and
      is the $1,497 support and updates when owning. Shape $1,503, Build $5,274 and Build Team $12,055 a month sit on top, the
      same for subscribers and owners. Build Team is chosen for 1 to 12 months. X.lvl: '' | shape | build | team. */
-  var LV = { shape: 1503, build: 5274, team: 12055 }, LVN = { shape: 'Shape', build: 'Build', team: 'Build Team' }, FREE_SHAPE = 1, FREE = { shape: 1, build: 1 };
+  var LV = { shape: 1503, build: 5274, team: 12055 }, LVN = { shape: 'Shape', build: 'Build', team: 'Build Team' }, FREE_SHAPE = 1;
+  /* 17 Nov 2026 (Lee): Shape is always included for subscribers; owners get its first month, then $1,503 a month. */
+  function freeMonth(){ return lvl() === 'build' || (lvl() === 'shape' && !!X.own); }
+  function shapeIn(){ return lvl() === 'shape' && !X.own; }
   /* 17 Nov 2026 (Lee): Shape and Build show their price, with "Included for 1 month" under it. The month is the ongoing
      price; a "Your first month" line shows it with the free month taken off. */
   /* 17 Nov 2026 (Daniel, Lee: "3 months", then "1 month"): three levels, not four. Email support is included underneath; Shape is the
@@ -63,8 +66,8 @@
   function msu(){ return Math.max(1, Math.min(200, +X.msu || 5)); }
   function msCost(s){ var p = msu(), pa = p * 29.9, ai = 50, tp = s.add.voice ? p * 12 : 0; return { p: p, pa: pa, ai: ai, tp: tp, total: pa + ai + tp }; }
   function lvl(){ return X.lvl === 'build' || X.lvl === 'team' ? X.lvl : 'shape'; }
-  function lvlP(){ return LV[lvl()]; }
-  function lvlName(){ return LVN[lvl()] + (FREE[lvl()] ? ' <small>your first month is included</small>' : '') + (lvl() === 'team' ? ' <small>for ' + bm() + (bm() === 1 ? ' month' : ' months') + ', ' + money(bm() * LV.team) + ' in all</small>' : ''); }
+  function lvlP(){ return shapeIn() ? 0 : LV[lvl()]; }
+  function lvlName(){ return LVN[lvl()] + (shapeIn() ? ' <small>included with your subscription</small>' : freeMonth() ? ' <small>your first month is included</small>' : '') + (lvl() === 'team' ? ' <small>for ' + bm() + (bm() === 1 ? ' month' : ' months') + ', ' + money(bm() * LV.team) + ' in all</small>' : ''); }
   function saveX(){ try { sessionStorage.setItem('bunya.byo', JSON.stringify(X)); } catch (e) {} }
   function saveN(){ try { localStorage.setItem('bunya.hh', n); } catch (e) {} }
 
@@ -210,7 +213,7 @@
     var t = {
       'byo-base': X.own ? 'Yours to own, with support and updates' : '$3 an account, with email support',
       'byo-feats': X.own ? (s.ae ? 'Command Centre and the whole Advice Engine' : 'Command Centre on its own') : s.ae ? 'The whole Advice Engine, ' + rate(L.AE) + ' an account' : short(picked($('byo-feats'))),
-      'byo-support': LVN[lvl()] + ', ' + money(lvlP()) + ' a month' + (FREE[lvl()] ? ', first month included' : lvl() === 'team' ? ', for ' + bm() + (bm() === 1 ? ' month' : ' months') : '')
+      'byo-support': shapeIn() ? 'Shape, included with your subscription' : LVN[lvl()] + ', ' + money(lvlP()) + ' a month' + (freeMonth() ? ', first month included' : lvl() === 'team' ? ', for ' + bm() + (bm() === 1 ? ' month' : ' months') : '')
     };
     COL.forEach(function(id){ var pk = $(id) && $(id).querySelector('.byo-pick'); if (pk) pk.textContent = t[id] || short(picked($(id))); });
   }
@@ -270,13 +273,13 @@
     if (L.every(s) && Object.keys(s.add).length) L1.push(line('Every app', money(c.apps)));
     else L.APPS.forEach(function(a){ if (s.add[a[0]]) L1.push(line(a[1], L.inAE(s, a[0]) ? 'Included' : money(a[2]))); });
     if (X.smm) L1.push(line('Broadcast HQ + social media, done for you', money(SMM)));
-    L1.push(line(lvlName(), money(lvlP())));
+    L1.push(line(lvlName(), shapeIn() ? 'Included' : money(lvlP())));
     if (X.fc) L1.push(line('SEO &amp; AI Search', money(FC)));
     if (X.fcp) L1.push(line('SEO &amp; AI Search Plus', money(FCP)));
     if (X.ads) L1.push(line('Google Ads, managed <small>ad spend billed at cost</small>', money(ADS)));
     var per = function(v){ return known ? money(YR() ? v * 12 : v) : '—'; };
     L1.push(line((c.ptOn ? 'Paid to Bunya, a ' : 'A ') + (YR() ? 'year' : 'month') + (X.own && c.term ? ' for ' + c.term + ' months' : ''), per(c.monthly), 'tot us'));
-    if (FREE[lvl()] && known && !YR()) L1.push(line('Your first month <small>with ' + LVN[lvl()] + ' included</small>', money(c.monthly - lvlP())));
+    if (freeMonth() && known && !YR()) L1.push(line('Your first month <small>with ' + LVN[lvl()] + ' included</small>', money(c.monthly - lvlP())));
     if (X.own && c.term) L1.push(line('Then, a month', money(c.after)));
     var L3 = [];
     if (c.ptOn) {
@@ -304,7 +307,7 @@
       '<div class="byo-pt-u"><span>How many people will use Bunya?</span><span class="byo-pt-step"><button type="button" data-msu="-1" aria-label="One person fewer"' + (ms.p <= 1 ? ' disabled' : '') + '>−</button><output aria-live="polite">' + ms.p + '</output><button type="button" data-msu="1" aria-label="One person more"' + (ms.p >= 200 ? ' disabled' : '') + '>+</button></span></div>' +
       '<dl class="byo-dl">' + M.join('') + '</dl>';
     $('byo-lines').innerHTML = '<dl class="byo-dl">' + L1.join('') + '</dl>' + (L3.length ? '<dl class="byo-dl">' + L3.join('') + '</dl>' : '') + '<dl class="byo-dl">' + L2.join('') + '</dl>' + use;
-    $('byo-live').innerHTML = ['Launch support: a named engineer for ' + (s.ae ? 45 : 30) + ' days', 'Licensee Green-Light Pack', 'Team Quick-Start Kit', 'Email support and every update', 'Shape for your first month'].map(function(t){ return '<li>' + t + '</li>'; }).join('');
+    $('byo-live').innerHTML = ['Launch support: a named engineer for ' + (s.ae ? 45 : 30) + ' days', 'Licensee Green-Light Pack', 'Team Quick-Start Kit', 'Email support and every update', X.own ? 'Shape for your first month' : 'Bunya Shape, included'].map(function(t){ return '<li>' + t + '</li>'; }).join('');
     paintQuote(c);
     // Bottom bar
     $('byo-r').textContent = X.own ? money(c.term ? c.instal : c.own) : rate(c.r);
@@ -314,7 +317,7 @@
     if (X.own) bits.push('Support and updates ' + money(CARE));
     if (c.apps) bits.push('+ ' + money(c.apps) + ' apps');
     if (X.smm) bits.push('+ ' + money(SMM) + ' Broadcast HQ + social media');
-    bits.push('+ ' + money(lvlP()) + ' ' + LVN[lvl()] + (lvl() === 'team' ? ' for ' + bm() + (bm() === 1 ? ' month' : ' months') : ''));
+    if (!shapeIn()) bits.push('+ ' + money(lvlP()) + ' ' + LVN[lvl()] + (lvl() === 'team' ? ' for ' + bm() + (bm() === 1 ? ' month' : ' months') : ''));
     if (X.fc) bits.push('+ ' + money(FC) + ' SEO & AI Search');
     if (X.fcp) bits.push('+ ' + money(FCP) + ' SEO & AI Search Plus');
     if (X.ads) bits.push('+ ' + money(ADS) + ' Google Ads');
@@ -372,7 +375,7 @@
     var others = ptLines(s).map(function(l){ return l[0] + (l[1] ? ', about ' + money(l[1]) + ' a month' : ''); });
     if (s.feat.pf) others.push('Portfolio reads from CFS Edge and HUB24');
     var more = [];
-    more.push(LVN[lvl()] + ' ' + money(lvlP()) + ' a month' + (FREE[lvl()] ? ', first month included' : '') + (lvl() === 'team' ? ' for ' + bm() + (bm() === 1 ? ' month' : ' months') + ' (' + money(bm() * LV.team) + ')' : ''));
+    more.push(shapeIn() ? 'Shape, included with your subscription' : LVN[lvl()] + ' ' + money(lvlP()) + ' a month' + (freeMonth() ? ', first month included' : '') + (lvl() === 'team' ? ' for ' + bm() + (bm() === 1 ? ' month' : ' months') + ' (' + money(bm() * LV.team) + ')' : ''));
     return {
       households: sized ? n : null, pay: X.own ? 'own, ' + (c.term ? 'over ' + c.term + ' months' : 'in full') : YR() ? 'yearly' : 'monthly',
       rows: (window.byoBrand ? [['Firm website', window.byoBrand.site]] : []).concat([['Accounts', sized ? n.toLocaleString('en-AU') + ' client accounts' : 'Not chosen yet'],
