@@ -441,7 +441,7 @@
         { tab: 'Requests', img: 'assets/bunya-portal/requests.webp', t: 'From question to delivered.', d: 'Every change, file and answer, tracked. Changes are scoped and quoted before any build starts.' }
       ],
       /* 17 Nov 2026 (Daniel, Lee: "go ahead"): support and Bunya Build are one ladder. */
-      extra: [{ id: 'levels', title: 'Four levels of support', lead: 'Standard support comes with every Bunya. Add a level when you want your system changed, month by month.', how: [
+      extra: [{ id: 'levels', title: 'Four levels of support', lead: 'Standard support comes with every Bunya. Add a level when you want your system changed. Switch level at the start of any month: just tell us before that month begins.', how: [
         { t: 'Standard · included', d: 'Email support, with a reply within 36 business hours, and every update. Changes to your system aren’t included. If you own Bunya, this is your $1,497 a month support and updates.' },
         { t: 'Shape · $1,503 a month', d: 'Change your system yourself with AI, in plain English, through our portal: forms, reports, your own apps and agents. Chat and email support, with a reply within 24 business hours.' },
         { t: 'Build · $5,274 a month', d: 'Send us your ideas and we build them with you, over email: new reports, automations and agents, and changes to your Command Centre, scoped and tested with you. Chat, email and phone, with a reply within 6 business hours.' },
@@ -454,7 +454,7 @@
         ['What was agreed', 'Search old emails and notes.', 'Ask Bunya, answered from your records.']
       ] },
       faq: [
-        ['What does support cost?', 'Standard support is included when you subscribe: email support with a reply within 36 business hours, and every update. If you buy Command Centre outright, Standard support and updates are $1,497 a month. To have your system changed, add Shape ($1,503 a month), Build ($5,274) or Build Team ($12,055), the same whether you subscribe or own it. Draft prices, A$ ex GST.'],
+        ['What does support cost?', 'Standard support is included when you subscribe: email support with a reply within 36 business hours, and every update. If you buy Command Centre outright, Standard support and updates are $1,497 a month. To have your system changed, add Shape ($1,503 a month), Build ($5,274) or Build Team ($12,055), the same whether you subscribe or own it. Switch level at the start of any month: just tell us before that month begins. Draft prices, A$ ex GST.'],
         ['How do we get help?', 'Use the support channel from your handover, or email info@bunya.ai, and include the workflow and what you need help with.'],
         ['What is Bunya Portal?', 'Your firm’s own space with Bunya. Everyone you invite sees chat, the library, meetings, the roadmap, requests and support. Invoices and balances are only for the people you choose.'],
         ['Does Ask Bunya change anything?', 'No. It answers questions from your records. Changes go through a request, and are scoped and quoted before any build starts.'],

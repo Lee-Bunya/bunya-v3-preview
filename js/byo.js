@@ -455,7 +455,9 @@
     if (t[0] === 'ae') { if (L.toggle('ae', '')) film('ae'); return; }
     if (t[0] === 'lvl') { X.lvl = k === 'std' ? '' : k; saveX(); paint(); if (X.lvl) film(b.closest('.pr-row').dataset.film || 'support'); return; }
     if (t[0] === 'brand') X.brand = k === 'none' ? '' : k;
-    else { X[k] = !X[k]; if (X[k] && k === 'fc') X.fcp = false; if (X[k] && k === 'fcp') X.fc = false; }
+    else { X[k] = !X[k]; if (X[k] && k === 'fc') X.fcp = false; if (X[k] && k === 'fcp') X.fc = false;
+      // 17 Nov 2026 (Lee): the two Broadcast HQs are one or the other
+      if (X[k] && k === 'smm' && L.read().add.bhq) { saveX(); L.toggle('add', 'bhq'); } }
     if (t[0] === 'brand' || X[k]) film(b.closest('.pr-row').dataset.film || 'yours');
     if (t[0] === 'brand' && k !== 'none') push('brand');
     saveX(); paint();
@@ -466,7 +468,7 @@
     var el = document.querySelector('.byo-pt-in'); if (el && document.activeElement === document.body) el.focus();
   });
   $('byo-hh').addEventListener('input', function(){ n = +this.value; sized = true; saveN(); paint(); });
-  document.addEventListener('bunya:build', paint);
+  document.addEventListener('bunya:build', function(e){ var d = e.detail || {}; if (d.key === 'bhq' && d.on && X.smm) { X.smm = false; saveX(); } paint(); });
   document.addEventListener('bunya:brand', function(){ if (window.byoBrand && window.byoBrandAsked) { keyNow = ''; film('yours'); } push(); paintQuote(calc()); var f = $('byo-quote'); if (window.byoBrand && f && !f.elements.firm.value && window.byoBrand.found) f.elements.firm.value = window.byoBrand.firm; });
   addEventListener('storage', paint);
   paint();
