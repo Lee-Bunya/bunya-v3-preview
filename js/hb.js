@@ -442,8 +442,8 @@
       ],
       /* 17 Nov 2026 (Daniel, Lee: "go ahead"): support and Bunya Build are one ladder. */
       extra: [{ id: 'levels', title: 'Three levels of support', lead: 'Email support, with a reply within 36 business hours, and every update come with every Bunya. On top, choose your level. Switch level at the start of any month: just tell us before that month begins.', how: [
-        { t: 'Shape · included for 1 month', d: 'Change your system yourself with AI, in plain English, through our portal: forms, reports, your own apps and agents. Chat and email support, with a reply within 24 business hours. Included for your first month, then $1,503 a month, or drop back to email support at no cost.' },
-        { t: 'Build · $5,274 a month', d: 'Send us your ideas and we build them with you, over email: new reports, automations and agents, and changes to your Command Centre, scoped and tested with you. Chat, email and phone, with a reply within 6 business hours.' },
+        { t: 'Shape · $1,503 a month', d: 'Change your system yourself with AI, in plain English, through our portal: forms, reports, your own apps and agents. Chat and email support, with a reply within 24 business hours. Included for your first month, then $1,503 a month, or drop back to email support at no cost.' },
+        { t: 'Build · $5,274 a month', d: 'Send us your ideas and we build them with you, over email: new reports, automations and agents, and changes to your Command Centre, scoped and tested with you. Chat, email and phone, with a reply within 6 business hours. Included for your first month.' },
         { t: 'Build Team · $12,055 a month', d: 'Our team works alongside yours to customise your whole system: new processes automated, new agents and workflows, and a custom client portal. Most firms choose it for their first months, then move to another level.' }] }],
       vs: { name: 'With Care', rows: [
         ['Getting stuck', 'Waiting for whoever set it up.', 'Tutorials for your role, and a team to ask.'],
