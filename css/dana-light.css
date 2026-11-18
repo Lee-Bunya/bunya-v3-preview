@@ -1,0 +1,345 @@
+/* ==========================================================================
+   Dana's light brand look for v3 (18 Nov 2026), pricing.html and build.html
+   --------------------------------------------------------------------------
+   Linked last on those two pages. It changes colours and a few shapes only:
+   no copy, prices or layout change. It matches Dana's design review of
+   bunya.ai: white page, Midnight headings, Focus Green text, teal accents,
+   Saira labels, Midnight buttons with soft corners, and a Midnight footer.
+
+   Part 1: brand settings (change a colour here to change it everywhere).
+   Part 2: generated colour swaps, one per dark-theme rule in sx.css, pr.css,
+           byo.css and nav3.css (same selectors, brand colours).
+   Part 3: hand-tuned details that sit on top.
+   ========================================================================== */
+
+/* ---- Part 1: brand settings --------------------------------------------- */
+:root{
+  --midnight:#040F1D; --focus:#013B43; --grid:#0A7D79; --pulse:#11B8B1;
+  --signal:#F4B528; --pale:#F2F8F8; --soft:#E3F5F3; --mist:#D9E6E6;
+  --text:#28403F; --muted:#4F6B6B;
+
+  /* v3's own settings, pointed at the brand */
+  --sx-bg:#FFFFFF; --sx-card:#F2F8F8; --sx-card-2:#F2F8F8; --sx-line:#D9E6E6;
+  --sx-white:#040F1D; --sx-grey:#4F6B6B; --sx-dim:#6B8584; --sx-teal:#0A7D79;
+}
+.n3{--n3-bg:rgba(255,255,255,.86); --n3-panel:rgba(255,255,255,.97); --n3-line:#D9E6E6;
+  --n3-grey:#4F6B6B; --n3-dim:#6B8584; --n3-teal:#0A7D79}
+
+/* ---- Part 2: generated colour swaps ------------------------------------- */
+
+/* from sx.css */
+.sx :focus-visible{outline:2px solid #0A7D79}
+.sx-grad{background:#E3F5F3}
+.sx-btn{background:#040F1D;color:#FFFFFF!important}
+.sx-btn:hover{box-shadow:0 0 0 6px #D9E6E6}
+.sx-btn.ghost{color:#040F1D!important;box-shadow:inset 0 0 0 1.5px rgba(1,59,67,.45)}
+.sx-btn.ghost:hover{box-shadow:inset 0 0 0 1.5px #fff,0 0 0 6px #D9E6E6}
+.sx-hero::before{background:radial-gradient(closest-side,rgba(17,184,177,.10),transparent 75%)}
+.sx-pill{background:#EAF3F3;box-shadow:inset 0 0 0 1px #D9E6E6;color:#040F1D}
+.sx-tenant{background:#E3F5F3;box-shadow:inset 0 0 0 1.5px rgba(10,125,121,.4)}
+.sx-store{background:rgba(4,15,29,.45)}
+.sx-store .ic{background:#E3F5F3}
+.sx-store svg{stroke:#0A7D79}
+.sx-link span{background:repeating-linear-gradient(90deg,rgba(1,59,67,.45) 0 6px,transparent 6px 12px)}
+.sx-gates li::before{color:#FFFFFF}
+.sx-faq summary i{background:#E3F5F3}
+.sx-faq summary i::before,.sx-faq summary i::after{background:#040F1D}
+.sx-end{background:radial-gradient(closest-side,rgba(17,184,177,.10),transparent 75%),#F2F8F8}
+
+/* from sx.css @media (max-width:960px) */
+@media (max-width:960px){
+.sx-link span{background:repeating-linear-gradient(180deg,rgba(1,59,67,.45) 0 6px,transparent 6px 12px)}
+}
+
+/* from pr.css */
+.pr-start{background:var(--sx-card-2,#F2F8F8);color:#040F1D}
+.pr-start:hover{box-shadow:inset 0 0 0 1.5px #B9CFCF}
+.pr-start.pick{background:#E3F5F3;box-shadow:inset 0 0 0 1px rgba(10,125,121,.4)}
+.pr-start.pick .k{color:#0A7D79}
+.pr-start .go{color:#0A7D79}
+.pr-gh .n{background:#040F1D;color:#FFFFFF}
+.pc b{color:#040F1D}
+.pr-incl li::before{border-left:2px solid #0A7D79;border-bottom:2px solid #0A7D79}
+.pr-incl a{color:#040F1D}
+.pr-row{background:#F2F8F8}
+.pr-row.on{background:#E3F5F3;box-shadow:inset 0 0 0 1px rgba(10,125,121,.4)}
+.pr-row .nm a,.pr-row .nm b{color:#040F1D}
+.pr-ae{background:#E3F5F3;box-shadow:inset 0 0 0 1px rgba(10,125,121,.4)}
+.pr-tk{background:#E3F5F3;color:#040F1D;box-shadow:inset 0 0 0 1px #B9CFCF}
+.pr-tk.on{background:#0A7D79;color:#FFFFFF}
+.pr-note a{color:#0A7D79}
+.pr-sum{background:#F2F8F8;box-shadow:inset 0 0 0 1px #D9E6E6,0 40px 80px -30px rgba(1,43,51,.16)}
+.pr-sum .k{color:#0A7D79}
+.pr-n{color:#28403F}
+.pr-n b{color:#040F1D}
+.pr-n input{accent-color:#0A7D79}
+.pr-lines div{color:#28403F}
+.pr-lines dd{color:#040F1D}
+.pr-every div{background:var(--sx-card-2,#F2F8F8)}
+.pr-how{color:#28403F}
+.pr-dd > summary:hover{background:#F2F8F8}
+.pr-dd > summary:focus-visible{outline:2px solid #0A7D79}
+.pr-dd[open]{background:#EAF3F3}
+.pr-chev{background:#EAF3F3}
+.pr-chev::before{border-right:2px solid #28403F;border-bottom:2px solid #28403F}
+.pr-dd-b p{color:#28403F}
+.pr-dd-b li{color:#28403F}
+.pr-dd-b li::before{border-left:2px solid #0A7D79;border-bottom:2px solid #0A7D79}
+.pr-dd-a{color:#0A7D79}
+.pr-dd .pr-why{border-left:2px solid #0A7D79;color:#28403F}
+.pr-vs > div{background:#F2F8F8}
+.pr-vs b{color:#040F1D}
+.pr-vs li{color:#28403F}
+.pr-vs li::before{border-left:2px solid #0A7D79;border-bottom:2px solid #0A7D79}
+.pr-whylink{color:#0A7D79}
+.pr-sub{color:#040F1D}
+
+/* from byo.css */
+.byo-fine{color:var(--sx-dim,#6B8584)}
+.byo-sizes button{background:#EAF3F3;color:#040F1D;box-shadow:inset 0 0 0 1px #D9E6E6}
+.byo-sizes button:hover{box-shadow:inset 0 0 0 1.5px #B9CFCF}
+.byo-sizes button[aria-pressed="true"]{background:#E3F5F3;color:#040F1D;box-shadow:inset 0 0 0 2px #0A7D79}
+.byo-range b{color:#040F1D}
+.byo-range input{accent-color:#0A7D79}
+.byo-card{background:var(--sx-card-2,#F2F8F8);box-shadow:inset 0 0 0 1px #D9E6E6}
+.byo-card summary{color:#0A7D79}
+.byo-usage{color:#28403F}
+.byo-usage b{color:#040F1D}
+.byo-tag{background:#E3F5F3;color:#0A7D79}
+.byo-tag.grey{background:#E3F5F3;color:#28403F}
+.pr-row.inc .pc{color:#0A7D79}
+.pr-row.inc .pc b{color:#0A7D79}
+.byo-nudge{background:#E3F5F3;box-shadow:inset 0 0 0 1px rgba(10,125,121,.4)}
+.byo-nudge p{color:#28403F}
+.byo-nudge p b{color:#040F1D}
+.byo-link{color:#0A7D79}
+.byo-dl div{color:#28403F}
+.byo-dl dd{color:#040F1D}
+.byo-dl .tot{color:#040F1D}
+.byo-ownit p{color:#28403F}
+.byo-ownit a{color:#0A7D79}
+.byo-bar{background:rgba(255,255,255,.9);border-top:1px solid #D9E6E6}
+.byo-chg{background:#0A7D79;color:#FFFFFF}
+.byo-sub{color:#040F1D}
+.byo-rd i{box-shadow:inset 0 0 0 2px rgba(1,59,67,.45)}
+.byo-rd.on{background:#0A7D79}
+.byo-rd.on i{background:#FFFFFF}
+.byo-more > summary{color:#040F1D;box-shadow:inset 0 0 0 1.5px #B9CFCF}
+.byo-more > summary::after{color:#0A7D79}
+.byo-bill{background:#EAF3F3;box-shadow:inset 0 0 0 1px #D9E6E6}
+.byo-bill button{color:#28403F}
+.byo-bill button small{color:#0A7D79}
+.byo-bill button.on{background:#040F1D;color:#FFFFFF}
+.byo-q-sum{background:#F2F8F8;box-shadow:inset 0 0 0 1px #D9E6E6}
+.byo-q-sum dd{color:#040F1D}
+.byo-q-sum dl.t dd{color:#040F1D}
+.byo-q-f label{color:#28403F}
+.byo-q-f input{background:#EAF3F3;color:#040F1D;box-shadow:inset 0 0 0 1px #D9E6E6}
+.byo-q-f input:focus{box-shadow:inset 0 0 0 2px #0A7D79}
+.byo-q-err{color:#B42318}
+.byo-q-done{background:#E3F5F3;box-shadow:inset 0 0 0 1px rgba(10,125,121,.4)}
+.byo-q-done b{color:#040F1D}
+.byo-brand-in input{background:#EAF3F3;color:#040F1D;box-shadow:inset 0 0 0 1px #D9E6E6}
+.byo-brand-in input:focus{box-shadow:inset 0 0 0 2px #0A7D79}
+.byo-brand-note .dot{background:#0A7D79}
+.byo-watch{background:#EAF3F3;color:#040F1D;box-shadow:inset 0 0 0 1px #B9CFCF}
+.byo-watch::before{color:#0A7D79}
+.byo-modal{background:rgba(4,15,29,.45)}
+.byo-modal-c{background:#F2F8F8;box-shadow:inset 0 0 0 1px #D9E6E6,0 40px 120px -20px rgba(1,43,51,.16)}
+.byo-x{background:#EAF3F3;color:#040F1D}
+.byo-q-sumw > summary{color:#0A7D79}
+.byo-d-line{background:#F2F8F8;color:#28403F}
+.byo-q-f textarea{background:#EAF3F3;color:#040F1D;box-shadow:inset 0 0 0 1px #D9E6E6}
+.byo-q-f textarea:focus{box-shadow:inset 0 0 0 2px #0A7D79}
+.byo-show legend{color:#28403F}
+.byo-show span{color:#28403F;box-shadow:inset 0 0 0 1px #B9CFCF}
+.byo-show input:checked + span{background:#E3F5F3;color:#040F1D;box-shadow:inset 0 0 0 1.5px #0A7D79}
+.byo-show input:checked + span::before{color:#0A7D79}
+.byo-show input:focus-visible + span{outline:2px solid #0A7D79}
+.byo-optin{color:#28403F}
+.byo-optin input{accent-color:#0A7D79}
+.byo-needs{background:#FEF6E0}
+.byo-own{color:#040F1D}
+.byo-own i{box-shadow:inset 0 0 0 1.5px rgba(1,59,67,.45)}
+.byo-own.on i{background:#0A7D79}
+.byo-own.on i::after{border:2px solid #FFFFFF}
+.byo-own:focus-visible{outline:2px solid #0A7D79}
+.byo-pt{background:#F2F8F8}
+.byo-pt-h b{color:#040F1D}
+.byo-pt-n{color:#040F1D}
+.byo-pt-b{background:#F2F8F8;color:#040F1D}
+.byo-pt-b.on{background:#E3F5F3;box-shadow:inset 0 0 0 1.5px #0A7D79}
+.byo-pt-b:focus-visible,.byo-pt-step button:focus-visible{outline:2px solid #0A7D79}
+.byo-pt-u{color:#28403F}
+.byo-pt-step button{color:#040F1D}
+.byo-pt-step output{color:#040F1D}
+.byo-pt-in{color:#040F1D}
+.byo-pt-in:focus-visible{outline:2px solid #0A7D79}
+.byo-pt-t{color:#28403F}
+.byo-pt-t b{color:#040F1D}
+.byo-why b{color:#040F1D}
+.byo-why li b{color:#040F1D}
+.byo-why li::before{border-left:2px solid #0A7D79;border-bottom:2px solid #0A7D79}
+.byo-why a{color:#0A7D79}
+.byo-fine a{color:#0A7D79}
+.byo-ownit > b{color:#040F1D}
+.byo-pg .pr-row.inc .pc b{color:#0A7D79}
+.byo-mode{background:#EAF3F3;box-shadow:inset 0 0 0 1px #D9E6E6}
+.byo-mode button{color:#040F1D}
+.byo-mode button:hover:not(.on){background:#EAF3F3}
+.byo-mode button.on{background:#040F1D;color:#FFFFFF}
+.byo-mode button.on small{color:#28403F}
+.byo-mode button:focus-visible{outline:2px solid #0A7D79}
+.byo-col > .pr-gh:focus-visible{outline:2px solid #0A7D79}
+.byo-col > .pr-gh:hover .pr-chev{background:#E3F5F3}
+.byo-pick{color:#0A7D79}
+.pc .byo-pc-note{color:#0A7D79}
+.byo-dl .tot.us dt,.byo-dl .tot.us dd{color:#0A7D79}
+.byo-ms > b{color:#040F1D}
+
+/* from nav3.css */
+.n3{color:#040F1D}
+.n3.open .n3-bar{background:rgba(255,255,255,.9)}
+.n3-main button{color:#040F1D}
+.n3-main button:hover,.n3-main button[aria-expanded="true"]{color:#040F1D;background:#E3F5F3}
+.n3-ic{color:#040F1D}
+.n3-ic:hover,.n3-ic[aria-expanded="true"]{background:#E3F5F3;color:#040F1D}
+.n3-count{color:#FFFFFF}
+.n3-demo{background:#040F1D;color:#FFFFFF!important}
+.n3-menu{background:#E3F5F3}
+.n3-panel{box-shadow:0 40px 80px -40px rgba(1,43,51,.16)}
+.n3-veil{background:rgba(4,15,29,.45)}
+.n3-big a,.n3-big button{color:#040F1D}
+.n3-big a:hover,.n3-big button:hover{color:var(--c,#0A7D79)}
+.n3-small a,.n3-small button{color:#28403F}
+.n3-small a:hover,.n3-small button:hover{color:#040F1D}
+.n3-feature{background:radial-gradient(closest-side,rgba(17,184,177,.10),transparent 75%);box-shadow:inset 0 0 0 1px #D9E6E6}
+.n3-feature .k{color:var(--c,#0A7D79)}
+.n3-feature b{color:#040F1D}
+.n3-feature .sc{box-shadow:0 0 0 1px #D9E6E6,0 30px 60px -20px rgba(1,43,51,.16)}
+.n3-pill{background:#040F1D;color:#FFFFFF!important}
+.n3-pill.ghost{background:#E3F5F3;color:#040F1D!important}
+.n3-pill.done{background:#E3F5F3;color:#0A7D79!important}
+.n3-tile{box-shadow:inset 0 0 0 1px #D9E6E6}
+.n3-tile:hover{box-shadow:inset 0 0 0 1px #B9CFCF,0 24px 50px -30px var(--c)}
+.n3-tile .pic{background:radial-gradient(closest-side,rgba(17,184,177,.10),transparent 75%)}
+.n3-tile .pic .sc{box-shadow:0 0 0 1px #D9E6E6,0 20px 40px -10px rgba(1,43,51,.16)}
+.n3-tile .pic .ph{box-shadow:0 0 0 1px #B9CFCF}
+.n3-tile .open b{color:#040F1D}
+.n3-add{background:#E3F5F3;color:#FFFFFF;box-shadow:0 8px 20px -8px rgba(1,43,51,.16)}
+.n3-foot a{color:#040F1D}
+.n3-quote{background:radial-gradient(closest-side,rgba(17,184,177,.10),transparent 75%);box-shadow:inset 0 0 0 1px #D9E6E6}
+.n3-quote q{color:#040F1D}
+.n3-quote .who b{color:#040F1D}
+.n3-bag{box-shadow:0 0 0 1px #D9E6E6,0 40px 80px -30px rgba(1,43,51,.16)}
+.n3-bag h4{color:#040F1D}
+.n3-bag li{background:#F2F8F8;color:#040F1D}
+.n3-bag li i{background:var(--c,#0A7D79)}
+.n3-bag li button:hover{background:#E3F5F3;color:#040F1D}
+.n3-bag .row a:first-child{background:#040F1D;color:#FFFFFF}
+.n3-bag .row a:last-child{background:#E3F5F3;color:#040F1D}
+.n3-search{background:rgba(4,15,29,.45)}
+.n3-sbox{box-shadow:0 0 0 1px #D9E6E6,0 60px 120px -40px rgba(1,43,51,.16)}
+.n3-sin input{color:#040F1D}
+.n3-sin kbd{box-shadow:inset 0 0 0 1px #D9E6E6}
+.n3-res button,.n3-res a{color:#040F1D}
+.n3-res .on{background:#EAF3F3}
+.n3-res i{background:color-mix(in srgb,var(--c,#0A7D79) 18%,transparent);color:var(--c,#0A7D79)}
+.n3-phone{background:#FFFFFF}
+.n3-ph-search{background:#EAF3F3}
+.n3-acc > button{color:#040F1D}
+.n3-acc .item b{color:#040F1D}
+.n3-acc .links a{color:#28403F}
+.n3-ph-foot a{background:#E3F5F3;color:#040F1D}
+.n3-ph-foot a.pri{background:#040F1D;color:#FFFFFF}
+.n3 .n3-cc-link{color:#0A7D79}
+.n3-book{color:#040F1D}
+.n3-book:hover{color:#040F1D}
+.n3-yb-b{background:#E3F5F3;box-shadow:inset 0 0 0 1px rgba(10,125,121,.4);color:#040F1D}
+.n3-yb-b:hover,.n3-yb.open .n3-yb-b{background:#E3F5F3}
+.n3-yb-b .c{color:#FFFFFF}
+.n3-yb-b .l{color:#040F1D}
+.n3-yb-pop,.n3-yb-toast{box-shadow:0 0 0 1px #D9E6E6,0 30px 80px -20px rgba(1,43,51,.16);color:#040F1D}
+.n3-yb-pop .clr:hover{color:#040F1D}
+.n3-yb-pop .r em{color:#0A7D79}
+.n3-yb-pop .r.tot b,.n3-yb-pop .r.tot em{color:#040F1D}
+.n3-yb-pop button.x:hover{background:#E3F5F3;color:#040F1D}
+.n3-yb-pop .sum{background:#E3F5F3}
+.n3-yb-pop .sum span{color:#28403F}
+.n3-yb-pop .nudge{box-shadow:inset 0 0 0 1px rgba(10,125,121,.4)}
+.n3-yb-pop .nudge p{color:#28403F}
+.n3-yb-pop .nudge b{color:#040F1D}
+.n3-yb-pop .nudge button{background:#040F1D;color:#FFFFFF}
+.n3-yb-pop .go{background:#040F1D;color:#FFFFFF!important}
+.n3-yb-toast span{color:#0A7D79}
+.n3-yb-pop,.n3-yb-toast{background:#F2F8F8}
+
+/* ---- Part 3: hand-tuned details ------------------------------------------ */
+
+/* Page */
+html{background:#FFFFFF}
+body.sx{color:var(--text)}
+
+/* Headings: Midnight, bold, as on the live site */
+.sx h1,.sx h2,.sx h3{color:var(--midnight);font-weight:700}
+
+/* The rainbow gradient line becomes one solid teal (e.g. "Only what you need.") */
+.sx-grad{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--grid);-webkit-text-fill-color:var(--grid)}
+
+/* Small labels: Saira capitals, as on the live site */
+.sx-pill{height:auto;padding:6px 13px;background:var(--soft);box-shadow:none;color:var(--focus);
+  font-family:"Saira","Segoe UI",Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.sx-pill i{background:var(--signal);box-shadow:none}            /* the page's one gold Signal */
+.sx-k,.pr-sum .k,.pr-start .k,.byo-dl-h{font-family:"Saira","Segoe UI",Arial,sans-serif;font-size:11.5px;letter-spacing:.12em;color:var(--grid)}
+
+/* Buttons: Midnight with soft corners (chips and toggles keep their round ends) */
+.sx-btn,.n3-demo,.n3-pill,.byo-nudge .sx-btn,.byo-bar-ctas .sx-btn,.byo-brand-in .sx-btn{border-radius:12px}
+.sx-btn{font-weight:600}
+.sx-btn:hover{box-shadow:0 10px 24px -12px rgba(4,15,29,.45)}
+.sx-btn.ghost{background:#FFFFFF;box-shadow:inset 0 0 0 1.5px var(--focus)}
+.sx-btn.ghost:hover{box-shadow:inset 0 0 0 1.5px var(--midnight),0 10px 24px -14px rgba(4,15,29,.35)}
+
+/* Menu: white glass bar, the dark-text logo from the live site */
+.n3-bar{border-bottom-color:var(--mist)}
+.n3-logo img{content:url("../assets/bunya-logo-dark.svg")}
+.n3-panel{background:var(--n3-panel)}
+.n3-add{background:var(--grid);color:#FFFFFF}
+.n3-count,.n3-yb-b .c{background:var(--grid);color:#FFFFFF}
+.n3 [style*="--c"]{--c:#0A7D79!important}
+.n3-sbox,.n3-bag,.n3-yb-pop,.n3-yb-toast{background:#FFFFFF}
+
+/* Price rows: white cards with a Mist hairline on the white page */
+.pr-row,.pr-vs > div,.byo-pt,.byo-pt-b,.pr-every div{background:#FFFFFF;box-shadow:inset 0 0 0 1px var(--mist)}
+.pr-dd > summary:hover{background:var(--pale)}
+.pr-dd[open]{background:var(--pale);box-shadow:inset 0 0 0 1px var(--mist)}
+.pr-chev{background:var(--soft)}
+.pr-chev::before{border-color:var(--focus)}
+.pr-row.on,.pr-ae{background:var(--soft);box-shadow:inset 0 0 0 1px rgba(10,125,121,.35)}
+.pr-dd .pr-why{color:var(--focus)}
+.pr-gh p,.pr-note,.pc,.byo-dim,.byo-fine{color:var(--muted)}
+
+/* Price summary and the "Your Bunya" side panel: Pale Mist frame */
+.pr-sum{background:var(--pale);box-shadow:inset 0 0 0 1px var(--mist),0 30px 60px -36px rgba(1,43,51,.35)}
+.byo-card{background:var(--pale)}
+
+/* Build: screen frame, bottom price bar, pop-ups */
+.byo-screen{box-shadow:0 0 0 1px var(--mist),0 30px 60px -30px rgba(1,43,51,.35)}
+.byo-bar{background:rgba(255,255,255,.92);box-shadow:0 -10px 30px -20px rgba(1,43,51,.25)}
+.byo-rate b,.byo-month b{color:var(--midnight)}
+.byo-modal-c{background:#FFFFFF}
+.byo-q-f input,.byo-q-f textarea,.byo-brand-in input{background:#FFFFFF;box-shadow:inset 0 0 0 1px #B9CFCF}
+.byo-q-f input::placeholder,.byo-q-f textarea::placeholder,.byo-brand-in input::placeholder{color:#8AA09F}
+.byo-needs{box-shadow:inset 0 0 0 1px rgba(244,181,40,.55)}   /* gold Signal: the pack needs a brand */
+
+/* Footer: Midnight, as on the live site */
+.sx footer.site{background:var(--midnight);color:rgba(255,255,255,.62);border-top:0}
+.sx footer.site h4{color:#FFFFFF}
+.sx footer.site a{color:rgba(255,255,255,.78)}
+.sx footer.site a:hover{color:#FFFFFF}
+.sx footer.site .fine{border-top-color:rgba(255,255,255,.12)}
+
+/* Subscribe / Own it: the small line under the chosen option reads on the Midnight button */
+.byo-mode button.on small{color:rgba(255,255,255,.75)}
+
+/* Hero glow: a soft teal wash from the top that fades out before the hero ends (no hard edge on phones) */
+.sx-hero::before{top:0;width:100%;height:100%;filter:none;background:radial-gradient(70% 60% at 50% 0%,rgba(17,184,177,.10),transparent 72%)}

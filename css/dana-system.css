@@ -1,0 +1,772 @@
+/* ==========================================================================
+   Bunya visual system for Pricing and Build your Bunya (Dana, 18 Nov 2026)
+   --------------------------------------------------------------------------
+   Loads after css/dana-light.css (which turns v3's dark colours into brand
+   colours). This file is the design layer: type, surfaces, components and
+   motion. Copy, prices and page markup are unchanged; js/dana-ux.js adds
+   the section index on Pricing, whole-row selecting and the slider fill
+   on Build.
+
+   1  Tokens            6  Pricing: summary card
+   2  Base and type     7  Pricing: below the list
+   3  Shared pieces     8  Build: hero, preview and steps
+   4  Pricing: hero     9  Build: choices, totals, price bar, pop-ups
+      and section index 10 Smaller screens and reduced motion
+   5  Pricing: price list
+   ========================================================================== */
+
+/* ---- 1 Tokens ---------------------------------------------------------- */
+:root{
+  --midnight:#040F1D; --focus:#013B43; --grid:#0A7D79; --pulse:#11B8B1; --signal:#F4B528;
+  --pale:#F2F8F8; --soft:#E3F5F3; --mist:#D9E6E6; --mist-2:#C5D8D8;
+  --text:#28403F; --muted:#56706F; --faint:#5A7271;
+
+  --label:"Saira","Segoe UI",Arial,sans-serif;
+  --r-chip:999px; --r-btn:12px; --r-row:14px; --r-card:20px; --r-panel:28px;
+
+  --lift-1:0 1px 2px rgba(4,15,29,.04),0 8px 22px -14px rgba(1,59,67,.22);
+  --lift-2:0 2px 4px rgba(4,15,29,.04),0 28px 56px -28px rgba(1,59,67,.32);
+  --ring:0 0 0 1px var(--mist);
+  --ease:cubic-bezier(.2,.7,.1,1);
+  --nav-h:60px; --jump-h:56px;
+
+  interpolate-size:allow-keywords;   /* lets open/close animate to "auto" height where supported */
+}
+
+/* ---- 2 Base and type ----------------------------------------------------- */
+body.sx{color:var(--text);font-size:17px;line-height:1.55;text-rendering:optimizeLegibility}
+.sx h1,.sx h2,.sx h3{color:var(--midnight);font-weight:700;text-wrap:balance}
+.sx :focus-visible{outline:2px solid var(--grid);outline-offset:3px;border-radius:6px}
+.sx ::selection{background:var(--soft);color:var(--midnight)}
+.sx b{font-weight:600}
+
+/* Labels: Saira capitals everywhere a small heading sits */
+.sx-k,.pr-sum .k,.byo-dl-h,.pr-sub,.byo-sub{font-family:var(--label);font-weight:600;text-transform:uppercase;letter-spacing:.14em}
+
+/* ---- 3 Shared pieces ------------------------------------------------------ */
+/* Buttons */
+.sx .sx-btn{height:52px;padding:0 26px;border-radius:var(--r-btn);font-size:16.5px;font-weight:600;letter-spacing:-.005em;
+  background:var(--midnight);color:#fff!important;box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 10px 24px -14px rgba(4,15,29,.7);
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s}
+.sx .sx-btn:hover{transform:translateY(-1px);background:#0B1F33;box-shadow:0 14px 28px -14px rgba(4,15,29,.7)}
+.sx .sx-btn:active{transform:translateY(0)}
+.sx .sx-btn.ghost{background:#fff;color:var(--midnight)!important;box-shadow:inset 0 0 0 1.5px var(--mist-2)}
+.sx .sx-btn.ghost:hover{background:#fff;box-shadow:inset 0 0 0 1.5px var(--focus),0 10px 24px -16px rgba(1,59,67,.45)}
+
+/* The small chip above each hero heading */
+.sx .sx-pill{height:30px;padding:0 14px;border-radius:var(--r-chip);background:#fff;box-shadow:inset 0 0 0 1px var(--mist),var(--lift-1);
+  color:var(--focus);font-family:var(--label);font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin-bottom:26px}
+.sx .sx-pill i{width:7px;height:7px;background:var(--signal);box-shadow:0 0 0 3px rgba(244,181,40,.22)}
+
+/* Teal emphasis inside headings */
+.sx .sx-grad{color:var(--grid);-webkit-text-fill-color:var(--grid)}
+
+/* Ticks used in every list on both pages */
+.pr-incl li::before,.pr-dd-b li::before,.pr-vs li::before,.byo-why li::before{
+  width:16px;height:16px;left:0;top:2px;border:0;transform:none;border-radius:50%;
+  background:var(--soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.3l2.2 2.2 4.8-5' fill='none' stroke='%230A7D79' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.pr-dd-b li,.pr-vs li,.byo-why li,.pr-incl li{padding-left:26px}
+
+/* Reveal on scroll: a calmer rise */
+html.js .sx-rv{transform:translateY(16px);transition:opacity .7s var(--ease),transform .8s var(--ease)}
+
+/* Footer: Midnight, with a little more air */
+.sx footer.site{margin-top:clamp(80px,12vh,140px);padding:64px 0 40px}
+
+/* ---- 4 Pricing: hero and section index --------------------------------- */
+.sx-hero,.byo-hero{position:relative;isolation:isolate}
+.sx-hero::after,.byo-hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:radial-gradient(rgba(10,125,121,.16) 1px,transparent 1.3px);background-size:24px 24px;
+  -webkit-mask-image:radial-gradient(ellipse 60% 75% at 50% 0%,#000 25%,transparent 72%);mask-image:radial-gradient(ellipse 60% 75% at 50% 0%,#000 25%,transparent 72%)}
+.byo-hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(70% 60% at 50% 0%,rgba(17,184,177,.10),transparent 72%)}
+.pr-hero{padding-top:clamp(64px,10vh,120px)}
+.sx-hero h1{font-size:clamp(46px,7vw,96px);line-height:.98;letter-spacing:-.05em}
+.sx-hero p{max-width:640px;margin-top:26px;font-size:clamp(18px,1.6vw,21px);line-height:1.5;color:var(--muted)}
+
+/* Section index (added by js/dana-ux.js from the section headings) */
+.dx-jump{position:sticky;top:var(--nav-h);z-index:30;margin-top:clamp(36px,5vh,56px);
+  background:rgba(255,255,255,.86);backdrop-filter:saturate(1.6) blur(16px);-webkit-backdrop-filter:saturate(1.6) blur(16px);
+  border-block:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+.dx-jump.stuck{border-bottom-color:var(--mist);box-shadow:0 12px 24px -22px rgba(1,59,67,.5)}
+.dx-jump{transition:border-color .3s,box-shadow .3s,transform .35s var(--ease),opacity .25s}
+.dx-jump.gone{transform:translateY(-110%);opacity:0;pointer-events:none}
+.dx-jump-in{width:min(1100px,calc(100% - 48px));height:var(--jump-h);margin:0 auto;display:flex;align-items:center;gap:2px;
+  overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 32px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 32px),transparent)}
+.dx-jump-in::-webkit-scrollbar{display:none}
+.dx-jump a{flex:none;display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 12px 0 10px;border-radius:var(--r-chip);
+  font-size:14px;font-weight:500;color:var(--text);text-decoration:none;white-space:nowrap;transition:background .2s,color .2s,box-shadow .2s}
+.dx-jump a span{font-family:var(--label);font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--faint)}
+.dx-jump a:hover{background:var(--pale);color:var(--midnight)}
+.dx-jump a.on{background:var(--midnight);color:#fff}
+.dx-jump a.on span{color:var(--pulse)}
+
+/* ---- 5 Pricing: price list ------------------------------------------------ */
+.pr-wrap{width:min(1100px,calc(100% - 48px));margin-top:clamp(36px,5vh,56px);gap:clamp(28px,4vw,56px)}
+@media (min-width:961px){.pr-wrap{grid-template-columns:minmax(0,1.6fr) minmax(320px,1fr)}}
+.pr-grp{padding:40px 0 44px;border-top:1px solid var(--mist);scroll-margin-top:calc(var(--nav-h) + var(--jump-h) + 16px)}
+.pr-grp:first-child{padding-top:8px}
+
+/* Section heading: numbered tile, heading, the section's price on the right */
+.sx .pr-gh{align-items:center;gap:16px}
+.sx .pr-gh .n{width:40px;height:40px;border-radius:12px;background:var(--soft);color:var(--focus);
+  font-family:var(--label);font-size:14px;font-weight:600;letter-spacing:.02em;box-shadow:inset 0 0 0 1px rgba(10,125,121,.18)}
+.sx .pr-gh h2{font-size:clamp(24px,2.3vw,31px);letter-spacing:-.035em;line-height:1.1}
+.sx .pr-gh p{margin-top:5px;font-size:15.5px;line-height:1.5;color:var(--muted);max-width:56ch}
+.sx .pr-gh .pc{align-self:center;padding:8px 14px;border-radius:var(--r-chip);background:var(--pale);box-shadow:inset 0 0 0 1px var(--mist);font-size:13.5px;color:var(--muted)}
+.sx .pr-gh .pc b{font-size:18px;color:var(--midnight)}
+.pr-rows,.pr-note,.pr-vs,.pr-sub,.pr-ae{margin-left:56px}
+.pr-rows{margin-top:20px;display:grid;gap:10px}
+.pr-rows > .pr-row{margin-top:0}
+
+/* "Pay as you go": a quiet label with a rule */
+.sx .pr-sub,.sx .byo-sub{display:flex;align-items:center;gap:12px;margin-top:30px;font-size:11.5px;color:var(--grid)}
+.sx .pr-sub span,.sx .byo-sub span{font-family:"TT Commons Pro",system-ui,sans-serif;text-transform:none;letter-spacing:0;font-size:13.5px;font-weight:400;color:var(--faint)}
+.sx .pr-sub::after,.sx .byo-sub::after{content:"";flex:1;height:1px;background:var(--mist)}
+
+/* Rows: white cards that lift on hover and open smoothly */
+.sx .pr-list .pr-row{background:#fff;border-radius:var(--r-row);box-shadow:var(--ring);transition:box-shadow .25s var(--ease),transform .25s var(--ease)}
+.sx .pr-list .pr-row:hover{box-shadow:0 0 0 1px var(--mist-2),var(--lift-1)}
+.sx .pr-list .pr-dd[open]{background:#fff;box-shadow:0 0 0 1.5px var(--grid),var(--lift-2)}
+.sx .pr-dd > summary{gap:18px;padding:18px 18px 18px 20px;border-radius:var(--r-row)}
+.sx .pr-dd > summary:hover{background:transparent}
+.sx .pr-row .nm b,.sx .pr-row .nm a{font-size:16.5px;font-weight:600;letter-spacing:-.01em;color:var(--midnight)}
+.sx .pr-row .nm small{margin-top:3px;font-size:13px;line-height:1.4;color:var(--faint)}
+.sx .pr-dd .pr-why{margin-top:8px;padding-left:12px;border-left:2px solid var(--pulse);font-size:14px;line-height:1.5;color:var(--focus)}
+/* Price: figure above its unit, right-aligned, figures lined up */
+.sx .pr-row .pc{display:flex;flex-direction:column;align-items:flex-end;gap:1px;min-width:92px;font-size:12.5px;line-height:1.3;color:var(--faint)}
+.sx .pr-row .pc b{font-size:19px;font-weight:700;letter-spacing:-.02em;color:var(--midnight);font-variant-numeric:tabular-nums;white-space:nowrap}
+.sx .pr-chev{width:32px;height:32px;background:var(--pale);box-shadow:inset 0 0 0 1px var(--mist);transition:transform .35s var(--ease),background .2s}
+.sx .pr-chev::before{border-color:var(--focus)}
+.sx .pr-dd > summary:hover .pr-chev{background:var(--soft)}
+.sx .pr-dd[open] .pr-chev{background:var(--grid);box-shadow:none}
+.sx .pr-dd[open] .pr-chev::before{border-color:#fff}
+/* The opened panel */
+.sx .pr-dd-b{margin:0 18px 18px 20px;padding:18px 0 2px;border-top:1px dashed var(--mist-2)}
+.sx .pr-dd-b p{font-size:15px;line-height:1.6;color:var(--text)}
+.sx .pr-dd-b ul{gap:9px;margin-top:14px}
+.sx .pr-dd-b li{font-size:14.5px;color:var(--text)}
+.sx .pr-dd-a{margin-top:14px;font-weight:600;color:var(--grid)}
+.pr-dd::details-content{block-size:0;overflow:hidden;transition:block-size .35s var(--ease),content-visibility .35s allow-discrete}
+.pr-dd[open]::details-content{block-size:auto}
+
+/* The whole Advice Engine: the featured row, with the page's gold Signal */
+.sx .pr-list .pr-ae{position:relative;overflow:hidden;margin-top:14px;
+  background:linear-gradient(120deg,#EAF7F5 0%,#fff 62%);box-shadow:0 0 0 1.5px var(--grid),var(--lift-1)}
+.sx .pr-list .pr-ae::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--signal)}
+.sx .pr-ae .nm b{font-size:18px}
+.sx .pr-ae .pc b{color:var(--grid)}
+
+/* Notes under a section: a soft callout */
+.sx .pr-note{margin-top:16px;padding:14px 18px;border-radius:var(--r-row);background:var(--pale);font-size:14.5px;line-height:1.55;color:var(--text)}
+.sx .pr-note a{color:var(--grid);font-weight:600;text-underline-offset:3px}
+
+/* Subscribe or own: two cards side by side */
+.sx .pr-vs{gap:12px;margin-top:16px}
+.sx .pr-vs > div{padding:20px 22px;border-radius:var(--r-card);background:#fff;box-shadow:var(--ring);border-top:3px solid var(--pulse)}
+.sx .pr-vs > div + div{border-top-color:var(--focus)}
+.sx .pr-vs b{font-size:16px;color:var(--midnight)}
+.sx .pr-vs ul{gap:9px;margin-top:12px}
+.sx .pr-vs li{font-size:14.5px;color:var(--text)}
+
+/* ---- 6 Pricing: summary card --------------------------------------------- */
+.sx .pr-sum{top:calc(var(--nav-h) + var(--jump-h) + 20px);padding:28px;border-radius:var(--r-panel);overflow:hidden;
+  background:#fff;box-shadow:0 0 0 1px var(--mist),var(--lift-2)}
+.sx .pr-sum::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--grid),var(--pulse))}
+.sx .pr-sum .k{font-size:11.5px;color:var(--grid)}
+.sx .pr-how{margin-top:12px;font-size:15px;line-height:1.6;color:var(--text)}
+.sx .pr-lines{margin-top:20px;padding:6px 16px;border:0;border-radius:var(--r-row);background:var(--pale)}
+.sx .pr-lines div{align-items:baseline;padding:11px 0;font-size:14.5px;color:var(--text);border-top:1px solid var(--mist)}
+.sx .pr-lines div:first-child{border-top:0}
+.sx .pr-lines dt{color:var(--text)}
+.sx .pr-lines dd{font-size:16px;font-weight:700;color:var(--midnight);letter-spacing:-.01em}
+.sx .pr-sn{margin-top:14px;font-size:13.5px;line-height:1.55;color:var(--muted)}
+.sx .pr-sum .sx-btn{height:54px;margin-top:20px}
+.sx .pr-whylink{margin-top:14px;text-align:center;font-weight:600;color:var(--grid)}
+.sx .pr-fine{margin-top:14px;padding-top:14px;border-top:1px solid var(--mist);font-size:12.5px;color:var(--faint)}
+
+/* ---- 7 Pricing: below the list -------------------------------------------- */
+.sx-sec{width:min(1100px,calc(100% - 48px));padding-top:clamp(80px,12vh,140px)}
+.sx .sx-head h2{font-size:clamp(34px,4.4vw,56px);letter-spacing:-.045em;line-height:1.04}
+.sx .sx-head h2 span{color:var(--faint)}
+.sx .sx-k{font-size:12px;color:var(--grid);margin-bottom:14px}
+
+/* With every Bunya: four numbered cards */
+.sx .pr-every{counter-reset:ev;gap:16px}
+.sx .pr-every div{counter-increment:ev;position:relative;padding:58px 24px 26px;border-radius:var(--r-card);background:#fff;box-shadow:var(--ring);transition:box-shadow .3s var(--ease),transform .3s var(--ease)}
+.sx .pr-every div::before{content:"0" counter(ev);position:absolute;left:24px;top:22px;font-family:var(--label);font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--grid)}
+.sx .pr-every div:hover{transform:translateY(-3px);box-shadow:0 0 0 1px var(--mist-2),var(--lift-2)}
+.sx .pr-every b{font-size:18px;color:var(--midnight);letter-spacing:-.015em}
+.sx .pr-every p{font-size:15px;color:var(--muted)}
+.co-more{margin:22px 0 0;font-size:15px;color:var(--faint)}
+.co-more a{color:var(--grid);font-weight:600;text-decoration:none}
+.co-more a:hover{text-decoration:underline;text-underline-offset:3px}
+
+/* Questions: a clean list */
+.sx .sx-faq{max-width:860px}
+.sx .sx-faq details{border-color:var(--mist)}
+.sx .sx-faq summary{padding:24px 0;font-size:clamp(17px,1.5vw,20px);color:var(--midnight);letter-spacing:-.01em}
+.sx .sx-faq summary i{width:32px;height:32px;background:var(--pale);box-shadow:inset 0 0 0 1px var(--mist);transition:background .2s}
+.sx .sx-faq summary i::before,.sx .sx-faq summary i::after{background:var(--focus)}
+.sx .sx-faq details[open] summary i{background:var(--grid);box-shadow:none}
+.sx .sx-faq details[open] summary i::before,.sx .sx-faq details[open] summary i::after{background:#fff}
+.sx .sx-faq details p{font-size:16.5px;line-height:1.65;color:var(--text)}
+.sx-faq details::details-content{block-size:0;overflow:hidden;transition:block-size .35s var(--ease),content-visibility .35s allow-discrete}
+.sx-faq details[open]::details-content{block-size:auto}
+
+/* Closing panel: deep Focus Green with a teal glow and the dot grid */
+.sx .sx-end{position:relative;overflow:hidden;isolation:isolate;width:min(1160px,calc(100% - 48px));padding:clamp(64px,10vh,112px) 24px;border-radius:32px;
+  background:radial-gradient(60% 90% at 50% 0%,rgba(17,184,177,.32),transparent 70%),linear-gradient(180deg,#014650,var(--focus));color:#fff}
+.sx .sx-end::after{content:"";position:absolute;inset:0;z-index:-1;background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1.3px);background-size:24px 24px;
+  -webkit-mask-image:radial-gradient(ellipse 70% 80% at 50% 0%,#000 20%,transparent 70%);mask-image:radial-gradient(ellipse 70% 80% at 50% 0%,#000 20%,transparent 70%)}
+.sx .sx-end h2{color:#fff;font-size:clamp(38px,5.4vw,72px);letter-spacing:-.05em}
+.sx .sx-end .sx-grad{color:#7EDAD6;-webkit-text-fill-color:#7EDAD6}
+.sx .sx-end p{color:rgba(255,255,255,.78);font-size:clamp(17px,1.5vw,20px);line-height:1.55}
+.sx .sx-end .sx-btn{background:#fff;color:var(--midnight)!important;box-shadow:0 14px 30px -16px rgba(0,0,0,.6)}
+.sx .sx-end .sx-btn:hover{background:#fff}
+.sx .sx-end .sx-btn.ghost{background:transparent;color:#fff!important;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5)}
+.sx .sx-end .sx-btn.ghost:hover{box-shadow:inset 0 0 0 1.5px #fff}
+
+/* ---- 8 Build: hero, preview and steps ------------------------------------ */
+.byo-hero{padding-top:clamp(56px,9vh,104px)}
+.byo-hero h1{font-size:clamp(46px,6.6vw,88px);letter-spacing:-.05em;line-height:.98}
+.byo-hero p{margin-top:20px;font-size:clamp(18px,1.6vw,21px);line-height:1.5;color:var(--muted)}
+
+/* Subscribe / Own it: a calm segmented choice */
+.sx .byo-mode{margin-top:32px;padding:6px;border-radius:20px;background:var(--pale);box-shadow:inset 0 0 0 1px var(--mist)}
+.sx .byo-mode button{min-width:240px;padding:14px 24px;border-radius:15px;color:var(--text);transition:background .25s var(--ease),box-shadow .25s var(--ease),color .2s}
+.sx .byo-mode button b{font-size:17px;color:var(--midnight)}
+.sx .byo-mode button small{font-size:13px;color:var(--muted)}
+.sx .byo-mode button:hover:not(.on){background:rgba(255,255,255,.6)}
+.sx .byo-mode button.on{background:#fff;color:var(--midnight);box-shadow:0 0 0 1.5px var(--grid),var(--lift-1)}
+.sx .byo-mode button.on b{color:var(--midnight)}
+.sx .byo-mode button.on small{color:var(--grid)}
+
+/* Pills used for terms and monthly / yearly */
+.sx .byo-bill{padding:5px;background:var(--pale);box-shadow:inset 0 0 0 1px var(--mist)}
+.sx .byo-bill button{height:40px;color:var(--text);font-weight:500;transition:background .2s,box-shadow .2s}
+.sx .byo-bill button.on{background:#fff;color:var(--midnight);box-shadow:0 0 0 1.5px var(--grid),var(--lift-1)}
+.sx .byo-bill button small,.sx .byo-bill button.on small{color:var(--grid);font-weight:600}
+
+.sx .byo{width:min(1240px,calc(100% - 48px));margin-top:clamp(40px,6vh,64px);gap:clamp(28px,4vw,56px)}
+
+/* Preview: the product screen in a soft frame */
+@media (min-width:1001px){.sx .byo-stage{top:calc(var(--nav-h) + 24px)}}
+.sx .byo-screen{border-radius:var(--r-card);box-shadow:0 0 0 1px var(--mist),0 0 0 10px var(--pale),0 0 0 11px var(--mist),var(--lift-2)}
+.sx .byo-capw{margin-top:22px}
+.sx .byo-cap b{font-size:19px;color:var(--midnight);letter-spacing:-.015em}
+.sx .byo-cap span{font-size:15px;color:var(--muted)}
+.sx .byo-watch{height:40px;border-radius:var(--r-chip);background:#fff;color:var(--midnight);box-shadow:inset 0 0 0 1px var(--mist-2);transition:box-shadow .2s}
+.sx .byo-watch:hover{box-shadow:inset 0 0 0 1.5px var(--focus)}
+.sx .byo-watch::before{color:var(--grid)}
+.sx .byo-stage > .byo-fine{color:var(--faint)}
+
+/* Each step is its own card */
+.sx .byo-steps{display:grid;gap:14px}
+.sx .byo-step{position:relative;padding:26px 26px 28px;border:0;border-radius:var(--r-card);background:#fff;box-shadow:var(--ring);scroll-margin-top:calc(var(--nav-h) + 20px);
+  transition:box-shadow .3s var(--ease)}
+.sx .byo-step:first-child{padding-top:26px}
+.sx .byo-col:not(.open){padding:20px 26px}
+.sx .byo-col:not(.open):hover{box-shadow:0 0 0 1px var(--mist-2),var(--lift-1)}
+.sx .byo-col.open,.sx .byo-step:not(.byo-col){box-shadow:0 0 0 1px var(--mist),var(--lift-1)}
+.sx .byo-col > .pr-gh .pr-chev{margin-top:0}
+.sx .byo-pick{margin-top:4px;font-size:14.5px;font-weight:500;color:var(--grid)}
+.sx .byo-step .pr-gh h2{font-size:clamp(22px,2vw,27px)}
+.sx .byo-step .pr-rows,.sx .byo-sizes,.sx .byo-range,.sx .byo-card,.sx .byo-nudge,.sx .byo-ctas,.sx .byo-step .pr-note,.sx .byo-sub,.sx .byo-bill,.sx .byo-pt,.sx .byo-more,.sx .byo-brand-pv{margin-left:56px}
+.sx .byo-sum .byo-fine{margin-left:56px}
+.sx .byo-step .byo-terms{width:calc(100% - 56px)}
+
+/* Step 1: size cards and the slider */
+.sx .byo-sizes{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:22px}
+.sx .byo-sizes button{position:relative;height:54px;border-radius:var(--r-row);background:#fff;color:var(--midnight);font-size:15.5px;font-weight:600;
+  box-shadow:inset 0 0 0 1px var(--mist-2);transition:box-shadow .2s,background .2s,transform .2s var(--ease)}
+.sx .byo-sizes button:hover{box-shadow:inset 0 0 0 1.5px var(--focus);transform:translateY(-1px)}
+.sx .byo-sizes button[aria-pressed="true"]{background:var(--soft);color:var(--midnight);box-shadow:inset 0 0 0 2px var(--grid)}
+.sx .byo-sizes button[aria-pressed="true"]::after{content:"";position:absolute;right:10px;top:10px;width:16px;height:16px;border-radius:50%;
+  background:var(--grid) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.3l2.2 2.2 4.8-5' fill='none' stroke='white' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.sx .byo-range{margin-top:22px}
+.sx .byo-range span{font-size:15px;color:var(--muted)}
+.sx .byo-range b{font-size:20px;font-weight:700;color:var(--midnight);font-variant-numeric:tabular-nums}
+.sx .byo-range input{-webkit-appearance:none;appearance:none;height:28px;margin-top:8px;background:transparent;cursor:pointer;--p:8%}
+.sx .byo-range input::-webkit-slider-runnable-track{height:6px;border-radius:6px;background:linear-gradient(90deg,var(--grid) var(--p),var(--mist) var(--p))}
+.sx .byo-range input::-moz-range-track{height:6px;border-radius:6px;background:var(--mist)}
+.sx .byo-range input::-moz-range-progress{height:6px;border-radius:6px;background:var(--grid)}
+.sx .byo-range input::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;margin-top:-9px;border-radius:50%;background:#fff;
+  box-shadow:0 0 0 2px var(--grid),0 4px 10px -2px rgba(1,59,67,.35);transition:transform .2s var(--ease)}
+.sx .byo-range input::-moz-range-thumb{width:22px;height:22px;border:0;border-radius:50%;background:#fff;box-shadow:0 0 0 2px var(--grid),0 4px 10px -2px rgba(1,59,67,.35)}
+.sx .byo-range input:active::-webkit-slider-thumb{transform:scale(1.12)}
+
+/* ---- 9 Build: choices, totals, price bar, pop-ups ------------------------- */
+/* Choice rows: the whole row selects (js/dana-ux.js), a checkbox or radio on the left */
+.sx .byo-steps .pr-row{gap:16px;padding:16px 18px;border-radius:var(--r-row);background:#fff;box-shadow:var(--ring);cursor:pointer;
+  transition:box-shadow .2s var(--ease),background .2s}
+.sx .byo-steps .pr-row:hover{box-shadow:0 0 0 1px var(--mist-2),var(--lift-1)}
+.sx .byo-steps .pr-row.on{background:linear-gradient(120deg,#EAF7F5,#fff 70%);box-shadow:0 0 0 1.5px var(--grid)}
+.sx .byo-steps .pr-row.inc{cursor:default}
+.sx .byo-pg .pr-row,.sx .byo-pg .pr-row:hover{cursor:default;background:var(--pale);box-shadow:none}
+.sx .byo-steps .pr-row .nm a{font-size:16px}
+.sx .byo-steps .pr-row .nm a:hover{color:var(--grid)}
+.sx .byo-steps .pr-row .nm small{font-size:13.5px;line-height:1.45;color:var(--muted)}
+
+/* Checkbox */
+.sx .pr-tk{width:24px;height:24px;border-radius:7px;background:#fff;color:#fff;box-shadow:inset 0 0 0 1.5px var(--mist-2);transition:background .2s,box-shadow .2s,transform .2s var(--ease)}
+.sx .pr-tk:hover{transform:none;box-shadow:inset 0 0 0 1.5px var(--grid)}
+.sx .pr-tk .i-plus{display:none}
+.sx .pr-tk svg{width:14px;height:14px;stroke-width:2.6}
+.sx .pr-tk.on{background:var(--grid);box-shadow:none}
+.sx .pr-tk:disabled{background:var(--soft);box-shadow:none;color:var(--grid)}
+.sx .pr-tk:disabled .i-tick{display:block}
+/* Radio */
+.sx .pr-tk.byo-rd{border-radius:50%}
+.sx .byo-rd i{width:10px;height:10px;box-shadow:none;background:transparent;transition:background .2s,transform .25s var(--ease);transform:scale(.4)}
+.sx .byo-rd.on{background:#fff;box-shadow:inset 0 0 0 2px var(--grid)}
+.sx .byo-rd.on i{width:10px;height:10px;background:var(--grid);transform:scale(1)}
+
+/* Tags */
+.sx .byo-tag{padding:3px 9px;font-family:var(--label);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;background:var(--soft);color:var(--grid)}
+.sx .byo-tag.grey{background:var(--pale);color:var(--muted)}
+.sx .pr-row.inc .pc,.sx .pr-row.inc .pc b,.sx .pc .byo-pc-note{color:var(--grid)}
+
+/* Cards and callouts inside steps */
+.sx .byo-card{padding:20px 22px;border-radius:var(--r-row);background:var(--pale);box-shadow:none}
+.sx .byo-card summary{font-weight:600;color:var(--grid)}
+.sx .byo-nudge{padding:18px 20px;border-radius:var(--r-row);background:linear-gradient(120deg,#EAF7F5,#fff);box-shadow:0 0 0 1px rgba(10,125,121,.3)}
+.sx .byo-needs{background:#FFF8E6;box-shadow:0 0 0 1px rgba(244,181,40,.6)}
+.sx .byo-brand{background:#fff;box-shadow:0 0 0 1px var(--mist),var(--lift-1)}
+.sx .byo-brand > b{font-size:17px;color:var(--midnight)}
+.sx .byo-brand-in input{height:50px;border-radius:var(--r-btn);background:#fff;box-shadow:inset 0 0 0 1px var(--mist-2)}
+.sx .byo-brand-in .sx-btn{height:50px}
+.sx .byo-pt{padding:18px 20px;border-radius:var(--r-row);background:var(--pale);box-shadow:none}
+.sx .byo-pt-b{border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px var(--mist-2)}
+.sx .byo-pt-b.on{background:var(--soft);box-shadow:inset 0 0 0 2px var(--grid)}
+.sx .byo-pt-step{background:#fff;box-shadow:inset 0 0 0 1px var(--mist-2)}
+
+/* Step 9, Your Bunya: a clear receipt */
+.sx .byo-sum{box-shadow:0 0 0 1.5px var(--grid),var(--lift-2)!important}
+.sx .byo-sum .pr-gh .n{background:var(--grid);color:#fff;box-shadow:none}
+.sx #byo-lines{padding:6px 22px 18px;background:#fff;box-shadow:0 0 0 1px var(--mist)}
+.sx .byo-dl div{padding:7px 0;font-size:15px;color:var(--text)}
+.sx .byo-dl dt small{color:var(--faint)}
+.sx .byo-dl dd{font-weight:600;color:var(--midnight)}
+.sx .byo-dl .tot{margin-top:8px;padding-top:12px;border-top:1px solid var(--mist);font-size:18px}
+.sx .byo-dl .tot dd{font-size:20px;font-weight:700;letter-spacing:-.015em}
+.sx .byo-dl .tot.us dt,.sx .byo-dl .tot.us dd{color:var(--grid)}
+.sx .byo-dl-h{font-size:11px;color:var(--grid)}
+.sx .byo-live b,.sx .byo-why > b{font-size:16.5px;color:var(--midnight)}
+.sx .byo-ctas{gap:10px}
+
+/* Price bar: white glass, the price is the hero */
+.sx .byo-bar{background:rgba(255,255,255,.9);border-top:1px solid var(--mist);box-shadow:0 -18px 40px -30px rgba(1,59,67,.45)}
+.sx .byo-bar::before{content:"";position:absolute;left:0;right:0;top:-1px;height:2px;background:linear-gradient(90deg,var(--grid),var(--pulse) 50%,transparent)}
+.sx .byo-bar-in{height:88px}
+.sx .byo-month b{font-size:21px;font-weight:700;letter-spacing:-.02em;color:var(--midnight)}
+.sx .byo-month b em{color:var(--muted)}
+.sx .byo-month small{color:var(--muted)}
+.sx .byo-rate b{font-size:36px;font-weight:700;letter-spacing:-.045em;color:var(--midnight)}
+.sx .byo-rate small{color:var(--muted)}
+.sx .byo-chg{padding:4px 11px;background:var(--grid);color:#fff;font-weight:600}
+.sx .byo-bar-ctas .sx-btn{height:48px;padding:0 22px}
+
+/* Pop-ups */
+.sx .byo-modal{background:rgba(4,15,29,.42)}
+.sx .byo-modal-c{padding:34px 32px 28px;border-radius:var(--r-panel);background:#fff;box-shadow:0 40px 100px -30px rgba(4,15,29,.55)}
+.sx .byo-modal h2{font-size:28px;letter-spacing:-.035em}
+.sx .byo-x{background:var(--pale);color:var(--midnight)}
+.sx .byo-q-f label{font-size:14px;font-weight:500;color:var(--midnight)}
+.sx .byo-q-f input,.sx .byo-q-f textarea{height:50px;border-radius:var(--r-btn);background:#fff;box-shadow:inset 0 0 0 1px var(--mist-2);transition:box-shadow .2s}
+.sx .byo-q-f textarea{height:auto}
+.sx .byo-q-f input:focus,.sx .byo-q-f textarea:focus,.sx .byo-brand-in input:focus{box-shadow:inset 0 0 0 2px var(--grid),0 0 0 4px rgba(17,184,177,.15)}
+.sx .byo-modal button[type=submit]{height:54px}
+.sx .byo-show span{height:38px;background:#fff;box-shadow:inset 0 0 0 1px var(--mist-2)}
+.sx .byo-show input:checked + span{background:var(--soft);box-shadow:inset 0 0 0 1.5px var(--grid)}
+
+/* ---- 10 Smaller screens and reduced motion ------------------------------- */
+@media (max-width:960px){
+  .sx .pr-sum{position:static;order:-1}
+  .pr-grp{scroll-margin-top:calc(var(--nav-h) + var(--jump-h) + 8px)}
+}
+@media (max-width:700px){
+  .pr-rows,.pr-note,.pr-vs,.pr-sub,.pr-ae{margin-left:0}
+  .sx .pr-gh .pc{display:none}
+  .sx .pr-dd > summary{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:10px 12px;padding:16px 14px 16px 16px}
+  .sx .pr-dd > summary .nm{grid-column:1;grid-row:1}
+  .sx .pr-dd > summary .pr-chev{grid-column:2;grid-row:1}
+  .sx .pr-dd > summary .pc{grid-column:1;grid-row:2;flex-direction:row;align-items:baseline;justify-content:flex-start;gap:6px}
+  .sx .pr-row .pc{min-width:0}
+  .sx .pr-row .pc b{font-size:17px}
+  .sx .pr-dd-b{margin:0 16px 16px}
+  .sx .pr-sum{padding:22px}
+  .dx-jump-in{width:100%;padding:0 16px}
+  .sx .sx-end{border-radius:24px}
+
+  .sx .byo-step{padding:20px 18px 22px}
+  .sx .byo-col:not(.open){padding:18px}
+  .sx .byo-step .pr-rows,.sx .byo-sizes,.sx .byo-range,.sx .byo-card,.sx .byo-nudge,.sx .byo-ctas,.sx .byo-step .pr-note,.sx .byo-sub,.sx .byo-bill,.sx .byo-pt,.sx .byo-more,.sx .byo-sum .byo-fine,.sx .byo-brand-pv{margin-left:0}
+  .sx .byo-step .byo-terms{width:100%}
+  .sx .byo-sizes{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sx .byo-steps .pr-row{padding:14px}
+  .sx .byo-mode button{min-width:0;padding:12px 10px}
+  .sx .byo-bar-in{height:auto}
+  .sx .byo-rate b{font-size:28px}
+  .sx .byo-month b{font-size:17px}
+  .sx .byo-modal-c{padding:28px 20px 22px;border-radius:24px 24px 0 0}
+}
+@media (prefers-reduced-motion:reduce){
+  .pr-dd::details-content,.sx-faq details::details-content{transition:none}
+  .sx .sx-btn,.sx .pr-list .pr-row,.sx .pr-every div,.sx .byo-sizes button{transition:none}
+}
+
+/* ---- 11 Intro sentences, colour and visual interest (Dana, 18 Nov 2026) --------
+   Same principles as the bunya.ai review:
+   - intro text: each sentence starts on its own line (tablets and up), one line each on laptops
+   - colour: tiles and card edges cycle through the brand colours, with an icon on each tile
+   - "Book a demo" buttons carry the small violet arrow square
+   Each product area keeps one colour on both pages:
+   Command Centre Pulse · Advice Engine Deep teal · Apps Grid teal · Marketing gold ·
+   Make it yours violet · Support light teal · Owning it Midnight · Microsoft its own four squares */
+:root{
+  --violet:#8B7CF6; --aqua:#7EDAD6; --deep:#013B43;
+  --i-base:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3.5' y='4' width='17' height='16' rx='3'/%3E%3Cpath d='M3.5 9.5h17M9.5 9.5V20'/%3E%3C/svg%3E");
+  --i-spark:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z'/%3E%3Cpath d='M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z'/%3E%3C/svg%3E");
+  --i-apps:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='4' width='7' height='7' rx='2'/%3E%3Crect x='13' y='4' width='7' height='7' rx='2'/%3E%3Crect x='4' y='13' width='7' height='7' rx='2'/%3E%3Crect x='13' y='13' width='7' height='7' rx='3.5'/%3E%3C/svg%3E");
+  --i-mega:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 10v4h3l8 4.5V5.5L7 10z'/%3E%3Cpath d='M18.5 9a4 4 0 0 1 0 6M7 14l1.2 5H11l-1-4.6'/%3E%3C/svg%3E");
+  --i-palette:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3a9 9 0 1 0 0 18c1.2 0 1.8-.8 1.8-1.7 0-1.3-1-1.6-1-2.7 0-1 .8-1.6 1.8-1.6H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3z'/%3E%3Ccircle cx='7.5' cy='11.5' r='1'/%3E%3Ccircle cx='10' cy='7.5' r='1'/%3E%3Ccircle cx='15' cy='7.5' r='1'/%3E%3C/svg%3E");
+  --i-buoy:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='8.5'/%3E%3Ccircle cx='12' cy='12' r='3.5'/%3E%3Cpath d='M6 6l3.5 3.5M18 6l-3.5 3.5M6 18l3.5-3.5M18 18l-3.5-3.5'/%3E%3C/svg%3E");
+  --i-key:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='8' cy='15.5' r='4.5'/%3E%3Cpath d='M11.2 12.3L20 3.5M16.5 7l3 3M14 9.5l2 2'/%3E%3C/svg%3E");
+  --i-users:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='9' cy='8' r='3.5'/%3E%3Cpath d='M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14.2A6.5 6.5 0 0 1 21.5 20'/%3E%3C/svg%3E");
+  --i-shield:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l7 2.8v5.4c0 4.3-2.9 7.9-7 9.3-4.1-1.4-7-5-7-9.3V5.8z'/%3E%3Cpath d='M8.8 12.2l2.3 2.3 4.3-4.6'/%3E%3C/svg%3E");
+  --i-list:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 6h11M9 12h11M9 18h11'/%3E%3Cpath d='M3.5 6l1.5 1.5L7.5 5M3.5 12l1.5 1.5L7.5 11M3.5 18l1.5 1.5L7.5 17'/%3E%3C/svg%3E");
+  --i-ms:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='3' y='3' width='8.5' height='8.5' fill='%23F25022'/%3E%3Crect x='12.5' y='3' width='8.5' height='8.5' fill='%237FBA00'/%3E%3Crect x='3' y='12.5' width='8.5' height='8.5' fill='%2300A4EF'/%3E%3Crect x='12.5' y='12.5' width='8.5' height='8.5' fill='%23FFB900'/%3E%3C/svg%3E");
+}
+
+/* Intro sentences: each on its own line from tablet width, one line each on laptops */
+@media (min-width:720px){
+  .sx p.dana-sents{max-width:min(1000px,100%)}
+  .dana-sent{display:block;text-wrap:balance}
+}
+@media (min-width:1000px){ .dana-sent{white-space:nowrap} }
+
+/* Product-area colours: --acc is the tile, --on is the icon or number on it */
+.pr-list > .pr-grp:nth-child(1),#byo-base{--acc:var(--pulse);--on:#fff;--ico:var(--i-base)}
+#byo-base{--on:var(--deep)}
+.pr-list > .pr-grp:nth-child(2),#byo-feats{--acc:var(--deep);--on:var(--aqua);--ico:var(--i-spark)}
+.pr-list > .pr-grp:nth-child(3),#byo-apps{--acc:var(--grid);--on:#fff;--ico:var(--i-apps)}
+.pr-list > .pr-grp:nth-child(4),#byo-mkt{--acc:var(--signal);--on:var(--deep);--ico:var(--i-mega)}
+.pr-list > .pr-grp:nth-child(5),#byo-yours{--acc:#6E5DE8;--on:#fff;--ico:var(--i-palette)}
+.pr-list > .pr-grp:nth-child(6),#byo-support{--acc:var(--aqua);--on:var(--deep);--ico:var(--i-buoy)}
+.pr-list > .pr-grp:nth-child(7){--acc:var(--midnight);--on:var(--signal);--ico:var(--i-key)}
+.pr-list > .pr-grp:nth-child(8),#byo-micro{--acc:#fff;--on:transparent;--ico:none}
+#byo-size{--acc:var(--midnight);--on:#fff}
+#byo-sum{--acc:var(--grid);--on:#fff}
+
+/* Pricing: section tiles show the area's icon */
+.sx .pr-list .pr-gh .n{position:relative;width:46px;height:46px;border-radius:14px;background:var(--acc);color:transparent;font-size:0;
+  box-shadow:0 10px 22px -12px color-mix(in srgb,var(--acc) 70%,transparent)}
+.sx .pr-list .pr-gh .n::after{content:"";position:absolute;inset:0;background:var(--on);-webkit-mask:var(--ico) center/50% no-repeat;mask:var(--ico) center/50% no-repeat}
+.sx .pr-list > .pr-grp:nth-child(8) .pr-gh .n{box-shadow:inset 0 0 0 1px var(--mist),var(--lift-1);background:#fff var(--i-ms) center/46% no-repeat}
+.sx .pr-list > .pr-grp:nth-child(8) .pr-gh .n::after{display:none}
+.pr-rows,.pr-note,.pr-vs,.pr-sub,.pr-ae{margin-left:62px}
+/* each area's reason line takes its colour */
+.sx .pr-list .pr-grp .pr-why{border-left-color:var(--acc)}
+.sx .pr-list > .pr-grp:nth-child(8) .pr-why,.sx .pr-list > .pr-grp:nth-child(6) .pr-why{border-left-color:var(--pulse)}
+
+/* Section index: each number in its area's colour */
+.dx-jump a:nth-child(1){--acc:var(--pulse)} .dx-jump a:nth-child(2){--acc:var(--deep)} .dx-jump a:nth-child(3){--acc:var(--grid)}
+.dx-jump a:nth-child(4){--acc:var(--signal)} .dx-jump a:nth-child(5){--acc:#6E5DE8} .dx-jump a:nth-child(6){--acc:var(--aqua)}
+.dx-jump a:nth-child(7){--acc:var(--midnight)} .dx-jump a:nth-child(8){--acc:#00A4EF}
+.dx-jump a::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--acc);flex:none}
+.dx-jump a span{display:none}
+.dx-jump a.on::before{box-shadow:0 0 0 2px rgba(255,255,255,.9)}
+
+/* Build: step tiles in the area's colour (the number stays), a coloured edge on each step card */
+.sx .byo-step .pr-gh .n{width:42px;height:42px;border-radius:13px;background:var(--acc,var(--soft));color:var(--on,var(--focus));box-shadow:0 10px 22px -12px color-mix(in srgb,var(--acc,#0A7D79) 70%,transparent)}
+#byo-micro .pr-gh .n{position:relative;color:transparent;background:#fff var(--i-ms) center/46% no-repeat;box-shadow:inset 0 0 0 1px var(--mist),var(--lift-1)}
+.sx .byo-step{border-top:4px solid var(--acc,var(--pulse))}
+#byo-micro.byo-step{border-top-color:#00A4EF}
+.sx .byo-step .pr-rows,.sx .byo-sizes,.sx .byo-range,.sx .byo-card,.sx .byo-nudge,.sx .byo-ctas,.sx .byo-step .pr-note,.sx .byo-sub,.sx .byo-bill,.sx .byo-pt,.sx .byo-more,.sx .byo-brand-pv,.sx .byo-sum .byo-fine{margin-left:58px}
+.sx .byo-step .byo-terms{width:calc(100% - 58px)}
+.sx .byo-col:not(.open) .byo-pick{color:color-mix(in srgb,var(--acc,#0A7D79) 55%,#013B43)}
+
+/* Heroes: a soft wash of brand colour (teal, gold and violet) behind the dot grid */
+.sx-hero::before,.byo-hero::before{content:"";position:absolute;inset:0;width:auto;height:auto;transform:none;filter:none;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(38% 55% at 18% 8%,rgba(17,184,177,.16),transparent 70%),
+    radial-gradient(30% 45% at 84% 14%,rgba(244,181,40,.16),transparent 70%),
+    radial-gradient(34% 50% at 62% 0%,rgba(139,124,246,.12),transparent 70%)}
+.sx .sx-hero .sx-grad,.sx .byo-hero .sx-grad{background:linear-gradient(95deg,var(--grid) 0%,var(--pulse) 55%,var(--grid) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+
+/* Summary card and price bar: a brand-colour edge */
+.sx .pr-sum::before{height:6px;background:linear-gradient(90deg,var(--pulse),var(--grid) 40%,var(--violet) 75%,var(--signal))}
+.sx .byo-bar::before{height:3px;background:linear-gradient(90deg,var(--pulse),var(--grid) 40%,var(--violet) 75%,var(--signal))}
+
+/* Subscribe or own: Pulse for subscribing, gold for owning */
+.sx .pr-vs > div{border-top:4px solid var(--pulse)}
+.sx .pr-vs > div + div{border-top-color:var(--signal)}
+
+/* With every Bunya: coloured edges and icon tiles, as in the review's cards */
+.sx .pr-every div{padding:24px 24px 26px;border-top:4px solid var(--pulse)}
+.sx .pr-every div::before{content:"";position:static;display:block;width:44px;height:44px;margin-bottom:18px;border-radius:14px;background:var(--pulse)}
+.sx .pr-every div::after{content:"";position:absolute;left:24px;top:28px;width:44px;height:44px;background:#fff;-webkit-mask:var(--ico) center/48% no-repeat;mask:var(--ico) center/48% no-repeat}
+.sx .pr-every div:nth-child(1){--ico:var(--i-users)}
+.sx .pr-every div:nth-child(2){--ico:var(--i-shield);border-top-color:var(--signal)}
+.sx .pr-every div:nth-child(2)::before{background:var(--signal)} .sx .pr-every div:nth-child(2)::after{background:var(--deep)}
+.sx .pr-every div:nth-child(3){--ico:var(--i-list);border-top-color:var(--deep)}
+.sx .pr-every div:nth-child(3)::before{background:var(--deep)} .sx .pr-every div:nth-child(3)::after{background:var(--pulse)}
+.sx .pr-every div:nth-child(4){--ico:var(--i-spark);border-top-color:var(--violet)}
+.sx .pr-every div:nth-child(4)::before{background:var(--violet)}
+
+/* "Book a demo": the violet arrow square, as on bunya.ai */
+.sx .sx-btn[data-demo],.sx a.sx-btn[href*="booking"]{gap:12px;padding-right:9px}
+.sx .sx-btn[data-demo]::after,.sx a.sx-btn[href*="booking"]::after{content:"";width:32px;height:32px;border-radius:9px;
+  background:var(--violet) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h13M13 7l5 5-5 5'/%3E%3C/svg%3E") center/16px no-repeat;
+  transition:transform .25s var(--ease)}
+.sx .sx-btn[data-demo]:hover::after,.sx a.sx-btn[href*="booking"]:hover::after{transform:translateX(2px)}
+
+/* Closing panel: gold and violet glints in the teal */
+.sx .sx-end{background:
+  radial-gradient(40% 70% at 12% 0%,rgba(17,184,177,.42),transparent 70%),
+  radial-gradient(30% 60% at 88% 100%,rgba(244,181,40,.22),transparent 70%),
+  radial-gradient(30% 60% at 70% 0%,rgba(139,124,246,.24),transparent 70%),
+  linear-gradient(180deg,#014650,var(--deep))}
+
+/* Questions: the open question's icon in gold */
+.sx .sx-faq details[open] summary i{background:var(--signal)}
+.sx .sx-faq details[open] summary i::before,.sx .sx-faq details[open] summary i::after{background:var(--deep)}
+
+/* The hero chip's dot: gold, as before. The whole Advice Engine keeps its gold edge. */
+
+@media (max-width:700px){
+  .pr-rows,.pr-note,.pr-vs,.pr-sub,.pr-ae{margin-left:0}
+  .sx .byo-step .pr-rows,.sx .byo-sizes,.sx .byo-range,.sx .byo-card,.sx .byo-nudge,.sx .byo-ctas,.sx .byo-step .pr-note,.sx .byo-sub,.sx .byo-bill,.sx .byo-pt,.sx .byo-more,.sx .byo-sum .byo-fine,.sx .byo-brand-pv{margin-left:0}
+  .sx .byo-step .byo-terms{width:100%}
+  .sx .pr-list .pr-gh .n{width:40px;height:40px;border-radius:12px}
+}
+
+/* ---- 12 Cards: no thick coloured top edges, one very thin frame (Dana, 18 Nov 2026) ---- */
+.sx .byo-step,#byo-micro.byo-step,.sx .pr-every div,.sx .pr-vs > div,.sx .pr-vs > div + div{border:0;border-top:0}
+.sx .pr-sum::before{display:none}
+.sx .byo-step,.sx .byo-col.open,.sx .byo-step:not(.byo-col),
+.sx .pr-every div,.sx .pr-vs > div,.sx .pr-sum{box-shadow:0 0 0 .5px var(--mist-2),var(--lift-1)}
+.sx .byo-col:not(.open):hover,.sx .pr-every div:hover{box-shadow:0 0 0 .5px var(--grid),var(--lift-2)}
+.sx .byo-sum{box-shadow:0 0 0 1px var(--grid),var(--lift-2)!important}
+.sx .pr-list .pr-row,.sx .byo-steps .pr-row{box-shadow:0 0 0 .5px var(--mist-2)}
+.sx .pr-list .pr-row:hover,.sx .byo-steps .pr-row:hover{box-shadow:0 0 0 .5px var(--grid),var(--lift-1)}
+/* chosen, open and featured rows keep their teal frame */
+.sx .byo-steps .pr-row.on,.sx .byo-steps .pr-row.on:hover{box-shadow:0 0 0 1px var(--grid)}
+.sx .pr-list .pr-dd[open]{box-shadow:0 0 0 1px var(--grid),var(--lift-2)}
+.sx .pr-list .pr-ae,.sx .pr-list .pr-ae:hover{box-shadow:0 0 0 1px var(--grid),var(--lift-1)}
+
+/* ---- 13 Build step squares 1 to 9: light shades of each area's colour, number in a deep shade (Dana, 18 Nov 2026) ---- */
+.sx .byo-step .pr-gh .n{background:color-mix(in srgb,var(--acc,#0A7D79) 14%,#fff);color:color-mix(in srgb,var(--acc,#0A7D79) 60%,#040F1D);
+  box-shadow:inset 0 0 0 .5px color-mix(in srgb,var(--acc,#0A7D79) 45%,#fff)}
+#byo-size .pr-gh .n{background:#EEF1F4;color:var(--midnight)}
+#byo-mkt .pr-gh .n{color:#6B4E05}
+#byo-micro .pr-gh .n{background:#fff var(--i-ms) center/46% no-repeat;color:transparent;box-shadow:inset 0 0 0 .5px var(--mist-2)}
+#byo-support .pr-gh .n{color:#1F6F6B}
+
+/* ---- 14 Build step squares back in Lee's original position (Dana, 19 Nov 2026) ----
+   Colours from section 13 stay; size, alignment, gap and the indent under each heading go back to v3's own pr.css/byo.css. */
+.sx .byo-step .pr-gh{align-items:flex-start;gap:14px}
+.sx .byo-step .pr-gh .n{width:30px;height:30px;border-radius:9px;font-size:14px}
+.sx .byo-col > .pr-gh .pr-chev{margin-top:2px}
+@media (min-width:701px){
+  .sx .byo-step .pr-rows,.sx .byo-sizes,.sx .byo-range,.sx .byo-card,.sx .byo-nudge,.sx .byo-ctas,.sx .byo-step .pr-note,.sx .byo-sub,.sx .byo-bill,.sx .byo-pt,.sx .byo-more,.sx .byo-brand-pv,.sx .byo-sum .byo-fine{margin-left:44px}
+  .sx .byo-step .byo-terms{width:calc(100% - 44px)}
+}
+
+/* ---- 15 Menu panels (Dana, 19 Nov 2026) ----------------------------------------------------------
+   The drop-down panels under Command Centre, Advice Engine, Apps, Customers and Pricing, in the same
+   system as the price list: white panel, Saira labels, area-coloured icon tiles, thin frames, light
+   Apps cards. Menu markup comes from js/nav3.js and is unchanged. */
+
+/* Bar and tabs: the open tab is a soft teal pill, no heavy box */
+.n3.open .n3-bar{background:#fff;border-bottom-color:var(--mist)}
+.n3-main button{color:var(--midnight)}
+.n3-main button:hover{background:var(--pale)}
+.n3-main button[aria-expanded="true"]{background:var(--soft);color:var(--focus);font-weight:600}
+.n3-main button[aria-expanded="true"]::after{content:"";position:absolute;left:50%;bottom:-12px;width:18px;height:3px;margin-left:-9px;border-radius:3px;background:var(--pulse)}
+.sx .n3-main button:focus-visible{outline:0;box-shadow:inset 0 0 0 1.5px var(--grid)}
+.sx .n3-main button[aria-expanded="true"]:focus-visible{box-shadow:none}
+
+/* Panel and the veil behind it */
+.n3-panel{background:#fff;box-shadow:0 .5px 0 var(--mist-2),0 40px 70px -40px rgba(1,43,51,.35)}
+.n3-panel::before{content:"";position:absolute;inset:0 0 auto;height:220px;pointer-events:none;
+  background:radial-gradient(40% 100% at 12% 0%,rgba(17,184,177,.07),transparent 70%),radial-gradient(30% 90% at 88% 0%,rgba(139,124,246,.05),transparent 70%)}
+.n3-sec{position:relative;padding:40px 0 46px}
+.n3-veil{background:rgba(4,15,29,.22);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.n3-grid{gap:48px}
+
+/* Column labels: Saira capitals, as on the pages */
+.n3-col h4{margin:0 0 16px;font-family:var(--label);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--grid)}
+.n3-grid > .n3-col + .n3-col{padding-left:40px;box-shadow:inset .5px 0 0 var(--mist-2)}
+
+/* Main links: icon tile, name, short line underneath, arrow on hover */
+.n3 .n3-big{display:grid;gap:2px}
+.n3 .n3-big a,.n3 .n3-big button{--t:var(--grid);display:grid;grid-template-columns:36px minmax(0,1fr) 18px;column-gap:14px;align-items:center;width:100%;
+  margin-left:-10px;padding:8px 12px 8px 10px;border-radius:14px;font-size:20px;font-weight:600;letter-spacing:-.02em;line-height:1.15;color:var(--midnight);
+  background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A7D79' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h13M13 7l5 5-5 5'/%3E%3C/svg%3E") calc(100% + 24px) 50% / 18px no-repeat;transition:background-color .2s var(--ease),background-position .3s var(--ease)}
+/* tile */
+.n3 .n3-big a::before,.n3 .n3-big button::before{content:"";grid-column:1;grid-row:1 / span 2;width:36px;height:36px;border-radius:11px;
+  background:color-mix(in srgb,var(--t) 15%,#fff);box-shadow:inset 0 0 0 .5px color-mix(in srgb,var(--t) 45%,#fff)}
+/* icon, in a deep shade of the area colour, sitting on the tile */
+.n3 .n3-big a::after,.n3 .n3-big button::after{content:"";grid-column:1;grid-row:1 / span 2;justify-self:center;width:18px;height:18px;
+  background:color-mix(in srgb,var(--t) 62%,#040F1D);-webkit-mask:var(--ti) center/contain no-repeat;mask:var(--ti) center/contain no-repeat}
+.n3 .n3-big a:hover,.n3 .n3-big button:hover{background-color:var(--pale);background-position:calc(100% - 12px) 50%;color:var(--midnight)}
+.n3 .n3-big small{grid-column:2;margin-top:3px;font-size:13.5px;font-weight:500;letter-spacing:0;line-height:1.35;color:var(--muted)}
+
+/* The Advice Engine's eight features and the Customers list: smaller, with a coloured dot instead of a tile */
+.n3 .n3-big.n3-mid a,.n3 [data-sec="cust"] .n3-big a{grid-template-columns:8px minmax(0,1fr) 18px;padding:7px 10px;font-size:17.5px}
+.n3 .n3-big.n3-mid a::before,.n3 [data-sec="cust"] .n3-big a::before{grid-row:1;width:8px;height:8px;border-radius:3px;background:var(--t);box-shadow:none}
+.n3 .n3-big.n3-mid a::after,.n3 [data-sec="cust"] .n3-big a::after{display:none}
+.n3 .n3-big.n3-mid a{--t:var(--deep)}
+.n3 [data-sec="cust"] .n3-big a{--t:var(--grid)}
+
+/* Area colours and icons, the same as the price list */
+.n3 [data-n3-open="cc"]{--t:var(--pulse)!important;--ti:var(--i-base)}
+.n3 [data-n3-open="notes"]{--t:#6E5DE8!important;--ti:var(--i-list)}
+.n3 [data-n3-open="reviews"]{--t:var(--signal)!important;--ti:var(--i-shield)}
+.n3 [data-n3-open="care"]{--t:var(--aqua)!important;--ti:var(--i-buoy)}
+.n3 [data-n3-open="shape"]{--t:var(--deep)!important;--ti:var(--i-spark)}
+.n3 [data-sec="price"] a[href="build.html"]{--t:var(--pulse)!important;--ti:var(--i-apps)}
+.n3 [data-sec="price"] a[href="pricing.html"]{--t:var(--grid)!important;--ti:var(--i-list)}
+.n3 [data-n3-open="svc"]{--t:#6E5DE8!important;--ti:var(--i-palette)}
+.n3 [data-sec="price"] a[href="website-marketing.html"]{--t:var(--signal)!important;--ti:var(--i-mega)}
+
+/* Second column: quiet links that turn teal with an arrow */
+.n3 .n3-small{display:grid}
+.n3 .n3-small a,.n3 .n3-small button{display:inline-flex;align-items:center;gap:6px;width:max-content;padding:8px 0;font-size:15.5px;font-weight:500;color:var(--text);transition:color .2s}
+.n3 .n3-small a::after,.n3 .n3-small button::after{content:"→";font-size:14px;opacity:0;transform:translateX(-4px);transition:opacity .2s,transform .25s var(--ease)}
+.n3 .n3-small a:hover,.n3 .n3-small button:hover{color:var(--grid)}
+.n3 .n3-small a:hover::after,.n3 .n3-small button:hover::after{opacity:1;transform:none}
+
+/* Feature card: white with a wash of the area's colour, a thin frame and a soft lift */
+.n3 [data-sec="cc"]{--fc:var(--pulse)} .n3 [data-sec="ae"]{--fc:var(--deep)} .n3 [data-sec="price"]{--fc:var(--grid)}
+.n3 .n3-feature{min-height:270px;padding:28px;border-radius:24px;
+  background:radial-gradient(70% 90% at 100% 100%,color-mix(in srgb,var(--fc,#0A7D79) 18%,transparent),transparent 70%),
+             radial-gradient(50% 60% at 0% 0%,rgba(244,181,40,.07),transparent 70%),linear-gradient(160deg,#fff,var(--pale));
+  box-shadow:0 0 0 .5px var(--mist-2),var(--lift-1)}
+.n3 .n3-feature .k{font-family:var(--label);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--grid)}
+.n3 .n3-feature b{margin-top:10px;font-size:29px;font-weight:700;letter-spacing:-.03em;line-height:1.05;color:var(--midnight)}
+.n3 .n3-cc-link{margin-top:12px;font-weight:600;color:var(--grid)}
+.n3 .n3-feature .sc{border-radius:12px;box-shadow:0 0 0 .5px var(--mist-2),0 30px 50px -24px rgba(1,43,51,.35)}
+.n3 .n3-pill{height:40px;padding:0 18px;border-radius:12px;font-weight:600}
+.n3 .n3-pill.ghost{background:#fff;color:var(--midnight)!important;box-shadow:inset 0 0 0 1px var(--mist-2)}
+.n3 a.n3-pill.ghost[href*="booking"]{gap:10px;padding-right:5px}
+.n3 a.n3-pill.ghost[href*="booking"]::after{content:"";width:30px;height:30px;border-radius:8px;
+  background:var(--violet) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h13M13 7l5 5-5 5'/%3E%3C/svg%3E") center/15px no-repeat}
+
+/* Apps: light cards, each with its own soft colour, readable names */
+.n3 .n3-tile{--tc:var(--grid);border-radius:20px;background:#fff;box-shadow:0 0 0 .5px var(--mist-2),var(--lift-1)}
+.n3 .n3-tile:nth-child(1){--tc:var(--pulse)}
+.n3 .n3-tile:nth-child(2){--tc:var(--signal)}
+.n3 .n3-tile:nth-child(3){--tc:#6E5DE8}
+.n3 .n3-tile:nth-child(4){--tc:var(--grid)}
+.n3 .n3-tile:nth-child(5){--tc:var(--deep)}
+.n3 .n3-tile:hover{transform:translateY(-3px);box-shadow:0 0 0 .5px color-mix(in srgb,var(--tc) 60%,#fff),var(--lift-2)}
+.n3 .n3-tile .pic{background:radial-gradient(90% 90% at 80% 100%,color-mix(in srgb,var(--tc) 30%,transparent),transparent 70%),color-mix(in srgb,var(--tc) 8%,#fff)}
+.n3 .n3-tile .pic .sc{border-radius:8px;box-shadow:0 0 0 .5px var(--mist-2),0 18px 34px -14px rgba(1,43,51,.35)}
+.n3 .n3-tile .pic .ph{background:var(--midnight);box-shadow:0 0 0 1px rgba(255,255,255,.4),0 18px 30px -12px rgba(1,43,51,.45)}
+.n3 .n3-tile .open{padding:16px 18px 18px}
+.n3 .n3-tile .open b{font-size:16px;color:var(--midnight)}
+.n3 .n3-tile .open small{margin-top:3px;font-size:13.5px;color:var(--muted)}
+.n3 .n3-tile .open em{display:inline-block;margin-top:12px;padding:4px 10px;border-radius:999px;font-size:13px;
+  background:color-mix(in srgb,var(--tc) 12%,#fff);color:color-mix(in srgb,var(--tc) 55%,#040F1D)}
+.n3 .n3-add{background:#fff;color:var(--midnight);box-shadow:0 0 0 .5px var(--mist-2),0 8px 18px -8px rgba(1,43,51,.35)}
+.n3 .n3-add.on{background:var(--grid);color:#fff}
+.n3 .n3-foot{margin-top:26px;padding-top:20px;border-top:.5px solid var(--mist-2);font-size:14.5px;color:var(--muted)}
+.n3 .n3-foot a{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 18px;border-radius:12px;background:var(--midnight);color:#fff;font-weight:600}
+.n3 .n3-foot a::after{content:"→"}
+.n3 .n3-foot a:hover{color:#fff;background:var(--focus)}
+
+/* Customers: the quote card */
+.n3 .n3-quote{min-height:260px;padding:30px;border-radius:24px;
+  background:radial-gradient(70% 80% at 100% 0%,rgba(17,184,177,.16),transparent 65%),radial-gradient(60% 70% at 0% 100%,rgba(139,124,246,.12),transparent 65%),linear-gradient(160deg,#fff,var(--pale));
+  box-shadow:0 0 0 .5px var(--mist-2),var(--lift-1)}
+.n3 .n3-quote q{font-size:25px;font-weight:600;line-height:1.2;letter-spacing:-.02em;color:var(--midnight)}
+.n3 .n3-quote q::before{color:var(--pulse)}
+.n3 .n3-quote .who{color:var(--muted)}
+.n3 .n3-quote .who img{box-shadow:0 0 0 2px #fff,0 0 0 3px var(--mist-2)}
+/* Apps: five apps, five columns at every width the panel shows (v3 asked for six, leaving an empty slot) */
+.n3 .n3-tiles{--cols:5!important}
+@media (max-width:1100px){.n3 .n3-tiles{--cols:5!important;gap:10px}.n3 .n3-tile .open{padding:14px 14px 16px}}
+.n3-veil{background:rgba(4,15,29,.16)}
+
+/* Apps cards: crisp pictures (Dana, 19 Nov 2026). No tilt (tilting a shrunk screenshot blurs it); each card
+   zooms in on the readable part of its app's screen instead of shrinking the whole screen.
+   --zw: picture width as a share of the window; --zx/--zy: where the crop starts, as a share of the picture. */
+.n3 .n3-tile .pic .sc{left:9%;top:13%;right:0;bottom:0;transform:none;border-radius:10px 0 0 0;background:#fff;
+  box-shadow:0 0 0 .5px var(--mist-2),0 14px 30px -14px rgba(1,43,51,.35)}
+.n3 .n3-tile .pic .sc img{position:absolute;left:0;top:0;max-width:none;width:var(--zw,260%);height:auto;object-fit:initial;
+  transform:translate(var(--zx,0),var(--zy,0));transition:transform .6s var(--ease)}
+.n3 .n3-tile:nth-child(1) .sc img{--zw:285%;--zx:-28%;--zy:-10%}   /* Client Portal: "Hi Mia and Tom" and the advice-ready note */
+.n3 .n3-tile:nth-child(2) .sc img{--zw:270%;--zx:-7%;--zy:-1%}     /* Broadcast HQ: "Super or mortgage?" and the idea */
+.n3 .n3-tile:nth-child(4) .sc img{--zw:250%;--zx:-15%;--zy:-19%}   /* Bunya Voice: the incoming call and Harper Family */
+.n3 .n3-tile:nth-child(5) .sc img{--zw:265%;--zx:-21%;--zy:-2%}    /* Bunya Vault: "Credential vault" and the counts */
+.n3 .n3-tile:hover .sc img{transform:translate(var(--zx,0),var(--zy,0)) translate(-1.5%,-1%)}
+
+/* ==========================================================================
+   16 The consistency kit from Dana's bunya.ai review (applied 19 Nov 2026)
+   --------------------------------------------------------------------------
+   Same values as "CONSISTENCY KIT (18 Nov 2026)" in the live-site copy's
+   css/dana-creative.css: one card corner, one pale teal edge, one shadow,
+   two tile sizes, one framed-panel corner, one link underline and one
+   glowing frame for product screens. Colours, wording and prices unchanged.
+   The edge is drawn as a 1px ring (same look as the kit's 1px border) so
+   nothing on the page moves.
+   ========================================================================== */
+:root{
+  --soft:#CFE6E3;                                   /* the review's soft teal tint */
+  --kit-card-r:24px; --kit-frame-r:32px;
+  --kit-edge:0 0 0 1px rgba(10,125,121,.12);
+  --kit-shadow:0 2px 4px rgba(1,59,67,.04),0 22px 44px -28px rgba(1,59,67,.35);
+  --kit-shadow-hi:0 2px 4px rgba(1,59,67,.05),0 30px 56px -28px rgba(1,59,67,.45);
+  --kit-tile:52px; --kit-tile-r:16px; --kit-tile-sm:40px; --kit-tile-sm-r:12px;
+  --r-card:24px; --r-panel:32px;
+}
+
+/* 1 Cards and rows: 24px corners, pale teal edge, the kit shadow */
+.sx .pr-every div,.sx .pr-vs > div,
+.sx .byo-step,.sx .byo-col.open,.sx .byo-step:not(.byo-col),.sx .byo-col:not(.open),
+.sx .pr-list .pr-row,.sx .byo-steps .pr-row,
+.n3 .n3-tile,.n3 .n3-feature,.n3 .n3-quote{border-radius:var(--kit-card-r)!important;box-shadow:var(--kit-edge),var(--kit-shadow)}
+.sx .pr-dd > summary{border-radius:var(--kit-card-r)}
+/* hover: the edge turns Pulse; cards that are links also lift */
+.sx .pr-list .pr-row:hover,.sx .byo-steps .pr-row:hover,.sx .byo-col:not(.open):hover{box-shadow:0 0 0 1px var(--pulse),var(--kit-shadow-hi)}
+.sx .pr-every div:hover,.n3 .n3-tile:hover{transform:translateY(-3px);box-shadow:0 0 0 1px var(--pulse),var(--kit-shadow-hi)}
+/* chosen, open and featured keep a Grid edge */
+.sx .byo-steps .pr-row.on,.sx .byo-steps .pr-row.on:hover,.sx .pr-list .pr-ae,.sx .pr-list .pr-ae:hover{box-shadow:0 0 0 1px var(--grid),var(--kit-shadow)}
+.sx .pr-list .pr-dd[open]{box-shadow:0 0 0 1px var(--grid),var(--kit-shadow-hi)}
+.sx .byo-sum{box-shadow:0 0 0 1px var(--grid),var(--kit-shadow-hi)!important}
+
+/* 2 Framed panels: 32px corners */
+.sx .pr-sum{border-radius:var(--kit-frame-r);box-shadow:var(--kit-edge),var(--kit-shadow-hi)}
+.sx .byo-modal-c{border-radius:var(--kit-frame-r)}
+@media (max-width:700px){.sx .byo-modal-c{border-radius:var(--kit-frame-r) var(--kit-frame-r) 0 0}}
+
+/* 3 Icon tiles: feature tiles 52px, list tiles 40px */
+.sx .pr-list .pr-gh .n{width:var(--kit-tile);height:var(--kit-tile);border-radius:var(--kit-tile-r)}
+.sx .pr-every div::before{width:var(--kit-tile);height:var(--kit-tile);border-radius:var(--kit-tile-r)}
+@media (max-width:700px){.sx .pr-list .pr-gh .n{width:var(--kit-tile-sm);height:var(--kit-tile-sm);border-radius:var(--kit-tile-sm-r)}}
+.n3 .n3-big a,.n3 .n3-big button{grid-template-columns:var(--kit-tile-sm) minmax(0,1fr) 18px}
+.n3 .n3-big a::before,.n3 .n3-big button::before{width:var(--kit-tile-sm);height:var(--kit-tile-sm);border-radius:var(--kit-tile-sm-r)}
+.n3 .n3-big a::after,.n3 .n3-big button::after{width:19px;height:19px}
+/* (Build's step squares stay at Lee's original 30px position, as asked; they take the small-tile corner shape) */
+.sx .byo-step .pr-gh .n{border-radius:10px}
+
+/* 4 Text links: dark text, Pulse underline */
+.sx .pr-note a,.sx .byo-fine a,.sx .byo-cap a,.n3 .n3-cc-link{color:var(--midnight);text-decoration:none;border-bottom:1.5px solid var(--pulse);padding-bottom:2px;transition:border-color .2s,color .2s}
+.sx .pr-note a:hover,.sx .byo-fine a:hover,.sx .byo-cap a:hover,.n3 .n3-cc-link:hover{border-bottom-color:var(--grid)}
+.n3 .n3-cc-link{display:inline-block;margin-top:12px}
+
+/* 5 Product screens: the glowing frame */
+.sx .byo-screen{border-radius:24px;box-shadow:0 0 0 1px rgba(126,218,214,.45),0 0 60px -10px rgba(17,184,177,.35),0 50px 100px -40px rgba(1,43,51,.6)}
+.n3 .n3-feature .sc{box-shadow:0 0 0 1px rgba(126,218,214,.45),0 0 40px -10px rgba(17,184,177,.35),0 30px 50px -24px rgba(1,43,51,.45)}
+
+/* 6 Labels: the menu column labels at the live menu's size and spacing */
+.n3-col h4{font-size:12px;letter-spacing:.12em}
+.co-more a,.sx .pr-sum a:not(.sx-btn){color:var(--midnight);text-decoration:none;border-bottom:1.5px solid var(--pulse);padding-bottom:2px;transition:border-color .2s}
+.co-more a:hover,.sx .pr-sum a:not(.sx-btn):hover{text-decoration:none;border-bottom-color:var(--grid)}
+.sx .pr-sum a:not(.sx-btn){display:block;width:max-content;max-width:100%;margin-left:auto;margin-right:auto}
+/* Step captions under closed steps: a deep shade of each area colour, dark enough to read (AA) */
+.sx .byo-col:not(.open) .byo-pick,.sx .byo-col:not(.open) .byo-pick *{color:color-mix(in srgb,var(--acc,#0A7D79) 48%,#040F1D)!important}
+#byo-micro.byo-col:not(.open) .byo-pick,#byo-micro.byo-col:not(.open) .byo-pick *{color:var(--muted)!important}
