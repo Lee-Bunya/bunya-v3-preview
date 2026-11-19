@@ -1,0 +1,54 @@
+/* Advice Engine overview, Dana 19 Nov 2026. Goes with js/dana-ae.js; reuses the app frame, rows and pills from css/dana-rp.css. */
+.sx .ae-hidden{display:none!important}
+.sx .ae-scene{position:relative;text-align:left}
+.sx .ae-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:start}
+.sx .ae-sec{transition:background .4s;margin:0 -10px;padding-left:14px;padding-right:14px;border-radius:12px}
+.sx .ae-sec.now{background:#FFFBF0}
+.sx .ae-sec .rf-nm small{opacity:0;transition:opacity .4s}
+.sx .ae-sec.done .rf-nm small{opacity:1}
+.sx .ae-tick{flex:none;width:28px;height:28px;border-radius:50%;box-shadow:inset 0 0 0 2px #CFE0E0;transition:background .35s,box-shadow .35s}
+.sx .ae-sec.now .ae-tick{box-shadow:inset 0 0 0 2.5px #F4B528;animation:ae-spin 1.1s linear infinite;border-top:0;background:conic-gradient(#F4B528 0 25%,transparent 0) ;-webkit-mask:radial-gradient(circle,transparent 9px,#000 10px);mask:radial-gradient(circle,transparent 9px,#000 10px)}
+.sx .ae-sec.done .ae-tick{box-shadow:none;background:#11B8B1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23040F1D' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/14px no-repeat;animation:none;-webkit-mask:none;mask:none}
+@keyframes ae-spin{to{transform:rotate(360deg)}}
+.sx .ae-status{display:flex;justify-content:space-between;align-items:center;margin:14px -4px 6px;padding:12px 14px;border-radius:12px;background:#F2F8F8}
+.sx .ae-status small{display:block;font:600 10.5px/1 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#5A7271}
+.sx .ae-status b{display:block;margin-top:5px;font-size:15px;font-weight:600;color:#6A4A00}
+.sx .ae-scene[data-s="6"] .ae-status{background:#E6F7F5}
+.sx .ae-scene[data-s="6"] .ae-status b{color:#0A7D79}
+/* the document */
+.sx .ae-doc{position:relative;padding-top:6px}
+.sx .ae-count{position:absolute;right:-6px;top:-12px;z-index:3;padding:8px 14px;border-radius:999px;background:#013B43;color:#A3BFC1;font-size:13px;font-weight:600}
+.sx .ae-count b{font-size:17px;color:#fff;font-variant-numeric:tabular-nums}
+.sx .ae-stack{position:relative;margin:0 14px 14px 0}
+.sx .ae-stack > i{position:absolute;inset:0;border-radius:10px;background:#fff;box-shadow:0 0 0 1px rgba(1,43,51,.08)}
+.sx .ae-stack > i:nth-child(1){transform:translate(14px,14px)}
+.sx .ae-stack > i:nth-child(2){transform:translate(7px,7px)}
+.sx .ae-page{position:relative;padding:0 0 18px;border-radius:10px;background:#fff;box-shadow:0 0 0 1px rgba(1,43,51,.08),0 18px 36px -18px rgba(1,43,51,.25);overflow:hidden}
+.sx .ae-ph{display:flex;align-items:center;gap:8px;padding:12px 18px;background:#013B43;color:#fff;font-size:13px;font-weight:600}
+.sx .ae-ph u{width:18px;height:18px;border-radius:5px;background:#11B8B1}
+.sx .ae-ph em{margin-left:auto;font-style:normal;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#F4B528}
+.sx .ae-pt{padding:20px 22px 14px;border-bottom:1px solid #EEF4F4}
+.sx .ae-pt small{font:600 10.5px/1 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#0A7D79}
+.sx .ae-pt b{display:block;margin:8px 0 10px;font-size:22px;line-height:1.15;font-weight:700;letter-spacing:-.02em;color:#040F1D}
+.sx .ae-pt span{display:block;font-size:13px;line-height:1.5;color:#3E5655}
+.sx .ae-toc{display:grid;gap:2px;padding:12px 22px 4px}
+.sx .ae-toc span{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:13.5px;color:#13363B;opacity:.25;transform:translateX(-4px);transition:opacity .4s,transform .4s}
+.sx .ae-toc span.in{opacity:1;transform:none}
+.sx .ae-toc em{display:grid;place-items:center;width:20px;height:20px;border-radius:6px;background:#E6F7F5;color:#0A7D79;font-style:normal;font-size:11px;font-weight:700}
+.sx .ae-toc i{flex:1;border-bottom:1px dotted #CFE0E0;margin-top:4px}
+.sx .ae-toc strong{font-weight:600;color:#5A7271;font-variant-numeric:tabular-nums}
+.sx .ae-pf{margin:8px 22px 0;padding-top:10px;border-top:1px solid #EEF4F4;font-size:10.5px;color:#93A3A3}
+@media (max-width:900px){.sx .ae-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.sx .ae-scene *{transition:none!important;animation:none!important}}
+
+/* feature films: zoom a little less and keep the top of the film in view, so the cards near the edges aren't cut off */
+.sx .pp-feat .pp-film video{transform:scale(1.16)!important;transform-origin:52% 34%}
+
+.sx .ae-doc{padding-top:44px}
+.sx .ae-count{top:0;right:14px}
+
+/* no yellow (Dana, 19 Nov 2026): the section being drafted is shown with a clean teal ring, no soft yellow highlight */
+.sx .ae-sec.now{background:none}
+.sx .ae-sec.now .ae-tick{background:none;-webkit-mask:none;mask:none;box-shadow:none;border:2.5px solid #CFE6E3;border-top-color:#11B8B1;animation:ae-spin .9s linear infinite}
+.sx .ae-status b{color:#0A7D79}
+.sx .ae-ph em{color:#7EDAD6}

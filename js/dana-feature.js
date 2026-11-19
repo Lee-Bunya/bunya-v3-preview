@@ -185,7 +185,9 @@
     'care': { how: 'Looked after, <span>every month.</span>', levels: 'Choose how much <span>we build with you.</span>',
       portal: 'Your Bunya Portal. <span>Everything in one place.</span>', compare: 'Support that <span>keeps you moving.</span>', faq: 'Questions, <span>answered.</span>' },
     'bunya-shape': { how: 'Ask for it. <span>Approve it. Use it.</span>', foundation: 'Built on your record. <span>Not beside it.</span>',
-      compare: 'Less waiting. <span>More building.</span>', included: 'Everything <span>you can shape.</span>', faq: 'Questions, <span>answered.</span>' }
+      compare: 'Less waiting. <span>More building.</span>', included: 'Everything <span>you can shape.</span>', faq: 'Questions, <span>answered.</span>' },
+    'advice-engine': { features: 'Pick the features. <span>Pay only for those.</span>', how: 'From fact find <span>to signed advice.</span>',
+      close: 'Every step, <span>ready to check.</span>', compare: 'From a blank page <span>to a drafted SOA.</span>', included: 'Everything <span>in the Advice Engine.</span>', faq: 'Questions, <span>answered.</span>' }
   };
   var own = PAGE_HEADS[pg] || {};
   [].forEach.call(document.querySelectorAll('.hb-d > h2.hb-dl'), function (h) {
@@ -219,6 +221,7 @@
       chips: ['Updated from client dates', 'Drafted by Bunya · client services checks', 'Gathered by Bunya · for Alex to check', 'Ready for Wednesday · Alex approves']
     },
     'bunya-shape': { hidePoints: true, pillars: 'foundation' },
+    'advice-engine': { hidePoints: true },
     'care': {
       hidePoints: true, tiers: 'levels', tipSec: 'portal',
       tips: [['chart', '2 on track, 1 planned', 'Release 2 in build, Review Packs in testing.'], ['find', 'Answers show their sources', 'Meeting summaries, the roadmap and your requests.'],

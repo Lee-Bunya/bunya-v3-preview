@@ -125,7 +125,7 @@
       addBtn.classList.toggle('on', on);
       addBtn.setAttribute('aria-pressed', String(on));
       addBtn.innerHTML = on ? '<i aria-hidden="true">✓</i> <span class="dx-long">' + cap(item.name) + ' is in your build</span><span class="dx-short">Added</span>'
-        : '<i aria-hidden="true">+</i> Add <span class="dx-long">' + item.name + ' <small>' + item.price + '</small></span>';
+        : '<i aria-hidden="true">+</i><span class="dx-add-t">Add<span class="dx-long"> ' + item.name + ' <small>' + item.price + '</small></span></span>';
     }
   }
   function cap(t) { return t.charAt(0).toUpperCase() + t.slice(1); }

@@ -137,3 +137,8 @@ body.dx-bar-on{padding-bottom:84px}
   .dx-j-n{grid-row:auto}
   .dx-j-steps b{margin-top:12px}
 }
+
+/* 19 Nov 2026: Add button in the build bar, white text on deeper teal for legibility; one space after "Add" */
+.dx-bar-add:not(.on){background:#0A7D79;color:#fff}
+.dx-bar-add:not(.on) small{color:#D6F1EE;opacity:1}
+.dx-bar-add:not(.on):hover{background:#08706C}

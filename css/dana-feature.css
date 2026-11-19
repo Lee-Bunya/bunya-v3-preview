@@ -366,3 +366,38 @@ html body.sx .hb-vs{position:relative;border-radius:26px;background:#fff;overflo
 .sx .hb-how.dx-tl.dx-pillars::after{display:none}
 .sx .hb-how.dx-pillars b::before{display:none!important}
 .sx .hb-how.dx-pillars b{margin-top:6px}
+
+/* ---------- Advice Engine features as cards, films zoomed in to read (round 8) ---------- */
+.sx .pp-feat{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,3.5vw,48px);margin-top:22px;padding:clamp(22px,2.6vw,34px);border:0;border-radius:28px;background:#fff;box-shadow:var(--dx-edge);
+  transition:box-shadow .35s cubic-bezier(.2,.8,.2,1)}
+.sx .pp-feat:hover{box-shadow:0 0 0 1.5px var(--hc,#11B8B1),0 2px 6px rgba(1,43,51,.05),0 12px 28px rgba(1,43,51,.08),0 30px 64px rgba(1,43,51,.10)}
+.sx .pp-feat:nth-of-type(4n+2){--hc:#F4B528}.sx .pp-feat:nth-of-type(4n+3){--hc:#013B43}.sx .pp-feat:nth-of-type(4n+4){--hc:#0A7D79}
+.sx .pp-feat figure.pp-film{position:relative;overflow:hidden;border-radius:18px;background:#EAF6F4;box-shadow:inset 0 0 0 1px rgba(10,125,121,.10)}
+.sx .pp-feat .pp-film video{transform:scale(1.2)!important;transform-origin:62% 56%;box-shadow:none!important;border-radius:0}
+.sx .pp-feat p{font-size:17px;line-height:1.6;color:#2D4A4F}
+.sx .pp-feat .pp-fn{display:inline-flex;align-items:center;gap:7px;margin-top:12px;padding:5px 11px;border-radius:999px;background:#FFF4D6;color:#6A4A00;font-size:13px;font-weight:600}
+.sx .pp-feat .pp-fa{margin-top:20px}
+@media (max-width:760px){.sx .pp-feat{grid-template-columns:1fr}.sx .pp-feat .pp-film video{transform:scale(1.12)!important}}
+
+/* ---------- Round 9: refined Add buttons, bigger feature films, quieter "needs" note ---------- */
+/* "Add to your Bunya" and the small "Add" buttons: soft teal, no hard outline (feature pages only, not Pricing) */
+html body.dx-feat .hb-tkb.pp-tk{display:inline-flex;align-items:center;gap:10px;background:#E6F7F5!important;color:#013B43!important;
+  box-shadow:inset 0 0 0 1px rgba(10,125,121,.22)!important;border:0!important;font-weight:600;transition:background .25s,box-shadow .25s,color .25s}
+html body.dx-feat .hb-tkb.pp-tk:not(.sm){min-height:56px;padding:8px 22px 8px 8px;border-radius:14px;font-size:17px}
+html body.dx-feat .hb-tkb.pp-tk.sm{height:42px;padding:0 16px 0 6px;border-radius:12px;font-size:14.5px}
+html body.dx-feat .hb-tkb.pp-tk svg{display:none}
+html body.dx-feat .hb-tkb.pp-tk::before{content:"+";display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:10px;background:#11B8B1;color:#040F1D;font-size:22px;font-weight:500;line-height:1}
+html body.dx-feat .hb-tkb.pp-tk.sm::before{width:30px;height:30px;border-radius:8px;font-size:18px}
+html body.dx-feat .hb-tkb.pp-tk:hover{background:#D6F1EE!important;box-shadow:inset 0 0 0 1px rgba(10,125,121,.4)!important}
+html body.dx-feat .hb-tkb.pp-tk:is(.on,[aria-pressed="true"]){background:#013B43!important;color:#fff!important;box-shadow:none!important}
+html body.dx-feat .hb-tkb.pp-tk:is(.on,[aria-pressed="true"])::before{content:"✓";background:#7EDAD6;color:#013B43;font-size:16px}
+html body.dx-feat .hb-tkb.pp-tk:focus-visible{outline:2px solid #11B8B1;outline-offset:3px}
+
+/* feature cards: the film takes more of the card, and zooms in further */
+.sx .pp-feat{grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr)}
+.sx .pp-feat .pp-film video{transform:scale(1.32)!important;transform-origin:60% 55%}
+
+/* "Needs the fact find": a quiet note with a link icon, not a gold tag */
+.sx .pp-feat .pp-fn{display:flex;align-items:center;gap:8px;margin-top:14px;padding:0;background:none;color:#3E5655;font-size:14px;font-weight:500}
+.sx .pp-feat .pp-fn::before{content:"";flex:none;width:22px;height:22px;border-radius:7px;background:#E6F7F5 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A7D79' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7'/%3E%3Cpath d='M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7'/%3E%3C/svg%3E") center/13px no-repeat}
+@media (max-width:760px){.sx .pp-feat{grid-template-columns:1fr}.sx .pp-feat .pp-film video{transform:scale(1.18)!important}}
