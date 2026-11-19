@@ -223,6 +223,8 @@
       compare: 'No more <span>blank pages.</span>', included: 'Every channel, <span>one login.</span>', faq: 'Questions, <span>answered.</span>' },
     'field-notes': { how: 'Recorded at their table. <span>Filed like the office.</span>', close: 'From the visit <span>to the client’s file.</span>',
       compare: 'No more <span>notes in the car.</span>', included: 'Everything <span>from the visit.</span>', faq: 'Questions, <span>answered.</span>' },
+    'bunya-vault': { how: 'Add it once. <span>Reveal it when you need it.</span>', close: 'Every shared login, <span>in one place.</span>',
+      compare: 'No more <span>passwords in a spreadsheet.</span>', included: 'Everything <span>in the vault.</span>', faq: 'Questions, <span>answered.</span>' },
     'advice-engine': { features: 'Pick the features. <span>Pay only for those.</span>', how: 'From fact find <span>to signed advice.</span>',
       close: 'Every step, <span>ready to check.</span>', compare: 'From a blank page <span>to a drafted SOA.</span>', included: 'Everything <span>in the Advice Engine.</span>', faq: 'Questions, <span>answered.</span>' }
   };
@@ -272,7 +274,8 @@
     /* design pass (Dana, 20 Nov 2026): Lee's generated page prints "+undefined" for the price (it's +50c in hb.js), and
        What's included repeated the three points straight above it */
     'revenue-import': { price: '+50c', hideIncluded: true },
-    'bunya-voice': { hideIncluded: true },   /* What's included repeated the three points straight above it */
+    'bunya-voice': { hideIncluded: true },
+    'bunya-vault': { hidePoints: true },   /* What's included repeated the three points straight above it */
     'field-notes': { hidePoints: true, faqMore: [
       ['Where are the recording and the note kept?', 'In your firm’s SharePoint, on the client’s record, with the transcript and the approved note. It’s filed like any other meeting.'],
       ['Can the adviser change the note?', 'Yes. The file note is drafted for the adviser to check, and it’s only filed once they approve it.'],
