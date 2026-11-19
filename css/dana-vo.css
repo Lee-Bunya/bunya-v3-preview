@@ -1,0 +1,73 @@
+/* Bunya Voice, Dana 20 Nov 2026. Goes with js/dana-vo.js; reuses the app frame, rows, pills and toast from css/dana-rp.css. No yellow. */
+.sx .vo-hidden{display:none!important}
+.sx .vo-scene{position:relative;text-align:left}
+.sx .vo-scene svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sx .vo-live{display:flex;align-items:center;gap:8px;color:#0A7D79;font-weight:600}
+.sx .vo-live i{width:8px;height:8px;border-radius:50%;background:#11B8B1;box-shadow:0 0 0 4px rgba(17,184,177,.2);animation:vo-blink 1.2s ease-in-out infinite}
+@keyframes vo-blink{50%{opacity:.3}}
+.sx .vo-scene[data-s="3"] .vo-live i,.sx .vo-scene[data-s="4"] .vo-live i{animation:none;background:#5A7271;box-shadow:none}
+.sx .vo-grid{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:16px;align-items:stretch}
+.sx .vo-rec{display:grid;gap:14px;align-content:start}
+
+/* the client record */
+.sx .vo-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.sx .vo-st{display:flex;align-items:center;gap:12px;padding:14px 16px}
+.sx .vo-st small{display:block;font:600 10px/1 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#5A7271}
+.sx .vo-st b{display:block;margin-top:5px;font-size:14px;font-weight:600;color:#040F1D;transition:color .4s}
+.sx .vo-ic{display:grid;place-items:center;flex:none;width:36px;height:36px;border-radius:11px;background:#E6F7F5;color:#0A7D79}
+.sx .vo-ic svg{width:17px;height:17px}
+.sx .vo-av{width:36px;height:36px;border-radius:50%;font-size:11px}
+.sx .vo-calls{padding-bottom:8px}
+.sx .vo-call{align-items:flex-start;gap:14px;padding:13px 4px}
+.sx .vo-ci{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:10px;background:#F2F8F8;color:#0A7D79}
+.sx .vo-ci svg{width:16px;height:16px}
+.sx .vo-call .rf-nm b{font-size:15px}
+.sx .vo-note{display:block;margin-top:8px;padding:10px 12px;border-radius:10px;background:#F4F8F8;font-size:13.5px;line-height:1.5;color:#13363B;max-height:0;opacity:0;overflow:hidden;padding-top:0;padding-bottom:0;transition:max-height .6s,opacity .5s,padding .5s}
+.sx .vo-note.on,.sx .vo-scene[data-s="4"] .vo-today .vo-note{max-height:80px;opacity:1;padding-top:10px;padding-bottom:10px}
+.sx .vo-today{margin:0 -10px;padding:13px 14px;border-radius:12px;background:repeating-linear-gradient(135deg,#F4FBFA 0 10px,#EEF8F6 10px 20px);box-shadow:inset 0 0 0 1.5px rgba(17,184,177,.35);transition:background .5s,box-shadow .5s}
+.sx .vo-scene:is([data-s="1"],[data-s="2"]) .vo-today{background:#E6F7F5;box-shadow:inset 0 0 0 2px #11B8B1}
+.sx .vo-scene[data-s="4"] .vo-today{background:#fff;box-shadow:inset 0 0 0 1.5px rgba(17,184,177,.45)}
+.sx .vo-scene[data-s="4"] .vo-today .vo-note{background:#E6F7F5;animation:vo-in .6s ease}
+@keyframes vo-in{from{transform:translateY(4px)}}
+
+/* the call, on Teams */
+.sx .vo-phone{display:flex;flex-direction:column;padding:18px 18px 20px;border-radius:22px;background:linear-gradient(170deg,#0B2A31,#013B43 60%,#04454D);color:#fff;box-shadow:0 30px 60px -28px rgba(1,43,51,.6),inset 0 0 0 1px rgba(255,255,255,.06)}
+.sx .vo-ph{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:rgba(255,255,255,.8)}
+.sx .vo-teams{display:grid;place-items:center;width:26px;height:26px;border-radius:8px;background:#6E5DE8;color:#fff;font-size:13px;font-weight:700}
+.sx .vo-ph em{margin-left:auto;font-style:normal;font-size:12px;color:#7EDAD6}
+.sx .vo-who{display:flex;flex-direction:column;align-items:center;margin-top:22px;text-align:center}
+.sx .vo-ring{position:relative;display:grid;place-items:center;width:84px;height:84px}
+.sx .vo-ring b{position:relative;display:grid;place-items:center;width:72px;height:72px;border-radius:50%;background:#E6F7F5;color:#013B43;font-size:22px;font-weight:700}
+.sx .vo-ring i{position:absolute;inset:6px;border-radius:50%;border:2px solid #7EDAD6;opacity:0}
+.sx .vo-scene[data-s="0"] .vo-ring i{animation:vo-ripple 1.8s ease-out infinite}
+.sx .vo-ring i:nth-child(2){animation-delay:-.9s!important}
+@keyframes vo-ripple{0%{transform:scale(.9);opacity:.8}100%{transform:scale(1.6);opacity:0}}
+.sx .vo-who > b{margin-top:12px;font-size:21px;font-weight:600;letter-spacing:-.01em;color:#fff}
+.sx .vo-who small{margin-top:4px;font-size:12.5px;color:rgba(255,255,255,.7)}
+.sx .vo-time{margin-top:18px;text-align:center;font-size:34px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#fff;opacity:.35;transition:opacity .4s}
+.sx .vo-scene:not([data-s="0"]) .vo-time{opacity:1}
+.sx .vo-wave{display:flex;align-items:center;justify-content:center;gap:3px;height:36px;margin-top:10px;opacity:.25;transition:opacity .4s}
+.sx .vo-wave i{width:3px;border-radius:2px;background:#7EDAD6}
+.sx .vo-scene:is([data-s="1"],[data-s="2"]) .vo-wave{opacity:1}
+.sx .vo-scene:is([data-s="1"],[data-s="2"]) .vo-wave i{animation:vo-bar .8s ease-in-out infinite alternate}
+@keyframes vo-bar{to{transform:scaleY(.35)}}
+.sx .vo-consent{display:inline-flex;align-items:center;gap:7px;align-self:center;margin-top:14px;padding:6px 12px;border-radius:999px;background:rgba(126,218,214,.14);color:#7EDAD6;font-size:12.5px;font-weight:600;opacity:.3;transition:opacity .4s}
+.sx .vo-consent svg{width:14px;height:14px}
+.sx .vo-scene:not([data-s="0"]) .vo-consent{opacity:1}
+.sx .vo-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:auto;padding-top:18px}
+.sx .vo-btns > span{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 10px;border-radius:12px;font-size:14px;font-weight:600;transition:background .4s,opacity .4s,box-shadow .4s}
+.sx .vo-btns svg{width:16px;height:16px}
+.sx .vo-no{background:#C2453B;color:#fff}
+.sx .vo-no svg{transform:rotate(135deg)}
+.sx .vo-yes{background:#3E8E5A;color:#fff}
+.sx .vo-scene[data-s="0"] .vo-yes{box-shadow:0 0 0 0 rgba(62,142,90,.5);animation:vo-pulse 1.4s ease-out infinite}
+@keyframes vo-pulse{to{box-shadow:0 0 0 12px rgba(62,142,90,0)}}
+.sx .vo-scene:not([data-s="0"]) .vo-no{opacity:.35}
+.sx .vo-scene:is([data-s="1"],[data-s="2"]) .vo-yes{background:#11B8B1;color:#040F1D}
+.sx .vo-scene:is([data-s="3"],[data-s="4"]) .vo-yes{background:rgba(255,255,255,.12);color:rgba(255,255,255,.75)}
+.sx .vo-scene[data-s="4"] .vo-toast{opacity:1;transform:none}
+@media (max-width:1000px){.sx .vo-grid{grid-template-columns:1fr}.sx .vo-stats{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.sx .vo-scene *{transition:none!important;animation:none!important}}
+/* the Harper Family's photo in the call circle */
+.sx .vo-ring b{overflow:hidden;background:#E6F7F5;box-shadow:0 0 0 3px #7EDAD6}
+.sx .vo-scene .vo-ring img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%;border-radius:50%!important;box-shadow:none!important;border:0!important;max-width:none}

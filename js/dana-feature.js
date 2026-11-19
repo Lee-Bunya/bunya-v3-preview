@@ -144,6 +144,16 @@
     box.className = 'dx-pairs' + (links.length === 1 ? ' one' : links.length > 2 ? ' many' : '');
     var head = '<div class="dx-pairs-head"><span class="dx-pairs-k">Goes well with</span><h3>Add what fits <span>beside ' + name + '.</span></h3>' +
       '<p>Read about it, or add it to your Bunya from here. Your price updates as you go.</p></div>';
+    /* one pairing: a little more about it, in the paired page's own words (its subtitle and three points) (Dana, 20 Nov 2026) */
+    var MORE = {
+      'meeting-notes.html': ['Bunya drafts the notes so your adviser can stay in the conversation.', ['Captured with the client’s consent.', 'File note, actions and follow-up email drafted after the call.', 'Your adviser checks it before anything is filed or sent.']],
+      'client-portal.html': ['Documents, meetings, messages and signing, in one place for them.', ['Documents, meetings and messages in one place.', 'Clients read their advice and sign it.', 'They can see where their advice is up to.']],
+      'broadcast-hq.html': ['Write it once and Bunya prepares a version for each channel.', ['Start with one idea.', 'Get a blog, LinkedIn, Facebook and newsletter version.', 'Each one is approved before it goes out.']],
+      'field-notes.html': ['An onsite recorder for meetings away from the office.', ['Record meetings at the client’s home or business, right in Command Centre.', 'Captured with the client’s consent.', 'Stored in SharePoint and filed to the client like any other meeting.']],
+      'advice-engine.html': ['Fact find, insurance needs, modelling and every SOA drafted in your template, on top of everything in Command Centre.', ['The fact find filled from the meeting, the documents and the client portal.', 'Insurance needs, strategy and modelling, ready for advice.', 'Every SOA drafted in your template. Your adviser approves it.']],
+      'brand-website-marketing.html': ['Your brand, your documents, a website and marketing, built to match your Bunya.', ['A brand kit, guidelines or a full refresh.', 'Your Brand Document Pack for SOAs and client documents.', 'A website and monthly marketing that get you found.']]
+    };
+    var one = links.length === 1;
     var cards = [].map.call(links, function (a, i) {
       var href = a.getAttribute('href'), nm = a.querySelector('b'), line = a.querySelector('span'), price = a.querySelector('em');
       var txt = nm ? nm.textContent : '', k = 'spark';
@@ -151,7 +161,8 @@
       var kind = FP[href] ? 'feat' : APPP[href] ? 'add' : href === 'advice-engine.html' ? 'ae' : '';
       var key = FP[href] || APPP[href] || '';
       return '<div class="dx-pair"><span class="dx-ico dx-c' + (i % 5 + 1) + '" aria-hidden="true"><svg viewBox="0 0 24 24">' + IC[k] + '</svg></span>' +
-        '<div class="dx-pair-t"><a href="' + href + '"><b>' + (nm ? nm.innerHTML : '') + '</b></a><p>' + (line ? line.textContent : '') + '</p></div>' +
+        '<div class="dx-pair-t"><a href="' + href + '"><b>' + (nm ? nm.innerHTML : '') + '</b></a><p>' + (line ? line.textContent : '') + '</p>' +
+          (one && MORE[href] ? '<p class="dx-pair-more">' + MORE[href][0] + '</p><ul class="dx-pair-pts">' + MORE[href][1].map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul>' : '') + '</div>' +
         '<span class="dx-pair-price">' + (price ? price.textContent : '') + '</span>' +
         '<div class="dx-pair-go">' + (kind && L ? '<button type="button" class="dx-pair-add" data-kind="' + kind + '" data-key="' + key + '"></button>' : '') +
         '<a class="dx-pair-see" href="' + href + '" aria-label="See ' + txt.replace(/"/g, '') + '">See it <i aria-hidden="true">→</i></a></div></div>';
@@ -261,6 +272,7 @@
     /* design pass (Dana, 20 Nov 2026): Lee's generated page prints "+undefined" for the price (it's +50c in hb.js), and
        What's included repeated the three points straight above it */
     'revenue-import': { price: '+50c', hideIncluded: true },
+    'bunya-voice': { hideIncluded: true },   /* What's included repeated the three points straight above it */
     'field-notes': { hidePoints: true, faqMore: [
       ['Where are the recording and the note kept?', 'In your firm’s SharePoint, on the client’s record, with the transcript and the approved note. It’s filed like any other meeting.'],
       ['Can the adviser change the note?', 'Yes. The file note is drafted for the adviser to check, and it’s only filed once they approve it.'],
