@@ -254,3 +254,12 @@ html body.sx .sx-end .sx-btn::after{width:46px;height:46px;border-radius:11px;ba
 .sx .co-teaser .dx-tpanel{display:block;padding:clamp(16px,2.4vw,30px);border-radius:18px;background:#EAF6F4;box-shadow:inset 0 0 0 1px rgba(10,125,121,.10)}
 .sx .co-teaser .dx-tpanel img{padding:0;background:none;box-shadow:0 0 0 1px rgba(1,43,51,.06),0 10px 26px rgba(1,43,51,.10)!important;border-radius:12px}
 
+
+/* ---------- Design review fixes, carried over from Meeting Notes (19 Nov 2026) ---------- */
+.sx .sx-hero > p{text-wrap:balance;color:#3E5655}
+.sx .co-facts{font-size:15.5px;color:#3E5655}
+.sx .co-facts li{color:#3E5655}
+.sx .sx-tile p,.sx .co-get p{color:#2D4A4F}
+.sx .co-draft{font-size:14px;color:#3E5655}
+.sx .sx-end h2{max-width:18ch}
+.sx .sx-head p{color:#3E5655}

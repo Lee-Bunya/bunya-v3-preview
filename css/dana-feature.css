@@ -285,3 +285,48 @@ html body.sx .hb-vs{position:relative;border-radius:26px;background:#fff;overflo
 
 /* Headlines in the main typeface, TT Commons Pro, as on Command Centre (they had picked up Saira from the old label style) */
 .sx .dx-h2-t{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:700;letter-spacing:-.04em}
+
+/* ==========================================================================
+   Round 6 (19 Nov 2026): Up close callouts for any page, and the second-steps timeline
+   ========================================================================== */
+.sx .dx-tip{position:absolute;left:-40px;bottom:-62px;z-index:3;display:flex;align-items:center;gap:14px;max-width:340px;padding:14px 18px 14px 14px;border-radius:18px;background:#fff;box-shadow:var(--dx-float)}
+.sx .dx-tip.in{animation:dx-pop .5s cubic-bezier(.2,.8,.2,1)}
+.sx .dx-tip-i{display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:13px;background:#11B8B1;color:#040F1D}
+.sx .dx-tip-i svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.sx .dx-tip b{display:block;font-size:17px;font-weight:600;color:#040F1D;letter-spacing:-.01em}
+.sx .dx-tip small{display:block;margin-top:2px;font-size:14px;line-height:1.4;color:#2D4A4F}
+.sx .dx-chip{position:absolute;right:290px;top:-17px;z-index:3;display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:#FFF4D6;
+  font-size:13.5px;font-weight:600;color:#6A4A00;box-shadow:0 0 0 1px rgba(244,181,40,.4),0 10px 24px -10px rgba(106,74,0,.35)}
+.sx .dx-chip i{width:8px;height:8px;border-radius:50%;background:#F4B528}
+.sx .hb-view.dx-has-tip .hb-cap{margin-top:84px}
+@keyframes dx-pop{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:none}}
+@media (max-width:1240px){.sx .dx-tip{left:-12px}}
+@media (max-width:900px){.sx .dx-tip{position:relative;left:auto;bottom:auto;max-width:none;margin:12px 4px 0}.sx .hb-view.dx-has-tip .hb-cap{margin-top:24px}.sx .dx-chip{right:12px;top:-14px}}
+@media (max-width:640px){.sx .dx-chip{display:none}}
+
+/* Second steps as a timeline on a deep teal panel */
+.sx .dx-tl-sec{position:relative}
+.sx .dx-tl-sec .pp-lead{font-size:18px;color:#3E5655;margin:-12px 0 28px}
+.sx .hb-how.dx-tl{position:relative;gap:0;padding:clamp(28px,4vw,44px) clamp(20px,3vw,36px);border-radius:28px;background:#013B43;box-shadow:var(--dx-float)!important}
+.sx .hb-how.dx-tl::after{content:"";position:absolute;left:12.5%;right:12.5%;top:calc(clamp(28px,4vw,44px) + 24px);height:2px;background:rgba(126,218,214,.28)}
+.sx .hb-how.dx-tl li{z-index:1;background:none!important;box-shadow:none!important;padding:0 14px}
+.sx .hb-how.dx-tl li:hover{box-shadow:none!important}
+.sx .hb-how.dx-tl li::after{display:none!important}
+.sx .hb-how.dx-tl .n{box-shadow:0 0 0 6px #013B43!important}
+.sx .hb-how.dx-tl b{color:#fff}
+.sx .hb-how.dx-tl b::before{color:#7EDAD6}
+.sx .hb-how.dx-tl p{color:#D4E2E3}
+.sx .hb-how.dx-tl li:nth-child(3){background:none!important}
+.sx .hb-how.dx-tl li:nth-child(3) .n{color:#040F1D!important}
+@media (max-width:900px){
+  .sx .hb-how.dx-tl{gap:26px}
+  .sx .hb-how.dx-tl::after{display:none}
+}
+.sx .hb-how.dx-tl li:nth-child(4) .n{background:#7EDAD6!important;color:#013B43!important}
+/* Example documents (e.g. the Aynub review pack): framed slides with the soft lift */
+.sx .pp-docs{gap:24px}
+.sx .pp-doc{padding:14px 14px 16px;border-radius:22px;background:#fff;box-shadow:var(--dx-edge);transition:box-shadow .35s cubic-bezier(.2,.8,.2,1),transform .35s cubic-bezier(.2,.8,.2,1);text-align:left}
+.sx .pp-doc:hover{transform:translateY(-4px);box-shadow:0 0 0 1.5px #11B8B1,0 2px 6px rgba(1,43,51,.05),0 12px 28px rgba(1,43,51,.08),0 30px 64px rgba(1,43,51,.10)}
+.sx .pp-doc .im{display:block;border-radius:12px;overflow:hidden;box-shadow:0 0 0 1px rgba(1,43,51,.06)}
+.sx .pp-doc b{display:block;margin:14px 4px 2px;font-size:17px}
+.sx .pp-doc small{margin:0 4px}

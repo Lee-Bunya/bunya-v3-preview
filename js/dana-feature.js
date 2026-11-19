@@ -178,7 +178,10 @@
     faq: 'Straight <span>answers.</span>'
   };
   var PAGE_HEADS = {
-    'meeting-notes': { how: 'From the meeting <span>to the client’s file.</span>', close: 'Checked in minutes. <span>Not hours.</span>', compare: 'Less typing. <span>More advice.</span>', faq: 'Questions, <span>answered.</span>' }
+    'meeting-notes': { how: 'From the meeting <span>to the client’s file.</span>', close: 'Checked in minutes. <span>Not hours.</span>', compare: 'Less typing. <span>More advice.</span>', faq: 'Questions, <span>answered.</span>' },
+    'review-packs': { how: 'From the due date <span>to the review meeting.</span>', example: 'Your review pack. <span>In your brand.</span>',
+      fees: 'Every consent, <span>renewed with its review.</span>', close: 'Your whole year, <span>ready ahead.</span>',
+      compare: 'No more <span>night-before packs.</span>', faq: 'Questions, <span>answered.</span>' }
   };
   var own = PAGE_HEADS[pg] || {};
   [].forEach.call(document.querySelectorAll('.hb-d > h2.hb-dl'), function (h) {
@@ -201,4 +204,39 @@
     after.insertAdjacentElement('afterend', wrapI);
     inc.classList.add('dx-hide');
   }
+
+  /* 9. Page touches from the design review (19 Nov 2026) */
+  var PAGE = {
+    'review-packs': {
+      hidePoints: true,   // they repeated How it works and the fee steps
+      /* each callout adds something the caption under the screen doesn't already say */
+      tips: [['chart', 'Filter by adviser', 'See Alex’s or Jess’s year at a glance.'], ['mail', 'Three times to choose', 'Tue 15, Wed 16 or Fri 18 December, from Alex’s calendar.'],
+        ['find', '4 changes · 2 questions', 'The questions to ask are ready for the meeting.'], ['pen', 'Super up to $668k', 'And last year’s advice: 3 of 3 done.']],
+      chips: ['Updated from client dates', 'Drafted by Bunya · client services checks', 'Gathered by Bunya · for Alex to check', 'Ready for Wednesday · Alex approves']
+    }
+  };
+  var cfg = PAGE[pg];
+  if (cfg) {
+    if (cfg.hidePoints) { var pp = document.querySelector('.pp-points'); if (pp) pp.classList.add('dx-hide'); }
+    /* a section's own small h3 repeats the new headline, so it goes */
+    [].forEach.call(document.querySelectorAll('.hb-d > .pp-show-h'), function (h) { h.classList.add('dx-hide'); });
+    var frame = document.querySelector('#close .dx-dev-close');
+    if (frame && cfg.tips) {
+      var TI = { chart: IC.chart, mail: IC.mail, find: IC.find, pen: '<path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0-4-4L4 16z"/><path d="M13.5 6.5l4 4"/>' };
+      var tip = document.createElement('div'); tip.className = 'dx-tip'; tip.setAttribute('aria-hidden', 'true'); frame.appendChild(tip);
+      var chip = document.createElement('div'); chip.className = 'dx-chip'; chip.setAttribute('aria-hidden', 'true'); chip.innerHTML = '<i></i><span></span>'; frame.appendChild(chip);
+      var setT = function (i) {
+        var t = cfg.tips[i] || cfg.tips[0];
+        tip.classList.remove('in'); void tip.offsetWidth;
+        tip.innerHTML = '<span class="dx-tip-i"><svg viewBox="0 0 24 24">' + TI[t[0]] + '</svg></span><span><b>' + t[1] + '</b><small>' + t[2] + '</small></span>';
+        tip.classList.add('in');
+        chip.lastChild.textContent = cfg.chips[i] || '';
+      };
+      setT(0);
+      [].forEach.call(document.querySelectorAll('#close [data-shot]'), function (b) { b.addEventListener('click', function () { setT(+b.dataset.shot); }); });
+      frame.closest('.hb-view').classList.add('dx-has-tip');
+    }
+  }
+  /* a second set of steps on the page (e.g. Review Packs' fee consent) gets its own look: a timeline on a deep teal panel */
+  [].forEach.call(document.querySelectorAll('.hb-d:not(#how) > .hb-how'), function (ol) { ol.closest('.hb-d').classList.add('dx-tl-sec'); ol.classList.add('dx-tl'); });
 })();
