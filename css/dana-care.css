@@ -1,0 +1,59 @@
+/* Support (care.html), Dana 19 Nov 2026. Goes with js/dana-care.js; reuses the app frame, rows and pills from css/dana-rp.css. */
+.sx .cr-hidden{display:none!important}
+.sx .cr-scene{position:relative;text-align:left}
+.sx .cr-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:16px;align-items:start}
+.sx .cr-side{display:grid;gap:16px}
+.sx .cr-count{display:flex;align-items:center;gap:16px;margin:6px 0 14px}
+.sx .cr-count b{font-size:64px;line-height:1;font-weight:700;letter-spacing:-.04em;color:#040F1D;font-variant-numeric:tabular-nums}
+.sx .cr-count span{font-size:14.5px;line-height:1.35;color:#3E5655}
+.sx .cr-dots{display:grid;grid-template-columns:repeat(12,1fr);gap:7px;margin-bottom:18px}
+.sx .cr-dots i{aspect-ratio:1;border-radius:50%;background:#11B8B1;box-shadow:inset 0 0 0 2px #11B8B1}
+.sx .cr-dots i:nth-child(12){background:#fff;transition:background .5s}
+.sx .cr-scene:not([data-s="0"]) .cr-dots i:nth-child(12){background:#11B8B1;animation:cr-pop .6s cubic-bezier(.2,.8,.2,1)}
+@keyframes cr-pop{50%{transform:scale(1.35)}}
+.sx .cr-new{padding:14px 16px;border-radius:14px;border:1.5px dashed #CFE0E0;transition:border-color .5s,background .5s}
+.sx .cr-scene:not([data-s="0"]) .cr-new{border:1.5px solid rgba(17,184,177,.45);background:#F2FBFA}
+.sx .cr-new-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.sx .cr-new-h b{font-size:16px;font-weight:600;color:#040F1D}
+.sx .cr-item{display:flex;align-items:center;gap:10px;padding:7px 0;font-size:14.5px;color:#13363B;opacity:.45;transition:opacity .5s}
+.sx .cr-item i{width:18px;height:18px;border-radius:6px;background:#EEF4F4;flex:none;transition:background .5s}
+.sx .cr-scene:not([data-s="0"]) .cr-item{opacity:1}
+.sx .cr-scene:not([data-s="0"]) .cr-item i{background:#11B8B1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23040F1D' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/12px no-repeat}
+.sx .cr-chk{flex:none;width:22px;height:22px;border-radius:50%;box-shadow:inset 0 0 0 2px #CFE0E0;transition:background .4s,box-shadow .4s}
+.sx .cr-ms .rf-row.ok .cr-chk{box-shadow:none;background:#11B8B1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23040F1D' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/13px no-repeat}
+.sx .cr-help{padding-bottom:16px}
+.sx .cr-msg{display:flex;gap:10px;margin-top:10px;font-size:14.5px;line-height:1.45;opacity:0;transform:translateY(6px);transition:opacity .5s,transform .5s}
+.sx .cr-msg.me{justify-content:flex-end}
+.sx .cr-msg.me span{max-width:80%;padding:10px 14px;border-radius:14px 14px 4px 14px;background:#013B43;color:#fff}
+.sx .cr-msg.them > span:last-child{padding:10px 14px;border-radius:14px 14px 14px 4px;background:#EEF6F6;color:#13363B}
+.sx .cr-msg.them b{display:block;font-size:12.5px;color:#0A7D79}
+.sx .cr-av{flex:none;width:30px;height:30px;border-radius:9px;background:#013B43 url("../assets/8b9c16f32c12.svg") center/17px no-repeat}
+.sx .cr-scene[data-s="5"] .cr-msg.me,.sx .cr-scene[data-s="6"] .cr-msg{opacity:1;transform:none}
+.sx .cr-typing{display:none;gap:4px;margin:10px 0 0 40px}
+.sx .cr-scene[data-s="5"] .cr-typing{display:flex}
+.sx .cr-typing i{width:7px;height:7px;border-radius:50%;background:#7EDAD6;animation:cr-dot 1s infinite}
+.sx .cr-typing i:nth-child(2){animation-delay:.15s}.sx .cr-typing i:nth-child(3){animation-delay:.3s}
+@keyframes cr-dot{0%,100%{opacity:.3}50%{opacity:1}}
+@media (max-width:900px){.sx .cr-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.sx .cr-scene *{animation:none!important;transition:none!important}}
+
+/* round 2: releases shown as a quiet month-by-month strip, not dots */
+.sx .cr-strip{margin:4px 0 18px;padding:14px 14px 10px;border-radius:12px;background:#F6FAFA;box-shadow:inset 0 0 0 1px #E6EEEE}
+.sx .cr-dots{display:grid;grid-template-columns:repeat(12,1fr);gap:5px;margin:0}
+.sx .cr-dots span{display:flex;flex-direction:column;align-items:center;gap:6px}
+.sx .cr-dots i{display:block;width:100%;height:26px;aspect-ratio:auto;border-radius:4px;background:#0A7D79;box-shadow:none}
+.sx .cr-dots span:nth-child(12) i{background:#E3EEEE;box-shadow:inset 0 0 0 1.5px #CFE0E0;transition:background .6s,box-shadow .6s}
+.sx .cr-scene:not([data-s="0"]) .cr-dots span:nth-child(12) i{background:#F4B528;box-shadow:none;animation:none}
+.sx .cr-dots em{font-style:normal;font-size:11px;font-weight:600;color:#7C8E8D}
+.sx .cr-dots span:nth-child(12) em{color:#6A4A00}
+.sx .cr-strip-k{display:flex;justify-content:space-between;margin-top:8px;padding-top:8px;border-top:1px solid #E6EEEE;font-size:12px;color:#5A7271}
+.sx .cr-dots span:nth-child(12) i{position:relative}
+
+/* hero intro a little wider, so it sits on three lines */
+@media (min-width:900px){.sx .pp-hero > p:not(.pp-ms){max-width:860px}}
+/* round 3: slim segmented bar */
+.sx .cr-dots{gap:4px}
+.sx .cr-dots i{height:12px;border-radius:3px}
+.sx .cr-dots span:first-child i{border-radius:6px 3px 3px 6px}
+.sx .cr-dots span:nth-child(12) i{border-radius:3px 6px 6px 3px}
+.sx .cr-dots em{font-size:10.5px;color:#93A3A3}

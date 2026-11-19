@@ -952,3 +952,11 @@ body.sx{overflow-x:clip}
 
 /* 19 Nov 2026: question lists run the full width of the section, the same on every page */
 .sx :is(.sx-sec,.v5-faq) > .sx-faq{max-width:none;margin-left:0;margin-right:0}
+
+/* 19 Nov 2026 (Dana): section intro paragraphs run the full width of the section, not stopping short */
+.sx :is(.pp-lead,.v5-lead,.dx-j-head > p,.sx-head > p,.v5-sec > p.sx-rv,.dx-proc .sx-head p,.dx-tl-sec .pp-lead){max-width:none!important;text-wrap:pretty}
+.sx .sx-head{max-width:none}
+
+/* Pricing and Build stay exactly as signed off until Dana reviews them again (19 Nov 2026):
+   later site-wide rules don't apply there. */
+body.sx:has(.pr-sum) .sx-sec > .sx-faq{max-width:860px}

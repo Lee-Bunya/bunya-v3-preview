@@ -330,3 +330,30 @@ html body.sx .hb-vs{position:relative;border-radius:26px;background:#fff;overflo
 .sx .pp-doc .im{display:block;border-radius:12px;overflow:hidden;box-shadow:0 0 0 1px rgba(1,43,51,.06)}
 .sx .pp-doc b{display:block;margin:14px 4px 2px;font-size:17px}
 .sx .pp-doc small{margin:0 4px}
+
+/* ---------- Plan levels as cards (round 7, Care) ---------- */
+.sx .dx-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+.sx .dx-tier{position:relative;display:flex;flex-direction:column;padding:30px 28px 28px;border-radius:24px;background:#fff;box-shadow:var(--dx-edge);
+  transition:box-shadow .35s cubic-bezier(.2,.8,.2,1),transform .35s cubic-bezier(.2,.8,.2,1)}
+.sx .dx-tier:hover{transform:translateY(-4px);box-shadow:0 0 0 1.5px var(--hc,#11B8B1),0 2px 6px rgba(1,43,51,.05),0 12px 28px rgba(1,43,51,.08),0 30px 64px rgba(1,43,51,.10)}
+.sx .dx-tier.t0{--hc:#11B8B1}.sx .dx-tier.t1{--hc:#F4B528}.sx .dx-tier.t2{--hc:#013B43}
+.sx .dx-tier.t2{background:#013B43;color:#D4E2E3}
+.sx .dx-tier-n{display:grid;place-items:center;width:44px;height:44px;border-radius:13px;background:#11B8B1;color:#040F1D;font-weight:700;font-size:16px}
+.sx .dx-tier.t1 .dx-tier-n{background:#F4B528}
+.sx .dx-tier.t2 .dx-tier-n{background:#7EDAD6;color:#013B43}
+.sx .dx-tier-flag{position:absolute;right:22px;top:26px;padding:6px 12px;border-radius:999px;background:#F4B528;color:#040F1D;font-size:12.5px;font-weight:700}
+.sx .dx-tier > b{display:block;margin-top:22px;font-size:26px;font-weight:700;letter-spacing:-.025em;color:#040F1D}
+.sx .dx-tier.t2 > b{color:#fff}
+.sx .dx-tier-p{display:flex;align-items:baseline;gap:8px;margin:10px 0 16px;padding-bottom:18px;border-bottom:1px solid #EEF4F4}
+.sx .dx-tier.t2 .dx-tier-p{border-bottom-color:rgba(126,218,214,.18)}
+.sx .dx-tier-p em{font-style:normal;font-size:40px;font-weight:700;letter-spacing:-.035em;color:#0A7D79;font-variant-numeric:tabular-nums}
+.sx .dx-tier.t2 .dx-tier-p em{color:#7EDAD6}
+.sx .dx-tier-p small{font-size:15px;color:#5A7271}
+.sx .dx-tier.t2 .dx-tier-p small{color:#A3BFC1}
+.sx .dx-tier-r{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;padding:7px 12px;border-radius:999px;background:#E6F7F5;color:#0A7D79;font-size:13.5px;font-weight:600}
+.sx .dx-tier.t1 .dx-tier-r{background:#FFF4D6;color:#6A4A00}
+.sx .dx-tier.t2 .dx-tier-r{background:rgba(126,218,214,.14);color:#7EDAD6}
+.sx .dx-tier-r i{width:7px;height:7px;border-radius:50%;background:currentColor}
+.sx .dx-tier p{margin:16px 0 0;font-size:16px;line-height:1.6;color:#2D4A4F}
+.sx .dx-tier.t2 p{color:#D4E2E3}
+@media (max-width:900px){.sx .dx-tiers{grid-template-columns:1fr}}

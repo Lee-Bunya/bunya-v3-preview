@@ -181,7 +181,9 @@
     'meeting-notes': { how: 'From the meeting <span>to the client’s file.</span>', close: 'Checked in minutes. <span>Not hours.</span>', compare: 'Less typing. <span>More advice.</span>', faq: 'Questions, <span>answered.</span>' },
     'review-packs': { how: 'From the due date <span>to the review meeting.</span>', example: 'Your review pack. <span>In your brand.</span>',
       fees: 'Every consent, <span>renewed with its review.</span>', close: 'Your whole year, <span>ready ahead.</span>',
-      compare: 'No more <span>night-before packs.</span>', faq: 'Questions, <span>answered.</span>' }
+      compare: 'No more <span>night-before packs.</span>', faq: 'Questions, <span>answered.</span>' },
+    'care': { how: 'Looked after, <span>every month.</span>', levels: 'Choose how much <span>we build with you.</span>',
+      portal: 'Your Bunya Portal. <span>Everything in one place.</span>', compare: 'Support that <span>keeps you moving.</span>', faq: 'Questions, <span>answered.</span>' }
   };
   var own = PAGE_HEADS[pg] || {};
   [].forEach.call(document.querySelectorAll('.hb-d > h2.hb-dl'), function (h) {
@@ -213,6 +215,12 @@
       tips: [['chart', 'Filter by adviser', 'See Alex’s or Jess’s year at a glance.'], ['mail', 'Three times to choose', 'Tue 15, Wed 16 or Fri 18 December, from Alex’s calendar.'],
         ['find', '4 changes · 2 questions', 'The questions to ask are ready for the meeting.'], ['pen', 'Super up to $668k', 'And last year’s advice: 3 of 3 done.']],
       chips: ['Updated from client dates', 'Drafted by Bunya · client services checks', 'Gathered by Bunya · for Alex to check', 'Ready for Wednesday · Alex approves']
+    },
+    'care': {
+      hidePoints: true, tiers: 'levels', tipSec: 'portal',
+      tips: [['chart', '2 on track, 1 planned', 'Release 2 in build, Review Packs in testing.'], ['find', 'Answers show their sources', 'Meeting summaries, the roadmap and your requests.'],
+        ['chart', 'Your plan, at a glance', 'What’s already in your Command Centre, and what’s an add-on.'], ['pen', '2 open, 1 waiting on you', 'Every quote, file and answer in one place.']],
+      chips: ['Next progress meeting · Thu 19 Nov', 'Written by AI from your records', 'Community ideas · open for input', 'Release 1 shipped 28 Oct']
     }
   };
   var cfg = PAGE[pg];
@@ -220,7 +228,7 @@
     if (cfg.hidePoints) { var pp = document.querySelector('.pp-points'); if (pp) pp.classList.add('dx-hide'); }
     /* a section's own small h3 repeats the new headline, so it goes */
     [].forEach.call(document.querySelectorAll('.hb-d > .pp-show-h'), function (h) { h.classList.add('dx-hide'); });
-    var frame = document.querySelector('#close .dx-dev-close');
+    var frame = document.querySelector('#' + (cfg.tipSec || 'close') + ' .dx-dev-close');
     if (frame && cfg.tips) {
       var TI = { chart: IC.chart, mail: IC.mail, find: IC.find, pen: '<path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0-4-4L4 16z"/><path d="M13.5 6.5l4 4"/>' };
       var tip = document.createElement('div'); tip.className = 'dx-tip'; tip.setAttribute('aria-hidden', 'true'); frame.appendChild(tip);
@@ -233,10 +241,31 @@
         chip.lastChild.textContent = cfg.chips[i] || '';
       };
       setT(0);
-      [].forEach.call(document.querySelectorAll('#close [data-shot]'), function (b) { b.addEventListener('click', function () { setT(+b.dataset.shot); }); });
+      [].forEach.call(document.querySelectorAll('#' + (cfg.tipSec || 'close') + ' [data-shot]'), function (b) { b.addEventListener('click', function () { setT(+b.dataset.shot); }); });
       frame.closest('.hb-view').classList.add('dx-has-tip');
     }
   }
   /* a second set of steps on the page (e.g. Review Packs' fee consent) gets its own look: a timeline on a deep teal panel */
   [].forEach.call(document.querySelectorAll('.hb-d:not(#how) > .hb-how'), function (ol) { ol.closest('.hb-d').classList.add('dx-tl-sec'); ol.classList.add('dx-tl'); });
+
+  /* 10. Plan levels as cards (e.g. Care's "Three levels of support"): name, price, reply time, then the detail */
+  if (cfg && cfg.tiers) {
+    var tsec = document.getElementById(cfg.tiers), tol = tsec && tsec.querySelector('.hb-how');
+    if (tol) {
+      var cards = [].map.call(tol.children, function (li, i) {
+        var t = (li.querySelector('b') || {}).textContent || '', parts = t.split(' · '), body = (li.querySelector('p') || {}).textContent || '';
+        var rep = body.match(/reply within (\d+) business hours/i);
+        var price = parts[1] || '', inc = /included/i.test(price);
+        var pm = price.match(/(\$[\d,]+)\s*(a month)?/);
+        return '<div class="dx-tier t' + i + (i === 1 ? ' pop' : '') + '"><span class="dx-tier-n">0' + (i + 1) + '</span>' +
+          (i === 2 ? '<span class="dx-tier-flag">Most firms start here</span>' : '') +
+          '<b>' + parts[0] + '</b><div class="dx-tier-p">' + (inc ? '<em>Included</em><small>when you subscribe</small>' : pm ? '<em>' + pm[1] + '</em><small>a month</small>' : '<em>' + price + '</em>') + '</div>' +
+          (rep ? '<span class="dx-tier-r"><i></i>Reply within ' + rep[1] + ' business hours</span>' : '<span class="dx-tier-r"><i></i>Our team alongside yours</span>') +
+          '<p>' + body.split(/(?<=\.)\s+/).filter(function (x) { return !/reply within/i.test(x) && !(inc && /^Included when you subscribe\.?$/i.test(x)); }).join(' ') + '</p></div>';
+      }).join('');
+      var tw = document.createElement('div'); tw.className = 'dx-tiers'; tw.innerHTML = cards;
+      tol.insertAdjacentElement('afterend', tw); tol.classList.add('dx-hide');
+      tsec.classList.remove('dx-tl-sec');
+    }
+  }
 })();
