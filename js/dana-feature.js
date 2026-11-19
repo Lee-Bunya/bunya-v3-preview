@@ -194,6 +194,8 @@
       included: 'Everything <span>in the needs analysis.</span>', faq: 'Questions, <span>answered.</span>' },
     'strategy-modelling': { how: 'The numbers lined up. <span>The strategy stays yours.</span>', compare: 'From spreadsheets <span>to side by side.</span>',
       included: 'Every scenario, <span>ready for paraplanning.</span>', faq: 'Questions, <span>answered.</span>' },
+    'platform-comparisons': { how: 'From their portfolio <span>to the SOA.</span>', compare: 'No more <span>spreadsheet per client.</span>',
+      included: 'Everything <span>in the comparison.</span>', faq: 'Questions, <span>answered.</span>' },
     'advice-engine': { features: 'Pick the features. <span>Pay only for those.</span>', how: 'From fact find <span>to signed advice.</span>',
       close: 'Every step, <span>ready to check.</span>', compare: 'From a blank page <span>to a drafted SOA.</span>', included: 'Everything <span>in the Advice Engine.</span>', faq: 'Questions, <span>answered.</span>' }
   };
@@ -234,6 +236,7 @@
     'portfolio': { hidePoints: true },
     'insurance-needs': { hidePoints: true },
     'strategy-modelling': { hidePoints: true },
+    'platform-comparisons': { hidePoints: true },
     'care': {
       hidePoints: true, tiers: 'levels', tipSec: 'portal',
       tips: [['chart', '2 on track, 1 planned', 'Release 2 in build, Review Packs in testing.'], ['find', 'Answers show their sources', 'Meeting summaries, the roadmap and your requests.'],

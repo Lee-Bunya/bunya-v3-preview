@@ -1,0 +1,101 @@
+/* Platform comparisons, Dana 19 Nov 2026 (round 2: a designed comparison, not a plain table).
+   Goes with js/dana-pc.js; reuses the app frame and avatars from css/dana-rp.css. */
+.sx .pc-hidden{display:none!important}
+.sx .pc-scene{position:relative;text-align:left}
+.sx .pc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:16px}
+.sx .pc-who{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:13.5px;color:#3E5655}
+.sx .pc-who .rf-av{width:30px;height:30px;font-size:11px;border-radius:9px}
+.sx .pc-who .rf-av + .rf-av{margin-left:-14px;box-shadow:0 0 0 2px #F4F8F8}
+
+/* the table */
+.sx .pc-table{position:relative;padding:0 18px 6px;overflow:visible}
+.sx .pc-r{display:grid;grid-template-columns:minmax(0,1.05fr) repeat(3,minmax(0,1fr));align-items:stretch}
+.sx .pc-r > span{padding:12px 14px}
+.sx .pc-l{display:flex;align-items:center;font-size:14px;color:#3E5655;border-top:1px solid #EEF4F4}
+.sx .pc-c{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;border-top:1px solid #EEF4F4;transition:background .5s}
+.sx .pc-h .pc-l,.sx .pc-h .pc-c{border-top:0}
+
+/* column headings */
+.sx .pc-h > span{padding-top:22px;padding-bottom:16px}
+.sx .pc-hl{flex-direction:column;align-items:flex-start!important;justify-content:flex-end!important;gap:2px}
+.sx .pc-hl b{font-size:13px;font-weight:700;color:#0A7D79}
+.sx .pc-hl small{font-size:12px;color:#7C8E8D}
+.sx .pc-h .pc-c{justify-content:flex-end;gap:3px}
+.sx .pc-tile{display:grid;place-items:center;width:42px;height:42px;margin-bottom:8px;border-radius:13px;font-size:18px;font-weight:700;transition:transform .5s}
+.sx .pc-tile svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round}
+.sx .pc-tile.t-cur{background:#EEF2F2;color:#5A7271}
+.sx .pc-tile.t-a{background:#11B8B1;color:#040F1D}
+.sx .pc-tile.t-b{background:#E1EBEC;color:#013B43}
+.sx .pc-h .pc-c b{font-size:17px;font-weight:700;letter-spacing:-.01em;color:#040F1D}
+.sx .pc-h .pc-c small{font-size:12.5px;color:#5A7271}
+.sx .pc-pds{display:inline-flex;align-items:center;gap:4px;margin-top:8px;padding:3px 9px;border-radius:999px;background:#F2F8F8;font-style:normal;font-size:11px;font-weight:700;letter-spacing:.04em;color:#0A7D79}
+.sx .pc-pds svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* values */
+.sx .pc-r:not(.pc-h) .pc-c > b{display:inline-flex;align-items:center;gap:7px;font-size:16px;font-weight:600;color:#040F1D;font-variant-numeric:tabular-nums}
+.sx .pc-bar{display:block;width:72%;height:5px;border-radius:99px;background:#EEF4F4;overflow:hidden}
+.sx .pc-bar i{display:block;height:100%;width:0;border-radius:inherit;background:#93A3A3;transition:width .9s cubic-bezier(.2,.8,.2,1) .15s}
+.sx .pc-c.c1 .pc-bar i{background:#11B8B1}
+.sx .pc-c.c2 .pc-bar i{background:#7EDAD6}
+.sx .pc-r[data-i].in .pc-bar i{width:var(--w)}
+.sx .pc-t > span{padding-top:16px;padding-bottom:16px;background:#F6FAFA}
+.sx .pc-t .pc-l{font-weight:700;color:#040F1D;border-radius:12px 0 0 12px}
+.sx .pc-t .pc-c.c2{border-radius:0 12px 12px 0}
+.sx .pc-t .pc-c > b{font-size:24px!important;font-weight:700!important;letter-spacing:-.02em}
+.sx .pc-diff{padding:3px 10px;border-radius:999px;background:#E6F7F5;color:#0A7D79;font-size:12px;font-weight:700}
+.sx .pc-diff.now{background:#EEF2F2;color:#5A7271}
+.sx .pc-o .pc-c > b{font-weight:500!important}
+.sx .pc-ok,.sx .pc-no{display:grid;place-items:center;width:22px;height:22px;border-radius:50%}
+.sx .pc-ok{background:#11B8B1;color:#040F1D}
+.sx .pc-no{background:#EEF2F2;color:#7C8E8D}
+.sx .pc-ok svg,.sx .pc-no svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+
+/* rows arrive */
+.sx .pc-r[data-i] .pc-c{opacity:0;transform:translateY(5px);transition:opacity .45s,transform .45s,background .5s}
+.sx .pc-r[data-i].in .pc-c{opacity:1;transform:none}
+.sx .pc-r[data-i].in .pc-c.c1{transition-delay:.1s}.sx .pc-r[data-i].in .pc-c.c2{transition-delay:.2s}
+
+/* the recommended column: lifted, outlined, with a deep-teal band */
+.sx .pc-band{position:absolute;left:0;right:0;top:-1px;padding:7px 6px;border-radius:16px 16px 0 0;background:#013B43;color:#fff;font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  opacity:0;transform:translateY(6px);transition:opacity .45s,transform .45s}
+.sx .pc-c.c0 .pc-band,.sx .pc-c.c2 .pc-band{display:none}
+.sx .pc-scene[data-s="6"] .pc-c.c1{background:#fff;box-shadow:inset 2px 0 0 #11B8B1,inset -2px 0 0 #11B8B1}
+.sx .pc-scene[data-s="6"] .pc-h .pc-c.c1{border-radius:16px 16px 0 0;box-shadow:inset 2px 0 0 #11B8B1,inset -2px 0 0 #11B8B1,inset 0 2px 0 #11B8B1;padding-top:40px}
+.sx .pc-scene[data-s="6"] .pc-r:last-child .pc-c.c1{border-radius:0 0 16px 16px;box-shadow:inset 2px 0 0 #11B8B1,inset -2px 0 0 #11B8B1,inset 0 -2px 0 #11B8B1}
+.sx .pc-scene[data-s="6"] .pc-t .pc-c.c1{background:#E6F7F5}
+.sx .pc-scene[data-s="6"] .pc-t .pc-c.c1 > b{color:#0A7D79}
+.sx .pc-scene[data-s="6"] .pc-band{opacity:1;transform:none}
+.sx .pc-scene[data-s="6"] .pc-tile.t-a{transform:scale(1.08)}
+.sx .pc-table::after{content:"";position:absolute;inset:0;border-radius:18px;pointer-events:none}
+
+/* the saving */
+.sx .pc-save{display:flex;align-items:center;gap:14px;margin:16px 0 0 auto;width:max-content;max-width:100%;padding:14px 24px 14px 14px;border-radius:16px;background:#013B43;color:#fff;
+  box-shadow:0 14px 30px -14px rgba(1,43,51,.5);opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s}
+.sx .pc-scene[data-s="6"] .pc-save{opacity:1;transform:none}
+.sx .pc-save-i{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:#11B8B1;color:#040F1D}
+.sx .pc-save-i svg{width:20px;height:20px}
+.sx .pc-save b{display:block;font-size:19px;font-weight:600}
+.sx .pc-save em{font-style:normal;color:#7EDAD6;font-variant-numeric:tabular-nums}
+.sx .pc-save small{font-size:13px;color:#A3BFC1}
+.sx .pc-scene .rf-pause{top:auto;right:auto;bottom:14px;left:76px}
+
+@media (max-width:900px){.sx .pc-top{flex-direction:column}}
+@media (max-width:640px){
+  .sx .pc-table{padding:0 6px 4px}
+  .sx .pc-r{grid-template-columns:minmax(0,.9fr) repeat(3,minmax(0,1fr))}
+  .sx .pc-r > span{padding:9px 4px}
+  .sx .pc-l{font-size:11.5px}
+  .sx .pc-hl small,.sx .pc-pds,.sx .pc-h .pc-c small,.sx .pc-bar,.sx .pc-diff{display:none}
+  .sx .pc-tile{width:30px;height:30px;font-size:14px;border-radius:9px}
+  .sx .pc-h .pc-c b{font-size:13px}
+  .sx .pc-r:not(.pc-h) .pc-c > b{font-size:13px}
+  .sx .pc-t .pc-c > b{font-size:15px!important}
+  .sx .pc-band{font-size:8px;letter-spacing:.02em;padding:5px 2px}
+  .sx .pc-save{width:auto}
+}
+@media (prefers-reduced-motion:reduce){.sx .pc-scene *{transition:none!important}}
+
+/* row labels larger and darker for easy reading */
+.sx .pc-l{font-size:16px;font-weight:500;color:#13363B}
+.sx .pc-t .pc-l{font-size:16.5px}
+@media (max-width:640px){.sx .pc-l{font-size:12.5px}}
