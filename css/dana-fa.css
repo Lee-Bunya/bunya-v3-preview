@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=IBM+Plex+Sans:wght@500;600&display=swap");
+/* File Audit, Dana 20 Nov 2026. Goes with js/dana-fa.js; reuses the app frame, rows, pills and toast from css/dana-rp.css.
+   The SOA page matches the Aynub template (assets/aynub/src/aynub.css). No yellow. */
+.sx .fa-hidden{display:none!important}
+.sx .fa-scene{position:relative;text-align:left}
+.sx .fa-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:16px;align-items:stretch}
+.sx .fa-side{display:grid;gap:16px;align-content:start}
+
+/* checks */
+.sx .fa-checks .rf-ch b{display:flex;align-items:center;gap:10px}
+.sx .fa-ready{padding:4px 10px;border-radius:999px;background:#E6F7F5;color:#0A7D79;font:600 10.5px/1.2 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;opacity:0;transform:translateX(-4px);transition:opacity .4s,transform .4s}
+.sx .fa-scene[data-s="8"] .fa-ready{opacity:1;transform:none}
+.sx .fa-checks .rf-ch small{font-size:13.5px}
+.sx .fa-checks .rf-ch small .fa-n{display:inline;font-size:22px;font-weight:700;color:#0A7D79;font-variant-numeric:tabular-nums;margin-right:2px}
+.sx .fa-prog{display:block;height:6px;margin:2px 0 8px;border-radius:99px;background:#EEF4F4;overflow:hidden}
+.sx .fa-prog i{display:block;height:100%;width:0;border-radius:inherit;background:#11B8B1;transition:width .9s cubic-bezier(.3,.7,.3,1)}
+.sx .fa-row{margin:0 -10px;padding:13px 14px;border-radius:12px;transition:background .4s,box-shadow .4s}
+.sx .fa-row .rf-nm small{opacity:0;transition:opacity .4s}
+.sx .fa-row.done .rf-nm small,.sx .fa-row.flag .rf-nm small{opacity:1}
+.sx .fa-tick{flex:none;width:30px;height:30px;border-radius:50%;box-shadow:inset 0 0 0 2px #CFE0E0;transition:background .35s,box-shadow .35s}
+.sx .fa-row.now .fa-tick{box-shadow:none;border:2.5px solid #CFE6E3;border-top-color:#11B8B1;animation:fa-spin .9s linear infinite}
+.sx .fa-row.done .fa-tick{box-shadow:none;background:#11B8B1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23040F1D' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/15px no-repeat}
+.sx .fa-row.flag{background:#F6FAFA;box-shadow:inset 0 0 0 2px #013B43}
+.sx .fa-row.flag .fa-tick{box-shadow:none;background:#013B43 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M12 7v6M12 17v.5'/%3E%3C/svg%3E") center/15px no-repeat}
+.sx .fa-row.flag .rf-nm small{color:#013B43;font-weight:600}
+@keyframes fa-spin{to{transform:rotate(360deg)}}
+.sx .fa-fix{flex:none;padding:6px 12px;border-radius:999px;background:#EEF4F4;color:#7C8E8D;font-size:12.5px;font-weight:600;opacity:0;transition:opacity .4s,background .4s,color .4s}
+.sx .fa-scene[data-s="6"] .fa-fix{opacity:1;background:#013B43;color:#fff}
+.sx .fa-scene[data-s="7"] .fa-fix,.sx .fa-scene[data-s="8"] .fa-fix{opacity:1;background:#E6F7F5;color:#0A7D79}
+
+/* the SOA page, in the Aynub template */
+.sx .fa-doc{padding-bottom:16px}
+.sx .fa-page{padding:0 20px 16px;border-radius:10px;background:#fff;font-family:"Sora",sans-serif;box-shadow:0 0 0 1px rgba(38,34,44,.08),0 14px 30px -18px rgba(38,34,44,.3)}
+.sx .fa-ph{display:flex;align-items:center;justify-content:space-between;padding:14px 0 10px;border-bottom:1px solid #E6E2DB}
+.sx .fa-ph img{display:block;height:20px;width:auto;box-shadow:none!important;border:0!important;border-radius:0!important}
+.sx .fa-ph em{font-style:normal;font-size:11.5px;color:#6A6470}
+.sx .fa-k{display:block;margin-top:16px;font-size:11.5px;font-weight:600;color:#6A6470}
+.sx .fa-k::after{content:"";display:block;width:44px;height:3px;margin-top:9px;border-radius:2px;background:#772A53}
+.sx .fa-t{display:block;margin:10px 0 12px;font-size:21px;line-height:1.15;font-weight:700;letter-spacing:-.03em;color:#26222C}
+.sx .fa-ln{display:block;height:6px;margin-bottom:7px;border-radius:3px;background:#EFECE6}
+.sx .fa-ln.s{width:62%}
+.sx .fa-sigs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px}
+.sx .fa-sigs > span{display:block;border-bottom:1px solid #CFC8BC}
+.sx .fa-sigs svg{display:block;width:100%;max-width:120px;height:30px;fill:none;stroke:#26222C;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.sx .fa-sigs small{display:block;padding:6px 0 4px;font-size:11px;color:#6A6470}
+.sx .fa-dl{display:block;margin-top:12px;font-size:11px;color:#6A6470}
+.sx .fa-date{min-height:40px;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:5px;padding:9px 10px 9px 12px;border-radius:9px;background:#F6F4EF;box-shadow:inset 0 0 0 1px #E6E2DB;font-size:13.5px;color:#9A949E;transition:background .4s,box-shadow .4s,color .4s}
+.sx .fa-date i{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#11B8B1;opacity:0;transform:scale(.6);transition:opacity .4s,transform .4s}
+.sx .fa-date i svg{width:13px;height:13px;fill:none;stroke:#040F1D;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.sx .fa-scene[data-s="6"] .fa-date{background:#fff;box-shadow:inset 0 0 0 2px #013B43;color:#013B43;font-weight:600}
+.sx .fa-scene[data-s="7"] .fa-date,.sx .fa-scene[data-s="8"] .fa-date{background:#fff;box-shadow:inset 0 0 0 2px #11B8B1;color:#26222C;font-family:"IBM Plex Sans",sans-serif;font-weight:600}
+.sx .fa-scene[data-s="7"] .fa-date i,.sx .fa-scene[data-s="8"] .fa-date i{opacity:1;transform:none}
+
+/* licensee standards */
+.sx .fa-std{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:16px 18px}
+.sx .fa-si{display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:12px;background:#E6F7F5;color:#0A7D79}
+.sx .fa-si svg,.sx .fa-rep svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sx .fa-rep{display:flex;align-items:center;gap:8px;width:100%;padding-top:12px;border-top:1px solid #EEF4F4;font-size:13.5px;color:#3E5655}
+.sx .fa-rep svg{width:16px;height:16px;color:#0A7D79}
+
+.sx .fa-scene[data-s="8"] .fa-toast{opacity:1;transform:none}
+@media (max-width:900px){.sx .fa-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.sx .fa-scene *{transition:none!important;animation:none!important}}

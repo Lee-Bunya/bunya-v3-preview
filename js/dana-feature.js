@@ -198,6 +198,8 @@
       included: 'Everything <span>in the comparison.</span>', faq: 'Questions, <span>answered.</span>' },
     'soa-generator': { how: 'From the strategy <span>to a signed SOA.</span>', example: 'Your SOA. <span>In your brand.</span>', compare: 'No more <span>blank-page SOAs.</span>',
       included: 'Everything <span>in the draft.</span>', faq: 'Questions, <span>answered.</span>' },
+    'file-audit': { how: 'Checked, flagged, <span>then fixed by your team.</span>', compare: 'Found by your team. <span>Not after the fact.</span>',
+      included: 'Everything <span>in the audit.</span>', faq: 'Questions, <span>answered.</span>' },
     'advice-engine': { features: 'Pick the features. <span>Pay only for those.</span>', how: 'From fact find <span>to signed advice.</span>',
       close: 'Every step, <span>ready to check.</span>', compare: 'From a blank page <span>to a drafted SOA.</span>', included: 'Everything <span>in the Advice Engine.</span>', faq: 'Questions, <span>answered.</span>' }
   };
@@ -240,6 +242,9 @@
     'strategy-modelling': { hidePoints: true },
     'platform-comparisons': { hidePoints: true },
     'soa-generator': { hidePoints: true },
+    /* design audit (Dana, 20 Nov 2026): the subtitle repeated the headline, and the three steps showed three times */
+    'file-audit': { hidePoints: true, heroSub: 'Checked against your licensee’s standards. Anything missing is flagged and fixed before the client sees it.', heroLines: true,
+      incl: ['24 checks for your licensee', 'Every figure matched to the fact find', 'Missing dates and signatures flagged', 'Fixed on the page by your team', 'Audit report kept with the file'] },
     'care': {
       hidePoints: true, tiers: 'levels', tipSec: 'portal',
       tips: [['chart', '2 on track, 1 planned', 'Release 2 in build, Review Packs in testing.'], ['find', 'Answers show their sources', 'Meeting summaries, the roadmap and your requests.'],
@@ -250,6 +255,8 @@
   var cfg = PAGE[pg];
   if (cfg) {
     if (cfg.hidePoints) { var pp = document.querySelector('.pp-points'); if (pp) pp.classList.add('dx-hide'); }
+    if (cfg.heroSub) { var hs = document.querySelector('.pp-hero > p'); if (hs) hs.textContent = cfg.heroSub; }
+    if (cfg.incl) { var ig = document.querySelector('#included .pp-incl, .dx-incl .pp-incl'); if (ig) ig.innerHTML = cfg.incl.map(function (x) { return '<span>' + x + '</span>'; }).join(''); }
     /* a section's own small h3 repeats the new headline, so it goes */
     [].forEach.call(document.querySelectorAll('.hb-d > .pp-show-h'), function (h) { h.classList.add('dx-hide'); });
     var frame = document.querySelector('#' + (cfg.tipSec || 'close') + ' .dx-dev-close');
