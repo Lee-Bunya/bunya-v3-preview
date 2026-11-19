@@ -188,6 +188,8 @@
       compare: 'Less waiting. <span>More building.</span>', included: 'Everything <span>you can shape.</span>', faq: 'Questions, <span>answered.</span>' },
     'fact-find': { how: 'Gathered once. <span>Checked by your adviser.</span>', compare: 'Ask once. <span>Not twice.</span>',
       included: 'Everything <span>in the fact find.</span>', faq: 'Questions, <span>answered.</span>' },
+    'portfolio': { how: 'Every balance. <span>One view.</span>', compare: 'No more <span>re-keying holdings.</span>',
+      included: 'Everything <span>in the portfolio.</span>', faq: 'Questions, <span>answered.</span>' },
     'advice-engine': { features: 'Pick the features. <span>Pay only for those.</span>', how: 'From fact find <span>to signed advice.</span>',
       close: 'Every step, <span>ready to check.</span>', compare: 'From a blank page <span>to a drafted SOA.</span>', included: 'Everything <span>in the Advice Engine.</span>', faq: 'Questions, <span>answered.</span>' }
   };
@@ -225,6 +227,7 @@
     'bunya-shape': { hidePoints: true, pillars: 'foundation' },
     'advice-engine': { hidePoints: true },
     'fact-find': { hidePoints: true, heroLines: true },
+    'portfolio': { hidePoints: true },
     'care': {
       hidePoints: true, tiers: 'levels', tipSec: 'portal',
       tips: [['chart', '2 on track, 1 planned', 'Release 2 in build, Review Packs in testing.'], ['find', 'Answers show their sources', 'Meeting summaries, the roadmap and your requests.'],

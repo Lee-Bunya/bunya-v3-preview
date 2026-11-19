@@ -1,0 +1,25 @@
+/* Portfolio, Dana 19 Nov 2026. Goes with js/dana-pf.js; reuses the app frame, rows, pills and toast from css/dana-rp.css. */
+.sx .pf-hidden{display:none!important}
+.sx .pf-scene{position:relative;text-align:left}
+.sx .pf-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:16px;align-items:start}
+.sx .pf-row{opacity:.25;transform:translateX(-6px);transition:opacity .5s,transform .5s}
+.sx .pf-row.in{opacity:1;transform:none}
+.sx .pf-sw{flex:none;width:12px;height:40px;border-radius:6px}
+.sx .pf-row .rf-nm small em{font-style:normal;color:#0A7D79;font-weight:600}
+.sx .pf-amt{font-size:18px;font-weight:700;color:#040F1D;font-variant-numeric:tabular-nums}
+.sx .pf-total{display:flex;justify-content:space-between;align-items:baseline;margin:6px -4px 4px;padding:14px 14px 10px;border-radius:12px;background:#F2F8F8}
+.sx .pf-total small{font:600 10.5px/1 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#5A7271}
+.sx .pf-total b{font-size:30px;font-weight:700;letter-spacing:-.03em;color:#040F1D;font-variant-numeric:tabular-nums}
+.sx .pf-ring{position:relative;width:min(220px,100%);margin:6px auto 14px}
+.sx .pf-ring svg{display:block;width:100%;height:auto}
+.sx .pf-arc{opacity:0;transition:opacity .6s}
+.sx .pf-arc.in{opacity:1}
+.sx .pf-ring > span{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.sx .pf-ring b{font-size:44px;line-height:1;font-weight:700;color:#040F1D}
+.sx .pf-ring small{font-size:13px;color:#5A7271}
+.sx .pf-leg{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;padding-bottom:6px;font-size:13px;color:#13363B}
+.sx .pf-leg span{display:flex;align-items:center;gap:8px}
+.sx .pf-leg i{width:10px;height:10px;border-radius:3px;flex:none}
+.sx .pf-scene[data-s="5"] .pf-toast{opacity:1;transform:none}
+@media (max-width:900px){.sx .pf-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.sx .pf-scene *{transition:none!important}}
