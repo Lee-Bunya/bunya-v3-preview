@@ -128,6 +128,12 @@
   /* 6. "Goes well with": a proper panel, each pairing as a rich card you can add to your build from here */
   var pairs = document.querySelector('.pp-pairs');
   var L = window.bunyaList;
+  /* some pages (Revenue Import) have a second, separate "Goes well with" list: fold its cards into the one panel
+     so nothing is left on its own (Dana, 20 Nov 2026) */
+  [].slice.call(document.querySelectorAll('.pp-pairs'), 1).forEach(function (more) {
+    [].forEach.call(more.querySelectorAll('a'), function (a) { if (!pairs.querySelector('a[href="' + a.getAttribute('href') + '"]')) pairs.appendChild(a); });
+    var ms = more.closest('.hb-d'); (ms || more).classList.add('dx-hide');
+  });
   if (pairs) {
     var FP = {}; Object.keys(window.BUNYA_FEATURE_PAGES || {}).forEach(function (k) { FP[window.BUNYA_FEATURE_PAGES[k]] = k; });
     var APPP = { 'client-portal.html': 'portal', 'broadcast-hq.html': 'bhq', 'field-notes.html': 'field', 'bunya-voice.html': 'voice' };
@@ -252,6 +258,9 @@
     'client-portal': { hidePoints: true },
     'broadcast-hq': { hidePoints: true },
     /* design pass (Dana, 20 Nov 2026): Questions had two answers, so it gets the rest of what the page already says */
+    /* design pass (Dana, 20 Nov 2026): Lee's generated page prints "+undefined" for the price (it's +50c in hb.js), and
+       What's included repeated the three points straight above it */
+    'revenue-import': { price: '+50c', hideIncluded: true },
     'field-notes': { hidePoints: true, faqMore: [
       ['Where are the recording and the note kept?', 'In your firm’s SharePoint, on the client’s record, with the transcript and the approved note. It’s filed like any other meeting.'],
       ['Can the adviser change the note?', 'Yes. The file note is drafted for the adviser to check, and it’s only filed once they approve it.'],
@@ -269,6 +278,8 @@
   var cfg = PAGE[pg];
   if (cfg) {
     if (cfg.hidePoints) { var pp = document.querySelector('.pp-points'); if (pp) pp.classList.add('dx-hide'); }
+    if (cfg.price) { var tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT), tn; while ((tn = tw.nextNode())) if (tn.nodeValue.indexOf('+undefined') > -1) tn.nodeValue = tn.nodeValue.replace(/\+undefined/g, cfg.price); }
+    if (cfg.hideIncluded) { [].forEach.call(document.querySelectorAll('#included, .dx-incl'), function (e) { e.classList.add('dx-hide'); }); }
     if (cfg.faqMore) { var fq = document.querySelector('#faq .hb-faq'); if (fq) cfg.faqMore.forEach(function (x) { var d = document.createElement('details'); d.innerHTML = '<summary>' + x[0] + '<i></i></summary><p>' + x[1] + '</p>'; fq.appendChild(d); }); }
     if (cfg.heroSub) { var hs = document.querySelector('.pp-hero > p'); if (hs) hs.textContent = cfg.heroSub; }
     if (cfg.incl) { var ig = document.querySelector('#included .pp-incl, .dx-incl .pp-incl'); if (ig) ig.innerHTML = cfg.incl.map(function (x) { return '<span>' + x + '</span>'; }).join(''); }

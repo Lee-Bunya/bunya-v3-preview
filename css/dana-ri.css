@@ -1,0 +1,74 @@
+/* Revenue Import, Dana 20 Nov 2026. Goes with js/dana-ri.js; reuses the app frame, rows, pills and toast from css/dana-rp.css. No yellow. */
+.sx .ri-hidden{display:none!important}
+.sx .ri-scene{position:relative;text-align:left}
+.sx .ri-scene svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sx .ri-grid{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:16px;align-items:stretch}
+.sx .ri-side{display:grid;gap:14px;align-content:start}
+
+/* the table */
+.sx .ri-tbl{position:relative;padding-bottom:12px}
+.sx .ri-tbl .rf-ch{align-items:center}
+.sx .ri-tbl .rf-ch > b{display:flex;align-items:center;gap:10px}
+.sx .ri-file{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:8px;background:#F2F8F8;box-shadow:inset 0 0 0 1px #DCE9E8;font-size:12px;font-weight:600;color:#3E5655;opacity:0;transition:opacity .4s}
+.sx .ri-file svg{width:13px;height:13px}
+.sx .ri-scene:not([data-s="0"]) .ri-file{opacity:1}
+.sx .ri-tbl .rf-ch small{font-size:13px}
+.sx .ri-tbl .rf-ch small b{display:inline;font-size:15px;color:#0A7D79;font-variant-numeric:tabular-nums}
+.sx .ri-prog{display:block;height:6px;margin:2px 0 6px;border-radius:99px;background:#EEF4F4;overflow:hidden}
+.sx .ri-prog i{display:block;height:100%;width:0;border-radius:inherit;background:#11B8B1;transition:width .8s cubic-bezier(.3,.7,.3,1)}
+.sx .ri-drop{position:absolute;left:18px;right:18px;top:78px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;height:150px;border-radius:16px;border:2px dashed #BFD9D7;background:#F6FBFA;color:#0A7D79;font-size:15px;font-weight:600;transition:opacity .4s,transform .4s;z-index:1}
+.sx .ri-drop svg{width:28px;height:28px;padding:7px;border-radius:10px;background:#E6F7F5;box-sizing:content-box}
+.sx .ri-scene[data-s="0"] .ri-drop{animation:ri-breathe 1.6s ease-in-out infinite}
+@keyframes ri-breathe{50%{border-color:#11B8B1;background:#EEF9F7}}
+.sx .ri-scene:not([data-s="0"]):not([data-s="1"]) .ri-drop{opacity:0;transform:scale(.97);pointer-events:none}
+.sx .ri-scene[data-s="1"] .ri-drop{border-color:#11B8B1;background:#E6F7F5}
+.sx .ri-rows{min-height:330px}
+.sx .ri-row{gap:12px;margin:0 -8px;padding:11px 8px;border-radius:12px;opacity:.18;transition:opacity .45s,background .6s}
+.sx .ri-row.in{opacity:1;animation:ri-flash 1.2s ease}
+@keyframes ri-flash{0%{background:#E6F7F5}100%{background:transparent}}
+.sx .ri-row .rf-av{width:34px;height:34px;border-radius:50%;font-size:11.5px}
+.sx .ri-row .rf-nm b{font-size:15.5px}
+.sx .ri-id{flex:none;padding:4px 8px;border-radius:7px;background:#F2F8F8;box-shadow:inset 0 0 0 1px #E1ECEB;font:600 12px/1.2 ui-monospace,"SF Mono",Menlo,monospace;color:#3E5655}
+.sx .ri-amt{flex:none;width:76px;text-align:right;font-size:15.5px;font-weight:600;color:#040F1D;font-variant-numeric:tabular-nums}
+.sx .ri-tag{display:inline-flex;align-items:center;gap:6px;flex:none;width:168px;justify-content:center;padding:5px 10px;border-radius:999px;background:#E6F7F5;color:#0A7D79;font-size:12px;font-weight:600}
+.sx .ri-tag svg{width:13px;height:13px;stroke-width:2.6}
+.sx .ri-tag.ln{background:#EEEBFE;color:#5B4BC9}
+.sx .ri-row:not(.in) .ri-tag,.sx .ri-row:not(.in) .ri-amt,.sx .ri-row:not(.in) .ri-id{visibility:hidden}
+.sx .ri-row:not(.in) .rf-nm b{color:transparent;background:#EEF4F4;border-radius:6px}
+
+/* the summary */
+.sx .ri-sum{display:flex;flex-direction:column;align-items:center;padding:20px 18px 18px;text-align:center}
+.sx .ri-k{display:block;font:600 10.5px/1 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#5A7271}
+.sx .ri-total{display:block;margin-top:8px;font-size:38px;line-height:1;font-weight:700;letter-spacing:-.03em;color:#040F1D;font-variant-numeric:tabular-nums}
+.sx .ri-ring{position:relative;width:132px;height:132px;margin-top:16px}
+.sx .ri-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.sx .ri-ring circle{stroke:#EEF4F4;stroke-width:12}
+.sx .ri-ring .ri-arc{stroke:#11B8B1;stroke-dasharray:0 100;transition:stroke-dasharray .8s cubic-bezier(.3,.7,.3,1)}
+.sx .ri-ring > span{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.sx .ri-ring b{font-size:30px;line-height:1;font-weight:700;color:#040F1D;font-variant-numeric:tabular-nums}
+.sx .ri-ring small{margin-top:4px;font-size:11.5px;color:#5A7271}
+.sx .ri-scene[data-s="8"] .ri-sum{box-shadow:0 0 0 1.5px rgba(17,184,177,.55),0 8px 24px rgba(1,43,51,.05)}
+.sx .ri-how{padding:14px 16px}
+.sx .ri-hr{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:14px;color:#3E5655}
+.sx .ri-hr b{margin-left:auto;font-size:15px;font-weight:600;color:#040F1D;font-variant-numeric:tabular-nums}
+.sx .ri-dot{width:10px;height:10px;border-radius:50%;background:#11B8B1}
+.sx .ri-dot.ln{background:#8B7CF6}
+.sx .ri-src{display:flex;align-items:center;gap:10px;margin-top:8px;padding-top:12px;border-top:1px solid #EEF4F4}
+.sx .ri-src > svg{flex:none;width:34px;height:34px;padding:8px;border-radius:10px;background:#E6F7F5;color:#0A7D79;box-sizing:border-box}
+.sx .ri-src b{display:block;font-size:14px;font-weight:600;color:#040F1D}
+.sx .ri-src small{display:block;font-size:12px;color:#5A7271}
+
+/* the export flying in */
+.sx .ri-fly{position:absolute;z-index:4;left:6%;top:18%;display:flex;align-items:center;gap:12px;padding:12px 18px 12px 12px;border-radius:16px;background:#fff;box-shadow:0 0 0 1px rgba(10,125,121,.12),0 24px 48px -18px rgba(1,43,51,.35);opacity:0;transform:translate(-30px,-10px) rotate(-6deg);transition:opacity .4s,transform .9s cubic-bezier(.3,.7,.2,1)}
+.sx .ri-fly > svg{width:40px;height:40px;padding:9px;border-radius:12px;background:#013B43;color:#fff;box-sizing:border-box}
+.sx .ri-fly b{display:block;font-size:14.5px;font-weight:600;color:#040F1D}
+.sx .ri-fly small{display:block;font-size:12px;color:#5A7271}
+.sx .ri-scene[data-s="0"] .ri-fly{opacity:1}
+.sx .ri-scene[data-s="1"] .ri-fly{opacity:0;transform:translate(160px,150px) scale(.8) rotate(0)}
+.sx .ri-scene[data-s="8"] .ri-toast{opacity:1;transform:none}
+@media (max-width:900px){.sx .ri-grid{grid-template-columns:1fr}.sx .ri-tag{width:auto}.sx .ri-tag{font-size:0;gap:0;padding:6px}.sx .ri-fly{display:none}}
+@media (max-width:560px){.sx .ri-id{display:none}}
+@media (prefers-reduced-motion:reduce){.sx .ri-scene *{transition:none!important;animation:none!important}}
+.sx .ri-ring .ri-arc{stroke-linecap:butt}
+/* the export arrives over the drop zone, not over the screen's title */
+.sx .ri-fly{left:20%;top:44%}
