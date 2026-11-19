@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=IBM+Plex+Sans:wght@500;600&display=swap");
 /* Advice Engine overview, Dana 19 Nov 2026. Goes with js/dana-ae.js; reuses the app frame, rows and pills from css/dana-rp.css. */
 .sx .ae-hidden{display:none!important}
 .sx .ae-scene{position:relative;text-align:left}
@@ -52,3 +53,22 @@
 .sx .ae-sec.now .ae-tick{background:none;-webkit-mask:none;mask:none;box-shadow:none;border:2.5px solid #CFE6E3;border-top-color:#11B8B1;animation:ae-spin .9s linear infinite}
 .sx .ae-status b{color:#0A7D79}
 .sx .ae-ph em{color:#7EDAD6}
+
+/* The SOA being drafted in the live screen, in the Aynub template (Dana, 19 Nov 2026). Matches assets/aynub/src/aynub.css. Used on advice-engine.html and soa-generator.html. */
+.sx .ae-aynub .ae-page{font-family:"Sora",sans-serif;padding:0 0 4px;border-radius:6px;box-shadow:0 0 0 1px rgba(38,34,44,.08),0 18px 36px -18px rgba(38,34,44,.28)}
+.sx .ae-aynub .ae-stack > i{border-radius:6px}
+.sx .ae-aynub .ae-ph{margin:0 22px;padding:16px 0 12px;background:none;border-bottom:1px solid #E6E2DB;color:#6A6470}
+.sx .ae-aynub .ae-ph img{height:22px;width:auto;display:block;box-shadow:none!important;border-radius:0!important;border:0!important}
+.sx .ae-aynub .ae-ph em{font:500 11.5px/1 "Sora",sans-serif;letter-spacing:0;text-transform:none;color:#6A6470}
+.sx .ae-aynub .ae-pt{padding:20px 22px 16px;border:0}
+.sx .ae-aynub .ae-pt small{display:block;font:600 11.5px/1 "Sora",sans-serif;letter-spacing:0;text-transform:none;color:#6A6470}
+.sx .ae-aynub .ae-pt small::after{content:"";display:block;width:48px;height:3px;margin-top:10px;border-radius:2px;background:#772A53}
+.sx .ae-aynub .ae-pt b{margin:12px 0 10px;font-family:"Sora",sans-serif;font-size:21px;line-height:1.15;font-weight:700;letter-spacing:-.03em;color:#26222C}
+.sx .ae-aynub .ae-pt span{font-size:12px;line-height:1.55;color:#3B3640}
+.sx .ae-aynub .ae-toc{padding:4px 22px 6px;gap:0}
+.sx .ae-aynub .ae-toc span{gap:10px;padding:7px 0;border-top:1px solid #EFECE6;font-size:12.5px;color:#26222C}
+.sx .ae-aynub .ae-toc em{width:auto;height:auto;background:none;border-radius:0;font:600 12.5px/1 "IBM Plex Sans",sans-serif;font-variant-numeric:tabular-nums;color:#772A53;min-width:12px}
+.sx .ae-aynub .ae-toc i{border-bottom-color:#E6E2DB}
+.sx .ae-aynub .ae-toc strong{font-family:"IBM Plex Sans",sans-serif;font-weight:600;color:#26222C}
+.sx .ae-aynub .ae-pf{display:flex;justify-content:space-between;margin:6px 22px 0;padding:10px 0 12px;border-top:1px solid #E6E2DB;font-size:10.5px;color:#6A6470}
+.sx .ae-aynub .ae-pf b{font:600 10.5px/1 "IBM Plex Sans",sans-serif;color:#26222C}

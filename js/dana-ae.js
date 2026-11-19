@@ -86,3 +86,19 @@
   v.addEventListener('play', function () { cancelAnimationFrame(raf); raf = requestAnimationFrame(frame); });
   v.addEventListener('pause', function () { cancelAnimationFrame(raf); });
 })();
+
+/* The SOA being drafted in the live screen, in Aynub Financial's template (Dana, 19 Nov 2026): the same look as the
+   Aynub SOA below it (Sora, IBM Plex figures, plum). The app around it stays Bunya. Styling: css/dana-ae.css. Used on advice-engine.html and soa-generator.html. */
+(function () {
+  'use strict';
+  var scene = document.querySelector('.ae-scene');
+  if (!scene) return;
+  scene.classList.add('ae-aynub');
+  var ph = scene.querySelector('.ae-ph');
+  if (ph) ph.innerHTML = '<img src="assets/aynub/aynub-lockup-financial-on-light.png" alt=""><em>Draft 1</em>';
+  var pt = scene.querySelector('.ae-pt small');
+  if (pt) pt.textContent = 'Statement of Advice';
+  var pf = scene.querySelector('.ae-pf');
+  if (pf) pf.innerHTML = '<span>Statement of Advice · Priya &amp; Arjun Shah</span><b>1</b>';
+  scene.setAttribute('aria-label', scene.getAttribute('aria-label').replace('in the firm’s template', 'in the template of Aynub Financial, a fictional practice'));
+})();
