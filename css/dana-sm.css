@@ -1,0 +1,59 @@
+/* Strategy and modelling, Dana 19 Nov 2026. Goes with js/dana-sm.js; reuses the app frame, pills and toast from css/dana-rp.css. */
+.sx .sm-hidden{display:none!important}
+.sx .sm-scene{position:relative;text-align:left}
+.sx .sm-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:16px;align-items:start}
+.sx .sm-key{display:flex;gap:18px;margin:2px 0 4px;font-size:13px;color:#3E5655}
+.sx .sm-key span{display:inline-flex;align-items:center;gap:8px}
+.sx .sm-key i{display:inline-block;width:22px;height:0}
+.sx .sm-key i.d{border-top:2.5px dashed #93A3A3}
+.sx .sm-key i.t{border-top:3px solid #11B8B1}
+.sx .sm-key .p{opacity:0;transition:opacity .4s}
+.sx .sm-scene:not([data-s="0"]):not([data-s="1"]) .sm-key .p{opacity:1}
+.sx .sm-svg{display:block;width:100%;height:auto;overflow:visible}
+.sx .sm-svg text{font-size:12px;fill:#7C8E8D;font-variant-numeric:tabular-nums}
+.sx .sm-gl{stroke:#EEF4F4;stroke-width:1}
+.sx .sm-ret{stroke:#CFE0E0;stroke-dasharray:3 4}
+.sx .sm-svg .sm-rl{font-size:12px;font-weight:600;fill:#3E5655}
+.sx .sm-cur{fill:none;stroke:#93A3A3;stroke-width:2.5;stroke-dasharray:1;stroke-dashoffset:1}
+.sx .sm-pro{fill:none;stroke:#11B8B1;stroke-width:3.5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+.sx .sm-scene:not([data-s="0"]) .sm-cur{stroke-dashoffset:0;stroke-dasharray:.012 .01;transition:stroke-dashoffset 1.6s ease}
+.sx .sm-scene[data-s="1"] .sm-cur{animation:sm-draw 1.6s ease both}
+@keyframes sm-draw{from{stroke-dasharray:0 1}to{stroke-dasharray:1 0}}
+.sx .sm-scene:not([data-s="0"]) .sm-cur{stroke-dasharray:6 5;stroke-dashoffset:0}
+.sx .sm-scene:not([data-s="0"]):not([data-s="1"]) .sm-pro{stroke-dashoffset:0;transition:stroke-dashoffset 1.8s cubic-bezier(.3,.7,.3,1)}
+.sx .sm-area{fill:#11B8B1;opacity:0;transition:opacity .8s .6s}
+.sx .sm-scene:not([data-s="0"]):not([data-s="1"]) .sm-area{opacity:.12}
+.sx .sm-m1,.sx .sm-m2{opacity:0;transition:opacity .5s}
+.sx .sm-scene:not([data-s="0"]) .sm-m1{opacity:1;transition-delay:1.2s}
+.sx .sm-m1 circle{fill:#013B43}
+.sx .sm-m1 rect{fill:#fff;stroke:#013B43;stroke-width:1.5}
+.sx .sm-svg .sm-m1 text{fill:#013B43;font-weight:600}
+.sx .sm-scene[data-s="3"] .sm-m2,.sx .sm-scene[data-s="4"] .sm-m2{opacity:1}
+.sx .sm-m2 line{stroke:#0A7D79;stroke-width:1.5}
+.sx .sm-m2 circle{fill:#0A7D79}
+.sx .sm-m2 rect{fill:#013B43}
+.sx .sm-svg .sm-m2 text{fill:#fff;font-weight:600}
+.sx .sm-row{position:relative;display:flex;gap:12px;align-items:flex-start;padding:12px 10px;margin:0 -10px;border-radius:12px;border-top:1px solid #EEF4F4;opacity:.3;transition:opacity .5s,background .5s,box-shadow .5s}
+.sx .sm-scene[data-s="3"] .sm-row,.sx .sm-scene[data-s="4"] .sm-row{opacity:1}
+.sx .sm-scene[data-s="4"] .sm-row[data-k="1"]{background:#F2FBFA;box-shadow:inset 3px 0 0 #11B8B1}
+.sx .sm-l{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:10px;background:#EEF4F4;color:#3E5655;font-weight:700}
+.sx .sm-row[data-k="1"] .sm-l{background:#11B8B1;color:#040F1D}
+.sx .sm-row .rf-nm em{display:block;margin-top:4px;font-style:normal;font-size:13.5px;font-weight:600;color:#0A7D79}
+.sx .sm-row[data-k="0"] .rf-nm em{color:#3E5655}
+.sx .sm-pick{position:absolute;right:8px;top:12px;padding:4px 10px;border-radius:999px;background:#013B43;color:#fff;font-size:11.5px;font-weight:600;opacity:0;transition:opacity .4s}
+.sx .sm-scene[data-s="4"] .sm-pick{opacity:1}
+.sx .sm-status{display:flex;justify-content:space-between;align-items:center;margin:12px -4px 6px;padding:12px 14px;border-radius:12px;background:#F2F8F8}
+.sx .sm-status small{display:block;font:600 10.5px/1 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#5A7271}
+.sx .sm-status b{display:block;margin-top:5px;font-size:15px;font-weight:600;color:#0A7D79}
+.sx .sm-scene[data-s="4"] .sm-status{background:#E6F7F5}
+.sx .sm-scene[data-s="3"] .sm-toast,.sx .sm-scene[data-s="4"] .sm-toast{opacity:1;transform:none}
+@media (max-width:900px){.sx .sm-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.sx .sm-scene *{transition:none!important;animation:none!important}}
+
+/* round 2: smooth lines revealed with a wipe, current strategy stays dashed */
+.sx .sm-cur{stroke-dasharray:7 6!important;stroke-dashoffset:0!important;animation:none!important;transition:none!important}
+.sx .sm-pro{stroke-dasharray:none!important;stroke-dashoffset:0!important;transition:none!important}
+.sx .sm-w1,.sx .sm-w2{transform-box:fill-box;transform-origin:left;transform:scaleX(0);transition:transform 1.8s cubic-bezier(.3,.7,.3,1)}
+.sx .sm-scene:not([data-s="0"]) .sm-w1{transform:none}
+.sx .sm-scene:not([data-s="0"]):not([data-s="1"]) .sm-w2{transform:none}
+.sx .sm-area{opacity:.12!important;transition:none!important}
