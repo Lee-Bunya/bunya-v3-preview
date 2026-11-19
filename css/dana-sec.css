@@ -1,0 +1,85 @@
+/* Security & your data, Dana 20 Nov 2026 (design pass). Goes with js/dana-sec.js. */
+.sx #h-faq span{color:#0A7D79}
+.sx .sx-bunya.sec-on{position:relative;box-shadow:0 0 0 1.5px rgba(17,184,177,.45),0 18px 44px -20px rgba(1,43,51,.25)}
+.sx .sx-bunya .sec-mark{display:block;width:44px;height:44px;margin-bottom:14px;border-radius:13px;background:#013B43 url("../assets/8b9c16f32c12.svg") center/24px no-repeat}
+.sx .sx-bunya.sec-on b{font-size:18px}
+
+/* "Built in your tenancy" headline on one line on desktop */
+@media (min-width:1200px){.sx #h-where{font-size:50px;white-space:nowrap}}
+
+/* "Your firm's Microsoft 365" diagram, livelier (Dana, 20 Nov 2026) */
+.sx .sec-map{grid-template-columns:minmax(0,1fr) 96px 280px}
+.sx .sec-map .sx-tenant{position:relative;overflow:hidden;padding:30px;border-radius:30px;background:linear-gradient(150deg,#013B43 0%,#04545B 55%,#0A6B6A 100%)!important;
+  box-shadow:0 0 0 1px rgba(126,218,214,.25),0 40px 80px -40px rgba(1,59,67,.6)!important;color:#fff}
+.sx .sec-rings{position:absolute;right:-180px;top:-200px;width:620px;height:620px;pointer-events:none;opacity:.9}
+.sx .sec-rings svg{width:100%;height:100%;overflow:visible}
+.sx .sec-rings g{transform-box:view-box;transform-origin:50% 50%}
+.sx .sec-rings circle{fill:none;stroke:#7EDAD6;stroke-opacity:.18;stroke-width:1.2}
+.sx .sec-rings circle.d{stroke-opacity:.45;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:.1 9}
+.sx .sec-rings circle.g{stroke:#F4B528;stroke-opacity:.6;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:.1 9}
+.sx .sec-rings circle.n{fill:#7EDAD6;stroke:#013B43;stroke-width:3;stroke-opacity:1}.sx .sec-rings circle.n.t{fill:#11B8B1}.sx .sec-rings circle.n.y{fill:#F4B528}
+.sx .sec-rings .a{animation:sec-orb 90s linear infinite}.sx .sec-rings .b{animation:sec-orb 130s linear infinite reverse}.sx .sec-rings .c{animation:sec-orb 70s linear infinite}
+@keyframes sec-orb{to{transform:rotate(360deg)}}
+.sx .sec-map .sx-tenant-h{position:relative;z-index:1;margin-bottom:22px;gap:14px}
+.sx .sec-map .sx-tenant-h .ms{grid-template-columns:repeat(2,13px);gap:3px;padding:9px;border-radius:12px;background:#fff}
+.sx .sec-map .sx-tenant-h .ms i{width:13px;height:13px}
+.sx .sec-map .sx-tenant-h b{font-size:22px;color:#fff}
+.sx .sec-map .sx-tenant-h small{padding:5px 11px;border-radius:999px;background:rgba(126,218,214,.16);color:#BFEDEA;font-size:13px;font-weight:600}
+.sx .sec-stay{display:inline-flex;align-items:center;gap:7px;margin-left:auto;padding:6px 12px 6px 8px;border-radius:999px;background:#11B8B1;color:#013B43;font-size:13px;font-weight:700}
+.sx .sec-stay svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.sx .sec-map .sx-stores{position:relative;z-index:1;gap:14px}
+.sx .sec-map .sx-store{background:#fff!important;box-shadow:0 18px 36px -22px rgba(0,0,0,.5)!important;border-radius:18px;padding:18px 20px;transition:transform .3s}
+.sx .sec-map .sx-store:hover{transform:translateY(-2px)}
+.sx .sec-map .sx-store b{color:#040F1D}
+.sx .sec-map .sx-store p{color:#3E5655}
+.sx .sec-map .sx-store .ic{width:42px;height:42px;border-radius:12px}
+.sx .sec-map .sx-store svg{stroke:#fff;stroke-width:1.9}
+.sx .sec-map .sx-store:nth-child(1) .ic{background:linear-gradient(135deg,#11B8B1,#0A7D79)}
+.sx .sec-map .sx-store:nth-child(2) .ic{background:linear-gradient(135deg,#1D9A9E,#036C70)}
+.sx .sec-map .sx-store:nth-child(3) .ic{background:linear-gradient(135deg,#8B7CF6,#5B4BC9)}
+.sx .sec-map .sx-store:nth-child(4) .ic{background:linear-gradient(135deg,#3B82C4,#1F5F99)}
+/* the connection to Bunya */
+.sx .sec-map .sx-link{height:4px;margin:0 6px}
+.sx .sec-map .sx-link > span{background:repeating-linear-gradient(90deg,#11B8B1 0 8px,transparent 8px 14px)!important;border-radius:2px;animation:sec-flow 1.2s linear infinite;background-size:14px 4px!important}
+@keyframes sec-flow{to{background-position:14px 0}}
+.sx .sec-dot{position:absolute;top:50%;left:0;width:10px;height:10px;margin-top:-5px;border-radius:50%;background:#11B8B1;box-shadow:0 0 0 4px rgba(17,184,177,.2);animation:sec-move 2.4s ease-in-out infinite}
+@keyframes sec-move{0%{left:0;opacity:0}15%{opacity:1}85%{opacity:1}100%{left:calc(100% - 10px);opacity:0}}
+.sx .sec-lock{position:absolute;left:50%;top:50%;display:grid;place-items:center;width:36px;height:36px;margin:-18px 0 0 -18px;border-radius:12px;background:#013B43;box-shadow:0 0 0 4px #F4F8F8,0 10px 20px -8px rgba(1,59,67,.6)}
+.sx .sec-lock svg{width:17px;height:17px;fill:none;stroke:#7EDAD6;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.sx .sec-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.sx .sec-tags i{padding:5px 10px;border-radius:999px;background:#E6F7F5;color:#0A7D79;font-style:normal;font-size:12.5px;font-weight:600}
+@media (max-width:1000px){.sx .sec-map{grid-template-columns:1fr}.sx .sec-map .sx-link{width:4px;height:56px;margin:0 auto}.sx .sec-map .sx-link > span{background:repeating-linear-gradient(180deg,#11B8B1 0 8px,transparent 8px 14px)!important;background-size:4px 14px!important;animation:none}.sx .sec-dot{display:none}.sx .sec-stay{margin-left:0}}
+@media (prefers-reduced-motion:reduce){.sx .sec-map *{animation:none!important}}
+.sx .sec-map .sx-link > span:first-child{z-index:0}.sx .sec-lock{z-index:2}
+/* notes under a section run the full width, like the section intros (Dana, 20 Nov 2026) */
+.sx .sx-sec .sx-note{max-width:none}
+
+/* "Confirmed in your design" as four colour-coded cards (Dana, 20 Nov 2026) */
+.sx .sx-rows.sec-design{position:relative;display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;padding:0!important;background:none!important;box-shadow:none!important;border:0!important}
+.sx .sx-rows.sec-design::before{content:"";position:absolute;left:8%;right:8%;top:47px;height:2px;background:repeating-linear-gradient(90deg,rgba(17,184,177,.55) 0 8px,transparent 8px 14px);z-index:0}
+.sx .sx-rows.sec-design > div{position:relative;z-index:1;display:flex!important;flex-direction:column;gap:0!important;padding:22px 22px 20px!important;border:0!important;border-radius:22px;background:#fff;
+  box-shadow:0 0 0 1px rgba(10,125,121,.10),0 22px 44px -26px rgba(1,43,51,.35);overflow:hidden;transition:transform .3s,box-shadow .3s}
+.sx .sx-rows.sec-design > div:hover{transform:translateY(-3px);box-shadow:0 0 0 1.5px #11B8B1,0 26px 50px -24px rgba(1,43,51,.4)}
+.sx .sx-rows.sec-design > div::after{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--sc)}
+.sx .sec-c0{--sc:linear-gradient(90deg,#11B8B1,#0A7D79)}.sx .sec-c1{--sc:linear-gradient(90deg,#3B82C4,#1F5F99)}
+.sx .sec-c2{--sc:linear-gradient(90deg,#8B7CF6,#5B4BC9)}.sx .sec-c3{--sc:linear-gradient(90deg,#0A6B6A,#013B43)}
+.sx .sec-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.sx .sec-ic{display:grid;place-items:center;width:52px;height:52px;border-radius:16px;background:var(--sc);box-shadow:0 0 0 6px #fff,0 12px 22px -10px rgba(1,43,51,.5)}
+.sx .sec-ic svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.sx .sec-top em{font:600 13px/1 "Saira","Segoe UI",Arial,sans-serif;font-style:normal;letter-spacing:.14em;color:#93A3A3}
+.sx .sx-rows.sec-design b{display:block;font-size:20px!important;font-weight:700;letter-spacing:-.015em;color:#040F1D}
+.sx .sx-rows.sec-design p{margin:8px 0 0!important;font-size:15px!important;line-height:1.55!important;color:#3E5655}
+.sx .sec-ok{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;margin-top:auto;padding:6px 11px;border-radius:999px;background:#E6F7F5;color:#0A7D79;font-size:12.5px;font-weight:600;position:relative;top:14px}
+.sx .sec-ok i{width:14px;height:14px;border-radius:50%;background:#11B8B1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23040F1D' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/9px no-repeat}
+.sx .sx-rows.sec-design > div p{margin-bottom:22px!important}
+@media (max-width:1000px){.sx .sx-rows.sec-design{grid-template-columns:repeat(2,minmax(0,1fr))}.sx .sx-rows.sec-design::before{display:none}}
+@media (max-width:600px){.sx .sx-rows.sec-design{grid-template-columns:1fr}}
+/* Bunya colours only (Dana, 20 Nov 2026): the teal family, light to deep, instead of blue and violet */
+.sx .sec-c0{--sc:linear-gradient(135deg,#7EDAD6,#11B8B1)}
+.sx .sec-c1{--sc:linear-gradient(135deg,#11B8B1,#0A7D79)}
+.sx .sec-c2{--sc:linear-gradient(135deg,#0A7D79,#04545B)}
+.sx .sec-c3{--sc:linear-gradient(135deg,#04545B,#013B43)}
+.sx .sec-map .sx-store:nth-child(1) .ic{background:linear-gradient(135deg,#7EDAD6,#11B8B1)}
+.sx .sec-map .sx-store:nth-child(2) .ic{background:linear-gradient(135deg,#11B8B1,#0A7D79)}
+.sx .sec-map .sx-store:nth-child(3) .ic{background:linear-gradient(135deg,#0A7D79,#04545B)}
+.sx .sec-map .sx-store:nth-child(4) .ic{background:linear-gradient(135deg,#04545B,#013B43)}
