@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>Aynub Financial · Advice proposal (source)</title>
+<!-- Source for assets/aynub/docs/proposal/1–11.webp (Dana, 19 Nov 2026). Styles: aynub.css + aynub-x.css. Heads, feet and
+     Plex figures: aynub.js. Render: node render.mjs <out> 2 proposal. Aynub Financial is fictional. Originals: docs/proposal-original/. -->
+<link rel="stylesheet" href="aynub.css">
+<link rel="stylesheet" href="aynub-x.css">
+<style>
+.pf{gap:20px;font-size:14.5px} .pf > span{white-space:nowrap}
+.intro2{display:grid;grid-template-columns:1fr 300px;gap:28px;margin-top:30px;align-items:start}
+.intro2 .gs{margin-top:0} .intro2 .gs p{font-size:19.5px;line-height:1.6;font-weight:500}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:28px}
+.two p{font-size:17px;line-height:1.7}
+.st8{display:grid;grid-template-columns:1fr 1fr;gap:30px 40px;margin-top:30px}
+.st8 .stat{padding-top:18px} .st8 .stat .v{font-size:52px} .st8 .stat p{margin-top:10px;font-size:16.5px;line-height:1.55}
+.mixd{display:grid;grid-template-columns:240px 1fr;gap:40px;align-items:center;margin-top:24px}
+.ring{position:relative;width:220px;height:220px;border-radius:50%}
+.ring::after{content:"";position:absolute;inset:22px;border-radius:50%;background:#fff}
+.ring div{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring b{font-family:var(--num);font-size:36px;font-weight:600;color:var(--plum)} .ring small{font-size:15px;color:var(--grey)}
+.lg div{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:17px}
+.lg div span:last-child{margin-left:auto;font-family:var(--num);font-weight:600}
+.dot{width:13px;height:13px;border-radius:50%;flex:none}
+.pri2 .r{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:22px 26px;border-radius:12px}
+.pri2 .r:nth-child(odd){background:var(--sand)}
+.pri2 .r small{font-size:15px;color:var(--grey)} .pri2 .r b{display:block;font-size:19px} .pri2 .r p{margin-top:6px;font-size:16.5px;line-height:1.6}
+.ar .h,.ar .r{display:grid;grid-template-columns:70px 230px 1fr;gap:16px;padding:18px 20px}
+.ar .h{padding:10px 20px;font-size:15px;font-weight:600;color:var(--grey);border-bottom:1.5px solid var(--beige)}
+.ar .r{border-bottom:1px solid var(--line)} .ar .r:nth-child(even){background:var(--sand)}
+.ar .r .nb{font-family:var(--num);font-size:26px;font-weight:600;color:var(--plum);line-height:1.1} .ar .r b{font-size:18px;line-height:1.35} .ar .r p{font-size:16.5px;line-height:1.6}
+</style>
+<style>
+.how .r{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:24px 28px;border-radius:12px}
+.how .r:nth-child(odd){background:var(--sand)} .how .nb{font-family:var(--num);font-size:40px;font-weight:600;color:var(--plum);line-height:1}
+.how b{font-size:19px} .how p{margin-top:6px;font-size:16.5px;line-height:1.6}
+.leg2{display:flex;gap:34px;margin-top:6px;font-size:15.5px;color:var(--text)} .leg2 > span{display:flex;align-items:center;gap:10px} .leg2 i{width:28px;height:0;border-top:3px solid var(--green-d)} .leg2 i.d{border-top:2px dashed var(--plum)}
+.fee3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:30px}
+.fee3 .stat .v{font-size:46px} .fee3 .stat p{margin-top:10px;font-size:15.5px;line-height:1.55}
+.tot{display:grid;grid-template-columns:150px auto 1fr;gap:26px;align-items:center;margin-top:26px;padding:26px 30px;border-radius:14px;background:var(--plum-t);box-shadow:inset 0 5px 0 var(--plum)}
+.tot .v{font-family:var(--num);font-size:60px;font-weight:600;color:var(--plum);letter-spacing:-.03em;line-height:1} .tot .v small{font-family:Sora;font-size:16px;font-weight:500;color:var(--text);margin-left:6px;letter-spacing:0}
+.tot p{font-size:16px;line-height:1.55}
+.inc .li{grid-template-columns:80px 1fr;padding:13px 0} .inc .li .nb{font-size:26px} .inc .li p{font-size:17px}
+.ns{display:grid;grid-template-columns:380px 1fr;gap:40px;margin-top:30px;align-items:start}
+.ns .gs{margin-top:22px} .ns .gs li{font-size:16.5px}
+.ns .lst{margin-top:0} .ns .li{grid-template-columns:60px 1fr;padding:16px 0} .ns .li .nb{font-size:30px} .ns .li p{font-size:17.5px}
+.dots .sub{margin-top:10px;display:grid;gap:8px} .dots .sub li{font-size:16px}
+.bk .hero{display:grid;grid-template-columns:1fr 400px;gap:44px;align-items:center;margin-top:60px}
+.bk .hero h1{font-size:54px;line-height:1.1;font-weight:700;letter-spacing:-.03em;color:var(--ink)}
+.bk .hero h1::before{content:"";display:block;width:160px;height:4px;margin-bottom:34px;border-radius:2px;background:var(--plum)}
+.bk .photo{height:440px}
+</style>
+</head>
+<body data-foot="Advice proposal · Marcus &amp; Elise Tran" data-pre="Prepared for Marcus &amp; Elise Tran" data-total="11">
+
+<!-- 1 -->
+<section class="pg c1" data-n="1">
+  <div class="top"><img src="../aynub-lockup-financial-on-light.png" alt="Aynub Financial"></div>
+  <div class="kick">Client proposal · 2026</div>
+  <h1>Your financial advice proposal</h1>
+  <div class="photo" style="margin-top:50px;height:440px"><img src="img/w-cover.jpg" alt=""></div>
+  <div class="low"><div><b style="font-size:28px">Plan backwards.<br>Live forwards.</b></div>
+    <div class="meta"><span>Prepared for</span><b>Marcus &amp; Elise Tran</b><span>Prepared by</span><b style="margin-bottom:2px">Aynub Financial</b><span style="margin-bottom:16px;font-size:15.5px;color:var(--text)">Mara Holloway · Principal &amp; Senior Financial Adviser</span><span>Date</span><b>August 2026</b><small>Fictional client example · For demonstration purposes only</small></div></div>
+</section>
+
+<!-- 2 -->
+<section class="pg" data-n="2" data-crumb="01|Introduction">
+  <div class="sh"><span class="big">01</span><div><span class="k">Introduction</span><h2>Thank you for the conversation.</h2><p class="sub">Thank you, Marcus and Elise, for taking the time to meet with us and share more about your financial position and your plans for the future.</p></div></div>
+  <div class="rule"></div>
+  <div class="intro2"><div class="gs"><p>At the heart of this is a clear objective: to reduce reliance on employment income and build enough wealth and passive income to create financial independence.</p></div>
+    <div class="stat" style="margin-top:0"><span class="tag">Household income</span><div class="v">$310,000 <small>a year</small></div><p style="margin-top:10px;font-size:16px;line-height:1.55">About $280,000 (over 90%) from employment</p></div></div>
+  <div class="two"><p>You also want confidence that the structures and strategies in place, including your SMSF, property position, debt strategy and investments, are fit for purpose to achieve this objective over the long term.</p><p>This proposal outlines how Aynub can help you build that clarity through structured, comprehensive financial advice.</p></div>
+  <div class="photo fill" style="height:470px"><img src="img/soa-hills.jpg" alt=""></div>
+</section>
+
+<!-- 3 -->
+<section class="pg" data-n="3" data-crumb="02|Your current circumstances">
+  <div class="sh"><span class="big">02</span><div><span class="k">Your current circumstances</span><h2>Where you stand today.</h2><p class="sub">Based on our initial discussion, your current position can be summarised as follows (approximate figures):</p></div></div>
+  <div class="rule"></div>
+  <div class="st8">
+    <div class="stat"><span class="tag">Household income</span><div class="v">$310,000 <small>a year</small></div><p>About $280,000 from employment; the rest is rent and dividends</p></div>
+    <div class="stat"><span class="tag">Surplus cashflow</span><div class="v">$4–5k <small>a month</small></div><p>$48,000–$60,000 a year, not yet directed to a defined strategy</p></div>
+    <div class="stat"><span class="tag">Family home</span><div class="v">$1.2m</div><p>Value, with $380,000 remaining on the mortgage</p></div>
+    <div class="stat"><span class="tag">Investment property</span><div class="v">$850,000</div><p>Value, with $520,000 debt outstanding</p></div>
+    <div class="stat"><span class="tag">SMSF</span><div class="v">$680,000</div><p>Across cash and listed investments inside the fund</p></div>
+    <div class="stat"><span class="tag">Personal investments</span><div class="v">$140,000</div><p>In direct shares and ETFs</p></div>
+    <div class="stat"><span class="tag">Cash savings</span><div class="v">$90,000</div><p>In your own names (savings and home-loan offset), outside the SMSF</p></div>
+    <div class="stat" style="border-color:var(--plum)"><span class="tag">Net assets</span><div class="v">$2.06m</div><p>$2.96m gross assets less $900,000 debt</p></div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="pg" data-n="4" data-crumb="02|Your current circumstances">
+  <div class="cont"><h3 style="margin-top:0">Illustrative asset mix</h3></div>
+  <div class="mixd"><div class="ring" style="background:conic-gradient(var(--green) 0 40.5%,var(--plum) 40.5% 69.2%,var(--green-l) 69.2% 92.2%,var(--green-d) 92.2% 96.9%,var(--beige) 96.9% 100%)"><div><b class="nonum">$2.96m</b><small>Gross assets</small></div></div>
+    <div class="lg"><div><i class="dot" style="background:var(--green)"></i><span>Family home</span><span>$1.20m</span></div><div><i class="dot" style="background:var(--plum)"></i><span>Investment property</span><span>$0.85m</span></div><div><i class="dot" style="background:var(--green-l)"></i><span>SMSF</span><span>$0.68m</span></div><div><i class="dot" style="background:var(--green-d)"></i><span>Shares &amp; ETFs</span><span>$0.14m</span></div><div style="border:0"><i class="dot" style="background:var(--beige)"></i><span>Cash</span><span>$0.09m</span></div></div></div>
+  <div class="two" style="margin-top:34px"><div class="stat" style="margin:0"><span class="tag">Gross assets</span><div class="v">$2.96m</div><p style="margin-top:10px;font-size:16.5px">Home, property, SMSF, shares and cash</p></div>
+    <div class="stat" style="margin:0"><span class="tag">Total debt</span><div class="v">$900k</div><p style="margin-top:10px;font-size:16.5px">$520,000 investment loan and $380,000 home mortgage</p></div></div>
+  <div class="gs s" style="margin-top:30px"><p style="font-size:16px">Approximate figures from our first meeting, confirmed during fact-finding. The $90,000 cash is held in your own names, outside the SMSF, so it is counted once: $1.20m + $0.85m + $0.68m + $0.14m + $0.09m = $2.96m.</p></div>
+  <div class="photo fill" style="height:400px"><img src="img/p-couple.jpg" alt=""></div>
+</section>
+
+<!-- 5 -->
+<section class="pg" data-n="5" data-crumb="03|Key priorities">
+  <div class="sh"><span class="big">03</span><div><span class="k">Key priorities</span><h2>What matters most.</h2><p class="sub">Based on our initial discussion, we understand the following areas are most important to you:</p></div></div>
+  <div class="rule"></div>
+  <div class="stat" style="margin-top:30px;max-width:420px"><span class="tag">Surplus cashflow</span><div class="v">$4–5k <small>a month</small></div><p style="margin-top:10px;font-size:16.5px">Not yet directed to a strategy</p></div>
+  <div class="pri2" style="margin-top:30px">
+    <div class="r"><small>Areas 04 · 06</small><div><b>Financial independence</b><p>Replace reliance on employment income with reliable, growing passive income from your assets.</p></div></div>
+    <div class="r"><small>Area 01</small><div><b>SMSF confidence</b><p>Certainty that your fund’s structure, costs and investment strategy are fit for purpose.</p></div></div>
+    <div class="r"><small>Areas 02 · 03</small><div><b>Debt strategy</b><p>Pay down the right debt, at the right pace, in the right order, without starving your investments.</p></div></div>
+    <div class="r"><small>Areas 04 · 05</small><div><b>Wealth structure</b><p>Hold and build investments in the most tax-effective structures for the long term.</p></div></div></div>
+</section>
+
+<!-- 6 -->
+<section class="pg" data-n="6" data-crumb="04|Strategic areas of focus">
+  <div class="sh"><span class="big">04</span><div><span class="k">Strategic areas of focus</span><h2>One strategy, six areas.</h2><p class="sub">If you choose to proceed, our advice will focus on the following areas:</p></div></div>
+  <div class="rule"></div>
+  <div class="ar" style="margin-top:24px"><div class="h"><span></span><span>Area</span><span>What we will address</span></div>
+    <div class="r"><span class="nb">01</span><b>SMSF review &amp; strategy</b><p>Assess structure, costs, investment strategy and contribution settings against your objective.</p></div>
+    <div class="r"><span class="nb">02</span><b>Property &amp; gearing position</b><p>Test whether the investment property and gearing level still earn their place in the plan.</p></div>
+    <div class="r"><span class="nb">03</span><b>Debt structure &amp; repayments</b><p>Sequence non-deductible vs deductible debt and set an optimal repayment plan.</p></div>
+    <div class="r"><span class="nb">04</span><b>Investment portfolio</b><p>Build a diversified portfolio across entities, aligned to risk profile and time horizon.</p></div>
+    <div class="r"><span class="nb">05</span><b>Cashflow, tax &amp; structures</b><p>Direct surplus cashflow deliberately and hold assets in the right names and entities.</p></div>
+    <div class="r"><span class="nb">06</span><b>Independence modelling</b><p>Model your path to financial independence, with clear milestones and trade-offs.</p></div></div>
+  <div class="gs g" style="margin-top:30px"><p style="font-size:19px;font-weight:500">Each area is addressed as part of one integrated strategy, not in isolation.</p></div>
+</section>
+
+<!-- 7 -->
+<section class="pg" data-n="7" data-crumb="05|How we can help you">
+  <div class="sh"><span class="big">05</span><div><span class="k">How we can help you</span><h2>Structure, clarity and confidence.</h2><p class="sub">Our role is to bring structure, clarity and confidence to your decision making through:</p></div></div>
+  <div class="rule"></div>
+  <div class="how" style="margin-top:26px">
+    <div class="r"><span class="nb">1</span><div><b>One integrated strategy</b><p>A single plan across super, property, debt and investments, with every part working together.</p></div></div>
+    <div class="r"><span class="nb">2</span><div><b>Independence made visible</b><p>Modelling that shows when passive income can cover your living costs, and what moves the date.</p></div></div>
+    <div class="r"><span class="nb">3</span><div><b>Prioritised recommendations</b><p>Specific advice on what to do, in what order, and why.</p></div></div>
+    <div class="r"><span class="nb">4</span><div><b>Measured progress</b><p>Agreed milestones so you can see the strategy working year on year.</p></div></div></div>
+  <div class="photo fill" style="height:400px"><img src="img/p-writing.jpg" alt=""></div>
+</section>
+
+<!-- 8 -->
+<section class="pg" data-n="8" data-crumb="05|How we can help you">
+  <div class="cont"><span class="k">Illustrative</span><h3>Projected passive income vs living costs</h3></div>
+  <div class="short" style="display:grid;grid-template-columns:150px 1fr;gap:16px;margin-top:22px;padding:22px 26px;border-radius:14px;background:var(--sand);box-shadow:inset 5px 0 0 var(--plum)"><span class="tag">In short</span><p style="font-size:18px;line-height:1.6;color:var(--ink)">On these assumptions, passive income is projected to cover your $90,000 target living costs from about 2037.</p></div>
+  <span class="tag m" style="margin-top:26px;font-size:15px">$’000 a year</span>
+  <div style="margin-top:6px"><svg viewBox="0 0 890 410" width="890" height="410" class="nonum"><style>.ax{font:500 15px "IBM Plex Sans";fill:#6A6470}</style><line x1="60" x2="860" y1="360.0" y2="360.0" stroke="#E6E2DB"/><text x="48" y="365.0" text-anchor="end" class="ax">0</text><line x1="60" x2="860" y1="303.3" y2="303.3" stroke="#E6E2DB"/><text x="48" y="308.3" text-anchor="end" class="ax">20</text><line x1="60" x2="860" y1="246.7" y2="246.7" stroke="#E6E2DB"/><text x="48" y="251.7" text-anchor="end" class="ax">40</text><line x1="60" x2="860" y1="190.0" y2="190.0" stroke="#E6E2DB"/><text x="48" y="195.0" text-anchor="end" class="ax">60</text><line x1="60" x2="860" y1="133.3" y2="133.3" stroke="#E6E2DB"/><text x="48" y="138.3" text-anchor="end" class="ax">80</text><line x1="60" x2="860" y1="76.7" y2="76.7" stroke="#E6E2DB"/><text x="48" y="81.7" text-anchor="end" class="ax">100</text><line x1="60" x2="860" y1="20.0" y2="20.0" stroke="#E6E2DB"/><text x="48" y="25.0" text-anchor="end" class="ax">120</text><text x="60.0" y="390" text-anchor="middle" class="ax">2026</text><text x="174.3" y="390" text-anchor="middle" class="ax">2028</text><text x="288.6" y="390" text-anchor="middle" class="ax">2030</text><text x="402.9" y="390" text-anchor="middle" class="ax">2032</text><text x="517.1" y="390" text-anchor="middle" class="ax">2034</text><text x="631.4" y="390" text-anchor="middle" class="ax">2036</text><text x="745.7" y="390" text-anchor="middle" class="ax">2038</text><text x="860.0" y="390" text-anchor="middle" class="ax">2040</text>
+<line x1="60" x2="860" y1="105.0" y2="105.0" stroke="#772A53" stroke-width="2" stroke-dasharray="7 6"/>
+<path d="M60.0 311.8 L174.3 283.5 L288.6 246.7 L402.9 209.8 L517.1 170.2 L631.4 127.7 L745.7 79.5 L860.0 28.5" fill="none" stroke="#3E6B49" stroke-width="3.5" stroke-linejoin="round"/><circle cx="60.0" cy="311.8" r="5" fill="#fff" stroke="#3E6B49" stroke-width="2.5"/><circle cx="174.3" cy="283.5" r="5" fill="#fff" stroke="#3E6B49" stroke-width="2.5"/><circle cx="288.6" cy="246.7" r="5" fill="#fff" stroke="#3E6B49" stroke-width="2.5"/><circle cx="402.9" cy="209.8" r="5" fill="#fff" stroke="#3E6B49" stroke-width="2.5"/><circle cx="517.1" cy="170.2" r="5" fill="#fff" stroke="#3E6B49" stroke-width="2.5"/><circle cx="631.4" cy="127.7" r="5" fill="#fff" stroke="#3E6B49" stroke-width="2.5"/><circle cx="745.7" cy="79.5" r="5" fill="#fff" stroke="#3E6B49" stroke-width="2.5"/><circle cx="860.0" cy="28.5" r="5" fill="#fff" stroke="#3E6B49" stroke-width="2.5"/>
+<circle cx="688.6" cy="105.0" r="9" fill="#3E6B49"/><g transform="translate(688.6 97.0)"><rect x="-80" y="-58" width="160" height="34" rx="17" fill="#E5EDE2"/><text x="0" y="-35" text-anchor="middle" style="font:600 15.5px Sora;fill:#3E6B49">Crossover · 2037</text></g></svg></div>
+  <div class="leg2"><span><i></i>Passive income</span><span><i class="d"></i>Target living costs ($90k a year, today’s $)</span></div>
+  <p class="body" style="font-size:16px;margin-top:22px">The crossover, where passive income covers living costs, is the milestone we plan toward. Illustrative modelling based on the assumptions shown, in today’s dollars and before tax. <b>Target:</b> $90,000 a year, about your current lifestyle spending without loan repayments (home mortgage assumed repaid). <b>Passive income:</b> SMSF and share income, plus rent after costs and interest on the $520,000 loan; excludes your home and cash.</p>
+  <div class="gs s" style="margin-top:22px"><p style="font-size:15.5px"><b>Assumptions:</b> 2.5% inflation; 3.5% income yield and 1.0% real growth; $54,000 a year of surplus invested; $50,000 a year into the SMSF (before 15% contributions tax); 3.0% gross rent yield, 25% costs; interest-only loan at 6.0%. SMSF income can be drawn only after a condition of release, such as retiring after 60.</p></div>
+</section>
+
+<!-- 9 -->
+<section class="pg" data-n="9" data-crumb="06|Your proposed investment">
+  <div class="sh"><span class="big">06</span><div><span class="k">Your proposed investment</span><h2>A fixed fee, in dollars.</h2><p class="sub">To deliver the scope of advice outlined above, we propose a fixed fee arrangement, so you have full transparency and confidence in the investment required.</p></div></div>
+  <div class="rule"></div>
+  <div class="fee3"><div class="stat"><span class="tag">Scope of advice</span><div class="v">6 <small>areas</small></div><p>Addressed as one integrated strategy</p></div>
+    <div class="stat"><span class="tag">On acceptance · 10%</span><div class="v">$660 <small>incl. GST</small></div><p>10% payable on acceptance</p></div>
+    <div class="stat"><span class="tag">On presentation · 90%</span><div class="v">$5,940 <small>incl. GST</small></div><p>Remaining 90% payable on presentation of your plan</p></div></div>
+  <div class="tot"><span class="tag" style="font-size:17px">Total · fixed fee</span><span class="v">$6,600<small>incl. GST</small></span><p>Fixed fee for your advice plan, inclusive of GST</p></div>
+  <h3 style="margin-top:36px">Your fee includes</h3>
+  <div class="lst inc" style="margin-top:10px">
+    <div class="li"><span class="nb">01</span><p>Detailed fact-finding and strategy sessions</p></div>
+    <div class="li"><span class="nb">02</span><p>Full modelling and analysis across all strategic options</p></div>
+    <div class="li"><span class="nb">03</span><p>Your personalised financial plan (Statement of Advice)</p></div>
+    <div class="li"><span class="nb">04</span><p>Presentation meeting to walk through every recommendation</p></div>
+    <div class="li" style="border:0"><span class="nb">05</span><p>Implementation support for accepted recommendations, coordinated with your providers</p></div></div>
+  <div class="gs" style="margin-top:22px"><p>The fee is fixed in dollars. It does not vary with any product or investment recommended, and we accept no commissions.</p></div>
+</section>
+
+<!-- 10 -->
+<section class="pg" data-n="10" data-crumb="07|Next steps">
+  <div class="sh"><span class="big">07</span><div><span class="k">Next steps</span><h2>Your next steps.</h2></div></div>
+  <div class="rule"></div>
+  <div class="ns"><div><div class="stat" style="margin:0"><span class="tag">Total · fixed fee</span><div class="v">$6,600 <small>incl. GST</small></div><p style="margin-top:10px;font-size:16px">10% payable on acceptance</p></div>
+      <div class="gs"><span class="tag">What we need from you</span><ul class="dots" style="margin-top:14px;gap:12px"><li>Confirm by reply email if you are happy to proceed.</li><li>Once confirmed, we will provide you with:<ul class="dots o sub"><li>The Aynub Welcome and Onboarding Pack with a clear list of next steps and requirements</li><li>Access to our secure portal</li><li>A time to meet for a detailed discovery session</li></ul></li></ul></div></div>
+    <div><h3 style="margin-top:0;font-size:21px">What happens next from us</h3><div class="lst" style="margin-top:10px">
+      <div class="li"><span class="nb">1</span><p>Send you a Welcome Pack which guides you through the onboarding phase</p></div>
+      <div class="li"><span class="nb">2</span><p>Gather your key financial information and confirm your position</p></div>
+      <div class="li"><span class="nb">3</span><p>Book a Discovery meeting and deeper strategy session to refine goals and assumptions</p></div>
+      <div class="li"><span class="nb">4</span><p>Complete modelling and analysis across all strategic options</p></div>
+      <div class="li" style="border:0"><span class="nb">5</span><p>Present your personalised financial plan</p></div></div></div></div>
+  <div class="photo fill" style="height:360px"><img src="img/w-road.jpg" alt=""></div>
+</section>
+
+<!-- 11 -->
+<section class="pg bk end" data-n="11">
+  <div class="top" style="padding-bottom:26px;border-bottom:1px solid var(--line)"><img src="../aynub-lockup-financial-on-light.png" alt="Aynub Financial" style="height:66px"></div>
+  <div class="hero"><h1>We look forward to working with you.</h1><div class="photo"><img src="img/soa-hills.jpg" alt=""></div></div>
+  <p class="lead" style="margin-top:56px">Reply to this proposal by email to confirm, and we’ll take it from there.</p>
+  <div class="contact" style="grid-template-columns:repeat(3,1fr)"><div><small>Kingaroy</small><b>(07) 5550 1240</b><span>PO Box 128<br>Kingaroy QLD 4610</span></div><div><small>Your adviser</small><b>Mara Holloway</b><span>Principal &amp; Senior Financial Adviser</span></div><div><small>Get in touch</small><b>hello@aynub.com</b><span>Fee-for-service, not owned by a bank or fund</span></div></div>
+  <div class="sign"><h4 style="margin-top:0">aynub.com</h4><p>Fictional client example · For demonstration purposes only. Aynub Financial is a fictional practice created to demonstrate our documents. It holds no ABN or Australian Financial Services Licence, and nothing here is financial advice.</p>
+    <div class="bot"><span>Advice proposal · 11 of 11</span><span>Plan backwards. Live forwards.</span></div></div>
+</section>
+
+<script src="aynub.js"></script>
+</body>
+</html>

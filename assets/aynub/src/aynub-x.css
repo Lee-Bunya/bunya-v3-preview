@@ -1,0 +1,44 @@
+/* Extra shared components for the portrait Aynub documents (Welcome, Value, Sustainable, Portfolio, Proposal).
+   Loaded after aynub.css. Dana, 19 Nov 2026. */
+.ph .crumb span{border:0;padding:0} .ph .crumb em .n{color:var(--plum)}
+.c1 .top{display:flex;justify-content:space-between;align-items:center;padding-bottom:26px;border-bottom:1px solid var(--line)} .c1 .top img{height:66px}
+.c1 .top .ref{text-align:right;font-size:18px;line-height:1.5;color:var(--grey)}
+.c1 .kick{margin-top:62px;font-size:19px;font-weight:600;color:var(--grey)}
+.c1 .kick::after{content:"";display:block;width:178px;height:4px;margin-top:22px;border-radius:2px;background:var(--plum)}
+.c1 h1{margin-top:40px;font-size:76px;line-height:1.05;font-weight:700;letter-spacing:-.035em;color:var(--ink)}
+.c1 .to{margin-top:26px;font-size:22px;line-height:1.6;color:var(--text)}
+.c1 .photo{margin-top:44px;height:420px}
+.c1 .low{display:grid;grid-template-columns:1fr 345px;gap:56px;margin-top:44px}
+.c1 .low > div > span{display:block;font-size:17px;color:var(--grey)} .c1 .low > div > b{display:block;margin:6px 0 26px;font-size:26px;line-height:1.3}
+.meta{padding:28px 30px;border-radius:14px;background:var(--sand)}
+.meta > span{display:block;font-size:17px;color:var(--grey)} .meta b{display:block;margin:4px 0 16px;font-size:21px}
+.meta small{display:block;padding-top:14px;border-top:1px solid var(--line);font-size:15px;line-height:1.5;color:var(--grey)}
+.side{display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:start}
+.gs{margin-top:34px;padding:30px 32px;border-radius:14px;background:var(--plum-t);box-shadow:inset 0 5px 0 var(--plum)}
+.gs p{font-size:17px;line-height:1.66;color:var(--ink)}
+.gs.s{background:var(--sand);box-shadow:inset 0 5px 0 var(--beige)} .gs.g{background:var(--green-t);box-shadow:inset 0 5px 0 var(--green)}
+.cont{margin-top:40px} .cont .k{font-size:17px;color:var(--grey)} .cont h3{margin-top:8px;font-size:32px}
+.photo.fill{margin-top:auto;margin-bottom:34px}
+.pull{margin-top:40px;padding-top:26px;font-size:26px;line-height:1.4;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+.pull::before{content:"";display:block;width:178px;height:4px;margin-bottom:24px;border-radius:2px;background:var(--plum)}
+.pull em{font-style:normal;color:var(--plum)}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
+.three .box{padding:24px 24px} .three .box p{margin-top:8px;font-size:16.5px;line-height:1.6}
+.three .tag.m{font-size:15px}
+.figs .stat .v{font-size:58px} .figs .stat p{margin-top:12px;font-size:16.5px;line-height:1.6}
+.lst{margin-top:14px}
+.lst .li{display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line)}
+.lst .li .nb{font-family:var(--num);font-weight:600;font-size:34px;line-height:1;color:var(--plum)}
+.lst .li p{font-size:18px;line-height:1.6}
+.end .hero{display:grid;grid-template-columns:1fr 380px;gap:44px;align-items:center;margin-top:50px}
+.end .k2{font-size:19px;font-weight:600;color:var(--plum)}
+.end h1{margin-top:22px;font-size:50px;line-height:1.12;font-weight:700;letter-spacing:-.03em;color:var(--ink)}
+.end .photo{height:470px}
+.contact{display:grid;grid-template-columns:1.3fr 1fr 1.1fr 1.3fr;gap:20px;margin-top:50px;padding:30px 32px;border-radius:14px;background:var(--plum-t)}
+.contact small{display:block;font-size:15.5px;font-weight:600;color:var(--plum)} .contact b{display:block;margin-top:6px;font-size:18.5px;line-height:1.4}
+.contact > div > span{display:block;margin-top:6px;font-size:15px;line-height:1.5}
+.sign{margin-top:auto} .sign img{height:70px}
+.sign h4{margin-top:24px;font-size:24px;font-weight:700;color:var(--ink)} .sign h4 em{font-style:normal;color:var(--plum)}
+.sign p{margin-top:16px;font-size:15.5px;line-height:1.75;color:var(--text)}
+.sign .bot{display:flex;justify-content:space-between;margin-top:26px;padding:22px 0 40px;border-top:1px solid var(--line);font-size:16px;font-weight:600;color:var(--ink)}
+.ph .crumb i{font-style:normal;padding-right:16px;border-right:1.5px solid var(--line)}

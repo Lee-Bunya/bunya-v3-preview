@@ -1,0 +1,44 @@
+/* Aynub landscape decks (Sustainable Portfolio Review, Portfolio Review), Dana 19 Nov 2026. Same system as annual.html:
+   Sora for text, IBM Plex Sans for every number, plum + green, soft sand cards with a coloured top edge.
+   Slides are 1600 x 900; render.mjs photographs each .slide at 2x. Aynub Financial is fictional. */
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
+:root{--plum:#772A53;--plum-t:#F4EAEF;--green:#5C8A64;--green-d:#3E6B49;--green-t:#E5EDE2;--green-l:#A8C79E;
+  --sand:#F6F4EF;--beige:#CFC8BC;--ink:#26222C;--text:#3B3640;--grey:#6A6470;--line:#E6E2DB;--num:"IBM Plex Sans","Sora",sans-serif;--acc:var(--plum)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#888;font-family:"Sora",sans-serif;color:var(--text);-webkit-font-smoothing:antialiased}
+body.grn{--acc:var(--green-d)}
+.slide{position:relative;width:1600px;height:900px;margin:0 auto 40px;padding:52px 80px 0;background:#fff;overflow:hidden}
+.n{font-family:var(--num);font-weight:500;font-variant-numeric:tabular-nums lining-nums;letter-spacing:-.01em}
+:is(p,li,span,b,td,th,small,strong,div,em) > .n{font-size:1.06em}
+b,strong{font-weight:600;color:var(--ink)}
+.k{font-size:17px;font-weight:500;color:var(--grey)}
+.sec{font-size:16px;font-weight:600;color:var(--acc)}
+h1,h2{font-weight:700;color:var(--ink);letter-spacing:-.025em}
+h2{font-size:44px;line-height:1.12}
+.hd{display:grid;grid-template-columns:250px 1fr 370px;gap:24px;align-items:end;margin-top:14px}
+.hd.two{grid-template-columns:250px 1fr}
+.hd .num{font-family:var(--num);font-weight:600;font-size:112px;line-height:.86;letter-spacing:-.05em;color:var(--acc)}
+.hd h2{margin-top:10px}
+.rule{position:relative;height:1px;margin-top:24px;background:var(--line)}
+.rule::before{content:"";position:absolute;left:0;top:-2px;width:220px;height:4px;border-radius:2px;background:var(--acc)}
+.card{padding:24px 28px;border-radius:14px;background:var(--sand)}
+.card.s{box-shadow:inset 0 4px 0 var(--beige)} .card.p{background:var(--plum-t);box-shadow:inset 0 4px 0 var(--plum)} .card.g{background:var(--green-t);box-shadow:inset 0 4px 0 var(--green)}
+.card.l{box-shadow:inset 4px 0 0 var(--acc)}
+.tag{display:block;font-size:15.5px;font-weight:600;color:var(--grey)} .tag.p{color:var(--plum)} .tag.g{color:var(--green-d)}
+.big{font-family:var(--num);font-weight:600;letter-spacing:-.03em;line-height:1;color:var(--plum)}
+.big small{font-family:Sora;font-size:17px;font-weight:500;letter-spacing:0;color:var(--text);margin-left:6px}
+p{font-size:18.5px;line-height:1.66}
+ul.dots{list-style:none;display:grid;gap:12px}
+ul.dots li{position:relative;padding-left:24px;font-size:17.5px;line-height:1.55}
+ul.dots li::before{content:"";position:absolute;left:2px;top:10px;width:8px;height:8px;border-radius:50%;background:var(--acc);opacity:.85}
+.foot{position:absolute;left:80px;right:80px;bottom:0;height:62px;display:flex;align-items:center;gap:22px;border-top:1px solid var(--line);font-size:15px;color:var(--grey)}
+.foot img{height:30px} .foot b{font-weight:600;color:var(--ink)} .foot .pgn{margin-left:auto;font-family:var(--num);font-weight:600;color:var(--ink)} .foot .pgn small{font-family:Sora;font-weight:500;color:var(--grey);margin:0 4px}
+.photo{padding:10px;border-radius:20px;background:#fff;box-shadow:0 0 0 1.5px var(--plum),0 26px 50px -22px rgba(38,34,44,.35)}
+.photo img{display:block;width:100%;height:100%;object-fit:cover;border-radius:12px}
+.tb{width:100%;border-collapse:collapse}
+.tb th{padding:12px 16px;font-size:15px;font-weight:600;color:var(--grey);text-align:right;border-bottom:1.5px solid var(--beige)}
+.tb td{padding:14px 16px;font-size:18px;text-align:right;color:var(--ink);border-bottom:1px solid var(--line);font-family:var(--num);font-variant-numeric:tabular-nums}
+.tb th:first-child,.tb td:first-child{text-align:left;font-family:Sora}
+.tb tr:nth-child(even) td{background:var(--sand)}
+.tb tr.tot td{border-top:2px solid var(--ink);font-weight:600}
+.grid{display:grid;gap:20px}

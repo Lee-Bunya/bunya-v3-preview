@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>Aynub Financial · SOA walkthrough (source)</title>
+<!-- Source for assets/aynub/docs/soa/1–21.webp (Dana, 19 Nov 2026). Shared styles: aynub.css. Render with render.mjs.
+     Running heads and page feet are added by the script at the bottom from each page's data-crumb.
+     Aynub Financial is a fictional practice; every figure is illustrative. Lee's originals: docs/soa-original/. -->
+<link rel="stylesheet" href="aynub.css">
+<style>
+.c1 .top{display:flex;justify-content:space-between;align-items:center;padding-bottom:26px;border-bottom:1px solid var(--line)}
+.c1 .top img{height:66px}
+.c1 .top .ref{text-align:right;font-size:19px;line-height:1.5;color:var(--grey)}
+.c1 .kick{margin-top:62px;font-size:19px;font-weight:600;color:var(--grey)}
+.c1 .kick::after{content:"";display:block;width:178px;height:4px;margin-top:22px;border-radius:2px;background:var(--plum)}
+.c1 h1{margin-top:40px;font-size:72px;line-height:1.06;font-weight:700;letter-spacing:-.035em;color:var(--ink)}
+.c1 .to{margin-top:22px;font-size:27px;color:var(--text)}
+.c1 .photo{margin-top:44px;height:410px}
+.c1 .cap{margin-top:16px;font-size:17px;font-weight:600;color:var(--grey)}
+.c1 .low{display:grid;grid-template-columns:1fr 345px;gap:56px;margin-top:40px}
+.c1 .low p{font-size:21px;line-height:1.7;color:var(--ink)}
+.c1 .meta{padding:28px 30px;border-radius:14px;background:var(--sand)}
+.c1 .meta span{display:block;font-size:17px;color:var(--grey)}
+.c1 .meta b{display:block;margin:4px 0 16px;font-size:22px}
+.c1 .meta small{display:block;padding-top:14px;border-top:1px solid var(--line);font-size:15px;line-height:1.5;color:var(--grey)}
+.concl{display:grid;grid-template-columns:200px 1fr;gap:16px;margin-top:40px;padding:34px 32px;border-radius:14px;background:var(--plum-t);box-shadow:inset 0 5px 0 var(--plum)}
+.concl .tag{font-size:20px}
+.concl p{font-size:19px;line-height:1.75}
+.four{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px}
+.four .box p{margin-top:10px;font-size:18.5px;line-height:1.72}
+.four .box b{font-size:19px}
+.vs .big-v{margin:14px 0 18px}
+.paths{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:44px}
+.paths .box h4{margin:6px 0 22px;font-size:25px;line-height:1.3;font-weight:700;color:var(--ink)}
+.paths .box .tag.m{font-weight:600}
+.paths .box .pn2{display:block;margin-top:6px;font-size:18px;font-weight:600;color:var(--ink)}
+.short{display:grid;grid-template-columns:200px 1fr;gap:16px;margin-top:34px;padding:26px 30px;border-radius:14px;background:var(--sand);box-shadow:inset 5px 0 0 var(--plum)}
+.short p{font-size:20px;line-height:1.6;color:var(--ink)}
+.disc{margin-top:22px;display:grid;gap:10px}
+.disc .row{grid-template-columns:225px 1fr;padding:14px 22px}
+.disc .row b{font-size:18.5px;line-height:1.45}
+.disc .row p{font-size:17px;line-height:1.66}
+
+.why{margin-top:30px}
+.why .r{display:grid;grid-template-columns:200px 1fr;gap:16px;padding:26px 0;border-bottom:1px solid var(--line)}
+.why .r > b{font-size:18.5px}
+.why .r p{font-size:19px;line-height:1.72}
+.either{display:grid;grid-template-columns:200px 1fr;gap:16px;margin-top:40px;padding:32px;border-radius:14px;background:var(--plum-t);box-shadow:inset 0 5px 0 var(--plum)}
+.either .tag{font-size:19px;line-height:1.35}
+.either p{font-size:19.5px;line-height:1.72}
+.assume h3{margin-top:28px}
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}
+.quad .box{padding:26px 30px}
+.quad .bv{display:flex;align-items:baseline;gap:8px;font-family:var(--num);font-weight:600;font-size:52px;line-height:1;letter-spacing:-.03em;color:var(--plum)}
+.quad .bv small{font-family:'Sora';font-size:17px;font-weight:500;letter-spacing:0;color:var(--text)}
+.quad p{margin-top:14px;font-size:18px;line-height:1.7}
+.note2{display:grid;grid-template-columns:200px 1fr;gap:16px;margin-top:24px}
+.note2::before{content:'';height:4px;margin-top:12px;border-radius:2px;background:var(--beige)}
+.note2 p{font-size:18px;line-height:1.72}
+.pri .row{padding:24px 30px}
+.pri .row:first-child{background:var(--plum-t)}
+.pri .row:nth-child(odd):not(:first-child){background:var(--sand)}
+.money{margin-top:22px}
+.money .mh{padding:14px 20px;font-size:18px;font-weight:600;color:var(--ink);border-bottom:1.5px solid var(--beige)}
+.money .mr{display:flex;justify-content:space-between;gap:20px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.money .mr:nth-child(odd){background:var(--sand)}
+.money .mr span{font-size:18.5px;color:var(--ink)}
+.money .mr span small{display:block;margin-top:4px;font-size:16px;color:var(--grey)}
+.money .mr b{font-family:var(--num);font-size:19px;font-weight:600}
+.money .mt{display:flex;justify-content:space-between;align-items:baseline;padding:18px 20px;border-top:2px solid var(--ink)}
+.money .mt b{font-size:19px}
+.money .mt strong{font-family:var(--num);font-size:34px;font-weight:600;color:var(--plum);letter-spacing:-.02em}
+
+.money.go .mr{padding:13px 20px}
+.money.go .mr span{font-size:17.5px}
+.money.go .mr span small{font-size:15px;margin-top:2px}
+.fine{margin-top:20px;font-size:16px;line-height:1.7;color:var(--grey)}
+.side{display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:start}
+.lbl{display:grid;grid-template-columns:200px 1fr;gap:16px;padding:22px 0;border-bottom:1px solid var(--line)}
+.lbl > b{font-size:18px;line-height:1.4}
+.lbl p{font-size:17.5px;line-height:1.7}
+.uses{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.uses span{padding:22px 26px;border-radius:12px;background:var(--sand);font-size:18px;font-weight:600;color:var(--ink)}
+.uses span:last-child{grid-column:1/-1}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:34px}
+.two .stat .v{font-size:60px}
+.two .stat.g{border-color:var(--green)} .two .stat.g .v{color:var(--green-d)}
+.two .stat p{margin-top:12px;font-size:17.5px;line-height:1.65}
+.cash{display:grid;grid-template-columns:300px 1fr;gap:34px;margin-top:34px;align-items:start}
+.cash .stat .v{font-size:60px;color:var(--green-d)}
+.cash .stat{border-color:var(--green)}
+.cash > p{font-size:18px;line-height:1.72}
+.chart{margin-top:30px;display:grid;gap:6px}
+.chart .cr{display:grid;grid-template-columns:330px 1fr;gap:20px;align-items:center;padding:12px 16px;border-radius:12px}
+.chart .cr:nth-child(odd){background:var(--sand)}
+.chart .cr b{display:block;font-size:17px;line-height:1.3}
+.chart .cr small{display:block;margin-top:3px;font-size:14.5px;color:var(--grey)}
+.chart .bar{display:flex;align-items:center;gap:12px}
+.chart .bar i{display:block;height:24px;border-radius:0 6px 6px 0;background:var(--beige)}
+.chart .bar span{font-family:var(--num);font-size:17px;font-weight:600;color:var(--ink);white-space:nowrap}
+.chart .cr.win{background:var(--green-t);box-shadow:inset 4px 0 0 var(--green)}
+.chart .cr.win b{color:var(--green-d)} .chart .cr.win .bar i{background:var(--green)} .chart .cr.win .bar span{color:var(--green-d);font-size:19px}
+.steps{margin-top:18px}
+.steps .st{display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
+.steps .st .nb{font-family:var(--num);font-weight:600;font-size:34px;line-height:1;color:var(--plum)}
+.steps .st p{font-size:18px;line-height:1.65}
+.est{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:28px}
+.est div{padding-top:18px;border-top:5px solid var(--plum)}
+.est small{display:block;font-size:15px;color:var(--grey)}
+.est b{display:block;margin-top:6px;font-size:22px;line-height:1.3}
+.end .hero{display:grid;grid-template-columns:1fr 420px;gap:44px;align-items:center;margin-top:50px}
+.end .k2{font-size:19px;font-weight:600;color:var(--plum)}
+.end h1{margin-top:22px;font-size:52px;line-height:1.1;font-weight:700;letter-spacing:-.03em;color:var(--ink)}
+.end .photo{height:500px}
+.end .lead{margin-top:56px}
+.contact{display:grid;grid-template-columns:1.25fr 1.25fr 1fr .9fr;gap:20px;margin-top:40px;padding:30px 32px;border-radius:14px;background:var(--plum-t)}
+.contact small{display:block;font-size:15.5px;font-weight:600;color:var(--plum)}
+.contact b{display:block;margin-top:6px;font-size:19px}
+.contact span{display:block;margin-top:8px;font-size:15px;line-height:1.5;color:var(--text)}
+.sign{margin-top:auto}
+.sign img{height:70px}
+.sign h4{margin-top:24px;font-size:24px;font-weight:700;color:var(--ink)}
+.sign p{margin-top:16px;font-size:15.5px;line-height:1.75;color:var(--text)}
+.sign .bot{display:flex;justify-content:space-between;margin-top:26px;padding:22px 0 40px;border-top:1px solid var(--line);font-size:16px;font-weight:600;color:var(--ink)}
+</style>
+</head>
+<body>
+
+<!-- 1 · cover -->
+<section class="pg c1" data-n="1" data-cover>
+  <div class="top"><img src="../aynub-lockup-financial-on-light.png" alt="Aynub Financial"><div class="ref"><span class="n">SOA-0426</span><br><span class="n">24 August 2026</span></div></div>
+  <div class="kick">Statement of Advice · Walkthrough guide</div>
+  <h1>Your advice,<br>worked backwards.</h1>
+  <p class="to">Sam &amp; Jo, this is your pathway.</p>
+  <div class="photo"><img src="img/soa-family.jpg" alt=""></div>
+  <p class="cap">Eight steps · one pathway</p>
+  <div class="low"><p>A walkthrough of your Statement of Advice dated <span class="n">24 August 2026</span>: what we recommend, what we considered and set aside, and why every part of it serves what you told us matters most.</p>
+    <div class="meta"><span>Prepared for</span><b>Sam &amp; Jo Reid</b><span>Advice dated</span><b class="n">24 August 2026</b><span>Prepared by</span><b>Mara Holloway</b><small>Fictional client example · For demonstration purposes only</small></div></div>
+</section>
+
+<!-- 2 -->
+<section class="pg" data-n="2" data-crumb="01|Opening statement">
+  <div class="sh"><span class="big">01</span><div><span class="k">Our opening statement</span><h2>Where you are, and where this goes.</h2></div></div>
+  <div class="rule"></div>
+  <p class="lead">Sam and Jo, you have sought our guidance to establish a number of key outcomes: how do two people on a strong combined income, carrying <b><span class="n">$2,910,000</span> of property debt</b>, stop depending on that income altogether?</p>
+  <p class="body">You set the target yourself, around <span class="n">$100,000</span> a year of passive income in today’s dollars, and you set the deadline: age <span class="n">60</span> at the outside, earlier if we can show it works. Everything we have modelled is our thought process to get you there without asking you to live smaller in the meantime.</p>
+  <div class="concl"><span class="tag">Our conclusion</span><p>The pathway that serves you best turns a leveraged property into capital, and capital into ownership, <b>without a new loan at any point along the way</b>. Repair and sell <span class="n">21</span> Range View Road, clear its Tidewater loan, keep a <span class="n">$200,000</span> cash reserve, and buy Sam’s parents’ Ridgeview Farm progressively, one-third in <span class="n">2028</span> and the rest from surplus cash flow rather than from the bank.</p></div>
+  <h3>The product advice that sits alongside it</h3>
+  <p class="body">Move both Kestrel accounts into Tessera Super, wind up the dormant SMSF, and build part of the wealth you will live on before age <span class="n">60</span> in an investment bond as well as in super. The bond can be drawn on before age <span class="n">60</span>, which super cannot.</p>
+  <p class="body">The rest of this guide sets out how we got there, short version first: what the advice sets out to solve, what we considered, what we discounted, and where we landed.</p>
+  <div class="stats" style="grid-template-columns:repeat(3,1fr)">
+    <div class="stat"><span class="tag">Property debt today</span><div class="v">$2.91m</div></div>
+    <div class="stat"><span class="tag">Passive income target</span><div class="v">$100k <small>a year</small></div></div>
+    <div class="stat"><span class="tag">Work optional by</span><div class="v">60 <small>at the outside</small></div></div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="pg" data-n="3" data-crumb="02|The short version">
+  <div class="sh"><span class="big">02</span><div><span class="k">The short version</span><h2>What this advice sets out to solve.</h2></div></div>
+  <div class="rule"></div>
+  <p class="lead" style="font-size:20.5px">Six outcomes, drawn directly from what you told us. Every recommendation in this document exists to serve one or more of them.</p>
+  <div class="rows">
+    <div class="row"><span class="nb">01</span><p><b>Replace your salaries</b> with roughly <span class="n">$100,000</span> a year of passive income in today’s dollars, indexed, without being burdened by debt.</p></div>
+    <div class="row"><span class="nb">02</span><p><b>Bring debt and cash-flow pressure down.</b> You ranked this first, ahead of everything else.</p></div>
+    <div class="row"><span class="nb">03</span><p><b>Settle the superannuation question</b> definitively rather than leaving it open another year.</p></div>
+    <div class="row"><span class="nb">04</span><p><b>Decide what happens</b> to <span class="n">21</span> Range View Road, to <span class="n">18</span> Marlow Street, and to Sam’s parents’ property, Ridgeview Farm.</p></div>
+    <div class="row"><span class="nb">05</span><p><b>Keep up to <span class="n">$200,000</span> genuinely available</b> for the structural work at <span class="n">21</span> Range View Road.</p></div>
+    <div class="row"><span class="nb">06</span><p><b>Close the estate planning gap</b> before your family starts, not after.</p></div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="pg" data-n="4" data-crumb="02|The short version">
+  <div class="sh"><span class="big">02</span><div><span class="k">The short version, continued</span><h2>What we considered.</h2><p class="sub">Nothing here was decided by default. Before landing anywhere, we tested the full field of credible alternatives.</p></div></div>
+  <div class="rule"></div>
+  <div class="rows" style="margin-top:28px;gap:10px">
+    <div class="row"><span class="lab">Scenarios<span class="nb">7</span></span><p><b>Seven modelling scenarios</b> for the property question and the advice around it, from changing nothing at all through to buying Ridgeview Farm outright with <span class="n">$2,000,000</span> of new borrowings. Each is defined on page <span class="n">19</span>.</p></div>
+    <div class="row"><span class="lab">Super structures<span class="nb">3</span></span><p><b>Three superannuation structures</b>: staying in Kestrel (you are both in its Indexed Balanced option), activating your dormant SMSF, or moving to an adviser platform. Tessera Super and Summit Edge Super were the two platforms compared.</p></div>
+    <div class="row"><span class="lab">Bond providers<span class="nb">2</span></span><p><b>Two investment bond issuers</b>, including Evergreen Life. A bond is taxed at up to <span class="n">30%</span> inside the bond rather than at your marginal rates, and unlike super it can be drawn on at any age.</p></div>
+    <div class="row"><span class="lab">Debt approaches<span class="nb">3</span></span><p><b>Three ways of handling your debt</b>: large lump-sum reductions off the principal, holding cash in the offset, or continuing to leverage into growth assets.</p></div>
+    <div class="row"><span class="lab">Retirement ages<span class="nb">60/52</span></span><p><b>Retirement at <span class="n">60</span></b> as the outer limit you nominated, and <b>at <span class="n">52</span></b> as the earlier case Sam pushed us to test.</p></div>
+    <div class="row"><span class="lab">Years modelled<span class="nb">56</span></span><p><b>Every year from now to <span class="n">2082</span></b>, when Jo turns <span class="n">90</span>: <span class="n">17</span> or <span class="n">25</span> working years, then the whole of retirement. Every scenario uses the same assumptions (page <span class="n">19</span>), with our ongoing fees deducted throughout.</p></div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="pg" data-n="5" data-crumb="02|The short version">
+  <div class="sh"><span class="big">02</span><div><span class="k">The short version, continued</span><h2>What we discounted, and why.</h2><p class="sub">Each of these was a credible path. Each was set aside for a reason you can check.</p></div></div>
+  <div class="rule"></div>
+  <div class="short"><span class="tag">In short</span><p>Each option was credible, but each fell short for you on cost, fit, end result or the cash you need on hand.</p></div>
+  <div class="disc rows">
+    <div class="row"><b>Activating the SMSF</b><p>It has sat dormant for years and still costs about <span class="n">$3,300</span> a year. At your balances a platform gives you the investment choice you want without the trustee duties or the fixed costs.</p></div>
+    <div class="row"><b>Staying in Kestrel Indexed Balanced</b><p>It was the lowest-cost option we compared, and Kestrel has higher-growth options and a direct-investment option for shares and ETFs. We set it aside because you want the managed portfolios we use and ongoing advice on them, which a platform provides. The extra cost is set out in your SOA.</p></div>
+    <div class="row"><b>Summit Edge Super</b><p>A capable platform with a broad menu. For your balances and the portfolios we would use, Tessera was the closer fit on cost and menu together. That is a judgement for your circumstances, not a ranking, and we would revisit it if pricing changes.</p></div>
+    <div class="row"><b>The second investment bond issuer</b><p>The tax rules are the same for every bond. For the investment option we would use, Evergreen Life’s fees and menu suited you better.</p></div>
+    <div class="row"><b>Buying your parents’ property outright with new borrowings</b><p>It works, but a <span class="n">$2,000,000</span> loan sends far more of your income to interest. Like for like, it finishes about <span class="n">$1.6m</span> behind buying progressively (scenario <span class="n">6</span> against <span class="n">4</span>).</p></div>
+    <div class="row"><b>The rebuild scenarios</b><p>Both finish behind where you are today (<span class="n">$10.9m</span> and <span class="n">$9.9m</span> against <span class="n">$16.2m</span>), and both need extra borrowing in the early years, just when you want debt falling.</p></div>
+    <div class="row"><b>Large lump-sum reductions off the loan principal</b><p>This would strand the very liquidity you need for the repairs and for the <span class="n">2028</span> purchase, and once it is in the loan it is not easily yours again.</p></div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="pg" data-n="6" data-crumb="02|The short version">
+  <div class="sh"><span class="big">02</span><div><span class="k">The short version, continued</span><h2>Where we landed.</h2><p class="sub">The recommendation runs across both strategy and product, and the two are designed to work together rather than in isolation.</p></div></div>
+  <div class="rule"></div>
+  <div class="four">
+    <div class="box"><b>Strategy</b><p>Repair and sell <span class="n">21</span> Range View Road, keep a <span class="n">$200,000</span> reserve, buy Ridgeview Farm progressively from <span class="n">2028</span> without a new loan, then direct surplus cash flow to super and to the investment bond.</p></div>
+    <div class="box"><b>Product</b><p>Tessera Super for both of you, on its Choice menu for Sam and its Discover menu for Jo, with an Evergreen Life investment bond held jointly.</p></div>
+    <div class="box"><b>Structure</b><p>High Growth inside superannuation and Growth outside it, matching the risk profiles you both completed on <span class="n">11 June 2026</span>.</p></div>
+    <div class="box"><b>Protection</b><p>Wills, powers of attorney, a testamentary trust to consider, and non-lapsing binding nominations on the new accounts. Personal insurance is outside the scope of our advice: Kingaroy Risk Partners (a fictional firm) is arranging your cover.</p></div>
+  </div>
+  <div class="four vs" style="margin-top:26px">
+    <div class="box g"><span class="tag g">Our recommendation</span><b style="display:block;margin-top:4px">Recommended strategy</b><div class="big-v" style="color:var(--green-d)">$21.4m</div><p style="font-size:18.5px;line-height:1.7">Projected net assets in <span class="n">2082</span>, when Jo turns <span class="n">90</span>, in today’s dollars. The highest of the seven scenarios on the same assumptions.</p></div>
+    <div class="box s"><span class="tag m">Where you are heading</span><b style="display:block;margin-top:4px">Change nothing</b><div class="big-v" style="color:var(--plum)">$16.2m</div><p style="font-size:18.5px;line-height:1.7">Your current trajectory: both properties kept and your home rented. The recommendation also keeps retirement at <span class="n">52</span> on the table (scenario <span class="n">7</span>).</p></div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="pg" data-n="7" data-crumb="03|Range View">
+  <div class="sh"><span class="big">03</span><div><span class="k">The Range View decision</span><h2>One choice, two credible pathways.</h2></div></div>
+  <div class="rule"></div>
+  <p class="body" style="margin-top:34px;font-size:19px">Everything in this advice hangs off one choice. You want to own Sam’s parents’ property, Ridgeview Farm, and the way you get there runs through <span class="n">21</span> Range View Road, the house you are renting out now. Your <span class="n">$330,000</span> of offset savings covers the first costs of either pathway. <b>This is the conversation to have before you read anything else.</b></p>
+  <div class="paths">
+    <div class="box g"><span class="tag g">Our recommendation</span><span class="pn2">Pathway A</span><h4>Improve it, then sell it</h4>
+      <ul class="dots"><li>Commit up to <span class="n">$200,000</span> to the structural work you flagged, the retaining walls and the driveway, and bring the property up to a saleable standard.</li>
+        <li>Take it to market in <span class="n">2027</span>. At our assumed <span class="n">$3,550,000</span> sale price, the proceeds repay the <span class="n">$2,190,000</span> Tidewater loan secured by it, removing the largest drag on your cash flow.</li>
+        <li>What is left buys the first one-third of Ridgeview Farm in <span class="n">2028</span>. The rest follows in instalments, modelled to finish in <span class="n">2039–40</span>.</li>
+        <li>Critically, those later instalments are funded from future cash flow, not from taking on more debt. You are converting a leveraged asset into capital and then into ownership, step by step.</li></ul></div>
+    <div class="box s"><span class="tag m">The alternative</span><span class="pn2">Pathway B</span><h4>Knock down, rebuild, then move in</h4>
+      <ul class="dots o"><li>A knock-down rebuild of around <span class="n">$1,000,000</span>, funded by new borrowings on top of the <span class="n">$2,190,000</span> Tidewater loan.</li>
+        <li>You keep the land and end up in a brand new home in the suburb you want to be in. That is a real and legitimate outcome.</li>
+        <li>But to service that loan, you would need to live with Sam’s parents at Ridgeview Farm for the entire construction period. Not part of it: all of it. The cash flow does not stretch to paying rent and servicing the rebuild at the same time.</li>
+        <li>It also means more debt in the very years you want debt coming down. The model needs extra borrowing in the early years.</li></ul></div>
+  </div>
+</section>
+
+
+<!-- 8 -->
+<section class="pg" data-n="8" data-crumb="03|Range View">
+  <div class="sh"><span class="big">03</span><div><span class="k">Our recommendation</span><h2>We recommend you improve Range View, then sell it.</h2><p class="sub">Why we lean towards improving and selling.</p></div></div>
+  <div class="rule"></div>
+  <div class="why">
+    <div class="r"><b>Your first priority</b><p><b>It serves your number one priority.</b> Reducing debt and easing cash-flow pressure is what you ranked first, and only Pathway A actually does that. Pathway B increases debt before it reduces it.</p></div>
+    <div class="r"><b>No new loan</b><p><b>It buys Ridgeview Farm without a new loan.</b> The first third comes from the sale and every later instalment from surplus income, so the purchase never depends on a bank saying yes. That matters, because your borrowing capacity is used up.</p></div>
+    <div class="r"><b>Your life, intact</b><p><b>It does not ask you to move in with family</b> for an open-ended construction period, with a child or two arriving in the same window.</p></div>
+  </div>
+  <div class="either"><span class="tag">Either way, the money is there</span><p>Up to <span class="n">$200,000</span> of your offset savings funds the repairs under Pathway A, or the deposit and contingency under Pathway B. The advice does not force your hand; both doors stay open.</p></div>
+</section>
+
+<!-- 9 -->
+<section class="pg assume" data-n="9" data-crumb="03|Range View">
+  <h3>What we have assumed about your family, in every scenario</h3>
+  <div class="quad">
+    <div class="box s"><div class="bv">2</div><p><b>Two children over the next four years</b>, with all the cost that carries.</p></div>
+    <div class="box s"><div class="bv">2028–30</div><p><b>Jo’s income stopping entirely</b> for two years, then three days a week.</p></div>
+    <div class="box s"><div class="bv">$200 <small>a day</small></div><p><b>Childcare per child</b>, four days a week, with no Child Care Subsidy assumed.</p></div>
+    <div class="box s"><div class="bv">$100k <small>a year</small></div><p><b>General living costs</b> from day one, even though you only disclosed <span class="n">$33,600</span>, so the plan is stress-tested rather than flattered.</p></div>
+  </div>
+  <div class="note2"><p>This is the baseline in every scenario, not an optimistic case with the family costs bolted on afterwards. When you compare the numbers, you are comparing like with like: each one already absorbs the reduced income and the childcare.</p></div>
+  <div class="sh" style="padding-top:44px"><span class="big">03</span><div><span class="k">The Range View decision, continued</span><h2>Retiring at 52: your complementary scenario.</h2></div></div>
+  <div class="rule"></div>
+  <div class="box" style="margin-top:26px"><ul class="dots">
+    <li><b>We have modelled retirement at <span class="n">52</span> alongside the recommended strategy, not instead of it.</b> Read them together.</li>
+    <li>The eight-year gap before you can touch super is funded by <b>the investment bond and your other investments</b>, with <span class="n">18</span> Marlow Street sold in <span class="n">2043</span> to help bridge it.</li>
+    <li><b>The point is optionality.</b> Under this pathway work becomes optional at <span class="n">52</span>. On our assumptions, net assets still rise in today’s dollars in every year of retirement. Sam told us at the outset he would be very disappointed to still be working at <span class="n">60</span>; this scenario is our answer to that.</li></ul></div>
+</section>
+
+<!-- 10 -->
+<section class="pg pri" data-n="10" data-crumb="04|Your priorities">
+  <div class="sh"><span class="big">04</span><div><h2 style="margin-top:4px">What you told us matters most</h2><p class="sub">These are your priorities, in the order you ranked them in the fact find.</p></div></div>
+  <div class="rule"></div>
+  <div class="rows" style="margin-top:26px;gap:8px">
+    <div class="row"><span class="nb">01</span><p><b>Reduce debt and take the pressure off cash flow.</b> This is your number one priority.</p></div>
+    <div class="row"><span class="nb">02</span><p><b>Stop relying on salary:</b> build around <span class="n">$100,000</span> a year of passive income in today’s dollars, indexed.</p></div>
+    <div class="row"><span class="nb">03</span><p><b>Settle the superannuation question</b> once and for all: Kestrel, the SMSF, or something better.</p></div>
+    <div class="row"><span class="nb">04</span><p><b>Improve diversification</b> and reduce concentration risk across the portfolio.</p></div>
+    <div class="row"><span class="nb">05</span><p><b>Decide the future</b> of <span class="n">21</span> Range View Road, <span class="n">18</span> Marlow Street and Ridgeview Farm.</p></div>
+    <div class="row"><span class="nb">06</span><p><b>Get wills and powers of attorney in place</b> before the family starts.</p></div>
+  </div>
+  <div class="quad" style="margin-top:30px">
+    <div class="box s"><div class="bv">2028</div><p><b>The move to Ridgeview Farm.</b> The first anchor date of the whole plan.</p></div>
+    <div class="box s"><div class="bv">60/52</div><p><b>Work becomes optional:</b> <span class="n">60</span> at the outside, <span class="n">52</span> if it can be shown to work. We have modelled both.</p></div>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="pg" data-n="11" data-crumb="05|The buy-out">
+  <div class="sh"><span class="big">05</span><div><span class="k">The buy-out</span><h2>We recommend buying your parents out progressively.</h2></div></div>
+  <div class="rule"></div>
+  <div class="short" style="margin-top:28px"><span class="tag">In short</span><p>Your savings and the two sales fund the first one-third in <span class="n">2028</span>; surplus cash flow buys the rest, with no new loan.</p></div>
+  <ul class="dots" style="margin-top:26px"><li><b>Our recommendation:</b> buy one-third of Ridgeview Farm in <span class="n">July 2028</span> for <span class="n">$915,000</span> (the agreed <span class="n">$2,745,000</span> value), then the rest in yearly instalments at market value from surplus cash flow, modelled to finish in <span class="n">2039–40</span>. <b>No new loan.</b> Buying outright would need about <span class="n">$2,000,000</span> of new borrowing; even after each instalment’s own duty, the progressive route finishes about <span class="n">$1.6m</span> ahead.</li></ul>
+  <h3 style="margin-top:34px">How every dollar is used, from now to the first purchase</h3>
+  <div class="money"><div class="mh">Where the money comes from</div>
+    <div class="mr"><span>Cash in the Tidewater offset today<small>Your savings, held against the Tidewater loan</small></span><b>$330,000</b></div>
+    <div class="mr"><span>VAS sale (net of brokerage)<small><span class="n">September 2026</span></small></span><b>$70,000</b></div>
+    <div class="mr"><span>Range View sale price<small>Assumed price after repairs; contract <span class="n">September 2027</span></small></span><b>$3,550,000</b></div>
+    <div class="mt"><b>Total available</b><strong>$3,950,000</strong></div></div>
+  <div class="photo" style="margin-top:30px;height:300px"><img src="img/soa-hills.jpg" alt=""></div>
+</section>
+
+
+<!-- 12 -->
+<section class="pg" data-n="12" data-crumb="05|The buy-out">
+  <div class="money go" style="margin-top:44px"><div class="mh">Where it goes</div><div class="mr"><span>Investment bond, September 2026<small><span class="n">$70,000</span> from VAS plus <span class="n">$30,000</span> of savings</small></span><b>$100,000</b></div><div class="mr"><span>Range View repairs<small>Retaining walls and driveway, <span class="n">2026</span>–<span class="n">27</span></small></span><b>$200,000</b></div><div class="mr"><span>Selling costs<small>Agent, marketing and legal, about <span class="n">2.3</span>%</small></span><b>$82,000</b></div><div class="mr"><span>Tidewater loan payout<small>Today’s balance. Principal you repay from salary before then is extra</small></span><b>$2,190,000</b></div><div class="mr"><span>Tax on the Range View capital gain<small>Sam about <span class="n">$62,600,</span> Jo about <span class="n">$61,100</span></small></span><b>$123,700</b></div><div class="mr"><span>Ridgeview Farm, first one-third<small>One-third of the agreed <span class="n">$2,745,000,</span> July <span class="n">2028</span></small></span><b>$915,000</b></div><div class="mr"><span>Transfer duty on the one-third<small>Queensland general rate, assumed</small></span><b>$34,200</b></div><div class="mr"><span>Conveyancing and searches<small>Estimate</small></span><b>$3,300</b></div><div class="mr"><span>Cash reserve retained<small>Kept at call (page <span class="n">17</span>)</small></span><b>$200,000</b></div><div class="mr"><span>Balance carried to the first progressive purchase<small>Goes to the <span class="n">2029</span>–<span class="n">30</span> instalment</small></span><b>$101,800</b></div>
+    <div class="mt"><b>Total, equal to the money available</b><strong>$3,950,000</strong></div></div>
+  <p class="fine">Range View cost base <span class="n">$2,935,000</span>: <span class="n">$2,600,000</span> in <span class="n">2020</span>, <span class="n">$135,000</span> duty and costs, <span class="n">$200,000</span> repairs (no capital works deductions assumed). Gain <span class="n">$533,000</span>, halved by the CGT discount: <span class="n">$133,250</span> each is taxed in <span class="n">2027–28</span>. Duty assumes no concession; if the instalments are aggregated it is higher.</p>
+  <div class="either" style="margin-top:34px"><span class="tag">Why this is in your interest</span><p>It is the path that most directly serves your top-ranked goal, less debt and less cash-flow pressure, while still getting you the home you want.</p></div>
+</section>
+
+<!-- 13 -->
+<section class="pg" data-n="13" data-crumb="06|Our advice">
+  <div class="sh"><span class="big">06</span><div><span class="k">What we are recommending</span><h2>We recommend Tessera for your superannuation.</h2><p class="sub">Your superannuation, step by step.</p></div></div>
+  <div class="rule"></div>
+  <div class="short" style="margin-top:28px"><span class="tag">In short</span><p>Move most of your super to Tessera, wind up the SMSF, add Sam’s <span class="n">$20,000</span> now and more once Ridgeview Farm is yours.</p></div>
+  <div style="margin-top:10px">
+    <div class="lbl"><b>Consolidate</b><p><b>Sam:</b> move about <span class="n">$224,500</span> from Kestrel into Tessera Super (Choice menu). <b>Jo:</b> about <span class="n">$78,300</span> into Tessera Super (Discover menu).</p></div>
+    <div class="lbl"><b>Keep cover alive</b><p>Leave <b><span class="n">$10,000</span> in each Kestrel account</b> while Kingaroy Risk Partners (fictional) arranges replacement cover. The balance pays the premiums. It does not keep cover in force on its own: Kestrel’s inactivity and election rules still apply.</p></div>
+    <div class="lbl"><b>Wind up the SMSF</b><p>Wind up the Reid Superannuation Fund. It has been dormant for years and costs about <b><span class="n">$3,300</span> a year</b>. Its <span class="n">$18,000</span> of cash is rolled into your Tessera accounts.</p></div>
+    <div class="lbl"><b>This financial year</b><p><b>Sam:</b> a <span class="n">$20,000</span> personal deductible contribution. His employer’s <span class="n">12%</span> already fills the <span class="n">$32,500</span> cap, so this uses his <span class="n">$41,300</span> of unused cap from <span class="n">2021–22</span> to <span class="n">2025–26</span> (his balance was under <span class="n">$500,000</span> on <span class="n">30 June 2026</span>). The notice of intent goes to Kestrel before the rollover. Division <span class="n">293</span> applies, so the net saving is about <span class="n">$3,400</span>.</p></div>
+    <div class="lbl"><b>Once settled</b><p>Once Ridgeview Farm is fully yours (<span class="n">2039–40</span>), surplus cash flow goes to <b>after-tax contributions of up to <span class="n">$130,000</span> each a year</b>. That is the <span class="n">2026–27</span> cap, held flat with no bring-forward. Each stops once that person’s balance reaches <span class="n">$2.1</span> million: Sam after <span class="n">2043–44</span>, Jo after <span class="n">2046–47</span>.</p></div>
+    <div class="lbl" style="border:0"><b>Nominations</b><p>Non-lapsing binding death benefit nominations: <b><span class="n">100%</span> to each other</b>.</p></div>
+  </div>
+</section>
+
+<!-- 14 -->
+<section class="pg" data-n="14" data-crumb="06|Our advice">
+  <div class="box g side" style="margin-top:40px"><span class="tag g">Why Tessera</span><div><p style="font-size:19.5px;line-height:1.7;color:var(--ink)">Tessera is the middle ground you asked for: a wider menu than Kestrel, including the managed portfolios we use, without the costs and trustee duties of your own fund.</p><p style="margin-top:14px;font-size:17.5px;line-height:1.72">It costs more than Kestrel, and your SOA sets out the difference. The higher return we assume comes from the High Growth profile you chose, with more ups and downs along the way. It does not come from the platform itself.</p></div></div>
+  <div class="sh"><span class="big">06</span><div><span class="k">What we are recommending, continued</span><h2>What is Tessera?</h2><p class="sub">Tessera is an administration and investment platform used by financial advisers to manage, report on and administer client investments, superannuation, pensions and managed portfolios in one place. It provides the technology, custody, reporting and transaction functionality that advisers use to implement and manage financial strategies for clients.</p><p class="sub" style="margin-top:10px">Your adviser can give you an introduction to the platform.</p></div></div>
+  <div class="rule"></div>
+  <div class="short" style="margin-top:26px"><span class="tag">In short</span><p>Tessera is a platform advisers use to hold, manage and report on investments, super and pensions in one place.</p></div>
+  <h3 style="margin-top:34px">Tessera is used for</h3>
+  <div class="uses"><span>Investment accounts (non-super)</span><span>Superannuation accounts</span><span>Pension accounts</span><span>SMSF administration solutions</span><span>Reporting, tax summaries and ease of portfolio administration</span></div>
+</section>
+
+<!-- 15 -->
+<section class="pg" data-n="15" data-crumb="06|Our advice">
+  <h3 style="margin-top:56px;font-size:30px">What Tessera is not</h3>
+  <div class="rule"></div>
+  <div class="rows" style="margin-top:30px">
+    <div class="row"><span class="lab">Not an investment itself</span><p>It is a platform or “investment administration system” that holds and administers investments. The underlying investments may include ETFs, managed funds, shares, term deposits and managed portfolios selected as part of an advice strategy.</p></div>
+    <div class="row"><span class="lab">Not a fund manager</span><p>Tessera administers your investments rather than choosing them. What you hold is selected through our advice, which may include managed portfolios run by external investment managers.</p></div>
+    <div class="row"><span class="lab">Not a financial adviser</span><p>It provides the administration and technology infrastructure. The advice and strategy recommendations come from us, your financial adviser.</p></div>
+    <div class="row"><span class="lab">Not a bank</span><p>While cash can be held within Tessera accounts, it is not a traditional banking institution providing everyday banking services.</p></div>
+    <div class="row"><span class="lab">Not connected to Aynub Financial</span><p>Aynub Financial has no ownership link with Tessera and receives no payments from it. We recommend it because we believe it suits your circumstances and objectives.</p></div>
+  </div>
+</section>
+
+<!-- 16 -->
+<section class="pg" data-n="16" data-crumb="06|Our advice">
+  <div class="sh"><span class="big">06</span><div><span class="k">What we are recommending, continued</span><h2>We recommend an investment bond outside super.</h2><p class="sub">Investing outside super.</p></div></div>
+  <div class="rule"></div>
+  <div class="short" style="margin-top:28px"><span class="tag">In short</span><p>Invest <span class="n">$100,000</span> in an Evergreen Life bond, then <span class="n">$25,000</span> a year; withdrawals after ten years are generally tax-free.</p></div>
+  <ul class="dots" style="margin-top:28px">
+    <li><b>Sell the VAS holding: about <span class="n">$70,000</span> after brokerage</b>, against a <span class="n">$66,740</span> cost base. The <span class="n">$3,260</span> gain is halved by the CGT discount to <span class="n">$1,630</span>, a <b>taxable capital gain of <span class="n">$815</span> each</b>. That adds about <span class="n">$383</span> to Sam’s tax (<span class="n">47%</span>) and <span class="n">$261</span> to Jo’s (<span class="n">32%</span>).</li>
+    <li>Invest <b><span class="n">$100,000</span> into an Evergreen Life investment bond</b> (<span class="n">$70,000</span> from VAS plus <span class="n">$30,000</span> of savings), then <span class="n">$25,000</span> every year until you retire.</li>
+    <li>Bring Sam’s <b>Meridian Tech share purchase plan and future RSU vesting</b> into the overall strategy rather than letting another concentrated holding quietly build up.</li>
+    <li>Money outside super is modelled on <b>Growth</b> assumptions and super on <b>High Growth</b>, matching the risk profiles you completed on <span class="n">11 June 2026</span>.</li></ul>
+  <div class="two">
+    <div class="stat g"><span class="tag">Year one</span><div class="v">$100,000</div><p>Establishes the Evergreen Life investment bond, held jointly.</p></div>
+    <div class="stat g"><span class="tag">Year two onwards</span><div class="v">$25,000 <small>a year</small></div><p>Ongoing contributions through to retirement.</p></div>
+  </div>
+  <div class="box g side" style="margin-top:34px"><span class="tag g">Why an investment bond</span><div><p style="font-size:19px;line-height:1.65;color:var(--ink)">Earnings are taxed inside the bond at up to <span class="n">30%</span>. After ten years, withdrawals are generally tax-free and stay out of your tax return.</p><p style="margin-top:12px;font-size:17px;line-height:1.7">Withdraw sooner and the earnings are taxed at your marginal rate, less a <span class="n">30%</span> offset: all of them in years one to eight, two-thirds in year nine, one-third in year ten. Paying in more than <span class="n">125%</span> of the previous year’s amount, or skipping a year then paying in again, restarts the ten years.</p></div></div>
+</section>
+
+<!-- 17 -->
+<section class="pg" data-n="17" data-crumb="06|Our advice">
+  <div class="sh"><span class="big">06</span><div><span class="k">What we are recommending, continued</span><h2>We recommend keeping <span class="n">$200,000</span> on call.</h2><p class="sub">First for the Range View repairs, then as your standing reserve.</p></div></div>
+  <div class="rule"></div>
+  <div class="cash"><div class="stat"><span class="tag">Cash reserve · joint names</span><div class="v">$200,000</div></div>
+    <p>You told us in early August that <span class="n">21</span> Range View Road needs significant capital repairs, retaining walls and the driveway, costing anywhere from <span class="n">$25,000</span> to <span class="n">$200,000</span>, and that you want a reasonable amount kept available. Today <span class="n">$200,000</span> of your offset savings covers the top of that range; after the sale a fresh <span class="n">$200,000</span> is set aside (page <span class="n">11</span>).</p></div>
+  <ul class="dots" style="margin-top:34px">
+    <li><b>We deliberately did not recommend using that money to cut loan principal.</b> Once it is paid into the loan it is not easily yours again; in the offset it is.</li>
+    <li><b>While it sits there it is still working.</b> Every dollar in the offset reduces the interest on the loan it sits against, with no market risk. The loans are on rental properties, so the interest saved also trims your deductions.</li>
+    <li><b>It is held at call, not in the market.</b> Subject to the account terms and the Financial Claims Scheme limit, you are less likely to sell growth assets at a bad moment to pay a builder.</li>
+    <li><b>The same dollars are never counted twice.</b> Repairs come from today’s savings; the <span class="n">2028</span> reserve comes from the sale and sits against the Southgate loan on <span class="n">18</span> Marlow Street.</li>
+    <li><b>One trade-off to be clear about:</b> its only return is the interest saved, so over long periods the reserve may not keep pace with inflation. That is the price of keeping it available, and it is why we have capped it at <span class="n">$200,000</span> rather than leaving your whole offset balance in cash.</li></ul>
+  <div class="either" style="margin-top:auto;margin-bottom:34px"><span class="tag">Why this is in your interest</span><p>This is the balance you asked for. At-call cash stays liquid and earmarked for the repairs, and everything above it goes to work in tax-effective long-term investments rather than sitting idle.</p></div>
+</section>
+
+<!-- 18 -->
+<section class="pg" data-n="18" data-crumb="06|Our advice">
+  <div class="sh"><span class="big">06</span><div><span class="k">What we are recommending, continued</span><h2>Your debt. Your estate.</h2></div></div>
+  <div class="rule"></div>
+  <h3 style="margin-top:34px">Your debt</h3>
+  <div class="quad">
+    <div class="box s"><span class="tag m" style="color:var(--ink);font-weight:600">Tidewater · <span class="n">21</span> Range View Road</span><div class="bv" style="margin-top:12px">$2,190,000</div><p><span class="n">$13,200</span> a month, principal and interest. Repaid from the <span class="n">2027</span> sale.</p></div>
+    <div class="box s"><span class="tag m" style="color:var(--ink);font-weight:600">Southgate · <span class="n">18</span> Marlow Street, Brisbane</span><div class="bv" style="margin-top:12px">$720,000</div><p><span class="n">$3,750</span> a month, interest-only to mid-<span class="n">2029</span>. Total debt <span class="n">$2,910,000</span>.</p></div>
+  </div>
+  <ul class="dots" style="margin-top:26px">
+    <li><b>No large lump-sum principal reductions.</b> Surplus cash flow, including Sam’s after-tax bonus, goes to the Ridgeview Farm instalments, then to super.</li>
+    <li><b>Each loan is secured by one property.</b> The Range View sale repays the Tidewater loan; the Southgate loan on <span class="n">18</span> Marlow Street continues and moves to principal and interest in <span class="n">2029</span>.</li></ul>
+  <h3 style="margin-top:38px">Your estate</h3>
+  <div class="either" style="margin-top:20px;padding:26px 30px"><span class="tag">The most urgent gap</span><p><b>Neither of you has a will or a power of attorney.</b> Of everything in this document, that is the most urgent gap.</p></div>
+  <ul class="dots" style="margin-top:24px">
+    <li><b>See an estate lawyer</b> for wills and powers of attorney, and take independent legal advice on a testamentary trust, particularly relevant with a family planned.</li>
+    <li><b>Put non-lapsing binding nominations in place</b> on the new Tessera accounts.</li></ul>
+  <div class="est"><div><small>Next for your estate</small><b>Wills</b></div><div><small>Next for your estate</small><b>Powers of attorney</b></div><div><small>Next for your estate</small><b>Binding nominations</b></div></div>
+</section>
+
+<!-- 19 -->
+<section class="pg" data-n="19" data-crumb="07|The modelling">
+  <div class="sh"><span class="big">07</span><div><span class="k">What the modelling shows</span><h2>Seven scenarios, one clear answer.</h2></div></div>
+  <div class="rule"></div>
+  <p class="body" style="margin-top:26px;font-size:18px">Projected net assets on <span class="n">30 June 2082</span>, when Jo turns <span class="n">90</span>, in today’s dollars: every property at market value less all debt, plus super, investments and cash. Our fees are deducted in every scenario.</p>
+  <div class="chart"><div class="cr"><span><b><span class="n">1</span> · Current position</b><small>Keep both properties; keep renting</small></span><span class="bar"><i style="width:57.3%"></i><span>$16,174,324</span></span></div><div class="cr"><span><b><span class="n">2</span> · Rebuild Range View</b><small><span class="n">$1m</span> new loan; live in Range View</small></span><span class="bar"><i style="width:38.8%"></i><span>$10,943,384</span></span></div><div class="cr"><span><b><span class="n">3</span> · Rebuild Range View, sell <span class="n">18</span> Marlow Street</b><small>Marlow sale trims the rebuild loan</small></span><span class="bar"><i style="width:35.2%"></i><span>$9,922,819</span></span></div><div class="cr"><span><b><span class="n">4</span> · Sell Range View, buy Ridgeview Farm progressively</b><small>Property step only; super unchanged</small></span><span class="bar"><i style="width:58.9%"></i><span>$16,621,042</span></span></div><div class="cr win"><span><b><span class="n">5</span> · Recommended strategy</b><small>Scenario <span class="n">4</span> + Tessera, bond, contributions</small></span><span class="bar"><i style="width:75.8%"></i><span>$21,377,113</span></span></div><div class="cr"><span><b><span class="n">6</span> · Sell Range View, buy Ridgeview Farm outright</b><small><span class="n">$2m</span> new loan in <span class="n">2028</span></small></span><span class="bar"><i style="width:53.2%"></i><span>$15,003,869</span></span></div><div class="cr"><span><b><span class="n">7</span> · Recommended strategy, retiring at <span class="n">52</span></b><small>Work stops <span class="n">2043</span>; Marlow sold</small></span><span class="bar"><i style="width:42.1%"></i><span>$11,872,553</span></span></div></div>
+  <p class="fine" style="font-size:14.5px;margin-top:16px">Illustrative modelling based on the assumptions shown; hypothetical rates, not past returns of any product. Inflation <span class="n">2.5%</span>, wages <span class="n">3.0%</span>, property <span class="n">4.0%</span>. After tax and fees: High Growth super <span class="n">6.6%</span>, Kestrel Indexed Balanced <span class="n">6.0%</span>, bond <span class="n">5.1%</span>, investments in your names <span class="n">4.8%</span>. Loans <span class="n">6.15–6.25%</span>. Living costs <span class="n">$100,000</span> a year in today’s dollars, also your retirement income. Caps held at <span class="n">2026–27</span> levels; no Age Pension.</p>
+  <div class="quad" style="margin-top:22px">
+    <div class="box g"><span class="tag g">Our recommendation</span><p><b>Scenarios <span class="n">4</span> and <span class="n">5</span> make the same property moves.</b> Scenario <span class="n">5</span> adds the product advice: Tessera High Growth super, no SMSF, the bond and extra contributions. That adds about <span class="n">$4.8m</span>.</p></div>
+    <div class="box s"><span class="tag m" style="color:var(--ink);font-weight:600">Retiring at 52</span><p><b>Retiring at <span class="n">52</span> (<span class="n">$11.9m</span>) gives up eight years of income</b> for the most freedom. The bond and your investments carry you to <span class="n">60</span>, with <span class="n">18</span> Marlow Street sold in <span class="n">2043</span>. Net assets still rise in today’s dollars every year of retirement.</p></div>
+  </div>
+</section>
+
+<!-- 20 -->
+<section class="pg" data-n="20" data-crumb="08|Costs &amp; next steps">
+  <div class="sh"><span class="big">08</span><div><span class="k">What it costs · next steps</span><h2>Costs, outstanding items and next steps.</h2></div></div>
+  <div class="rule"></div>
+  <div class="two" style="margin-top:30px">
+    <div class="stat"><span class="tag">Initial advice &amp; implementation</span><div class="v">$5,500 <small>incl. GST</small></div><p>Invoiced. Part one of two has already been issued.</p></div>
+    <div class="stat"><span class="tag">Ongoing service</span><div class="v">$5,480 <small>a year incl. GST</small></div><p><span class="n">$2,660</span> from Sam’s Tessera Super, <span class="n">$940</span> from Jo’s, and <span class="n">$1,880</span> invoiced jointly.</p></div>
+  </div>
+  <ul class="dots" style="margin-top:26px">
+    <li><b>A fixed fee, not a percentage of your assets.</b> Reviewed annually and renewed only if you opt in.</li>
+    <li><b>Our ongoing fees are built into every projection in this guide</b>, so those figures are already after our costs.</li></ul>
+  <div class="either" style="margin-top:30px;padding:26px 30px"><span class="tag">What we still need from you</span><p>Confirmation from your insurance adviser at Kingaroy Risk Partners (fictional) that replacement cover is in force, before we close out the Kestrel balances in full.</p></div>
+  <h3 style="margin-top:36px">Next steps</h3>
+  <div class="steps">
+    <div class="st"><span class="nb">01</span><p><b>Read this through together</b> and mark anything that does not sound like you.</p></div>
+    <div class="st"><span class="nb">02</span><p><b>Action the second instalment invoice</b> payable with your SOA.</p></div>
+    <div class="st"><span class="nb">03</span><p><b>Confirm the outstanding items</b> above.</p></div>
+    <div class="st"><span class="nb">04</span><p><b>Sign the Authority to Proceed.</b></p></div>
+    <div class="st"><span class="nb">05</span><p><b>We open the Tessera accounts</b>, action the rollovers, sell VAS, establish the investment bond and begin the SMSF wind-up.</p></div>
+    <div class="st" style="border:0"><span class="nb">06</span><p><b>Book time with an estate lawyer</b> for the wills and powers of attorney.</p></div>
+  </div>
+</section>
+
+<!-- 21 -->
+<section class="pg end" data-n="21">
+  <div class="hero"><div><span class="k2">Advice in your interest</span><h1>Start with the life you want. Then work backwards to Monday.</h1></div><div class="photo"><img src="img/soa-couple.jpg" alt=""></div></div>
+  <p class="lead">Read this guide alongside your Statement of Advice, mark anything that does not sound like you, and bring every question to us: that conversation is what the next meeting is for.</p>
+  <div class="contact"><div><small>Your adviser</small><b>Mara Holloway</b><span>Principal &amp; Senior Financial Adviser</span></div><div><small>Email</small><b>mara@aynub.com</b></div><div><small>Phone</small><b class="n">(07) 5550 1240</b></div><div><small>Online</small><b>aynub.com</b></div></div>
+  <div class="sign"><img src="../aynub-lockup-financial-on-light.png" alt="Aynub Financial"><h4>Plan backwards. Live forwards. Money, plainly.</h4>
+    <p>Aynub Financial is a fictional practice created to demonstrate our documents.<br>It holds no ABN or Australian Financial Services Licence, and nothing here is financial advice.<br>PO Box <span class="n">128</span>, Kingaroy QLD <span class="n">4610</span> · <span class="n">(07) 5550 1240</span> · hello@aynub.com · aynub.com<br>Fictional client example · For demonstration purposes only</p>
+    <div class="bot"><span>Aynub Financial · Kingaroy QLD</span><span>Money, plainly.</span></div></div>
+</section>
+
+
+<script>
+/* running head and page foot for every page except the cover */
+document.querySelectorAll('.pg[data-crumb]').forEach(function (p) {
+  var c = p.dataset.crumb.split('|'), n = +p.dataset.n;
+  p.insertAdjacentHTML('afterbegin', '<div class="ph"><img src="../aynub-lockup-financial-on-light.png" alt=""><div class="crumb">The path<span><em>' + c[0] + '</em>' + c[1] + '</span></div></div>');
+  p.insertAdjacentHTML('beforeend', '<div class="pf"><span><span class="n">SOA-0426</span> Sam &amp; Jo Reid</span><span>Fictional client example · For demonstration purposes only</span><span class="pn">' + String(n).padStart(2, '0') + '<small>of</small>21</span></div>');
+});
+</script>
+</body>
+</html>

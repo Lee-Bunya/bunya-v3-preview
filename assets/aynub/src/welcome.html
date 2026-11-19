@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>Aynub Financial · Welcome pack (source)</title>
+<!-- Source for assets/aynub/docs/welcome/1–21.webp (Dana, 19 Nov 2026). Shared styles: aynub.css. Render: node render.mjs <out> 2 welcome.
+     Running heads and feet come from each page's data-crumb. Aynub Financial is fictional. Lee's originals: docs/welcome-original/. -->
+<link rel="stylesheet" href="aynub.css">
+<style>
+.c1 .top{padding-bottom:26px;border-bottom:1px solid var(--line)} .c1 .top img{height:66px}
+.c1 .kick{margin-top:62px;font-size:19px;font-weight:600;color:var(--grey)}
+.c1 .kick::after{content:"";display:block;width:178px;height:4px;margin-top:22px;border-radius:2px;background:var(--plum)}
+.c1 h1{margin-top:40px;font-size:76px;line-height:1.05;font-weight:700;letter-spacing:-.035em;color:var(--ink)}
+.c1 .to{margin-top:26px;font-size:22px;line-height:1.6;color:var(--text)}
+.c1 .photo{margin-top:44px;height:420px}
+.c1 .low{display:grid;grid-template-columns:1fr 345px;gap:56px;margin-top:44px}
+.c1 .low > div > span{display:block;font-size:17px;color:var(--grey)} .c1 .low > div > b{display:block;margin:6px 0 26px;font-size:26px;line-height:1.3}
+.meta{padding:28px 30px;border-radius:14px;background:var(--sand)}
+.meta > span{display:block;font-size:17px;color:var(--grey)} .meta b{display:block;margin:4px 0 16px;font-size:21px}
+.meta small{display:block;padding-top:14px;border-top:1px solid var(--line);font-size:15px;line-height:1.5;color:var(--grey)}
+.letter{display:grid;grid-template-columns:200px 1fr;gap:16px;margin-top:34px}
+.letter .dear{font-size:26px;line-height:1.3;font-weight:700;color:var(--plum)}
+.letter .photo{margin-top:24px;height:250px;padding:7px;border-radius:16px}
+.letter .txt p{font-size:17.5px;line-height:1.72} .letter .txt p + p{margin-top:15px}
+.letter .sig{margin-top:26px;font-size:17.5px;line-height:1.6}
+.mark{display:grid;grid-template-columns:200px 1fr;gap:16px;margin-top:34px}
+.mark img{width:110px}
+.mark p{font-size:18px;line-height:1.72} .mark p + p{margin-top:15px}
+.vals .row{padding:26px 30px} .vals .row h4{font-size:22px;font-weight:700;color:var(--ink)} .vals .row p{margin-top:8px;font-size:18px}
+.stat2{display:flex;gap:44px;margin-top:22px}
+.stat2 > span{display:flex;align-items:baseline;gap:10px;font-size:18px;color:var(--text)}
+.stat2 b{font-family:var(--num);font-size:52px;font-weight:600;color:var(--plum);letter-spacing:-.03em}
+.team{display:grid;grid-template-columns:1fr 1fr;gap:26px 34px;margin-top:30px}
+.pp{display:grid;grid-template-columns:140px 1fr;gap:22px}
+.pp img{width:140px;height:176px;object-fit:cover;border-radius:12px}
+.pp h4{font-size:19px;font-weight:700;color:var(--ink)} .pp .r{display:block;margin-top:3px;font-size:15px;font-weight:500;color:var(--plum)}
+.pp p{margin-top:10px;font-size:15.5px;line-height:1.55} .pp small{display:block;margin-top:8px;font-size:14.5px;line-height:1.5;color:var(--grey)}
+.one{display:flex;flex-direction:column;justify-content:center;padding:28px 30px;border-radius:14px;background:var(--plum-t);box-shadow:inset 0 5px 0 var(--plum)}
+.one b{margin-top:8px;font-size:22px;line-height:1.4}
+.legend{display:flex;flex-wrap:wrap;gap:12px 26px;margin-top:22px;font-size:16px;color:var(--grey)}
+.pill{display:inline-block;padding:5px 12px;border-radius:999px;font-size:15px;font-weight:600;margin-right:8px}
+.pill.you{background:var(--plum-t);color:var(--plum)} .pill.us{background:var(--green-t);color:var(--green-d)} .pill.tog{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--beige)}
+.stage{display:grid;grid-template-columns:150px 1fr 290px;gap:26px;padding:26px 0;border-bottom:1px solid var(--line)}
+.stage .sn small{display:block;font-size:16px;color:var(--grey)} .stage .sn b{display:block;margin-top:4px;font-family:var(--num);font-size:72px;font-weight:600;line-height:1;color:var(--plum);letter-spacing:-.04em}
+.stage .of{font-family:var(--num);font-size:15px;color:var(--grey)}
+.stage h4{margin-top:10px;font-size:23px;font-weight:700;color:var(--ink)}
+.stage p{margin-top:8px;font-size:17px;line-height:1.66}
+.stage .need{padding:20px 22px;border-radius:12px;background:var(--plum-t);box-shadow:inset 0 4px 0 var(--plum)}
+.stage .need .tag{font-size:15.5px} .stage .need p{margin-top:6px;font-size:16px;line-height:1.6;color:var(--ink)}
+.stage:last-of-type{border:0}
+.photo.fill{margin-top:auto;margin-bottom:34px}
+.tight .rows{margin-top:20px} .tight .row{padding:24px 30px;grid-template-columns:120px 1fr} .tight .row .nb{font-size:40px} .tight .row p{font-size:17.5px}
+.feat{margin-top:22px}
+.feat .fr{display:grid;grid-template-columns:200px 1fr;gap:16px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.feat .fr:nth-child(odd){background:var(--sand)}
+.feat .fr b{font-size:17px;line-height:1.4} .feat .fr p{font-size:16.5px;line-height:1.62}
+.feat .fh{padding:12px 20px;font-size:15.5px;font-weight:600;color:var(--grey);border-bottom:1.5px solid var(--beige);display:grid;grid-template-columns:200px 1fr;gap:16px}
+.side{display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:start}
+.gs{margin-top:34px;padding:30px 32px;border-radius:14px;background:var(--plum-t);box-shadow:inset 0 5px 0 var(--plum)}
+.gs .st{display:grid;grid-template-columns:60px 1fr;gap:10px;padding:14px 0;border-top:1px solid rgba(119,42,83,.16)}
+.gs .st b{font-family:var(--num);font-size:26px;color:var(--plum)} .gs .st p{font-size:16.5px;line-height:1.6;color:var(--ink)}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+.three div{padding-top:16px;border-top:5px solid var(--beige)} .three small{display:block;font-size:15px;color:var(--grey)} .three b{display:block;margin-top:6px;font-size:19px;line-height:1.4}
+.opts{display:grid;grid-template-columns:1fr 40px 1fr;gap:0;margin-top:34px;align-items:stretch}
+.opts .or{display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--grey)}
+.opts .box .nb{display:block;margin:8px 0 10px;font-family:var(--num);font-size:56px;font-weight:600;line-height:1;color:var(--plum)}
+.opts .box h4{font-size:21px;line-height:1.3;font-weight:700;color:var(--ink)} .opts .box p{margin-top:10px;font-size:16.5px;line-height:1.62}
+.cols2{columns:2;column-gap:36px;margin-top:18px}
+.cols2 li{break-inside:avoid;margin-bottom:12px;font-size:16px;line-height:1.55}
+.cert{display:grid;grid-template-columns:300px 1fr;margin-top:34px;border-radius:14px;overflow:hidden;background:var(--sand)}
+.cert img{width:100%;height:100%;object-fit:cover} .cert div{padding:26px 30px} .cert h4{font-size:19px;font-weight:700;color:var(--ink)} .cert p{margin-top:8px;font-size:16px;line-height:1.62}
+.fees{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:26px;margin-top:34px}
+.fees .stat p{margin-top:12px;font-size:16.5px;line-height:1.55} .fees .stat b.t{display:block;margin-top:10px;font-size:19px;line-height:1.45}
+.priv{display:grid;grid-template-columns:200px 1fr;gap:16px;padding:22px 0;border-bottom:1px solid var(--line)}
+.priv .tag{font-size:16.5px} .priv p{font-size:16px;line-height:1.66}
+.afca{margin-top:26px;padding:24px 28px;border-radius:14px;background:var(--sand)}
+.afca .h{display:flex;justify-content:space-between;font-size:18px;font-weight:700;color:var(--ink)} .afca .h small{font-size:15px;font-weight:500;color:var(--grey)}
+.afca .g{display:grid;grid-template-columns:1.2fr 1fr 1.2fr 1.2fr;gap:16px;margin-top:14px}
+.afca small{display:block;font-size:14.5px;font-weight:600;color:var(--plum)} .afca .g > div > span{display:block;margin-top:4px;font-size:15.5px;color:var(--ink)}
+.ck{margin-top:24px}
+.ck .ch,.ck .cr{display:grid;grid-template-columns:1fr 104px 104px;gap:10px;align-items:center}
+.ck .ch{padding:10px 16px;border-bottom:1.5px solid var(--beige);font-size:15px;font-weight:600;color:var(--grey);text-align:center}
+.ck .ch b{text-align:left;font-size:19px;color:var(--ink)}
+.ck .cr{padding:12px 16px;border-bottom:1px solid var(--line);font-size:16px;line-height:1.5;color:var(--ink)}
+.ck .cr:nth-child(even){background:var(--sand)}
+.ck .cr i{justify-self:center;width:22px;height:22px;border-radius:6px;box-shadow:inset 0 0 0 1.5px var(--grey)}
+.ck1 .cr{grid-template-columns:70px 1fr 70px} .ck1 .ch{grid-template-columns:70px 1fr 70px;text-align:left}
+.ck1 .cr .nb{font-family:var(--num);font-size:26px;font-weight:600;color:var(--plum)}
+.end .hero{display:grid;grid-template-columns:1fr 380px;gap:44px;align-items:center;margin-top:50px}
+.end .k2{font-size:19px;font-weight:600;color:var(--plum)}
+.end h1{margin-top:22px;font-size:50px;line-height:1.12;font-weight:700;letter-spacing:-.03em;color:var(--ink)}
+.end .photo{height:470px}
+.contact{display:grid;grid-template-columns:1.3fr 1fr 1.1fr 1.3fr;gap:20px;margin-top:50px;padding:30px 32px;border-radius:14px;background:var(--plum-t)}
+.contact small{display:block;font-size:15.5px;font-weight:600;color:var(--plum)} .contact b{display:block;margin-top:6px;font-size:18.5px;line-height:1.4}
+.sign{margin-top:auto} .sign img{height:70px}
+.sign h4{margin-top:24px;font-size:24px;font-weight:700;color:var(--ink)} .sign h4 em{font-style:normal;color:var(--plum)}
+.sign p{margin-top:16px;font-size:15.5px;line-height:1.75;color:var(--text)}
+.sign .bot{display:flex;justify-content:space-between;margin-top:26px;padding:22px 0 40px;border-top:1px solid var(--line);font-size:16px;font-weight:600;color:var(--ink)}
+.ph .crumb span{border:0;padding:0} .ph .crumb em .n{color:var(--plum)}
+</style>
+</head>
+<body>
+<!-- 1 -->
+<section class="pg c1" data-n="1">
+  <div class="top"><img src="../aynub-lockup-financial-on-light.png" alt="Aynub Financial"></div>
+  <div class="kick">Welcome pack · 2026</div>
+  <h1>Welcome &amp; onboarding pack.</h1>
+  <p class="to">Everything you need to begin: who you’ll be working with, what happens next, what we need from you, and how your information is protected at every step.</p>
+  <div class="photo"><img src="img/w-cover.jpg" alt=""></div>
+  <div class="low"><div><span>Our promise</span><b>Plan backwards. Live forwards.</b><span>The journey begins</span><b>Welcome, Marcus &amp; Elise</b></div>
+    <div class="meta"><span>Prepared for</span><b>Marcus &amp; Elise Tran</b><span>Your adviser</span><b>Mara Holloway</b><span>Date of issue</span><b>14 September 2026</b><small>Fictional client example · For demonstration purposes only</small></div></div>
+</section>
+
+<!-- 2 -->
+<section class="pg" data-n="2" data-crumb="01|A letter to you">
+  <div class="sh"><span class="big">01</span><div><span class="k">A letter to you</span><h2>Thank you for the trust you’ve placed in us.</h2></div></div>
+  <div class="rule"></div>
+  <div class="letter"><div><span class="dear">Dear Marcus &amp; Elise,</span><div class="photo"><img src="img/w-letter.jpg" alt=""></div></div>
+    <div class="txt">
+      <p>Thank you for accepting our Advice Proposal and choosing to move forward with your financial plan. We’re glad to be working with you, and we don’t take lightly the trust you’ve placed in Aynub to help you reach your goals.</p>
+      <p>This Welcome Pack introduces our team, explains who you’ll be working with along the way, sets out what we need from you at this stage, and tells you how we protect and manage your personal information.</p>
+      <p>Over the coming weeks we’ll take the time to understand where you stand today, talk about what matters most to you, and look carefully at your goals for the future. We start with the life you want and work backwards. From there we’ll prepare a personalised Statement of Advice that sets out our recommendations and the reasons behind each one.</p>
+      <p>The information you give us through the forms that come with this pack matters. It’s how we make sure the advice is accurate, tailored and right for your circumstances. Some questions can feel detailed or personal, but the more complete the picture, the more useful our advice will be.</p>
+      <p>We’ll check in with you at several points along the way. If you’re unsure about any part of the process, or have questions while completing the forms, please get in touch. We’re happy to have as many conversations as it takes for you to feel confident in your plan.</p>
+      <p>We look forward to working with you, and to helping you get to what matters most.</p>
+      <p class="sig">Kind regards,<br><br>Mara Holloway<br>Principal &amp; Senior Financial Adviser<br><b>Aynub Financial</b></p>
+    </div></div>
+</section>
+
+<!-- 3 -->
+<section class="pg" data-n="3" data-crumb="02|About Aynub Financial">
+  <div class="sh"><span class="big">02</span><div><span class="k">About Aynub Financial</span><h2>A name that turns around.</h2></div></div>
+  <div class="rule"></div>
+  <div class="mark"><img src="../aynub-mark.svg" alt=""><div>
+    <p>The bunya pine lives for centuries and drops its big cones every year, with especially heavy crops about every three years. It grows on a long timeline, and so does good advice. We turned its name around because that’s how we plan: start with the life you want, then work backwards to what you do today.</p>
+    <p>Aynub Financial is a fee-for-service advice practice based in Kingaroy, in the South Burnett, near the Bunya Mountains. No bank or fund owns us, we charge our fees in dollars and we accept no commissions, so we have no product to push. We work with individuals, families and business owners, and we act in your best interests at all times, in line with the Corporations Act and the Financial Planners and Advisers Code of Ethics.</p>
+    <p>Our mark, the Seed Mirror, is two bunya seeds leaning into each other like a reflection on still water: you and your adviser. Where they overlap, warm and cool mix into the shared plan. The gold seed above is the future you’re planning toward.</p>
+    <p>We bring super, retirement, investments, personal insurance, cash flow and debt, aged care and estate planning together in one plan. Where you need specialist help beyond our scope, such as legal advice or complex tax, we work alongside your accountant, solicitor or other trusted professionals so you get the right support.</p></div></div>
+  <div class="photo fill" style="height:400px"><img src="img/w-cones.jpg" alt=""></div>
+</section>
+
+<!-- 4 -->
+<section class="pg vals" data-n="4" data-crumb="02|About Aynub Financial">
+  <h3 style="margin-top:52px;font-size:30px">What we stand for</h3>
+  <div class="rule"></div>
+  <div class="rows" style="margin-top:26px">
+    <div class="row" style="grid-template-columns:120px 1fr"><span class="nb">01</span><div><h4>Start with the why</h4><p>Before we talk returns, we talk about the life you want: family, the business, the trip, the day you stop working.</p></div></div>
+    <div class="row" style="grid-template-columns:120px 1fr"><span class="nb">02</span><div><h4>Say it plainly</h4><p>No jargon, no fine-print speak. Every fee shown in dollars. If we can’t explain it in a sentence, we haven’t understood it yet.</p></div></div>
+    <div class="row" style="grid-template-columns:120px 1fr"><span class="nb">03</span><div><h4>Share what we know</h4><p>We teach rather than gatekeep. You leave every meeting knowing more than when you walked in.</p></div></div>
+    <div class="row" style="grid-template-columns:120px 1fr"><span class="nb">04</span><div><h4>Stay for the long run</h4><p>Your Statement of Advice is where the real work begins. We stay through implementation, every review and every market wobble.</p></div></div>
+  </div>
+  <div class="photo fill" style="height:500px"><img src="img/w-forest.jpg" alt=""></div>
+</section>
+
+<!-- 5 -->
+<section class="pg" data-n="5" data-crumb="03|Your Aynub team">
+  <div class="sh"><span class="big">03</span><div><span class="k">Your Aynub team</span><h2>The people behind your plan.</h2><p class="sub">Every client file at Aynub is looked after by a team, not a single inbox. Your adviser leads the strategy, and the people below keep every stage moving and accountable.</p>
+    <div class="stat2"><span><b>7</b>people</span><span><b>1</b>shared file</span></div></div></div>
+  <div class="rule"></div>
+  <div class="team">
+    <div class="pp"><img src="img/w-mara.jpg" alt=""><div><h4>Mara Holloway</h4><span class="r">Principal &amp; Senior Financial Adviser</span><p>Leads your strategy and signs off every piece of advice.</p><small>mara@aynub.com<br>(07) 5550 1240</small></div></div>
+    <div class="pp"><img src="img/w-jonah.jpg" alt=""><div><h4>Jonah Pike</h4><span class="r">Partner &amp; Practice Manager</span><p>Keeps the practice, the workflow and the deadlines honest.</p><small>jonah@aynub.com<br>(07) 5550 1240</small></div></div>
+    <div class="pp"><img src="img/w-kit.jpg" alt=""><div><h4>Kit Moreau</h4><span class="r">Associate Adviser</span><p>Works alongside your adviser on modelling and meetings.</p><small>kit@aynub.com<br>(07) 5550 1240</small></div></div>
+    <div class="pp"><img src="img/w-priya.jpg" alt=""><div><h4>Priya Nair</h4><span class="r">Client Services Manager</span><p>Your first call for paperwork, portal access and bookings.</p><small>priya@aynub.com<br>(07) 5550 1240</small></div></div>
+    <div class="pp"><img src="img/w-ellie.jpg" alt=""><div><h4>Ellie Brennan</h4><span class="r">Paraplanner</span><p>Researches products and drafts your Statement of Advice.</p><small>ellie@aynub.com<br>(07) 5550 1240</small></div></div>
+    <div class="pp"><img src="img/w-arlo.jpg" alt=""><div><h4>Arlo Grant</h4><span class="r">Junior Paraplanner</span><p>Gathers your data and checks every number twice.</p><small>arlo@aynub.com<br>(07) 5550 1240</small></div></div>
+    <div class="pp"><img src="img/w-lena.jpg" alt=""><div><h4>Lena Ford</h4><span class="r">Client Services Associate</span><p>Tracks implementation items until each one is confirmed.</p><small>lena@aynub.com<br>(07) 5550 1240</small></div></div>
+    <div class="one"><span class="tag">One team</span><b>One file, many hands. Nothing waits on one inbox.</b></div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="pg" data-n="6" data-crumb="04|What happens next">
+  <div class="sh"><span class="big">04</span><div><span class="k">What happens next</span><h2>Seven stages, and you’ll always know whose turn it is to act.</h2></div></div>
+  <div class="rule"></div>
+  <p class="body" style="margin-top:26px;font-size:17.5px">Aynub runs every client file to a set workflow, so nothing depends on someone remembering it. The stages over these pages take you from returning this pack through to the meeting where we confirm your plan has been fully put in place. Each stage has a named person here who is accountable for it, and each one is marked with whose move it is.</p>
+  <div class="legend"><span><span class="pill you">Your move</span>action sits with you</span><span><span class="pill us">With Aynub</span>we’re at work, nothing needed</span><span><span class="pill tog">Together</span>we meet or act jointly</span></div>
+  <div style="margin-top:14px">
+    <div class="stage"><div class="sn"><small>Stage</small><b>1</b></div><div><span class="pill you">Your move</span><span class="of">1 of 7</span><h4>Welcome pack returned</h4><p>Your completed forms and your first instalment payment come back to us and are checked in against our return checklist.</p></div><div class="need"><span class="tag">What we need from you</span><p>The forms and items in the checklist in section 10, completed and returned to us.</p></div></div>
+    <div class="stage"><div class="sn"><small>Stage</small><b>2</b></div><div><span class="pill us">With Aynub</span><span class="of">2 of 7</span><h4>Your account is opened</h4><p>We set you up in our systems, begin your fact find, lodge the third party authorities with your providers and verify your identification.</p></div><div class="need"><span class="tag">What we need from you</span><p>Nothing, unless something in your paperwork needs clarifying.</p></div></div>
+    <div class="stage"><div class="sn"><small>Stage</small><b>3</b></div><div><span class="pill tog">Together</span><span class="of">3 of 7</span><h4>Discovery meeting</h4><p>A 90-minute session with your adviser covering your full position, your goals and your risk profile. It is booked once your forms and first instalment payment are back with us.</p></div><div class="need"><span class="tag">What we need from you</span><p>Ninety minutes of your time and, ahead of it, some thinking about the life you want your money to pay for.</p></div></div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="pg" data-n="7" data-crumb="04|What happens next">
+  <div style="margin-top:20px">
+    <div class="stage"><div class="sn"><small>Stage</small><b>4</b></div><div><span class="pill tog">Together</span><span class="of">4 of 7</span><h4>Strategy and plan formation</h4><p>We model your options, compare products and, where relevant, analyse and quote insurance. The whole team tests the strategy internally, then we walk you through it at a 90-minute strategy meeting.</p></div><div class="need"><span class="tag">What we need from you</span><p>Attend the strategy meeting, and challenge anything that doesn’t sit right.</p></div></div>
+    <div class="stage"><div class="sn"><small>Stage</small><b>5</b></div><div><span class="pill tog">Together</span><span class="of">5 of 7</span><h4>Your advice is activated</h4><p>Your Statement of Advice is prepared and approved by your adviser, then presented to you in person.</p></div><div class="need"><span class="tag">What we need from you</span><p>Time to read the document and ask questions, then your signature on the authority to proceed.</p></div></div>
+    <div class="stage"><div class="sn"><small>Stage</small><b>6</b></div><div><span class="pill us">With Aynub</span><span class="of">6 of 7</span><h4>Implementation</h4><p>For the recommendations you accept, we instruct your providers, open a tracking checklist covering every item, and report progress to you while the work is under way.</p></div><div class="need"><span class="tag">What we need from you</span><p>Any final forms your providers require, signed promptly.</p></div></div>
+  </div>
+  <div class="photo fill" style="height:390px"><img src="img/w-chair.jpg" alt=""></div>
+</section>
+
+<!-- 8 -->
+<section class="pg tight" data-n="8" data-crumb="04|What happens next">
+  <div style="margin-top:20px">
+    <div class="stage" style="border:0"><div class="sn"><small>Stage</small><b>7</b></div><div><span class="pill tog">Together</span><span class="of">7 of 7</span><h4>Confirmation and review</h4><p>Once every provider has confirmed each part of the process, we check the result against the advice and meet with you to confirm everything promised has been done. Then we set your first review.</p></div><div class="need"><span class="tag">What we need from you</span><p>A final meeting, and anything that has changed in your circumstances since the advice.</p></div></div>
+  </div>
+  <div style="margin-top:44px"><span class="k" style="font-size:17px;color:var(--grey)">Timing</span><h3 style="margin-top:8px;font-size:32px">Two things shape the timing</h3></div>
+  <div class="rule"></div>
+  <div class="rows">
+    <div class="row"><span class="nb">01</span><p>Your discovery meeting is booked once the forms in this pack have been returned and the first instalment has been paid. The sooner those come back to us, the sooner the real work begins.</p></div>
+    <div class="row"><span class="nb">02</span><p>Implementation then runs at the pace of your existing providers. We give every implementation item its own expected date and follow it up against that date, so you hear where things stand rather than having to ask.</p></div>
+  </div>
+  <div class="photo fill" style="height:430px"><img src="img/w-road.jpg" alt=""></div>
+</section>
+
+<!-- 9 -->
+<section class="pg" data-n="9" data-crumb="05|What comes with this pack">
+  <div class="sh"><span class="big">05</span><div><span class="k">What comes with this pack</span><h2>Four documents, each unlocking a different part of the work.</h2><p class="sub"><span class="pill you" style="font-size:14.5px">Example enclosures · not included in this demonstration</span></p><p class="sub" style="margin-top:12px;font-size:18px">In a live pack you’d receive these four documents with this letter. Please complete and return them together where you can, as each one unlocks a different part of the work.</p></div></div>
+  <div class="rule"></div>
+  <div style="margin-top:6px">
+    <div class="stage"><div class="sn"><small>Document</small><b>1</b></div><div><h4 style="margin-top:0">Getting to Know You (GTKY) form</h4><p>Captures your personal circumstances, income, spending, assets, debts and goals. It is the foundation of the advice.</p></div><div class="need"><span class="tag">Your action</span><p>Complete every section and sign. Write “not applicable” rather than leaving a field blank.</p></div></div>
+    <div class="stage" style="border:0"><div class="sn"><small>Document</small><b>2</b></div><div><h4 style="margin-top:0">Risk Profile Questionnaire</h4><p>Establishes your tolerance for investment risk and the ups and downs you are willing and able to accept.</p></div><div class="need"><span class="tag">Your action</span><p>Each person receiving advice completes their own, independently of the other.</p></div></div>
+  </div>
+  <div class="photo fill" style="height:380px"><img src="img/w-writing.jpg" alt=""></div>
+</section>
+
+<!-- 10 -->
+<section class="pg" data-n="10" data-crumb="05|What comes with this pack">
+  <div style="margin-top:20px">
+    <div class="stage"><div class="sn"><small>Document</small><b>3</b></div><div><h4 style="margin-top:0">Third Party Authorities (TPAs)</h4><p>Authorises your existing super funds, insurers and platforms to release your policy and account information to us.</p></div><div class="need"><span class="tag">Your action</span><p>Sign and date each authority. Do not alter the wording.</p></div></div>
+    <div class="stage" style="border:0"><div class="sn"><small>Document</small><b>4</b></div><div><h4 style="margin-top:0">First instalment invoice</h4><p>A copy of the invoice issued when you accepted the proposal: $660 including GST, being 10 per cent of the $6,600 fixed fee. It counts toward the fee, not on top of it.</p></div><div class="need"><span class="tag">Your action</span><p>If you haven’t already, pay by the due date shown, using the payment details it lists.</p></div></div>
+  </div>
+  <div class="photo fill" style="height:720px"><img src="img/w-ute.jpg" alt=""></div>
+</section>
+
+<!-- 11 -->
+<section class="pg" data-n="11" data-crumb="06|Introducing your Client Portal">
+  <div class="sh"><span class="big">06</span><div><span class="k">Introducing your Client Portal</span><h2>One secure place where you and Aynub share everything.</h2></div></div>
+  <div class="rule"></div>
+  <p class="lead" style="font-size:19.5px">We use a secure Client Portal, built for financial advice, as the single place where you and Aynub share information. It replaces emailing sensitive documents back and forth and, once your accounts are linked, it gives you a current view of your financial position rather than a snapshot that is out of date by the time you read it. Everything you send us, and everything we send you, sits behind your own login and stays available to you for as long as you are a client.</p>
+  <div class="gs side"><div><span class="tag">Getting started</span><b style="display:block;margin-top:8px;font-size:18px;line-height:1.4">Four steps to switch it on.</b></div><div>
+    <p style="font-size:16.5px;line-height:1.6;color:var(--ink);margin-bottom:10px">You will receive an email invitation to the Client Portal shortly after you return this pack. To activate your account:</p>
+    <div class="st"><b>01</b><p>Open the invitation and set your own password, which we never see.</p></div>
+    <div class="st"><b>02</b><p>Complete the required multi-factor authentication (MFA) setup when prompted. Choose one of the verification methods offered by the Client Portal.</p></div>
+    <div class="st"><b>03</b><p>Download the app from the App Store or Google Play, or simply use a web browser. Your information is the same in both.</p></div>
+    <div class="st"><b>04</b><p>As you are receiving advice as a couple, we’ll invite each of you to set up your own login to your shared household view.</p></div></div></div>
+  <div class="three"><div><small>Your login</small><b>Your password, your phone, your view.</b></div><div><small>For couples</small><b>Two logins, one household picture.</b></div><div><small>For life</small><b>Yours for as long as you’re a client.</b></div></div>
+</section>
+
+<!-- 12 -->
+<section class="pg" data-n="12" data-crumb="06|Introducing your Client Portal">
+  <div style="margin-top:40px"><span class="sh" style="padding:0;display:block"><span class="k">What you can use it for</span><h2 style="font-size:32px">The portal does a lot more than store files.</h2></span><p class="body" style="margin-top:12px">These are the features new clients tend to use first.</p></div>
+  <div class="feat"><div class="fh"><span>Feature</span><span>What it means for you</span></div>
+    <div class="fr"><b>Secure document vault</b><p>Store and share statements, insurance policies, tax documents and your Will in one place, reachable from any device.</p></div>
+    <div class="fr"><b>Digital signing</b><p>Sign forms and authorities electronically, with no printing, scanning or posting.</p></div>
+    <div class="fr"><b>Digital forms and fact finds</b><p>Complete the Getting to Know You form and other questionnaires online, so your answers flow straight through to us.</p></div>
+    <div class="fr"><b>Live balance sheet</b><p>Link bank, loan, super and investment accounts for a current view of your position, with property values kept up to date by data feed.</p></div>
+    <div class="fr"><b>Budgets and goals</b><p>Track your cash flow, set financial goals and watch progress against them between reviews.</p></div></div>
+  <div class="side" style="margin-top:34px"><b style="font-size:18px">Keeping your information safe</b><p style="font-size:17px;line-height:1.7">The portal stores your documents with 256-bit encryption, and access is protected by your password and mandatory multi-factor authentication. Please upload financial documents, and identification if we ask for a copy, through the portal rather than sending them by email.</p></div>
+  <div class="gs side" style="margin-top:40px"><span class="tag">Heads up</span><div><h4 style="font-size:22px;font-weight:700;color:var(--ink)">If something looks wrong</h4>
+    <p style="margin-top:10px;font-size:17px;line-height:1.66;color:var(--ink)">If you ever receive a message asking you to log in through an unfamiliar link, don’t click it. Open the app or type the address yourself, and call us on <b>(07) 5550 1240</b> if anything looks wrong.</p>
+    <p style="margin-top:10px;font-size:17px;line-height:1.66;color:var(--ink)">If your invitation hasn’t arrived within a few days, check your junk folder first, then contact Aynub and we’ll re-send it.</p></div></div>
+</section>
+
+<!-- 13 -->
+<section class="pg" data-n="13" data-crumb="07|Your identification documents">
+  <div class="sh"><span class="big">07</span><div><span class="k">Your identification documents</span><h2>Verifying your identity before we can act.</h2></div></div>
+  <div class="rule"></div>
+  <p class="lead" style="font-size:19.5px">Because we arrange financial products for clients, we’re required to identify you and verify your identity under the <i>Anti-Money Laundering and Counter-Terrorism Financing Act 2006</i> before we do so. Where possible we verify your details electronically; otherwise, our process usually means providing either:</p>
+  <div class="opts">
+    <div class="box s"><span class="tag m">Option one</span><span class="nb">1</span><h4>One current photographic document</h4><p>An Australian passport, an Australian driver licence, or a state or territory proof of age card.</p></div>
+    <span class="or">or</span>
+    <div class="box s"><span class="tag m">Option two</span><span class="nb">2</span><h4>Non-photographic documents</h4><p>If you don’t have photo ID, we’ll confirm which combination we can accept. This may be a full birth certificate or citizenship certificate, together with a recent document showing your current residential address, such as a utility or council rates notice.</p></div>
+  </div>
+  <p class="body" style="margin-top:34px;font-size:17.5px">You can bring the originals to your discovery meeting for us to sight, or upload clear colour scans through the Client Portal. We record the details we need (your name, date of birth and address, the document type and number, and how we verified it) rather than keeping full copies of your documents. Please don’t send identification as an unencrypted email attachment.</p>
+  <div class="side" style="margin-top:30px;padding-top:24px;border-top:1px solid var(--line)"><b style="font-size:18px">Partners and entities</b><p style="font-size:17.5px;line-height:1.7">We’ll need identification for each of you and, where we act for your self-managed super fund, for the fund and its trustee as well.</p></div>
+</section>
+
+<!-- 14 -->
+<section class="pg" data-n="14" data-crumb="07|Your identification documents">
+  <div style="margin-top:40px"><span class="k" style="font-size:17px;color:var(--grey)">Certified copies</span><h3 style="margin-top:8px;font-size:32px">Who can certify your documents</h3></div>
+  <div class="rule"></div>
+  <p class="body" style="margin-top:24px;font-size:17px">If we ask you for certified copies, for example because we can’t sight your originals or verify them electronically, a certifier sights the original, then writes on the copy that it is a true copy of the document they have seen, and signs and dates it with their name, their occupation and, where they have one, their registration or membership number. They cannot certify their own documents, and they should not certify for a close family member.</p>
+  <h3 style="margin-top:30px;font-size:19px">Examples of people who can usually certify · please check with us first</h3>
+  <ul class="dots cols2">
+    <li>a Justice of the Peace, or a bail justice</li>
+    <li>a legal practitioner, a notary public, or a judge, magistrate, registrar or deputy registrar of a court</li>
+    <li>a police officer</li>
+    <li>an accountant who is a member of CPA Australia, Chartered Accountants ANZ or the Institute of Public Accountants with at least two years of continuous membership</li>
+    <li>an officer of a bank, building society, credit union or finance company with at least two years of continuous service, or an agent of the Australian Postal Corporation who supplies postal services to the public</li>
+    <li>a permanent employee of Australia Post with at least two years of continuous service</li>
+    <li>a medical practitioner, dentist, pharmacist, nurse, optometrist, physiotherapist, chiropractor, psychologist or veterinary surgeon</li>
+    <li>a full-time teacher at a school or tertiary education institution</li>
+    <li>a member of the Commonwealth, a State or a Territory Parliament, or of a local government authority</li>
+    <li>an Australian consular officer or diplomatic officer, if you are overseas</li></ul>
+  <div class="cert"><img src="img/w-court.jpg" alt=""><div><h4>If none of these is convenient</h4><p>Some Australia Post outlets and pharmacies may certify documents; check availability and any fee first. Call us on (07) 5550 1240 if you’re unsure whether someone qualifies, or if you’re overseas and none of these options is available to you.</p></div></div>
+</section>
+
+<!-- 15 -->
+<section class="pg" data-n="15" data-crumb="08|Your fees and the first instalment">
+  <div class="sh"><span class="big">08</span><div><span class="k">Your fees and the first instalment</span><h2>Agreed up front, payable in instalments.</h2></div></div>
+  <div class="rule"></div>
+  <div class="fees">
+    <div class="stat"><span class="tag">First instalment · invoiced on acceptance</span><div class="v">10%</div><p>$660 of the $6,600 fixed fee, incl. GST</p></div>
+    <div class="stat"><span class="tag">Balance</span><b class="t">The remaining 90%, $5,940 incl. GST, payable on presentation of your Statement of Advice.</b></div>
+    <div class="stat"><span class="tag">Scope changes</span><b class="t">Confirmed with you in writing before any extra work.</b><p>In dollars. Always.</p></div>
+  </div>
+  <p class="body" style="margin-top:34px;font-size:17.5px">Your fixed advice fee of $6,600 including GST was set out in your Advice Proposal of August 2026. It is payable in two instalments. The first, being 10 per cent ($660), was invoiced when you accepted the proposal and covers the initial research and data-gathering work that begins as soon as your forms are returned.</p>
+  <p class="body" style="font-size:17.5px">The balance, being the remaining 90 per cent ($5,940), becomes payable on presentation of the Statement of Advice. The fee does not vary with any product we recommend, and the due date of the first instalment is shown on its invoice.</p>
+  <p class="body" style="font-size:17.5px">If the scope of the advice changes at any point and the fee changes with it, we will confirm that with you in writing before any additional work is carried out.</p>
+  <div class="photo fill" style="height:420px"><img src="img/w-wattle.jpg" alt=""></div>
+</section>
+
+<!-- 16 -->
+<section class="pg" data-n="16" data-crumb="09|Privacy">
+  <div class="sh"><span class="big">09</span><div><span class="k">Privacy</span><h2>How we protect your information.</h2></div></div>
+  <div class="rule"></div>
+  <div class="box g" style="margin-top:30px"><p style="font-size:18.5px;line-height:1.66;color:var(--ink)">Aynub Financial is bound by the <i>Privacy Act 1988</i> (Cth) and the Australian Privacy Principles. This statement explains what we collect, why we collect it, and the controls we place around it.</p></div>
+  <div style="margin-top:10px">
+    <div class="priv"><span class="tag">What we collect</span><p>To give advice that meets the best interests duty we need a detailed picture of your circumstances. That typically includes your name, date of birth and contact details; identification documents; your income, spending, assets, debts and super; existing insurance policies and investments; your goals, timeframes and attitude to risk; and, where it is directly relevant to a recommendation, health and family information. We collect this from you through the forms in this pack and our meetings, and from third parties where you have authorised us to ask.</p></div>
+    <div class="priv"><span class="tag">How we use it</span><p>We use your information to prepare, present, implement and review your advice, and to meet our obligations under the Corporations Act, the AML/CTF Act and taxation law. We also retain it to meet the record-keeping requirements that apply to financial advice businesses. We do not sell your information, and we do not make it available to third parties for marketing.</p></div>
+    <div class="priv" style="border:0"><span class="tag">Who we share it with</span><p>We disclose only what is necessary, and only to parties involved in delivering your advice: product and platform providers, insurers, fund managers, our compliance and audit providers, and our own professional advisers, together with your accountant or solicitor where you have asked us to work with them. Some providers may store data outside Australia; where that is the case we take reasonable steps to satisfy ourselves that comparable protections apply. We will not disclose your information to anyone else without your consent unless the law compels us to.</p></div>
+  </div>
+</section>
+
+<!-- 17 -->
+<section class="pg" data-n="17" data-crumb="09|Privacy">
+  <div style="margin-top:24px">
+    <div class="priv"><span class="tag">How we protect it</span><p>Your records are held in access-controlled systems protected by multi-factor authentication, and access is limited to the team members who need it to do their work. Paper documents are stored securely, digitised and then destroyed once they are no longer needed. We keep each type of record for the period the law sets for it: advice records generally for seven years, and identity-verification records for seven years after our relationship with you ends. In line with the 2026 AML/CTF reforms, we keep the identity details and how we verified them, not full copies of your identity documents. After that, records are securely destroyed or de-identified. If a data breach occurs that is likely to cause you serious harm, we will notify you and the Office of the Australian Information Commissioner under the Notifiable Data Breaches scheme.</p></div>
+    <div class="priv"><span class="tag">Accessing or correcting your information</span><p>You may ask to see the information we hold about you, and to have anything inaccurate corrected, at any time. Write to Mara Holloway at <b>mara@aynub.com</b> and we will respond within 30 days.</p></div>
+    <div class="priv" style="border:0"><span class="tag">If you’re unhappy</span><p>If you are unhappy with the way we have handled your information, please tell us first so that we can put it right. Our Complaints Policy at <b>aynub.com/complaints</b> explains how we handle every complaint. If you remain dissatisfied, you can refer the matter to the Office of the Australian Information Commissioner at oaic.gov.au, or to the Australian Financial Complaints Authority (AFCA).</p></div>
+  </div>
+  <div class="afca"><div class="h">Australian Financial Complaints Authority (AFCA)<small>Free · fair · independent</small></div>
+    <div class="g"><div><small>Online</small><span>www.afca.org.au</span></div><div><small>Phone</small><span>1800 931 678</span></div><div><small>Email</small><span>info@afca.org.au</span></div><div><small>Post</small><span>GPO Box 3<br>Melbourne VIC 3001</span></div></div></div>
+  <div class="gs side" style="margin-top:26px"><span class="tag">Your consent</span><div><p style="font-size:16.5px;line-height:1.66;color:var(--ink)">By completing and returning the forms in this pack you consent to us collecting, holding, using and disclosing your information as described above. You may withdraw optional consents at any time, although doing so may mean we can no longer provide advice. Our legal duties to verify identity and keep records continue regardless.</p><p style="margin-top:14px;font-size:19px;font-weight:700;color:var(--ink)">Your information, <span style="color:var(--plum)">kept plainly safe.</span></p></div></div>
+</section>
+
+<!-- 18 -->
+<section class="pg" data-n="18" data-crumb="10|Your checklist">
+  <div class="sh"><span class="big">10</span><div><span class="k">Your checklist</span><h2>Six things before your next meeting.</h2><p class="sub">Having these ready keeps your plan on schedule.</p></div></div>
+  <div class="rule"></div>
+  <div class="ck ck1"><div class="ch"><span>No.</span><span>Before your next meeting</span><span style="text-align:center">Done</span></div>
+    <div class="cr"><span class="nb">01</span><span>Complete and sign the Getting to Know You form</span><i></i></div>
+    <div class="cr"><span class="nb">02</span><span>Complete the Risk Profile Questionnaire, with each person receiving advice completing their own</span><i></i></div>
+    <div class="cr"><span class="nb">03</span><span>Sign the Third Party Authorities so we can request information from your existing providers</span><i></i></div>
+    <div class="cr"><span class="nb">04</span><span>Provide written consent for us to contact your accountant and/or mortgage broker, if applicable</span><i></i></div>
+    <div class="cr"><span class="nb">05</span><span>Pay the first instalment invoice ($660, 10 per cent of the fixed fee), if you haven’t already</span><i></i></div>
+    <div class="cr"><span class="nb">06</span><span>Provide your identification using the verification method we confirm with you</span><i></i></div></div>
+  <div class="side" style="margin-top:30px;align-items:center"><span style="height:4px;border-radius:2px;background:var(--plum)"></span><b style="font-size:20px">Then we book your discovery meeting</b></div>
+  <div class="photo fill" style="height:400px"><img src="img/w-yards.jpg" alt=""></div>
+</section>
+
+<!-- 19 -->
+<section class="pg" data-n="19" data-crumb="10|Your checklist">
+  <div style="margin-top:40px"><span class="k" style="font-size:17px;color:var(--grey)">Document checklist</span><h3 style="margin-top:8px;font-size:32px">Whatever you can share, to get started.</h3></div>
+  <div class="rule"></div>
+  <p class="body" style="margin-top:22px;font-size:16.5px">Upload as many of these documents as you like to get the ball rolling, or whatever you feel comfortable providing at this early stage. Over the coming weeks our conversations will gather this information to bring your plan to life. Any gaps we can fill together, so don’t feel pressured to provide everything below if you don’t have time.</p>
+  <p class="body" style="font-size:16.5px">In most cases we can obtain many of these documents directly from your provider once the Third Party Authorities are lodged. For anything relating to tax statements or company information, we can obtain that directly from your accountant if you give us authority to speak with them. Tick “Applicable” and note that it is with your accountant.</p>
+  <div class="ck"><div class="ch"><b>Welcome pack returns</b><span>Applicable</span><span>Not applicable</span></div><div class="cr"><span>Completed and signed Getting to Know You (GTKY) form</span><i></i><i></i></div><div class="cr"><span>Completed Risk Profile Questionnaire, one per person receiving advice</span><i></i><i></i></div><div class="cr"><span>Signed Third Party Authorities</span><i></i><i></i></div><div class="cr"><span>Identification, provided using the verification method we confirm with you</span><i></i><i></i></div></div>
+  <div class="ck"><div class="ch"><b>Assets</b><span>Applicable</span><span>Not applicable</span></div><div class="cr"><span>Statements for bank, offset, term deposit and cash management accounts</span><i></i><i></i></div><div class="cr"><span>Purchase details for your primary residence</span><i></i><i></i></div><div class="cr"><span>Investment property purchase information and rental statements</span><i></i><i></i></div><div class="cr"><span>Shares, ETFs, managed funds and other investments: holdings and purchase prices, or the SRN or HIN so we can source them directly</span><i></i><i></i></div></div>
+</section>
+
+<!-- 20 -->
+<section class="pg" data-n="20" data-crumb="10|Your checklist">
+  <div style="margin-top:10px"><div class="ck"><div class="ch"><b>Liabilities</b><span>Applicable</span><span>Not applicable</span></div><div class="cr"><span>Home loan statements showing balances and interest rates</span><i></i><i></i></div><div class="cr"><span>Investment debt statements, including margin loans</span><i></i><i></i></div><div class="cr"><span>Business financial statements, including any dividends</span><i></i><i></i></div></div><div class="ck"><div class="ch"><b>Superannuation</b><span>Applicable</span><span>Not applicable</span></div><div class="cr"><span>Latest super statement and current online balance</span><i></i><i></i></div><div class="cr"><span>Contribution history from the ATO, available online or through the app</span><i></i><i></i></div><div class="cr"><span>Current defined benefit statement</span><i></i><i></i></div></div><div class="ck"><div class="ch"><b>Retirement income</b><span>Applicable</span><span>Not applicable</span></div><div class="cr"><span>Latest account-based pension statement and payment details</span><i></i><i></i></div><div class="cr"><span>Statement for any other pension or annuity, including overseas pensions</span><i></i><i></i></div><div class="cr"><span>Current Centrelink or DVA statement and concession card details</span><i></i><i></i></div></div><div class="ck"><div class="ch"><b>Insurance</b><span>Applicable</span><span>Not applicable</span></div><div class="cr"><span>Current policy schedules for cover held outside super</span><i></i><i></i></div></div></div>
+  <div class="gs side" style="margin-top:30px"><span class="tag">Not sure?</span><div><h4 style="font-size:22px;font-weight:700;color:var(--ink)">Leave it blank and ask us.</h4><p style="margin-top:8px;font-size:17px;line-height:1.66;color:var(--ink)">Any gaps we can fill together at your discovery meeting. Call <b>(07) 5550 1240</b> or email <b>hello@aynub.com</b>.</p></div></div>
+</section>
+
+<!-- 21 -->
+<section class="pg end" data-n="21">
+  <div class="hero"><div><span class="k2">Any questions</span><h1>We’re glad you’re here, and we’re looking forward to getting started.</h1></div><div class="photo"><img src="img/w-notebook.jpg" alt=""></div></div>
+  <div class="contact"><div><small>Email</small><b>hello@aynub.com</b></div><div><small>Online</small><b>aynub.com</b></div><div><small>Kingaroy</small><b>(07) 5550 1240</b></div><div><small>Post</small><b>PO Box 128, Kingaroy QLD 4610</b></div></div>
+  <div class="sign"><img src="../aynub-lockup-financial-on-light.png" alt="Aynub Financial"><h4>Plan backwards. Live forwards. <em>Money, plainly.</em></h4>
+    <p>Aynub Financial is a fictional practice created to demonstrate our documents. It holds no ABN or Australian Financial Services Licence, and nothing here is financial advice. In a live pack, complaints are handled under the practice’s Complaints Policy, with AFCA (1800 931 678) as the external option.<br>Fictional client example · For demonstration purposes only</p>
+    <div class="bot"><span>Welcome &amp; onboarding pack · 21 of 21</span><span>aynub.com</span></div></div>
+</section>
+
+<script>
+/* running head, page foot, and Plex figures for every number in the text */
+document.querySelectorAll('.pg[data-crumb]').forEach(function (p) {
+  var c = p.dataset.crumb.split('|'), n = +p.dataset.n;
+  p.insertAdjacentHTML('afterbegin', '<div class="ph"><img src="../aynub-lockup-financial-on-light.png" alt=""><div class="crumb"><span><em>' + c[0] + '</em>' + c[1] + '</span></div></div>');
+  p.insertAdjacentHTML('beforeend', '<div class="pf"><span>Welcome &amp; onboarding pack</span><span>Fictional client example · For demonstration purposes only</span><span class="pn">' + String(n).padStart(2, '0') + '<small>of</small>21</span></div>');
+});
+var skip = /\b(n|nb|big|v|bv|pn|of)\b/;
+var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT), t, list = [];
+while ((t = w.nextNode())) { if (/\d/.test(t.data)) list.push(t); }
+list.forEach(function (t) {
+  for (var e = t.parentNode; e && e !== document.body; e = e.parentNode) if (e.classList && skip.test(e.className) || e.tagName === 'SCRIPT') return;
+  var s = document.createElement('span');
+  s.innerHTML = t.data.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/(\$?\d[\d,.]*%?)/g, '<span class="n">$1</span>');
+  t.replaceWith.apply(t, [].slice.call(s.childNodes));
+});
+</script>
+</body>
+</html>

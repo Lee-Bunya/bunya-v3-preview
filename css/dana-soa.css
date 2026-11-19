@@ -1,0 +1,8 @@
+/* SOA generator, Dana 19 Nov 2026: the two-page SOA reader (stage, bar, tags and rail come from css/dana-rp.css). */
+.sx .soa-spread{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.sx .soa-pg{border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 20px 40px rgba(0,0,0,.28);aspect-ratio:1100/1556}
+.sx .soa-pg img{display:block;width:100%;height:100%;object-fit:cover}
+.sx .soa-pg img.in{animation:rp-in .5s ease}
+.sx .soa-th{width:96px}
+.sx .soa-th img{aspect-ratio:1100/1556}
+@media (max-width:640px){.sx .soa-spread{gap:8px}.sx .soa-th{width:72px}}

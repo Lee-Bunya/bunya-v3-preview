@@ -1,0 +1,83 @@
+/* Aynub Financial document system (Dana, 19 Nov 2026). Shared by every Aynub document source in this folder
+   (soa.html, welcome.html, value.html, sustainable.html, portfolio.html, proposal.html, email.html), so they all match the
+   annual review deck: Sora for text, IBM Plex Sans (tabular figures) for every number, plum + green, roomier rows.
+   Portrait pages are 1100 x 1556; render.mjs photographs each .pg at 2x. Aynub Financial is fictional. */
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
+:root{
+  --plum:#772A53; --plum-d:#5C1F40; --plum-t:#F4EAEF;
+  --green:#5C8A64; --green-d:#3E6B49; --green-t:#E5EDE2; --green-l:#A8C79E;
+  --sand:#F6F4EF; --beige:#CFC8BC; --ink:#26222C; --text:#3B3640; --grey:#6A6470; --line:#E6E2DB;
+  --num:"IBM Plex Sans","Sora",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#888;font-family:"Sora",sans-serif;color:var(--text);-webkit-font-smoothing:antialiased}
+.pg{position:relative;width:1100px;height:1556px;margin:0 auto 40px;padding:56px 105px 0;background:#fff;overflow:hidden;display:flex;flex-direction:column}
+.n{font-family:var(--num);font-weight:500;font-variant-numeric:tabular-nums lining-nums;letter-spacing:-.01em}
+:is(p,li,span,b,td,small,strong,div) > .n{font-size:1.07em}
+b,strong{font-weight:600;color:var(--ink)}
+
+/* running head */
+.ph{display:flex;align-items:center;justify-content:space-between;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.ph img{height:36px}
+.ph .crumb{display:flex;align-items:center;gap:16px;font-size:17px;color:var(--grey)}
+.ph .crumb span{padding-left:16px;border-left:1.5px solid var(--line);font-weight:600;color:var(--ink)}
+.ph .crumb span em{font-style:normal;font-family:var(--num);font-weight:600;color:var(--plum);margin-right:6px}
+
+/* section head */
+.sh{display:grid;grid-template-columns:215px 1fr;gap:0;align-items:start;padding-top:40px}
+.sh .big{font-family:var(--num);font-weight:600;font-size:96px;line-height:.9;letter-spacing:-.05em;color:var(--plum)}
+.sh .k{display:block;font-size:17px;font-weight:500;color:var(--grey);margin-top:4px}
+.sh h2{margin-top:10px;font-size:38px;line-height:1.15;font-weight:700;letter-spacing:-.025em;color:var(--ink)}
+.sh .sub{margin-top:16px;font-size:20px;line-height:1.65;color:var(--text)}
+.rule{position:relative;height:1px;margin-top:30px;background:var(--line)}
+.rule::before{content:"";position:absolute;left:0;top:-2px;width:178px;height:4px;border-radius:2px;background:var(--plum)}
+
+/* text */
+.lead{margin-top:34px;font-size:22px;line-height:1.65;color:var(--ink)}
+.body{margin-top:20px;font-size:18.5px;line-height:1.78}
+.body + .body{margin-top:14px}
+h3{margin-top:44px;font-size:24px;font-weight:700;letter-spacing:-.015em;color:var(--ink)}
+.dots{list-style:none;display:grid;gap:18px}
+.dots li{position:relative;padding-left:28px;font-size:18px;line-height:1.7}
+.dots li::before{content:"";position:absolute;left:2px;top:12px;width:9px;height:9px;border-radius:50%;background:currentColor;opacity:.7}
+.dots.o li::before{background:none;box-shadow:inset 0 0 0 1.5px currentColor}
+
+/* boxes */
+.box{padding:30px 32px;border-radius:14px;background:var(--sand)}
+.box.p{background:var(--plum-t);box-shadow:inset 0 5px 0 var(--plum)}
+.box.g{background:var(--green-t);box-shadow:inset 0 5px 0 var(--green)}
+.box.s{box-shadow:inset 0 5px 0 var(--beige)}
+.box.l{box-shadow:inset 5px 0 0 var(--plum)}
+.tag{display:block;font-size:17px;font-weight:600;color:var(--plum)}
+.tag.g{color:var(--green-d)}
+.tag.m{color:var(--grey);font-weight:500}
+.split{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:start}
+
+/* numbered rows */
+.rows{margin-top:38px;display:grid;gap:12px}
+.row{display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:start;padding:28px 30px;border-radius:14px}
+.row:nth-child(odd){background:var(--sand)}
+.row .nb{font-family:var(--num);font-weight:600;font-size:46px;line-height:1;color:var(--plum)}
+.row p{font-size:19px;line-height:1.72}
+.row .lab{font-size:17px;font-weight:600;color:var(--ink);line-height:1.4}
+.row .lab .nb{display:block;margin-top:10px;font-size:52px}
+
+/* stats */
+.stats{display:grid;gap:22px;margin-top:auto;padding-bottom:30px}
+.stat{padding-top:22px;border-top:5px solid var(--beige)}
+.stat .tag{color:var(--ink);font-weight:500}
+.stat .v{display:flex;align-items:baseline;gap:8px;margin-top:10px;font-family:var(--num);font-weight:600;font-size:56px;line-height:1;letter-spacing:-.03em;color:var(--plum)}
+.stat .v small{font-family:"Sora";font-size:17px;font-weight:500;letter-spacing:0;color:var(--text)}
+.big-v{font-family:var(--num);font-weight:600;font-size:72px;line-height:1;letter-spacing:-.04em}
+
+/* page foot */
+.pf{display:flex;align-items:center;gap:28px;height:78px;margin-top:auto;border-top:1px solid var(--line);font-size:16px;color:var(--grey)}
+.pf .pn{margin-left:auto;font-family:var(--num);font-weight:600;color:var(--ink)}
+.pf .pn small{font-family:"Sora";font-size:14px;font-weight:500;color:var(--grey);margin:0 4px}
+.grow{flex:1}
+
+/* photos: white mat, thin plum line, soft shadow */
+.photo{position:relative;padding:10px;border-radius:20px;background:#fff;box-shadow:0 0 0 1.5px var(--plum),0 26px 50px -22px rgba(38,34,44,.35)}
+.photo img{display:block;width:100%;height:100%;object-fit:cover;border-radius:12px}
+
+.stats ~ .pf{margin-top:26px}
