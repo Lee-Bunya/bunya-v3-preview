@@ -35,3 +35,7 @@
 .sx .bm-fan:hover .bm-doc.r1{transform:rotate(7deg) translateX(4%)}
 .sx .bm-fan:hover .bm-doc.r2{transform:rotate(11deg) translate(3%,2%)}
 @media (max-width:760px){.sx .bm-doc.r1{right:4%}}
+/* readable names and hex codes on the darker swatches */
+.sx .pp-kit .sw > span.bm-dk b{color:#fff!important}
+.sx .pp-kit .sw > span.bm-dk small{color:rgba(255,255,255,.85)!important}
+.sx .pp-kit .sw > span:not(.bm-dk) small{color:rgba(42,34,48,.78)!important}

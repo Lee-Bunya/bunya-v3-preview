@@ -7,7 +7,7 @@
   if (!docs) return;
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var N = 21, cur = 1, auto = !reduce, tv = null, vis = false;
-  function src(n) { return 'assets/aynub/docs/soa/' + n + '.webp?v=4'; }
+  function src(n) { return 'assets/aynub/docs/soa/' + n + '.webp?v=5'; }
   var view = document.createElement('div');
   view.className = 'rp-view soa-view';
   var thumbs = ''; for (var i = 1; i <= N; i++) thumbs += '<button type="button" class="rp-th soa-th" data-n="' + i + '" aria-label="Show page ' + i + ' of ' + N + '"><img src="' + src(i) + '" alt="" loading="lazy"><span>' + i + '</span></button>';
