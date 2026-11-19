@@ -401,3 +401,11 @@ html body.dx-feat .hb-tkb.pp-tk:focus-visible{outline:2px solid #11B8B1;outline-
 .sx .pp-feat .pp-fn{display:flex;align-items:center;gap:8px;margin-top:14px;padding:0;background:none;color:#3E5655;font-size:14px;font-weight:500}
 .sx .pp-feat .pp-fn::before{content:"";flex:none;width:22px;height:22px;border-radius:7px;background:#E6F7F5 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A7D79' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7'/%3E%3Cpath d='M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7'/%3E%3C/svg%3E") center/13px no-repeat}
 @media (max-width:760px){.sx .pp-feat{grid-template-columns:1fr}.sx .pp-feat .pp-film video{transform:scale(1.18)!important}}
+
+/* steps share the row evenly (3 or 4 cards) */
+.dx-feat .hb-how:not(.dx-tl){grid-template-columns:repeat(var(--n,4),minmax(0,1fr))}
+@media (max-width:900px){.dx-feat .hb-how:not(.dx-tl){grid-template-columns:1fr}}
+/* hero intro, one sentence per line where it fits */
+@media (min-width:1000px){.dx-feat .pp-hero > p.dx-lines{max-width:none}.dx-feat .pp-hero > p.dx-lines .dx-line{display:block;white-space:nowrap}}
+
+@media (min-width:901px){.dx-feat .pp-incl{grid-template-columns:repeat(var(--c,4),minmax(0,1fr))}}

@@ -186,6 +186,8 @@
       portal: 'Your Bunya Portal. <span>Everything in one place.</span>', compare: 'Support that <span>keeps you moving.</span>', faq: 'Questions, <span>answered.</span>' },
     'bunya-shape': { how: 'Ask for it. <span>Approve it. Use it.</span>', foundation: 'Built on your record. <span>Not beside it.</span>',
       compare: 'Less waiting. <span>More building.</span>', included: 'Everything <span>you can shape.</span>', faq: 'Questions, <span>answered.</span>' },
+    'fact-find': { how: 'Gathered once. <span>Checked by your adviser.</span>', compare: 'Ask once. <span>Not twice.</span>',
+      included: 'Everything <span>in the fact find.</span>', faq: 'Questions, <span>answered.</span>' },
     'advice-engine': { features: 'Pick the features. <span>Pay only for those.</span>', how: 'From fact find <span>to signed advice.</span>',
       close: 'Every step, <span>ready to check.</span>', compare: 'From a blank page <span>to a drafted SOA.</span>', included: 'Everything <span>in the Advice Engine.</span>', faq: 'Questions, <span>answered.</span>' }
   };
@@ -222,6 +224,7 @@
     },
     'bunya-shape': { hidePoints: true, pillars: 'foundation' },
     'advice-engine': { hidePoints: true },
+    'fact-find': { hidePoints: true, heroLines: true },
     'care': {
       hidePoints: true, tiers: 'levels', tipSec: 'portal',
       tips: [['chart', '2 on track, 1 planned', 'Release 2 in build, Review Packs in testing.'], ['find', 'Answers show their sources', 'Meeting summaries, the roadmap and your requests.'],
@@ -277,4 +280,13 @@
 
   /* sections that list qualities, not steps (e.g. Shape's foundation): no step numbers or connecting line */
   if (cfg && cfg.pillars) { var pl = document.querySelector('#' + cfg.pillars + ' .hb-how'); if (pl) pl.classList.add('dx-pillars'); }
+
+  /* steps fill the row whether there are 3 or 4 of them */
+  [].forEach.call(document.querySelectorAll('.hb-how'), function (ol) { ol.style.setProperty('--n', ol.children.length); });
+  /* hero intro: one sentence per line on wide screens */
+  var hp = document.querySelector('.pp-hero > p:not(.pp-ms)');
+  if (hp && cfg && cfg.heroLines) { var parts = hp.textContent.trim().split(/(?<=\.)\s+/); if (parts.length > 1) { hp.innerHTML = parts.map(function (x) { return '<span class="dx-line">' + x + '</span>'; }).join(' '); hp.classList.add('dx-lines'); } }
+
+  /* "Included" cards: even rows (5 across, or 6 as two rows of 3) */
+  [].forEach.call(document.querySelectorAll('.pp-incl'), function (g) { var n = g.children.length; g.style.setProperty('--c', n <= 5 ? n : Math.ceil(n / 2)); });
 })();

@@ -1,0 +1,40 @@
+/* Fact find, Dana 19 Nov 2026. Goes with js/dana-ff.js; reuses the app frame, rows, pills and toast from css/dana-rp.css. No yellow. */
+.sx .ff-hidden{display:none!important}
+.sx .ff-scene{position:relative;text-align:left}
+.sx .ff-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:16px;align-items:start}
+.sx .ff-row{opacity:.28;transition:opacity .5s,background .5s;margin:0 -10px;padding-left:14px;padding-right:14px;border-radius:12px}
+.sx .ff-row.in{opacity:1}
+.sx .ff-row .rf-nm small{display:block;margin:0 0 3px;font-size:12.5px;color:#5A7271}
+.sx .ff-row .rf-nm b{font-size:16.5px}
+.sx .ff-row:not(.in) .rf-nm b{color:transparent;background:#EEF4F4;border-radius:6px}
+.sx .ff-ic{display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:12px;background:#E6F7F5;color:#0A7D79}
+.sx .ff-ic svg,.sx .ff-src svg,.sx .ff-lock-i svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sx .ff-src{display:inline-flex;align-items:center;gap:7px;flex:none;padding:6px 11px;border-radius:999px;background:#F2F8F8;color:#0A7D79;font-size:12.5px;font-weight:600;opacity:0;transform:translateX(6px);transition:opacity .5s .2s,transform .5s .2s}
+.sx .ff-src svg{width:14px;height:14px}
+.sx .ff-row.in .ff-src{opacity:1;transform:none}
+.sx .ff-check{padding-bottom:16px}
+.sx .ff-flag{padding:14px 16px;border-radius:14px;background:#F6FAFA;box-shadow:inset 0 0 0 1.5px #DCE6E6;opacity:.3;transition:opacity .5s,box-shadow .5s,background .5s}
+.sx .ff-scene[data-s="5"] .ff-flag{opacity:1;box-shadow:inset 0 0 0 2px #013B43}
+.sx .ff-scene[data-s="6"] .ff-flag,.sx .ff-scene[data-s="7"] .ff-flag{opacity:1;background:#F2FBFA;box-shadow:inset 0 0 0 1.5px rgba(17,184,177,.5)}
+.sx .ff-flag-h{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sx .ff-flag-h b{font-size:16px;font-weight:600;color:#040F1D}
+.sx .ff-tag{padding:4px 10px;border-radius:999px;background:#013B43;color:#fff;font-size:12px;font-weight:600}
+.sx .ff-scene[data-s="6"] .ff-tag,.sx .ff-scene[data-s="7"] .ff-tag{background:#11B8B1;color:#040F1D}
+.sx .ff-cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 0}
+.sx .ff-cmp > span{padding:10px 12px;border-radius:10px;background:#fff;box-shadow:0 0 0 1px #E6EEEE}
+.sx .ff-cmp small{display:block;font-size:12px;color:#5A7271}
+.sx .ff-cmp b{display:block;margin-top:3px;font-size:18px;font-weight:600;color:#040F1D;font-variant-numeric:tabular-nums}
+.sx .ff-res{display:block;max-height:0;overflow:hidden;opacity:0;font-size:14px;color:#13363B;transition:max-height .5s,opacity .5s,margin .5s}
+.sx .ff-scene[data-s="6"] .ff-res,.sx .ff-scene[data-s="7"] .ff-res{max-height:40px;opacity:1;margin-top:12px}
+.sx .ff-lock{display:flex;align-items:center;gap:12px;margin-top:14px;padding:10px 12px 10px 10px;border-radius:14px;background:#EEF4F4;color:#7C8E8D;font-size:15px;font-weight:600;transition:background .5s,color .5s}
+.sx .ff-lock-i{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#fff;color:#7C8E8D;transition:background .5s,color .5s}
+.sx .ff-scene[data-s="6"] .ff-lock{background:#013B43;color:#fff}
+.sx .ff-scene[data-s="6"] .ff-lock-i{background:#8B7CF6;color:#fff}
+.sx .ff-scene[data-s="7"] .ff-lock{background:#11B8B1;color:#040F1D}
+.sx .ff-scene[data-s="7"] .ff-lock-i{background:#013B43;color:#fff}
+.sx .ff-scene[data-s="7"] .ff-toast{opacity:1;transform:none}
+@media (max-width:900px){.sx .ff-grid{grid-template-columns:1fr}}
+@media (max-width:640px){.sx .ff-src{display:none}}
+@media (prefers-reduced-motion:reduce){.sx .ff-scene *{transition:none!important}}
+/* "Or take the whole Advice Engine" panel: soft lift, no gradient wash */
+.dx-feat .pp-all{background:#F2F8F8!important;box-shadow:inset 0 0 0 1px rgba(10,125,121,.14)!important;border-radius:28px}
