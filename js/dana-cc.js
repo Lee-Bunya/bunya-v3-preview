@@ -159,3 +159,9 @@
   var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -6% 0px' });
   [].forEach.call(rv, function (e) { io.observe(e); });
 })();
+
+/* consistency pass (19 Nov 2026): the questions headline matches the feature pages */
+(function () {
+  var h = document.getElementById('h-faq');
+  if (h) h.innerHTML = 'Questions, <span>answered.</span>';
+})();

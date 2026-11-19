@@ -190,6 +190,8 @@
       included: 'Everything <span>in the fact find.</span>', faq: 'Questions, <span>answered.</span>' },
     'portfolio': { how: 'Every balance. <span>One view.</span>', compare: 'No more <span>re-keying holdings.</span>',
       included: 'Everything <span>in the portfolio.</span>', faq: 'Questions, <span>answered.</span>' },
+    'insurance-needs': { how: 'Need worked out. <span>Quotes side by side.</span>', compare: 'No more <span>calculators and retyping.</span>',
+      included: 'Everything <span>in the needs analysis.</span>', faq: 'Questions, <span>answered.</span>' },
     'advice-engine': { features: 'Pick the features. <span>Pay only for those.</span>', how: 'From fact find <span>to signed advice.</span>',
       close: 'Every step, <span>ready to check.</span>', compare: 'From a blank page <span>to a drafted SOA.</span>', included: 'Everything <span>in the Advice Engine.</span>', faq: 'Questions, <span>answered.</span>' }
   };
@@ -228,6 +230,7 @@
     'advice-engine': { hidePoints: true },
     'fact-find': { hidePoints: true, heroLines: true },
     'portfolio': { hidePoints: true },
+    'insurance-needs': { hidePoints: true },
     'care': {
       hidePoints: true, tiers: 'levels', tipSec: 'portal',
       tips: [['chart', '2 on track, 1 planned', 'Release 2 in build, Review Packs in testing.'], ['find', 'Answers show their sources', 'Meeting summaries, the roadmap and your requests.'],
@@ -292,4 +295,8 @@
 
   /* "Included" cards: even rows (5 across, or 6 as two rows of 3) */
   [].forEach.call(document.querySelectorAll('.pp-incl'), function (g) { var n = g.children.length; g.style.setProperty('--c', n <= 5 ? n : Math.ceil(n / 2)); });
+
+  /* closing headline: long feature names a size down so the name stays on one line */
+  var eh = document.querySelector('.sx-end h2');
+  if (eh && eh.firstChild && eh.firstChild.textContent.trim().length > 20) eh.classList.add('dx-long');
 })();

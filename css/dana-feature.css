@@ -409,3 +409,11 @@ html body.dx-feat .hb-tkb.pp-tk:focus-visible{outline:2px solid #11B8B1;outline-
 @media (min-width:1000px){.dx-feat .pp-hero > p.dx-lines{max-width:none}.dx-feat .pp-hero > p.dx-lines .dx-line{display:block;white-space:nowrap}}
 
 @media (min-width:901px){.dx-feat .pp-incl{grid-template-columns:repeat(var(--c,4),minmax(0,1fr))}}
+
+/* consistency pass: closing headlines break into two balanced lines, even with long feature names */
+.dx-feat .sx-end h2{max-width:none;text-wrap:balance}
+.dx-feat .sx-end h2 .sx-grad{display:block}
+.dx-feat .sx-end h2.dx-long{font-size:clamp(40px,5vw,72px)}
+
+/* consistency: every feature page intro at the same width */
+@media (min-width:900px){.dx-feat .pp-hero > p:not(.pp-ms):not(.dx-lines){max-width:860px;text-wrap:balance}}

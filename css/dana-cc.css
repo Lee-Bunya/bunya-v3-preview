@@ -263,3 +263,9 @@ html body.sx .sx-end .sx-btn::after{width:46px;height:46px;border-radius:11px;ba
 .sx .co-draft{font-size:14px;color:#3E5655}
 .sx .sx-end h2{max-width:18ch}
 .sx .sx-head p{color:#3E5655}
+
+/* consistency pass (19 Nov 2026): intro on three lines like the other pages */
+@media (min-width:900px){.sx .sx-hero > p{max-width:900px}}
+@media (min-width:900px){html body.sx .sx-hero > p{max-width:900px!important}}
+.sx .sx-end h2 .sx-grad{display:block}
+@media (min-width:1000px){html body.sx .sx-hero > p{max-width:1040px!important}}

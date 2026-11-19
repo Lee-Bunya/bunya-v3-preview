@@ -1,0 +1,45 @@
+/* Insurance needs, Dana 19 Nov 2026. Goes with js/dana-ins.js; reuses the app frame, pills and toast from css/dana-rp.css.
+   Cover in deep teal, the gap in quiet light teal: no glowing yellow. */
+.sx .in-hidden{display:none!important}
+.sx .in-scene{position:relative;text-align:left}
+.sx .in-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.sx .in-cta{display:inline-flex;align-items:center;gap:10px;flex:none;margin-top:18px;padding:8px 8px 8px 18px;border-radius:12px;background:#013B43;color:#fff;font-size:14.5px;font-weight:600;transition:box-shadow .4s}
+.sx .in-cta i{display:grid;place-items:center;width:28px;height:28px;border-radius:8px;background:#8B7CF6;font-style:normal}
+.sx .in-scene[data-s="3"] .in-cta{box-shadow:0 0 0 4px rgba(17,184,177,.3)}
+.sx .in-needs{padding-bottom:12px}
+.sx .in-who{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid #EEF4F4;flex-wrap:wrap}
+.sx .in-who b{font-size:17px;color:#040F1D}
+.sx .in-who small{font-size:13px;color:#5A7271}
+.sx .in-key{display:inline-flex;align-items:center;gap:6px;margin-left:auto;font-size:12.5px;color:#3E5655}
+.sx .in-key i{width:10px;height:10px;border-radius:3px;margin-left:8px}
+.sx .in-key i.c{background:#0A7D79}.sx .in-key i.g{background:#CFE6E3;box-shadow:inset 0 0 0 1px #A9D5D0}
+.sx .in-row{display:grid;grid-template-columns:150px minmax(0,1fr) 190px;gap:16px;align-items:center;padding:13px 0;border-bottom:1px solid #EEF4F4}
+.sx .in-row:last-child{border-bottom:0}
+.sx .in-t{font-size:15.5px;font-weight:500;color:#040F1D}
+.sx .in-bar{position:relative;height:14px;border-radius:99px;background:#CFE6E3;box-shadow:inset 0 0 0 1px #A9D5D0;transform-origin:left;transform:scaleX(0);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.sx .in-bar i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:99px;background:#0A7D79;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.sx .in-scene:not([data-s="0"]) .in-bar{transform:none}
+.sx .in-scene:not([data-s="0"]):not([data-s="1"]) .in-bar i{width:var(--w)}
+.sx .in-gap{position:absolute;left:58%;top:50%;transform:translate(-50%,-50%) scale(.8);display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;background:#fff;
+  box-shadow:0 0 0 1.5px #013B43,0 6px 14px rgba(1,43,51,.15);font-style:normal;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#013B43;opacity:0;transition:opacity .4s,transform .4s}
+.sx .in-gap b{font-size:15px;letter-spacing:0;text-transform:none}
+.sx .in-scene[data-s="3"] .in-gap,.sx .in-scene[data-s="4"] .in-gap,.sx .in-scene[data-s="5"] .in-gap{opacity:1;transform:translate(-50%,-50%)}
+.sx .in-v{text-align:right;font-size:14px;color:#5A7271}
+.sx .in-v b{font-size:16px;color:#040F1D}
+.sx .in-quotes{margin-top:16px}
+.sx .in-q{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:6px 0 8px}
+.sx .in-qc{position:relative;display:flex;align-items:center;gap:12px;padding:14px;border-radius:14px;background:#F2F8F8;box-shadow:inset 0 0 0 1px #E6EEEE;opacity:.25;transition:opacity .5s,box-shadow .5s,background .5s}
+.sx .in-scene[data-s="4"] .in-qc,.sx .in-scene[data-s="5"] .in-qc{opacity:1;background:#fff}
+.sx .in-scene[data-s="5"] .in-qc.best{box-shadow:inset 0 0 0 2px #11B8B1;background:#F2FBFA}
+.sx .in-ql{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:10px;background:#E6F7F5;color:#0A7D79;font-weight:700}
+.sx .in-qc b{display:block;font-size:15px;color:#040F1D}
+.sx .in-qc small{font-size:12.5px;color:#5A7271}
+.sx .in-qc strong{color:#040F1D;font-size:14px}
+.sx .in-best{position:absolute;top:-11px;left:50%;transform:translateX(-50%);padding:4px 10px;border-radius:999px;background:#11B8B1;color:#040F1D;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;opacity:0;transition:opacity .4s}
+.sx .in-scene[data-s="5"] .in-best{opacity:1}
+.sx .in-scene[data-s="3"] .in-toast,.sx .in-scene[data-s="4"] .in-toast,.sx .in-scene[data-s="5"] .in-toast{opacity:1;transform:none}
+@media (max-width:900px){.sx .in-row{grid-template-columns:110px minmax(0,1fr)}.sx .in-v{grid-column:1/-1;text-align:left}.sx .in-q{grid-template-columns:1fr}}
+@media (max-width:640px){.sx .in-top{flex-direction:column}.sx .in-cta{margin-top:0}}
+@media (prefers-reduced-motion:reduce){.sx .in-scene *{transition:none!important}}
+
+.sx .in-scene .rf-pause{top:auto;right:auto;bottom:14px;left:76px}
