@@ -183,7 +183,9 @@
       fees: 'Every consent, <span>renewed with its review.</span>', close: 'Your whole year, <span>ready ahead.</span>',
       compare: 'No more <span>night-before packs.</span>', faq: 'Questions, <span>answered.</span>' },
     'care': { how: 'Looked after, <span>every month.</span>', levels: 'Choose how much <span>we build with you.</span>',
-      portal: 'Your Bunya Portal. <span>Everything in one place.</span>', compare: 'Support that <span>keeps you moving.</span>', faq: 'Questions, <span>answered.</span>' }
+      portal: 'Your Bunya Portal. <span>Everything in one place.</span>', compare: 'Support that <span>keeps you moving.</span>', faq: 'Questions, <span>answered.</span>' },
+    'bunya-shape': { how: 'Ask for it. <span>Approve it. Use it.</span>', foundation: 'Built on your record. <span>Not beside it.</span>',
+      compare: 'Less waiting. <span>More building.</span>', included: 'Everything <span>you can shape.</span>', faq: 'Questions, <span>answered.</span>' }
   };
   var own = PAGE_HEADS[pg] || {};
   [].forEach.call(document.querySelectorAll('.hb-d > h2.hb-dl'), function (h) {
@@ -216,6 +218,7 @@
         ['find', '4 changes · 2 questions', 'The questions to ask are ready for the meeting.'], ['pen', 'Super up to $668k', 'And last year’s advice: 3 of 3 done.']],
       chips: ['Updated from client dates', 'Drafted by Bunya · client services checks', 'Gathered by Bunya · for Alex to check', 'Ready for Wednesday · Alex approves']
     },
+    'bunya-shape': { hidePoints: true, pillars: 'foundation' },
     'care': {
       hidePoints: true, tiers: 'levels', tipSec: 'portal',
       tips: [['chart', '2 on track, 1 planned', 'Release 2 in build, Review Packs in testing.'], ['find', 'Answers show their sources', 'Meeting summaries, the roadmap and your requests.'],
@@ -246,7 +249,7 @@
     }
   }
   /* a second set of steps on the page (e.g. Review Packs' fee consent) gets its own look: a timeline on a deep teal panel */
-  [].forEach.call(document.querySelectorAll('.hb-d:not(#how) > .hb-how'), function (ol) { ol.closest('.hb-d').classList.add('dx-tl-sec'); ol.classList.add('dx-tl'); });
+  [].forEach.call(document.querySelectorAll('.hb-d:not(#how) > .hb-how'), function (ol) { ol.closest('.hb-d').classList.add('dx-tl-sec'); ol.classList.add('dx-tl'); ol.style.setProperty('--n', ol.children.length); });
 
   /* 10. Plan levels as cards (e.g. Care's "Three levels of support"): name, price, reply time, then the detail */
   if (cfg && cfg.tiers) {
@@ -268,4 +271,7 @@
       tsec.classList.remove('dx-tl-sec');
     }
   }
+
+  /* sections that list qualities, not steps (e.g. Shape's foundation): no step numbers or connecting line */
+  if (cfg && cfg.pillars) { var pl = document.querySelector('#' + cfg.pillars + ' .hb-how'); if (pl) pl.classList.add('dx-pillars'); }
 })();

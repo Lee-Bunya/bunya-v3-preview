@@ -1,0 +1,38 @@
+/* Bunya Shape, Dana 19 Nov 2026. Goes with js/dana-shape.js; reuses the app frame, rows, pills and toast from css/dana-rp.css. */
+.sx .sh-hidden{display:none!important}
+.sx .sh-scene{position:relative;text-align:left}
+.sx .sh-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:16px;align-items:start}
+.sx .sh-side{display:grid;gap:16px}
+.sx .sh-form{padding-bottom:18px}
+.sx .sh-f{display:block;margin-top:12px}
+.sx .sh-f > span{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:13.5px;font-weight:600;color:#3E5655}
+.sx .sh-f em{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;border-radius:11px;background:#fff;box-shadow:inset 0 0 0 1.5px #DCE6E6;font-style:normal;font-size:15.5px;color:#040F1D}
+.sx .sh-f em i{font-style:normal;color:#7C8E8D}
+/* the new field: hidden, then a gold draft, then teal and live */
+.sx .sh-new{max-height:0;margin-top:0;opacity:0;overflow:hidden;padding:0 10px;border-radius:14px;transition:max-height .7s ease,opacity .5s ease,margin .5s,padding .5s,background .5s,box-shadow .5s}
+.sx .sh-scene[data-s="2"] .sh-new,.sx .sh-scene[data-s="3"] .sh-new,.sx .sh-scene[data-s="4"] .sh-new{max-height:120px;opacity:1;margin:14px -10px 2px;padding:10px;background:#FFFBF0;box-shadow:inset 0 0 0 1.5px rgba(244,181,40,.6)}
+.sx .sh-scene[data-s="4"] .sh-new{background:#F2FBFA;box-shadow:inset 0 0 0 1.5px rgba(17,184,177,.5)}
+.sx .sh-badge{margin-left:auto;padding:3px 9px;border-radius:999px;background:#FFF4D6;color:#6A4A00;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.sx .sh-scene[data-s="4"] .sh-badge{background:#11B8B1;color:#040F1D}
+.sx .sh-input{display:flex;align-items:center;gap:4px;min-height:54px;padding:10px 10px 10px 16px;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1.5px #DCE6E6;font-size:15.5px;color:#040F1D;transition:box-shadow .3s}
+.sx .sh-scene[data-s="1"] .sh-input{box-shadow:inset 0 0 0 2px #11B8B1}
+.sx .sh-input [data-type]{flex:1;line-height:1.4}
+.sx .sh-caret{width:2px;height:20px;background:#0A7D79;animation:sh-blink 1s steps(1) infinite}
+.sx .sh-scene:not([data-s="1"]) .sh-caret{display:none}
+@keyframes sh-blink{50%{opacity:0}}
+.sx .sh-send{display:grid;place-items:center;flex:none;width:36px;height:36px;margin-left:8px;border-radius:10px;background:#8B7CF6;color:#fff;font-size:16px}
+.sx .sh-reply,.sx .sh-acts{opacity:0;transform:translateY(6px);transition:opacity .5s,transform .5s}
+.sx .sh-scene[data-s="2"] .sh-reply,.sx .sh-scene[data-s="3"] .sh-reply,.sx .sh-scene[data-s="4"] .sh-reply,
+.sx .sh-scene[data-s="2"] .sh-acts,.sx .sh-scene[data-s="3"] .sh-acts,.sx .sh-scene[data-s="4"] .sh-acts{opacity:1;transform:none}
+.sx .sh-reply{display:flex;gap:10px;margin-top:14px;font-size:14.5px;line-height:1.45;color:#13363B}
+.sx .sh-reply > span:last-child{padding:10px 14px;border-radius:14px 14px 14px 4px;background:#EEF6F6}
+.sx .sh-reply b{display:block;font-size:12.5px;color:#0A7D79}
+.sx .sh-acts{display:flex;gap:10px;margin:12px 0 6px 40px}
+.sx .sh-ok{display:inline-flex;align-items:center;gap:10px;padding:8px 8px 8px 16px;border-radius:12px;background:#013B43;color:#fff;font-size:14px;font-weight:600;transition:background .4s,color .4s,box-shadow .4s}
+.sx .sh-ok i{display:grid;place-items:center;width:26px;height:26px;border-radius:8px;background:#8B7CF6;font-style:normal}
+.sx .sh-scene[data-s="3"] .sh-ok{box-shadow:0 0 0 4px rgba(17,184,177,.3)}
+.sx .sh-scene[data-s="4"] .sh-ok{background:#11B8B1;color:#040F1D;padding:8px 16px}
+.sx .sh-chg{padding:8px 16px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1.5px #DCE6E6;font-size:14px;font-weight:600;color:#13363B}
+.sx .sh-scene[data-s="4"] .sh-toast{opacity:1;transform:none}
+@media (max-width:900px){.sx .sh-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.sx .sh-scene *{transition:none!important;animation:none!important}}

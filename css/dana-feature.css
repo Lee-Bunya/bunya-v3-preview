@@ -357,3 +357,12 @@ html body.sx .hb-vs{position:relative;border-radius:26px;background:#fff;overflo
 .sx .dx-tier p{margin:16px 0 0;font-size:16px;line-height:1.6;color:#2D4A4F}
 .sx .dx-tier.t2 p{color:#D4E2E3}
 @media (max-width:900px){.sx .dx-tiers{grid-template-columns:1fr}}
+
+/* timeline adapts to 3 or 4 steps */
+.sx .hb-how.dx-tl{grid-template-columns:repeat(var(--n,4),minmax(0,1fr))}
+.sx .hb-how.dx-tl::after{left:calc(50% / var(--n,4));right:calc(50% / var(--n,4))}
+@media (max-width:900px){.sx .hb-how.dx-tl{grid-template-columns:1fr}}
+
+.sx .hb-how.dx-tl.dx-pillars::after{display:none}
+.sx .hb-how.dx-pillars b::before{display:none!important}
+.sx .hb-how.dx-pillars b{margin-top:6px}
