@@ -1,0 +1,287 @@
+/* Feature pages: the Command Centre page's finish (Dana, 19 Nov 2026). Goes with js/dana-feature.js.
+   Soft lift on cards, a thin coloured frame on hover, framed screens, centred step markers,
+   numbered "Up close" tabs and the bunya.ai-style closing section. */
+
+/* ---------- Device frame ---------- */
+.sx .dx-dev{position:relative;margin-left:auto;margin-right:auto;padding:0 10px 10px;border-radius:26px;background:#F2F8F8;
+  border:1px solid rgba(10,125,121,.14)}
+html body.sx .dx-dev{box-shadow:var(--dx-float)!important}
+.sx .dx-dev-bar{display:flex;align-items:center;gap:7px;height:42px;padding:0 8px}
+.sx .dx-dev-bar > i{width:9px;height:9px;border-radius:50%;background:#CFE6E3}
+.sx .dx-dev-bar > span{margin-left:auto;display:inline-flex;align-items:center;gap:8px;font:600 11px/1 "Saira","Segoe UI",Arial,sans-serif;
+  letter-spacing:.14em;text-transform:uppercase;color:#0A7D79}
+.sx .dx-dev-bar em{font-style:normal}
+.sx .dx-dev-bar u,.sx .dx-illus u{display:block;width:15px;height:15px;background:url("../assets/8b9c16f32c12.svg") center/contain no-repeat;text-decoration:none}
+.sx .dx-dev-feat{width:min(1100px,100%)}
+.sx .dx-dev-feat :is(video,img){display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 0 0 1px rgba(10,125,121,.12)!important;transform:none!important}
+.sx .dx-illus{display:flex;align-items:center;justify-content:center;gap:8px;width:max-content;max-width:calc(100% - 32px);margin:24px auto 8px;padding:7px 14px 7px 8px;
+  border-radius:999px;border:1px solid rgba(10,125,121,.18);background:#fff;font:600 10.5px/1.2 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.14em;
+  text-transform:uppercase;color:#0A7D79}
+.sx .dx-illus u{width:18px;height:18px;border-radius:6px;background-color:#013B43;background-size:12px}
+
+/* ---------- Cards: lift and hover frame ---------- */
+.sx .pp-pairs a::before{display:none}
+.sx .pp-points > div,.sx .pp-pairs a,.sx .hb-vs{border-color:transparent;transition:box-shadow .35s cubic-bezier(.2,.8,.2,1),transform .35s cubic-bezier(.2,.8,.2,1)}
+.sx .pp-points > div:hover,.sx .pp-pairs a:hover{box-shadow:0 0 0 1.5px var(--hc,#11B8B1),0 2px 6px rgba(1,43,51,.05),0 12px 28px rgba(1,43,51,.08),0 30px 64px rgba(1,43,51,.10)!important}
+.sx .pp-pairs a:hover{transform:translateY(-4px)}
+
+/* ---------- How it works: same as the Command Centre approval steps ---------- */
+.sx .hb-how{gap:30px}
+.sx .hb-how li{border-color:transparent!important;box-shadow:var(--dx-edge)!important;transition:box-shadow .35s cubic-bezier(.2,.8,.2,1)}
+.sx .hb-how li::before{display:none!important}
+.sx .hb-how li:nth-child(3){background:#FFFBF0;box-shadow:0 0 0 1px rgba(244,181,40,.45),0 1px 3px rgba(106,74,0,.05),0 6px 18px rgba(106,74,0,.06),0 18px 44px rgba(106,74,0,.07)!important}
+.sx .hb-how li:hover{box-shadow:0 0 0 1.5px var(--c,#11B8B1),0 2px 6px rgba(1,43,51,.05),0 12px 28px rgba(1,43,51,.08),0 30px 64px rgba(1,43,51,.10)!important}
+.sx .hb-how li:not(:last-child)::after{content:""!important;right:-28px;left:auto;top:50%;bottom:auto;margin:0;width:26px;height:26px;border:0;border-radius:50%;transform:translateY(-50%);z-index:2;
+  background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A7D79' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 7l5 5-5 5'/%3E%3C/svg%3E") center/14px no-repeat;
+  box-shadow:0 0 0 1px rgba(10,125,121,.14),0 2px 6px rgba(1,43,51,.06)!important;color:transparent;font-size:0}
+
+/* ---------- Up close: numbered tabs, framed screens ---------- */
+.sx .hb-tabs{display:flex;flex-wrap:wrap;gap:10px;width:auto;max-width:none;padding:0;margin:0 0 24px;border-radius:0;background:none;overflow:visible}
+.sx .hb-tabs button{flex:none;display:inline-flex;align-items:center;gap:10px;height:auto;padding:8px 18px 8px 8px;border-radius:999px;
+  border:1px solid rgba(10,125,121,.22);background:#fff;color:#040F1D;font:500 15px/1.1 inherit;font-family:inherit;
+  box-shadow:0 1px 2px rgba(1,43,51,.04),0 4px 12px rgba(1,43,51,.05);transition:background .25s,color .25s,border-color .25s}
+.sx .hb-tabs button .dx-n{display:grid;place-items:center;min-width:30px;height:30px;padding:0 6px;border-radius:999px;background:#E6F7F5;
+  font:600 11px/1 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.06em;color:#0A7D79;transition:background .25s,color .25s}
+.sx .hb-tabs button:hover{border-color:#0A7D79;color:#040F1D}
+.sx .hb-tabs button[aria-selected="true"]{background:#040F1D;border-color:#040F1D;color:#fff}
+.sx .hb-tabs button[aria-selected="true"] .dx-n{background:#11B8B1;color:#040F1D}
+.sx .hb-tabs button:focus-visible{outline:2px solid #11B8B1;outline-offset:3px}
+html body.sx .hb-view{box-shadow:none!important;background:none}
+.sx .dx-dev-close .sc{border-radius:16px;box-shadow:0 0 0 1px rgba(10,125,121,.12)!important;background:#fff}
+.sx .hb-view .hb-cap{margin-top:24px}
+
+/* ---------- Space at the end of each part ---------- */
+.dx-feat .pp-detail > .hb-d{padding-bottom:clamp(20px,3vw,40px)}
+.dx-feat .pp-points{margin-bottom:clamp(24px,3vw,40px)}
+
+/* ---------- Closing section: bunya.ai review style (as on Command Centre) ---------- */
+html body.dx-feat .sx-end{background:linear-gradient(180deg,#fff 0%,#fff 30%,#EAF6F4 100%)!important}
+.dx-feat .sx-end::before,.dx-feat .sx-end::after{display:none!important}
+.dx-feat .sx-end h2{font-size:clamp(48px,6.6vw,96px)}
+.dx-feat .sx-end .sx-ctas{gap:14px}
+.dx-feat .sx-end .sx-btn{height:64px;padding:0 10px 0 30px;border-radius:16px;font-size:20px;gap:16px}
+html body.dx-feat .sx-end .sx-btn::after{width:46px;height:46px;border-radius:11px;background-size:19px}
+.dx-feat .sx-end .sx-btn.ghost{background:#fff}
+.dx-feat .sx-end .dx-pill{font-size:clamp(15px,1.35vw,19px);padding:12px 20px;box-shadow:0 1px 2px rgba(4,15,29,.06),0 14px 30px -12px rgba(4,15,29,.30)!important}
+.dx-feat .sx-end .dx-pill:is(.dx-p3,.dx-p4){box-shadow:0 0 0 1px rgba(4,15,29,.04),0 14px 30px -12px rgba(4,15,29,.22)!important}
+
+/* ---------- Tablet and phone ---------- */
+@media (max-width:900px){
+  .sx .hb-how{gap:34px}
+  .sx .hb-how li:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-30px;transform:translateX(-50%) rotate(90deg)}
+}
+@media (max-width:640px){
+  .sx .dx-dev{padding:0 6px 6px;border-radius:18px}
+  .sx .dx-dev-bar{height:32px}
+  .sx .dx-dev-bar > span{font-size:9.5px;letter-spacing:.1em}
+  .sx .dx-dev-feat :is(video,img),.sx .dx-dev-close .sc{border-radius:11px}
+  .sx .hb-tabs{flex-wrap:nowrap;overflow-x:auto;margin:0 -24px 20px;padding:2px 24px 8px;scrollbar-width:none}
+  .sx .hb-tabs::-webkit-scrollbar{display:none}
+  .dx-feat .sx-end .sx-btn{height:56px;font-size:18px}
+}
+
+/* ==========================================================================
+   Round 2 (19 Nov 2026): brand colours, bigger Up close, one-line caption, the comparison table
+   ========================================================================== */
+/* Feature name in brand teal, not the page's old accent */
+.sx .pp-hero .pp-name{color:#0A7D79}
+/* 1 2 3 points: brand colour tiles, as on Command Centre */
+.sx .pp-points{gap:22px}
+.sx .pp-points > div{padding:26px 24px}
+.sx .pp-points .n{width:40px;height:40px;border-radius:12px;background:#11B8B1;color:#040F1D!important;font-size:16px}
+.sx .pp-points > div:nth-child(2) .n{background:#F4B528}
+.sx .pp-points > div:nth-child(3) .n{background:#013B43;color:#fff!important}
+.sx .pp-points > div:nth-child(1){--hc:#11B8B1}.sx .pp-points > div:nth-child(2){--hc:#F4B528}.sx .pp-points > div:nth-child(3){--hc:#013B43}
+.sx .pp-points p{font-size:18px;line-height:1.45}
+
+/* Up close: wider than the text column, so the screens are easier to read */
+.sx .hb-view .dx-dev-close{width:min(1180px,calc(100vw - 48px));margin-left:50%;transform:translateX(-50%)}
+.sx .hb-view .hb-cap{max-width:none}
+.sx .hb-view .hb-cap b{font-size:clamp(24px,2.4vw,30px)}
+.sx .hb-view .hb-cap p{font-size:17px}
+@media (min-width:1000px){.sx .hb-view .hb-cap p{white-space:nowrap}}
+@media (max-width:640px){.sx .hb-view .dx-dev-close{width:100%;margin-left:0;transform:none}}
+
+/* "Today, and with …": a clear before and after */
+html body.sx .hb-vs{position:relative;border-radius:26px;background:#fff;overflow:hidden;box-shadow:var(--dx-edge)!important}
+.sx .hb-vs .hd,.sx .hb-vs .r{grid-template-columns:minmax(0,.8fr) minmax(0,1fr) minmax(0,1.2fr);gap:18px;padding:14px 26px;align-items:center}
+.sx .hb-vs .hd{padding-top:22px;padding-bottom:16px;border-bottom:1px solid #E3EEEE}
+.sx .hb-vs .hd span{display:inline-flex;align-items:center;gap:8px}
+.sx .hb-vs .hd span:nth-child(2)::before{content:"";width:18px;height:18px;border-radius:50%;background:#EEF2F2 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237C8E8D' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M8 8l8 8M16 8l-8 8'/%3E%3C/svg%3E") center/10px no-repeat}
+.sx .hb-vs .hd span:last-child{justify-self:start;padding:7px 14px 7px 8px;border-radius:999px;background:#013B43!important;color:#fff!important}
+.sx .dx-vs-logo{display:block;width:18px;height:18px;border-radius:6px;background:#11B8B1 url("../assets/8b9c16f32c12.svg") center/12px no-repeat;text-decoration:none}
+.sx .hb-vs .r{border-bottom:1px solid #EEF4F4;transition:background .25s}
+.sx .hb-vs .r:hover{background:#F7FBFB}
+.sx .hb-vs .r > b{display:flex;align-items:center;gap:12px;font-size:16px;font-weight:600;color:#040F1D}
+.sx .dx-vs-i{display:grid;place-items:center;flex:none;width:36px;height:36px;border-radius:11px;background:#11B8B1;color:#040F1D}
+.sx .dx-vs-i.c2{background:#F4B528}.sx .dx-vs-i.c3{background:#013B43;color:#fff}.sx .dx-vs-i.c4{background:#0A7D79;color:#fff}.sx .dx-vs-i.c5{background:#7EDAD6}
+.sx .dx-vs-i svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+.sx .hb-vs .r .old{display:flex;align-items:center;gap:10px;font-size:15px;color:#6B7D7C;text-decoration:line-through;text-decoration-color:rgba(107,125,124,.35);text-decoration-thickness:1px}
+.sx .hb-vs .r .old::before{content:"";flex:none;width:18px;height:18px;border-radius:50%;background:#EEF2F2 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237C8E8D' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M8 8l8 8M16 8l-8 8'/%3E%3C/svg%3E") center/10px no-repeat}
+.sx .hb-vs .r .new{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:14px;background:#E6F7F5!important;font-size:15.5px;font-weight:500;color:#013B43;
+  transition:background .25s,box-shadow .25s}
+.sx .hb-vs .r:hover .new{background:#D6F1EE!important;box-shadow:0 0 0 1px rgba(17,184,177,.35)}
+.sx .hb-vs .r .new svg{flex:none;width:22px;height:22px;padding:4px;margin:0;border-radius:7px;background:#11B8B1;stroke:#040F1D!important;stroke-width:3}
+@media (max-width:760px){
+  .sx .hb-vs .r{grid-template-columns:1fr;gap:8px;padding:16px 18px}
+  .sx .hb-vs .r .old{font-size:14px}
+}
+
+/* Points: tile and heading side by side, text underneath (less empty space) */
+.sx .pp-points > div.dx-pt{display:grid;grid-template-columns:auto 1fr;align-items:center;align-content:start;column-gap:14px;padding:24px 24px 26px}
+.sx .pp-points .dx-pt-h{font-size:20px;font-weight:600;letter-spacing:-.015em;color:#040F1D;line-height:1.2}
+.sx .pp-points > div.dx-pt p{grid-column:1/-1;margin:14px 0 0;font-size:17px;color:#2D4A4F}
+
+/* ==========================================================================
+   Round 3 (19 Nov 2026): "Today, and with …" as two matching cards; "Goes well with" as a proper panel
+   ========================================================================== */
+.sx .dx-hide{display:none!important}
+
+/* --- Today | With: rows line up across the two cards --- */
+.sx .dx-ba{position:relative;display:grid;grid-template-columns:1fr 1fr;column-gap:44px;filter:drop-shadow(0 2px 4px rgba(1,43,51,.05)) drop-shadow(0 18px 32px rgba(1,43,51,.10))}
+.sx .dx-ba-c{padding:18px 30px;border-bottom:1px solid #E5ECEC}
+.sx .dx-ba-c.t{background:#F4F7F7;color:#5E7170}
+.sx .dx-ba-c.w{background:#013B43;color:#fff;border-bottom-color:rgba(126,218,214,.14)}
+.sx .dx-ba-c.h{display:flex;align-items:center;gap:12px;padding:26px 30px 20px;border-radius:24px 24px 0 0}
+.sx .dx-ba-c.h b{font-size:21px;font-weight:600;letter-spacing:-.015em}
+.sx .dx-ba-c.t.h b{color:#3E5655}
+.sx .dx-ba-c.last{border-bottom:0;border-radius:0 0 24px 24px;padding-bottom:26px}
+.sx .dx-ba-x{width:30px;height:30px;border-radius:9px;background:#E3EAEA url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B7D7C' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M8 8l8 8M16 8l-8 8'/%3E%3C/svg%3E") center/13px no-repeat}
+.sx .dx-ba-logo{width:30px;height:30px;border-radius:9px;background:#11B8B1 url("../assets/8b9c16f32c12.svg") center/18px no-repeat}
+.sx .dx-ba-k{display:flex;align-items:center;gap:10px;margin-bottom:8px;font:600 11px/1.2 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7C8E8D}
+.sx .dx-ba-c.w .dx-ba-k{color:#7EDAD6}
+.sx .dx-ba-c p{margin:0;font-size:16.5px;line-height:1.45}
+.sx .dx-ba-c.w p{font-size:17.5px;font-weight:500;color:#fff}
+.sx .dx-ba-c.t p{display:flex;gap:10px;align-items:baseline}
+.sx .dx-ba-c.w .dx-vs-i{width:24px;height:24px;border-radius:7px}
+.sx .dx-ba-c.w .dx-vs-i svg{width:13px;height:13px}
+.sx .dx-ba-arrow{position:absolute;left:50%;top:50%;width:48px;height:48px;border-radius:50%;transform:translate(-50%,-50%);
+  background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23013B43' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h13M13 7l5 5-5 5'/%3E%3C/svg%3E") center/20px no-repeat;
+  box-shadow:0 0 0 6px #fff,0 0 0 7px rgba(10,125,121,.14)}
+@media (max-width:760px){
+  .sx .dx-ba{grid-template-columns:1fr;row-gap:0}
+  .sx .dx-ba-c.h,.sx .dx-ba-arrow{display:none}
+  .sx .dx-ba-c{padding:14px 18px;border-bottom:0}
+  .sx .dx-ba-c.t{border-radius:16px 16px 0 0}
+  .sx .dx-ba-c.w{border-radius:0 0 16px 16px;margin-bottom:12px}
+  .sx .dx-ba-c.last{padding-bottom:14px}
+  .sx .dx-ba-c.t.last{border-radius:16px 16px 0 0}
+}
+
+/* --- Goes well with --- */
+.sx .dx-pairs-sec > .hb-dl{display:none}
+.sx .dx-pairs{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.4fr);gap:clamp(28px,4vw,56px);align-items:center;
+  padding:clamp(28px,4vw,52px);border-radius:32px;background:#F2F8F8;box-shadow:inset 0 0 0 1px rgba(10,125,121,.10)}
+.sx .dx-pairs-k{display:flex;align-items:center;gap:10px;font:600 12px/1 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#0A7D79}
+.sx .dx-pairs-k::before{content:"";width:9px;height:9px;background:#E0F1EE;border:1.5px solid #0A7D79;transform:rotate(45deg)}
+.sx .dx-pairs-head h3{margin:16px 0 12px;font-size:clamp(26px,2.6vw,36px);line-height:1.08;letter-spacing:-.035em;font-weight:600;color:#040F1D}
+.sx .dx-pairs-head h3 span{display:block;color:#0A7D79}
+.sx .dx-pairs-head p{margin:0;font-size:17px;line-height:1.5;color:#2D4A4F}
+.sx .dx-pairs-list{display:grid;gap:12px}
+.sx .dx-pair{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:18px;padding:18px 20px;border-radius:20px;background:#fff;
+  box-shadow:var(--dx-edge);transition:box-shadow .35s cubic-bezier(.2,.8,.2,1),transform .35s cubic-bezier(.2,.8,.2,1)}
+.sx .dx-pair:hover{transform:translateY(-2px);box-shadow:0 0 0 1.5px #11B8B1,0 2px 6px rgba(1,43,51,.05),0 12px 28px rgba(1,43,51,.08),0 30px 64px rgba(1,43,51,.10)}
+.sx .dx-pair .dx-ico{width:48px;height:48px;margin:0;border-radius:14px}
+.sx .dx-pair-t a{text-decoration:none}
+.sx .dx-pair-t b{font-size:19px;font-weight:600;letter-spacing:-.015em;color:#040F1D}
+.sx .dx-pair-t b small{margin-left:6px;padding:3px 8px;border-radius:999px;background:#FFF4D6;color:#6A4A00;font-size:11px;font-weight:600;vertical-align:middle}
+.sx .dx-pair-t p{margin:3px 0 0;font-size:15px;line-height:1.4;color:#3E5655}
+.sx .dx-pair-price{padding:7px 12px;border-radius:999px;background:#E6F7F5;color:#013B43;font-size:13.5px;font-weight:600;white-space:nowrap}
+.sx .dx-pair-go{display:flex;align-items:center;gap:12px}
+.sx .dx-pair-add{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 16px;border-radius:12px;border:1.5px solid #0A7D79;background:#fff;color:#013B43;
+  font-family:inherit;font-size:14.5px;font-weight:600;line-height:1;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.sx .dx-pair-add:hover{background:#E6F7F5}
+.sx .dx-pair-add.on{background:#11B8B1;border-color:#11B8B1;color:#040F1D}
+.sx .dx-pair-add:focus-visible,.sx .dx-pair-see:focus-visible{outline:2px solid #11B8B1;outline-offset:3px}
+.sx .dx-pair-see{font-size:15px;font-weight:600;color:#040F1D;text-decoration:none;border-bottom:1.5px solid #11B8B1;padding-bottom:2px;white-space:nowrap}
+.sx .dx-pair-see i{font-style:normal}
+/* one pairing: a bigger card */
+.sx .dx-pairs.one .dx-pair{grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"i t t" "i p g";row-gap:14px;column-gap:20px;padding:26px 28px 24px}
+.sx .dx-pairs.one .dx-pair .dx-ico{grid-area:i;align-self:start}
+.sx .dx-pairs.one .dx-pair-t{grid-area:t}
+.sx .dx-pairs.one .dx-pair .dx-ico{width:60px;height:60px;border-radius:17px}
+.sx .dx-pairs.one .dx-pair-t b{font-size:24px}
+.sx .dx-pairs.one .dx-pair-t p{font-size:16.5px}
+.sx .dx-pairs.one .dx-pair-price{grid-area:p;justify-self:start}
+.sx .dx-pairs.one .dx-pair-go{grid-area:g;justify-self:end}
+/* many pairings: heading on top, cards in a grid */
+.sx .dx-pairs.many{grid-template-columns:1fr;align-items:start}
+.sx .dx-pairs.many .dx-pairs-head{max-width:760px}
+.sx .dx-pairs.many .dx-pairs-head h3 span{display:inline}
+.sx .dx-pairs.many .dx-pairs-list{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.sx .dx-pairs.many .dx-pair{grid-template-columns:auto 1fr;grid-template-areas:"i p" "t t" "g g";align-items:center;row-gap:14px;padding:22px}
+.sx .dx-pairs.many .dx-pair .dx-ico{grid-area:i}
+.sx .dx-pairs.many .dx-pair-price{grid-area:p;justify-self:end}
+.sx .dx-pairs.many .dx-pair-t{grid-area:t}
+.sx .dx-pairs.many .dx-pair-go{grid-area:g;justify-content:space-between;margin-top:auto}
+/* tiles that stay visible on the dark With card */
+.sx .dx-ba-c.w .dx-vs-i.c3{background:#7EDAD6;color:#013B43}
+.sx .dx-ba-c.w .dx-vs-i.c4{background:#E0F1EE;color:#013B43}
+@media (max-width:900px){
+  .sx .dx-pairs{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .sx .dx-pair{grid-template-columns:auto minmax(0,1fr);row-gap:12px}
+  .sx .dx-pair-price{grid-column:1/-1;justify-self:start}
+  .sx .dx-pair-go{grid-column:1/-1;justify-content:space-between}
+  .sx .dx-pairs.one .dx-pair-price{grid-column:1/-1}
+  .sx .dx-pairs.one .dx-pair-go{grid-column:1/-1;justify-self:stretch}
+}
+
+/* ==========================================================================
+   Round 4 (19 Nov 2026)
+   ========================================================================== */
+/* Today card: still the quieter side, but easy to read */
+.sx .dx-ba-c.t{color:#2D4A4F}
+.sx .dx-ba-c.t .dx-ba-k{color:#51686A}
+.sx .dx-ba-c.t p{font-size:17px;color:#2D4A4F}
+.sx .dx-ba-c.t.h b{color:#13363B}
+.sx .dx-ba-x{background-color:#DCE5E5}
+
+/* What's included: lifted cards with a tick tile, instead of thin pills */
+.sx .pp-incl{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.sx .pp-incl span{display:flex;align-items:center;gap:14px;height:auto;min-height:76px;padding:18px 20px;border-radius:20px;background:#fff;
+  box-shadow:var(--dx-edge)!important;font-size:17px;font-weight:600;letter-spacing:-.01em;color:#040F1D;transition:box-shadow .35s cubic-bezier(.2,.8,.2,1),transform .35s cubic-bezier(.2,.8,.2,1)}
+.sx .pp-incl span::before{content:"";flex:none;width:36px;height:36px;border:0;border-radius:11px;transform:none;
+  background:#11B8B1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23040F1D' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/17px no-repeat}
+.sx .pp-incl span:nth-child(5n+2)::before{background-color:#F4B528}
+.sx .pp-incl span:nth-child(5n+3)::before{background-color:#7EDAD6}
+.sx .pp-incl span:nth-child(5n+4)::before{background-color:#0A7D79;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E")}
+.sx .pp-incl span:nth-child(5n+5)::before{background-color:#013B43;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E")}
+.sx .pp-incl span:hover{transform:translateY(-3px);box-shadow:0 0 0 1.5px #11B8B1,0 2px 6px rgba(1,43,51,.05),0 12px 28px rgba(1,43,51,.08),0 30px 64px rgba(1,43,51,.10)!important}
+@media (max-width:640px){.sx .pp-incl{grid-template-columns:1fr 1fr;gap:12px}.sx .pp-incl span{min-height:64px;padding:14px;font-size:15.5px;gap:10px}.sx .pp-incl span::before{width:30px;height:30px}}
+
+/* ==========================================================================
+   Round 5 (19 Nov 2026), from the design review
+   ========================================================================== */
+/* Section headlines: small kicker + big two-tone headline */
+.sx .hb-d > h2.dx-h2{display:block;margin:0 0 clamp(28px,4vw,44px)}
+.sx .hb-d > h2.dx-h2::before{display:none}
+.sx .dx-h2-k{display:flex;align-items:center;gap:10px;margin-bottom:14px;font:600 12px/1 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#0A7D79}
+.sx .dx-h2-k::before{content:"";flex:none;width:9px;height:9px;background:#E0F1EE;border:1.5px solid #0A7D79;transform:rotate(45deg)}
+.sx .dx-h2-t{display:block;font-size:clamp(34px,4.4vw,56px);line-height:1.04;letter-spacing:-.045em;font-weight:600;color:#040F1D;text-transform:none}
+.sx .dx-h2-t span{color:#0A7D79}
+.dx-feat .pp-detail > .hb-d{padding-top:clamp(56px,7vw,96px)}
+
+/* How it works: solid colour tiles and larger type */
+.sx .hb-how .n{width:48px;height:48px;border-radius:14px;font-size:18px;font-weight:700;background:var(--c)!important;color:#040F1D!important;box-shadow:none}
+.sx .hb-how li:nth-child(2) .n{color:#fff!important}
+.sx .hb-how li:nth-child(4) .n{color:#fff!important}
+.sx .hb-how b{font-size:clamp(21px,1.7vw,24px)}
+.sx .hb-how p{font-size:16.5px;color:#2D4A4F}
+.sx .hb-works-line{font-size:15.5px;color:#3E5655}
+
+/* Included, now inside How it works */
+.sx .dx-incl{margin-top:clamp(28px,3.5vw,40px)}
+.sx .dx-incl-k{display:block;margin-bottom:14px;font:600 11px/1 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#5A7271}
+
+/* Hero polish: balanced lines, readable small print */
+.dx-feat .pp-hero > p:not(.pp-ms){text-wrap:balance}
+.dx-feat .pp-hero > small{font-size:14.5px;color:#3E5655}
+.dx-feat .pp-ms{font-size:14.5px;color:#3E5655}
+.dx-feat .pp-ms i{font-size:14px;padding:6px 12px}
+/* Closing headline on two lines */
+.dx-feat .sx-end h2{max-width:18ch}
+
+/* Headlines in the main typeface, TT Commons Pro, as on Command Centre (they had picked up Saira from the old label style) */
+.sx .dx-h2-t{font-family:"TT Commons Pro",system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:700;letter-spacing:-.04em}

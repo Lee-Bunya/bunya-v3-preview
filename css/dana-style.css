@@ -949,3 +949,6 @@ body.sx{overflow-x:clip}
 .sx :is(.sx-faq,.hb-faq,.ar-faq,.faq-list) > details:hover{box-shadow:0 0 0 1.5px var(--tc,#11B8B1),0 6px 18px rgba(1,43,51,.05),0 18px 44px rgba(1,43,51,.07)!important}
 .sx .dx-steps li:nth-child(1){--hc:#11B8B1}.sx .dx-steps li:nth-child(2){--hc:#0A7D79}.sx .dx-steps li:nth-child(3){--hc:#F4B528}.sx .dx-steps li:nth-child(4){--hc:#013B43}
 .sx .co-teaser{--hc:#11B8B1}
+
+/* 19 Nov 2026: question lists run the full width of the section, the same on every page */
+.sx :is(.sx-sec,.v5-faq) > .sx-faq{max-width:none;margin-left:0;margin-right:0}
