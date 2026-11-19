@@ -1,0 +1,37 @@
+/* Make it yours, Dana 20 Nov 2026. Goes with js/dana-bm.js: the hero shows Aynub's Brand Document Pack fanned out. */
+.sx .bm-hidden{display:none!important}
+.sx .hb-pvis.bm-on{background:radial-gradient(60% 70% at 50% 60%,rgba(119,42,83,.10),transparent 70%),radial-gradient(40% 50% at 85% 20%,rgba(103,141,108,.14),transparent 70%),linear-gradient(170deg,#F7F5F0,#EFEAE1)!important;box-shadow:0 0 0 1px rgba(119,42,83,.10),0 40px 80px -50px rgba(42,34,48,.45)}
+.sx .bm-fan{position:absolute;inset:0;display:block;text-decoration:none;cursor:pointer}
+.sx .bm-glow{position:absolute;left:50%;top:56%;width:62%;height:70%;translate:-50% -50%;border-radius:50%;background:radial-gradient(closest-side,rgba(252,125,35,.16),transparent)}
+.sx .bm-doc{position:absolute;display:block;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 0 0 1px rgba(42,34,48,.08),0 30px 50px -24px rgba(42,34,48,.5);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.sx .bm-doc img{display:block;width:100%;height:100%;object-fit:cover;border-radius:0!important;box-shadow:none!important}
+.sx .bm-doc.p{height:74%;aspect-ratio:1100/1556;top:14%}
+.sx .bm-doc.w{width:46%;aspect-ratio:16/9;left:27%;top:24%;border-radius:12px;box-shadow:0 0 0 1px rgba(42,34,48,.08),0 50px 80px -30px rgba(42,34,48,.6);z-index:3}
+.sx .bm-doc.l2{left:6%;transform:rotate(-11deg) translateY(4%)}
+.sx .bm-doc.l1{left:17%;transform:rotate(-5deg);z-index:2}
+.sx .bm-doc.r1{right:17%;transform:rotate(5deg);z-index:2}
+.sx .bm-doc.r2{right:6%;transform:rotate(11deg) translateY(4%)}
+.sx .bm-fan:hover .bm-doc.l2{transform:rotate(-14deg) translate(-6%,2%)}
+.sx .bm-fan:hover .bm-doc.l1{transform:rotate(-7deg) translateX(-6%)}
+.sx .bm-fan:hover .bm-doc.r1{transform:rotate(7deg) translateX(6%)}
+.sx .bm-fan:hover .bm-doc.r2{transform:rotate(14deg) translate(6%,2%)}
+.sx .bm-fan:hover .bm-doc.c{transform:translateY(-3%) scale(1.02)}
+.sx .bm-chip{position:absolute;z-index:4;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;background:#fff;box-shadow:0 0 0 1px rgba(42,34,48,.08),0 18px 36px -18px rgba(42,34,48,.4);animation:bm-float 6s ease-in-out infinite}
+.sx .bm-logo{left:5%;top:7%;padding:10px 16px}
+.sx .bm-logo img{display:block;height:30px;width:auto;border-radius:0!important;box-shadow:none!important}
+.sx .bm-pal{left:7%;bottom:8%;animation-delay:-2s}
+.sx .bm-pal i{width:22px;height:22px;border-radius:7px;box-shadow:inset 0 0 0 1px rgba(42,34,48,.12)}
+.sx .bm-pal small{margin-left:4px;font-size:13px;font-weight:600;color:#2A2230}
+.sx .bm-pack{right:6%;bottom:9%;flex-direction:column;align-items:flex-start;gap:2px;max-width:250px;animation-delay:-4s;box-shadow:inset 4px 0 0 #772A53,0 0 0 1px rgba(42,34,48,.08),0 18px 36px -18px rgba(42,34,48,.4)}
+.sx .bm-pack b{font-size:14.5px;font-weight:700;color:#2A2230}
+.sx .bm-pack small{font-size:12.5px;line-height:1.4;color:#5A5360}
+@keyframes bm-float{50%{transform:translateY(-6px)}}
+@media (max-width:760px){.sx .bm-doc.l2,.sx .bm-doc.r2{display:none}.sx .bm-doc.l1{left:4%}.sx .bm-doc.r1{right:4%}.sx .bm-doc.w{width:58%;left:21%}.sx .bm-pack{display:none}.sx .bm-logo img{height:22px}.sx .bm-pal small{display:none}}
+@media (prefers-reduced-motion:reduce){.sx .bm-fan *{animation:none!important;transition:none!important}}
+/* Dana's tweaks (20 Nov 2026): the proposal sits further right, and the back card (proposal page 2, the golden hills)
+   runs off the right edge so its photo shows */
+.sx .bm-doc.r1{right:11%}
+.sx .bm-doc.r2{right:-3%;transform:rotate(9deg) translateY(2%)}
+.sx .bm-fan:hover .bm-doc.r1{transform:rotate(7deg) translateX(4%)}
+.sx .bm-fan:hover .bm-doc.r2{transform:rotate(11deg) translate(3%,2%)}
+@media (max-width:760px){.sx .bm-doc.r1{right:4%}}

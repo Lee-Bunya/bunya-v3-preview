@@ -225,6 +225,8 @@
       compare: 'No more <span>notes in the car.</span>', included: 'Everything <span>from the visit.</span>', faq: 'Questions, <span>answered.</span>' },
     'bunya-vault': { how: 'Add it once. <span>Reveal it when you need it.</span>', close: 'Every shared login, <span>in one place.</span>',
       compare: 'No more <span>passwords in a spreadsheet.</span>', included: 'Everything <span>in the vault.</span>', faq: 'Questions, <span>answered.</span>' },
+    'brand-website-marketing': { example: 'One firm. <span>One look. Every document.</span>', menu: 'Pick what fits. <span>Pay once, or monthly.</span>',
+      compare: 'One look, <span>everywhere clients see you.</span>', included: 'Everything <span>you can add.</span>', faq: 'Questions, <span>answered.</span>' },
     'advice-engine': { features: 'Pick the features. <span>Pay only for those.</span>', how: 'From fact find <span>to signed advice.</span>',
       close: 'Every step, <span>ready to check.</span>', compare: 'From a blank page <span>to a drafted SOA.</span>', included: 'Everything <span>in the Advice Engine.</span>', faq: 'Questions, <span>answered.</span>' }
   };
@@ -275,7 +277,9 @@
        What's included repeated the three points straight above it */
     'revenue-import': { price: '+50c', hideIncluded: true },
     'bunya-voice': { hideIncluded: true },
-    'bunya-vault': { hidePoints: true },   /* What's included repeated the three points straight above it */
+    'bunya-vault': { hidePoints: true },
+    /* design pass (Dana, 20 Nov 2026): Included repeated the three points and the price menu */
+    'brand-website-marketing': { hideIncluded: true },   /* What's included repeated the three points straight above it */
     'field-notes': { hidePoints: true, faqMore: [
       ['Where are the recording and the note kept?', 'In your firm’s SharePoint, on the client’s record, with the transcript and the approved note. It’s filed like any other meeting.'],
       ['Can the adviser change the note?', 'Yes. The file note is drafted for the adviser to check, and it’s only filed once they approve it.'],
