@@ -1,0 +1,139 @@
+/* Build-as-you-read journey (Dana, 19 Nov 2026). Markup comes from js/dana-journey.js. */
+
+/* ---- Home: "Build your Bunya as you read." ----------------------------- */
+.dx-journey{width:min(1160px,calc(100% - 32px));margin:clamp(40px,6vw,72px) auto 0}
+.dx-j-in{position:relative;overflow:hidden;padding:clamp(28px,4vw,48px);border-radius:32px;
+  background:radial-gradient(45% 80% at 0% 0%,rgba(17,184,177,.14),transparent 70%),radial-gradient(35% 70% at 100% 100%,rgba(244,181,40,.12),transparent 70%),linear-gradient(180deg,#fff,#F2F8F8);
+  box-shadow:0 0 0 1px rgba(10,125,121,.10),0 2px 6px rgba(1,43,51,.04),0 10px 28px rgba(1,43,51,.07)}
+.dx-j-head{display:grid;justify-items:center;text-align:center}
+.dx-j-k{display:flex;align-items:center;gap:10px;color:#0A7D79;font:600 12px/1.4 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase}
+.dx-j-k::before{content:"";width:9px;height:9px;background:#E0F1EE;border:1.5px solid #0A7D79;transform:rotate(45deg)}
+.dx-journey h2{margin:14px 0 0;color:#040F1D;font-size:clamp(30px,3.4vw,46px);font-weight:700;letter-spacing:-.025em;line-height:1.08}
+.dx-journey h2 span{color:#0A7D79}
+.dx-j-head p{max-width:620px;margin:14px 0 0;color:#3E5655;font-size:clamp(16.5px,1.4vw,18.5px);line-height:1.55;text-wrap:balance}
+.dx-j-steps{counter-reset:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin:clamp(24px,3vw,36px) 0 0;padding:0;list-style:none}
+.dx-j-steps li{--c:#11B8B1;position:relative}
+.dx-j-steps li:nth-child(2){--c:#013B43}
+.dx-j-steps li:nth-child(3){--c:#0A7D79}
+.dx-j-steps li:nth-child(4){--c:#8B7CF6}
+.dx-j-steps li:nth-child(5){--c:#F4B528}
+.dx-j-steps a{display:flex;flex-direction:column;height:100%;padding:20px 18px 18px;border-radius:22px;background:#fff;color:inherit;text-decoration:none;
+  box-shadow:0 0 0 1px rgba(10,125,121,.08),0 2px 6px rgba(1,43,51,.04),0 10px 28px rgba(1,43,51,.06);transition:transform .3s,box-shadow .3s}
+.dx-j-steps a:hover{transform:translateY(-3px);box-shadow:0 0 0 1px var(--c),0 4px 10px rgba(1,43,51,.05),0 18px 40px rgba(1,43,51,.10)}
+.dx-j-n{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:color-mix(in srgb,var(--c) 14%,#fff);
+  color:color-mix(in srgb,var(--c) 62%,#040F1D);font:600 14px/1 "Saira","Segoe UI",Arial,sans-serif;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 35%,#fff)}
+.dx-j-steps li.done .dx-j-n{background:var(--c);color:#fff;box-shadow:none;font-size:17px}
+.dx-j-steps li:nth-child(5).done .dx-j-n,.dx-j-steps li:nth-child(1).done .dx-j-n{color:#013B43}
+.dx-j-steps b{margin-top:16px;color:#040F1D;font-size:17px;line-height:1.25;letter-spacing:-.01em}
+.dx-j-steps small{margin-top:6px;color:#3E5655;font-size:14.5px;line-height:1.4}
+.dx-j-steps li.done small{color:color-mix(in srgb,var(--c) 70%,#040F1D);font-weight:600}
+.dx-j-steps li:nth-child(5) small{color:#040F1D;font-weight:600}
+.dx-j-steps em{margin-top:auto;padding-top:16px;color:#0A7D79;font-style:normal;font-weight:600;font-size:14.5px}
+.dx-j-steps em i{font-style:normal;display:inline-block;transition:transform .2s}
+.dx-j-steps a:hover em i{transform:translateX(3px)}
+/* the line joining the steps */
+.dx-j-steps li:not(:last-child)::after{content:"";position:absolute;top:39px;right:-14px;width:14px;height:2px;background:linear-gradient(90deg,#C5D8D8,#C5D8D8)}
+@media (max-width:1000px){
+  .dx-j-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dx-j-steps li:last-child{grid-column:1 / -1}
+  .dx-j-steps li::after{display:none}
+}
+@media (max-width:560px){
+  .dx-j-steps{grid-template-columns:minmax(0,1fr);gap:10px}
+  .dx-j-steps a{display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:14px;padding:16px}
+  .dx-j-n{grid-row:1 / span 3}
+  .dx-j-steps b{margin-top:0}
+  .dx-j-steps em{padding-top:8px}
+}
+
+/* ---- The build bar ------------------------------------------------------- */
+.dx-bar{position:fixed;left:50%;bottom:16px;z-index:60;width:min(1040px,calc(100% - 24px));transform:translate(-50%,calc(100% + 32px));
+  transition:transform .45s cubic-bezier(.2,.7,.1,1);pointer-events:none}
+.dx-bar.show{transform:translate(-50%,0);pointer-events:auto}
+.dx-bar-in{display:flex;align-items:center;gap:14px;padding:10px 10px 10px 18px;border-radius:20px;background:rgba(255,255,255,.94);
+  -webkit-backdrop-filter:saturate(1.6) blur(18px);backdrop-filter:saturate(1.6) blur(18px);
+  box-shadow:0 0 0 1px rgba(10,125,121,.12),0 4px 10px rgba(1,43,51,.06),0 18px 44px rgba(1,43,51,.14)}
+.dx-bar-me{display:flex;flex-direction:column;min-width:0;color:inherit;text-decoration:none}
+.dx-bar-k{color:#0A7D79;font:600 10.5px/1.3 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.dx-bar-me b{color:#040F1D;font-size:16px;font-weight:700;letter-spacing:-.01em;white-space:nowrap}
+.dx-bar-me small{color:#56706F;font-size:12px;white-space:nowrap}
+.dx-bar-steps{display:flex;gap:6px;margin:0 0 0 auto;padding:0;list-style:none}
+.dx-bar-steps a{display:flex;align-items:center;gap:7px;height:38px;padding:0 12px 0 6px;border-radius:999px;color:#28403F;font-size:13.5px;font-weight:500;text-decoration:none;
+  white-space:nowrap;transition:background .2s}
+.dx-bar-steps a:hover{background:#F2F8F8}
+.dx-bar-steps span{display:grid;place-items:center;width:26px;height:26px;border-radius:8px;background:#F2F8F8;color:#013B43;font:600 12px/1 "Saira","Segoe UI",Arial,sans-serif;
+  box-shadow:inset 0 0 0 1px #D9E6E6}
+.dx-bar-steps em{font-style:normal}
+.dx-bar-steps li.done span{background:#11B8B1;color:#013B43;box-shadow:none;font-size:13px}
+.dx-bar-steps li.here a{background:#E3F5F3;color:#013B43;font-weight:600}
+.dx-bar-add{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 16px;border:0;border-radius:12px;background:#11B8B1;color:#040F1D;
+  font:600 14.5px/1 inherit;font-family:inherit;white-space:nowrap;cursor:pointer;transition:background .2s,transform .2s}
+.dx-bar-add i{font-style:normal;font-size:17px}
+.dx-bar-add small{font-weight:500;opacity:.8}
+.dx-bar-add:hover{transform:translateY(-1px)}
+.dx-bar-add.on{background:#E3F5F3;color:#013B43}
+.dx-bar-go{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-radius:12px;background:#040F1D;color:#fff;font-size:14.5px;font-weight:600;
+  text-decoration:none;white-space:nowrap}
+.dx-bar-go i{font-style:normal;transition:transform .2s}
+.dx-bar-go:hover i{transform:translateX(3px)}
+.dx-bar-x{flex:none;width:32px;height:32px;border:0;border-radius:50%;background:transparent;color:#56706F;font-size:20px;line-height:1;cursor:pointer}
+.dx-bar-x:hover{background:#F2F8F8;color:#040F1D}
+.dx-bar :focus-visible{outline:2px solid #0A7D79;outline-offset:2px}
+/* minimised to a small pill */
+.dx-bar-pill{display:none;align-items:center;gap:10px;margin-left:auto;height:46px;padding:0 18px;border:0;border-radius:999px;background:#040F1D;color:#fff;
+  font-family:inherit;font-size:14px;cursor:pointer;box-shadow:0 10px 24px rgba(1,43,51,.22)}
+.dx-bar-pill span{color:#7EDAD6;font:600 10.5px/1 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.dx-bar.mini{width:auto;left:auto;right:16px;transform:translateY(calc(100% + 32px))}
+.dx-bar.mini.show{transform:none}
+.dx-bar.mini .dx-bar-in{display:none}
+.dx-bar.mini .dx-bar-pill{display:inline-flex}
+body.dx-bar-on{padding-bottom:84px}
+@media (max-width:1180px){.dx-bar-steps em{display:none}.dx-bar-steps a{padding:0 6px}}
+@media (max-width:760px){
+  .dx-bar{bottom:10px}
+  .dx-bar-in{gap:8px;padding:8px 8px 8px 14px}
+  .dx-bar-steps{display:none}
+  .dx-bar-me{margin-right:auto}
+  .dx-bar-add small{display:none}
+  .dx-bar-add,.dx-bar-go{height:42px;padding:0 12px;font-size:13.5px}
+  .dx-bar-go{font-size:0;gap:0;width:42px;justify-content:center}
+  .dx-bar-go i{font-size:17px}
+  .dx-bar.mini{right:10px}
+}
+@media (max-width:420px){.dx-bar-add{max-width:46vw;overflow:hidden;text-overflow:ellipsis}}
+@media (prefers-reduced-motion:reduce){.dx-bar,.dx-j-steps a{transition:none}}
+/* Build your Bunya's own price bar and pop-ups sit above */
+.byo-bar,.byo-modal,.n3-search,.n3-phone{z-index:70}
+
+/* keep the price block and buttons whole; step names give way first */
+.dx-bar-me,.dx-bar-add,.dx-bar-go,.dx-bar-x{flex-shrink:0}
+.dx-bar .dx-bar-go,.dx-bar .dx-bar-go:hover{color:#fff!important;border:0;padding-bottom:0}
+.dx-bar .dx-bar-me,.dx-bar .dx-bar-steps a{border:0!important;padding-bottom:0}
+@media (max-width:1400px){.dx-bar-in:has(.dx-bar-add) .dx-bar-steps em{display:none}.dx-bar-in:has(.dx-bar-add) .dx-bar-steps a{padding:0 6px}}
+/* the bar never outgrows its panel: with an add button the steps show as ticks only */
+.dx-bar{width:min(1120px,calc(100% - 24px))}
+.dx-bar-in:has(.dx-bar-add) .dx-bar-steps em{display:none}
+.dx-bar-in:has(.dx-bar-add) .dx-bar-steps a{padding:0 4px}
+.dx-bar-steps{min-width:0;flex-shrink:1}
+@media (max-width:760px){
+  .dx-bar-me{flex-shrink:1;min-width:0}
+  .dx-bar-me small{display:none}
+  .dx-bar-add{flex-shrink:1;min-width:0;max-width:none;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;display:block;line-height:42px}
+  .dx-bar-x{width:28px}
+}
+.dx-short{display:none}
+@media (max-width:760px){.dx-bar-add .dx-long{display:none}.dx-bar-add .dx-short{display:inline}}
+.dx-j-steps li.done small{color:color-mix(in srgb,var(--c) 55%,#040F1D)}
+
+/* flat finish: no shadows or washes; step content centred */
+.dx-j-in{background:#F2F8F8;box-shadow:none}
+.dx-j-steps a{align-items:center;text-align:center;box-shadow:0 0 0 1px rgba(10,125,121,.14)}
+.dx-j-steps a:hover{transform:none;box-shadow:0 0 0 1px var(--c)}
+.dx-j-steps li:not(:last-child)::after{background:#C5D8D8}
+.dx-bar-in{box-shadow:0 0 0 1px rgba(10,125,121,.18)}
+.dx-bar-pill{box-shadow:none}
+@media (max-width:560px){
+  .dx-j-steps a{display:flex;flex-direction:column;align-items:center;text-align:center;padding:20px 16px}
+  .dx-j-n{grid-row:auto}
+  .dx-j-steps b{margin-top:12px}
+}

@@ -1,0 +1,256 @@
+/* Command Centre page: the bunya.ai review experience, in the flat finish (Dana, 19 Nov 2026).
+   Goes with js/dana-cc.js. No shadows or gradients: hairline teal edges, pale tints and colour tiles only. */
+
+/* ---------- Device frame (hero + tour) ---------- */
+.sx .dx-dev{position:relative;margin-left:auto;margin-right:auto;padding:0 10px 10px;border-radius:26px;background:#F2F8F8;
+  border:1px solid rgba(10,125,121,.22);perspective:none}
+.sx .dx-dev-bar{display:flex;align-items:center;gap:7px;height:42px;padding:0 8px}
+.sx .dx-dev-bar > i{width:9px;height:9px;border-radius:50%;background:#CFE6E3}
+.sx .dx-dev-bar > span{margin-left:auto;display:inline-flex;align-items:center;gap:8px;font:600 11px/1 "Saira","Segoe UI",Arial,sans-serif;
+  letter-spacing:.14em;text-transform:uppercase;color:#0A7D79}
+.sx .dx-dev-bar > span img{width:15px;height:15px}
+.sx .dx-dev img:not(.dx-dev-bar img){display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 0 0 1px rgba(10,125,121,.12)!important;transform:none!important}
+.sx .co-hero-shot.dx-dev{width:min(1060px,100%);margin-top:clamp(48px,7vh,80px)}
+
+/* Floating cards overhanging the hero frame */
+.sx .dx-float{position:absolute;z-index:2;background:#fff;border:1px solid rgba(10,125,121,.2);border-radius:18px;padding:14px 16px 16px;text-align:left;
+  animation:dx-cc-float 7s ease-in-out infinite}
+.sx .dx-float-l{left:-64px;top:36%;width:232px}
+.sx .dx-float-r{right:-48px;bottom:12%;width:250px;animation-delay:-3.5s}
+.sx .dx-float-h{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#040F1D}
+.sx .dx-float-h i{display:grid;place-items:center;width:26px;height:26px;border-radius:8px;background:#F4B528;color:#040F1D}
+.sx .dx-float-r .dx-float-h i{background:#013B43;color:#fff}
+.sx .dx-float-h svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sx .dx-float > b{display:block;margin:10px 0 8px;font-size:30px;line-height:1;font-weight:600;letter-spacing:-.03em;color:#040F1D}
+.sx .dx-float > b small{font-size:12px;font-weight:500;letter-spacing:0;color:#5A7271}
+.sx .dx-mini{display:grid;gap:6px;margin-top:4px}
+.sx .dx-mini > span{display:grid;grid-template-columns:62px 1fr 12px;align-items:center;gap:8px;font-size:11px;line-height:1;color:#5A7271}
+.sx .dx-mini > span i{display:block;height:6px;border-radius:99px;background:#E3F1F0;overflow:hidden}
+.sx .dx-mini > span i::before{content:"";display:block;height:100%;width:var(--w);border-radius:inherit;background:#11B8B1}
+.sx .dx-mini > span.most i::before{background:#0A7D79}
+.sx .dx-mini > span b{font-size:12px;font-weight:600;color:#040F1D;text-align:right}
+.sx .dx-mini em{position:relative;flex:1;height:var(--h);border-radius:5px 5px 2px 2px;background:#11B8B1}
+.sx .dx-mini em.b1{background:#0A7D79}.sx .dx-mini em.b2{background:#013B43}.sx .dx-mini em.b3{background:#F4B528}.sx .dx-mini em.b5{background:#7EDAD6}
+.sx .dx-mini s{position:absolute;top:-15px;left:0;right:0;text-align:center;text-decoration:none;font-size:10px;font-weight:600;color:#5A7271}
+.sx .dx-float > b small{display:inline;margin-left:4px}
+.sx .dx-appr{display:block;margin:12px 0 12px;padding:10px 12px;border-radius:12px;background:#F2F8F8}
+.sx .dx-appr b{display:block;font-size:13.5px;font-weight:600;color:#040F1D}
+.sx .dx-appr small{display:block;margin-top:3px;font-size:11.5px;line-height:1.35;color:#5A7271}
+.sx .dx-appr-btns{display:flex;gap:8px}
+.sx .dx-appr-btns em{flex:1;padding:8px 0;border-radius:10px;text-align:center;font-style:normal;font-size:12.5px;font-weight:600;color:#040F1D;border:1px solid rgba(10,125,121,.22);background:#fff}
+.sx .dx-appr-btns em.yes{background:#11B8B1;border-color:#11B8B1;animation:dx-cc-yes 7s ease-in-out infinite}
+@keyframes dx-cc-yes{0%,70%,100%{background:#11B8B1}78%,90%{background:#7EDAD6}}
+.sx .dx-week{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:12px}
+.sx .dx-week > span{display:flex;flex-direction:column;gap:4px;padding:9px 8px;border-radius:10px;background:#F2F8F8;font-size:10.5px;line-height:1.2;color:#5A7271}
+.sx .dx-week > span.gold{background:#FFF4D6;color:#6A4A00}
+.sx .dx-week b{font-size:20px;line-height:1;font-weight:600;color:#040F1D}
+@keyframes dx-cc-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+.sx .dx-illus{display:flex;align-items:center;justify-content:center;gap:8px;width:max-content;margin:22px auto 0;padding:7px 14px 7px 8px;border-radius:999px;
+  border:1px solid rgba(10,125,121,.18);background:#fff;font:600 10.5px/1 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#0A7D79}
+.sx .dx-illus img{width:18px;height:18px;padding:3px;border-radius:6px;background:#013B43}
+
+/* ---------- The tour ---------- */
+.sx .dx-tour .sx-head{max-width:none}
+.sx .dx-tabs{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 26px}
+.sx .dx-tabs button{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px;padding:8px 18px 8px 8px;border-radius:999px;cursor:pointer;
+  border:1px solid rgba(10,125,121,.22);background:#fff;font:500 15px/1.1 inherit;font-family:inherit;color:#040F1D;transition:background .25s,color .25s,border-color .25s}
+.sx .dx-tabs button .n{display:grid;place-items:center;min-width:30px;height:30px;padding:0 6px;border-radius:999px;background:#E6F7F5;
+  font:600 11px/1 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.06em;color:#0A7D79;transition:background .25s,color .25s}
+.sx .dx-tabs button:hover{border-color:#0A7D79}
+.sx .dx-tabs button[aria-selected=true]{background:#040F1D;border-color:#040F1D;color:#fff}
+.sx .dx-tabs button[aria-selected=true] .n{background:#11B8B1;color:#040F1D}
+.sx .dx-tabs button:focus-visible{outline:2px solid #11B8B1;outline-offset:3px}
+.sx .dx-prog{position:absolute;left:0;bottom:0;height:2px;width:100%;background:#11B8B1;transform:scaleX(0);transform-origin:left}
+.sx .dx-tabs button.run .dx-prog{animation:dx-cc-prog 7s linear forwards}
+@keyframes dx-cc-prog{to{transform:scaleX(1)}}
+.sx .dx-dev-tour{width:100%}
+.sx .dx-dev-scr{display:grid}
+.sx .dx-dev-scr img{grid-area:1/1;opacity:0;transform:scale(.985)!important;transition:opacity .6s ease,transform .8s ease}
+.sx .dx-dev-scr img.on{opacity:1;transform:none!important}
+.sx .dx-tour-cap{margin:20px auto 0;max-width:640px;text-align:center;font-size:17px;color:#2D4A4F;min-height:1.5em}
+
+/* ---------- Prepared by Bunya. Decided by you. ---------- */
+.sx .dx-flow .sx-head,.sx .dx-proc .sx-head{margin-left:auto;margin-right:auto;text-align:center}
+.sx .dx-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:none}
+.sx .dx-steps li{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:30px 22px 24px;border-radius:22px;background:#fff;
+  border:1px solid rgba(10,125,121,.16)}
+.sx .dx-steps li.gold{background:#FFFBF0}
+.sx .dx-steps li + li::before{content:"";position:absolute;left:-17px;top:50%;width:12px;height:12px;border-top:1.5px solid #7EDAD6;border-right:1.5px solid #7EDAD6;transform:translateY(-50%) rotate(45deg)}
+.sx .dx-step-ico{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;margin-bottom:16px;background:#E6F7F5;color:#0A7D79}
+.sx .dx-step-ico.c1{background:#E3F1F0;color:#013B43}
+.sx .dx-step-ico.c2{background:#F4B528;color:#040F1D}
+.sx .dx-step-ico.c3{background:#013B43;color:#fff}
+.sx .dx-step-ico svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sx .dx-step-n{font:600 10.5px/1 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#5A7271}
+.sx .dx-steps b{display:block;margin:8px 0 8px;font-size:22px;font-weight:600;letter-spacing:-.02em;color:#040F1D}
+.sx .dx-steps p{margin:0 0 18px;font-size:15px;line-height:1.5;color:#2D4A4F}
+.sx .dx-who{margin-top:auto;display:inline-flex;align-items:center;gap:7px;font:600 11px/1 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#0A7D79}
+.sx .dx-who::before{content:"";width:7px;height:7px;border-radius:50%;background:#11B8B1}
+.sx .dx-who.adviser{color:#6A4A00}
+.sx .dx-who.adviser::before{background:#F4B528}
+
+.sx .dx-wf,.sx .dx-ms{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin-top:30px}
+.sx .dx-ms{justify-content:flex-start;margin-top:26px}
+.sx .dx-wf-k{margin-right:6px;font:600 11px/1 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#5A7271}
+.sx .dx-wf a,.sx .dx-ms span:not(.dx-wf-k){display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:999px;font-size:14px;font-weight:500;
+  color:#040F1D;text-decoration:none;background:#E6F7F5;border:1px solid rgba(10,125,121,.14);transition:border-color .2s,background .2s}
+.sx .dx-wf a::before,.sx .dx-ms span:not(.dx-wf-k)::before{content:"";width:7px;height:7px;border-radius:50%;background:#11B8B1}
+.sx .dx-wf a.c1,.sx .dx-ms .c1{background:#FFF4D6;border-color:rgba(244,181,40,.35)}
+.sx .dx-wf a.c1::before,.sx .dx-ms .c1::before{background:#F4B528}
+.sx .dx-wf a.c2,.sx .dx-ms .c2{background:#E1EBEC;border-color:rgba(1,59,67,.14)}
+.sx .dx-wf a.c2::before,.sx .dx-ms .c2::before{background:#013B43}
+.sx .dx-wf a.c3,.sx .dx-ms .c3{background:#E3F1F0}
+.sx .dx-wf a.c3::before,.sx .dx-ms .c3::before{background:#0A7D79}
+.sx .dx-wf a:hover{border-color:#0A7D79;background:#fff}
+.sx .dx-flow > .co-more{text-align:center}
+
+/* ---------- Your process. Not a template. ---------- */
+.sx .dx-stages{list-style:none;margin:0 auto;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px 24px}
+.sx .dx-stages li{position:relative;display:inline-flex;align-items:center;gap:9px;padding:9px 15px 9px 9px;border-radius:14px;background:#fff;
+  border:1px solid rgba(10,125,121,.18);font-size:15px;font-weight:600;color:#040F1D}
+.sx .dx-stages li + li::before{content:"";position:absolute;left:-20px;top:50%;width:16px;border-top:1.5px dashed #7EDAD6}
+.sx .dx-stages li span{display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:#11B8B1;color:#040F1D;font-size:13px}
+.sx .dx-stages li.c1 span{background:#F4B528}
+.sx .dx-stages li.c2 span{background:#013B43;color:#fff}
+.sx .dx-stages li.c3 span{background:#7EDAD6}
+.sx .dx-stages li.yours{border-style:dashed;border-color:#0A7D79;background:#F2F8F8;color:#0A7D79}
+.sx .dx-stages li.yours span{background:#fff;color:#0A7D79;border:1.5px dashed #0A7D79;font-size:16px}
+.sx .dx-proc > .co-more{text-align:center;margin-top:30px}
+
+/* ---------- Reveal ---------- */
+.dx-cc-anim .sx .dx-cc-rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.dx-cc-anim .sx .dx-cc-rv.in{opacity:1;transform:none}
+.dx-cc-anim .sx .dx-steps.dx-cc-rv li{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.dx-cc-anim .sx .dx-steps.dx-cc-rv.in li{opacity:1;transform:none}
+.sx .dx-steps li:nth-child(2){transition-delay:.12s}.sx .dx-steps li:nth-child(3){transition-delay:.24s}.sx .dx-steps li:nth-child(4){transition-delay:.36s}
+
+/* ---------- Tablet and phone ---------- */
+@media (max-width:1180px){
+  .sx .dx-float-l{left:-16px}.sx .dx-float-r{right:-12px}
+}
+@media (max-width:900px){
+  .sx .dx-steps{grid-template-columns:1fr 1fr;gap:16px}
+  .sx .dx-steps li:nth-child(3)::before{display:none}
+  .sx .dx-float-l{width:180px;top:auto;bottom:-34px;left:4%}
+  .sx .dx-float-r{width:214px;bottom:-34px;right:4%}
+  .sx .co-hero-shot.dx-dev{margin-bottom:40px}
+}
+@media (max-width:640px){
+  .sx .dx-dev{padding:0 6px 6px;border-radius:18px}
+  .sx .dx-dev-bar{height:32px}
+  .sx .dx-dev-bar > span{font-size:9.5px;letter-spacing:.1em}
+  .sx .dx-dev img:not(.dx-dev-bar img){border-radius:11px}
+  .sx .dx-float-l{display:none}
+  .sx .dx-float-r{position:relative;right:auto;bottom:auto;width:auto;margin:12px 4px 0;animation:none}
+  .sx .co-hero-shot.dx-dev{margin-bottom:0}
+  .sx .dx-tabs{flex-wrap:nowrap;overflow-x:auto;margin:0 -24px 20px;padding:2px 24px 6px;scrollbar-width:none}
+  .sx .dx-tabs::-webkit-scrollbar{display:none}
+  .sx .dx-tabs button{flex:none;font-size:14px}
+  .sx .dx-steps{grid-template-columns:1fr}
+  .sx .dx-steps li::before{display:none}
+  .sx .dx-steps li{padding:24px 20px 20px}
+  .sx .dx-stages{gap:10px;justify-content:flex-start}
+  .sx .dx-stages li::before{display:none}
+  .sx .dx-wf,.sx .dx-ms{justify-content:flex-start}
+  .sx .dx-wf-k{width:100%;margin-bottom:2px}
+}
+@media (prefers-reduced-motion:reduce){
+  .sx .dx-float{animation:none}
+  .sx .dx-dev-scr img{transition:none}
+}
+
+/* ---------- 19 Nov 2026, round 2: a subtle lift on every card on this page, and line breaks ---------- */
+html body.sx{--dx-lift:var(--dx-edge);--dx-lift-hi:var(--dx-edge-hi)}
+html body.sx :is(.co-get,.co-teaser,.sx-tile,.sx-faq > details,.dx-steps li){border-color:transparent!important;box-shadow:var(--dx-edge)!important}
+html body.sx .dx-steps li.gold{box-shadow:0 0 0 1px rgba(244,181,40,.45),0 1px 3px rgba(106,74,0,.05),0 6px 18px rgba(106,74,0,.06),0 18px 44px rgba(106,74,0,.07)!important}
+html body.sx :is(a.co-get,a.co-teaser):hover{box-shadow:var(--dx-edge-hi)!important;transform:translateY(-4px)}
+html body.sx .dx-float{border-color:transparent;box-shadow:var(--dx-float)!important}
+html body.sx .dx-dev{border-color:rgba(10,125,121,.14);box-shadow:var(--dx-float)!important}
+html body.sx .dx-tabs button{box-shadow:0 1px 2px rgba(1,43,51,.04),0 4px 12px rgba(1,43,51,.05)}
+html body.sx .dx-stages li:not(.yours){border-color:transparent;box-shadow:0 0 0 1px rgba(1,43,51,.05),0 2px 6px rgba(1,43,51,.04),0 8px 20px rgba(1,43,51,.05)}
+
+/* Headings and lines Dana wants kept together */
+.sx #h-every span,.sx #h-next span{display:block}
+@media (min-width:1000px){
+  .sx .sx-head:has(#h-next),.sx .dx-flow .sx-head{max-width:none}
+  .sx #h-next{white-space:nowrap}
+  .sx .dx-flow .sx-head p{white-space:nowrap}
+}
+
+/* ---------- Closing "Build your Command Centre." orbit (round 3) ----------
+   Thin teal rings turn slowly in opposite directions, small coloured nodes ride them, a light streak runs
+   round the middle ring and a soft signal ring breathes out from the centre. Flat lines only, no washes. */
+.sx .sx-end.dx-orbit-on::before,.sx .sx-end.dx-orbit-on::after{display:none!important}
+.sx .sx-end .dx-orbit{position:absolute;left:50%;top:50%;z-index:-1;width:min(1180px,150vw);aspect-ratio:1;translate:-50% -50%;pointer-events:none;overflow:visible}
+.sx .dx-orbit *{transform-box:view-box;transform-origin:50% 50%}
+.sx .dx-orbit .ring{fill:none;stroke:#0A7D79;vector-effect:non-scaling-stroke}
+.sx .dx-orbit .r1{stroke-opacity:.16}
+.sx .dx-orbit .r2{stroke-opacity:.22;stroke-dasharray:2 9}
+.sx .dx-orbit .r3{stroke-opacity:.11}
+.sx .dx-orbit .r4{stroke-opacity:.14;stroke-dasharray:1 14;stroke-linecap:round;stroke-width:2}
+.sx .dx-orbit .spin-a{animation:dx-orb 90s linear infinite}
+.sx .dx-orbit .spin-b{animation:dx-orb 140s linear infinite reverse}
+.sx .dx-orbit .spin-c{animation:dx-orb 200s linear infinite}
+.sx .dx-orbit .streak{fill:none;stroke:#11B8B1;stroke-width:2.5;stroke-linecap:round;stroke-opacity:.75;stroke-dasharray:90 2800;animation:dx-streak 14s cubic-bezier(.45,0,.55,1) infinite}
+.sx .dx-orbit .streak.s2{stroke:#F4B528;stroke-opacity:.7;stroke-dasharray:60 2700;animation:dx-streak2 19s cubic-bezier(.45,0,.55,1) -7s infinite}
+.sx .dx-orbit .pulse{fill:none;stroke:#11B8B1;stroke-width:1.5;vector-effect:non-scaling-stroke;opacity:0;animation:dx-pulse 9s cubic-bezier(.2,.6,.3,1) infinite}
+.sx .dx-orbit .pulse.p2{animation-delay:-4.5s}
+.sx .dx-orbit .node{stroke:#fff;stroke-width:3}
+.sx .dx-orbit .halo{opacity:.14}
+@keyframes dx-orb{to{transform:rotate(360deg)}}
+@keyframes dx-streak{from{stroke-dashoffset:0}to{stroke-dashoffset:-2890}}
+@keyframes dx-streak2{from{stroke-dashoffset:0}to{stroke-dashoffset:-2760}}
+@keyframes dx-pulse{0%{transform:scale(.38);opacity:0}12%{opacity:.45}100%{transform:scale(1);opacity:0}}
+@media (max-width:640px){.sx .sx-end .dx-orbit{width:190vw}}
+@media (prefers-reduced-motion:reduce){.sx .dx-orbit *{animation:none!important}.sx .dx-orbit .pulse{display:none}}
+
+/* ---------- Round 4 (19 Nov 2026) ---------- */
+/* Breathing room at the end of every section, so nothing sits on a section line */
+.sx main > section:not(.sx-end){padding-bottom:clamp(88px,10vw,140px)}
+.sx .dx-illus{margin-bottom:8px}
+
+/* "Follow Priya and Arjun Shah": lighter card and screen */
+html body.sx .co-teaser{background:#fff}
+.sx .co-teaser img{background:#fff;filter:brightness(1.07) saturate(.85) contrast(1.03)}
+
+/* Arrows between the approval steps: a small round marker centred in each gap */
+.sx .dx-steps{gap:30px}
+.sx .dx-steps li + li::before{content:"";left:-28px;top:50%;width:26px;height:26px;border:0;border-radius:50%;transform:translateY(-50%);z-index:2;
+  background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A7D79' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 7l5 5-5 5'/%3E%3C/svg%3E") center/14px no-repeat;
+  box-shadow:0 0 0 1px rgba(10,125,121,.14),0 2px 6px rgba(1,43,51,.06)}
+@media (max-width:900px){.sx .dx-steps{gap:16px}.sx .dx-steps li + li::before{display:none}}
+/* hover frame wins over this page's card rules above */
+html body.sx :is(.co-get,.co-teaser,.sx-tile,.dx-steps li,.dx-steps li.gold):hover{
+  box-shadow:0 0 0 1.5px var(--hc,#11B8B1),0 2px 6px rgba(1,43,51,.05),0 12px 28px rgba(1,43,51,.08),0 30px 64px rgba(1,43,51,.10)!important}
+html body.sx .sx-faq > details:hover{box-shadow:0 0 0 1.5px var(--tc,#11B8B1),0 6px 18px rgba(1,43,51,.05),0 18px 44px rgba(1,43,51,.07)!important}
+
+/* ---------- Round 5 (19 Nov 2026) ---------- */
+/* How it works card: the meeting screen on a soft framed panel, large enough to read */
+.sx .co-teaser{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}
+.sx .co-teaser img{filter:none;aspect-ratio:auto;object-fit:contain;padding:clamp(14px,2vw,26px);border-radius:18px;
+  background:#EAF6F4;box-shadow:inset 0 0 0 1px rgba(10,125,121,.10)}
+
+/* "Your Microsoft 365. Your team's decisions." on one line */
+.sx #h-trust span{display:inline}
+@media (min-width:1000px){.sx .sx-head:has(#h-trust){max-width:none}.sx #h-trust{white-space:nowrap}}
+
+/* Build your Command Centre: styled like the bunya.ai review closing section.
+   White fading to pale teal, bigger buttons, pills with a soft lift, no rings. */
+html body.sx .sx-end{background:linear-gradient(180deg,#fff 0%,#fff 30%,#EAF6F4 100%)!important}
+.sx .sx-end::before,.sx .sx-end::after,.sx .sx-end .dx-orbit{display:none!important}
+.sx .sx-end h2{font-size:clamp(48px,6.6vw,96px)}
+.sx .sx-end .sx-ctas{gap:14px}
+.sx .sx-end .sx-btn{height:64px;padding:0 10px 0 30px;border-radius:16px;font-size:20px}
+.sx .sx-end .sx-btn{gap:16px}
+html body.sx .sx-end .sx-btn::after{width:46px;height:46px;border-radius:11px;background-size:19px}
+.sx .sx-end .sx-btn.ghost{background:#fff}
+.sx .sx-end .dx-pill{font-size:clamp(15px,1.35vw,19px);padding:12px 20px;
+  box-shadow:0 1px 2px rgba(4,15,29,.06),0 14px 30px -12px rgba(4,15,29,.30)!important}
+.sx .sx-end .dx-pill:is(.dx-p3,.dx-p4){box-shadow:0 0 0 1px rgba(4,15,29,.04),0 14px 30px -12px rgba(4,15,29,.22)!important}
+@media (max-width:640px){.sx .sx-end .sx-btn{height:56px;font-size:18px}}
+
+/* How it works card, round 6: clean screen (no textured backdrop) on the pale teal panel */
+.sx .co-teaser .dx-tpanel{display:block;padding:clamp(16px,2.4vw,30px);border-radius:18px;background:#EAF6F4;box-shadow:inset 0 0 0 1px rgba(10,125,121,.10)}
+.sx .co-teaser .dx-tpanel img{padding:0;background:none;box-shadow:0 0 0 1px rgba(1,43,51,.06),0 10px 26px rgba(1,43,51,.10)!important;border-radius:12px}
+

@@ -20,10 +20,10 @@
 
   /* v3's own settings, pointed at the brand */
   --sx-bg:#FFFFFF; --sx-card:#F2F8F8; --sx-card-2:#F2F8F8; --sx-line:#D9E6E6;
-  --sx-white:#040F1D; --sx-grey:#4F6B6B; --sx-dim:#6B8584; --sx-teal:#0A7D79;
+  --sx-white:#040F1D; --sx-grey:#4F6B6B; --sx-dim:#5A7271; --sx-teal:#0A7D79;
 }
 .n3{--n3-bg:rgba(255,255,255,.86); --n3-panel:rgba(255,255,255,.97); --n3-line:#D9E6E6;
-  --n3-grey:#4F6B6B; --n3-dim:#6B8584; --n3-teal:#0A7D79}
+  --n3-grey:#4F6B6B; --n3-dim:#5A7271; --n3-teal:#0A7D79}
 
 /* ---- Part 2: generated colour swaps ------------------------------------- */
 
@@ -95,7 +95,7 @@
 .pr-sub{color:#040F1D}
 
 /* from byo.css */
-.byo-fine{color:var(--sx-dim,#6B8584)}
+.byo-fine{color:var(--sx-dim,#5A7271)}
 .byo-sizes button{background:#EAF3F3;color:#040F1D;box-shadow:inset 0 0 0 1px #D9E6E6}
 .byo-sizes button:hover{box-shadow:inset 0 0 0 1.5px #B9CFCF}
 .byo-sizes button[aria-pressed="true"]{background:#E3F5F3;color:#040F1D;box-shadow:inset 0 0 0 2px #0A7D79}
