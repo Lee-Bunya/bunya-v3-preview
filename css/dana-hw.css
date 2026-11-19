@@ -1,0 +1,36 @@
+/* How it works, Dana 20 Nov 2026 (design pass).
+   1. The nine story films showed each app small in the middle of the frame. The frame now takes more of the width and
+      each film is zoomed 1.15x, centred, so the screens are about a third larger and nothing important is cut.
+   2. Chapter headlines: the second half in the house teal, as on every other page, instead of grey. */
+.sx .hw-frame video{transform:scale(1.15);transform-origin:50% 76%}
+/* the frame gets more of the width, the chapter text a little less */
+@media (min-width:1001px){.sx .hw-story .co-scroll{grid-template-columns:minmax(0,1.78fr) minmax(0,1fr)!important}}
+.sx .co-acts h3 span{color:#0A7D79}
+@media (max-width:900px){.sx .hw-frame video{transform:scale(1.1)}}
+@media (min-width:1001px){.sx .co-acts h3{font-size:38px}}
+
+/* 3. Chapter 1: the live Teams call with photos (js/dana-hw.js), set on the Bunya rings like the films around it */
+.sx .hw-frame video.hw-v0{display:none}
+.sx .hw-live{position:absolute;inset:0;z-index:1;overflow:hidden;opacity:0;pointer-events:none;transition:opacity .6s ease;
+  background:radial-gradient(60% 80% at 70% 50%,rgba(17,184,177,.10),transparent 70%),#EEF5F4}
+.sx .hw-frame video[data-i="0"].on ~ .hw-live{opacity:1}
+.sx .hw-orbit{position:absolute;left:-22%;top:-38%;width:78%;height:auto;aspect-ratio:1;overflow:visible}
+.sx .hw-orbit g{transform-box:view-box;transform-origin:50% 50%}
+.sx .hw-orbit circle{fill:none;stroke:#0A7D79;stroke-opacity:.16;stroke-width:1.2}
+.sx .hw-orbit circle.d{stroke-opacity:.5;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:.1 9}
+.sx .hw-orbit circle.g{stroke:#F4B528;stroke-opacity:.8;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:.1 9}
+.sx .hw-orbit circle.n{stroke:#fff;stroke-width:3;stroke-opacity:1}
+.sx .hw-orbit .o1{animation:hw-orb 80s linear infinite}.sx .hw-orbit .o2{animation:hw-orb 120s linear infinite reverse}
+.sx .hw-orbit .o3{animation:hw-orb 60s linear infinite}.sx .hw-orbit .o4{animation:hw-orb 200s linear infinite reverse}
+@keyframes hw-orb{to{transform:rotate(360deg)}}
+.sx .hw-st{position:absolute;left:50%;top:50%;width:900px;transform:translate(-50%,-50%) scale(var(--k,.6));transform-origin:50% 50%}
+.sx .hw-st .mt-scene{filter:drop-shadow(0 30px 40px rgba(1,43,51,.22))}
+.sx .hw-frame .hw-live img{opacity:1;position:static;inset:auto;transform:none;transition:none;object-position:50% 50%}
+.sx .hw-frame .hw-live .mt-tile img{display:block;width:100%;height:100%;object-fit:cover;border-radius:0!important}
+.sx .hw-frame .hw-live .mt-line img{width:38px;height:38px;border-radius:50%!important;object-fit:cover}
+@media (prefers-reduced-motion:reduce){.sx .hw-orbit g{animation:none}}
+/* phones: the call sits in chapter 1 in place of its small film */
+.sx .co-acts video.m.hw-v0{display:none}
+.sx .hw-mob{margin:18px 0 6px}
+.sx .hw-mob .mt-scene{grid-template-columns:1fr}
+.sx .hw-mob img{opacity:1;position:static;transform:none}
