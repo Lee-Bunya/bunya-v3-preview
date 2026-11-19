@@ -204,6 +204,8 @@
       compare: 'No more <span>print, sign and scan.</span>', included: 'Everything <span>in their portal.</span>', faq: 'Questions, <span>answered.</span>' },
     'broadcast-hq': { how: 'One idea in. <span>Four versions out.</span>', close: 'From one idea <span>to a week of posts.</span>',
       compare: 'No more <span>blank pages.</span>', included: 'Every channel, <span>one login.</span>', faq: 'Questions, <span>answered.</span>' },
+    'field-notes': { how: 'Recorded at their table. <span>Filed like the office.</span>', close: 'From the visit <span>to the client’s file.</span>',
+      compare: 'No more <span>notes in the car.</span>', included: 'Everything <span>from the visit.</span>', faq: 'Questions, <span>answered.</span>' },
     'advice-engine': { features: 'Pick the features. <span>Pay only for those.</span>', how: 'From fact find <span>to signed advice.</span>',
       close: 'Every step, <span>ready to check.</span>', compare: 'From a blank page <span>to a drafted SOA.</span>', included: 'Everything <span>in the Advice Engine.</span>', faq: 'Questions, <span>answered.</span>' }
   };
@@ -249,6 +251,11 @@
     /* design pass (Dana, 20 Nov 2026): the three points repeated How it works */
     'client-portal': { hidePoints: true },
     'broadcast-hq': { hidePoints: true },
+    /* design pass (Dana, 20 Nov 2026): Questions had two answers, so it gets the rest of what the page already says */
+    'field-notes': { hidePoints: true, faqMore: [
+      ['Where are the recording and the note kept?', 'In your firm’s SharePoint, on the client’s record, with the transcript and the approved note. It’s filed like any other meeting.'],
+      ['Can the adviser change the note?', 'Yes. The file note is drafted for the adviser to check, and it’s only filed once they approve it.'],
+      ['What does it cost?', 'Field Notes is $19 a month.'] ] },
     /* design audit (Dana, 20 Nov 2026): the subtitle repeated the headline, and the three steps showed three times */
     'file-audit': { hidePoints: true, heroSub: 'Checked against your licensee’s standards. Anything missing is flagged and fixed before the client sees it.', heroLines: true,
       incl: ['24 checks for your licensee', 'Every figure matched to the fact find', 'Missing dates and signatures flagged', 'Fixed on the page by your team', 'Audit report kept with the file'] },
@@ -262,6 +269,7 @@
   var cfg = PAGE[pg];
   if (cfg) {
     if (cfg.hidePoints) { var pp = document.querySelector('.pp-points'); if (pp) pp.classList.add('dx-hide'); }
+    if (cfg.faqMore) { var fq = document.querySelector('#faq .hb-faq'); if (fq) cfg.faqMore.forEach(function (x) { var d = document.createElement('details'); d.innerHTML = '<summary>' + x[0] + '<i></i></summary><p>' + x[1] + '</p>'; fq.appendChild(d); }); }
     if (cfg.heroSub) { var hs = document.querySelector('.pp-hero > p'); if (hs) hs.textContent = cfg.heroSub; }
     if (cfg.incl) { var ig = document.querySelector('#included .pp-incl, .dx-incl .pp-incl'); if (ig) ig.innerHTML = cfg.incl.map(function (x) { return '<span>' + x + '</span>'; }).join(''); }
     /* a section's own small h3 repeats the new headline, so it goes */
