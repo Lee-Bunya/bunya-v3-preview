@@ -171,3 +171,6 @@
 .sx .ab-co2 .ab-act{background:rgba(126,218,214,.14)!important;box-shadow:inset 0 0 0 1.5px rgba(126,218,214,.35)}
 .sx .ab-co-rings{position:absolute;right:-180px;top:-200px;width:420px;height:420px;z-index:-1}
 @media (max-width:860px){.sx .ab-fitcta{flex-direction:column;align-items:flex-start}.sx .ab-co.ab-co2{padding:18px;gap:10px}.sx .ab-logos img{height:72px!important}}
+/* final review: the fit-check card lifts with a thin teal frame on hover, like every other card */
+html body.sx a.ab-fitcta{transition:box-shadow .35s,transform .35s}
+html body.sx a.ab-fitcta:hover{transform:translateY(-3px);box-shadow:0 0 0 2px #7EDAD6,0 30px 60px -40px rgba(1,59,67,.6)!important}

@@ -87,3 +87,5 @@ html body.sx .cm-col .cm-i3{background:linear-gradient(135deg,#0A7D79,#013B43)!i
 }
 /* the small print runs the full width of the table */
 .sx .cm-fine{max-width:none!important;margin-left:0!important;margin-right:0!important}
+/* final review: closing headline on two lines (the headline box was capped narrow) */
+html body.sx .sx-end h2{max-width:none!important}

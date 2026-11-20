@@ -117,3 +117,6 @@
 .sx main h2[id]{scroll-margin-top:140px}
 /* full design review (20 Nov 2026): clear the old peach tint left on the "not yet" card markers */
 .sx .fit-card b::before{background:none!important;background-color:transparent!important}
+/* final review: the three summary tiles lift with a thin teal frame on hover */
+html body.sx a.fg-t{transition:box-shadow .35s,transform .35s}
+html body.sx a.fg-t:hover{transform:translateY(-3px);box-shadow:0 0 0 2px #7EDAD6,0 24px 48px -32px rgba(1,59,67,.5)!important}

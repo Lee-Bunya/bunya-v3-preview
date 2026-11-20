@@ -34,3 +34,5 @@
 .sx .hw-mob{margin:18px 0 6px}
 .sx .hw-mob .mt-scene{grid-template-columns:1fr}
 .sx .hw-mob img{opacity:1;position:static;transform:none}
+/* final review: Bunya teal for the "Your team says yes" icon (was gold) */
+html body.sx .sx-tile .dx-ico.dx-c2{background:#0A7D79!important}

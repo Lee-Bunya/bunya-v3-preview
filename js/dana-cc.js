@@ -112,7 +112,7 @@
       ['pen', 'Approved', 'The adviser signs it off for paraplanning.', 'Adviser', 'gold'],
       ['go', 'Moved on', 'Paraplanning picks it up, with the record kept.', 'Bunya', '']
     ];
-    var WF = [['Meeting file notes', 'meeting-notes.html'], ['Fact-find drafts', 'fact-find.html'], ['SoA request packs', 'statements-of-advice.html'], ['Review preparation', 'review-packs.html']];
+    var WF = [['Meeting file notes', 'meeting-notes.html'], ['Fact-find drafts', 'fact-find.html'], ['SoA request packs', 'soa-generator.html'], ['Review preparation', 'review-packs.html']];
     var flow = el('section', 'sx-sec dx-flow');
     flow.setAttribute('aria-labelledby', 'dx-flow-h');
     flow.innerHTML = '<div class="sx-head dx-cc-rv"><span class="sx-k">Human approval</span>' +
@@ -125,7 +125,7 @@
       '<div class="dx-wf dx-cc-rv"><span class="dx-wf-k">AI workflows include</span>' + WF.map(function (w, i) {
         return '<a class="c' + i + '" href="' + w[1] + '">' + w[0] + '</a>';
       }).join('') + '</div>' +
-      '<p class="co-more dx-cc-rv"><a href="ai-workflows-integrations.html">How AI workflows work</a></p>';
+      '<p class="co-more dx-cc-rv"><a href="how-it-works.html">How AI workflows work</a></p>';
     trust.insertAdjacentElement('beforebegin', flow);
 
     /* 4a. Microsoft 365 apps under the trust tiles */

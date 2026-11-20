@@ -965,3 +965,7 @@ body.sx:has(.pr-sum) .sx-sec > .sx-faq{max-width:860px}
    fill, no rings or other background decoration behind the headline. The floating pills stay. */
 html body.sx .sx-end{background:linear-gradient(180deg,#fff 0%,#fff 30%,#EAF6F4 100%)!important}
 html body.sx .sx-end::before,html body.sx .sx-end::after,html body.sx .sx-end .dx-orbit{display:none!important}
+
+/* Final review (Dana, 21 Nov 2026): every question number square on every page in the same pale Bunya teal tint.
+   (:nth-child(n) so this outranks the per-page colour cycles added earlier.) */
+html body.sx :is(.sx-faq,.hb-faq,.ar-faq,.faq-list,.v5-faq) details:nth-child(n){--tc:#11B8B1!important}
