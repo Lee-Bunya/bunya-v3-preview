@@ -1,0 +1,100 @@
+/* Insights, Dana 20 Nov 2026 (design pass). Goes with js/dana-bl.js. */
+.sx .ar-ihero p{max-width:none;text-wrap:balance}
+
+/* featured guide: deep teal, the cover on its own light panel, a button */
+.sx .ar-feat .ar-card.big{position:relative;background:linear-gradient(155deg,#013B43 0%,#04545B 60%,#0A6B6A 100%);color:#fff;border-radius:30px;
+  box-shadow:0 0 0 1px rgba(126,218,214,.18),0 40px 80px -40px rgba(1,59,67,.6)}
+.sx .ar-feat .ar-card.big .im{margin:14px;border-radius:20px;background:radial-gradient(70% 90% at 15% 10%,rgba(126,218,214,.55),transparent 60%),linear-gradient(160deg,#F2FAF9,#DDF2EF)!important}
+.sx .ar-feat .ar-card.big .tp{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;padding:6px 12px;border-radius:999px;background:rgba(126,218,214,.16);color:#7EDAD6!important}
+.sx .ar-feat .ar-card.big b{margin-top:18px;font-family:"TT Commons Pro",sans-serif;font-weight:700;color:#fff}
+.sx .ar-feat .ar-card.big .ld{color:rgba(223,246,244,.85)}
+.sx .ar-feat .ar-card.big .mt{color:rgba(223,246,244,.65)}
+.sx .bl-go{align-self:flex-start;margin-top:26px;display:inline-flex;align-items:center;gap:10px;padding:11px 12px 11px 20px;border-radius:999px;background:#fff;color:#013B43;font-size:15.5px;font-weight:600}
+.sx .bl-go i{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#11B8B1;transition:transform .3s}
+.sx .bl-go svg{width:15px;height:15px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.sx .ar-card.big:hover .bl-go i{transform:translateX(3px)}
+
+/* even space between the featured guide and the library */
+.sx .ar-feat{padding-bottom:0!important}
+.sx .ar-lib{margin-top:96px!important}
+.sx .ar-lib.dx-band{padding-top:96px}
+
+/* library head: kicker and two-tone headline, chips underneath */
+.sx .bl-head{display:block}
+.sx .bl-kick{display:inline-flex;margin-bottom:10px}
+.sx .bl-head h2{font-family:"TT Commons Pro",sans-serif;font-weight:700;font-size:clamp(32px,3.6vw,48px);line-height:1.06}
+.sx .bl-head h2 span{color:#0A7D79}
+.sx .bl-head .ar-chips{margin-top:22px}
+.sx .ar-chips button.on{background:#013B43;color:#fff}
+.sx .ar-chips button.on small{color:#7EDAD6}
+
+/* cards: teal topic with its dot, bolder titles, a soft lift and a teal frame on hover */
+.sx .ar-card .tp{display:inline-flex;align-items:center;gap:8px;color:#0A7D79!important}
+.sx .ar-card .tp::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--k,#11B8B1)}
+.sx .ar-feat .ar-card.big .tp::before{background:#7EDAD6}
+.sx #ar-grid .ar-card{box-shadow:0 0 0 1px rgba(1,59,67,.07),0 30px 60px -44px rgba(1,59,67,.4)}
+.sx #ar-grid .ar-card:hover{box-shadow:0 0 0 1.5px #7EDAD6,0 34px 64px -42px rgba(1,59,67,.45)}
+.sx #ar-grid .ar-card b{font-family:"TT Commons Pro",sans-serif;font-weight:700;font-size:20px;color:#13292C}
+.sx #ar-grid .ar-card .ld{color:#3E5559}
+.sx #ar-grid .ar-card .mt{display:flex;justify-content:space-between;align-items:center;color:#4B6266}
+.sx #ar-grid .ar-card .mt::after{content:"Read ›";font-weight:600;color:#0A7D79}
+.sx #ar-grid .ar-card span.im img{width:90%;max-height:86%}
+
+@media (max-width:1000px){.sx .ar-lib{margin-top:64px!important}.sx .ar-lib.dx-band{padding-top:64px}}
+.sx .ar-feat .ar-card.big span.im img{width:92%;max-height:88%;transform:translateY(3%)}
+
+/* the featured guide's live scene: Aynub's SOA fanned out and the draft ticking off */
+.sx .bl-hide{display:none!important}
+.sx .ar-feat .ar-card.big .im.bl-on{position:relative;display:block;min-height:420px;overflow:hidden;
+  background:radial-gradient(60% 70% at 30% 35%,rgba(255,236,200,.55),transparent 70%),radial-gradient(70% 80% at 85% 90%,rgba(126,218,214,.6),transparent 65%),linear-gradient(160deg,#F7FBFA,#DCF1EE)!important}
+.sx .bl-vis{position:absolute;inset:0}
+.sx .bl-st{position:absolute;width:640px;height:470px;transform:scale(var(--k,1));transform-origin:0 0;font-family:"TT Commons Pro",sans-serif;text-align:left}
+.sx .bl-doc{position:absolute;width:236px;aspect-ratio:1100/1556;border-radius:8px;overflow:hidden;background:#fff;
+  box-shadow:0 0 0 1px rgba(1,59,67,.08),0 30px 50px -22px rgba(1,59,67,.55);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.sx .bl-doc img{display:block;width:100%;height:100%;object-fit:cover;border-radius:0!important;box-shadow:none!important;transform:none!important;max-height:none!important}
+.sx .bl-doc.d1{left:44px;top:58px;transform:rotate(-7deg);z-index:3}
+.sx .bl-doc.d2{left:150px;top:40px;transform:rotate(-1deg);z-index:2}
+.sx .bl-doc.d3{left:250px;top:56px;transform:rotate(6deg);z-index:1}
+.sx .ar-card.big:hover .bl-doc.d1{transform:rotate(-10deg) translate(-10px,-4px)}
+.sx .ar-card.big:hover .bl-doc.d3{transform:rotate(9deg) translate(12px,-2px)}
+.sx .bl-tag{position:absolute;left:66px;top:22px;z-index:5;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:#013B43;color:#fff;font-size:14px;font-weight:600;
+  box-shadow:0 14px 26px -14px rgba(1,59,67,.6);animation:bl-float 6s ease-in-out infinite}
+.sx .bl-tag i{width:8px;height:8px;border-radius:50%;background:#7EDAD6}
+.sx .bl-chk{position:absolute;left:352px;top:118px;z-index:6;width:262px;padding:16px 16px 14px;border-radius:18px;background:#fff;
+  box-shadow:0 0 0 1px rgba(1,59,67,.08),0 30px 60px -26px rgba(1,59,67,.55);animation:bl-float 7s ease-in-out -2s infinite}
+.sx .bl-ch{display:flex;align-items:center;gap:10px;padding-bottom:10px;margin-bottom:6px;border-bottom:1px solid #E3EEEC}
+.sx .bl-lg{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#11B8B1,#0A7D79);flex:none;position:relative}
+.sx .bl-lg::after{content:"";position:absolute;inset:9px 10px;border:2px solid #fff;border-radius:2px;border-top-width:4px}
+.sx .bl-ch b{display:block;font-size:15.5px;font-weight:700;color:#13292C;line-height:1.1}
+.sx .bl-ch small{font-size:12.5px;color:#4B6266}
+.sx .bl-row{display:flex;align-items:center;gap:9px;padding:7px 2px;font-size:13.5px;color:#13292C}
+.sx .bl-row span{flex:1}
+.sx .bl-row i{width:18px;height:18px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #C6DEDB;flex:none;transition:background .3s,box-shadow .3s;position:relative}
+.sx .bl-row em{font-style:normal;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:999px;background:#F0F5F4;color:#7A8F8D;transition:all .3s}
+.sx .bl-row.on i{background:#11B8B1;box-shadow:none}
+.sx .bl-row.on i::after{content:"";position:absolute;left:6px;top:3px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.sx .bl-row.on em{background:#E6F7F5;color:#0A7D79}
+.sx .bl-row.warn.on i{background:#04545B}
+.sx .bl-row.warn.on em{background:#013B43;color:#7EDAD6}
+.sx .bl-ready{display:flex;align-items:center;gap:8px;margin-top:8px;padding:9px 12px;border-radius:12px;background:#E6F7F5;color:#04545B;font-size:13.5px;font-weight:700;opacity:.35;transition:opacity .4s,background .4s,color .4s}
+.sx .bl-ready i{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#0A7D79;color:#fff;font-style:normal;font-size:12px}
+.sx .bl-ready.on{opacity:1;background:#013B43;color:#fff}
+.sx .bl-ready.on i{background:#11B8B1}
+@keyframes bl-float{50%{transform:translateY(-6px)}}
+@media (max-width:1000px){.sx .ar-feat .ar-card.big .im.bl-on{min-height:0;aspect-ratio:640/470}}
+@media (prefers-reduced-motion:reduce){.sx .bl-tag,.sx .bl-chk{animation:none}}
+/* the checklist's own title (the featured card styles every <b> as its big white title) */
+.sx .ar-feat .ar-card.big .bl-ch b{margin:0;font-size:15.5px;line-height:1.1;letter-spacing:0;color:#13292C}
+.sx .bl-chk{width:282px;left:338px}
+.sx .bl-row span{white-space:nowrap}
+
+/* Dana (20 Nov 2026): a thin frame in each topic's own teal when you hover a guide or a topic button
+   (the site-wide hover rule is !important, so these are too) */
+.sx #ar-grid a.ar-card:hover{box-shadow:0 0 0 2px var(--k,#11B8B1),0 34px 64px -40px rgba(1,59,67,.5)!important}
+.sx #ar-grid a.ar-card:focus-visible{outline:none;box-shadow:0 0 0 2px var(--k,#11B8B1),0 34px 64px -40px rgba(1,59,67,.5)!important}
+.sx .ar-chips button{box-shadow:0 0 0 1px rgba(1,59,67,.08);transition:box-shadow .25s,background .25s,color .25s}
+.sx .ar-chips button:hover{background:#fff;box-shadow:0 0 0 2px var(--k,#11B8B1),0 10px 20px -12px rgba(1,59,67,.45)}
+.sx .ar-chips button.on:hover{background:#013B43;box-shadow:0 0 0 2px #7EDAD6}
+/* closing headline on two lines: "Every meeting," / "followed through." (as on FAQ) */
+.sx .sx-end h2{max-width:none}
+.sx .sx-end h2 .sx-grad{display:block}
