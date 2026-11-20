@@ -1,0 +1,35 @@
+/* Why Bunya (why-bunya.html), Dana 20 Nov 2026 (design pass). Goes with js/dana-why.js. */
+.sx .wm-hero p{text-wrap:balance}
+
+/* eight reasons, four across, in the Command Centre card system */
+.sx .wm-why.wy-on{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+@media (max-width:1100px){.sx .wm-why.wy-on{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.sx .wm-why.wy-on{grid-template-columns:minmax(0,1fr)}}
+html body.sx .wm-why.wy-on > .wy-card{position:relative;display:flex;flex-direction:column;align-items:flex-start;padding:26px 24px 24px!important;border-radius:24px!important;border:0!important;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--hc) 10%,#fff) 0%,#fff 50%)!important;
+  box-shadow:0 0 0 1px rgba(1,59,67,.07),0 26px 52px -40px rgba(1,59,67,.4)!important;transition:box-shadow .35s,transform .35s}
+html body.sx .wm-why.wy-on > .wy-card:hover{transform:translateY(-4px);box-shadow:0 0 0 2px var(--hc),0 30px 60px -40px rgba(1,59,67,.45)!important}
+html body.sx .wy-card .wy-ico{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:var(--hc)!important;box-shadow:0 10px 22px -12px var(--hc)}
+html body.sx .wy-card .wy-ico svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+html body.sx .wy-card .k{position:absolute;top:24px;right:22px;padding:5px 10px;border-radius:999px;font:600 12px/1 "Saira",sans-serif!important;letter-spacing:.08em;
+  color:#0A7D79!important;background:#fff;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--hc) 35%,transparent)}
+html body.sx .wy-card h3{margin-top:18px;font:700 20px/1.2 "TT Commons Pro",sans-serif!important;letter-spacing:-.015em;color:#013B43!important}
+html body.sx .wy-card p{margin-top:8px;font-size:15.5px;line-height:1.55;color:#2D4A4F!important}
+
+/* the last reason is the next step: deep teal, with a button */
+html body.sx .wm-why.wy-on > .wy-card.wy-go{background:radial-gradient(90% 70% at 100% 0%,rgba(17,184,177,.3),transparent 60%),linear-gradient(160deg,#04545B,#013B43)!important}
+html body.sx .wm-why.wy-on > .wy-card.wy-go:hover{box-shadow:0 0 0 2px #7EDAD6,0 30px 60px -36px rgba(1,59,67,.6)!important}
+html body.sx .wy-go .wy-ico{background:#11B8B1!important}
+html body.sx .wy-go .k{background:rgba(255,255,255,.08)!important;color:#7EDAD6!important;box-shadow:inset 0 0 0 1px rgba(126,218,214,.35)}
+html body.sx .wy-go h3{color:#fff!important}
+html body.sx .wy-go p{color:rgba(223,246,244,.85)!important}
+.sx .wy-btn{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:10px;padding:6px 6px 6px 16px;border-radius:12px;background:#11B8B1;color:#013B43!important;
+  font-size:14.5px;font-weight:700;text-decoration:none!important;transition:background .3s}
+.sx .wy-go p{margin-bottom:18px}
+.sx .wy-btn i{width:30px;height:30px;border-radius:8px;background:#013B43 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/14px no-repeat;transition:transform .3s}
+.sx .wy-btn:hover{background:#7EDAD6}.sx .wy-btn:hover i{transform:translateX(3px)}
+@media (prefers-reduced-motion:reduce){html body.sx .wm-why.wy-on > .wy-card:hover{transform:none}}
+/* closing: "Build" / "your Bunya." on every screen size */
+.sx .sx-end h2 .sx-grad{display:block}
+/* hero: "Designed for people" / "who aren’t techy." */
+.sx .wm-hero h1 .sx-grad{display:block}
