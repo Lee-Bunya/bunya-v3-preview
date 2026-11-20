@@ -366,3 +366,25 @@ html body.sx .sh-ok i{display:block;width:14px;height:14px;background:url("data:
 @media (min-width:1101px){html body.sx a.co-teaser.sh-on{grid-template-columns:minmax(0,1.32fr) minmax(0,1fr)}.sx .sh-app{width:78%}}
 html body.sx .sh-txt b{text-wrap:balance}
 @media (min-width:901px){.sx .sh-steps{flex-wrap:nowrap}.sx .sh-steps span{padding:6px 9px;font-size:12.5px;white-space:nowrap}}
+
+/* ---------- Dana (21 Nov 2026) ---------- */
+/* the "Approved" step (the adviser's sign-off) in the same soft yellow as Home's "Make it yours" card */
+html body.sx .dx-steps li.gold{background:linear-gradient(180deg,#FFF5D9 0%,#FFFBF0 60%)!important;box-shadow:0 0 0 1px rgba(244,181,40,.4),0 24px 48px -36px rgba(106,74,0,.35)!important}
+html body.sx .dx-steps li.gold:hover{box-shadow:0 0 0 2px rgba(244,181,40,.7),0 28px 56px -36px rgba(106,74,0,.4)!important}
+/* "Your blueprint": each stage tinted in its own teal, bigger and bolder; "Your step" in the soft yellow */
+html body.sx .dx-stages{gap:14px 26px}
+html body.sx .dx-stages li{padding:11px 18px 11px 11px;font-size:16px;font-weight:600;color:#013B43;transition:transform .3s,box-shadow .3s}
+html body.sx .dx-stages li span{width:32px;height:32px;border-radius:10px;font-weight:700}
+html body.sx .dx-stages li.c0{background:linear-gradient(180deg,#E3F6F4,#fff)!important}
+html body.sx .dx-stages li.c1{background:linear-gradient(180deg,#DDF1EF,#fff)!important}
+html body.sx .dx-stages li.c2{background:linear-gradient(180deg,#DCEBEC,#fff)!important}
+html body.sx .dx-stages li.c3{background:linear-gradient(180deg,#E8F8F6,#fff)!important}
+html body.sx .dx-stages li.c0 span{background:#11B8B1!important;color:#fff!important}
+html body.sx .dx-stages li.c1 span{background:#0A7D79!important;color:#fff!important}
+html body.sx .dx-stages li.c2 span{background:#013B43!important;color:#fff!important}
+html body.sx .dx-stages li.c3 span{background:#7EDAD6!important;color:#013B43!important}
+html body.sx .dx-stages li:not(.yours):hover{transform:translateY(-3px);box-shadow:0 0 0 2px #7EDAD6,0 16px 30px -18px rgba(1,59,67,.4)!important}
+html body.sx .dx-stages li + li::before{border-top:2px solid #7EDAD6}
+html body.sx .dx-stages li.yours{background:linear-gradient(180deg,#FFF5D9,#FFFBF0)!important;border:1.5px dashed rgba(196,140,20,.55)!important;color:#7A5A00!important}
+html body.sx .dx-stages li.yours span{background:#fff!important;color:#B07A00!important;border:1.5px dashed rgba(196,140,20,.6)!important}
+@media (min-width:1101px){html body.sx .dx-stages{gap:14px 22px;flex-wrap:nowrap}html body.sx .dx-stages li{padding:10px 16px 10px 10px;font-size:15.5px;white-space:nowrap}html body.sx .dx-stages li + li::before{left:-18px;width:14px}}
