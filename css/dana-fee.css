@@ -1,0 +1,6 @@
+/* Fee consent (fee-consent.html), Dana 20 Nov 2026 (design pass). Goes with js/dana-fee.js. */
+/* the three points straight under the screen repeat "How it works", as on the other product pages */
+.sx .pp-points{display:none!important}
+/* FAQ numbers in Bunya teals only */
+.sx .hb-faq > details{--tc:#11B8B1!important}
+.sx .hb-faq > details:nth-child(4n+2){--tc:#0A7D79!important}.sx .hb-faq > details:nth-child(4n+3){--tc:#0A9C96!important}.sx .hb-faq > details:nth-child(4n){--tc:#04545B!important}

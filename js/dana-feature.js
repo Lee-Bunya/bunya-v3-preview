@@ -196,8 +196,8 @@
   };
   var PAGE_HEADS = {
     /* Dana (20 Nov 2026): these two still had the placeholder headlines */
-    'bunya-portal': { how: 'Ask, request, follow, <span>add more.</span>', close: 'Your portal, <span>screen by screen.</span>', compare: 'Less chasing. <span>More knowing.</span>', faq: 'Questions, <span>answered.</span>' },
-    'fee-consent': { how: 'Due, renewed, <span>on the record.</span>', compare: 'No more <span>chasing signatures.</span>', faq: 'Questions, <span>answered.</span>' },
+    'bunya-portal': { how: 'Ask, request, follow, <span>add more.</span>', close: 'Your portal, <span>screen by screen.</span>', compare: 'Less chasing. <span>More knowing.</span>', included: 'Everything <span>in your portal.</span>', faq: 'Questions, <span>answered.</span>' },
+    'fee-consent': { how: 'Due, renewed, <span>on the record.</span>', compare: 'No more <span>chasing signatures.</span>', included: 'Everything <span>for every renewal.</span>', faq: 'Questions, <span>answered.</span>' },
     'meeting-notes': { how: 'From the meeting <span>to the client’s file.</span>', close: 'Checked in minutes. <span>Not hours.</span>', compare: 'Less typing. <span>More advice.</span>', faq: 'Questions, <span>answered.</span>' },
     'review-packs': { how: 'From the due date <span>to the review meeting.</span>', example: 'Your review pack. <span>In your brand.</span>',
       fees: 'Every consent, <span>renewed with its review.</span>', close: 'Your whole year, <span>ready ahead.</span>',
