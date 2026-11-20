@@ -1,0 +1,226 @@
+/* Pricing, Dana 20 Nov 2026. Bunya teals only: each product area keeps its own shade, so the sections stay easy to tell apart.
+   (Shared system colours in css/dana-system.css; these override them on this page only.) */
+.pr-list > .pr-grp:nth-child(1){--acc:#11B8B1;--on:#fff}
+.pr-list > .pr-grp:nth-child(2){--acc:#013B43;--on:#7EDAD6}
+.pr-list > .pr-grp:nth-child(3){--acc:#0A7D79;--on:#fff}
+.pr-list > .pr-grp:nth-child(4){--acc:#04545B;--on:#7EDAD6}
+.pr-list > .pr-grp:nth-child(5){--acc:#0A9C96;--on:#fff}
+.pr-list > .pr-grp:nth-child(6){--acc:#7EDAD6;--on:#013B43}
+.pr-list > .pr-grp:nth-child(7){--acc:#040F1D;--on:#7EDAD6}
+.dx-jump a:nth-child(1){--acc:#11B8B1}.dx-jump a:nth-child(2){--acc:#013B43}.dx-jump a:nth-child(3){--acc:#0A7D79}
+.dx-jump a:nth-child(4){--acc:#04545B}.dx-jump a:nth-child(5){--acc:#0A9C96}.dx-jump a:nth-child(6){--acc:#7EDAD6}.dx-jump a:nth-child(7){--acc:#040F1D}
+.sx .pr-list .pr-ae::before{background:#11B8B1!important}
+.sx .pr-list .pr-ae{background:linear-gradient(170deg,#E6F7F5,#fff)!important}
+.sx .pr-sum::before{background:linear-gradient(90deg,#7EDAD6,#11B8B1 35%,#0A7D79 70%,#013B43)!important}
+.sx .pr-vs > div + div{border-top-color:#0A7D79!important}
+.sx .pr-every div:nth-child(2){border-top-color:#0A7D79!important}
+.sx .pr-every div:nth-child(2)::before{background:#0A7D79!important}.sx .pr-every div:nth-child(2)::after{background:#fff!important}
+.sx .pr-every div:nth-child(4){border-top-color:#04545B!important}
+.sx .pr-every div:nth-child(4)::before{background:#04545B!important}
+/* the hero wash in teals only */
+.sx .pr-hero::before{background:radial-gradient(38% 55% at 18% 8%,rgba(17,184,177,.16),transparent 70%),radial-gradient(30% 45% at 84% 14%,rgba(126,218,214,.22),transparent 70%)!important}
+/* closing headline on two lines */
+.sx .sx-end h2{max-width:none}
+.sx .sx-end h2 .sx-grad{display:block}
+
+/* ===================== Make it impressive, same layout (Dana, 20 Nov 2026) ===================== */
+/* section index: chips; the current one deep teal */
+.sx .dx-jump{background:rgba(255,255,255,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.sx .dx-jump a{background:#fff;box-shadow:inset 0 0 0 1px #DCEBE9;color:#13292C;font-weight:600;transition:all .25s;margin-right:6px}
+.sx .dx-jump a:hover{box-shadow:inset 0 0 0 2px var(--acc);color:#013B43}
+.sx .dx-jump a.on{background:#013B43;color:#fff;box-shadow:none}
+.sx .dx-jump a.on::before{box-shadow:0 0 0 2px rgba(255,255,255,.9)}
+
+/* group headers: the area's tile, title, and its starting price as a pill */
+.sx .pr-list .pr-gh h2{font-family:"TT Commons Pro",sans-serif;font-weight:700;letter-spacing:-.025em}
+.sx .pr-list .pr-gh .n{width:52px!important;height:52px!important;border-radius:16px!important;box-shadow:0 14px 26px -14px var(--acc)!important}
+.sx .pr-list .pr-gh > .pc{padding:8px 14px;border-radius:999px;background:color-mix(in srgb,var(--acc) 12%,#fff);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--acc) 30%,#fff);color:#13292C}
+.sx .pr-list .pr-gh > .pc b{font-family:"TT Commons Pro",sans-serif;font-weight:700;color:#013B43}
+
+/* price rows: real cards with a soft lift, a frame in the area's colour on hover, open rows clearly selected */
+.sx .pr-wrap .pr-list .pr-row{background:#fff!important;border-radius:20px;box-shadow:0 0 0 1px rgba(1,59,67,.07),0 18px 36px -30px rgba(1,59,67,.4)!important;transition:box-shadow .25s,transform .25s}
+.sx .pr-wrap .pr-list .pr-row:hover{transform:translateY(-2px);box-shadow:0 0 0 2px var(--acc),0 24px 44px -30px rgba(1,59,67,.45)!important}
+.sx .pr-wrap .pr-list .pr-row[open]{box-shadow:0 0 0 2px var(--acc),0 30px 60px -36px rgba(1,59,67,.5)!important;background:linear-gradient(180deg,color-mix(in srgb,var(--acc) 7%,#fff),#fff 70%)!important}
+.sx .pr-row .nm b{font-family:"TT Commons Pro",sans-serif;font-weight:700;color:#13292C}
+.sx .pr-row .pc b{font-family:"TT Commons Pro",sans-serif;font-weight:700;font-size:23px;letter-spacing:-.02em;color:#013B43}
+/* "Included" as a ticked pill */
+.sx .pr-row .pc b.pr-inc{display:inline-flex;align-items:center;gap:7px;padding:6px 12px 6px 8px;border-radius:999px;background:#E6F7F5;color:#04545B;font-size:14px;letter-spacing:0}
+.sx .pr-row .pc b.pr-inc::before{content:"";width:18px;height:18px;border-radius:50%;background:#11B8B1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4L18 8'/%3E%3C/svg%3E") center/11px no-repeat}
+/* the open/close button: a round tile that fills with the area's colour */
+.sx .pr-chev{transition:background .25s,transform .3s,box-shadow .25s}
+.sx .pr-row:hover .pr-chev{box-shadow:inset 0 0 0 2px var(--acc)}
+.sx .pr-row[open] .pr-chev{background-color:var(--acc)!important}
+.sx .pr-row[open] .pr-chev::before,.sx .pr-row[open] .pr-chev::after{background:var(--on,#fff)!important;border-color:var(--on,#fff)!important}
+.sx .pr-dd-b ul li::marker{color:var(--acc)}
+.sx .pr-dd-a{display:inline-flex;margin-top:6px;padding:9px 16px;border-radius:999px;background:#013B43;color:#fff!important;font-weight:600;text-decoration:none}
+.sx .pr-dd-a:hover{background:var(--acc);color:var(--on,#fff)!important}
+
+/* the whole Advice Engine: the bundle row on deep teal */
+.sx .pr-wrap .pr-list .pr-row.pr-ae{background:linear-gradient(155deg,#013B43 0%,#04545B 60%,#0A6B6A 100%)!important;box-shadow:0 0 0 1px rgba(126,218,214,.25),0 30px 60px -36px rgba(1,59,67,.6)!important}
+.sx .pr-list .pr-ae::before{display:none}
+.sx .pr-ae .nm b,.sx .pr-ae .pc b{color:#fff!important}
+.sx .pr-ae .nm small,.sx .pr-ae .pc{color:rgba(223,246,244,.8)!important}
+.sx .pr-ae .pr-why{color:rgba(223,246,244,.88)!important;border-left-color:#7EDAD6!important}
+.sx .pr-ae .pr-dd-b,.sx .pr-ae .pr-dd-b p,.sx .pr-ae .pr-dd-b li{color:rgba(223,246,244,.9)!important}
+.sx .pr-ae .pr-dd-a{background:#fff;color:#013B43!important}
+.sx .pr-badge{display:inline-flex;vertical-align:3px;margin-left:6px;padding:3px 9px;border-radius:999px;background:#7EDAD6;color:#013B43;font:600 10.5px/1.2 "Saira",sans-serif;letter-spacing:.08em;text-transform:uppercase}
+
+/* how your price works: deep teal, Bunya's rings, a bar for each example price */
+.sx .pr-sum{isolation:isolate;overflow:hidden;background:linear-gradient(160deg,#013B43 0%,#04545B 55%,#0A6B6A 100%)!important;box-shadow:0 0 0 1px rgba(126,218,214,.18),0 50px 90px -46px rgba(1,59,67,.7)!important;color:#fff}
+.sx .pr-sum::before{display:none}
+.sx .pr-sum .k{color:#7EDAD6!important}
+.sx .pr-sum .pr-how,.sx .pr-sum .pr-sn{color:rgba(223,246,244,.82)!important}
+.sx .pr-sum .pr-lines > div{position:relative;display:grid!important;grid-template-columns:1fr auto;row-gap:8px;padding:12px 14px!important;margin-top:8px;border-radius:14px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(126,218,214,.14);border:0!important}
+.sx .pr-sum dt{color:rgba(223,246,244,.9)!important;font-size:14px}
+.sx .pr-sum dd{font-family:"TT Commons Pro",sans-serif;font-weight:700;font-size:20px;color:#fff!important}
+.sx .pr-bar{grid-column:1/-1;height:6px;border-radius:6px;background:rgba(126,218,214,.15);overflow:hidden}
+.sx .pr-bar i{display:block;width:var(--w);height:100%;border-radius:6px;background:linear-gradient(90deg,#7EDAD6,#11B8B1)}
+.sx .pr-sum .sx-btn{background:#fff!important;color:#013B43!important}
+.sx .pr-sum .pr-whylink{color:#7EDAD6!important}
+.sx .pr-sum .pr-fine{color:rgba(223,246,244,.6)!important}
+.sx .pr-rings{position:absolute;right:-180px;top:-200px;width:420px;height:420px;z-index:-1;overflow:visible;pointer-events:none}
+.sx .pr-rings g{transform-box:view-box;transform-origin:50% 50%}
+.sx .pr-rings circle{fill:none;stroke:#7EDAD6;stroke-opacity:.2;stroke-width:2}
+.sx .pr-rings circle.d{stroke-opacity:.55;stroke-width:3.5;stroke-linecap:round;stroke-dasharray:.1 12}
+.sx .pr-rings circle.g{stroke:#F4B528;stroke-opacity:.7;stroke-width:3.5;stroke-linecap:round;stroke-dasharray:.1 12}
+.sx .pr-rings circle.n{fill:#7EDAD6;stroke:none}.sx .pr-rings circle.n.t{fill:#11B8B1}.sx .pr-rings circle.n.y{fill:#F4B528}
+.sx .pr-rings .a{animation:pr-orb 80s linear infinite}.sx .pr-rings .b{animation:pr-orb 120s linear infinite reverse}.sx .pr-rings .c{animation:pr-orb 60s linear infinite}
+@keyframes pr-orb{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.sx .pr-rings g{animation:none}}
+
+/* the examples list sits straight on the deep teal */
+.sx .pr-sum .pr-lines,.sx .pr-sum dl.pr-ex{background:none!important;box-shadow:none!important;padding:0!important;border:0!important}
+/* subscribe or own: two white cards, subscribe in bright teal, own in deep teal */
+.sx .pr-wrap .pr-vs > div{background:#fff!important;border-radius:20px;box-shadow:0 0 0 1px rgba(1,59,67,.07),0 18px 36px -30px rgba(1,59,67,.4)!important;border-top:4px solid #11B8B1!important}
+.sx .pr-wrap .pr-vs > div + div{border-top-color:#013B43!important}
+.sx .pr-vs b{font-family:"TT Commons Pro",sans-serif;font-weight:700;color:#13292C}
+/* smaller screens: the summary card is no longer sticky, so keep it positioned to hold its rings inside */
+@media (max-width:1000px){.sx .pr-sum{position:relative!important;top:auto!important}}
+
+/* ---------- round 2 (Dana, 20 Nov 2026) ---------- */
+/* $7,249 in its own colour */
+.sx .pr-amt{font-style:normal;color:#013B43;-webkit-text-fill-color:#013B43;padding:0 .12em;border-radius:.18em;
+  background:linear-gradient(transparent 52%,rgba(126,218,214,.75) 52%,rgba(126,218,214,.75) 92%,transparent 92%)}
+
+/* How your price works: white and easy to read, with a deep-teal header band */
+.sx .pr-sum.pr-sum2{background:#fff!important;color:#13292C;padding-top:0!important;box-shadow:0 0 0 1px rgba(1,59,67,.08),0 50px 90px -50px rgba(1,59,67,.55)!important}
+.sx .pr-sh{position:relative;isolation:isolate;overflow:hidden;margin:0 -28px 18px;padding:24px 28px 22px;background:linear-gradient(155deg,#013B43 0%,#04545B 60%,#0A6B6A 100%)}
+.sx .pr-sh .pr-rings{right:-200px;top:-230px}
+.sx .pr-sum2 .pr-sh .k{color:#7EDAD6!important}
+.sx .pr-sum2 .pr-sh .pr-how{margin-top:8px;color:#fff!important;font-size:15.5px;line-height:1.55}
+.sx .pr-sum2 .pr-lines > div{background:#F4FAF9!important;box-shadow:inset 0 0 0 1px #DCEBE9!important;border-left:5px solid var(--sc,#11B8B1)!important;padding:12px 14px 12px 14px!important}
+.sx .pr-sum2 .pr-lines > div:nth-child(1){--sc:#7EDAD6}.sx .pr-sum2 .pr-lines > div:nth-child(2){--sc:#11B8B1}
+.sx .pr-sum2 .pr-lines > div:nth-child(3){--sc:#0A7D79}.sx .pr-sum2 .pr-lines > div:nth-child(4){--sc:#013B43}
+.sx .pr-sum2 dt{color:#3E5559!important;font-size:14.5px}
+.sx .pr-sum2 dd{color:#013B43!important;font-size:22px}
+.sx .pr-sum2 .pr-bar{background:#E2EEEC}
+.sx .pr-sum2 .pr-bar i{background:var(--sc,#11B8B1)}
+.sx .pr-sum2 .pr-sn{display:flex;gap:10px;align-items:flex-start;margin-top:14px;padding:12px 14px;border-radius:14px;background:#E6F7F5;color:#04545B!important;font-size:14px;line-height:1.5}
+.sx .pr-i{flex:none;display:grid;place-items:center;width:20px;height:20px;margin-top:1px;border-radius:50%;background:#0A7D79;color:#fff;font:700 12px/1 "TT Commons Pro",serif;font-style:normal}
+.sx .pr-sum2 .sx-btn{background:#013B43!important;color:#fff!important}
+.sx .pr-sum2 .pr-whylink{color:#0A7D79!important}
+.sx .pr-sum2 .pr-fine{color:#4B6266!important}
+
+/* Getting live, included: a deep-teal panel, white cards marked Included, detail chips */
+.sx .pr-every.pr-every2{position:relative;isolation:isolate;overflow:hidden;padding:22px;border-radius:32px;gap:14px;
+  background:linear-gradient(155deg,#013B43 0%,#04545B 60%,#0A6B6A 100%);box-shadow:0 0 0 1px rgba(126,218,214,.18),0 50px 90px -50px rgba(1,59,67,.6)}
+.sx .pr-ev-rings{right:-160px;top:-220px;width:460px;height:460px}
+.sx .pr-every2 > div{position:relative;display:flex;flex-direction:column;background:#fff!important;border-radius:22px;border-top:0!important;box-shadow:0 20px 40px -24px rgba(0,0,0,.5)!important;transition:transform .3s}
+.sx .pr-every2 > div:hover{transform:translateY(-4px)}
+.sx .pr-every2 b{font-family:"TT Commons Pro",sans-serif;font-weight:700;font-size:19px;color:#13292C}
+.sx .pr-every2 p{color:#3E5559!important}
+.sx .pr-incl{position:absolute;top:22px;right:20px;display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 6px;border-radius:999px;background:#E6F7F5;color:#04545B;font:600 11px/1.2 "Saira",sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.sx .pr-incl::before{content:"";width:14px;height:14px;border-radius:50%;background:#11B8B1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4L18 8'/%3E%3C/svg%3E") center/9px no-repeat}
+.sx .pr-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:14px}
+.sx .pr-chips i{font-style:normal;font-size:12.5px;font-weight:600;padding:5px 10px;border-radius:999px;background:#F0F7F6;color:#0A7D79;box-shadow:inset 0 0 0 1px #DCEBE9}
+.sx .pr-every2 > div:nth-child(1) .pr-chips i:first-child{background:#013B43;color:#7EDAD6;box-shadow:none}
+@media (max-width:760px){.sx .pr-every.pr-every2{padding:14px;border-radius:26px}}
+
+.sx aside.pr-sum.pr-sum2 a.sx-btn{background:#013B43!important;color:#fff!important}
+.sx aside.pr-sum.pr-sum2 a.sx-btn:hover{background:#04545B!important}
+
+/* ---------- the section in view lights up in its own Bunya colour (Dana, 20 Nov 2026) ---------- */
+.sx .pr-list > .pr-grp{position:relative;border-radius:28px;transition:background-color .5s ease,box-shadow .5s ease}
+.sx .pr-list > .pr-grp.lit{background-color:color-mix(in srgb,var(--acc) 9%,#fff);
+  box-shadow:0 0 0 20px color-mix(in srgb,var(--acc) 9%,#fff),inset 4px 0 0 0 transparent,-20px 0 0 20px transparent}
+.sx .pr-list > .pr-grp.lit::before{content:"";position:absolute;left:-20px;top:-6px;bottom:-6px;width:5px;border-radius:5px;background:var(--acc)}
+.sx .pr-list > .pr-grp:nth-child(6).lit{background-color:color-mix(in srgb,var(--acc) 22%,#fff);box-shadow:0 0 0 20px color-mix(in srgb,var(--acc) 22%,#fff)}
+.sx .pr-list > .pr-grp:nth-child(8).lit{background-color:#EEF6FB;box-shadow:0 0 0 20px #EEF6FB}
+.sx .pr-list > .pr-grp:nth-child(8).lit::before{background:#00A4EF}
+.sx .pr-list > .pr-grp.lit .pr-gh .n{transform:scale(1.06);box-shadow:0 0 0 6px color-mix(in srgb,var(--acc) 22%,transparent),0 16px 30px -14px var(--acc)!important}
+.sx .pr-list .pr-gh .n{transition:transform .4s cubic-bezier(.2,1.3,.4,1),box-shadow .4s}
+.sx .pr-list > .pr-grp.lit .pr-gh h2{color:color-mix(in srgb,var(--acc) 55%,#013B43)}
+.sx .pr-list > .pr-grp:nth-child(6).lit .pr-gh h2,.sx .pr-list > .pr-grp:nth-child(8).lit .pr-gh h2{color:#013B43}
+@media (max-width:760px){.sx .pr-list > .pr-grp.lit{box-shadow:0 0 0 12px color-mix(in srgb,var(--acc) 9%,#fff)}.sx .pr-list > .pr-grp.lit::before{left:-12px}}
+@media (prefers-reduced-motion:reduce){.sx .pr-list > .pr-grp{transition:none}}
+/* Dana (20 Nov 2026): no solid bar on the left of the lit section; a very fine border in its colour around the wash instead */
+.sx .pr-list > .pr-grp.lit::before,.sx .pr-list > .pr-grp:nth-child(8).lit::before{content:none!important}
+.sx .pr-list > .pr-grp.lit{box-shadow:0 0 0 20px color-mix(in srgb,var(--acc) 9%,#fff),0 0 0 21px color-mix(in srgb,var(--acc) 55%,#fff)}
+.sx .pr-list > .pr-grp:nth-child(6).lit{box-shadow:0 0 0 20px color-mix(in srgb,var(--acc) 22%,#fff),0 0 0 21px var(--acc)}
+.sx .pr-list > .pr-grp:nth-child(8).lit{box-shadow:0 0 0 20px #EEF6FB,0 0 0 21px #7CCBF2}
+@media (max-width:760px){
+  .sx .pr-list > .pr-grp.lit{box-shadow:0 0 0 12px color-mix(in srgb,var(--acc) 9%,#fff),0 0 0 13px color-mix(in srgb,var(--acc) 55%,#fff)}
+  .sx .pr-list > .pr-grp:nth-child(6).lit{box-shadow:0 0 0 12px color-mix(in srgb,var(--acc) 22%,#fff),0 0 0 13px var(--acc)}
+  .sx .pr-list > .pr-grp:nth-child(8).lit{box-shadow:0 0 0 12px #EEF6FB,0 0 0 13px #7CCBF2}
+}
+/* questions run the full width, as on every other page */
+.sx main .sx-faq{max-width:none!important;width:100%!important}
+/* Dana (20 Nov 2026): the price card's header in a brighter Bunya colour (aqua into Pulse teal), deep text so it stays easy to read */
+.sx .pr-sh{background:linear-gradient(135deg,#7EDAD6 0%,#11B8B1 100%)!important}
+.sx .pr-sum2 .pr-sh .k{color:#013B43!important}
+.sx .pr-sum2 .pr-sh .k::before{border-color:#013B43!important}
+.sx .pr-sum2 .pr-sh .pr-how{color:#013B43!important;font-weight:500}
+/* Dana (20 Nov 2026): try a bit of violet. The header starts in Bunya deep teal and glows into the brand violet; white text. */
+.sx .pr-sh{background:radial-gradient(120% 140% at 100% 0%,rgba(139,124,246,.85) 0%,rgba(110,93,232,.55) 35%,transparent 70%),linear-gradient(155deg,#013B43 0%,#04545B 70%,#2E3F7A 100%)!important}
+.sx .pr-sum2 .pr-sh .k{color:#C9C2FF!important}
+.sx .pr-sum2 .pr-sh .k::before{border-color:#C9C2FF!important}
+.sx .pr-sum2 .pr-sh .pr-how{color:#fff!important;font-weight:400}
+/* Dana (20 Nov 2026), final: no violet. The header back in Bunya deep teal, with a thin bright-teal light along its foot,
+   and the whole card framed in Pulse teal with a soft aqua glow so it stands apart from the white price cards. */
+.sx .pr-sh{background:linear-gradient(155deg,#013B43 0%,#04545B 60%,#0A6B6A 100%)!important;border-bottom:3px solid #11B8B1}
+.sx .pr-sum2 .pr-sh .k{color:#7EDAD6!important}
+.sx .pr-sum2 .pr-sh .k::before{border-color:#7EDAD6!important}
+.sx .pr-sum2 .pr-sh .pr-how{color:#fff!important;font-weight:400}
+.sx aside.pr-sum.pr-sum2{box-shadow:0 0 0 2px #11B8B1,0 0 0 8px rgba(126,218,214,.28),0 50px 90px -50px rgba(1,59,67,.55)!important}
+
+/* ===================== Design review (Dana, 20 Nov 2026): pare back to one clear hierarchy =====================
+   Pricing stays distinct through two things only: the section you're reading lights up in its colour, and the
+   price card is the hero. Everything else gets quieter. */
+
+/* 1. Light-up: a clean tint (never grey) and the fine border in the section's colour; no growing icon, no recoloured heading */
+.sx .pr-list > .pr-grp.lit{background-color:color-mix(in srgb,var(--acc) 7%,#F5FBFA)!important;
+  box-shadow:0 0 0 20px color-mix(in srgb,var(--acc) 7%,#F5FBFA),0 0 0 21px color-mix(in srgb,var(--acc) 45%,#fff)!important}
+.sx .pr-list > .pr-grp:nth-child(6).lit{background-color:#EEF9F8!important;box-shadow:0 0 0 20px #EEF9F8,0 0 0 21px #7EDAD6!important}
+.sx .pr-list > .pr-grp:nth-child(8).lit{background-color:#F1F8FC!important;box-shadow:0 0 0 20px #F1F8FC,0 0 0 21px #9AD5F5!important}
+.sx .pr-list > .pr-grp.lit .pr-gh .n{transform:none!important;box-shadow:0 10px 22px -12px var(--acc)!important}
+.sx .pr-list > .pr-grp.lit .pr-gh h2{color:#13292C!important}
+@media (max-width:760px){
+  .sx .pr-list > .pr-grp.lit{box-shadow:0 0 0 12px color-mix(in srgb,var(--acc) 7%,#F5FBFA),0 0 0 13px color-mix(in srgb,var(--acc) 45%,#fff)!important}
+  .sx .pr-list > .pr-grp:nth-child(6).lit{box-shadow:0 0 0 12px #EEF9F8,0 0 0 13px #7EDAD6!important}
+  .sx .pr-list > .pr-grp:nth-child(8).lit{box-shadow:0 0 0 12px #F1F8FC,0 0 0 13px #9AD5F5!important}
+}
+
+/* 2. Price cards: flatter. A hairline and a whisper of shadow; on hover only a fine frame, no lift */
+.sx .pr-wrap .pr-list .pr-row{box-shadow:0 0 0 1px rgba(1,59,67,.08),0 6px 14px -10px rgba(1,59,67,.25)!important}
+.sx .pr-wrap .pr-list .pr-row:hover{transform:none!important;box-shadow:0 0 0 1.5px var(--acc),0 8px 18px -12px rgba(1,59,67,.3)!important}
+.sx .pr-wrap .pr-list .pr-row[open]{box-shadow:0 0 0 1.5px var(--acc),0 14px 30px -20px rgba(1,59,67,.35)!important;background:#fff!important}
+.sx .pr-list .pr-grp .pr-why{border-left:2px solid #DCEBE9!important}
+.sx .pr-row .pc b{font-size:21px}
+.sx .pr-row .pc b.pr-inc{background:none;padding:0;color:#0A7D79;font-size:14.5px}
+.sx .pr-row:hover .pr-chev{box-shadow:none}
+
+/* 3. Group headers: the starting price as plain text, not another pill */
+.sx .pr-list .pr-gh > .pc{background:none!important;box-shadow:none!important;padding:0}
+
+/* 4. The price card is the hero: one clean frame, no halo; the bars carry the colour, so no coloured tile edges */
+.sx aside.pr-sum.pr-sum2{box-shadow:0 0 0 1.5px #11B8B1,0 40px 80px -50px rgba(1,59,67,.5)!important}
+.sx .pr-sum2 .pr-lines > div{border-left:0!important;background:#F6FAFA!important}
+.sx .pr-sh{border-bottom:0}
+
+/* 5. Getting live: keep the panel and the Included marks; the detail chips go quiet and match */
+.sx .pr-every2 > div:nth-child(1) .pr-chips i:first-child{background:#F0F7F6;color:#0A7D79;box-shadow:inset 0 0 0 1px #DCEBE9}
+.sx .pr-every2 > div:hover{transform:none}
+
+/* 6. Index chips: plain until current */
+.sx .dx-jump a{box-shadow:none;background:transparent}
+.sx .dx-jump a:hover{box-shadow:none;background:#F0F7F6}
