@@ -1,0 +1,159 @@
+/* Glossary, Dana 20 Nov 2026 (design pass). Goes with js/dana-gl.js. */
+/* tighter, even rhythm: no alternating bands, far less padding per letter */
+.sx .gl-sec{padding-top:28px!important;padding-bottom:28px!important}
+.sx .gl-sec.dx-band{background:none!important;box-shadow:none!important}
+.sx .gl-sec:first-of-type{padding-top:56px!important}
+.sx .gl-sec:last-of-type{padding-bottom:110px!important}
+
+/* letter cards: deep teal with Bunya's rings, the letter in white, the term count */
+.sx .gl-sec .fq-side.gl-on{position:sticky;top:110px;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;align-items:flex-start;gap:14px;
+  padding:26px 28px 28px;border-radius:28px;background:linear-gradient(155deg,#013B43 0%,#04545B 60%,#0A6B6A 100%);
+  box-shadow:0 0 0 1px rgba(126,218,214,.18),0 40px 80px -40px rgba(1,59,67,.6)}
+.sx .gl-sec .fq-side.gl-on h2{margin:0;font-family:"TT Commons Pro",sans-serif;font-weight:700;font-size:clamp(64px,6vw,92px);line-height:.95;
+  background:none;-webkit-background-clip:border-box;background-clip:border-box;color:#fff!important;-webkit-text-fill-color:#fff}
+.sx .gl-count{display:inline-block;padding:5px 12px;border-radius:999px;background:rgba(126,218,214,.16);color:#7EDAD6;font:600 11.5px/1.2 "Saira",sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.sx .gl-rings{position:absolute;right:-150px;top:-170px;width:340px;height:340px;z-index:-1;overflow:visible;pointer-events:none}
+.sx .gl-rings g{transform-box:view-box;transform-origin:50% 50%}
+.sx .gl-rings circle{fill:none;stroke:#7EDAD6;stroke-opacity:.2;stroke-width:2}
+.sx .gl-rings circle.d{stroke-opacity:.55;stroke-width:3.5;stroke-linecap:round;stroke-dasharray:.1 12}
+.sx .gl-rings circle.g{stroke:#F4B528;stroke-opacity:.7;stroke-width:3.5;stroke-linecap:round;stroke-dasharray:.1 12}
+.sx .gl-rings circle.n{fill:#7EDAD6;stroke:#04545B;stroke-width:4;stroke-opacity:1}.sx .gl-rings circle.n.t{fill:#11B8B1}.sx .gl-rings circle.n.y{fill:#F4B528}
+.sx .gl-rings .a{animation:gl-orb 80s linear infinite}.sx .gl-rings .b{animation:gl-orb 120s linear infinite reverse}.sx .gl-rings .c{animation:gl-orb 60s linear infinite}
+@keyframes gl-orb{to{transform:rotate(360deg)}}
+
+/* terms: white cards with a soft lift and a thin teal frame on hover; related pages as teal pills */
+.sx .gl-term{background:#fff;box-shadow:0 0 0 1px rgba(1,59,67,.07),0 26px 52px -40px rgba(1,59,67,.4);transition:box-shadow .3s,transform .4s cubic-bezier(.2,.8,.2,1)}
+.sx .gl-term:hover{transform:translateY(-2px);box-shadow:0 0 0 2px #7EDAD6,0 30px 60px -40px rgba(1,59,67,.45)}
+.sx .gl-term:target{box-shadow:0 0 0 2px #11B8B1,0 30px 60px -40px rgba(1,59,67,.45)}
+.sx .gl-term h3{font-family:"TT Commons Pro",sans-serif;font-weight:700;font-size:21px;color:#13292C}
+.sx .gl-term p{color:#3E5559}
+.sx .gl-term .gl-meta{align-items:center;gap:8px 10px;margin-top:14px}
+.sx .gl-meta a:not(.src){padding:5px 12px;border-radius:999px;background:#E6F7F5;color:#04545B;font-weight:600;font-size:13.5px;transition:background .2s,color .2s}
+.sx .gl-meta a:not(.src):hover{background:#013B43;color:#fff;text-decoration:none}
+.sx .gl-meta a.src{color:#4B6266}
+
+/* letter jump: round tiles with a teal frame on hover */
+.sx .gl-chips{gap:8px}
+.sx .gl-chips a{width:44px;height:44px;min-width:0;padding:0;border-radius:14px;background:#fff;color:#04545B;font:700 17px/1 "TT Commons Pro",sans-serif;
+  box-shadow:0 0 0 1px rgba(1,59,67,.10);transition:box-shadow .2s,background .2s,color .2s}
+.sx .gl-chips a:hover{box-shadow:0 0 0 2px #11B8B1,0 10px 20px -12px rgba(1,59,67,.45);color:#0A7D79}
+
+@media (max-width:860px){.sx .gl-sec .fq-side.gl-on{position:static;flex-direction:row;align-items:center;gap:16px;padding:18px 22px;margin-bottom:12px}
+  .sx .gl-sec .fq-side.gl-on h2{font-size:52px}.sx .gl-rings{right:-200px;top:-200px}.sx .gl-chips a{width:38px;height:38px;font-size:15px}}
+@media (prefers-reduced-motion:reduce){.sx .gl-rings g{animation:none}}
+/* the letter's terms, as jump links inside its card */
+.sx .gl-jump{display:flex;flex-direction:column;gap:2px;width:100%;margin-top:6px;padding-top:14px;border-top:1px solid rgba(126,218,214,.18)}
+.sx .gl-jump a{padding:6px 0;color:rgba(223,246,244,.88);font-size:15px;line-height:1.3;text-decoration:none;transition:color .2s,padding .2s}
+.sx .gl-jump a::before{content:"›";margin-right:8px;color:#7EDAD6}
+.sx .gl-jump a:hover{color:#fff;padding-left:4px}
+.sx .gl-jump a[hidden]{display:none}
+@media (max-width:860px){.sx .gl-jump{display:none}}
+.sx .gl-scope{font-size:15px;color:#4B6266}
+@media (max-width:860px){.sx .gl-sec .fq-side.gl-on{position:relative;top:auto}}
+
+/* ---------- Level up (Dana, 20 Nov 2026): badges, floating acronyms, flip card ---------- */
+/* acronym badges on every term */
+.sx .gl-term.gl-has-mono{position:relative;padding-left:96px}
+.sx .gl-mono{position:absolute;left:22px;top:22px;display:grid;place-items:center;width:56px;height:56px;border-radius:17px;
+  font:700 17px/1 "TT Commons Pro",sans-serif;letter-spacing:.02em;box-shadow:0 12px 22px -12px rgba(1,59,67,.55);transition:transform .35s cubic-bezier(.2,1.4,.4,1)}
+.sx .gl-mono.sm{font-size:14px}
+.sx .gl-m0{background:linear-gradient(135deg,#7EDAD6,#11B8B1);color:#013B43}
+.sx .gl-m1{background:linear-gradient(135deg,#11B8B1,#0A7D79);color:#fff}
+.sx .gl-m2{background:linear-gradient(135deg,#0A7D79,#04545B);color:#DFF6F4}
+.sx .gl-m3{background:linear-gradient(135deg,#04545B,#013B43);color:#7EDAD6}
+.sx .gl-term:hover .gl-mono{transform:rotate(-6deg) scale(1.06)}
+.sx .gl-term.gl-glow{animation:gl-glow 1.8s ease}
+@keyframes gl-glow{0%,60%{box-shadow:0 0 0 3px #11B8B1,0 30px 60px -30px rgba(17,184,177,.6)}}
+
+/* floating acronyms around the hero headline */
+.sx .fq-hero.gl-hero{position:relative}
+.sx .gl-fly{position:absolute;inset:0;pointer-events:none}
+.sx .gl-bub{position:absolute;pointer-events:auto;display:inline-flex;align-items:center;gap:0;padding:10px 16px;border-radius:999px;text-decoration:none;
+  font:700 16px/1 "TT Commons Pro",sans-serif;box-shadow:0 16px 30px -16px rgba(1,59,67,.5);animation:gl-bob 7s ease-in-out infinite;
+  transition:gap .3s,padding .3s,box-shadow .3s;translate:-50% -50%}
+.sx .gl-bub span{max-width:0;overflow:hidden;white-space:nowrap;font-weight:600;font-size:14px;transition:max-width .4s ease}
+.sx .gl-bub:hover{gap:8px;box-shadow:0 0 0 2px #fff,0 20px 36px -16px rgba(1,59,67,.55);z-index:5}
+.sx .gl-bub:hover span{max-width:240px}
+.sx .gl-b0{background:#fff;color:#0A7D79;box-shadow:0 0 0 1px rgba(1,59,67,.1),0 16px 30px -16px rgba(1,59,67,.4)}
+.sx .gl-b1{background:linear-gradient(135deg,#7EDAD6,#11B8B1);color:#013B43}
+.sx .gl-b2{background:#013B43;color:#7EDAD6}
+.sx .gl-b3{background:linear-gradient(135deg,#11B8B1,#0A7D79);color:#fff}
+.sx .gl-bub:nth-child(odd){rotate:-4deg}.sx .gl-bub:nth-child(even){rotate:3deg}
+@keyframes gl-bob{50%{transform:translateY(-10px)}}
+@media (max-width:1199px){.sx .gl-fly{display:none}}
+
+/* Test yourself: copy on the left, a flip card on the right */
+.sx .gl-fun{width:min(1180px,calc(100% - 48px));margin:40px auto 24px}
+.sx .gl-fun-in{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:48px;align-items:center;padding:48px 56px;border-radius:32px;
+  background:radial-gradient(50% 80% at 90% 10%,rgba(126,218,214,.45),transparent 70%),linear-gradient(160deg,#F2FAF9,#DDF2EF);box-shadow:0 0 0 1px rgba(1,59,67,.06)}
+.sx .gl-fun h2{margin:12px 0 0;font-family:"TT Commons Pro",sans-serif;font-weight:700;font-size:clamp(30px,3.2vw,44px);line-height:1.06;letter-spacing:-.03em;color:#13292C}
+.sx .gl-fun h2 span{color:#0A7D79}
+.sx .gl-fun p{margin:14px 0 0;font-size:17px;line-height:1.55;color:#3E5559}
+.sx .gl-fun-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.sx .gl-fun-btns button{height:48px;padding:0 22px;border:0;border-radius:999px;font:600 15.5px/1 inherit;font-family:inherit;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.sx .gl-flip-b{background:#013B43;color:#fff}
+.sx .gl-deal{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#013B43;box-shadow:0 0 0 1px rgba(1,59,67,.12)}
+.sx .gl-deal i{font-style:normal;display:inline-block;transition:transform .5s}
+.sx .gl-deal:hover{box-shadow:0 0 0 2px #11B8B1}.sx .gl-deal:hover i{transform:rotate(180deg)}
+.sx .gl-flip-b:hover{background:#04545B}
+.sx .gl-score{display:block;margin-top:12px;font-size:13.5px;color:#4B6266;min-height:1em}
+.sx .gl-card-wrap{perspective:1400px;display:grid;place-items:center}
+.sx .gl-card{position:relative;width:min(100%,380px);aspect-ratio:5/3.4;padding:0;border:0;background:none;cursor:pointer;transform-style:preserve-3d;
+  transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .2s;rotate:-3deg}
+.sx .gl-card.flip{transform:rotateY(180deg)}
+.sx .gl-card.deal{opacity:0;transform:translateY(16px) rotate(-6deg)}
+.sx .gl-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:8px;padding:28px 30px;border-radius:24px;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;text-align:left;box-shadow:0 0 0 1px rgba(1,59,67,.08),0 40px 70px -36px rgba(1,59,67,.6)}
+.sx .gl-face.front{background:#fff}
+.sx .gl-face.front::after{content:"";position:absolute;right:-30px;bottom:-30px;width:160px;height:160px;border-radius:50%;border:2px dotted rgba(17,184,177,.5)}
+.sx .gl-face.back{background:linear-gradient(155deg,#013B43,#04545B 60%,#0A6B6A);color:#fff;transform:rotateY(180deg)}
+.sx .gl-k{font:600 11.5px/1.2 "Saira",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#0A7D79}
+.sx .gl-face.back .gl-k{color:#7EDAD6}
+.sx .gl-ab{font:700 clamp(56px,6vw,84px)/1 "TT Commons Pro",sans-serif;letter-spacing:-.02em;background:linear-gradient(120deg,#0A7D79,#11B8B1);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sx .gl-hint{font-size:13.5px;color:#4B6266}
+.sx .gl-nm{font:700 24px/1.15 "TT Commons Pro",sans-serif;color:#fff}
+.sx .gl-df{font-size:15px;line-height:1.5;color:rgba(223,246,244,.88);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.sx .gl-go{margin-top:4px;color:#7EDAD6;font-weight:600;font-size:14.5px;text-decoration:none}
+.sx .gl-go:hover{color:#fff}
+@media (max-width:860px){
+  .sx .gl-term.gl-has-mono{padding-left:18px;padding-top:84px}
+  .sx .gl-mono{left:18px;top:18px;width:50px;height:50px;font-size:15px}
+  .sx .gl-fun{width:calc(100% - 32px)}
+  .sx .gl-fun-in{grid-template-columns:1fr;gap:28px;padding:30px 22px}
+  .sx .gl-card{width:100%}
+}
+@media (prefers-reduced-motion:reduce){.sx .gl-bub{animation:none}.sx .gl-card{transition:opacity .2s}}
+.sx .gl-face{overflow:hidden}
+
+/* Dana (20 Nov 2026): Bunya's moving rings in the quiz panel and on the flash card (both faces) */
+.sx .gl-fun-in{isolation:isolate}
+.sx .gl-fun-in > *{position:relative;z-index:1}
+.sx .gl-fun-in > .gl-r-panel{position:absolute;z-index:0;left:-170px;bottom:-230px;right:auto;top:auto;width:440px;height:440px}
+.sx .gl-face.front::after{content:none}
+.sx .gl-face{isolation:isolate}
+.sx .gl-face > *:not(.gl-rings){position:relative;z-index:1}
+.sx .gl-r-card{position:absolute;z-index:0;right:-120px;bottom:-140px;top:auto;width:300px;height:300px}
+.sx .gl-face.front .gl-r-card circle{stroke:#11B8B1;stroke-opacity:.28}
+.sx .gl-face.front .gl-r-card circle.d{stroke:#0A9C96;stroke-opacity:.6}
+.sx .gl-face.front .gl-r-card circle.n{stroke:#fff}
+.sx .gl-face.back .gl-r-card{right:-130px;top:-150px;bottom:auto}
+
+/* every white term card: a thin frame in its badge's teal on hover (outranks the site-wide hover rule) */
+.sx .gl-term{--hc:#11B8B1}
+.sx .gl-term:has(.gl-m0){--hc:#11B8B1}.sx .gl-term:has(.gl-m1){--hc:#0A9C96}.sx .gl-term:has(.gl-m2){--hc:#0A7D79}.sx .gl-term:has(.gl-m3){--hc:#04545B}
+.sx .gl-term:hover{box-shadow:0 0 0 2px var(--hc),0 30px 60px -40px rgba(1,59,67,.45)!important}
+.sx .gl-face.front{transition:box-shadow .3s}
+.sx .gl-card:hover .gl-face.front{box-shadow:0 0 0 2px #11B8B1,0 40px 70px -36px rgba(1,59,67,.6)}
+/* panel rings sit behind the flash card, clear of the words */
+.sx .gl-fun-in > .gl-r-panel{left:auto;bottom:auto;right:-40px;top:50%;width:560px;height:560px;margin-top:-280px}
+@media (max-width:860px){.sx .gl-fun-in > .gl-r-panel{right:-140px;top:auto;bottom:-120px;margin-top:0;width:460px;height:460px}}
+/* the site-wide card rule (.sx :is(... .st .kinds > div ...)) outranks .sx .gl-term even with !important, so these go one level more specific */
+.sx .gl-list .gl-term{box-shadow:0 0 0 1px rgba(1,59,67,.07),0 26px 52px -40px rgba(1,59,67,.4)!important}
+.sx .gl-list .gl-term:hover{box-shadow:0 0 0 2px var(--hc),0 30px 60px -40px rgba(1,59,67,.45)!important}
+.sx .gl-list .gl-term:target,.sx .gl-list .gl-term.gl-glow{box-shadow:0 0 0 2px #11B8B1,0 30px 60px -40px rgba(1,59,67,.45)!important}
+@media (max-width:860px){.sx .gl-fun-in{display:flex;flex-direction:column;align-items:stretch;gap:28px}}
+/* Dana (20 Nov 2026): the moving dots on the rings have no outline (letter cards, quiz panel and flash card) */
+.sx .gl-rings circle.n,.sx .gl-face.front .gl-r-card circle.n{stroke:none!important;stroke-width:0!important}
+/* closing headline on two lines (as on FAQ and Insights) */
+.sx .sx-end h2{max-width:none}
+.sx .sx-end h2 .sx-grad{display:block}
