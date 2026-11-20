@@ -1,0 +1,51 @@
+/* Case studies, Dana 20 Nov 2026 (design pass). Goes with js/dana-cs.js. */
+/* story cards: soft lift, thin teal frame on hover, teal tags, button */
+.sx .cs-card{background:#fff;box-shadow:0 0 0 1px rgba(1,59,67,.07),0 30px 60px -40px rgba(1,59,67,.35)}
+.sx .cs-card:hover{box-shadow:0 0 0 1.5px #7EDAD6,0 40px 80px -40px rgba(1,59,67,.4)}
+.sx .cs-photo{aspect-ratio:964/760}
+.sx .cs-body{padding:28px 32px 32px}
+.sx .cs-body h2{font-family:"TT Commons Pro",sans-serif;font-weight:700}
+.sx .cs-body h2 span{color:#0A7D79}
+.sx .cs-body p{color:#3E5559}
+.sx .cs-tags li{background:#E6F7F5;color:#04545B;font-weight:500}
+.sx .cs-go{align-self:flex-start;margin-top:auto;display:inline-flex;align-items:center;gap:10px;padding:11px 12px 11px 20px;border-radius:999px;
+  background:#013B43;color:#fff;font-size:15.5px;font-weight:600;transition:background .3s}
+.sx .cs-go::after{content:none}
+.sx .cs-go i{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#11B8B1;transition:transform .3s}
+.sx .cs-go svg{width:15px;height:15px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.sx .cs-card:hover .cs-go{background:#04545B}.sx .cs-card:hover .cs-go i{transform:translateX(3px)}
+.sx .cs-body{gap:0}.sx .cs-tags{margin-bottom:26px}
+
+/* quotes: Charlotte on deep teal, Kane on white */
+.sx .cs-quotes{align-items:stretch}
+.sx .cs-quote{position:relative;overflow:hidden;isolation:isolate}
+.sx .cs-quote.cs-deep{background:linear-gradient(155deg,#013B43 0%,#04545B 60%,#0A6B6A 100%);box-shadow:0 0 0 1px rgba(126,218,214,.18),0 40px 80px -40px rgba(1,59,67,.6)}
+.sx .cs-quote.cs-deep blockquote{color:rgba(223,246,244,.92)}
+.sx .cs-quote.cs-deep blockquote b{color:#7EDAD6}
+.sx .cs-quote.cs-deep figcaption b{color:#fff}
+.sx .cs-quote.cs-deep figcaption span{color:rgba(223,246,244,.78)}
+.sx .cs-quote.cs-deep figcaption img{box-shadow:0 0 0 3px #11B8B1}
+.sx .cs-quote.cs-light{background:#fff;box-shadow:0 0 0 1px rgba(1,59,67,.07),0 30px 60px -40px rgba(1,59,67,.35)}
+.sx .cs-quote.cs-light blockquote{color:#13292C}
+.sx .cs-quote.cs-light blockquote b{color:#0A7D79}
+.sx .cs-quote.cs-light figcaption b{color:#13292C}
+.sx .cs-quote.cs-light figcaption span{color:#4B6266}
+.sx .cs-quote.cs-light figcaption img{box-shadow:0 0 0 3px #7EDAD6}
+.sx .cs-quote figcaption img{width:60px;height:60px}
+
+/* what each story covers: numbered, three icons in deepening teals */
+.sx .cs-covers .sx-tile{position:relative}
+.sx .cs-covers .cs-n{position:absolute;top:26px;right:28px;font:600 13px/1 "Saira",sans-serif;letter-spacing:.08em;color:#0A7D79;opacity:.7}
+.sx .cs-covers .dx-ico.dx-c1,.sx .cs-covers .sx-tile:nth-child(1) .dx-ico{background:linear-gradient(135deg,#7EDAD6,#11B8B1)!important;color:#013B43!important}
+.sx .cs-covers .sx-tile:nth-child(2) .dx-ico{background:linear-gradient(135deg,#11B8B1,#0A7D79)!important;color:#fff!important}
+.sx .cs-covers .sx-tile:nth-child(3) .dx-ico{background:linear-gradient(135deg,#0A7D79,#013B43)!important;color:#7EDAD6!important}
+.sx .cs-covers .sx-tile{box-shadow:0 0 0 1px rgba(1,59,67,.07),0 30px 60px -40px rgba(1,59,67,.35)}
+.sx .cs-covers .sx-tile:hover{box-shadow:0 0 0 1.5px #7EDAD6,0 30px 60px -40px rgba(1,59,67,.4)}
+
+/* even space around the quotes band (the cards sat flush with its top edge) */
+.sx .cs-stories{padding-bottom:96px}
+.sx .cs-quotes.dx-band{margin-top:0;padding-top:96px;padding-bottom:96px}
+@media (max-width:860px){.sx .cs-stories{padding-bottom:64px}.sx .cs-quotes.dx-band{padding-top:64px;padding-bottom:64px}}
+/* Dana (20 Nov 2026): a bigger Falcon logo on its story card */
+.sx .cs-logo.cs-falcon{height:58px;max-width:none;padding:6px 10px}
+@media (max-width:860px){.sx .cs-body{padding:24px 22px 26px}}
