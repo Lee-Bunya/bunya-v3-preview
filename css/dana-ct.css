@@ -1,77 +1,24 @@
-/* Booking, Dana 20 Nov 2026 (design pass). Goes with js/dana-ct.js.
-   The site-wide card rule (.sx :is(... .ct-form, .ct-steps, .ct-talk, .ct-route ...)) sets box-shadow with !important,
-   so card shadows here go one level more specific. */
+/* Contact (contact.html), Dana 20 Nov 2026 (design pass). Goes with js/dana-ct.js. */
+/* hero: "Tell us what" / "you're working on." */
+.sx .ct-hero h1 .sx-grad{display:block}
 .sx .ct-hero p{text-wrap:balance}
-/* form: a white card */
-.sx main .ct-grid .ct-form{background:#fff!important;box-shadow:0 0 0 1px rgba(1,59,67,.07),0 40px 80px -50px rgba(1,59,67,.45)!important}
-.sx .ct-kick{display:inline-flex;margin-bottom:10px}
-.sx .ct-form h2{font-family:"TT Commons Pro",sans-serif;font-weight:700}
-.sx .ct-form h2 span{color:#0A7D79}
-.sx .ct-form input,.sx .ct-form textarea{background:#F6FAFA!important;transition:box-shadow .2s,background .2s}
-.sx .ct-form input:focus,.sx .ct-form textarea:focus{background:#fff!important;box-shadow:0 0 0 2px #11B8B1!important}
-.sx .ct-pick span{gap:8px;background:#F2F8F7!important;color:#13292C!important;box-shadow:inset 0 0 0 1px #DCEBE9!important;font-weight:500;transition:all .2s}
-.sx .ct-pick span::before{content:"";width:16px;height:16px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #A9C9C5;transition:all .2s}
-.sx .ct-pick label:hover span{box-shadow:inset 0 0 0 2px #11B8B1!important}
-.sx .ct-pick input:checked+span{background:#013B43!important;color:#fff!important;box-shadow:none!important}
-.sx .ct-pick input:checked+span::before{box-shadow:none;background:#11B8B1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4L18 8'/%3E%3C/svg%3E") center/11px no-repeat}
-.sx .ct-fine{color:#4B6266!important;font-size:13.5px!important}
-
-/* steps: deepening teal numbers, the first highlighted */
-.sx main .ct-side .ct-steps{background:#fff!important;box-shadow:0 0 0 1px rgba(1,59,67,.07),0 30px 60px -44px rgba(1,59,67,.4)!important}
-.sx .ct-steps li:nth-child(1)::before{background:linear-gradient(135deg,#7EDAD6,#11B8B1)!important;color:#013B43!important}
-.sx .ct-steps li:nth-child(2)::before{background:linear-gradient(135deg,#11B8B1,#0A7D79)!important;color:#fff!important}
-.sx .ct-steps li:nth-child(3)::before{background:linear-gradient(135deg,#0A7D79,#04545B)!important;color:#fff!important}
-.sx .ct-steps b{font-family:"TT Commons Pro",sans-serif;font-weight:700;color:#13292C}
-
-/* Kane's quote on deep teal (no rings, as on Case studies) */
-.sx main .ct-side .ct-quote{background:linear-gradient(155deg,#013B43 0%,#04545B 60%,#0A6B6A 100%)!important;box-shadow:0 0 0 1px rgba(126,218,214,.18),0 40px 80px -40px rgba(1,59,67,.6)!important}
-.sx .ct-quote blockquote{color:#fff!important}
-.sx .ct-quote figcaption span{color:rgba(223,246,244,.78)!important}
-.sx .ct-quote figcaption b{color:#fff!important}
-.sx .ct-quote figcaption a{color:#7EDAD6!important}
-.sx .ct-quote img{box-shadow:0 0 0 3px #11B8B1}
-
-/* prefer to talk first: soft aqua with call and email buttons */
-.sx main .ct-side .ct-talk{background:radial-gradient(70% 80% at 100% 0%,rgba(126,218,214,.4),transparent 70%),linear-gradient(170deg,#F2FAF9,#fff)!important;
-  box-shadow:0 0 0 1px rgba(1,59,67,.07),0 30px 60px -44px rgba(1,59,67,.4)!important}
-.sx .ct-talk b{font-family:"TT Commons Pro",sans-serif;font-weight:700;font-size:19px}
-.sx .ct-btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.sx .ct-b{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;font-weight:600;font-size:14.5px;text-decoration:none;transition:transform .2s,box-shadow .2s}
-.sx .ct-b svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.sx .ct-b.call{background:#013B43;color:#fff}
-.sx .ct-b.mail{background:#fff;color:#013B43;box-shadow:inset 0 0 0 1px rgba(1,59,67,.15)}
-.sx .ct-b:hover{transform:translateY(-1px)}.sx .ct-b.mail:hover{box-shadow:inset 0 0 0 2px #11B8B1}
-
-/* contact routes: teal icons, no yellow */
-.sx .dx-c2{background:linear-gradient(135deg,#0A7D79,#04545B)!important;color:#fff!important}
-.sx :has(> .dx-c2){--hc:#0A7D79}
-.sx .ct-route b{font-family:"TT Commons Pro",sans-serif;font-weight:700}
-.sx .ct-co{color:#4B6266!important;font-size:14.5px!important}
-
-/* closing headline on two lines, if there is one */
-.sx .sx-end h2{max-width:none}
-.sx .sx-end h2 .sx-grad{display:block}
-
-/* ---------- Dana (20 Nov 2026): demo card header band, and room under the questions ---------- */
-.sx main .ct-grid .ct-form{position:relative;overflow:hidden;padding:0 36px 36px!important}
-.sx .ct-head{position:relative;isolation:isolate;overflow:hidden;margin:0 -36px 28px;padding:34px 36px 30px;background:linear-gradient(155deg,#013B43 0%,#04545B 60%,#0A6B6A 100%)}
-.sx .ct-head .sx-k{color:#7EDAD6!important}
-.sx .ct-head .sx-k::before{border-color:#7EDAD6!important}
-.sx .ct-head h2{color:#fff!important;margin-top:8px}
-.sx .ct-head h2 span{color:#7EDAD6!important}
-.sx .ct-head .ct-sub{color:rgba(223,246,244,.85)!important}
-.sx .ct-perks{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
-.sx .ct-perks li{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;background:rgba(126,218,214,.14);box-shadow:inset 0 0 0 1px rgba(126,218,214,.25);color:#DFF6F4;font-size:13.5px;font-weight:600}
-.sx .ct-perks li::before{content:"";width:16px;height:16px;border-radius:50%;background:#11B8B1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4L18 8'/%3E%3C/svg%3E") center/10px no-repeat}
-.sx .ct-rings{position:absolute;right:-160px;top:-190px;width:400px;height:400px;z-index:-1;overflow:visible;pointer-events:none}
-.sx .ct-rings g{transform-box:view-box;transform-origin:50% 50%}
-.sx .ct-rings circle{fill:none;stroke:#7EDAD6;stroke-opacity:.2;stroke-width:2}
-.sx .ct-rings circle.d{stroke-opacity:.55;stroke-width:3.5;stroke-linecap:round;stroke-dasharray:.1 12}
-.sx .ct-rings circle.g{stroke:#F4B528;stroke-opacity:.7;stroke-width:3.5;stroke-linecap:round;stroke-dasharray:.1 12}
-.sx .ct-rings circle.n{fill:#7EDAD6;stroke:none}.sx .ct-rings circle.n.t{fill:#11B8B1}.sx .ct-rings circle.n.y{fill:#F4B528}
-.sx .ct-rings .a{animation:ct-orb 80s linear infinite}.sx .ct-rings .b{animation:ct-orb 120s linear infinite reverse}.sx .ct-rings .c{animation:ct-orb 60s linear infinite}
-@keyframes ct-orb{to{transform:rotate(360deg)}}
-@media (max-width:620px){.sx main .ct-grid .ct-form{padding:0 20px 24px!important}.sx .ct-head{margin:0 -20px 22px;padding:26px 20px 22px}}
-@media (prefers-reduced-motion:reduce){.sx .ct-rings g{animation:none}}
-/* questions are the last section here, so give them room before the footer */
-.sx main > section:last-child{padding-bottom:clamp(80px,10vh,120px)!important}
+/* route cards in the Command Centre card system, each in its own teal (two icons were gold) */
+html body.sx .ct-route.ct-card{background:linear-gradient(180deg,color-mix(in srgb,var(--hc) 10%,#fff) 0%,#fff 52%)!important;border:0!important;
+  box-shadow:0 0 0 1px rgba(1,59,67,.07),0 26px 52px -40px rgba(1,59,67,.4)!important;transition:box-shadow .35s,transform .35s}
+html body.sx .ct-route.ct-card:hover{transform:translateY(-4px);box-shadow:0 0 0 2px var(--hc),0 30px 60px -40px rgba(1,59,67,.45)!important}
+html body.sx .ct-route.ct-card .dx-ico{background:var(--hc)!important;box-shadow:0 10px 22px -12px var(--hc)}
+html body.sx .ct-route.ct-card .dx-ico svg{stroke:#fff!important}
+html body.sx .ct-route.ct-card b{font-family:"TT Commons Pro",sans-serif;font-weight:700;color:#013B43}
+html body.sx .ct-route.ct-card .go{color:#0A7D79;font-weight:600}
+/* the form headline in the site's two-tone style */
+.sx #ct-form h2 span{color:#0A7D79}
+/* FAQ numbers in Bunya teals only */
+.sx .sx-faq > details{--tc:#11B8B1!important}
+.sx .sx-faq > details:nth-child(4n+2){--tc:#0A7D79!important}.sx .sx-faq > details:nth-child(4n+3){--tc:#0A9C96!important}.sx .sx-faq > details:nth-child(4n){--tc:#04545B!important}
+/* new icons: larger tiles, clean white line icons */
+html body.sx .ct-route.ct-card .ct-ico{width:52px!important;height:52px!important;border-radius:15px!important;display:grid!important;place-items:center}
+html body.sx .ct-route.ct-card .ct-ico svg{width:24px!important;height:24px!important;fill:none!important;stroke:#fff!important;stroke-width:1.8!important;stroke-linecap:round;stroke-linejoin:round}
+/* the message form and contact details sit a full section below the cards (was half the usual gap), and
+   jumping to "Send an enquiry" stops below the menu bar */
+.sx .ct-grid{margin-top:clamp(56px,6vw,80px)!important;padding-top:clamp(64px,7vw,96px)!important;padding-bottom:clamp(64px,7vw,96px)!important}
+.sx #enquiry{scroll-margin-top:110px}

@@ -1,30 +1,41 @@
-/* Booking (booking.html), Dana 20 Nov 2026. Styling: css/dana-ct.css.
-   - Form: kicker and two-tone headline; the "what would you like to see" choices get a tick when picked.
-   - "Prefer to talk first?" becomes call and email buttons.
-   - Questions headline: "Questions, answered." */
+/* Contact (contact.html), Dana 20 Nov 2026 (design pass). Styling: css/dana-ct.css.
+   Two-tone headlines, route cards in the Command Centre card system with their own teals, "Questions, answered.",
+   and the same closing section as every other page. */
 (function () {
   'use strict';
-  var form = document.querySelector('.ct-form'), h = form && form.querySelector('h2');
-  if (h && !h.querySelector('span')) {
-    h.insertAdjacentHTML('beforebegin', '<span class="sx-k ct-kick">Your demo</span>');
-    h.innerHTML = 'Book your <span>demo.</span>';
+  var fh = document.querySelector('#ct-form h2');
+  if (fh && !fh.querySelector('span')) fh.innerHTML = 'Send us <span>a message.</span>';
+  var fq = document.querySelector('#h-faq');
+  if (fq) fq.innerHTML = 'Questions, <span>answered.</span>';
+  var HC = ['#11B8B1', '#0A7D79', '#04545B'];
+  [].forEach.call(document.querySelectorAll('.ct-routes'), function (g) {
+    [].forEach.call(g.querySelectorAll('.ct-route'), function (a, i) { a.style.setProperty('--hc', HC[i % 3]); a.classList.add('ct-card'); });
+  });
+  /* an icon for each card that says what it is (five were the same sparkle) */
+  var IC = {
+    demo: '<rect x="3" y="5" width="13" height="12" rx="2.5"/><path d="m16 9.5 5-3v9l-5-3M7 20h5"/>',
+    ask: '<path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 20 12z"/><path d="M9.6 9.6a2.4 2.4 0 1 1 3.4 2.2c-.6.3-1 .8-1 1.4M12 16.2h.01"/>',
+    help: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.6"/><path d="m5.6 5.6 3.9 3.9M14.5 14.5l3.9 3.9M18.4 5.6l-3.9 3.9M9.5 14.5l-3.9 3.9"/>',
+    faq: '<rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9.8 9.8a2.3 2.3 0 1 1 3.2 2.1c-.6.3-1 .8-1 1.4M12 16h.01"/>',
+    start: '<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',
+    secure: '<rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3M12 14.5v2.5"/>'
+  };
+  var ORDER = ['demo', 'ask', 'help', 'faq', 'start', 'secure'];
+  [].forEach.call(document.querySelectorAll('.ct-route .dx-ico'), function (ic, i) {
+    var k = ORDER[i]; if (!k) return;
+    ic.innerHTML = '<svg viewBox="0 0 24 24">' + IC[k] + '</svg>'; ic.classList.add('ct-ico');
+  });
+  var main = document.querySelector('main');
+  if (main && !document.querySelector('.sx-end')) {
+    var end = document.createElement('section');
+    end.className = 'sx-end sx-rv in';
+    end.innerHTML = '<h2>See it set up<br><span class="sx-grad">for your firm.</span></h2>' +
+      '<p>Book a demo and we’ll walk you through Bunya, or build yours and see your price first.</p>' +
+      '<div class="sx-ctas"><a class="sx-btn" href="booking.html">Book a demo</a><a class="sx-btn ghost" href="build.html">Build yours</a></div>';
+    ['File note', 'Approved', 'Review due', 'SoA pack ready', 'Fee consent sent', 'Fact find ready', 'Evidence filed', 'Meeting booked', 'Every step', 'Every role'].forEach(function (t, i) {
+      var p = document.createElement('span'); p.className = 'dx-pill dx-p' + (i + 1); p.setAttribute('aria-hidden', 'true'); p.textContent = t;
+      end.insertBefore(p, end.firstChild);
+    });
+    main.appendChild(end);
   }
-  var talk = document.querySelector('.ct-talk');
-  if (talk && !talk.querySelector('.ct-btns')) {
-    talk.insertAdjacentHTML('beforeend', '<div class="ct-btns"><a class="ct-b call" href="tel:1300286922"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>1300 286 922</a><a class="ct-b mail" href="mailto:info@bunya.ai"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>info@bunya.ai</a></div>');
-    var p = talk.querySelector('p'); if (p) p.textContent = 'Call or email the team and we’ll arrange the demo with you. An Australian team, Monday to Friday.';
-  }
-  [].forEach.call(document.querySelectorAll('main h2'), function (x) { if (/Straight answers/.test(x.textContent)) x.innerHTML = 'Questions, <span>answered.</span>'; });
-})();
-
-/* Dana (20 Nov 2026): the demo card gets a deep-teal header band with Bunya's rings */
-(function () {
-  'use strict';
-  var form = document.querySelector('.ct-form');
-  if (!form || form.querySelector('.ct-head')) return;
-  var head = document.createElement('div'); head.className = 'ct-head';
-  head.innerHTML = '<svg class="ct-rings" viewBox="0 0 800 800" aria-hidden="true"><g class="a"><circle cx="400" cy="400" r="380"/><circle class="n" cx="20" cy="400" r="9"/></g><g class="b"><circle class="d" cx="400" cy="400" r="300"/><circle class="n t" cx="400" cy="100" r="8"/></g><g class="c"><circle class="g" cx="400" cy="400" r="220"/><circle class="n y" cx="180" cy="400" r="8"/></g></svg>';
-  ['.ct-kick', 'h2', '.ct-sub'].forEach(function (s) { var el = form.querySelector(s); if (el) head.appendChild(el); });
-  head.insertAdjacentHTML('beforeend', '<ul class="ct-perks"><li>See it with example data</li><li>Talk through your firm</li><li>Leave with next steps</li></ul>');
-  form.insertBefore(head, form.firstChild);
 })();
