@@ -1,0 +1,78 @@
+/* Website and marketing, Dana 20 Nov 2026 (design pass). Goes with js/dana-wm.js. */
+.sx .wm-hero p{text-wrap:balance}
+
+/* the live example: deep teal, steps across the top, the chat and the lead */
+.sx .wm-mock.wm-live{position:relative;isolation:isolate;overflow:hidden;width:min(1100px,calc(100% - 48px));gap:0;padding:30px clamp(20px,4vw,48px) 22px;border-radius:32px;
+  background:linear-gradient(155deg,#013B43 0%,#04545B 60%,#0A6B6A 100%);box-shadow:0 0 0 1px rgba(126,218,214,.18),0 40px 80px -40px rgba(1,59,67,.6)}
+.sx .wm-rings{position:absolute;right:-170px;top:-200px;width:440px;height:440px;z-index:-1;overflow:visible;pointer-events:none}
+.sx .wm-rings g{transform-box:view-box;transform-origin:50% 50%}
+.sx .wm-rings circle{fill:none;stroke:#7EDAD6;stroke-opacity:.2;stroke-width:2}
+.sx .wm-rings circle.d{stroke-opacity:.55;stroke-width:3.5;stroke-linecap:round;stroke-dasharray:.1 12}
+.sx .wm-rings circle.g{stroke:#F4B528;stroke-opacity:.7;stroke-width:3.5;stroke-linecap:round;stroke-dasharray:.1 12}
+.sx .wm-rings circle.n{fill:#7EDAD6;stroke:none}.sx .wm-rings circle.n.t{fill:#11B8B1}.sx .wm-rings circle.n.y{fill:#F4B528}
+.sx .wm-rings .a{animation:wm-orb 80s linear infinite}.sx .wm-rings .b{animation:wm-orb 120s linear infinite reverse}.sx .wm-rings .c{animation:wm-orb 60s linear infinite}
+@keyframes wm-orb{to{transform:rotate(360deg)}}
+.sx .wm-steps3{display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.sx .wm-steps3 span{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 6px;border-radius:999px;background:rgba(255,255,255,.07);color:rgba(223,246,244,.6);font-weight:600;font-size:14px;transition:all .4s}
+.sx .wm-steps3 i{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:rgba(126,218,214,.2);color:#7EDAD6;font-style:normal;font-size:12px;font-weight:700;transition:all .4s}
+.sx .wm-steps3 span.on{background:rgba(126,218,214,.18);color:#fff}
+.sx .wm-steps3 span.on i{background:#11B8B1;color:#fff}
+.sx .wm-steps3 b{flex:0 1 48px;height:2px;border-radius:2px;background:rgba(126,218,214,.25)}
+.sx .wm-chat{display:flex;flex-direction:column;gap:12px}
+.sx .wm-q{align-self:flex-end;max-width:72%;min-height:50px;padding:14px 18px;border-radius:20px 20px 6px 20px;background:#fff;color:#13292C;font-size:16.5px;line-height:1.45;box-shadow:0 14px 30px -18px rgba(0,0,0,.5)}
+.sx .wm-qt::after,.sx .wm-at::after{content:"";display:inline-block;width:2px;height:1em;margin-left:2px;vertical-align:-2px;background:#11B8B1;animation:wm-blink 1s steps(1) infinite}
+@keyframes wm-blink{50%{opacity:0}}
+.sx .wm-a{max-width:78%;padding:18px 20px;border-radius:20px 20px 20px 6px;background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(126,218,214,.2);opacity:.35;transition:opacity .4s}
+.sx .wm-a.on{opacity:1}
+.sx .wm-ak{display:inline-flex;align-items:center;gap:8px;font:600 11px/1 "Saira",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#7EDAD6}
+.sx .wm-ak i{width:16px;height:16px;border-radius:5px;background:conic-gradient(from 45deg,#7EDAD6,#11B8B1,#0A7D79,#7EDAD6)}
+.sx .wm-at{margin:10px 0 0;min-height:3em;font-size:17px;line-height:1.5;color:#fff}
+.sx .wm-src{display:flex;align-items:center;gap:12px;margin-top:14px;padding:10px 14px 10px 10px;border-radius:14px;background:#fff;box-shadow:0 12px 26px -16px rgba(0,0,0,.5);
+  opacity:0;transform:translateY(8px);transition:opacity .45s,transform .45s}
+.sx .wm-src.on{opacity:1;transform:none}
+.sx .wm-src img{width:34px;height:34px;padding:6px;border-radius:10px;background:#F7F5F0;border-radius:10px!important;box-shadow:none!important}
+.sx .wm-src b{display:block;font-size:14.5px;color:#13292C}.sx .wm-src small{font-size:13px;color:#4B6266}
+.sx .wm-src em,.sx .wm-lead em{margin-left:auto;font-style:normal;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:#E6F7F5;color:#04545B}
+.sx .wm-lead{align-self:flex-end;display:flex;align-items:center;gap:12px;width:min(440px,100%);padding:12px 14px;border-radius:16px;background:#fff;box-shadow:0 0 0 2px #11B8B1,0 18px 36px -18px rgba(0,0,0,.55);
+  opacity:0;transform:translateY(10px) scale(.98);transition:opacity .5s,transform .5s cubic-bezier(.2,1.3,.4,1)}
+.sx .wm-lead.on{opacity:1;transform:none}
+.sx .wm-li{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,#11B8B1,#0A7D79)}
+.sx .wm-li svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sx .wm-lead b{display:block;font-size:14.5px;color:#13292C}.sx .wm-lead small{font-size:13px;color:#4B6266}
+.sx .wm-lead em{background:#013B43;color:#7EDAD6}
+.sx .wm-note{display:block;margin-top:18px;text-align:center;font-size:12.5px;color:rgba(223,246,244,.6)}
+
+/* prices: the middle plan on deep teal with an "Our pick" badge */
+.sx .wm-card h3,.sx .wm-card .pr b{font-family:"TT Commons Pro",sans-serif;font-weight:700}
+.sx .wm-card li svg{stroke:#11B8B1}
+.sx main .wm-prices .wm-card.pick{position:relative;background:linear-gradient(155deg,#013B43 0%,#04545B 60%,#0A6B6A 100%)!important;color:#fff;
+  box-shadow:0 0 0 1px rgba(126,218,214,.18),0 40px 80px -40px rgba(1,59,67,.6)!important}
+.sx .wm-card.pick .k{color:#7EDAD6!important}
+.sx .wm-card.pick h3,.sx .wm-card.pick .pr b{color:#fff!important}
+.sx .wm-card.pick .pr,.sx .wm-card.pick li,.sx .wm-card.pick .sm{color:rgba(223,246,244,.85)!important}
+.sx .wm-card.pick li svg{stroke:#7EDAD6}
+.sx .wm-pickb{position:absolute;top:22px;right:22px;padding:5px 12px;border-radius:999px;background:#7EDAD6;color:#013B43;font:600 11px/1.2 "Saira",sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.sx main .wm-ads{display:flex;align-items:center;gap:14px;background:radial-gradient(70% 120% at 100% 0%,rgba(126,218,214,.35),transparent 70%),linear-gradient(170deg,#F2FAF9,#fff)!important}
+.sx .wm-adi{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#11B8B1,#0A7D79)}
+.sx .wm-adi svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* how it works: number tiles in deepening teals */
+.sx .wm-steps .n{border-radius:12px!important;width:36px!important;height:36px!important;font-weight:700}
+.sx .wm-steps li:nth-child(1) .n{background:linear-gradient(135deg,#7EDAD6,#11B8B1)!important;color:#013B43!important}
+.sx .wm-steps li:nth-child(2) .n{background:linear-gradient(135deg,#11B8B1,#0A9C96)!important;color:#fff!important}
+.sx .wm-steps li:nth-child(3) .n{background:linear-gradient(135deg,#0A9C96,#0A7D79)!important;color:#fff!important}
+.sx .wm-steps li:nth-child(4) .n{background:linear-gradient(135deg,#0A7D79,#04545B)!important;color:#fff!important}
+.sx .wm-steps b{font-family:"TT Commons Pro",sans-serif;font-weight:700}
+
+/* closing headline on two lines */
+.sx .sx-end h2{max-width:none}
+.sx .sx-end h2 .sx-grad{display:block}
+
+@media (max-width:760px){
+  .sx .wm-q,.sx .wm-a{max-width:100%}.sx .wm-steps3 b{display:none}.sx .wm-steps3{flex-wrap:wrap;gap:6px}
+  .sx .wm-mock.wm-live{width:calc(100% - 32px);border-radius:26px}
+}
+@media (prefers-reduced-motion:reduce){.sx .wm-rings g{animation:none}.sx .wm-qt::after,.sx .wm-at::after{display:none}}
+.sx .wm-lead{width:min(520px,100%)}
+.sx .wm-card h3{font-size:clamp(22px,2.1vw,29px)!important;white-space:nowrap}
+@media (max-width:1000px){.sx .wm-card h3{white-space:normal}}
