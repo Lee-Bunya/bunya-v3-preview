@@ -192,7 +192,7 @@
     close: 'The screens <span>your team uses.</span>',
     compare: 'Before and after. <span>Side by side.</span>',
     included: 'Everything <span>that comes with it.</span>',
-    faq: 'Straight <span>answers.</span>'
+    faq: 'Questions, <span>answered.</span>'
   };
   var PAGE_HEADS = {
     'meeting-notes': { how: 'From the meeting <span>to the client’s file.</span>', close: 'Checked in minutes. <span>Not hours.</span>', compare: 'Less typing. <span>More advice.</span>', faq: 'Questions, <span>answered.</span>' },

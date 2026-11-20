@@ -49,3 +49,6 @@
 /* Dana (20 Nov 2026): a bigger Falcon logo on its story card */
 .sx .cs-logo.cs-falcon{height:58px;max-width:none;padding:6px 10px}
 @media (max-width:860px){.sx .cs-body{padding:24px 22px 26px}}
+/* full design review (20 Nov 2026): closing headline on two lines, as on every page */
+.sx .sx-end h2{max-width:none}
+.sx .sx-end h2 .sx-grad{display:block}

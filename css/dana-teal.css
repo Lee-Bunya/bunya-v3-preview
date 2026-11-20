@@ -1,0 +1,47 @@
+/* Teal only (Dana, 20 Nov 2026, full design review fix 1). Loaded last on the earlier feature and app pages, so they
+   match the later pages: Bunya teals for tiles, icons and accents; gold stays only as dots in the Bunya rings.
+   Not changed on purpose: gold "waiting / preparing" status pills inside product screens (they show a state) and the
+   Microsoft Teams "T" icons (Teams' own colour, like the Microsoft logo). */
+
+/* step numbers, steps and feature cards */
+.sx .pp-points > div:nth-child(2) .n{background:#0A7D79!important;color:#fff!important}
+.sx .pp-points > div:nth-child(2){--hc:#0A7D79!important}
+.sx .dx-steps li:nth-child(3){--hc:#0A9C96!important}
+.sx .hb-how li:nth-child(3){--c:#0A9C96!important;--t:#E6F7F5!important;border-color:rgba(17,184,177,.5)!important;box-shadow:0 0 0 4px rgba(17,184,177,.12),var(--bn-shadow)!important}
+.sx .pp-feat:nth-of-type(4n+2){--hc:#0A9C96!important}
+.sx .pp-incl span:nth-child(5n+2)::before{background-color:#0A9C96!important}
+
+/* icon tiles and before/after icons */
+.sx .dx-c2{background:#0A7D79!important;color:#fff!important}
+.sx :has(> .dx-c2){--hc:#0A7D79!important}
+.sx .dx-vs-i.c2{background:#11B8B1!important;color:#fff!important}
+.sx .dx-step-ico.c2,.sx .dx-float-h i{background:#0A7D79!important;color:#fff!important}
+
+/* labels: "Pilot", feature notes, role tags, floating chips */
+.sx .dx-pair-t b small,.sx .pp-feat .pp-fn{background:#E6F7F5!important;color:#04545B!important}
+.sx .dx-chip{color:#04545B!important;box-shadow:0 0 0 1px rgba(17,184,177,.4),0 10px 24px -10px rgba(1,59,67,.3)!important}
+.sx .dx-chip i{background:#11B8B1!important}
+.sx .dx-who.adviser{color:#04545B!important}
+.sx .dx-who.adviser::before{background:#0A7D79!important;box-shadow:0 0 0 3px rgba(10,125,121,.2)!important}
+
+/* support tiers (the middle tier was gold) */
+.sx .dx-tier.t1{--hc:#0A7D79!important}
+.sx .dx-tier.t1 .dx-tier-n{background:#0A7D79!important;color:#fff!important}
+.sx .dx-tier.t1 .dx-tier-r{background:#E6F7F5!important;color:#04545B!important}
+.sx .dx-tier-flag{background:#013B43!important;color:#7EDAD6!important}
+
+/* card accents set inline with the old warm and violet colours (e.g. Command Centre's "what comes with it" cards) */
+.sx [style*="--c:#FDBA74"],.sx [style*="--c:#FCD34D"],.sx [style*="--c:#FDE68A"]{--c:#0A9C96!important}
+.sx [style*="--c:#C4B5FD"],.sx [style*="--c:#F0ABFC"],.sx [style*="--c:#F9A8D4"]{--c:#04545B!important}
+
+/* violet buttons and tags inside product screens */
+.sx .rf-send i,.sx .sh-send,.sx .sh-ok i,.sx .ff-scene[data-s="6"] .ff-lock-i,.sx .in-cta i,.sx .bh-go i,.sx .cp-approve i,
+.sx .vt-add svg,.sx .vq-add svg,.sx .va-save i{background:#0A7D79!important;color:#fff!important}
+.sx .bh-nl{background:#04545B!important}
+.sx .ri-tag.ln,.sx .vq-v,.sx .vq-cv,.sx .vq-gi.vq-b,.sx .vr-li-i.vq-v{background:#E6F7F5!important;color:#04545B!important}
+.sx .ri-dot.ln,.sx .vq-dot.vq-b{background:#0A7D79!important}
+.sx .vt-tag.n{color:#0A7D79!important}
+/* Command Centre: "Your process. Not a template." stage counts and the highlighted stage */
+.sx .dx-stages li.c1 span{background:#0A9C96!important;color:#fff!important}
+.sx .dx-wf a.c1,.sx .dx-ms .c1{background:#E6F7F5!important;border-color:rgba(17,184,177,.35)!important}
+.sx .dx-wf a.c1::before,.sx .dx-ms .c1::before{background:#0A9C96!important}

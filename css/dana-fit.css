@@ -115,3 +115,5 @@
 
 @media (max-width:860px){.sx .fit-glance{grid-template-columns:1fr;width:calc(100% - 32px)}.sx .fg-t b{width:54px;height:54px;font-size:28px}}
 .sx main h2[id]{scroll-margin-top:140px}
+/* full design review (20 Nov 2026): clear the old peach tint left on the "not yet" card markers */
+.sx .fit-card b::before{background:none!important;background-color:transparent!important}
