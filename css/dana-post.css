@@ -1,0 +1,207 @@
+/* Insights articles (the 20 blog-*.html posts), Dana 20 Nov 2026 (design pass). Goes with js/dana-post.js. */
+/* the band behind the article header is drawn wider than the page, which let every post scroll sideways */
+html:has(.ar-top){overflow-x:clip}
+/* two-tone headlines */
+.sx main h2 > span:not([class]){color:#0A7D79}
+/* closing headline on two lines: "Every meeting," / "followed through." */
+.sx .sx-end h2 .sx-grad{display:block}
+/* FAQ numbers in Bunya teals only (02 was gold) */
+.sx .ar-faq > details,.sx .sx-faq > details{--tc:#11B8B1!important}
+.sx .ar-faq > details:nth-child(4n+2),.sx .sx-faq > details:nth-child(4n+2){--tc:#0A7D79!important}
+.sx .ar-faq > details:nth-child(4n+3),.sx .sx-faq > details:nth-child(4n+3){--tc:#0A9C96!important}
+.sx .ar-faq > details:nth-child(4n),.sx .sx-faq > details:nth-child(4n){--tc:#04545B!important}
+/* topic labels on the Keep reading cards: Bunya teal (one was violet) */
+.sx .ar-more .tp{color:#0A7D79!important}
+/* the closing headline was capped at 616px, so "followed through." wrapped to a third line */
+html body.sx .sx-end h2{max-width:none!important}
+/* breadcrumb topic links in Bunya teal (some topics were violet) */
+.sx .ar-crumb a{color:#0A7D79!important}
+
+/* ---------- design pass, as on the other pages (Dana, 20 Nov 2026) ---------- */
+/* key takeaways: a card with numbered teal tiles */
+html body.sx .ar-take{counter-reset:tk;padding:26px 28px!important;border-radius:22px!important;border:0!important;
+  background:linear-gradient(180deg,#F0FAF9,#fff 60%)!important;box-shadow:0 0 0 1px rgba(10,125,121,.14),0 26px 52px -40px rgba(1,59,67,.4)!important}
+html body.sx .ar-take .k{display:inline-block;margin-bottom:14px;padding:5px 12px;border-radius:999px;background:#11B8B1;color:#fff!important;font:600 11.5px/1.2 "Saira",sans-serif;letter-spacing:.12em;text-transform:uppercase}
+html body.sx .ar-take ul{list-style:none!important;margin:0!important;padding:0!important;display:flex;flex-direction:column;gap:10px}
+html body.sx .ar-take li{counter-increment:tk;position:relative;margin:0!important;padding:12px 14px 12px 54px!important;border-radius:14px;background:#fff;box-shadow:0 0 0 1px rgba(1,59,67,.07);
+  font-size:16px;line-height:1.5;color:#13363B}
+html body.sx .ar-take li::before{content:counter(tk)!important;position:absolute;left:12px;top:11px;display:grid;place-items:center;width:28px;height:28px;border-radius:9px;
+  background:#0A7D79!important;color:#fff;font:700 14px/1 "TT Commons Pro",sans-serif;box-shadow:none!important;transform:none!important}
+html body.sx .ar-take li:nth-child(3n+1)::before{background:#11B8B1!important}
+html body.sx .ar-take li:nth-child(3n)::before{background:#04545B!important}
+
+/* body lists: teal markers; numbered lists get solid teal number tiles, as in the site's steps */
+html body.sx .ar-page section:not([class]) ul > li::marker{color:#11B8B1}
+html body.sx .ar-page section:not([class]) ol{list-style:none;padding-left:0}
+html body.sx .ar-page section:not([class]) ol > li{position:relative;padding-left:46px;margin:12px 0}
+html body.sx .ar-page section:not([class]) ol > li::before{position:absolute;left:0;top:-1px;display:grid;place-items:center;width:30px;height:30px;border-radius:9px;
+  background:linear-gradient(135deg,#11B8B1,#0A7D79)!important;color:#fff!important;font:700 14px/1 "TT Commons Pro",sans-serif!important;border:0!important;box-shadow:none!important}
+
+/* tables: mint header in teal, quiet rows */
+html body.sx .ar-table-wrap{border-radius:20px!important;box-shadow:0 0 0 1px rgba(1,59,67,.08),0 24px 48px -40px rgba(1,59,67,.4)!important;border:0!important}
+html body.sx .ar-table-wrap th{background:#E6F7F5!important;color:#04545B!important;font-weight:700}
+html body.sx .ar-table-wrap td:first-child{color:#13363B}
+
+/* worked example: was lavender with a violet bar on the left; now a mint card with a thin teal frame and a label */
+html body.sx .ar-example{padding:24px 26px!important;border-radius:20px!important;border:0!important;background:linear-gradient(180deg,#F2FBFA,#fff 70%)!important;
+  box-shadow:0 0 0 1px rgba(10,125,121,.18),0 22px 44px -36px rgba(1,59,67,.4)!important}
+html body.sx .ar-example > b:first-child{display:inline-flex;align-items:center;gap:8px;margin-bottom:10px;padding:5px 12px;border-radius:999px;background:#fff;color:#0A7D79!important;
+  box-shadow:inset 0 0 0 1px rgba(10,125,121,.22);font:600 11.5px/1.2 "Saira",sans-serif;letter-spacing:.12em;text-transform:uppercase}
+html body.sx .ar-example > b:first-child::before{content:"";width:7px;height:7px;border-radius:50%;background:#11B8B1}
+
+/* notes ("A summary, not the law"): mint, not pale yellow */
+html body.sx .ar-note{padding:18px 22px!important;border-radius:18px!important;border:0!important;background:#F0FAF9!important;box-shadow:inset 0 0 0 1px rgba(10,125,121,.16)!important}
+html body.sx .ar-note b{color:#0A7D79!important}
+
+/* "How Bunya ..." section: a card in the Command Centre style, teal glow (was violet) */
+html body.sx .ar-bunya{--k:#7EDAD6!important;--g1:rgba(17,184,177,.35)!important;--g2:rgba(10,125,121,.22)!important;padding:30px 32px!important;border-radius:26px!important;
+  background:linear-gradient(180deg,#EAF7F5,#fff 55%)!important;box-shadow:0 0 0 1px rgba(10,125,121,.14),0 30px 60px -44px rgba(1,59,67,.45)!important}
+html body.sx .ar-bunya > .k{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border-radius:999px;background:#11B8B1;color:#fff!important;font:600 11.5px/1.2 "Saira",sans-serif;letter-spacing:.12em;text-transform:uppercase}
+html body.sx .ar-bunya h2{margin-top:14px}
+
+/* sources: a quiet card */
+html body.sx .ar-sources{padding:24px 26px!important;border-radius:20px;background:#F6FAFA;box-shadow:inset 0 0 0 1px rgba(1,59,67,.06)}
+/* two-tone article headings (the second part in Bunya green) */
+.sx .ar-top h1 .dp-t,.sx .ar-page h2 .dp-t{color:#0A7D79}
+/* "Sources and scope": less white space above it (section margin, padding and title margin were stacking to 177px) */
+html body.sx .ar-sources{margin-top:clamp(40px,4vw,56px)!important}
+html body.sx .ar-sources > h2:first-child{margin-top:0!important}
+
+/* ---------- Dana (20 Nov 2026): headings and widths ---------- */
+/* every heading: the dark part on top, the green part on its own line underneath */
+.sx .ar-top h1 .dp-t,.sx .ar-page h2 .dp-t,.sx .ar-page h2 > span:not([class]),.sx .ar-more h2 > span:not([class]){display:block}
+/* the article runs the same width as the cover screen above it: contents on the left, article to the cover's right edge
+   (there was an empty column on the right) */
+@media (min-width:1001px){
+  html body.sx .ar-page{grid-template-columns:minmax(0,230px) minmax(0,1fr)!important;padding-left:max(24px,calc((100% - 1100px) / 2))!important;padding-right:max(24px,calc((100% - 1100px) / 2))!important}
+  html body.sx .ar-toc{justify-self:start!important;width:100%!important}
+  html body.sx .ar-page > :not(.ar-toc){max-width:none!important}
+}
+@media (max-width:1000px){
+  html body.sx .ar-page > *,html body.sx .ar-toc{max-width:none!important}
+}
+/* title area as wide as the cover screen, so each half of the title fits on one line */
+html body.sx .ar-top{width:min(1100px,calc(100% - 48px))!important}
+html body.sx .ar-top h1{max-width:none!important;text-wrap:balance}
+html body.sx .ar-top h1 .dp-t{text-wrap:balance}
+/* the intro: wider, one sentence per line */
+html body.sx .ar-top .ar-lead{max-width:none!important}
+.sx .ar-lead .dp-s{display:block}
+html body.sx .ar-top h1,html body.sx .ar-top h1 .dp-t{text-wrap:wrap}
+
+/* ---------- Keep reading cards: the same as the Insights page cards ---------- */
+.sx .ar-more .ar-card{--g1:rgba(17,184,177,.35)!important;--g2:rgba(10,125,121,.2)!important;transition:box-shadow .35s cubic-bezier(.2,.8,.2,1),transform .35s cubic-bezier(.2,.8,.2,1)}
+.sx .ar-more .ar-card .im{--g1:rgba(17,184,177,.35)!important;--g2:rgba(10,125,121,.2)!important}
+.sx .ar-more .ar-card:nth-child(3n+1){--k:#11B8B1!important}
+.sx .ar-more .ar-card:nth-child(3n+2){--k:#0A7D79!important}
+.sx .ar-more .ar-card:nth-child(3n){--k:#04545B!important}
+html body.sx .ar-more .ar-card{box-shadow:0 0 0 1px rgba(1,59,67,.07),0 30px 60px -44px rgba(1,59,67,.4)!important}
+html body.sx .ar-more a.ar-card:hover,html body.sx .ar-more a.ar-card:focus-visible{outline:none;transform:translateY(-4px);box-shadow:0 0 0 2px var(--k,#11B8B1),0 34px 64px -40px rgba(1,59,67,.5)!important}
+.sx .ar-more .ar-card .tp{display:inline-flex;align-items:center;gap:8px;color:#0A7D79!important}
+.sx .ar-more .ar-card .tp::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--k,#11B8B1)}
+.sx .ar-more .ar-card b{font-family:"TT Commons Pro",sans-serif;font-weight:700;color:#13292C}
+.sx .ar-more .ar-card .ld{color:#3E5559}
+@media (prefers-reduced-motion:reduce){html body.sx .ar-more a.ar-card:hover{transform:none}}
+
+/* the product film in each "How Bunya ..." section: the screen fills its frame (it sat small in the middle) */
+html body.sx .ar-bunya .ar-film{overflow:hidden;border-radius:18px;box-shadow:0 0 0 1px rgba(10,125,121,.14),0 24px 48px -36px rgba(1,59,67,.45)}
+html body.sx .ar-bunya .ar-film video{display:block;width:100%;transform:scale(1.3);transform-origin:50% 60%}
+/* FAQ: the same hover and open frames as on every other page */
+html body.sx .ar-faq details{transition:box-shadow .35s cubic-bezier(.2,.8,.2,1)}
+html body.sx .ar-faq details:hover{box-shadow:var(--dx-edge-hi,0 0 0 1px rgba(10,125,121,.45))!important}
+html body.sx .ar-faq details[open]{box-shadow:0 0 0 1.5px #7EDAD6,0 6px 18px rgba(1,43,51,.05),0 18px 44px rgba(1,43,51,.07)!important}
+
+/* ---------- the live SOA cover (Dana, 20 Nov 2026) ---------- */
+.sx .ar-scene.sa-on > img.sa-hide{display:none!important}
+.sx .ar-scene.sa-on{--k:#7EDAD6!important;--g1:rgba(17,184,177,.35)!important;--g2:rgba(10,125,121,.2)!important;padding:0!important;background:none!important}
+.sx .sa-stage{position:relative;width:100%;aspect-ratio:1200/700;overflow:hidden;border-radius:22px;background:radial-gradient(70% 80% at 85% 10%,rgba(126,218,214,.45),transparent 60%),linear-gradient(160deg,#EAF7F5,#D3EEEA)}
+.sx .sa-fit{position:absolute;left:0;top:0;width:1200px;height:700px;transform:scale(var(--k,1));transform-origin:0 0;font-family:"TT Commons Pro",system-ui,sans-serif;color:#13363B;text-align:left}
+.sx .sa-fit img{max-width:none!important;box-shadow:none;border-radius:0}
+.sx .sa-app{position:absolute;left:44px;top:40px;width:900px;height:620px;display:flex;flex-direction:column;gap:16px;padding:24px 26px;border-radius:22px;background:#fff;box-shadow:0 0 0 1px rgba(1,59,67,.07),0 40px 80px -40px rgba(1,59,67,.5)}
+.sx .sa-top{display:flex;align-items:center;gap:16px}
+.sx .sa-logo{flex:none;width:44px;height:44px;border-radius:13px;background:radial-gradient(circle,#fff 0 6px,transparent 7px),linear-gradient(135deg,#11B8B1,#04545B)}
+.sx .sa-tt{flex:1;display:flex;flex-direction:column;gap:2px}
+.sx .sa-tt small{font-size:13px;color:#4A6266}.sx .sa-tt b{font-size:28px;font-weight:700;letter-spacing:-.02em;color:#013B43;line-height:1.1}.sx .sa-tt b em{font-style:normal;color:#0A7D79}
+.sx .sa-tt > span{font-size:14px;color:#4A6266}
+.sx .sa-who{display:flex;align-items:center;flex-direction:column;gap:6px}
+.sx .sa-who img{width:46px;height:46px;border-radius:50%!important;object-fit:cover;box-shadow:0 0 0 3px #fff!important;margin-left:-12px}
+.sx .sa-who img:first-child{margin-left:0}
+.sx .sa-who{flex-direction:row;flex-wrap:wrap;justify-content:flex-end;width:150px}
+.sx .sa-who small{width:100%;text-align:right;font-size:12.5px;color:#4A6266}
+.sx .sa-steps{list-style:none;margin:0;padding:12px;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;border-radius:16px;background:#F4F9F9;box-shadow:inset 0 0 0 1px rgba(1,59,67,.06)}
+.sx .sa-steps li{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px}
+.sx .sa-steps i{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#E3EEED;color:#4A6266;font:700 13px/1 "TT Commons Pro",sans-serif;font-style:normal}
+.sx .sa-steps i svg{width:15px;height:15px;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.sx .sa-steps li.done i{background:#11B8B1}
+.sx .sa-steps li.now{background:#013B43}.sx .sa-steps li.now i{background:#7EDAD6;color:#013B43;box-shadow:0 0 0 4px rgba(126,218,214,.25)}
+.sx .sa-steps b{display:block;font-size:14.5px;font-weight:700;color:#013B43}.sx .sa-steps small{font-size:12px;color:#4A6266}
+.sx .sa-steps li.now b{color:#fff}.sx .sa-steps li.now small{color:#7EDAD6}
+.sx .sa-cols{flex:1;display:grid;grid-template-columns:1.25fr 1fr;gap:16px;min-height:0}
+.sx .sa-card{padding:16px 18px;border-radius:16px;background:#fff;box-shadow:0 0 0 1px rgba(1,59,67,.08)}
+.sx .sa-ch{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.sx .sa-ch > span{flex:1;display:flex;flex-direction:column}.sx .sa-ch b{font-size:17px;font-weight:700;color:#013B43}.sx .sa-ch small{font-size:12.5px;color:#4A6266}
+.sx .sa-ri{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:11px;background:#E6F7F5}
+.sx .sa-ri svg,.sx .sa-link svg{width:18px;height:18px;fill:none;stroke:#0A7D79;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.sx .sa-prog{height:7px;border-radius:7px;background:#E3EEED;overflow:hidden}.sx .sa-prog u{display:block;height:100%;border-radius:7px;background:linear-gradient(90deg,#7EDAD6,#11B8B1)}
+.sx .sa-pl{display:block;margin:6px 0 4px;font-size:12.5px;color:#0A7D79;font-weight:600}
+.sx .sa-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-top:1px solid #EEF3F3}
+.sx .sa-row > span{flex:1;min-width:0;display:flex;flex-direction:column}.sx .sa-row b{font-size:14.5px;font-weight:700;color:#013B43}.sx .sa-row small{font-size:12.5px;color:#4A6266}
+.sx .sa-pill{flex:none;display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-style:normal;font-size:12px;font-weight:600}
+.sx .sa-pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.sx .sa-pill.ok{background:#E6F7F5;color:#0A7D79}.sx .sa-pill.teal{background:#11B8B1;color:#fff}.sx .sa-pill.chk{background:#fff;color:#04545B;box-shadow:inset 0 0 0 1.5px #0A7D79}
+.sx .sa-side{display:flex;flex-direction:column;gap:14px}
+.sx .sa-sh{font:600 11.5px/1.2 "Saira",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#0A7D79;margin-bottom:4px}
+.sx .sa-link{flex:none;display:inline-flex;align-items:center;gap:5px;font-style:normal;font-size:12px;font-weight:600;color:#0A7D79}
+.sx .sa-link svg{width:14px;height:14px}
+.sx .sa-ok{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#04545B,#013B43)}
+.sx .sa-ok img{width:46px;height:46px;border-radius:50%!important;object-fit:cover;box-shadow:0 0 0 2px #013B43,0 0 0 4px #7EDAD6!important}
+.sx .sa-ok > span{flex:1;display:flex;flex-direction:column}.sx .sa-ok b{font-size:15px;font-weight:700;color:#fff}.sx .sa-ok small{font-size:12.5px;color:#7EDAD6}
+.sx .sa-btn{flex:none;font-style:normal;padding:9px 14px;border-radius:11px;background:#11B8B1;color:#013B43;font-size:14px;font-weight:700}
+.sx .sa-doc{position:absolute;right:46px;top:78px;width:300px;transform:rotate(4deg);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.sx .sa-doc > img{display:block;width:100%;height:auto;border-radius:8px!important;box-shadow:0 0 0 1px rgba(42,34,48,.08),0 40px 70px -30px rgba(1,43,51,.6)!important}
+.sx .sa-dtag{position:absolute;left:-30px;bottom:34px;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:14px;background:#fff;font-size:14px;font-weight:700;color:#013B43;transform:rotate(-4deg);
+  box-shadow:0 0 0 1px rgba(1,59,67,.08),0 20px 40px -20px rgba(1,43,51,.5)}
+.sx .sa-dtag i{width:10px;height:10px;border-radius:50%;background:#11B8B1;box-shadow:0 0 0 4px rgba(17,184,177,.2)}
+.sx .ar-cover:hover .sa-doc{transform:rotate(1deg) translateY(-6px)}
+@media (prefers-reduced-motion:reduce){.sx .sa-doc{transition:none}}
+/* layout tune: app narrower, the SOA sits off its right edge, room for every section */
+.sx .sa-stage{aspect-ratio:1200/780}
+.sx .sa-fit{height:780px}
+.sx .sa-app{left:36px;top:36px;width:840px;height:708px}
+.sx .sa-doc{right:26px;top:150px;width:292px}
+.sx .sa-steps b{font-size:13.5px}.sx .sa-steps li{padding:8px}
+.sx .sa-app{gap:12px;overflow:hidden}
+.sx .sa-row{padding:6px 0}
+.sx .sa-card{padding:14px 16px}
+.sx .sa-ch{margin-bottom:8px}
+/* the SOA overhanging the cover: built in the page, in Aynub's template, with the same cover heading as the Advice
+   Engine's live SOA ("Statement of Advice" / the advice title / who it's for), not the old "Your advice, worked
+   backwards." image; the template tag sits underneath it */
+.sx .sa-doc{width:300px;top:110px}
+.sx .sa-page{border-radius:8px;background:#fff;overflow:hidden;box-shadow:0 0 0 1px rgba(38,34,44,.08),0 40px 70px -30px rgba(1,43,51,.6);font-family:"Sora","TT Commons Pro",sans-serif}
+.sx .sa-ph{display:flex;align-items:center;justify-content:space-between;margin:0 22px;padding:16px 0 12px;border-bottom:1px solid #E6E2DB}
+.sx .sa-ph img{height:20px!important;width:auto!important;border-radius:0!important}
+.sx .sa-ph em{font-style:normal;font-size:11.5px;color:#6A6470}
+.sx .sa-pt{padding:20px 22px 14px}
+.sx .sa-pt small{display:block;font-size:12px;font-weight:600;color:#6A6470}
+.sx .sa-pt small::after{content:"";display:block;width:48px;height:3px;margin-top:10px;border-radius:2px;background:#772A53}
+.sx .sa-pt b{display:block;margin:12px 0 10px;font-size:26px;line-height:1.1;font-weight:700;letter-spacing:-.03em;color:#26222C}
+.sx .sa-pt span{display:block;font-size:12.5px;line-height:1.55;color:#3B3640}
+.sx .sa-toc{display:flex;flex-direction:column;padding:2px 22px 6px}
+.sx .sa-toc span{display:flex;align-items:baseline;gap:10px;padding:7px 0;border-top:1px solid #EFECE6;font-size:12.5px;color:#26222C}
+.sx .sa-toc em{font-style:normal;min-width:12px;font-weight:600;color:#772A53}
+.sx .sa-toc i{flex:1;border-bottom:1px dotted #D9D4CC;transform:translateY(-3px)}
+.sx .sa-toc strong{font-weight:600;color:#26222C}
+.sx .sa-pf{display:flex;justify-content:space-between;margin:4px 22px 0;padding:10px 0 12px;border-top:1px solid #E6E2DB;font-size:10.5px;color:#6A6470}
+.sx .sa-pf b{color:#26222C}
+html body.sx .sa-dtag{position:static;display:flex;width:max-content;margin:18px auto 0;transform:rotate(-4deg)}
+/* Dana (20 Nov 2026): the smaller headings (section headings, the short answer, FAQ) on one line again, still two-tone;
+   only the page title keeps its green half on a line of its own */
+.sx .ar-page h2 .dp-t,.sx .ar-page h2 > span:not([class]),.sx .ar-more h2 > span:not([class]){display:inline!important}
+/* the SOA cover title on one line */
+.sx .sa-pt b{font-size:24px;white-space:nowrap}
+/* headings run across the full width of the article before wrapping (they were balanced into short lines) */
+html body.sx .ar-page h2{text-wrap:wrap!important;max-width:none!important}
+/* FAQ cards: a thin teal frame on hover, as on the other cards */
+html body.sx .ar-faq > details:hover{box-shadow:0 0 0 2px #7EDAD6,0 18px 40px -28px rgba(1,59,67,.4)!important}
+html body.sx .ar-faq > details[open]:hover{box-shadow:0 0 0 2px #11B8B1,0 18px 40px -28px rgba(1,59,67,.4)!important}
