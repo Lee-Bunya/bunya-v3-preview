@@ -1,0 +1,117 @@
+/* Is Bunya right for you, Dana 20 Nov 2026 (design pass). Goes with js/dana-fit.js. */
+/* fit cards: one icon tile each (the extra dot before the title goes), teal tiles, "not yet" muted */
+.sx .fit-card b::before{content:none!important}
+.sx .fit-card b{font-family:"TT Commons Pro",sans-serif;font-weight:700;color:#13292C!important}
+.sx .fit-card > span:not(.dx-ico){color:#3E5559!important}
+.sx .fit-card span a{color:#0A7D79!important;font-weight:600}
+.sx .dx-c2{background:linear-gradient(135deg,#0A7D79,#04545B)!important;color:#fff!important}
+.sx :has(> .dx-c2){--hc:#0A7D79}
+.sx .fit-card.not{background:#F6F9F9!important}
+.sx .fit-card.not .dx-ico{background:#E3ECEB!important;color:#4B6266!important}
+.sx .fit-card.not b{color:#2C4245!important}
+.sx .fit-card.need .dx-ico{background:linear-gradient(135deg,#04545B,#013B43)!important;color:#7EDAD6!important}
+
+/* the fit check: questions in a white card, numbered; teal Yes / deep No */
+.sx .fit-quiz{gap:28px}
+.sx main .fit-qs{counter-reset:q;padding:10px 26px;border-radius:28px;background:#fff;box-shadow:0 0 0 1px rgba(1,59,67,.07),0 40px 80px -50px rgba(1,59,67,.45)}
+.sx .fit-qs li{counter-increment:q;border-color:#E6EFEE!important;padding:18px 0!important}
+.sx .fit-qs li:last-child{border-bottom:0!important}
+.sx .fit-qs li:first-child{border-top:0!important}
+.sx .fit-qs p{display:flex;align-items:center;gap:14px;color:#13292C!important;font-size:16.5px}
+.sx .fit-qs p::before{content:counter(q);flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:#E6F7F5;color:#0A7D79;font:700 14px/1 "TT Commons Pro",sans-serif;transition:all .3s}
+.sx .fit-qs li.done p::before{background:linear-gradient(135deg,#11B8B1,#0A7D79);color:#fff}
+.sx .fit-yn{background:#F0F5F4!important;box-shadow:inset 0 0 0 1px #DCEBE9}
+.sx .fit-yn button{color:#4B6266!important;transition:all .2s}
+.sx .fit-yn button:hover{color:#013B43!important}
+.sx .fit-yn button[data-v="1"][aria-pressed="true"]{background:#11B8B1!important;color:#fff!important}
+.sx .fit-yn button[data-v="0"][aria-pressed="true"]{background:#013B43!important;color:#fff!important}
+
+/* result: deep teal with Bunya's rings and a progress ring */
+.sx .fit-side{position:sticky;top:110px;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;align-items:flex-start;gap:16px;padding:28px;border-radius:28px;
+  background:linear-gradient(155deg,#013B43 0%,#04545B 60%,#0A6B6A 100%);box-shadow:0 0 0 1px rgba(126,218,214,.18),0 40px 80px -40px rgba(1,59,67,.6)}
+.sx .fit-side .fit-result{position:static;padding:0!important;background:none!important;box-shadow:none!important}
+.sx .fit-side .fit-result b{font-family:"TT Commons Pro",sans-serif;font-weight:700;font-size:26px;color:#fff!important}
+.sx .fit-side .fit-result span{color:rgba(223,246,244,.85)!important}
+.sx .fit-ring{position:relative;width:96px;height:96px}
+.sx .fit-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.sx .fit-ring circle{fill:none;stroke-width:10}
+.sx .fit-ring .bg{stroke:rgba(126,218,214,.18)}
+.sx .fit-ring .fg{stroke:#7EDAD6;stroke-linecap:round;transition:stroke-dashoffset .6s cubic-bezier(.2,.8,.2,1),stroke .4s}
+.sx .fit-ring span{position:absolute;inset:0;display:grid;place-content:center;text-align:center;color:#fff}
+.sx .fit-ring b{font:700 30px/1 "TT Commons Pro",sans-serif}
+.sx .fit-ring small{font-size:12px;color:#7EDAD6}
+.sx .fit-side[data-st="good"] .fit-ring .fg{stroke:#11B8B1}
+.sx .fit-side[data-st="not"] .fit-ring .fg,.sx .fit-side[data-st="maybe"] .fit-ring .fg{stroke:#A9C9C5}
+.sx .fit-next{display:none;flex-wrap:wrap;gap:8px}
+.sx .fit-side[data-st="good"] .fit-next{display:flex}
+.sx .fit-go{display:inline-flex;align-items:center;padding:11px 18px;border-radius:999px;background:#fff;color:#013B43;font-weight:600;font-size:15px;text-decoration:none}
+.sx .fit-go.ghost{background:rgba(126,218,214,.16);color:#fff;box-shadow:inset 0 0 0 1px rgba(126,218,214,.35)}
+.sx .fit-rings{position:absolute;right:-170px;top:-190px;width:400px;height:400px;z-index:-1;overflow:visible;pointer-events:none}
+.sx .fit-rings g{transform-box:view-box;transform-origin:50% 50%}
+.sx .fit-rings circle{fill:none;stroke:#7EDAD6;stroke-opacity:.2;stroke-width:2}
+.sx .fit-rings circle.d{stroke-opacity:.55;stroke-width:3.5;stroke-linecap:round;stroke-dasharray:.1 12}
+.sx .fit-rings circle.g{stroke:#F4B528;stroke-opacity:.7;stroke-width:3.5;stroke-linecap:round;stroke-dasharray:.1 12}
+.sx .fit-rings circle.n{fill:#7EDAD6;stroke:none}.sx .fit-rings circle.n.t{fill:#11B8B1}.sx .fit-rings circle.n.y{fill:#F4B528}
+.sx .fit-rings .a{animation:fit-orb 80s linear infinite}.sx .fit-rings .b{animation:fit-orb 120s linear infinite reverse}.sx .fit-rings .c{animation:fit-orb 60s linear infinite}
+@keyframes fit-orb{to{transform:rotate(360deg)}}
+
+/* closing headline on two lines */
+.sx .sx-end h2{max-width:none}
+.sx .sx-end h2 .sx-grad{display:block}
+@media (max-width:860px){.sx .fit-side{position:relative;top:auto}.sx main .fit-qs{padding:6px 16px}.sx .fit-qs li{flex-direction:column;align-items:flex-start;gap:12px}}
+@media (prefers-reduced-motion:reduce){.sx .fit-rings g{animation:none}}
+/* finding out costs nothing: white step cards, teal number tiles, the last step on deep teal */
+.sx main .fit-steps li{background:#fff!important;box-shadow:0 0 0 1px rgba(1,59,67,.07),0 30px 60px -44px rgba(1,59,67,.4)!important;transition:box-shadow .3s,transform .3s}
+.sx main .fit-steps li:hover{transform:translateY(-3px);box-shadow:0 0 0 2px #11B8B1,0 30px 60px -40px rgba(1,59,67,.45)!important}
+.sx .fit-steps li::before{width:38px!important;height:38px!important;border-radius:12px!important;font:700 15px/1 "TT Commons Pro",sans-serif!important}
+.sx .fit-steps li:nth-child(1)::before{background:linear-gradient(135deg,#7EDAD6,#11B8B1)!important;color:#013B43!important}
+.sx .fit-steps li:nth-child(2)::before{background:linear-gradient(135deg,#11B8B1,#0A7D79)!important;color:#fff!important}
+.sx .fit-steps li:nth-child(3)::before{background:linear-gradient(135deg,#7EDAD6,#11B8B1)!important;color:#013B43!important}
+.sx .fit-steps b{font-family:"TT Commons Pro",sans-serif;font-weight:700;font-size:21px;color:#13292C!important}
+.sx .fit-steps span{color:#3E5559!important}
+.sx .fit-steps a{align-self:flex-start;padding:9px 16px;border-radius:999px;background:#E6F7F5;color:#04545B!important;font-weight:600}
+.sx .fit-steps a:hover{background:#013B43;color:#fff!important}
+.sx main .fit-steps li:nth-child(3){background:linear-gradient(155deg,#013B43 0%,#04545B 60%,#0A6B6A 100%)!important}
+.sx .fit-steps li:nth-child(3) b{color:#fff!important}
+.sx .fit-steps li:nth-child(3) span{color:rgba(223,246,244,.85)!important}
+.sx .fit-steps li:nth-child(3) a{background:#fff;color:#013B43!important}
+
+/* ---------- jazz (Dana, 20 Nov 2026) ---------- */
+/* at a glance, under the hero */
+.sx .fit-glance{position:relative;isolation:isolate;overflow:hidden;width:min(1100px,calc(100% - 48px));margin:8px auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:16px;border-radius:30px;
+  background:linear-gradient(155deg,#013B43 0%,#04545B 60%,#0A6B6A 100%);box-shadow:0 0 0 1px rgba(126,218,214,.18),0 40px 80px -40px rgba(1,59,67,.6)}
+.sx .fit-glance .fit-rings{right:-140px;top:-220px}
+.sx .fg-t{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:16px;align-items:center;padding:20px 22px;border-radius:22px;text-decoration:none;
+  background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(126,218,214,.16);transition:background .3s,transform .3s}
+.sx .fg-t:hover{background:rgba(255,255,255,.11);transform:translateY(-2px)}
+.sx .fg-t b{grid-row:1/3;display:grid;place-items:center;width:64px;height:64px;border-radius:20px;font:700 34px/1 "TT Commons Pro",sans-serif}
+.sx .fg-t.good b{background:linear-gradient(135deg,#7EDAD6,#11B8B1);color:#013B43}
+.sx .fg-t.not b{background:rgba(255,255,255,.12);color:#DFF6F4}
+.sx .fg-t.quiz b{background:#fff;color:#0A7D79}
+.sx .fg-t span{align-self:end;font-family:"TT Commons Pro",sans-serif;font-weight:700;font-size:19px;color:#fff;line-height:1.2}
+.sx .fg-t i{align-self:start;margin-top:4px;font-style:normal;font-size:14px;font-weight:600;color:#7EDAD6}
+.sx .fg-t.quiz{background:rgba(126,218,214,.16);box-shadow:inset 0 0 0 1.5px rgba(126,218,214,.4)}
+
+/* a tag on each fit card */
+.sx .fit-card{position:relative}
+.sx .fit-tag{position:absolute;top:22px;right:22px;padding:4px 10px;border-radius:999px;font:600 11px/1.2 "Saira",sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.sx .fit-card.good .fit-tag{background:#E6F7F5;color:#0A7D79}
+.sx .fit-card.not .fit-tag{background:#E8EFEE;color:#5A7270}
+.sx main .fit-card.good:hover{box-shadow:0 0 0 2px #11B8B1,0 30px 60px -40px rgba(1,59,67,.45)!important}
+.sx main .fit-card.not:hover{box-shadow:0 0 0 2px #A9C9C5,0 30px 60px -40px rgba(1,59,67,.35)!important}
+.sx main .fit-card{transition:box-shadow .3s,transform .3s}
+.sx main .fit-card.good:hover,.sx main .fit-card.not:hover{transform:translateY(-3px)}
+
+/* what you need: tick off what you have */
+.sx .fit-tick-hint{margin:-6px 0 18px;font-size:15.5px;color:#3E5559}
+.sx .fit-tick-hint b{display:inline-block;margin-left:4px;padding:3px 10px;border-radius:999px;background:#013B43;color:#7EDAD6;font-size:13.5px}
+.sx .fit-card.need{cursor:pointer;user-select:none}
+.sx .fit-box{position:absolute;top:22px;right:22px;width:28px;height:28px;border-radius:9px;box-shadow:inset 0 0 0 2px #A9C9C5;background:#fff;transition:all .25s cubic-bezier(.2,1.3,.4,1)}
+.sx .fit-card.need:hover .fit-box{box-shadow:inset 0 0 0 2px #11B8B1}
+.sx main .fit-card.need:hover{box-shadow:0 0 0 2px #7EDAD6,0 30px 60px -40px rgba(1,59,67,.4)!important}
+.sx .fit-card.need.have .fit-box{background:#11B8B1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4L18 8'/%3E%3C/svg%3E") center/16px no-repeat;box-shadow:none;transform:scale(1.08)}
+.sx main .fit-card.need.have{background:linear-gradient(170deg,#E9F8F6,#fff)!important;box-shadow:0 0 0 2px #11B8B1,0 30px 60px -44px rgba(1,59,67,.4)!important}
+.sx .fit-card.need:focus-visible{outline:2px solid #11B8B1;outline-offset:3px}
+
+@media (max-width:860px){.sx .fit-glance{grid-template-columns:1fr;width:calc(100% - 32px)}.sx .fg-t b{width:54px;height:54px;font-size:28px}}
+.sx main h2[id]{scroll-margin-top:140px}
