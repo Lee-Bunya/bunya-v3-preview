@@ -1,0 +1,87 @@
+/* Regional Prosperity customer story (case-study-regional-prosperity.html), Dana 20 Nov 2026. Goes with js/dana-crp.js.
+   Same design pass as the Falcon story (css/dana-fc.css), kept as this page's own copy. */
+/* headlines: the second half in Bunya green, as on every other page */
+.sx main h2 .sv{color:#0A7D79!important;-webkit-text-fill-color:#0A7D79}
+
+/* "The story at a glance": three cards in the Command Centre card system */
+.sx .kinds.three.fc-on{gap:18px}
+html body.sx .kinds.fc-on > .fc-card{position:relative;display:flex;flex-direction:column;align-items:flex-start;padding:26px 24px 22px;border-radius:24px;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--hc) 10%,#fff) 0%,#fff 50%)!important;
+  box-shadow:0 0 0 1px rgba(1,59,67,.07),0 26px 52px -40px rgba(1,59,67,.4)!important;transition:box-shadow .35s,transform .35s}
+html body.sx .kinds.fc-on > .fc-card:hover{transform:translateY(-4px);box-shadow:0 0 0 2px var(--hc),0 30px 60px -40px rgba(1,59,67,.45)!important}
+html body.sx .fc-card .fc-ico{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:var(--hc)!important;box-shadow:0 10px 22px -12px var(--hc)}
+html body.sx .fc-card .fc-ico svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.sx .fc-card strong{margin-top:18px;font:700 20px/1.2 "TT Commons Pro",sans-serif;letter-spacing:-.015em;color:#013B43}
+.sx .fc-card p{margin:8px 0 20px;font-size:15.5px;line-height:1.55;color:#2D4A4F}
+.sx .fc-fact{margin-top:auto;display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 10px;border-radius:999px;font-size:13.5px;font-weight:600;color:#04545B;
+  background:#fff;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--hc) 35%,transparent)}
+.sx .fc-fact::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--hc)}
+@media (prefers-reduced-motion:reduce){html body.sx .kinds.fc-on > .fc-card:hover{transform:none}}
+
+/* ---------- design pass (Dana, 20 Nov 2026) ---------- */
+/* intro paragraphs run the full width of their section, as on every other page */
+.sx .mx-how .say,.sx .sources-wrap .sources,.sx .sources-wrap .sources p{max-width:none!important}
+
+/* Regional Prosperity logo above the headline */
+.sx .fc-logo{display:block;height:64px;width:auto;margin:0 auto 26px;border-radius:0!important;box-shadow:none!important}
+@media (max-width:620px){.sx .fc-logo{height:46px;margin-bottom:18px}}
+
+/* story lists as small cards, two across */
+.sx .prose ul.fc-list{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0 26px;padding:0}
+.sx .prose ul.fc-list li{position:relative;margin:0;padding:18px 18px 18px 46px;border-radius:18px;font-size:15.5px;line-height:1.5;color:#2D4A4F;
+  background:linear-gradient(180deg,#F2FBFA,#fff 70%);box-shadow:0 0 0 1px rgba(1,59,67,.07),0 16px 34px -28px rgba(1,59,67,.4);transition:box-shadow .3s,transform .3s}
+.sx .prose ul.fc-list li::before{content:"";position:absolute;left:18px;top:21px;width:14px;height:14px;border-radius:50%;background:#11B8B1;box-shadow:0 0 0 4px rgba(17,184,177,.16)}
+.sx .prose ul.fc-list li:nth-child(3n+2)::before{background:#0A7D79;box-shadow:0 0 0 4px rgba(10,125,121,.14)}
+.sx .prose ul.fc-list li:nth-child(3n)::before{background:#04545B;box-shadow:0 0 0 4px rgba(4,84,91,.14)}
+.sx .prose ul.fc-list li:hover{transform:translateY(-2px);box-shadow:0 0 0 2px #7EDAD6,0 20px 40px -28px rgba(1,59,67,.45)}
+.sx .prose ul.fc-list li strong{display:block;margin-bottom:3px;font-size:16.5px;font-weight:700;color:#013B43}
+@media (max-width:620px){.sx .prose ul.fc-list{grid-template-columns:minmax(0,1fr)}}
+
+/* Charlotte's quotes as cards with her photo */
+html body.sx .sheet-body figure.pull.fc-quote{position:relative;margin:30px 0;padding:30px 32px 26px 32px;border:0!important;border-radius:24px;
+  background:linear-gradient(160deg,#EAF7F5,#F7FCFB 60%)!important;box-shadow:0 0 0 1px rgba(10,125,121,.14),0 26px 52px -40px rgba(1,59,67,.45)!important}
+html body.sx .sheet-body figure.pull.fc-quote blockquote{position:relative;margin:0;padding:0;border:0;font:600 clamp(21px,1.9vw,25px)/1.38 "TT Commons Pro",sans-serif;letter-spacing:-.01em;color:#013B43}
+html body.sx .sheet-body figure.pull.fc-quote blockquote b{color:#0A7D79}
+html body.sx .sheet-body figure.pull.fc-quote figcaption{display:flex;align-items:center;gap:12px;margin-top:18px;font-size:14px;color:#4A6266;letter-spacing:0;text-transform:none}
+html body.sx .sheet-body figure.pull.fc-quote figcaption img.face{width:44px;height:44px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #fff,0 0 0 4px #7EDAD6!important}
+html body.sx .sheet-body figure.pull.fc-quote figcaption strong{color:#013B43}
+
+/* before and after: grey "Before", teal "With Bunya" */
+html body.sx table.bw.fc-bw{width:100%;border-collapse:separate;border-spacing:0 10px;margin:20px 0 6px}
+.sx table.fc-bw thead th{padding:0 18px 4px;font:600 11.5px/1.2 "Saira",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#4A6266;text-align:left;border:0;background:none}
+.sx table.fc-bw thead th:last-child{color:#0A7D79}
+.sx table.fc-bw tbody td{padding:16px 18px;border:0;vertical-align:top;font-size:15px;line-height:1.5;background:#F4F7F7;color:#4A6266}
+.sx table.fc-bw tbody td:first-child{border-radius:16px 0 0 16px;font-weight:700;color:#013B43;background:#fff;box-shadow:inset 1px 0 0 rgba(1,59,67,.07),inset 0 1px 0 rgba(1,59,67,.07),inset 0 -1px 0 rgba(1,59,67,.07)}
+.sx table.fc-bw tbody td:last-child{position:relative;border-radius:0 16px 16px 0;padding-left:44px;background:#E6F7F5;color:#04545B;font-weight:600}
+.sx table.fc-bw tbody td:last-child::before{content:"";position:absolute;left:16px;top:18px;width:18px;height:18px;border-radius:50%;
+  background:#11B8B1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12 4 4 8-9'/%3E%3C/svg%3E") center/11px no-repeat}
+@media (max-width:620px){
+  .sx table.fc-bw thead{display:none}
+  .sx table.fc-bw,.sx table.fc-bw tbody,.sx table.fc-bw tr,.sx table.fc-bw td{display:block;width:auto}
+  .sx table.fc-bw tr{margin-bottom:12px}
+  .sx table.fc-bw tbody td:first-child{border-radius:16px 16px 0 0}
+  .sx table.fc-bw tbody td:last-child{border-radius:0 0 16px 16px}
+}
+
+/* FAQ numbers in Bunya teals only (no gold) */
+.sx .faq-list details{--tc:#11B8B1}
+.sx .faq-list details:nth-child(4n+2){--tc:#0A7D79}.sx .faq-list details:nth-child(4n+3){--tc:#0A9C96}.sx .faq-list details:nth-child(4n){--tc:#04545B}
+
+/* closing section: the shared one, plus the link to the next story */
+.sx .fc-end{position:relative;overflow:hidden}
+.sx .fc-end h2 br{display:block}
+.sx .fc-next{display:inline-flex;flex-direction:column;align-items:center;gap:2px;margin-top:26px;font-size:16px;font-weight:600;color:#0A7D79;text-decoration:none}
+.sx .fc-next small{font:600 11.5px/1.2 "Saira",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#4A6266}
+.sx .fc-next::after{content:"→";margin-left:6px}
+.sx .fc-next:hover{color:#04545B}
+/* fixes after the first look */
+html body.sx .fc-end h2{max-width:none!important}
+@media (min-width:900px){html body.sx .fc-end h2{white-space:nowrap}}
+@media (max-width:899px){.sx .fc-end h2 br{display:none}}
+.sx .fc-next{display:inline-block;text-align:center}
+.sx .fc-next small{display:block;margin-bottom:2px}
+/* no big quote marks on the quote cards, from any stylesheet */
+html body.sx .sheet-body figure.pull.fc-quote::before,html body.sx .sheet-body figure.pull.fc-quote::after,
+html body.sx .sheet-body figure.pull.fc-quote blockquote::before,html body.sx .sheet-body figure.pull.fc-quote blockquote::after{content:none!important;display:none!important}
+/* award label: Bunya teal tint instead of pale yellow */
+.sx .photo figcaption .award{background:#E6F7F5!important;color:#0A7D79!important;box-shadow:inset 0 0 0 1px rgba(10,125,121,.18)}
