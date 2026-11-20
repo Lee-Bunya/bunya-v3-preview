@@ -83,3 +83,7 @@
 .sx .sec-map .sx-store:nth-child(2) .ic{background:linear-gradient(135deg,#11B8B1,#0A7D79)}
 .sx .sec-map .sx-store:nth-child(3) .ic{background:linear-gradient(135deg,#0A7D79,#04545B)}
 .sx .sec-map .sx-store:nth-child(4) .ic{background:linear-gradient(135deg,#04545B,#013B43)}
+/* full design review fix 5 (20 Nov 2026): the last gold icon tiles and the violet "AI-prepared" tag in Bunya teals */
+.sx .dx-c2{background:#0A7D79!important;color:#fff!important}
+.sx :has(> .dx-c2){--hc:#0A7D79!important}
+.sx em.ai{color:#04545B!important;background:#E6F7F5!important;border-color:transparent!important}

@@ -269,3 +269,6 @@ html body.sx .sx-end .sx-btn::after{width:46px;height:46px;border-radius:11px;ba
 @media (min-width:900px){html body.sx .sx-hero > p{max-width:900px!important}}
 .sx .sx-end h2 .sx-grad{display:block}
 @media (min-width:1000px){html body.sx .sx-hero > p{max-width:1040px!important}}
+/* full design review fix 4 (20 Nov 2026): the hero sentences flow as one balanced paragraph (they were one per line) */
+.sx .sx-hero p.dana-sents{max-width:900px;margin-left:auto;margin-right:auto;text-wrap:balance}
+.sx .sx-hero p.dana-sents .dana-sent{display:inline;white-space:normal}

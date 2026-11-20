@@ -71,3 +71,52 @@
     two.classList.add('ga-hidden');
   }
 })();
+
+/* Dana (20 Nov 2026): the Pricing card, simpler. The big price, two key facts as chips, and the button. */
+(function () {
+  'use strict';
+  var pc = document.querySelector('.ga-price');
+  if (!pc || pc.classList.contains('ga-price3')) return;
+  pc.classList.add('ga-price3');
+  var big = pc.querySelector('.ga-big');
+  if (big) big.insertAdjacentHTML('afterend', '<span class="gp3-facts"><span><b>$500</b> monthly minimum</span><span><b>$7,249</b> setup, once</span></span>');
+})();
+
+/* Dana (20 Nov 2026): Test and train / Go live get a small product visual each (wording from the cards), and the
+   Pricing card a worked example. */
+(function () {
+  'use strict';
+  var tick = '<svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9"/></svg>';
+  [].forEach.call(document.querySelectorAll('.gs-split .gs-card'), function (c) {
+    if (c.querySelector('.gs-viz')) return;
+    var t = (c.querySelector('.lbl') || {}).textContent || '';
+    if (/Test and train/.test(t)) {
+      c.classList.add('gs-test');
+      c.insertAdjacentHTML('beforeend', '<span class="gs-viz" aria-hidden="true"><span class="gv-h"><b>Release 2</b><small>Your sign-off</small></span>' +
+        '<span class="gv-r on"><i>' + tick + '</i>Agreed scenarios, on real clients</span>' +
+        '<span class="gv-r on"><i>' + tick + '</i>Role-based training</span>' +
+        '<span class="gv-btns"><em class="ok">Accept the release</em><em>Send it back</em></span></span>');
+    } else if (/Go live/.test(t)) {
+      c.classList.add('gs-live');
+      c.insertAdjacentHTML('beforeend', '<span class="gs-viz" aria-hidden="true"><span class="gv-h"><b>Release 1</b><small class="gv-live"><i></i>In run-in</small></span>' +
+        '<span class="gv-steps"><span class="d"><i>' + tick + '</i>Tested</span><span class="d"><i>' + tick + '</i>Accepted</span><span class="now"><i></i>Run-in</span><span><i></i>Daily use</span></span></span>');
+    }
+  });
+  var pc = document.querySelector('.ga-price3');
+  if (pc && !pc.querySelector('.gp3-ex')) {
+    var facts = pc.querySelector('.gp3-facts');
+    if (facts) facts.insertAdjacentHTML('beforebegin', '<span class="gp3-ex"><span><small>For example</small><b>500 client accounts</b></span><strong>$1,500<em>a month</em></strong></span>');
+    var go = pc.querySelector('.ga-go'); if (go) go.insertAdjacentHTML('beforebegin', '<small class="gp3-note">Paying yearly takes 10% off the Bunya fee.</small>');
+  }
+})();
+
+/* Dana (20 Nov 2026): Care card rebalanced. Both widgets sit together in a right-hand column, centred, so there's no
+   empty band between them when the card is tall. */
+(function () {
+  'use strict';
+  var cc = document.querySelector('.ga-care');
+  if (!cc || cc.querySelector('.ga-wid')) return;
+  var w = document.createElement('span'); w.className = 'ga-wid';
+  [].forEach.call(cc.querySelectorAll(':scope > .ga-portal'), function (p) { w.appendChild(p); });
+  cc.appendChild(w); cc.classList.add('ga-care2');
+})();
