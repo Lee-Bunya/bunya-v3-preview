@@ -960,3 +960,8 @@ body.sx{overflow-x:clip}
 /* Pricing and Build stay exactly as signed off until Dana reviews them again (19 Nov 2026):
    later site-wide rules don't apply there. */
 body.sx:has(.pr-sum) .sx-sec > .sx-faq{max-width:860px}
+
+/* Dana (20 Nov 2026): one closing section on every page, the same as Command Centre: a solid soft white-to-mint
+   fill, no rings or other background decoration behind the headline. The floating pills stay. */
+html body.sx .sx-end{background:linear-gradient(180deg,#fff 0%,#fff 30%,#EAF6F4 100%)!important}
+html body.sx .sx-end::before,html body.sx .sx-end::after,html body.sx .sx-end .dx-orbit{display:none!important}

@@ -75,7 +75,7 @@
 .sx .dx-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:none}
 .sx .dx-steps li{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:30px 22px 24px;border-radius:22px;background:#fff;
   border:1px solid rgba(10,125,121,.16)}
-.sx .dx-steps li.gold{background:#FFFBF0}
+.sx .dx-steps li.gold{background:#F0FAF9}
 .sx .dx-steps li + li::before{content:"";position:absolute;left:-17px;top:50%;width:12px;height:12px;border-top:1.5px solid #7EDAD6;border-right:1.5px solid #7EDAD6;transform:translateY(-50%) rotate(45deg)}
 .sx .dx-step-ico{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;margin-bottom:16px;background:#E6F7F5;color:#0A7D79}
 .sx .dx-step-ico.c1{background:#E3F1F0;color:#013B43}
@@ -163,7 +163,7 @@
 /* ---------- 19 Nov 2026, round 2: a subtle lift on every card on this page, and line breaks ---------- */
 html body.sx{--dx-lift:var(--dx-edge);--dx-lift-hi:var(--dx-edge-hi)}
 html body.sx :is(.co-get,.co-teaser,.sx-tile,.sx-faq > details,.dx-steps li){border-color:transparent!important;box-shadow:var(--dx-edge)!important}
-html body.sx .dx-steps li.gold{box-shadow:0 0 0 1px rgba(244,181,40,.45),0 1px 3px rgba(106,74,0,.05),0 6px 18px rgba(106,74,0,.06),0 18px 44px rgba(106,74,0,.07)!important}
+html body.sx .dx-steps li.gold{box-shadow:0 0 0 1px rgba(17,184,177,.4),0 1px 3px rgba(1,43,51,.05),0 6px 18px rgba(1,43,51,.06),0 18px 44px rgba(1,43,51,.07)!important}
 html body.sx :is(a.co-get,a.co-teaser):hover{box-shadow:var(--dx-edge-hi)!important;transform:translateY(-4px)}
 html body.sx .dx-float{border-color:transparent;box-shadow:var(--dx-float)!important}
 html body.sx .dx-dev{border-color:rgba(10,125,121,.14);box-shadow:var(--dx-float)!important}

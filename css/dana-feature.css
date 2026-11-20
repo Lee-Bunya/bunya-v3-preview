@@ -29,7 +29,8 @@ html body.sx .dx-dev{box-shadow:var(--dx-float)!important}
 .sx .hb-how{gap:30px}
 .sx .hb-how li{border-color:transparent!important;box-shadow:var(--dx-edge)!important;transition:box-shadow .35s cubic-bezier(.2,.8,.2,1)}
 .sx .hb-how li::before{display:none!important}
-.sx .hb-how li:nth-child(3){background:#FFFBF0;box-shadow:0 0 0 1px rgba(244,181,40,.45),0 1px 3px rgba(106,74,0,.05),0 6px 18px rgba(106,74,0,.06),0 18px 44px rgba(106,74,0,.07)!important}
+/* the "your team checks it" step: soft mint, Bunya teals only (was cream and gold; Dana, 20 Nov 2026) */
+.sx .hb-how li:nth-child(3){background:#F0FAF9;box-shadow:0 0 0 1px rgba(17,184,177,.4),0 1px 3px rgba(1,43,51,.05),0 6px 18px rgba(1,43,51,.06),0 18px 44px rgba(1,43,51,.07)!important}
 .sx .hb-how li:hover{box-shadow:0 0 0 1.5px var(--c,#11B8B1),0 2px 6px rgba(1,43,51,.05),0 12px 28px rgba(1,43,51,.08),0 30px 64px rgba(1,43,51,.10)!important}
 .sx .hb-how li:not(:last-child)::after{content:""!important;right:-28px;left:auto;top:50%;bottom:auto;margin:0;width:26px;height:26px;border:0;border-radius:50%;transform:translateY(-50%);z-index:2;
   background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A7D79' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 7l5 5-5 5'/%3E%3C/svg%3E") center/14px no-repeat;

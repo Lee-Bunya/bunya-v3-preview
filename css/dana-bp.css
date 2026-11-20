@@ -1,0 +1,120 @@
+/* Bunya Portal (bunya-portal.html), Dana 20 Nov 2026 (design pass). */
+/* the three points straight under the screen repeat "How it works" below them, as on the other product pages */
+.sx .pp-points{display:none!important}
+/* FAQ numbers in Bunya teals only (no gold) */
+.sx .hb-faq > details{--tc:#11B8B1!important}
+.sx .hb-faq > details:nth-child(4n+2){--tc:#0A7D79!important}.sx .hb-faq > details:nth-child(4n+3){--tc:#0A9C96!important}.sx .hb-faq > details:nth-child(4n){--tc:#04545B!important}
+
+/* ---------- the live, personal Portal screens (Dana, 20 Nov 2026) ---------- */
+.sx .pp-shot.bp-on > img,.sx #close .sc.bp-on > img{display:none!important}
+.sx .pp-shot.bp-on{position:relative;overflow:visible!important}
+.sx .bp-stage{position:relative;width:100%;aspect-ratio:1200/750;overflow:hidden;background:#F4F8F8}
+.sx .pp-shot.bp-on .bp-stage{border-radius:0 0 18px 18px}
+.sx .bp-fit{position:absolute;left:0;top:0;width:1200px;height:750px;transform:scale(var(--k,1));transform-origin:0 0}
+.sx .bp-view{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .45s,visibility .45s}
+.sx .bp-view.on{opacity:1;visibility:visible}
+.sx .bp-app{display:flex;flex-direction:column;height:750px;font-family:"TT Commons Pro",system-ui,sans-serif;color:#13363B;background:linear-gradient(180deg,#F6FAFA,#EEF5F4)}
+.sx .bp-top{display:flex;align-items:center;gap:20px;height:70px;padding:0 28px;background:#fff;box-shadow:0 1px 0 rgba(1,59,67,.08)}
+.sx .bp-brand{display:flex;align-items:center;gap:12px;font-size:19px;font-weight:700;color:#013B43}
+.sx .bp-brand i,.sx .bp-logo{width:34px;height:34px;border-radius:10px;background:radial-gradient(circle at 50% 50%,#fff 0 5px,transparent 6px),linear-gradient(135deg,#11B8B1,#04545B)}
+.sx .bp-nav{display:flex;gap:6px;margin-left:auto}
+.sx .bp-nav span{padding:8px 15px;border-radius:999px;font-size:15px;font-weight:500;color:#4A6266}
+.sx .bp-nav span.on{background:#E6F7F5;color:#013B43;font-weight:700;box-shadow:inset 0 0 0 1px rgba(10,125,121,.2)}
+.sx .bp-me{display:flex;align-items:center;gap:10px;padding:5px 14px 5px 5px;border-radius:999px;background:#F2FBFA;box-shadow:inset 0 0 0 1px rgba(10,125,121,.16)}
+.sx .bp-me img{width:38px;height:38px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #fff,0 0 0 3.5px #11B8B1!important}
+.sx .bp-me b{display:block;font-size:14.5px;line-height:1.1;color:#013B43}.sx .bp-me small{font-size:12px;color:#4A6266}
+.sx .bp-body{flex:1;display:flex;flex-direction:column;gap:18px;padding:24px 28px;min-height:0}
+.sx .bp-card{background:#fff;border-radius:18px;padding:20px 22px;box-shadow:0 0 0 1px rgba(1,59,67,.07),0 14px 30px -24px rgba(1,59,67,.35)}
+.sx .bp-g2{display:grid;grid-template-columns:1.45fr 1fr;gap:18px}
+.sx .bp-g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.sx .bp-g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.sx .bp-lo{flex:1;grid-template-columns:1fr 1fr}
+.sx .bp-k{display:block;font:600 12.5px/1.2 "Saira",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#0A7D79}
+.sx .bp-hi{position:relative;display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#04545B,#013B43);color:#fff}
+.sx .bp-hi .bp-k{color:#7EDAD6}
+.sx .bp-face{flex:none;width:72px;height:72px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #013B43,0 0 0 5px #11B8B1!important}
+.sx .bp-h{display:block;margin:6px 0 10px;font-size:32px;font-weight:700;letter-spacing:-.025em;line-height:1.05;color:#fff}
+.sx .bp-hi .bp-btn{margin-left:auto;align-self:flex-end;background:#11B8B1;color:#013B43}
+.sx .bp-meet{display:flex;flex-direction:column;gap:4px;background:linear-gradient(180deg,#EAF7F5,#fff)}
+.sx .bp-meet b{font-size:24px;font-weight:700;color:#013B43;margin-top:2px}.sx .bp-meet small{font-size:14px;color:#4A6266}
+.sx .bp-meet .bp-ri{margin-bottom:8px}
+.sx .bp-sh{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px}
+.sx .bp-sh b{font-size:19px;font-weight:700;color:#013B43}.sx .bp-sh span{font-size:14px;font-weight:600;color:#0A7D79}
+.sx .bp-body > .bp-sh{margin:2px 2px -8px}
+.sx .bp-proj{display:flex;flex-direction:column;gap:8px}.sx .bp-proj b{font-size:18px;font-weight:700;color:#013B43}
+.sx .bp-bar{display:block;height:6px;border-radius:6px;background:#E3EEED;overflow:hidden}.sx .bp-bar u{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,#7EDAD6,#11B8B1)}
+.sx .bp-pill{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;font-style:normal;font-size:13px;font-weight:600;white-space:nowrap}
+.sx .bp-pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.sx .bp-pill.ok{background:#E6F7F5;color:#0A7D79}.sx .bp-pill.mint{background:#11B8B1;color:#fff}.sx .bp-pill.grey{background:#EEF2F2;color:#4A6266}
+.sx .bp-hi .bp-pill.mint{background:rgba(126,218,214,.18);color:#7EDAD6}
+.sx .bp-btn{flex:none;display:inline-flex;align-items:center;padding:10px 18px;border-radius:12px;background:#013B43;color:#fff;font-size:15px;font-weight:700}
+.sx .bp-btn.sm{padding:8px 14px;font-size:14px}.sx .bp-btn.ghost{background:#fff;color:#013B43;box-shadow:inset 0 0 0 1px rgba(1,59,67,.2)}
+.sx .bp-row{display:flex;align-items:center;gap:14px;padding:12px 0;border-top:1px solid #EDF2F2}
+.sx .bp-sh + .bp-row,.sx .bp-card > .bp-row:first-child,.sx .bp-tabs + .bp-row{border-top:0}
+.sx .bp-row > span{flex:1;min-width:0;display:flex;flex-direction:column}.sx .bp-row b{font-size:16px;font-weight:700;color:#013B43}.sx .bp-row small{font-size:13.5px;color:#4A6266}
+.sx .bp-ri{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#E6F7F5}
+.sx .bp-ri svg,.sx .bp-ai svg,.sx .bp-tip i svg{width:20px;height:20px;fill:none;stroke:#0A7D79;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.sx .bp-title{position:relative;display:flex;flex-direction:column;gap:6px;padding-right:200px}
+.sx .bp-title b{font-size:30px;font-weight:700;letter-spacing:-.02em;color:#013B43}.sx .bp-title small{font-size:15px;color:#4A6266}
+.sx .bp-title > .bp-btn,.sx .bp-title > .bp-plan{position:absolute;right:0;top:4px}
+.sx .bp-plan{padding:8px 14px;border-radius:999px;background:#fff;font-size:14px;font-weight:700;color:#013B43;box-shadow:inset 0 0 0 1px rgba(1,59,67,.16)}
+.sx .bp-tabs{display:flex;gap:22px;padding-bottom:10px;border-bottom:1px solid #E3EEED}
+.sx .bp-tabs span{font-size:15px;font-weight:500;color:#4A6266;padding-bottom:9px;margin-bottom:-11px}.sx .bp-tabs span.on{font-weight:700;color:#013B43;border-bottom:2.5px solid #11B8B1}
+.sx .bp-ask{flex:1;grid-template-columns:1.25fr 1fr}
+.sx .bp-chat{display:flex;flex-direction:column;gap:16px}
+.sx .bp-q{align-self:flex-end;display:flex;align-items:center;gap:10px}
+.sx .bp-q span{padding:12px 16px;border-radius:16px 16px 4px 16px;background:#013B43;color:#fff;font-size:15.5px;font-weight:600}
+.sx .bp-q img{width:36px;height:36px;border-radius:50%;object-fit:cover;box-shadow:none!important}
+.sx .bp-a{display:flex;gap:12px}.sx .bp-a .bp-logo{flex:none;width:36px;height:36px}
+.sx .bp-a > div{padding:16px 18px;border-radius:4px 16px 16px 16px;background:#EAF7F5;font-size:15.5px;line-height:1.5;color:#13363B}
+.sx .bp-a p{margin:0 0 6px}.sx .bp-a ul{margin:0 0 8px;padding-left:20px}.sx .bp-a li{margin:3px 0}.sx .bp-a small{font-size:12.5px;color:#4A6266}
+.sx .bp-input{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding:8px 8px 8px 18px;border-radius:14px;box-shadow:inset 0 0 0 1px rgba(1,59,67,.14);font-size:14.5px;color:#7A8E90}
+.sx .bp-input em{font-style:normal;padding:8px 16px;border-radius:10px;background:#11B8B1;color:#fff;font-weight:700}
+.sx .bp-col{display:flex;flex-direction:column;gap:18px}
+.sx .bp-appc{display:flex;flex-direction:column;gap:6px}
+.sx .bp-appc b{font-size:19px;font-weight:700;color:#013B43}.sx .bp-appc small{font-size:14px;color:#4A6266;margin-bottom:8px}
+.sx .bp-appc .bp-btn,.sx .bp-appc .bp-pill{align-self:flex-start;margin-top:auto}
+.sx .bp-ai{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;margin-bottom:10px}
+.sx .bp-ai svg{stroke:#fff}.sx .bp-ai.c1{background:#11B8B1}.sx .bp-ai.c2{background:#0A9C96}.sx .bp-ai.c3{background:#0A7D79}.sx .bp-ai.c4{background:#04545B}
+.sx .bp-idea{padding:8px 22px}
+.sx .bp-req{flex:1;grid-template-columns:1.45fr 1fr}
+.sx .bp-kv{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #EDF2F2;font-size:14.5px;color:#4A6266}
+.sx .bp-kv b{color:#013B43}.sx .bp-kv small{display:block;font-size:13px;color:#7A8E90}.sx .bp-kv > span{display:flex;flex-direction:column;color:#013B43;font-weight:600}
+
+/* the cards that overhang the screens */
+.sx .bp-floats{position:absolute;inset:0;pointer-events:none;z-index:3}
+.sx .bp-tip{position:absolute;display:flex;align-items:center;gap:12px;padding:12px 18px 12px 12px;border-radius:18px;background:#fff;
+  box-shadow:0 0 0 1px rgba(1,59,67,.08),0 24px 48px -22px rgba(1,43,51,.5);font-family:"TT Commons Pro",sans-serif}
+.sx .bp-tip > img{width:48px;height:48px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #fff,0 0 0 4px #11B8B1!important}
+.sx .bp-tip > i{display:grid;place-items:center;width:44px;height:44px;border-radius:13px;background:#11B8B1}.sx .bp-tip > i svg{stroke:#fff}
+.sx .bp-tip b{display:block;font-size:16px;font-weight:700;color:#013B43;line-height:1.2}.sx .bp-tip small{font-size:13.5px;color:#4A6266}
+.sx .bp-f1{left:-36px;bottom:12%;animation:bp-float 7s ease-in-out infinite}
+.sx .bp-f2{right:-36px;top:18%;background:linear-gradient(135deg,#04545B,#013B43);animation:bp-float 7s ease-in-out -3.5s infinite}
+.sx .bp-f2 b{color:#fff}.sx .bp-f2 small{color:#7EDAD6}
+.sx .bp-dot{width:10px;height:10px;border-radius:50%;background:#11B8B1;box-shadow:0 0 0 4px rgba(17,184,177,.2)}
+.sx #close .hb-view{position:relative}
+.sx .bp-close .bp-tip{right:-28px;bottom:120px;animation:bp-in .5s cubic-bezier(.2,.8,.2,1)}
+@keyframes bp-float{50%{transform:translateY(-8px)}}
+@keyframes bp-in{from{opacity:0;transform:translateY(10px)}}
+@media (max-width:1180px){.sx .bp-f1{left:-12px}.sx .bp-f2{right:-12px}.sx .bp-close .bp-tip{right:-10px}}
+@media (max-width:760px){
+  .sx .bp-floats .bp-tip{position:relative;left:auto;right:auto;top:auto;bottom:auto;margin:12px 0 0;animation:none}
+  .sx .bp-floats{position:static;display:flex;flex-direction:column;align-items:flex-start;pointer-events:auto}
+  .sx .bp-f2{display:none}
+}
+@media (prefers-reduced-motion:reduce){.sx .bp-tip{animation:none!important}.sx .bp-view{transition:none}}
+/* photos inside the portal keep their own size (the site's image rules make images fill their box) */
+.sx .bp-stage img,.sx .bp-floats img{max-width:none!important;aspect-ratio:1!important;object-fit:cover!important;border-radius:50%!important;display:block}
+.sx .bp-me img{width:38px!important;height:38px!important}
+.sx .bp-face{width:72px!important;height:72px!important}
+.sx .bp-q img{width:36px!important;height:36px!important}
+.sx .bp-tip > img{width:48px!important;height:48px!important}
+.sx .bp-row > span.bp-btn{flex:none;display:inline-flex}
+.sx .bp-row > .bp-pill{align-self:center}
+.sx .bp-f1{bottom:-28px}
+.sx .bp-f2{top:-26px;right:8%}
+@media (max-width:1180px){.sx .bp-f2{right:4%}}
+/* the Up close screenshot rules (absolute, hidden until .on) must not reach the portal's own photos */
+html body.sx .sc .bp-stage img{position:static!important;opacity:1!important;inset:auto!important;transform:none!important}
+.sx .bp-f2{top:34%;right:-44px}
+@media (max-width:1180px){.sx .bp-f2{right:-12px}}
