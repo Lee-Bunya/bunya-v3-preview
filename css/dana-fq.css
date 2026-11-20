@@ -1,0 +1,37 @@
+/* FAQ, Dana 20 Nov 2026 (design pass). Goes with js/dana-fq.js. Bunya colours only. */
+/* topics: an icon tile and a question count, and the heading stays beside its answers as you scroll */
+.sx .fq-side.fq-on{position:sticky;top:110px;align-self:start}
+.sx .fq-ic{display:grid;place-items:center;width:56px;height:56px;border-radius:17px;box-shadow:0 14px 26px -14px rgba(1,59,67,.6)}
+.sx .fq-ic svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.sx .fq-c0{background:linear-gradient(135deg,#7EDAD6,#11B8B1)}.sx .fq-c0 svg{stroke:#013B43}
+.sx .fq-c1{background:linear-gradient(135deg,#11B8B1,#0A7D79)}
+.sx .fq-c2{background:linear-gradient(135deg,#0A7D79,#04545B)}
+.sx .fq-c3{background:linear-gradient(135deg,#04545B,#013B43)}
+.sx .fq-count{display:inline-block;margin:18px 0 10px;padding:5px 11px;border-radius:999px;background:#E6F7F5;color:#0A7D79;font:600 11px/1.2 "Saira","Segoe UI",Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.sx .fq-side.fq-on h2{margin-top:0}
+/* closing headline on two lines */
+.sx .sx-end h2{max-width:none}
+.sx .sx-end h2 .sx-grad{display:block}
+@media (max-width:900px){.sx .fq-side.fq-on{position:static}}
+
+/* Topic cards: deep teal with Bunya's rotating rings, holding the icon, count, heading and subtext (Dana, 20 Nov 2026) */
+.sx .fq-side.fq-on{position:sticky;overflow:hidden;isolation:isolate;padding:28px 28px 30px;border-radius:28px;
+  background:linear-gradient(155deg,#013B43 0%,#04545B 60%,#0A6B6A 100%);box-shadow:0 0 0 1px rgba(126,218,214,.18),0 40px 80px -40px rgba(1,59,67,.6)}
+.sx .fq-rings{position:absolute;right:-150px;top:-170px;width:360px;height:360px;z-index:-1;overflow:visible;pointer-events:none}
+.sx .fq-rings g{transform-box:view-box;transform-origin:50% 50%}
+.sx .fq-rings circle{fill:none;stroke:#7EDAD6;stroke-opacity:.2;stroke-width:2}
+.sx .fq-rings circle.d{stroke-opacity:.55;stroke-width:3.5;stroke-linecap:round;stroke-dasharray:.1 12}
+.sx .fq-rings circle.g{stroke:#F4B528;stroke-opacity:.7;stroke-width:3.5;stroke-linecap:round;stroke-dasharray:.1 12}
+.sx .fq-rings circle.n{fill:#7EDAD6;stroke:#04545B;stroke-width:4;stroke-opacity:1}.sx .fq-rings circle.n.t{fill:#11B8B1}.sx .fq-rings circle.n.y{fill:#F4B528}
+.sx .fq-rings .a{animation:fq-orb 80s linear infinite}.sx .fq-rings .b{animation:fq-orb 120s linear infinite reverse}.sx .fq-rings .c{animation:fq-orb 60s linear infinite}
+@keyframes fq-orb{to{transform:rotate(360deg)}}
+.sx .fq-side.fq-on .fq-ic{box-shadow:0 14px 26px -12px rgba(0,0,0,.5)}
+.sx .fq-side.fq-on .fq-c0,.sx .fq-side.fq-on .fq-c1,.sx .fq-side.fq-on .fq-c2,.sx .fq-side.fq-on .fq-c3{background:linear-gradient(135deg,#7EDAD6,#11B8B1)}
+.sx .fq-side.fq-on .fq-ic svg{stroke:#013B43}
+.sx .fq-side.fq-on .fq-count{background:rgba(126,218,214,.16);color:#7EDAD6}
+.sx .fq-side.fq-on h2{color:#fff!important;-webkit-text-fill-color:#fff}
+.sx .fq-side.fq-on p{color:rgba(223,246,244,.85)!important}
+@media (max-width:900px){.sx .fq-side.fq-on{margin-bottom:16px}}
+@media (prefers-reduced-motion:reduce){.sx .fq-rings g{animation:none}}
+/* phones: the topic card sits above its questions, not stuck over them */
+@media (max-width:900px){.sx .fq-side.fq-on{position:static}}
