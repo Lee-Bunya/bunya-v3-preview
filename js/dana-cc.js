@@ -147,10 +147,50 @@
     trust.insertAdjacentElement('afterend', proc);
   }
 
-  /* 5. "Follow Priya and Arjun Shah": show the meeting screen itself, cropped close, so it can be read */
-  var tImg = document.querySelector('.co-teaser img');
-  if (tImg) { tImg.src = 'assets/films/stills/meetings-and-tasks-teaser.jpg?v=4'; tImg.width = 1130; tImg.height = 860; tImg.alt = 'Discovery meeting with the Shah family: file note, email and tasks prepared by Bunya (illustrative)';
-    var pan = el('span', 'dx-tpanel'); tImg.parentNode.insertBefore(pan, tImg); pan.appendChild(tImg); }
+  /* 5. "Follow Priya and Arjun Shah" (redesigned 20 Nov 2026): the blurry still is replaced by the meeting screen built
+     in HTML, crisp at any size: the Discovery meeting with Alex, Priya and Arjun, what Bunya prepared, and the file note
+     waiting for Alex to approve. The text side gets the family's photos and the steps the story follows. */
+  var tea = document.querySelector('a.co-teaser'), tImg = tea && tea.querySelector('img');
+  if (tea && tImg && !tea.querySelector('.sh-app')) {
+    var M = 'assets/meeting/';
+    var ICO = {
+      note: '<svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>',
+      mail: '<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>',
+      task: '<svg viewBox="0 0 24 24"><path d="m4 6 1.5 1.5L8 5M4 12l1.5 1.5L8 11M4 18l1.5 1.5L8 17M11 6h9M11 12h9M11 18h9"/></svg>'
+    };
+    function row(ic, t, d) { return '<span class="sh-row"><i class="sh-ri">' + ICO[ic] + '</i><span><b>' + t + '<em>Draft</em></b><small>' + d + '</small></span></span>'; }
+    var pan = el('span', 'dx-tpanel sh-pan');
+    pan.innerHTML =
+      '<span class="sh-app">' +
+        '<span class="sh-top"><span class="sh-k">Command Centre · Meetings</span><span class="sh-rec"><i></i>Recorded</span></span>' +
+        '<span class="sh-h">Discovery · Shah Family</span>' +
+        '<span class="sh-meta">Thursday 9:30 · Teams · 52 minutes</span>' +
+        '<span class="sh-who"><img src="' + M + 'alex-sq.jpg" alt=""><img src="' + M + 'priya-sq.jpg" alt=""><img src="' + M + 'arjun-sq.jpg" alt=""><small>Alex Reid with Priya and Arjun</small></span>' +
+        '<span class="sh-lab">Prepared by Bunya</span>' +
+        row('note', 'File note', 'Goals, concerns and what was agreed') +
+        row('mail', 'Follow-up email', 'On your letterhead, three agreed actions') +
+        row('task', '3 tasks', 'Super statements · fact find · strategy') +
+      '</span>' +
+      '<span class="sh-note">' +
+        '<span class="sh-nk">File note · ready to check</span>' +
+        '<span class="sh-nl"><small>Their goals</small>Priya retires at 60, Arjun at 63</span>' +
+        '<span class="sh-nl"><small>Their concerns</small>Whether to keep the SMSF</span>' +
+        '<span class="sh-nl"><small>What was agreed</small>Check cover before Arjun’s contract ends</span>' +
+        '<span class="sh-btns"><span class="sh-ok">Approve<i></i></span><span class="sh-ed">Edit</span></span>' +
+      '</span>';
+    tImg.parentNode.replaceChild(pan, tImg);
+    var tx = pan.nextElementSibling;
+    if (tx) {
+      tx.classList.add('sh-txt');
+      var fam = el('span', 'sh-fam');
+      fam.innerHTML = '<span class="sh-pics"><img src="' + M + 'priya-sq.jpg" alt=""><img src="' + M + 'arjun-sq.jpg" alt=""></span><span>The Shah family</span>';
+      tx.insertBefore(fam, tx.firstChild);
+      var steps = el('span', 'sh-steps');
+      steps.innerHTML = ['Discovery', 'Fact find', 'Strategy', 'Advice', 'Review'].map(function (w, i) { return '<span' + (i === 0 ? ' class="on"' : '') + '>' + (i === 0 ? '<i>✓</i>' : '') + w + '</span>'; }).join('');
+      var em = tx.querySelector('em'); tx.insertBefore(steps, em);
+    }
+    tea.classList.add('sh-on');
+  }
 
   /* Gentle reveal for the added parts (the page's own reveal runs before these exist) */
   var rv = document.querySelectorAll('.dx-cc-rv');
@@ -164,4 +204,29 @@
 (function () {
   var h = document.getElementById('h-faq');
   if (h) h.innerHTML = 'Questions, <span>answered.</span>';
+})();
+
+/* Dana (20 Nov 2026): the "All of this comes with it" cards. Each gets an "Included" tag (the last, "Add what you
+   need", is the add-ons card) and a "See more" line at the foot, and takes its icon's teal for its hover frame. */
+(function () {
+  'use strict';
+  var cards = document.querySelectorAll('.co-gets > .co-get');
+  if (!cards.length || document.querySelector('.cg-tag')) return;
+  var HC = { 'dx-c1': '#11B8B1', 'dx-c2': '#0A7D79', 'dx-c3': '#04545B', 'dx-c4': '#0A9C96', 'dx-c5': '#7EDAD6' };
+  [].forEach.call(cards, function (a, i) {
+    var last = i === cards.length - 1, ico = a.querySelector('.dx-ico');
+    var c = ico && (ico.className.match(/dx-c\d/) || [])[0];
+    if (c && HC[c]) a.style.setProperty('--hc', HC[c]);
+    var tag = document.createElement('span');
+    tag.className = 'cg-tag'; tag.setAttribute('aria-hidden', 'true');
+    tag.innerHTML = last ? 'Add-ons' : '<i>✓</i>Included';
+    a.appendChild(tag);
+    var b = a.querySelector('b'); if (last && b) b.textContent = b.textContent.replace(/\s*›\s*$/, '');
+    var more = document.createElement('span');
+    more.className = 'cg-more'; more.setAttribute('aria-hidden', 'true');
+    more.innerHTML = (last ? 'See what each costs' : 'See more') + '<i></i>';
+    a.appendChild(more);
+    if (last) a.classList.add('cg-add');
+  });
+  document.querySelector('.co-gets').classList.add('cg-on');
 })();
