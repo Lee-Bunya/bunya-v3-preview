@@ -85,3 +85,6 @@ html body.sx .sheet-body figure.pull.fc-quote::before,html body.sx .sheet-body f
 html body.sx .sheet-body figure.pull.fc-quote blockquote::before,html body.sx .sheet-body figure.pull.fc-quote blockquote::after{content:none!important;display:none!important}
 /* award label: Bunya teal tint instead of pale yellow */
 .sx .photo figcaption .award{background:#E6F7F5!important;color:#0A7D79!important;box-shadow:inset 0 0 0 1px rgba(10,125,121,.18)}
+/* "Making existing information" / "work harder." */
+.sx #glance .sv{display:block}
+@media (min-width:760px){.sx #glance{white-space:nowrap}}
