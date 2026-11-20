@@ -35,3 +35,5 @@
 @media (prefers-reduced-motion:reduce){.sx .fq-rings g{animation:none}}
 /* phones: the topic card sits above its questions, not stuck over them */
 @media (max-width:900px){.sx .fq-side.fq-on{position:static}}
+/* phones: keep the rings inside the card (a static card let them stretch the page sideways) */
+@media (max-width:900px){.sx .fq-side.fq-on{position:relative;top:auto}}
