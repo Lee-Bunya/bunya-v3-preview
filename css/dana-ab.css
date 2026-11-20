@@ -1,0 +1,173 @@
+/* About, Dana 20 Nov 2026 (design pass). Goes with js/dana-ab.js. */
+.sx .sx-hero p{text-wrap:balance}
+
+/* no yellow: icon tiles in Bunya teals on this page */
+.sx .dx-c2{background:linear-gradient(135deg,#0A7D79,#04545B)!important;color:#fff!important}
+.sx :has(> .dx-c2){--hc:#0A7D79}
+
+/* what Bunya takes on (deep teal, rings) vs what stays with your people (white) */
+.sx .ab-col.ab-bunya{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(155deg,#013B43 0%,#04545B 60%,#0A6B6A 100%)!important;color:#fff;
+  box-shadow:0 0 0 1px rgba(126,218,214,.18),0 40px 80px -40px rgba(1,59,67,.6)!important}
+.sx .ab-bunya .sx-k{color:#7EDAD6!important}
+.sx .ab-bunya .sx-k::before{border-color:#7EDAD6!important}
+.sx .ab-bunya li{color:#fff!important;border-color:rgba(126,218,214,.18)!important}
+.sx .ab-bunya .dx-ico{background:linear-gradient(135deg,#7EDAD6,#11B8B1)!important;color:#013B43!important}
+.sx .ab-split li{display:flex;align-items:center;gap:12px}
+.sx .ab-split li::before{content:"";flex:none;width:22px;height:22px;border-radius:50%;background-repeat:no-repeat;background-position:center;background-size:12px}
+.sx .ab-bunya li::before{background-color:rgba(126,218,214,.18);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237EDAD6' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E")}
+.sx .ab-people li::before{background-color:#E6F7F5;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A7D79' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='12' cy='8.5' r='3.5'/%3E%3Cpath d='M5 20c1.2-3.6 3.8-5.5 7-5.5s5.8 1.9 7 5.5'/%3E%3C/svg%3E")}
+.sx .ab-people .dx-ico{background:linear-gradient(135deg,#0A7D79,#04545B)!important;color:#fff!important}
+.sx .ab-rings{position:absolute;right:-170px;top:-190px;width:400px;height:400px;z-index:-1;overflow:visible;pointer-events:none}
+.sx .ab-rings g{transform-box:view-box;transform-origin:50% 50%}
+.sx .ab-rings circle{fill:none;stroke:#7EDAD6;stroke-opacity:.2;stroke-width:2}
+.sx .ab-rings circle.d{stroke-opacity:.55;stroke-width:3.5;stroke-linecap:round;stroke-dasharray:.1 12}
+.sx .ab-rings circle.g{stroke:#F4B528;stroke-opacity:.7;stroke-width:3.5;stroke-linecap:round;stroke-dasharray:.1 12}
+.sx .ab-rings circle.n{fill:#7EDAD6;stroke:none}.sx .ab-rings circle.n.t{fill:#11B8B1}.sx .ab-rings circle.n.y{fill:#F4B528}
+.sx .ab-rings .a{animation:ab-orb 80s linear infinite}.sx .ab-rings .b{animation:ab-orb 120s linear infinite reverse}.sx .ab-rings .c{animation:ab-orb 60s linear infinite}
+@keyframes ab-orb{to{transform:rotate(360deg)}}
+.sx .ab-tag{font-family:"TT Commons Pro",sans-serif;font-weight:700}
+.sx .ab-tag span{color:#0A7D79!important}
+
+/* the Command Centre card shows the product */
+.sx .ab-card.main{position:relative;overflow:hidden;min-height:340px;padding-right:46%!important}
+.sx .ab-peek{position:absolute;right:-6%;top:34px;width:52%;border-radius:14px 0 0 0;overflow:hidden;
+  box-shadow:0 0 0 1px rgba(1,59,67,.08),0 30px 60px -24px rgba(1,59,67,.45);transform:rotate(-2deg);transform-origin:left top;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.sx .ab-peek img{display:block;width:100%;height:auto}
+.sx .ab-card.main:hover .ab-peek{transform:rotate(0) translateY(-4px)}
+.sx .ab-card.main::after{content:"";position:absolute;inset:auto 0 0 0;height:60px;background:linear-gradient(transparent,#fff);pointer-events:none}
+.sx .ab-card b{font-family:"TT Commons Pro",sans-serif;font-weight:700}
+
+/* commitments: numbered */
+.sx .ab-hold .sx-tile{position:relative}
+.sx .ab-n{position:absolute;top:26px;right:28px;font:600 13px/1 "Saira",sans-serif;letter-spacing:.08em;color:#0A7D79;opacity:.7}
+
+/* closing headline on two lines */
+.sx .sx-end h2{max-width:none}
+.sx .sx-end h2 .sx-grad{display:block}
+
+@media (max-width:860px){
+  .sx .ab-card.main{padding-right:24px!important;padding-bottom:0!important;min-height:0}
+  .sx .ab-peek{position:relative;right:auto;top:auto;display:block;width:calc(100% + 24px);margin:22px -24px 0 0;transform:none;border-radius:12px 0 0 0}
+  .sx .ab-card.main::after{display:none}
+}
+@media (prefers-reduced-motion:reduce){.sx .ab-rings g{animation:none}}
+
+/* ---------- Bunya takes on / stays with your people, v2 (Dana, 20 Nov 2026) ---------- */
+.sx .ab-split.ab-v2{position:relative;gap:28px}
+.sx .ab-v2 .ab-col{padding:32px 30px 30px!important;border-radius:30px}
+.sx .ab-v2 .ab-col.ab-people{background:radial-gradient(70% 60% at 100% 0%,rgba(126,218,214,.35),transparent 70%),linear-gradient(170deg,#F2FAF9,#fff 60%)!important;
+  box-shadow:0 0 0 1px rgba(1,59,67,.07),0 40px 80px -46px rgba(1,59,67,.45)!important}
+.sx .ab-v2 .ab-col ul{display:grid;gap:10px;margin-top:18px}
+.sx .ab-v2 .ab-col li{display:flex;align-items:center;gap:14px;padding:12px 14px!important;border:0!important;border-radius:16px;font-size:18px;transition:transform .3s,background .3s}
+.sx .ab-v2 .ab-col li::before{content:none!important}
+.sx .ab-v2 .ab-bunya li{background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(126,218,214,.14)}
+.sx .ab-v2 .ab-people li{background:#fff;box-shadow:0 0 0 1px rgba(1,59,67,.07),0 10px 20px -16px rgba(1,59,67,.4)}
+.sx .ab-v2 .ab-col li:hover{transform:translateX(4px)}
+.sx .ab-v2 .ab-bunya li:hover{background:rgba(255,255,255,.1)}
+.sx .ab-ri{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:12px}
+.sx .ab-ri svg{width:19px;height:19px;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.sx .ab-bunya .ab-ri{background:linear-gradient(135deg,#7EDAD6,#11B8B1)}.sx .ab-bunya .ab-ri svg{stroke:#013B43}
+.sx .ab-people .ab-ri{background:linear-gradient(135deg,#0A7D79,#04545B)}.sx .ab-people .ab-ri svg{stroke:#fff}
+.sx .ab-rt{flex:1}
+.sx .ab-rs{flex:none;font-style:normal;font-size:12.5px;font-weight:600;padding:5px 11px;border-radius:999px}
+.sx .ab-bunya .ab-rs{background:rgba(126,218,214,.16);color:#7EDAD6}
+.sx .ab-bunya .ab-rs::before{content:"✓ "}
+.sx .ab-people .ab-rs{background:#E6F7F5;color:#04545B}
+.sx .ab-people li:last-child .ab-rs{background:#013B43;color:#fff}
+/* the hand-over token between the cards */
+.sx .ab-hand{position:absolute;left:50%;top:50%;z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;translate:-50% -70%;pointer-events:none}
+.sx .ab-hand i{display:grid;place-items:center;width:60px;height:60px;border-radius:50%;background:#fff;box-shadow:0 0 0 6px rgba(126,218,214,.35),0 16px 30px -12px rgba(1,59,67,.5)}
+.sx .ab-hand svg{width:24px;height:24px;fill:none;stroke:#0A7D79;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;animation:ab-nudge 2.4s ease-in-out infinite}
+.sx .ab-hand small{padding:4px 10px;border-radius:999px;background:#013B43;color:#7EDAD6;font:600 10.5px/1.2 "Saira",sans-serif;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+@keyframes ab-nudge{50%{transform:translateX(4px)}}
+@media (max-width:860px){.sx .ab-hand{position:relative;left:auto;top:auto;translate:none;margin:-6px auto;grid-row:2}.sx .ab-hand i{transform:rotate(90deg)}
+  .sx .ab-v2 .ab-col li{font-size:16.5px}.sx .ab-split.ab-v2{gap:14px}}
+@media (prefers-reduced-motion:reduce){.sx .ab-hand svg{animation:none}}
+
+/* ---------- What we build: a little more colour ---------- */
+.sx .ab-card.main{background:radial-gradient(55% 90% at 85% 40%,rgba(126,218,214,.45),transparent 70%),linear-gradient(110deg,#fff 40%,#E6F7F5)!important}
+.sx .ab-card.main::after{background:linear-gradient(rgba(230,247,245,0),#E9F7F6)}
+.sx .ab-build .ab-card:not(.main){position:relative;overflow:hidden}
+.sx .ab-build .ab-card:not(.main)::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:var(--ab-k,#11B8B1)}
+.sx .ab-build .ab-card:nth-child(2){--ab-k:linear-gradient(90deg,#7EDAD6,#11B8B1);background:linear-gradient(180deg,#F2FAF9,#fff 55%)!important}
+.sx .ab-build .ab-card:nth-child(3){--ab-k:linear-gradient(90deg,#11B8B1,#0A7D79);background:linear-gradient(180deg,#EEF8F7,#fff 55%)!important}
+.sx .ab-build .ab-card:nth-child(4){--ab-k:linear-gradient(90deg,#0A7D79,#04545B);background:linear-gradient(180deg,#EAF5F4,#fff 55%)!important}
+.sx .ab-build .ab-card .lbl{color:#0A7D79!important}
+@media (max-width:620px){
+  .sx .ab-v2 .ab-col{padding:24px 16px 18px!important}
+  .sx .ab-v2 .ab-col li{gap:10px;padding:10px 10px!important;font-size:15.5px}
+  .sx .ab-ri{width:32px;height:32px;border-radius:10px}.sx .ab-ri svg{width:16px;height:16px}
+  .sx .ab-rs{font-size:11px;padding:4px 8px}
+}
+
+/* ---------- round 3 ---------- */
+/* commitments: an "in practice" strip under each */
+.sx .ab-hold .sx-tile{display:flex;flex-direction:column}
+.sx .ab-ip{margin-top:auto;padding-top:18px}
+.sx .ab-ip-k{display:block;margin:4px 0 10px;padding-top:16px;border-top:1px dashed #CFE4E1;font:600 10.5px/1 "Saira",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#0A7D79}
+.sx .ab-flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.sx .ab-flow i{font-style:normal;font-size:13px;font-weight:600;padding:6px 11px;border-radius:999px;background:#E6F7F5;color:#04545B}
+.sx .ab-flow i:last-of-type{background:#013B43;color:#7EDAD6}
+.sx .ab-flow b{color:#11B8B1;font-weight:700}
+.sx .ab-gate{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 10px 10px 12px;border-radius:14px;background:#fff;box-shadow:0 0 0 1px rgba(1,59,67,.08),0 10px 20px -14px rgba(1,59,67,.4)}
+.sx .ab-g-doc{display:flex;align-items:center;gap:10px}
+.sx .ab-g-doc svg{width:30px;height:30px;padding:6px;border-radius:9px;background:linear-gradient(135deg,#7EDAD6,#11B8B1);fill:none;stroke:#013B43;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.sx .ab-g-doc b{display:block;font-size:13.5px;color:#13292C}.sx .ab-g-doc small{font-size:12px;color:#4B6266}
+.sx .ab-g-btn{flex:none;padding:7px 14px;border-radius:999px;background:#013B43;color:#fff;font-size:13px;font-weight:600}
+.sx .ab-proof{display:flex;flex-wrap:wrap;gap:6px}
+.sx .ab-proof i{font-style:normal;font-size:13px;font-weight:600;padding:6px 11px;border-radius:999px}
+.sx .ab-proof .ok{background:#E6F7F5;color:#04545B}
+.sx .ab-proof .gap{background:#fff;color:#0A7D79;box-shadow:inset 0 0 0 1.5px #7EDAD6}
+.sx .ab-m365{display:flex;flex-wrap:wrap;gap:6px}
+.sx .ab-m365 i{display:inline-flex;align-items:center;gap:7px;font-style:normal;font-size:13px;font-weight:600;padding:6px 11px;border-radius:999px;background:#F0F7F6;color:#13292C;box-shadow:inset 0 0 0 1px #DCEBE9}
+.sx .ab-m365 i::before{content:"";width:7px;height:7px;border-radius:2px;background:#11B8B1}
+.sx .ab-m365 i:first-child{background:#013B43;color:#fff;box-shadow:none}.sx .ab-m365 i:first-child::before{background:#7EDAD6}
+
+/* good fit: badges, icon per line, a fit-check link */
+.sx .ab-fit2{gap:20px}
+.sx .ab-fit2 .ab-fitcol{position:relative;padding:28px 28px 26px!important;border-radius:28px}
+.sx .ab-fit2 .yes{background:radial-gradient(70% 60% at 100% 0%,rgba(126,218,214,.35),transparent 70%),linear-gradient(170deg,#F2FAF9,#fff 60%)!important}
+.sx .ab-fit2 .no{background:#fff!important}
+.sx .ab-fit2 .ab-fitcol > .dx-ico{display:none}
+.sx .ab-badge{display:inline-flex;align-items:center;gap:8px;margin-bottom:14px;padding:6px 12px;border-radius:999px;font:600 11px/1 "Saira",sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.sx .ab-badge::before{content:"";width:8px;height:8px;border-radius:50%}
+.sx .ab-badge.good{background:#013B43;color:#7EDAD6}.sx .ab-badge.good::before{background:#7EDAD6}
+.sx .ab-badge.not{background:#F0F5F4;color:#4B6266}.sx .ab-badge.not::before{background:#A9BDBA}
+.sx .ab-fit2 .ab-fitcol > b{display:block;font-family:"TT Commons Pro",sans-serif;font-weight:700;font-size:22px;color:#13292C}
+.sx .ab-fit2 .ab-fitcol ul{display:grid;gap:8px;margin-top:16px}
+.sx .ab-fit2 .ab-fitcol li{display:flex;align-items:center;gap:12px;padding:10px 12px!important;border-radius:14px;font-size:15.5px;line-height:1.4}
+.sx .ab-fit2 .ab-fitcol li::before{content:none!important}
+.sx .ab-fit2 .yes li{background:#fff;box-shadow:0 0 0 1px rgba(1,59,67,.07),0 10px 20px -16px rgba(1,59,67,.4);color:#13292C}
+.sx .ab-fit2 .no li{background:#F6F9F9;color:#4B6266}
+.sx .ab-fi{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,#11B8B1,#0A7D79)}
+.sx .ab-fi svg{width:17px;height:17px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sx .ab-fi.x{background:#E8EFEE}.sx .ab-fi.x svg{stroke:#7A8F8D;stroke-width:2.4}
+.sx .ab-fitcta{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:20px;padding:22px 26px;border-radius:24px;text-decoration:none;
+  background:linear-gradient(120deg,#013B43,#04545B 55%,#0A6B6A);color:#fff;box-shadow:0 30px 60px -40px rgba(1,59,67,.6);transition:transform .3s}
+.sx .ab-fitcta:hover{transform:translateY(-2px)}
+.sx .ab-fitcta b{display:block;font-family:"TT Commons Pro",sans-serif;font-weight:700;font-size:20px}
+.sx .ab-fitcta small{font-size:15px;color:rgba(223,246,244,.82)}
+.sx .ab-fitgo{flex:none;display:inline-flex;align-items:center;gap:10px;padding:11px 12px 11px 20px;border-radius:999px;background:#fff;color:#013B43;font-weight:600;font-size:15.5px}
+.sx .ab-fitgo i{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#11B8B1}
+.sx .ab-fitgo svg{width:15px;height:15px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* logos: equal tiles, Falcon larger (it is nearly square, so it read tiny at the same height) */
+.sx .ab-logos{gap:14px}
+.sx .ab-logos img{height:92px!important;max-width:240px;padding:16px 22px!important;background:#fff;border-radius:18px;box-shadow:0 0 0 1px rgba(1,59,67,.07),0 14px 28px -20px rgba(1,59,67,.4)}
+.sx .ab-logos img.ab-falcon{padding:6px 26px!important}
+
+/* details panel: deep teal with Bunya's rings, an icon per detail, email and phone as buttons */
+.sx .ab-co.ab-co2{position:relative;isolation:isolate;gap:12px;padding:28px;border-radius:30px;background:linear-gradient(155deg,#013B43 0%,#04545B 60%,#0A6B6A 100%)!important;
+  box-shadow:0 0 0 1px rgba(126,218,214,.18),0 40px 80px -40px rgba(1,59,67,.6)!important;overflow:hidden}
+.sx .ab-co2 > div{position:relative;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:14px;align-items:center;padding:18px 20px!important;border-radius:20px;
+  background:rgba(255,255,255,.06)!important;box-shadow:inset 0 0 0 1px rgba(126,218,214,.14);transition:background .3s}
+.sx .ab-co2 > div:hover{background:rgba(255,255,255,.1)!important}
+.sx .ab-ci{grid-row:1/3;display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#7EDAD6,#11B8B1)}
+.sx .ab-ci svg{width:21px;height:21px;fill:none;stroke:#013B43;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.sx .ab-co2 dt{font:600 10.5px/1.2 "Saira",sans-serif!important;letter-spacing:.1em;text-transform:uppercase;color:#7EDAD6!important}
+.sx .ab-co2 dd{margin:4px 0 0!important;font-family:"TT Commons Pro",sans-serif;font-weight:700;font-size:18px!important;color:#fff!important}
+.sx .ab-co2 dd a{color:#fff!important;text-decoration:none;border-bottom:1.5px solid rgba(126,218,214,.5);transition:border-color .2s}
+.sx .ab-co2 dd a:hover{border-color:#7EDAD6}
+.sx .ab-co2 .ab-act{background:rgba(126,218,214,.14)!important;box-shadow:inset 0 0 0 1.5px rgba(126,218,214,.35)}
+.sx .ab-co-rings{position:absolute;right:-180px;top:-200px;width:420px;height:420px;z-index:-1}
+@media (max-width:860px){.sx .ab-fitcta{flex-direction:column;align-items:flex-start}.sx .ab-co.ab-co2{padding:18px;gap:10px}.sx .ab-logos img{height:72px!important}}
