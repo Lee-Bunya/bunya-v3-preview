@@ -1,0 +1,44 @@
+/* Home, Dana 20 Nov 2026 (design pass). Goes with js/dana-home.js. Bunya colours only on this page. */
+/* hero call: real people */
+.sx .v5-people span.hm-ph{height:auto!important;padding:10px 6px 8px;gap:6px;background:#fff!important;box-shadow:0 0 0 1px rgba(1,59,67,.08);color:#13292C!important;border:0!important}
+.sx .v5-people span.hm-ph img{width:52px;height:52px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #E6F7F5}
+.sx .v5-people span.hm-ph:first-child img{box-shadow:0 0 0 3px #11B8B1}
+.sx .v5-people span.hm-ph small{color:#4B6266!important}
+.sx .v5-ok{background:#11B8B1!important;color:#fff!important}
+.sx .v5-ok svg{fill:#fff!important}
+.sx .v5-demo{box-shadow:0 0 0 1px rgba(1,59,67,.07),0 50px 90px -50px rgba(1,59,67,.5)}
+
+/* "Build your Bunya" bar (home only): the violet and yellow steps in Bunya teals */
+.sx .dx-j-steps li:nth-child(4){--c:#0A9C96}
+.sx .dx-j-steps li:nth-child(5){--c:#7EDAD6}
+
+/* kickers over each headline */
+.sx .hm-k{display:inline-flex;margin-bottom:12px}
+.sx .v5-sec .hm-k{display:flex;width:max-content;margin-left:auto;margin-right:auto}
+
+/* icon tiles and numbers: no yellow */
+.sx .dx-c2{background:linear-gradient(135deg,#0A7D79,#04545B)!important;color:#fff!important}
+.sx :has(> .dx-c2){--hc:#0A7D79}
+.sx .v5-live li:nth-child(1) .v5-ln{background:linear-gradient(135deg,#7EDAD6,#11B8B1)!important;color:#013B43!important}
+.sx .v5-live li:nth-child(2) .v5-ln{background:linear-gradient(135deg,#11B8B1,#0A9C96)!important;color:#fff!important}
+.sx .v5-live li:nth-child(3) .v5-ln{background:linear-gradient(135deg,#0A9C96,#0A7D79)!important;color:#fff!important}
+.sx .v5-live li:nth-child(4) .v5-ln{background:linear-gradient(135deg,#0A7D79,#04545B)!important;color:#fff!important}
+.sx .v5-live li:nth-child(1)::before{background:#7EDAD6!important}.sx .v5-live li:nth-child(2)::before{background:#11B8B1!important}
+.sx .v5-live li:nth-child(3)::before{background:#0A7D79!important}.sx .v5-live li:nth-child(4)::before{background:#04545B!important}
+
+/* one Tuesday: the "without" lines muted, not red */
+.sx .v5-day.before li:nth-last-child(-n+2){color:#4B6266!important;font-style:italic}
+.sx .v5-day.before li:nth-last-child(-n+2) b{color:#4B6266!important}
+.sx .v5-day:not(.before) li:nth-last-child(-n+3){color:#0A7D79!important;font-weight:600}
+
+/* Charlotte's quote on deep teal, her set-back portrait */
+.sx .hm-ch{background:linear-gradient(155deg,#013B43 0%,#04545B 60%,#0A6B6A 100%)!important;box-shadow:0 0 0 1px rgba(126,218,214,.18),0 40px 80px -40px rgba(1,59,67,.6)!important}
+.sx .hm-ch blockquote,.sx .hm-ch p,.sx .hm-ch q{color:#fff!important}
+.sx .hm-ch b,.sx .hm-ch strong{color:#fff!important}
+.sx .hm-ch small,.sx .hm-ch span{color:rgba(223,246,244,.8)!important}
+.sx .hm-ch a{color:#7EDAD6!important}
+.sx .hm-ch img{box-shadow:0 0 0 3px #11B8B1}
+
+/* closing headline on two lines */
+.sx .sx-end h2{max-width:none}
+.sx .sx-end h2 .sx-grad{display:block}
