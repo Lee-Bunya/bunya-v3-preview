@@ -10,6 +10,11 @@
 (function(){
   'use strict';
   var L = window.bunyaList; if (!L) return;
+  /* 25 Nov 2026 (Daniel, Lee: "he just wants it simple now"): build-advice.html is the advice-firm version. Command Centre
+     and the whole Advice Engine are one price, $5.50 an account, with no feature-by-feature prices (body data-pack="ae").
+     The site's shortlist isn't changed: this page just reads it with the whole Advice Engine in. */
+  var PACK = document.body.getAttribute('data-pack') === 'ae', PACK_RATE = 5.5;
+  if (PACK) { var read0 = L.read; L = Object.assign({}, L, { read: function(){ var s = read0(); s.ae = true; L.FEAT.forEach(function(f){ s.feat[f[0]] = true; }); return s; } }); }
   var $ = function(id){ return document.getElementById(id); };
   var money = function(v){ return '$' + Math.round(v).toLocaleString('en-AU'); };
   var rate = function(v){ v = Math.round(v * 100) / 100; return '$' + (v % 1 ? v.toFixed(2) : v); };
@@ -103,7 +108,7 @@
 
   function banded(r){ var u = 0, f = 1, x = n; while (x > 0) { u += Math.min(x, BAND) * f; x -= BAND; f *= 1 - OFF; } return r * u; }
   function calc(){
-    var s = L.read(), r = L.rate(s) * (YR() ? 1 - YEAR : 1), raw = banded(r), fee = Math.max(MIN, raw), apps = L.apps(s);
+    var s = L.read(), r = (PACK ? PACK_RATE : L.rate(s)) * (YR() ? 1 - YEAR : 1), raw = banded(r), fee = Math.max(MIN, raw), apps = L.apps(s);
     var mkt = lvlP() + (X.fc ? FC : 0) + (X.fcp ? FCP : 0) + (X.ads ? ADS : 0) + (X.smm ? SMM : 0);
     var svc = (X.brand ? BRAND[X.brand][1] : 0) + (X.docs ? DOCS : 0) + (X.coll ? COLL : 0) + (X.web ? WEB : 0);
     var base = { s: s, r: r, apps: apps, pt: ptCost(s), ptOn: ptLines(s).length > 0, svc: svc };
@@ -195,7 +200,7 @@
   function on(el, v, inc){ el.setAttribute('aria-pressed', String(v || !!inc)); el.classList.toggle('on', v || !!inc); el.disabled = !!inc; var r = el.closest('.pr-row'); if (r) { r.classList.toggle('on', v || !!inc); r.classList.toggle('inc', !!inc); } }
   /* 17 Nov 2026 (Lee: "too long now"): steps 2 to 7 open and close from their heading; 1 (size) and 8 (Your Bunya) stay
      open. A closed step shows what's picked in it, in one line. */
-  var COL = ['byo-base', 'byo-feats', 'byo-apps', 'byo-mkt', 'byo-yours', 'byo-support', 'byo-micro'];
+  var COL = ['byo-base', 'byo-feats', 'byo-apps', 'byo-mkt', 'byo-yours', 'byo-support', 'byo-micro'].filter(function(id){ return !(PACK && id === 'byo-feats'); });
   COL.forEach(function(id){
     var sec = $(id), gh = sec && sec.querySelector('.pr-gh'); if (!gh) return;
     sec.classList.add('byo-col'); gh.setAttribute('role', 'button'); gh.tabIndex = 0; gh.setAttribute('aria-expanded', 'false');
@@ -215,7 +220,7 @@
   function short(names){ return !names.length ? 'None yet' : names.length > 3 ? names.slice(0, 2).join(', ') + ' and ' + (names.length - 2) + ' more' : names.join(', '); }
   function paintPicks(s){
     var t = {
-      'byo-base': X.own ? 'Yours to own, with support and updates' : '$3 an account, with email support',
+      'byo-base': X.own ? 'Yours to own, with support and updates' : (PACK ? rate(PACK_RATE) : '$3') + ' an account, with email support',
       'byo-feats': X.own ? (s.ae ? 'Command Centre and the whole Advice Engine' : 'Command Centre on its own') : s.ae ? 'The whole Advice Engine, ' + rate(L.AE) + ' an account' : short(picked($('byo-feats'))),
       'byo-micro': 'About ' + money(msCost(s).total) + ' a month, ' + msu() + (msu() === 1 ? ' person' : ' people'),
       'byo-support': shapeIn() ? 'Shape, included with your subscription' : LVN[lvl()] + ', ' + money(lvlP()) + ' a month' + (freeMonth() ? ', first month included' : lvl() === 'team' ? ', for ' + bm() + (bm() === 1 ? ' month' : ' months') : '')
@@ -316,7 +321,7 @@
       '<dl class="byo-dl">' + M.join('') + '</dl>';
     // 17 Nov 2026 (Lee): a cleaner Your Bunya, broken up by who you pay
     var H = function(t){ return '<p class="byo-dl-h">' + t + '</p>'; }, DL = function(a){ return '<dl class="byo-dl">' + a.join('') + '</dl>'; };
-    var LM = [line('Microsoft licences and usage <small>' + ppl(ms.p) + (ms.portal ? ', client portal' : '') + ' · see step 8</small>', 'about ' + money(YR() ? ms.total * 12 : ms.total))];
+    var LM = [line('Microsoft licences and usage <small>' + ppl(ms.p) + (ms.portal ? ', client portal' : '') + ' · see step ' + (PACK ? 7 : 8) + '</small>', 'about ' + money(YR() ? ms.total * 12 : ms.total))];
     var LA = [line('All in, about <small>Bunya' + (c.ptOn ? ', partners' : '') + ' and Microsoft</small>', known ? money(YR() ? (c.monthly + (c.pt || 0) + ms.total) * 12 : c.monthly + (c.pt || 0) + ms.total) + (YR() ? ' a year' : ' a month') : '—', 'tot')];
     $('byo-lines').innerHTML = H('Paid to Bunya') + DL(L1) + (L3.length ? H('Paid to partners') + DL(L3) : '') + H('Paid to Microsoft') + DL(LM) + DL(LA) + H('Once') + DL(L2) + use;
     $('byo-live').innerHTML = ['Launch support: a named engineer for ' + (s.ae ? 45 : 30) + ' days', 'Licensee Green-Light Pack', 'Team Quick-Start Kit', 'Email support and every update', X.own ? 'Shape for your first month' : 'Bunya Shape, included'].map(function(t){ return '<li>' + t + '</li>'; }).join('');
